@@ -1,0 +1,36 @@
+Lesson Name:  linear regression
+Course Name:  easy linreg
+Type:  		    Standard
+Author:       Sean Kross
+Organization: The Ohio State University
+Version:      2.1.0
+================================================================
+
+--- &text
+
+This is a block of text, denoted above by "--- &text". Blocks of text will be displayed to the user and do not require any input other than pressing Return to continue to the next block.
+
+--- &cmd_question
+
+This is a command question, denoted above by "--- &cmd_question". Command questions require the user to enter a valid R expression at the prompt. As an example, let's have the user store the result of `3 + 7` in a new variable called `z`.
+
+```{r}
+z <- 3 + 7  # This is an R expression that will answer the question correctly
+```
+
+*** .hint
+This is a hint, which the user will see if he or she answers the question incorrectly. In this case, we might be kind and suggest that they type `z <- 3 + 7`.
+
+*** .ans_tests
+Answer tests go here. If omitted, the default answer test requires the user to enter the same R expression you specified in the code chunk above. See swirl documentation for more details about answer testing.
+
+--- &mult_question
+
+This is a multiple choice question, denoted by "--- &mult_question". Here we might ask which function can be used to compute the sum of 2 or more numbers.
+
+_1. `sum()`_
+2. `mean()`
+3. `abs()`
+
+*** .hint
+This is a hint, which will be displayed after an incorrect response to the question. In this example, we could tell the user that the function name is synonymous with "addition".
