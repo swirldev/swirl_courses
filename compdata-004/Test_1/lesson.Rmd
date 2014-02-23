@@ -1,0 +1,30 @@
+Lesson Name:  Test 1
+Course Name:  compdata-004
+Type:  		    Coursera
+Author:       Swirl Coders
+Organization: Swirl Coders
+Version:      2.1.0
+================================================================
+
+--- &text
+
+Welcome to the initial prototype for interaction between Coursera and swirl. This mock lesson is very brief, not very serious, and aims to demonstrate how Coursera might be notified that a student has completed a unit of instruction. The relevant code is based on Roger Peng's submitscript4.R, used in Computing for Data Analysis.
+
+--- &text
+
+A Coursera lesson is identified by a "Type" attribute. (See the lesson.Rmd file associated with this prototype.) When a student has completed a lesson with the Coursera attribute, he or she is asked if Coursera should be notified. Swirl can notify Coursera automatically if an internet connection is available. If not, swirl will write a file for manual upload later by the student.
+
+--- &text
+
+All but one line of the relevant code is in courseraCheck.R. The remaining line, line 318 in swirl.R, merely invokes function courseraCheck() upon completion of a lesson. To make this seem like an actual lesson, we include the following question.
+
+--- &mult_question
+
+Who in the world is Carmen Sandiego's Valentine?
+
+_1. `Waldo`_
+2. `Elmo`
+3. `Sponge Bob`
+
+*** .hint
+See https://www.facebook.com/photo.php?fbid=732289696794618&set=a.199975353359391.49729.144522495571344&type=1&theater
