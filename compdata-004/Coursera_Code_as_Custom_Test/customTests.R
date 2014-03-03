@@ -7,7 +7,6 @@ courseraCheck <- function(){
   modtype <- attr(e$les, "type")
   course_name <- gsub(" ", "_", attr(e$les, "course_name"))
   lesson_name <- gsub(" ", "_", attr(e$les, "lesson_name"))
-  if(is.null(modtype) || modtype != "Coursera")return(TRUE)
   # The user is questioned about submission at the last line of
   # the lesson itself. The choice is stored in e$val.
   choice <- e$val
