@@ -1,0 +1,27 @@
+- Class: meta
+  Course: compdata-004
+  Lesson: Coursera Code as Custom Test
+  Author: Swirl Coders
+  Type: Coursera_2
+  Organization: Swirl Coders
+  Version: 2.1.1
+
+- Class: text
+  Output: "Welcome to the second prototype of Coursera/swirl interaction. As in the first, the student is asked if Coursera should be notified that the lesson has been completed. This version has the same functionality, but implements it without coursera-specific changes to swirl. Instead, its final question asks if Coursera should be notified, and invokes a custom test capable of communicating with Coursera."
+
+- Class: text
+  Output: "The custom test is defined in customTests.R in the lesson directory. It is essentially the same code as in coursera.R of our first prototype and is based on Roger Peng's submitscript4.R."
+
+- Class: mult_question  
+  Output: "A custom test will override a built-in test of the same name. This may be useful device to resist cheating, since the override property requires sophistication to figure out, and the custom test may behave differently than its namesake. This question is tested by a custom version of omnitest. Would you like to see the demonstration now?"
+  AnswerChoices: Yes; No
+  CorrectAnswer: Yes
+  AnswerTests: omnitest(correctVal= 'Yes')
+  Hint: hint
+
+- Class: mult_question  
+  Output: "Do you want Coursera credit for this lesson? (I'll need some info from you if you want credit.)"
+  AnswerChoices: Yes;No;Maybe later
+  CorrectAnswer: Yes
+  AnswerTests: courseraCheck()
+  Hint: hint

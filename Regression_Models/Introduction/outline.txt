@@ -1,0 +1,31 @@
+Draft outline for intro to regression:
+
+1. Text: Galton & regression to the mean. Parents tend to have children closer to average height than themselves.
+
+2. Figure: Galton data with jitter. Rise from left to right suggests children's height depends on parents'. Tall parents have tall children.
+
+3. Figure: Add identity line. If children tend to be the same height as parents, the data would vary evenly about a line of slope 1 through the origin.
+
+4. Figure: Add regression line. The "regression line" minimizes variance of the data about the line. (For theory see slides and videos.) Its slope is greater than zero, as expected, but less than 1 as would have been the case if children tend to be the same height as parents.
+
+5. Command: Have student plot data without jitter, plot(child ~ parent, galton). 
+
+6. Text: Doesn't look like the swirl plot. Why? Many people are the same height to within measurement error, so points fall on top of one another. Solution? Jitter the children's heights to spread them out and make them visible. 
+
+7. Command: Have student plot data with jitter, plot(jitter(child,4) ~ parent, galton.)
+
+8. Command: To get a regression line in R, use the function lm (linear model.) Have the student set rgrline <- lm(child ~ parent, galton).
+
+9. Command: Add the regression line to the plot with abline. Make the line wide and red for visibility: abline(rgrline, lwd=2, col='red')
+
+10. Command: The regression line will have a slope and intercept which are estimated from data. Estimates are not exact. Their accuracy is gauged by theoretical techniques and expressed in terms of "standard error." Have student use summary(rgrline) to examine the Galton regression line.
+
+11. Muliple Choice: The slope of the line is the coefficient, or muliplier, of parent (meaning parent height.) What is the slope of the regression line?
+
+12. Multiple Choice: What is the slope's standard error?
+
+13. Text: A coefficient will be within 2 standard errors of its estimate about 95% of the time. This means the slope of our regression is significantly different than either 0 or 1.
+
+14. Figure: add horizontal and vertical lines at average heights to the plot. Note the regression lines and the averages cross at a point. Discuss regression to mean in terms of a parent 1" taller than average tending to have a child only .65" taller than average.
+
+15. Conclusion.
