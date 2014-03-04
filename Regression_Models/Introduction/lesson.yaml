@@ -39,7 +39,7 @@
 
 
 - Class: text
-  Output: You'll notice that this plot looks a lot different than the original we displayed. Why? Many people are the same height to within measurement error, so points fall on top of one another. You can see that some circles appear darker than others. However, by using R's function "jitter" on the children's heights, we can to spread out the data to simulate the measurement errors and make high frequency heights more visible. 
+  Output: You'll notice that this plot looks a lot different than the original we displayed. Why? Many people are the same height to within measurement error, so points fall on top of one another. You can see that some circles appear darker than others. However, by using R's function "jitter" on the children's heights, we can spread out the data to simulate the measurement errors and make high frequency heights more visible. 
 
 
 - Class: cmd_question
