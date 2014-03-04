@@ -1,4 +1,5 @@
 .DS_Store
-.Rproj.user
 .Rhistory
+.Rproj.user
 swirl_courses.Rproj
+.RData
