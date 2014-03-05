@@ -1,5 +1,4 @@
 check_even <- function() {
-  browser()
   # Get environment e, which contains information about what the user entered
   # at the prompt.
   e <- get("e", parent.frame())
