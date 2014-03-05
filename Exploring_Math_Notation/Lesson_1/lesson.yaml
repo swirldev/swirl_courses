@@ -1,0 +1,16 @@
+- Class: meta
+  Course: Exploring Math Notation
+  Lesson: Lesson 1
+  Author: Nick
+  Type: Standard
+  Organization: swirl
+  Version: 2.1.1
+
+- Class: text
+  Output: In this lesson, we'll explore an experimental feature that allows you to display math notation.
+
+- Class: math
+  Output: "The formula for simple linear regression is $$E[Y_i] = \\beta_0 + \\beta_1 X_i$$ If we add a second covariate, then it becomes $$E[Y_i] = \\beta_0 + \\beta_1 X_{1i} + \\beta_2 X_{2i}$$ Press the button below when you are satisfied."
+
+- Class: text
+  Output: You've learned so much today!
