@@ -1,6 +1,6 @@
 Lesson Name:  Vectors
-Course Name:  Intro to R
-Type:         Standard
+Course Name:  R Programming
+Type:         Coursera
 Author:       Nick Carchedi
 Organization: JHU Biostatistics
 Version:      2.1.0
