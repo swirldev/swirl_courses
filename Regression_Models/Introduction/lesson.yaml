@@ -46,7 +46,7 @@
   Output: Now it's your turn to try. Just type "plot(jitter(child,4) ~ parent,galton)" and see the magic.
   CorrectAnswer: plot(jitter(child,4) ~ parent,galton)
   AnswerTests: omnitest(correctExpr='plot(jitter(child,4) ~ parent,galton)')
-  Hint: You can do it! Type "plot(jitter(child,4) ~ parent,galton)""
+  Hint: You can do it! Type "plot(jitter(child,4) ~ parent,galton)"
 
 - Class: text
   Output: Now for the regression line. This is quite easy in R. The function lm (linear model) needs a "formula" and dataset. You can type "?formula" for more information, but, in simple terms, we just need to specify the dependent variable (children's heights) ~ the independent variable (parents' heights). 
@@ -89,7 +89,7 @@
 - Class: figure
   Output: We're now adding two blue lines to indicate the means of the children's heights (horizontal) and the parents' (vertical). Note that these lines and the regression line all intersect in a point. Pretty cool, huh? The regression line shows that parents who are 1 inch above the mean in height tend to have children who are only .65 inches above the mean. Similarly, parents who are 1 inch below average in height have children who are only .65 inches below average height.
   Figure: plot4_mean_heights.R
-  FigureType: new or old
+  FigureType: add
 
 - Class: text
   Output: This concludes our lesson on regression toward the mean. We hope you found it above average!
