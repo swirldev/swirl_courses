@@ -1,0 +1,64 @@
+- Class: meta
+  Course: Including Data
+  Lesson: Lesson 1
+  Author: Your name goes here
+  Type: Standard
+  Organization: Your organization goes here (optional)
+  Version: 2.1.1
+
+- Class: text
+  Output: This lesson demonstrates how you can make a dataset available to users.
+
+- Class: text
+  Output: I’ve placed a CSV file called airquality.csv in the lesson directory. It contains the airquality dataset from the datasets package.
+
+- Class: cmd_question
+  Output: I’ve also added some variables and functions to initLesson.R, which are automatically made available to the user. Type ls() now to see what I mean.
+  CorrectAnswer: ls()
+  AnswerTests: omnitest("ls()")
+  Hint: Type ls() and press Enter.
+
+- Class: cmd_question
+  Output: Type see_init() to open the initLesson.R file and follow along.
+  CorrectAnswer: see_init()
+  AnswerTests: omnitest("see_init()")
+  Hint: Type see_init() and press Enter.
+
+- Class: text
+  Output: As you can see, I’ve outlined two different methods for making data available. 
+
+- Class: cmd_question
+  Output: Let’s start with the first method. I’ve stored the path to dataset in a variable called data_path. Type data_path now to see it.
+  CorrectAnswer: data_path
+  AnswerTests: omnitest("data_path")
+  Hint: Type data_path and press Enter.
+
+- Class: text
+  Output: Whoa! It's obvious you don't want the user to have to construct that file path themselves.
+
+- Class: cmd_question
+  Output: Now, let's load the dataset, using read.csv(), into a new variable called my_data.
+  CorrectAnswer: my_data <- read.csv(data_path)
+  AnswerTests: omnitest("my_data <- read.csv(data_path)")
+  Hint: Type my_data <- read.csv(data_path) and press Enter.
+
+- Class: cmd_question
+  Output: Type head(my_data) to confirm the data is there.
+  CorrectAnswer: head(my_data)
+  AnswerTests: omnitest("head(my_data)")
+  Hint: Type head(my_data) and press Enter.
+
+- Class: cmd_question
+  Output: Let's explore the second method now. This one will be easy. I've stored the same dataset in a variable called air. Type head(air) to confirm it's there.
+  CorrectAnswer: head(air)
+  AnswerTests: omnitest("head(air)")
+  Hint: Type head(air) and press Enter.
+
+- Class: text
+  Output: You get to decide whether you'd like to have the user load the data (given the file path you've created for them) or if you'd prefer to save the data in a variable for them.
+
+- Class: text
+  Output: If you're not satisfied with either of these approaches, you could walk them through the process of getting data off the web.
+
+- Class: text
+  Output: That concludes this example on making data available for the user.
