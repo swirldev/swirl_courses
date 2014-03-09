@@ -34,7 +34,7 @@
 - Class: cmd_question
   Output: Now's your chance to plot in R. Type "plot(child ~ parent, galton)" at the R prompt. 
   CorrectAnswer: plot(child ~ parent, galton)
-  AnswerTests: omnitest(correctExpr='plot(child ~ parent, galton)')
+  AnswerTests: omnitest(correctExpr='plot(child ~ parent, galton)');save_expr()
   Hint: Type "plot(child ~ parent, galton)" at the R prompt.
 
 
@@ -45,7 +45,7 @@
 - Class: cmd_question
   Output: Now it's your turn to try. Just type "plot(jitter(child,4) ~ parent,galton)" and see the magic.
   CorrectAnswer: plot(jitter(child,4) ~ parent,galton)
-  AnswerTests: omnitest(correctExpr='plot(jitter(child,4) ~ parent,galton)')
+  AnswerTests: omnitest(correctExpr='plot(jitter(child,4) ~ parent,galton)');save_expr()
   Hint: You can do it! Type "plot(jitter(child,4) ~ parent,galton)"
 
 - Class: text
@@ -60,13 +60,13 @@
 - Class: cmd_question
   Output: Now add the regression line to the plot with "abline". Make the line wide and red for visibility. Type "abline(regrline, lwd=3, col='red')"
   CorrectAnswer: abline(regrline, lwd=3, col='red')
-  AnswerTests: omnitest(correctExpr='abline(regrline, lwd=3, col=\'red\')')
+  AnswerTests: omnitest(correctExpr='abline(regrline, lwd=3, col=\'red\')');save_expr()
   Hint: Yes, you can! Type "abline(regrline, lwd=3, col='red')"
 
 - Class: cmd_question
   Output: The regression line will have a slope and intercept which are estimated from data. Estimates are not exact. Their accuracy is gauged by theoretical techniques and expressed in terms of "standard error." You can use  "summary(regrline)" to examine the Galton regression line. Do this now.
   CorrectAnswer: summary(regrline)
-  AnswerTests: omnitest(correctExpr='summary(regrline)')
+  AnswerTests: omnitest(correctExpr='summary(regrline)');save_expr()
   Hint: This one's easy. Type "summary(regrline)"
 
 - Class: mult_question  
