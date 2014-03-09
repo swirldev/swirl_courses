@@ -1,0 +1,7 @@
+Class,Output,AnswerType,AnswerChoices,AnswerTests,CorrectAnswer,Hint,VideoLink
+text,"Hi, welcome to swirl! Today, we're going to store some numbers in a vector, then take the mean of those numbers. I'm assuming you've already learned how to create variables and call functions.",,,,,,
+cmd_question,"First, create a vector of numbers using the c() function and store that vector in a variable of your choice.",command,,"expr_is_a('<-'); expr_creates_var(); expr_uses_func('c')",newVar <- c(1:4),Type ?c to view the help file for the c() function.,
+cmd_question,Now compute the mean of these numbers by calling the mean() function on your new vector.,command,,"expr_uses_func('mean'); func_of_newvar_equals( 'mean(newVar)');testF()",mean(newVar),Type ?mean to view the help file for the mean() function.,
+mult_question,Which function in R computes the mean of a bunch of numbers?,multiple,median(); mean(); average(),"val_matches('mean()')",,This one should be obvious!,
+video,"Would you like to view a brief YouTube video on how to compute the mean, median, and mode by hand?",,,,,,http://www.youtube.com/watch?v=k3aKKasOmIw
+text,Great work! Now you know how to compute the mean of a bunch of numbers in R.,,,,,,

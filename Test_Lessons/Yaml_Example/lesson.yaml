@@ -1,0 +1,50 @@
+- Class: meta
+  Course: Test Lessons
+  Lesson: Yaml Example
+  Author: Swirl Coders
+  Type: Standard
+  Organization: Swirl Coders
+  Version: 2.0.1
+
+- Class: text
+  Output: "This demonstrates a lesson written in yaml. See lesson.yaml for sample syntax."
+
+- Class: mult_question  
+  Output: This demonstrates a multiple choice question. Which Scooby-Doo character wears an ascot?
+  AnswerChoices: Fred Jones;Velma Dinkley;Daphne Blake;Shaggy Rogers
+  CorrectAnswer: Fred Jones
+  AnswerTests: omnitest(correctVal= 'Fred Jones')
+  Hint: This person doesn't say "Jinkies."
+
+- Class: cmd_question
+  Output: "This demonstrates a question requiring response at the R console.
+Please sum the numbers from 1 to 3."
+  CorrectAnswer: 3*(3+1)/2
+  AnswerTests: omnitest(correctExpr='3*(3+1)/2', correctVal=6)
+  Hint: The Euler Summation Formula, n(n+1)/2, sums the numbers from 1 to n.
+
+- Class: video
+  Output: This demonstrates a Video question. Would you like to watch a short Nyan Cat video?
+  VideoLink: 'http://www.youtube.com/watch?v=QH2-TGUlwu4'
+
+- Class: figure
+  Output: This illustrates presentation of a figure.
+  Figure: plotCars.R
+  FigureType: new
+
+- Class: exact_question
+  Output: "This illustrates a question requiring an exact, numerical answer in the console.
+How many people are in Scooby's gang?"
+  CorrectAnswer: 4
+  AnswerTests: omnitest(correctVal=4)
+  Hint: See the multiple choice question. Note that Scooby is a dog.
+
+- Class: text_question
+  Output: "This illustrates a question requiring a single phrase text answer. 
+What is the name of the van which carries Scooby's gang?"
+  CorrectAnswer: Mystery Machine
+  AnswerTests: omnitest(correctVal='Mystery Machine')
+  Hint: The gang generally solves a M------? It's the M------ Machine.
+
+- Class: text
+  Output: This completes the yaml demonstration.

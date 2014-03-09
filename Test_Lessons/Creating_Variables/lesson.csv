@@ -1,0 +1,10 @@
+Class,Output,AnswerType,AnswerChoices,AnswerTests,CorrectAnswer,Hint,VideoLink
+text,"Hi, welcome to swirl! Today, I'm going to teach you how to create a new variable in R. Then I'll show you how to store some numbers in a vector and find the mean of those numbers.",,,,,,
+text,"To create a new variable in R, use the assignment operator, which looks like an arrow: <-.  For example, if you wanted to assign the value 10 to a new variable called x, you would type x <- 10.",,,,,,
+cmd_question,Create a new variable that stores the value 20. You can call the variable anything you want as long as the name begins with a letter.,command,,"expr_is_a('<-'); expr_creates_var(); func_of_newvar_equals(20)",num <- 20,"Try num <- 20. Spaces don't matter, although it's good practice to include a space before and after the arrow.",
+text,"The syntax for creating a vector of numbers, say 3, 4, and 5, is c(3,4,5). The c() function just 'concatenates', or joins, a group of numbers.",,,,,,
+cmd_question,Try creating a vector of numbers using the c() function and store it in a variable of your choice.,command,,"expr_is_a('<-'); expr_creates_var(); expr_uses_func('c')","z <- c(6, 9, 10)","If you wanted to create a variable z that stores the numbers 6, 9, and 10, you would type z <- c(6,9,10). Type ?c to view the help file for the c() function.",
+cmd_question,Now compute the mean of these numbers by calling the mean() function on your new vector. Don't worry about storing the result  in a variable.,command,,"expr_uses_func('mean'); func_of_newvar_equals( 'mean(newVar)')",mean(z),"If you wanted to call the mean function on a variable y, you would type functionName(y). Type ?mean to view the help file for the mean() function.",
+mult_question,Which function in R computes the mean of a bunch of numbers?,multiple,median(); mean(); average(),"val_matches('mean()')",,This one should be obvious!,
+video,"Would you like to view a brief YouTube video on how to compute the mean, median, and mode by hand?",,,,,,http://www.youtube.com/watch?v=k3aKKasOmIw
+text,Great work! Now you know how to create new variables and compute the mean of a bunch of numbers in R.,,,,,,
