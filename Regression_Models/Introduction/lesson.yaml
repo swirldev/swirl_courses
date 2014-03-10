@@ -22,7 +22,7 @@
   FigureType: new
 
 - Class: figure
-  Output: Here we add a red (45 degree) line of slope 1 and intercept 0 to the plot. If children tended to be the same height as their parents, we would expect the data to vary evenly about this line. We see this isn't the case. On the left side we see a concentration of heights above the line, and on the right we see the concentration below the line.
+  Output: Here we add a red (45 degree) line of slope 1 and intercept 0 to the plot. If children tended to be the same height as their parents, we would expect the data to vary evenly about this line. We see this isn't the case. On the left half of the plot we see a concentration of heights above the line, and on the right half we see the concentration below the line.
   Figure: plot2_identity_line.R
   FigureType: add
 
@@ -34,19 +34,19 @@
 - Class: cmd_question
   Output: Now's your chance to plot in R. Type "plot(child ~ parent, galton)" at the R prompt. 
   CorrectAnswer: plot(child ~ parent, galton)
-  AnswerTests: omnitest(correctExpr='plot(child ~ parent, galton)')
+  AnswerTests: omnitest(correctExpr='plot(child ~ parent, galton)');save_expr()
   Hint: Type "plot(child ~ parent, galton)" at the R prompt.
 
 
 - Class: text
-  Output: You'll notice that this plot looks a lot different than the original we displayed. Why? Many people are the same height to within measurement error, so points fall on top of one another. You can see that some circles appear darker than others. However, by using R's function "jitter" on the children's heights, we can to spread out the data to simulate the measurement errors and make high frequency heights more visible. 
+  Output: You'll notice that this plot looks a lot different than the original we displayed. Why? Many people are the same height to within measurement error, so points fall on top of one another. You can see that some circles appear darker than others. However, by using R's function "jitter" on the children's heights, we can spread out the data to simulate the measurement errors and make high frequency heights more visible. 
 
 
 - Class: cmd_question
   Output: Now it's your turn to try. Just type "plot(jitter(child,4) ~ parent,galton)" and see the magic.
   CorrectAnswer: plot(jitter(child,4) ~ parent,galton)
-  AnswerTests: omnitest(correctExpr='plot(jitter(child,4) ~ parent,galton)')
-  Hint: You can do it! Type "plot(jitter(child,4) ~ parent,galton)""
+  AnswerTests: omnitest(correctExpr='plot(jitter(child,4) ~ parent,galton)');save_expr()
+  Hint: You can do it! Type "plot(jitter(child,4) ~ parent,galton)"
 
 - Class: text
   Output: Now for the regression line. This is quite easy in R. The function lm (linear model) needs a "formula" and dataset. You can type "?formula" for more information, but, in simple terms, we just need to specify the dependent variable (children's heights) ~ the independent variable (parents' heights). 
@@ -60,13 +60,13 @@
 - Class: cmd_question
   Output: Now add the regression line to the plot with "abline". Make the line wide and red for visibility. Type "abline(regrline, lwd=3, col='red')"
   CorrectAnswer: abline(regrline, lwd=3, col='red')
-  AnswerTests: omnitest(correctExpr='abline(regrline, lwd=3, col=\'red\')')
+  AnswerTests: omnitest(correctExpr='abline(regrline, lwd=3, col=\'red\')');save_expr()
   Hint: Yes, you can! Type "abline(regrline, lwd=3, col='red')"
 
 - Class: cmd_question
   Output: The regression line will have a slope and intercept which are estimated from data. Estimates are not exact. Their accuracy is gauged by theoretical techniques and expressed in terms of "standard error." You can use  "summary(regrline)" to examine the Galton regression line. Do this now.
   CorrectAnswer: summary(regrline)
-  AnswerTests: omnitest(correctExpr='summary(regrline)')
+  AnswerTests: omnitest(correctExpr='summary(regrline)');save_expr()
   Hint: This one's easy. Type "summary(regrline)"
 
 - Class: mult_question  
@@ -87,9 +87,20 @@
   Output: A coefficient will be within 2 standard errors of its estimate about 95% of the time. This means the slope of our regression is significantly different than either 0 or 1 since (.64629) +/- (2*.04114) is  near neither 0 nor 1.
 
 - Class: figure
-  Output: We're now adding two blue lines to indicate the means of the children's heights (horizontal) and the parents' (vertical). Note that these lines and the regression line all intersect in a point. Pretty cool, huh? The regression line shows that parents who are 1 inch above the mean in height tend to have children who are only .65 inches above the mean. Similarly, parents who are 1 inch below average in height have children who are only .65 inches below average height.
+  Output: We're now adding two blue lines to indicate the means of the children's heights (horizontal) and the parents' (vertical). Note that these lines and the regression line all intersect in a point. Pretty cool, huh? We'll talk more about this in a later lesson. (Something you can look forward to.)
   Figure: plot4_mean_heights.R
-  FigureType: new or old
+  FigureType: add
+
+- Class: figure
+  Output: The slope of a line shows how much of a change in the vertical direction is produced by a change in the horizontal direction. So, parents "1 inch" above the mean in height tend to have children who are only .65 inches above the mean. The green triangle illustrates this point. From the mean, moving a "1 inch distance" horizontally to the right (increasing the parents' height)  produces a ".65 inch" increase in the vertical direction (children's height). 
+  Figure: plot5_triangle1.R
+  FigureType: add
+
+- Class: figure
+  Output: Similarly, parents who are 1 inch below average in height have children who are only .65 inches below average height. The purple triangle illustrates this. From the mean, moving a "1 inch distance" horizontally to the left (decreasing the parents' height)  produces a ".65 inch" decrease in the vertical direction (children's height).
+  Figure: plot5_triangle2.R
+  FigureType: add
+
 
 - Class: text
   Output: This concludes our lesson on regression toward the mean. We hope you found it above average!

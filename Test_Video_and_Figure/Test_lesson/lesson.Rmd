@@ -1,0 +1,50 @@
+Lesson Name:  Test lesson
+Course Name:  Test Video and Figure
+Type:         Standard
+Author:       Your name goes here
+Organization: The name of your organization goes here (optional)
+Version:      2.1.1
+================================================================
+
+--- &text
+
+This lesson demonstrates the use of figures and videos.
+
+--- &figure
+
+Here is a boxplot.
+
+*** .figure
+mod1_boxplot.R
+
+*** .fig_type
+new
+
+--- &video
+
+Would you like to watch a music video from 80's?
+
+*** .video_url
+http://youtu.be/nMWGXt979yg
+
+--- &cmd_question
+
+Add the numbers 3 and 7 and assign the result to a new variable called `z`.
+
+```{r}
+z <- 3 + 7
+```
+
+*** .hint
+Just type `z <- 3 + 7` and press Enter.
+
+--- &mult_question
+
+What function easily adds multiple numbers in R?
+
+_1. `sum()`_
+2. `mean()`
+3. `abs()`
+
+*** .hint
+The name of the function rhymes with "yum"!

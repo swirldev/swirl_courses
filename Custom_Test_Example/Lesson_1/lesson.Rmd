@@ -1,0 +1,26 @@
+Lesson Name:  Lesson 1
+Course Name:  Custom Test Example
+Type:         Standard
+Author:       Nick
+Organization: swirl
+Version:      2.1.1
+================================================================
+
+--- &text
+
+This lesson demonstrates the use of custom tests. Custom tests must be in a file called customTests.R in the lesson directory.
+
+--- &cmd_question
+
+Create a new variable called `x` that contains a vector of two even numbers.
+
+```{r}
+x <- c(4, 10)
+```
+
+*** .hint
+How about `x <- c(4, 10)`?
+
+*** .ans_tests
+check_even(); val_has_length(2); expr_creates_var(); var_is_a("numeric", "x")
+
