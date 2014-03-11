@@ -192,7 +192,7 @@ It seems that we're missing something.... Ah, yes! Your name!
 To add (or "concatenate") your name to the end of `my_char`, use the `c()` function like this: `c(my_char, "your_name_here")`. Place your name in double quotes where I've put "your_name_here". Try it now, storing the result in a new variable called `my_name`.
 
 ```{r}
-my_name <- c(my_char, "swirl")
+my_name <- c(my_char, "Swirl")
 ```
 
 *** .ans_tests
