@@ -1,0 +1,5 @@
+set.seed(111)
+x <- rnorm(1000)
+dat <- abs(x)
+hist(dat, main="Right Skew", xlab="")
+abline(v=c(mean(dat), median(dat)), col=(c("blue", "green")), lwd=3)
