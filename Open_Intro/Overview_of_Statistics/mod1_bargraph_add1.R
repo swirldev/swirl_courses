@@ -1,0 +1,1 @@
+abline(h=mean(cars$price[cars$type=="large"]), col="red", lwd=3)

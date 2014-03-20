@@ -1,7 +1,14 @@
 swirl courses
 =============
 
-This is a collection of courses that do not come pre-installed with the swirl R package. Some courses are used to experiment with or demonstrate new features.
+This is a collection of interactive courses for the swirl R package. Some courses are used to experiment with or demonstrate new features and may require special development versions of swirl.
+
+The following are some of our more popular courses: 
+
+- R Programming
+- Data Analysis
+- Mathematical Biostatistics Boot Camp
+- Open Intro
 
 For more information regarding swirl, visit [swirlstats.com](http://swirlstats.com) or the [swirl GitHub repository](https://github.com/swirldev/swirl).
 
@@ -13,7 +20,7 @@ Make sure you have a recent version of swirl:
 install.packages("swirl")
 ```
 
-Some courses may require the development version of swirl:
+If you wish to install the development version of swirl:
 
 ```
 library(devtools)
@@ -28,4 +35,4 @@ install_from_swirl("Course_Directory")
 swirl()
 ```
 
-For example, `install_from_swirl("Including_Data")` will install the `Including_Data` course.
+For example, `install_from_swirl("R_Programming")` will install the `R Programming` course.

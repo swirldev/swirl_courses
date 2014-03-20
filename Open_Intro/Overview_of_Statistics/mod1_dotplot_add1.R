@@ -1,0 +1,1 @@
+abline(v=c(mean(cars$price), median(cars$price)), col=(c("blue", "green")), lwd=3)
