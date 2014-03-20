@@ -1,0 +1,58 @@
+# Regression Models
+
+* Unit 01 04, *Regression to the Mean*, covers Galton again.
+
+* Unit 01 05, *Statistical Linear Regression Models*, uses UsingR::diamond (price vs weight in carats) and covers 3 topics:
+ 1. OLS is max likelihood in the case of Gaussian (normal) residuals. This is theory.
+ 2. Interpreting coefficients: delta price per delta carat 
+ 3. Prediction: estimating price given weight
+It also covers scaling. 
+
+* Unit 01 06, *Residual Variation*, covers much of the same properties as our 01 03 OLS swirl unit. 
+
+* Unit 01 07, *Inference*, is fairly important. It deals with standard error of coefficient estimates. It asserts that errors in estimates of coefficients tend to be normally distributed or, if scaled using a standard deviation estimated from samples, to be distributed according to a Student's T.
+
+ * We can illustrate that these assertions are reasonable by repeatedly taking, say, 200 random samples from galton, finding the regression line from the 200 samples, and collecting the resulting slopes. We'll get, say, 2000 estimates and examine their distribution. 
+
+ * A quantile-quantile plot against a standard normal will be linear if the slope estimates are normal, and a Shapiro-Wilks test will fail to reject normality. The standard deviation of the samples will be close to the standard errors given by summary.
+
+```{r}
+galton <- UsingR::galton
+set.seed(1234)
+f.temp <- function(x)lm(child ~ parent, galton[sample.int(928, 200), ])$coef[2]
+temp <- unlist(lapply(1:2000, f.temp))
+qqnorm(temp)
+abline(mean(temp),sd(temp), col='red', lwd=3)
+shapiro.test(temp)
+```
+
+ * Student's T. The summary of a linear model includes a t value, a probability P(>|t|), and asterisks indicating if the estimated coefficient is significantly different from zero. Since the estimates, above, are normally distributed, their scaled values should be distributed according to a Student's T. A quantile-quantile plot against samples from a Student's T should again be a line with intercept 0 and slope 1.
+ 
+```{r eval=FALSE}
+qqplot(scale(temp), rt(2000, 200-2), xlab="Scaled slopes", ylab="Student's T")
+abline(0, 1, col='red', lwd=3)
+```
+ * An F-statistic is also given in a summary. The F distribution describes a ratio of sample variances of normally distributed data, in this case it's the ratio of residual to total sample variance or something equivalent. We could illustrate its applicability by collecting the appropriate ratios along with slopes. Alternatively, we could just show normality and give short verbal explanations of T and F, along with some multiple choice questions.
+
+* Unit 02 01, Mutivariable regression
+
+ * Uses datasets::swiss, involving fertility and 5 socioeconomic variables.
+ * Treats multiple variables by iterative application of single variable regression--essentially Gram-Schmidt orthogonalization. Given n predictors, regress response and other predictors on one of them. This gives the coefficient of the chosen predictor. Apply the same to the response residual and the n-1 predictor residuals, etc.
+ * This might be a good place to point out that intercepts are coefficients of a predictor which is constant and equal to 1.
+ 
+* Unit 02 02, Multivariable regression, examples
+
+  * Several data sets used. The general subject seems to be interpretation of coefficients, misleading effects of missing variables, and use of dummy variables for categories. We'll have to watch the videos to get a sense of what Brian wants to convey.
+  
+* Unit 02 03, Adjustment
+
+  * A subject related to the previous; parameterization affects interpretation. Again, we'll have to watch the videos.
+
+* Unit 02 04, Residuals, diagnostics, variation
+
+  * Another subject related to the previous two, namely sanity checks. You can't take the lm summaries as gospel. This time, outliers are the culprit. Swirl could try for simple, real-life examples illustrating this and the previous two units.
+
+* Unit 02 05, Multiple variables
+
+  * Some general modeling rules. The thrust of this and the previous three units seems to be that the choice of model, which variables to include etc., affects the results. The point of modeling, according to this unit, is to get interpretable and valid coefficients. This means a model in which a 1% change in a certain predictor will give a c% in the response more or less uniformly.
+
