@@ -3,6 +3,9 @@
 # So swirl does not repeat execution of plot commands
 AUTO_DETECT_NEWVAR <- FALSE
 
+# Package dependencies:
+dependson <- c("UsingR")
+
 # The following adds a feature which restores plots and
 # other side effects of expressions entered by users.
 # It does not preserve plots in their original order,
