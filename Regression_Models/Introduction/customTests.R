@@ -4,7 +4,7 @@
 AUTO_DETECT_NEWVAR <- FALSE
 
 # Package dependencies:
-dependson <- c("UsingR")
+dependson <- c("UsingR", "MASS")
 
 # The following adds a feature which restores plots and
 # other side effects of expressions entered by users.
