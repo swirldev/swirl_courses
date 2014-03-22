@@ -1,1 +1,0 @@
-dependson <- c("plotrix", "openintro")
