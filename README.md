@@ -1,7 +1,7 @@
-swirl courses
-=============
+swirl course repository
+=======================
 
-This is a collection of interactive courses for the swirl R package. Some courses are used to experiment with or demonstrate new features and may require special development versions of swirl.
+This is a collection of interactive courses for use with the swirl R package. Some courses are for test purposes only and may only run on a particular development version of swirl.
 
 The following are some of our more popular courses: 
 
