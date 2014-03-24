@@ -91,7 +91,7 @@
   Output: Now, look at the documentation for the matrix function and see if you can figure out how to create a matrix containing the same numbers (1-20) by calling the `matrix()` function. Store the result in a variable called `myMatrix2`.
   CorrectAnswer: myMatrix2 <- matrix(1:20, nrow=4, ncol=5)
   AnswerTests: omnitest(correctExpr='myMatrix2 <- matrix(1:20, nrow=4, ncol=5)')
-  Hint: Call the `matrix()` function with three arguments -- 1:20, the number of rows, and the number of columns. Be sure to specify arguments by their proper names and store the result in `myMatrix2`.
+  Hint: Call the `matrix()` function with three arguments -- `1:20`, `nrow=4`, and `ncol=5`. Be sure to store the result in `myMatrix2`.
 
 - Class: cmd_question
   Output: Finally, let's confirm that `myMatrix` and `myMatrix2` are actually identical. The `identical()` function will tell us if its first two arguments are the same. Try it out.
