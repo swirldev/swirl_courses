@@ -3,7 +3,7 @@ Course Name:  R Programming
 Type:    	    Coursera
 Author:       Nick Carchedi
 Organization: JHU Biostatistics
-Version:      2.1.0
+Version:      2.2.0
 ================================================================
 
 --- &text
