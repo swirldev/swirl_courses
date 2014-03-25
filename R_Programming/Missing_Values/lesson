@@ -16,7 +16,7 @@
   Output: Any operation involving `NA` generally yields `NA` as the result. To illustrate, let's create a vector `c(44, NA, 5, NA)` and assign it to a variable `x`.
   CorrectAnswer: x <- c(44, NA, 5, NA)
   AnswerTests: omnitest(correctExpr='x <- c(44, NA, 5, NA)')
-  Hint: Assign the vector `c(44, NA, 5, NA) to a variable `x`. The `NA` must uppercase.
+  Hint: Assign the vector `c(44, NA, 5, NA)` to a variable `x`. The `NA` must uppercase.
 
 - Class: cmd_question
   Output: Now, let's multiply `x` by 3.
