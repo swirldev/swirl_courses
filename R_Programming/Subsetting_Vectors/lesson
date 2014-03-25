@@ -1,9 +1,9 @@
 - Class: meta
   Course: R Programming
   Lesson: Subsetting Vectors
-  Author: Your name goes here
-  Type: Standard
-  Organization: Your organization goes here (optional)
+  Author: Nick Carchedi
+  Type: Coursera
+  Organization: JHU Biostatistics
   Version: 2.2.0
 
 - Class: text
