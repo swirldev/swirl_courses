@@ -1,9 +1,9 @@
 - Class: meta
   Course: R Programming
   Lesson: Matrices and Data Frames
-  Author: Your name goes here
+  Author: Nick Carchedi
   Type: Standard
-  Organization: Your organization goes here (optional)
+  Organization: JHU Biostatistics
   Version: 2.2.0
 
 - Class: text
