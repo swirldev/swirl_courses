@@ -54,7 +54,7 @@
 
 - Class: cmd_question
   Output: Print y to the console.
-  CorrectAnswer: y
+  CorrectAnswer: 'y'
   AnswerTests: omnitest(correctExpr='y')
   Hint: Type y to view its contents.
 
