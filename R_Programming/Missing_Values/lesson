@@ -73,7 +73,7 @@
   Output: Don't worry if that's a little confusing. The key takeaway is to be cautious when using logical expressions anytime NAs might creep in, since a single NA value can derail the entire thing.
 
 - Class: text
-  Output: So, back to the task at hand. Now that we have a vector myNA that has a TRUE for every NA and FALSE for every numeric value, we can compute the total number of NAs in our data.
+  Output: So, back to the task at hand. Now that we have a vector, myNA, that has a TRUE for every NA and FALSE for every numeric value, we can compute the total number of NAs in our data.
 
 - Class: text
   Output: The trick is to recognize that underneath the surface, R represents TRUE as the number 1 and FALSE as the number 0. Therefore, if we take the sum of a bunch of TRUEs and FALSEs, we get the total number of TRUEs.

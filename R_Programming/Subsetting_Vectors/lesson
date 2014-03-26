@@ -120,7 +120,7 @@
   Output: Again, nothing useful, but R doesn't prevent us from asking for it. This should be a cautionary tale. You should always make sure that what you are asking for is within the bounds of the vector you're working with.
 
 - Class: text
-  Output: What if we're interested in all elements of x EXCEPT the 2nd and 10th? It would be pretty tedious to construct a vector containing all numbers 1-40 EXCEPT 2 and 10.
+  Output: What if we're interested in all elements of x EXCEPT the 2nd and 10th? It would be pretty tedious to construct a vector containing all numbers 1 through 40 EXCEPT 2 and 10.
 
 - Class: cmd_question
   Output: Luckily, R accepts negative integer indexes. Whereas x[c(2, 10)] gives us ONLY the 2nd and 10th elements of x, x[c(-2, -10)] gives us all elements of x EXCEPT for the 2nd and 10 elements.  Try x[c(-2, -10)] now to see this.
@@ -162,7 +162,7 @@
   Hint: Create an ordinary (unnamed) vector called vect2 that contains c(11, 2, NA).
 
 - Class: cmd_question
-  Output: Then, we can add the names attribute to vect2 after the fact with names(vect2) <- c("foo", "bar", "norf"). Go ahead.
+  Output: Then, we can add the `names` attribute to vect2 after the fact with names(vect2) <- c("foo", "bar", "norf"). Go ahead.
   CorrectAnswer: names(vect2) <- c("foo", "bar", "norf")
   AnswerTests: omnitest(correctExpr='names(vect2) <- c("foo", "bar", "norf")')
   Hint: Add names to vect2 with names(vect2) <- c("foo", "bar", "norf").
