@@ -138,7 +138,7 @@ seq(along = my_seq)
 ```
 
 *** .hint
-Type seq(along = my_seq). Notice we're using the same seq() function, but with a different argument called along. This tells R that you want a sequence "along" the sequence my_seq. Remember you can type ?seq if you have questions about the seq() function.
+Type seq(along = my_seq). Notice we're using the same seq() function, but with a different argument called along. This tells R that you want a sequence 'along' the sequence my_seq. Remember you can type ?seq if you have questions about the seq() function.
 
 --- &cmd_question
 
@@ -161,7 +161,7 @@ If R has a built-in function for a particular task, it's likely that function is
 
 --- &text
 
-One more function related to creating sequences of numbers is rep(), which stands for "replicate". Let's look at a few uses.
+One more function related to creating sequences of numbers is rep(), which stands for 'replicate'. Let's look at a few uses.
 
 --- &cmd_question
 
