@@ -82,7 +82,7 @@ num_vect >= 6
 ```
 
 *** .hint
-Don't create a new variable on this one. We just want to see the result of num_vect >= 6. Make sure there is no space between the > and = symbols. Think of them as one symbol representing 'greater than or equal to'.
+Don't create a new variable on this one. We just want to see the result of num_vect >= 6. Make sure there is no space between the `>` and `=` symbols. Think of them as one symbol representing 'greater than or equal to'.
 
 --- &text
 
@@ -210,7 +210,7 @@ my_name
 ```
 
 *** .hint
-Type my_name and press Enter to view the contents of this variable.
+Type my_name and press Enter to view its contents.
 
 --- &cmd_question
 

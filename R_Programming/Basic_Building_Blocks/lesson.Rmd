@@ -262,4 +262,4 @@ c(1, 2, 3, 4) + c(0, 10, 100)
 ```
 
 *** .hint
-Type c(1, 2, 3, 4) + c(0, 10, 100) to see how R handles adding two vectors, when the shorter vector's length does not divide evenly into the second vector's length. Don't worry about assigning the result to a variable.
+Type c(1, 2, 3, 4) + c(0, 10, 100) to see how R handles adding two vectors, when the shorter vector's length does not divide evenly into the longer vector's length. Don't worry about assigning the result to a variable.

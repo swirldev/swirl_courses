@@ -138,7 +138,7 @@ seq(along = my_seq)
 ```
 
 *** .hint
-Type seq(along = my_seq). Notice we're using the same seq() function, but with a different argument called along. This tells R that you want a sequence 'along' the sequence my_seq. Remember you can type ?seq if you have questions about the seq() function.
+Type seq(along = my_seq). Notice we're using the same seq() function, but with a different argument called `along`. This tells R that you want a sequence 'along' the sequence my_seq. Remember you can type ?seq if you have questions about the seq() function.
 
 --- &cmd_question
 
