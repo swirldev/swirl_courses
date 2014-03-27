@@ -1,0 +1,49 @@
+- Class: meta
+  Course: Regression_Models
+  Lesson: Binary_Outcomes
+  Author: Swirl Coders
+  Type: Standard
+  Organization: Johns Hopkins Bloomberg School of Public Health
+  Version: 2.2.0
+
+- Class: text
+  Output: Frequently we care about outcomes that have two values such as alive or dead, win or lose, success or failure. Such outcomes are called binary, Bernoulli, or 0/1. A collection of exchangeable binary outcomes for the same covariate data are called binomial outcomes. (Outcomes are exchangeable if their order doesn't matter.)
+
+- Class: text
+  Output: In this unit we will use glm() to model a process with a binary outcome and a continuous predictor. We will also learn how to interpret glm coefficients, how to find confidence intervals, and how to perform an analysis of variance on the model. But first, let's discuss odds.
+
+- Class: text
+  Output: The Baltimore Ravens are a team in the American Football League. In post season (championship) play they win about 2/3 of their games. In other words, they win about twice as often as they lose. If I wanted to bet on them, I would have to offer 2-to-1 odds--if they lost I would pay you $2, but if they won you would pay me only $1. That way, in the long run over many bets, we'd both expect to win as much money as we'd lost.
+
+- Class: mult_question  
+  Output: During the regular season the Ravens win about 55% of their games. What odds would I have to offer in the regular season?
+  AnswerChoices: 55 to 45; 11 to 9; 1.22222 to 1; Any of these
+  CorrectAnswer: Any of these
+  AnswerTests: omnitest()
+  Hint: Any answer will do.
+
+- Class: text
+  Output: All of the answers are correct because they all represent the same ratio. If p is the probability of an event, the associated odds are p/(1-p). 
+
+- Class: figure
+  Output: Now suppose we want to see how the Ravens' odds depends on their offense. In other words, we want to model how p, or some function of it, depends on how many points the Ravens' are able to score. Of course, we can't observe p, we can only observe wins, losses, and the associated scores. Here is a Box plot of one season's worth of such observations.
+  Figure: nevermore.R
+  FigureType: new
+
+- Class: mult_question  
+  Output: We can see that the Ravens tend to win more when they score more points. In fact, about 3/4 of their losses are at or below a certain score and about 3/4 of their wins are at or above it. What score am I talking about? (Remember that the purple boxes represent 50% of the samples, and the "T's" 25%.)
+  AnswerChoices: 23;18;30;40
+  CorrectAnswer: 23
+  AnswerTests: omnitest(correctVal='23')
+  Hint: The purple "loss" box is to the left of this score and the purple "win" box to its right. 
+
+- Class: figure
+  Output: There were 9 games in which the Ravens scored 23 points or less. They won 4 of these games, so we might guess their probability of winning, given that they score 23 points or less, is about 1/2.
+  Figure: purple_line.R
+  FigureType: add
+
+- Class: cmd_question
+  Output: There were 11 games in which the Ravens scored 24 points or more. They won all but one of these games, so we might guess their probability of winning, given that they score 24 points or more is about 91%. Verify this by looking at the data yourself. It is in a data frame called ravenData. Look at it by typing either ravenData or View(ravenData).
+  CorrectAnswer: ravenData
+  AnswerTests: omnitest(correctExpr='EXPR', correctVal=VAL)
+  Hint: Type ravenData to print the data in the console. Type View(ravenData) to see it a separate window.
