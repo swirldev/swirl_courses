@@ -43,7 +43,15 @@
   FigureType: add
 
 - Class: cmd_question
-  Output: There were 11 games in which the Ravens scored 24 points or more. They won all but one of these games, so we might guess their probability of winning, given that they score 24 points or more is about 91%. Verify this by looking at the data yourself. It is in a data frame called ravenData. Look at it by typing either ravenData or View(ravenData).
+  Output: There were 11 games in which the Ravens scored 24 points or more. They won all but one of these. Verify this by checking the data yourself. It is in a data frame called ravenData. Look at it by typing either ravenData or View(ravenData).
   CorrectAnswer: ravenData
-  AnswerTests: omnitest(correctExpr='EXPR', correctVal=VAL)
+  AnswerTests: ANY_of_exprs('ravenData', 'View(ravenData)')
   Hint: Type ravenData to print the data in the console. Type View(ravenData) to see it a separate window.
+
+- Class: figure
+  Output: We see a fairly rapid transition in the Ravens' win/loss record between 23 and 28 points. At 23 points and below they win about half their games, between 24 and 28 points they win 3 of 4, and above 28 points they win them all. From this, we get a very crude idea of the correspondence between points scored and the probability of a win. We get an S shaped curve, a graffiti S, anyway. 
+  Figure: crude_s.R
+  FigureType: new
+
+- Class: text
+  Output: Of course, we would expect a real curve to be smoother. We would not, for instance, expect the Ravens to win half the games in which they scored zero points, nor to win all the games in which they scored more than 28. A simple model which has the right properties supposes that the log odds of a win depend linearly on the score. That is ln(p/(1-p)) = b0 + b1*score.
