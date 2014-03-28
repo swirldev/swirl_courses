@@ -12,14 +12,30 @@ creates_val_identical_to <- function(correctExpr){
   return(results$passed)
 }
 
-# Returns TRUE if the user has created a specified glm model.
+# Returns TRUE if the user has created a specified glm model
+# with a specified name.
 creates_glm_model <- function(correctExpr){
   e <- get("e", parent.frame())
-  mdl <- e$val
-  cmdl <- eval(parse(text=correctExpr), cleanEnv(e$snapshot))
-  all.equal(mdl$coefficients, cmdl$coefficients) &
-    mdl$family$family == cmdl$family$family &
-    identical(mdl$data, cmdl$data)
+  # Recreate what the user has done
+  eUsr <- cleanEnv(e$snapshot)
+  mdlUsr <- eval(e$expr, eUsr)
+  # Append the result, as a list to e$delta for progress restoration
+  e$delta <- c(e$delta, as.list(eUsr))
+  # Recreate what the user should have done
+  eSw <- cleanEnv(e$snapshot)
+  mdlSw <- eval(parse(text=correctExpr), eSw)
+  # Check whether the model's name is correct
+  nameGood <- sum(ls(eUsr) %in% ls(eSw)) & sum(ls(eSw) %in% ls(eUsr))
+  # If not, highlight the misspelling
+  if(!nameGood){
+    swirl_out(paste0("You seem to have misspelled the model's name. I was expecting ", names(eSw), 
+                     " but you apparenlty typed ", names(eUsr), "."))
+    return(FALSE)
+  }
+  # Check for effective equality of the models
+  isTRUE(all.equal(mdlUsr$coefficients, mdlSw$coefficients)) &
+    identical(mdlUsr$family$family, mdlSw$family$family) &
+    identical(mdlUsr$data, mdlSw$data)
 }
 
 # Returns TRUE if e$expr matches any of the expressions given
