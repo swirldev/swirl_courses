@@ -50,7 +50,7 @@
 
 - Class: figure
   Output: We see a fairly rapid transition in the Ravens' win/loss record between 23 and 28 points. At 23 points and below they win about half their games, between 24 and 28 points they win 3 of 4, and above 28 points they win them all. From this, we get a very crude idea of the correspondence between points scored and the probability of a win. We get an S shaped curve, a graffiti S anyway. 
-  Figure: crude_s.R
+  Figure: graffiti_s.R
   FigureType: new
 
 - Class: text
