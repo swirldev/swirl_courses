@@ -12,6 +12,16 @@ creates_val_identical_to <- function(correctExpr){
   return(results$passed)
 }
 
+# Returns TRUE if the user has created a specified glm model.
+creates_glm_model <- function(correctExpr){
+  e <- get("e", parent.frame())
+  mdl <- e$val
+  cmdl <- eval(parse(text=correctExpr), cleanEnv(e$snapshot))
+  all.equal(mdl$coefficients, cmdl$coefficients) &
+    mdl$family$family == cmdl$family$family &
+    identical(mdl$data, cmdl$data)
+}
+
 # Returns TRUE if e$expr matches any of the expressions given
 # (as characters) in the argument.
 ANY_of_exprs <- function(...){

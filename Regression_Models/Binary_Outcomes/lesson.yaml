@@ -49,9 +49,15 @@
   Hint: Type ravenData to print the data in the console. Type View(ravenData) to see it a separate window.
 
 - Class: figure
-  Output: We see a fairly rapid transition in the Ravens' win/loss record between 23 and 28 points. At 23 points and below they win about half their games, between 24 and 28 points they win 3 of 4, and above 28 points they win them all. From this, we get a very crude idea of the correspondence between points scored and the probability of a win. We get an S shaped curve, a graffiti S, anyway. 
+  Output: We see a fairly rapid transition in the Ravens' win/loss record between 23 and 28 points. At 23 points and below they win about half their games, between 24 and 28 points they win 3 of 4, and above 28 points they win them all. From this, we get a very crude idea of the correspondence between points scored and the probability of a win. We get an S shaped curve, a graffiti S anyway. 
   Figure: crude_s.R
   FigureType: new
 
 - Class: text
-  Output: Of course, we would expect a real curve to be smoother. We would not, for instance, expect the Ravens to win half the games in which they scored zero points, nor to win all the games in which they scored more than 28. A simple model which has the right properties supposes that the log odds of a win depend linearly on the score. That is ln(p/(1-p)) = b0 + b1*score.
+  Output: Of course, we would expect a real curve to be smoother. We would not, for instance, expect the Ravens to win half the games in which they scored zero points, nor to win all the games in which they scored more than 28. A generalized linear model which has these properties supposes that the log odds of a win depend linearly on the score. That is, log(p/(1-p)) = b0 + b1*score. The link function, log(p/(1-p)), is called the logit, and the process of finding b0 and b1, is called logistic regression.
+
+- Class: cmd_question
+  Output: We can use R's glm() function to find the b0 and b1 which maximize the likelihood of our observations. Referring back to the data frame, we want to predict the binary outcomes, ravenWinNum, from the points scored, ravenScore. This corresponds to the formula, ravenWinNum ~ ravenScore, which is the first argument to glm. The second argument, family, describes the outcomes, which in our case are binomial. The third argument is the data, ravenData. Call glm with these parameters and store the result in a variable named mdl.
+  CorrectAnswer: 'mdl <- glm(ravenWinNum ~ ravenScore, binomial, ravenData)'
+  AnswerTests: expr_creates_var('mdl');creates_glm_model('glm(ravenWinNum ~ ravenScore, binomial, ravenData)')
+  Hint: Use an expression such as mdl <- glm(ravenWinNum ~ ravenScore, binomial, ravenData) or mdl <- glm(ravenWinNum ~ ravenScore, family=binomial, data=ravenData).
