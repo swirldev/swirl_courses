@@ -1,17 +1,6 @@
 # So swirl does not repeat execution of plot commands
 AUTO_DETECT_NEWVAR <- FALSE
 
-# Returns TRUE if e$val is identical to the value that would
-# have been created by the correct expression.
-creates_val_identical_to <- function(correctExpr){
-  e <- get("e", parent.frame())
-  correctVal <- eval(parse(text=correctExpr), cleanEnv(e$snapshot))
-  results <- expectThat(e$val,
-                        is_identical_to(correctVal, label=correctExpr),
-                        label=deparse(e$expr))
-  return(results$passed)
-}
-
 # Returns TRUE if the user has created a specified glm model
 # with a specified name.
 creates_glm_model <- function(correctExpr){

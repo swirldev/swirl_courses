@@ -54,7 +54,10 @@
   FigureType: new
 
 - Class: text
-  Output: Of course, we would expect a real curve to be smoother. We would not, for instance, expect the Ravens to win half the games in which they scored zero points, nor to win all the games in which they scored more than 28. A generalized linear model which has these properties supposes that the log odds of a win depend linearly on the score. That is, log(p/(1-p)) = b0 + b1*score. The link function, log(p/(1-p)), is called the logit, and the process of finding b0 and b1, is called logistic regression.
+  Output: Of course, we would expect a real curve to be smoother. We would not, for instance, expect the Ravens to win half the games in which they scored zero points, nor to win all the games in which they scored more than 28. A generalized linear model which has these properties supposes that the log odds of a win depend linearly on the score. That is, log(p/(1-p)) = b0 + b1*score. The link function, log(p/(1-p)), is called the logit, and the process of finding the best b0 and b1, is called logistic regression.
+
+- Class: text
+  Output: 'The "best" b0 and b1 are those which maximize the likelihood of the actual win/loss record. Based on the score of a game, b0 and b1 give us a log odds, which we can convert to a probability, p, of a win. We would like p to be high for the scores of winning games, and low for the scores of losses.'
 
 - Class: cmd_question
   Output: We can use R's glm() function to find the b0 and b1 which maximize the likelihood of our observations. Referring back to the data frame, we want to predict the binary outcomes, ravenWinNum, from the points scored, ravenScore. This corresponds to the formula, ravenWinNum ~ ravenScore, which is the first argument to glm. The second argument, family, describes the outcomes, which in our case are binomial. The third argument is the data, ravenData. Call glm with these parameters and store the result in a variable named mdl.
@@ -89,7 +92,7 @@
   Output: "The coefficients estimate log odds as a linear function of points scored. They have a natural interpretation in terms of odds because, if b0 + b1*score estimates log odds, then exp(b0 + b1*score)=exp(b0)exp(b1*score) estimates odds. Thus exp(b0) is the odds of winning with a score of 0 (in our case 16/84,) and exp(b1) is the factor by which the odds of winning increase with every point scored. In our case exp(b1) = exp(0.10658) = 1.11. In other words, the odds of winning increase by 11% for each point scored."
 
 - Class: cmd_question
-  Output: "However, the coefficients have relatively large standard errors. R's function confint() will find the 95% confidence intervals for the coefficients b0 and b1. To get the corresponding intervals for exp(b0) and exp(b1) we would just exponentiate the output of confint(mdl). Do this now."
+  Output: "However, the coefficients have relatively large standard errors. A 95% confidence interval is roughly 2 standard errors either side of a coefficient. R's function confint() will find the exact lower and upper bounds to the 95% confidence intervals for the coefficients b0 and b1. To get the corresponding intervals for exp(b0) and exp(b1) we would just exponentiate the output of confint(mdl). Do this now."
   CorrectAnswer: 'exp(confint(mdl))'
   AnswerTests: omnitest('exp(confint(mdl))')
   Hint: Just type exp(confint(mdl)).
@@ -106,7 +109,22 @@
   AnswerChoices: They will decrease slightly;They will increase slightly;They will increase by 30%
   CorrectAnswer: They will decrease slightly
   AnswerTests: omnitest(correctVal= 'They will decrease slightly')
-  Hint: If you multiply a positive number by 0.996229662, what happens?
+  Hint: If you multiply a positive number by 0.996229662, do you increase or decrease the value?
 
 - Class: text
-  Output: "The lower confidence bound on exp(b1) suggests that the odds of winning decrease slightly with every additional point scored, which is obviously unrealistic. It is pretty clear you would not want to bet very heavily on this model. This completes the Binary Outcomes example. Thank you."
+  Output: "The lower confidence bound on exp(b1) suggests that the odds of winning would decrease slightly with every additional point scored. This is obviously unrealistic. Of course, confidence intervals are based on large sample assumptions and our sample consists of only 20 games. In fact, the GLM version of analysis of variance will show that if we ignore scores altogether, we don't do much worse."
+
+- Class: cmd_question
+  Output: "Linear regression minimizes the squared difference between predicted and actual observations, i.e., minimizes the variance of the residual. If an additional predictor significantly reduces the residual's variance, the predictor is deemed important. Deviance extends this idea to generalized linear regression, using (negative) log likelihoods in place of variance. (For a detailed explanation, see the slides and lectures.) To see the analysis of deviance for our model, type anova(mdl)."
+  CorrectAnswer: 'anova(mdl)'
+  AnswerTests: omnitest('anova(mdl)')
+  Hint: Type anova(mdl).
+
+- Class: cmd_question
+  Output: "The value, 3.5398, labeled as the deviance of ravenScore, is actually the difference between the deviance of our model, which includes a slope, and that of a model which includes only an intercept, b0. This value is centrally chi-square distributed (for large samples) with 1 degree of freedom (2 parameters minus 1 parameter, or equivalently 19-18.) The null hypothesis is that the coefficient of ravenScore is zero. To confidently reject this hypothesis, we would want 3.5398 to be larger than the 95th percentile of chi-square distribution with one degree of freedom. Use qchisq(0.95, 1) to compute the threshold of this percentile."
+  CorrectAnswer: 'qchisq(0.95, 1)'
+  AnswerTests: ANY_of_exprs('qchisq(0.95, 1)', 'qchisq(.95, 1)')
+  Hint: Type qchisq(0.95, 1).
+
+- Class: text
+  Output: "As you can see, 3.5398 is close to but less than the 95th percentile threshold, 3.841459, hence would be regarded as consistent with the null hypothesis at the conventional 5% level. In other words, ravenScore adds very little to a model which just guesses that the Ravens win with probability 70% (their actual record that season) or odds 7 to 3 is almost as good. If you like, you can verify this using mdl0 <- glm(ravenWinNum ~ 1, binomial, ravenData), but this concludes the Binary Outcomes example. Thank you."
