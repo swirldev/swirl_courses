@@ -1,0 +1,193 @@
+- Class: meta
+  Course: Regression_Models
+  Lesson: ols
+  Author: Your name goes here
+  Type: Standard
+  Organization: Your organization goes here (optional)
+  Version: 2.1.1
+
+- Class: figure
+  Output: Here are the galton data and the regression line we generated in the last lesson. The regression line shows the relationship between parents' heights (the predictors) and their childrens' (the outcomes) when Galton took his survey. The regression line provides estimates of the heights of children who weren't measured by using their parents' heights as predictors.
+  Figure: plot1.R
+  FigureType: new
+
+- Class: text
+  Output: We learned in the last lesson that the regression line is the line through the data which has the minimum (least) squared error. Error is the sum of the squared (vertical) distances between the 928 children's heights and the line. (Squaring the distances ensures that data points above and below the line are treated the same.) The regression line fits the data best in the sense of ordinary least squares.
+
+- Class: text
+  Output: From the slides and video we learned that the regression line contains the point representing the means of the two sets of heights. This is the point whose x-coordinate is the mean of the parents' heights and y-coordinate is the mean of the childrens' heights. Also, the slope of the regression line is the correlation between the two sets of heights multiplied by the ratio of the standard deviations (parents' to childrens').
+
+- Class: text
+  Output: This lesson will focus on the residuals, the distances between the actual children's heights and the estimates given by the regression line. Since all lines are characterized by two parameters, a slope and an intercept, we'll use the least squares criteria to provide two equations in two unknowns so we can solve for these parameters, the slope and intercept.
+
+- Class: text
+  Output: The first equation says that the "errors" in our estimates, the residuals, have mean zero. In other words, the residuals are "balanced" among the data points; they're equally likely to be positive and negative. The second equation says that our residuals must be uncorrelated with our predictors, the parents’ height. This makes sense - if the residuals and predictors were correlated then you could make a better prediction and reduce the distances (residuals) between the actual outcomes and the predictions.
+
+
+- Class: cmd_question
+  Output: We'll demonstrate these concepts now. First regenerate the regression line. Type "fit <- lm(child ~ parent, galton)" 
+  CorrectAnswer: fit <- lm(child ~ parent, galton)
+  AnswerTests: omnitest(correctExpr='fit <- lm(child ~ parent, galton)')
+  Hint: Type "fit <- lm(child ~ parent, galton)" at the R prompt.
+
+- Class: cmd_question
+  Output: Now we'll examine fit to see its slope and intercept. The residuals we're interested in are stored in the  928-long vector fit$residuals. If you type fit$residuals you'll see a lot of numbers scroll by which isn't very useful; however if you  type "summary(fit)" you will see a more concise display of the regression data. Do this now.
+  CorrectAnswer: summary(fit)
+  AnswerTests: omnitest(correctExpr='summary(fit)')
+  Hint: Type "summary(fit)" at the R prompt.
+
+
+- Class: cmd_question
+  Output: First check the mean of fit$residuals to see if it's close to 0.
+  CorrectAnswer: mean(fit$residuals)
+  AnswerTests: omnitest(correctExpr='mean(fit$residuals)')
+  Hint: Type "mean(fit$residuals)" at the R prompt.
+
+- Class: cmd_question
+  Output: Now check the correlation between the residuals and the predictors. Type "cov(fit$residuals, galton$parent)" to see if it's close to 0.
+  CorrectAnswer: cov(fit$residuals,galton$parent)
+  AnswerTests: ANY_of_exprs('cov(fit$residuals,galton$parent)','cov(galton$parent,fit$residuals)')
+  Hint: Type "cov(fit$residuals, galton$parent)" at the R prompt.
+
+- Class: text
+  Output: Recall the algebra of the slides and video. The equations for the intercept and slope are found by supposing a change is made to the intercept and slope. Squaring out the resulting expressions produces three summations. The first sum is the original terms squared, before the slope and intercept were changed. The third sum totals the squared changes themselves. For instance, if we had changed the OLS fit’s intercept by adding 2, the third sum would be the total of 928 4’s. The middle sum is guaranteed to be zero precisely when the two equations (the conditions on the residuals) are satisfied.
+
+- Class: text
+  Output: We'll verify these claims now. We've defined for you two R functions, est and sqe. Both take two inputs, a slope and an intercept. The function est calculates a child's height (y-coordinate) using the line defined by the slope and intercept parameters (and the galton parents' heights as x-coordinates). The function sqe calculates the sum of the squared residuals, the differences between the actual children's heights and the estimated heights specified by the line defined by the given parameters.
+
+- Class: text
+  Output: We'll see that when we tweak the slope and intercept values of the regression line which are stored in fit$coef, the resulting squared residuals are approximately identical to the sum of two sums of squares - that of the original regression residuals and that of the tweaks themselves. To be more precise, sqe(ols.slope+sl,ols.intercept+ic) == sqe(ols.slope, ols.intercept) + sum( est(sl,ic)ˆ2 )
+
+- Class: cmd_question
+  Output: First extract the intercept from fit$coef and put it in a variable called ols.ic . The intercept is the first element in the fit$coef vector, that is fit$coef[1].
+  CorrectAnswer: ols.ic <- fit$coef[1]
+  AnswerTests: omnitest(correctExpr='ols.ic <- fit$coef[1]')
+  Hint: Type "ols.ic <- fit$coef[1]" at the R prompt.
+
+- Class: cmd_question
+  Output: Now extract the slope from fit$coef and put it in the variable ols.slope; the slope is the second element in the fit$coef vector, fit$coef[2].
+  CorrectAnswer: ols.slope <- fit$coef[2]
+  AnswerTests: omnitest(correctExpr='ols.slope <- fit$coef[2]')
+  Hint: Type "ols.slope <- fit$coef[2]" at the R prompt.
+
+- Class: cmd_question
+  Output: Now form a 6-long vector of small variations that we can use to tweak the slope. Call the vector sltweak. Type "sltweak <- c(.01, .02, .03, -.01, -.02, -.03)"
+  CorrectAnswer: sltweak <- c(.01, .02, .03, -.01, -.02, -.03)
+  AnswerTests: omnitest(correctExpr='sltweak <- c(.01, .02, .03, -.01, -.02, -.03)')
+  Hint: Type "sltweak <- c(.01, .02, .03, -.01, -.02, -.03)" at the R prompt.
+
+- Class: cmd_question
+  Output: Now form a 6-long vector of small variations that we can use to tweak the intercept. Call the vector ictweak. Type "ictweak <- c(.1, .2, .3, -.1, -.2, -.3)"
+  CorrectAnswer: ictweak <- c(.1, .2, .3, -.1, -.2, -.3) 
+  AnswerTests: omnitest(correctExpr='ictweak <- c(.1, .2, .3, -.1, -.2, -.3)')
+  Hint: Type "ictweak <- c(.1, .2, .3, -.1, -.2, -.3)" at the R prompt.
+
+- Class: cmd_question
+  Output: Now we'll form the left hand side of the identity we're trying to establish, the squared errors of the 6 regression line tweaks. Type "for (n in 1:6) lhs[n] <- sqe(ols.slope+sltweak[n],ols.ic+ictweak[n])"
+  CorrectAnswer: for (n in 1:6) lhs[n] <- sqe(ols.slope+sltweak[n],ols.ic+ictweak[n]) 
+  AnswerTests: omnitest(correctExpr='for (n in 1:6) lhs[n] <- sqe(ols.slope+sltweak[n],ols.ic+ictweak[n])')
+  Hint: Type "for (n in 1:6) lhs[n] <- sqe(ols.slope+sltweak[n],ols.ic+ictweak[n])" at the R prompt.
+
+- Class: cmd_question
+  Output: Now we'll form the right hand side of the identity we're trying to establish. This is the sum of the squared error of the actual regression line (a constant) and the sum of the squares of the tweak estimates. Type "for (n in 1:6) rhs[n] <- sqe(ols.slope,ols.ic) + sum(est(sltweak[n],ictweak[n])^2)"
+  CorrectAnswer: for (n in 1:6) rhs[n] <- sqe(ols.slope,ols.ic) + sum(est(sltweak[n],ictweak[n])^2)
+  AnswerTests: omnitest(correctExpr='for (n in 1:6) rhs[n] <- sqe(ols.slope,ols.ic) + sum(est(sltweak[n],ictweak[n])^2)')
+  Hint: Type "for (n in 1:6) rhs[n] <- sqe(ols.slope,ols.ic) + sum(est(sltweak[n],ictweak[n])^2)" at the R prompt.
+
+- Class: cmd_question
+  Output: Subtract the right side from the left to see the relationship between the two sides of the equation. You should get a vector of very small, almost 0, numbers.
+  CorrectAnswer: lhs-rhs
+  AnswerTests: omnitest(correctExpr='lhs-rhs')
+  Hint: Type "lhs-rhs" at the R prompt.
+
+- Class: cmd_question
+  Output: Now we'll show that the variance in the children's heights is the sum of the variance in the OLS estimates and the variance in the OLS residuals. First calculate the variance in the children's heights and store it in the variable varChild.
+  CorrectAnswer: varChild <- var(galton$child)
+  AnswerTests: omnitest(correctExpr='varChild <- var(galton$child)')
+  Hint: Type "varChild <- var(galton$child)" at the R prompt.
+
+- Class: cmd_question
+  Output: Remember that we've calculated the residuals and they're stored in fit$residuals. Calculate the variance in these residuals now and store it in the variable varRes.
+  CorrectAnswer: varRes <- var(fit$residuals)
+  AnswerTests: omnitest(correctExpr='varRes <- var(fit$residuals)')
+  Hint: Type "varRes <- var(fit$residuals)" at the R prompt.
+
+- Class: cmd_question
+  Output: Recall that the function "est" calculates the estimates (y-coordinates) of values along the regression line defined by the variables "ols.slope" and "ols.ic". Compute the variance in the estimates and store it in the variable varEst.
+  CorrectAnswer: varEst <- var(est(ols.slope, ols.ic))
+  AnswerTests: omnitest(correctExpr='varEst <- var(est(ols.slope, ols.ic))')
+  Hint: Type "varEst <- var(est(ols.slope, ols.ic))" at the R prompt.
+
+- Class: cmd_question
+  Output: Now compute the sum of varRes and varEst and store the result in a variable called varPutative.
+  CorrectAnswer: varPutative <- varEst + varRes
+  AnswerTests: ANY_of_exprs('varPutative <- varEst + varRes','varPutative <- varRes + varEst')
+  Hint: Type "varPutative <- varEst + varRes" at the R prompt.
+
+- Class: cmd_question
+  Output: Finally, subtract varPutative from the variance of the children's heights, varChild, to see if the two are close. You should get a result near 0. 
+  CorrectAnswer: varChild - varPutative 
+  AnswerTests: omnitest(correctExpr='varChild - varPutative')
+  Hint: Type "varChild - varPutative" at the R prompt.
+
+
+- Class: text
+  Output: Since variances are sums of squares (and hence always positive), this equation which we've just demonstrated,  var(data)=var(estimate)+var(residuals), shows that the variance of the estimate is ALWAYS less than the variance of the data.
+
+- Class: cmd_question
+  Output: From Wikipedia we learn that the value R^2 (R squared), the coefficient of determination, indicates how well data points fit a statistical model. We can calculate R^2 for our line of regression and galton data. First calculate the mean of the children's heights and store it in a variable called mu.
+  CorrectAnswer: mu <- mean(galton$child) 
+  AnswerTests: omnitest(correctExpr='mu <- mean(galton$child)')
+  Hint: Type "mu <- mean(galton$child)" at the R prompt.
+
+- Class: cmd_question
+  Output: Now calculate the sum of the squares of the children's heights normalized by mu and store the result in a variable called sTot.
+  CorrectAnswer: sTot <- sum((galton$child-mu)^2)
+  AnswerTests: ANY_of_exprs('sTot <- sum((galton$child-mu)^2)','sTot <- sum((galton$child-mu)*(galton$child-mu))')
+  Hint: Type "sTot <- sum((galton$child-mu)^2)" at the R prompt.
+
+- Class: cmd_question
+  Output: Now use the function sqe to calculate the sum of the squares of the distances between the children's heights and the regression line (the residuals). Recall that sqe takes two parameters, a slope (ols.slope) and an intercept (ols.ic). Do this now and store it in a variable called sRes.
+  CorrectAnswer: sRes <- sqe(ols.slope, ols.ic)
+  AnswerTests: omnitest(correctExpr='sRes <- sqe(ols.slope, ols.ic)')
+  Hint: Type "sRes <- sqe(ols.slope, ols.ic)" at the R prompt.
+
+- Class: cmd_question
+  Output: Finally form the fraction sRes/sTot and subtract it from 1.  This is the value R^2.
+  CorrectAnswer: 1-sRes/sTot
+  AnswerTests: omnitest(correctExpr='1-sRes/sTot')
+  Hint: Type "1-sRes/sTot" at the R prompt.
+
+- Class: text
+  Output: For fun you can compare your result to the value shown in summary(fit) to see if they look alike.
+
+- Class: text
+  Output: The two properties of the residuals we've emphasized here can be applied to datasets which have multiple predictors. In this lesson we've loaded the dataset attenu which gives data for 23 earthquakes in California. Accelerations are estimated based on distance and magnitude. 
+
+
+- Class: cmd_question
+  Output: Generate the regression line for this data. Type efit <- lm(accel ~ mag+dist, attenu) at the R prompt.
+  CorrectAnswer: efit <- lm(accel ~ mag+dist, attenu)
+  AnswerTests: omnitest(correctExpr='efit <- lm(accel ~ mag+dist, attenu)')
+  Hint: Type "efit <- lm(accel ~ mag+dist, attenu)" at the R prompt.
+
+- Class: cmd_question
+  Output: Verify the mean of the residuals is 0.
+  CorrectAnswer: mean(efit$residuals)
+  AnswerTests: omnitest(correctExpr='mean(efit$residuals)')
+  Hint: Type "mean(efit$residuals)" at the R prompt.
+
+- Class: cmd_question
+  Output: Using the R function cov verify the residuals are uncorrelated with the magnitude predictor, attenu$mag.
+  CorrectAnswer: cov(efit$residuals, attenu$mag)
+  AnswerTests: ANY_of_exprs('cov(efit$residuals, attenu$mag)','cov(attenu$mag,efit$residuals)')
+  Hint: Type "cov(efit$residuals, attenu$mag)" at the R prompt.
+
+- Class: cmd_question
+  Output: Using the R function cov verify the residuals are uncorrelated with the distance predictor, attenu$dist.
+  CorrectAnswer: cov(efit$residuals, attenu$dist)
+  AnswerTests: ANY_of_exprs('cov(efit$residuals, attenu$dist)','cov(attenu$dist,efit$residuals)')
+  Hint: Type "cov(efit$residuals, attenu$dist)" at the R prompt.
+
+- Class: text
+  Output: Congrats! You've concluded this lesson on ordinary least squares which are truly extraordinary!
