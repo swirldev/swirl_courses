@@ -1,0 +1,103 @@
+- Class: meta
+  Course: Regression_Models
+  Lesson: Count_Outcomes
+  Author: Swirl Coders
+  Type: Standard
+  Organization: Johns Hopkins Bloomberg School of Public Health
+  Version: 2.2.0
+
+# Discuss Poisson
+- Class: text
+  Output: Define Poisson, lambda, interpretation.
+
+# -Show mean and variance are equal
+- Class: cmd_question
+  Output: explain what the user must do here
+  CorrectAnswer: EXPR or VAL
+  AnswerTests: omnitest(correctExpr='EXPR', correctVal=VAL)
+  Hint: hint
+
+# -Plots showing Poisson approaching normal
+- Class: figure
+  Output: explain the figure here
+  Figure: sourcefile.R
+  FigureType: new or add
+
+# Discuss Poisson GLM
+# -The log of the mean is linear in the predictors.
+- Class: text
+  Output: The log of the mean is linear in the predictors.
+
+# Discuss data
+
+# -Visit Leek Group website
+- Class: video
+  Output: Would you like to watch a short video about ___?
+  VideoLink: 'http://address.of.video'
+
+# -"date","visits","simplystats","julian"
+- Class: cmd_question
+  Output: explain
+  CorrectAnswer: 'head(leekData)'
+  AnswerTests: omnitest(correctExpr='EXPR', correctVal=VAL)
+  Hint: hint
+
+# -Plot visits vs as.Date(date), 
+#   maybe plot(jitter(visits,10) ~ as.Date(date), hitsData)
+#   lines(temp$julian, predict(loess(visits ~ julian)), lwd=5, col='red')
+- Class: figure
+  Output: explain the figure here
+  Figure: sourcefile.R
+  FigureType: new or add
+
+# -Exponenitial mean hits per day makes log lambda linear, so reasonable.
+- Class: text
+  Output: put your exposition here.
+
+# Predict average number of hits per day with julian predictor (could use date instead)
+- Class: cmd_question
+  Output: create model 
+  CorrectAnswer: EXPR or VAL
+  AnswerTests: omnitest(correctExpr='EXPR', correctVal=VAL)
+  Hint: hint
+
+# Discuss model
+
+- Class: figure
+  Output: fitted values
+  Figure: sourcefile.R
+  FigureType: new or add
+
+# -coefficient significance
+- Class: cmd_question
+  Output: summary etc.
+  CorrectAnswer: EXPR or VAL
+  AnswerTests: omnitest(correctExpr='EXPR', correctVal=VAL)
+  Hint: hint
+
+# -Residual plot seems to have structure--"mean variance relationship?"
+# Not sure what to do here. Allowing for figure.
+- Class: figure
+  Output: explain the figure here
+  Figure: sourcefile.R
+  FigureType: new or add
+
+# -Zero inflation
+- Class: figure
+  Output: explain the figure here
+  Figure: sourcefile.R
+  FigureType: new or add
+
+# Second model using offset
+# Uses glm's parameter "offset" to model hits to Leek which come from Simply Statistics.
+- Class: text
+  Output: put your exposition here.
+
+# - Visit Simply Statistics?
+- Class: figure
+  Output: explain the figure here
+  Figure: sourcefile.R
+  FigureType: new or add
+
+# - Interpret effect of SS.
+# Need to look at this in more detail
