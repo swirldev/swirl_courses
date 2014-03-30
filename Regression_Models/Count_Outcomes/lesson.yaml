@@ -89,6 +89,10 @@
   FigureType: new or add
 
 # Second model using offset
+# The simply statistics column is the count of the hits strictly from Simply Statistics.
+# The lecture emphasis is rates. So he may be after the rate at which SS generates visits.
+# The offset tag fixes a predictor's coefficient to 1. So he's interested in the rate per
+# hit. (I would have used the overall hit rate.)
 # Uses glm's parameter "offset" to model hits to Leek which come from Simply Statistics.
 - Class: text
   Output: put your exposition here.
@@ -101,3 +105,10 @@
 
 # - Interpret effect of SS.
 # Need to look at this in more detail
+# Predicts simply stats controlling for leek group visits
+# glm2 <- glm(gaData$simplystats ~ julian(gaData$date),offset=log(visits+1),
+#             family="poisson",data=gaData)
+# Plots fitted points as blue 
+# plot(julian(gaData$date),glm2$fitted,col="blue",pch=19,xlab="Date",ylab="Fitted Counts")
+# Overplots 1st model's lambda's 
+# points(julian(gaData$date),glm1$fitted,col="red",pch=19)
