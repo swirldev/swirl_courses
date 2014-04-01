@@ -61,44 +61,38 @@
   Hint: Type "as.integer(head(hits[,'date'])", 'as.integer(head(hits[,"date"]))', or 'as.integer(head(hits[,1])').
 
 - Class: cmd_question
-  Output: "The arithmetic properties of Dates allow us to use them as predictors. We'll use Poisson regression to predict log(lambda) as a linear function of date in a way which maximizes the likelihood of the counts we actually see. Our formula will be visits ~ date. Since our outcomes (visits) are counts, our family will be 'poisson', and our third argument data will be hits. Create such a model and store it in a variable called mdl using the following expression or something equivalent, mdl <- glm(visits ~ date, poisson, hits)."
+  Output: "The arithmetic properties of Dates allow us to use them as predictors. We'll use Poisson regression to predict log(lambda) as a linear function of date in a way which maximizes the likelihood of the counts we actually see. Our formula will be visits ~ date. Since our outcomes (visits) are counts, our family will be 'poisson', and our third argument will be the data, hits. Create such a model and store it in a variable called mdl using the following expression or something equivalent, mdl <- glm(visits ~ date, poisson, hits)."
   CorrectAnswer: mdl <- glm(visits ~ date, poisson, hits)
   AnswerTests: creates_glm_model('mdl <- glm(visits ~ date, poisson, hits)')
   Hint: Type mdl <- glm(visits ~ date, poisson, hits) or something equivalent.
 
 - Class: figure
-  Output: fitted values
+  Output: "Our Poisson regression seems to fit the data very well. The red line is the estimated lambda, or mean number of visits per day. We see that mean visits per day increased from around 5 in early 2011 to around 10 by 2012, and to around 20 by late 2013. It is doubling every year."
   Figure: model_1.R
   FigureType: new
 
-# -coefficient significance
 - Class: cmd_question
-  Output: summary etc.
-  CorrectAnswer: EXPR or VAL
-  AnswerTests: omnitest(correctExpr='EXPR', correctVal=VAL)
-  Hint: hint
+  Output: "Type summary(mdl) to examine the estimated coefficients and their significance."
+  CorrectAnswer: summary(mdl)
+  AnswerTests: omnitest('summay(mdl)')
+  Hint: Just type summary(mdl)
 
-# -Residual plot seems to have structure--"mean variance relationship?"
-# Not sure what to do here. Allowing for figure.
-- Class: figure
-  Output: explain the figure here
-  Figure: sourcefile.R
-  FigureType: new or add
+- Class: txt
+  Output: "Both coefficients are significant, being far more than two standard errors from zero. The Residual deviance is also very significantly less than the Null, indicating a strong effect. (Recall that the difference between Null and Residual deviance is approximately chi-square with 1 degree of freedom.) The Intercept coefficient, b0, just represents log average hits on R's Date 0, namely January 1, 1970. We will ignore it and focus on the coefficient of date, b1, since exp(b1) will estimate the percentage at which average visits increase per day of the site's life."
 
-# -Zero inflation
-- Class: figure
-  Output: explain the figure here
-  Figure: sourcefile.R
-  FigureType: new or add
+- Class: cmd_question
+  Output: "Get the 95% confidence interval for exp(b1) by exponentiating confint(mdl, 'date')"
+  CorrectAnswer: exp(confint(mdl, 'date'))
+  AnswerTests: ANY_of_exprs("exp(confint(mdl, 'date'))", 'exp(confint(mdl, "date"))', "exp(confint(mdl,2))")
+  Hint: Just type exp(confint(mdl, 'date')) or exp(confint(mdl, 2)).
 
-# Second model using offset
-# The simply statistics column is the count of the hits strictly from Simply Statistics.
-# The lecture emphasis is rates. So he may be after the rate at which SS generates visits.
-# The offset tag fixes a predictor's coefficient to 1. So he's interested in the rate per
-# hit. (I would have used the overall hit rate.)
-# Uses glm's parameter "offset" to model hits to Leek which come from Simply Statistics.
 - Class: text
-  Output: put your exposition here.
+  Output: "Visits are estimated to increase by a factor of between 1.002192 and 1.002399 per day. That is, between 0.2192% and 0.2399% per day. This actually represents more than a doubling every year."
+
+- Class: figure
+  Output: "Our model looks like a pretty good description of the data, but no model is perfect and we can often learn about a data generation process by looking for a model's shortcomings. One obvious thing about our model is so-called zero inflation in the first two weeks of January 2011, before the site had any visits. The model systematically overestimates the number of visits during this time. A less obvious thing is that the standard deviation of the data may be increasing with lambda faster than a Poisson model allows. The right hand plot shows the standard deviation predicted by the model (red dashes) against the number of visits over average (green dots.) Also, there are four or five short periods in which the number of visits far exceeds two standard deviations above average. Something else seems to be happening here."
+  Figure: shortcomings.R
+  FigureType: new
 
 # - Visit Simply Statistics?
 - Class: figure
