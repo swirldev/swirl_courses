@@ -1,5 +1,5 @@
-swirl course repository
-=======================
+swirl courses
+=============
 
 This is a collection of interactive courses for use with the swirl R package. Some courses are for test purposes only and may only run on a particular development version of swirl.
 
@@ -36,6 +36,3 @@ swirl()
 ```
 
 For example, `install_from_swirl("R_Programming")` will install the `R Programming` course.
-
-#swirl-courses
-
