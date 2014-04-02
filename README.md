@@ -36,3 +36,6 @@ swirl()
 ```
 
 For example, `install_from_swirl("R_Programming")` will install the `R Programming` course.
+
+#swirl-courses
+
