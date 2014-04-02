@@ -31,7 +31,7 @@
   FigureType: new
 
 - Class: figure
-  Output: "In a Poisson regression, the log of lambda is assumed to be a linear function of the predictors. Since we will try to model the growth of visits to a web site, the log of lambda will be a linear function the date: log(lambda) = b0 + b1*date. This implies that the average number of hits per day, lambda, is exponential in the date: lambda = exp(b0)*exp(b1)^date. Exponential growth is also suggested by the smooth, red curve drawn though the data. Thus exp(b1) would represent the percentage by which visits grow per day."
+  Output: "In a Poisson regression, the log of lambda is assumed to be a linear function of the predictors. Since we will try to model the growth of visits to a web site, the log of lambda will be a linear function the date: log(lambda) = b0 + b1*date. This implies that the average number of hits per day, lambda, is exponential in the date: lambda = exp(b0)*exp(b1)^date. Exponential growth is also suggested by the smooth, black curve drawn though the data. Thus exp(b1) would represent the percentage by which visits grow per day."
   Figure: hits.R
   FigureType: new
 
@@ -67,7 +67,7 @@
   Hint: Type mdl <- glm(visits ~ date, poisson, hits) or something equivalent.
 
 - Class: figure
-  Output: "Our Poisson regression seems to fit the data very well. The red line is the estimated lambda, or mean number of visits per day. We see that mean visits per day increased from around 5 in early 2011 to around 10 by 2012, and to around 20 by late 2013. It is doubling every year."
+  Output: "Our Poisson regression seems to fit the data very well. The black line is the estimated lambda, or mean number of visits per day. We see that mean visits per day increased from around 5 in early 2011 to around 10 by 2012, and to around 20 by late 2013. It is doubling every year."
   Figure: model_1.R
   FigureType: new
 
@@ -90,15 +90,14 @@
   Output: "Visits are estimated to increase by a factor of between 1.002192 and 1.002399 per day. That is, between 0.2192% and 0.2399% per day. This actually represents more than a doubling every year."
 
 - Class: figure
-  Output: "Our model looks like a pretty good description of the data, but no model is perfect and we can often learn about a data generation process by looking for a model's shortcomings. One obvious thing about our model is so-called zero inflation in the first two weeks of January 2011, before the site had any visits. The model systematically overestimates the number of visits during this time. A less obvious thing is that the standard deviation of the data may be increasing with lambda faster than a Poisson model allows. The right hand plot shows the standard deviation predicted by the model (red dashes) against the number of visits over average (green dots.) Also, there are four or five short periods in which the number of visits far exceeds two standard deviations above average. Something else seems to be happening here."
+  Output: "Our model looks like a pretty good description of the data, but no model is perfect and we can often learn about a data generation process by looking for a model's shortcomings. One obvious thing about our model is so-called zero inflation in the first two weeks of January 2011, before the site had any visits. The model systematically overestimates the number of visits during this time. A less obvious thing is that the standard deviation of the data may be increasing with lambda faster than a Poisson model allows, as the right hand plot suggests. In the plot at the right, compare the spread of green dots with the standard deviation predicted by the model (black dashes.) Also, there are four or five bursts of popularity during which the number of visits far exceeds two standard deviations over average. Perhaps these are due to mentions from another site."
   Figure: shortcomings.R
   FigureType: new
 
-# - Visit Simply Statistics?
 - Class: figure
-  Output: explain the figure here
-  Figure: sourcefile.R
-  FigureType: new or add
+  Output: "At seems that at least some of them are. The simplystats column of our data records the number of visits to the Leek Group site which come from the related site, Simply Statistics. (I.e., visits due to clicks on a link to the Leek Group which appeared in a Simply Stastisics post.) "
+  Figure: bursts.R
+  FigureType: new
 
 # - Interpret effect of SS.
 # Predicts simply stats controlling for leek group visits
