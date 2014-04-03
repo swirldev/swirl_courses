@@ -1,5 +1,5 @@
-swirl course repository
-=======================
+swirl courses
+=============
 
 This is a collection of interactive courses for use with the swirl R package. Some courses are for test purposes only and may only run on a particular development version of swirl.
 
