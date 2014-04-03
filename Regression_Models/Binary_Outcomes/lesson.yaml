@@ -105,7 +105,7 @@
   Hint: It's very small.
 
 - Class: mult_question  
-  Output: "The lower confidence bound on the odds of winning with a score of 0 is near zero, which seems much more realistic than than the 16/84 figure of the maximum likelihood model. Now look at the lower bound on exp(b1), the exponentiated coefficient of ravenScore. How does it suggest the odds of winning will be affected by each additional point scored?"
+  Output: "The lower confidence bound on the odds of winning with a score of 0 is near zero, which seems much more realistic than the 16/84 figure of the maximum likelihood model. Now look at the lower bound on exp(b1), the exponentiated coefficient of ravenScore. How does it suggest the odds of winning will be affected by each additional point scored?"
   AnswerChoices: They will decrease slightly;They will increase slightly;They will increase by 30%
   CorrectAnswer: They will decrease slightly
   AnswerTests: omnitest(correctVal= 'They will decrease slightly')

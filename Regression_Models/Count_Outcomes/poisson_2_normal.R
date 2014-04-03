@@ -1,0 +1,5 @@
+par(mfrow = c(1, 3))
+plot(0 : 10, dpois(0 : 10, lambda = 2), type = "h", frame = FALSE, xlab="Count", ylab="Probability of Count", main="lambda = 2")
+plot(0 : 20, dpois(0 : 20, lambda = 10), type = "h", frame = FALSE, xlab="Count", ylab="Probability of Count", main="lambda = 10")
+plot(0 : 200, dpois(0 : 200, lambda = 100), type = "h", frame = FALSE, xlab="Count", ylab="Probability of Count", main="lambda = 100") 
+par(mfrow = c(1, 1))
