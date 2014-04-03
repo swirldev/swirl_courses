@@ -36,8 +36,8 @@
   FigureType: new
 
 - Class: video
-  Output: "If you are connected to the internet right now, would you care to visit the Leek Group website?"
-  VideoLink: 'http://address.of.video'
+  Output: "If you are connected to the internet right now, would you care to visit the Simply Statistics website?"
+  VideoLink: 'http://simplystatistics.org'
 
 - Class: cmd_question
   Output: "Our data is in a data frame named hits. Use View(hits), head(hits), or tail(hits) to examine the data now."
@@ -112,23 +112,55 @@
   Hint: Just type hits[704,].
 
 - Class: cmd_question
-  Output: "The maximum number of visits, 94, occurred on December 4, 2012, of which 64 came from the Simply Statistics blog. If visits from Simply Statistics can explain the anomalously high n"
-  CorrectAnswer: EXPR or VAL
-  AnswerTests: omnitest(correctExpr='EXPR', correctVal=VAL)
-  Hint: hint
+  Output: "The maximum number of visits, 94, occurred on December 4, 2012, of which 64 came from the Simply Statistics blog. We might consider the 64 visits to be a special event, over and above normal. Can the difference, 94-64=30 visits, be attributed to normal traffic as estimated by our model? To check, we will need the value of lambda on December 4, 2012. This will be entry 704 of the fitted.values element of our model. Extract mdl$fitted.values[704] and store it in a variable named lambda."
+  CorrectAnswer: lambda <- mdl$fitted.values[704]
+  AnswerTests: omnitest(correctExpr='lambda <- mdl$fitted.values[704]');expr_creates_var('lambda')
+  Hint: Just type lambda <- mdl$fitted.values[704].
 
-- Class: video
-  Output: "If you are connected to the internet right now, would you care to visit the Simply Statistics website?"
-  VideoLink: 'http://simplystatistics.org'
+- Class: cmd_question
+  Output: "The number of visits explained by our model on December 4, 2012 are those of a Poisson random variable with mean lambda. We can find the 95th percentile of this distribution using qpois(.95, lambda). Try this now."
+  CorrectAnswer: qpois(.95, lambda)
+  AnswerTests: ANY_of_expr('qpois(.95, lambda)', 'qpois(0.95, lambda)')
+  Hint: Type qpois(.95, lambda) or qpois(0.95, lambda).
 
+- Class: text
+  Output: "So, 95% of the time we would see 33 or fewer visits, hence 30 visits would not be rare according to our model. It would seem that on December 4, 2012, the very high number of visits was due to references from Simply Statistics. To gauge the importance of references from Simply Statistics we may wish to model the proportion of traffic such references represent. Doing so will also illustrate the use of glm's parameter, offset, to model frequencies and proportions."
 
-# - Interpret effect of SS.
-# Predicts simply stats controlling for leek group visits
-# glm2 <- glm(gaData$simplystats ~ julian(gaData$date),offset=log(visits+1),
-#             family="poisson",data=gaData)
-# Plots fitted points as blue 
-# plot(julian(gaData$date),glm2$fitted,col="blue",pch=19,xlab="Date",ylab="Fitted Counts")
-# Overplots 1st model's lambda's 
-# points(julian(gaData$date),glm1$fitted,col="red",pch=19)
+- Class: text
+  Output: "A Poisson process generates counts, and counts are whole numbers, 0, 1, 2, 3, etc. A proportion is a fraction. So how can a Poisson process model a proportion? The trick is to include the denominator of the fraction, or more precisely its log, as an offset. Recall that in our data set, 'simplystats' is the visits from Simply Statistics, and 'visits' is the total number of visits. We would like to model the fraction simplystats/visits, but to avoid division by zero we'll actually use simplystats/(visits+1). A Poisson model assumes that log(lambda) is a linear combination of predictors. Suppose we assume that log(lambda) = log(visits+1) + b0 + b1*date. In other words, if we insist that the coefficient of log(visits+1) be equal to 1, we are predicting the log of mean visits from Simply Statistics as a proportion of total visits: log(lambda/(visits+1)) = b0 + b1*date."
 
+- Class: cmd_question
+  Output: "glm's parameter, offset, has precisely this effect. It fixes the coefficient of the offset to 1. To create a model for the proportion of visits from Simply Statistics, we let offset=log(visits+1). Create such a Poisson model now and store it as a variable called mdl2."
+  CorrectAnswer: mdl2 <- glm(simplystats ~ date, poisson, hits, offset=log(visits+1))
+  AnswerTests: creates_glm_model('mdl2 <- glm(simplystats ~ date, poisson, hits, offset=log(visits+1))')
+  Hint: "Enter mdl2 <- glm(formula = simplystats ~ date, family = poisson, data = hits, offset = log(visits + 1)), or something equivalent."
 
+- Class: cmd_question
+  Output: "Although summary(mdl2) will show that the estimated coefficients are significantly different than zero, the model is actually not impressive. We can illustrate why by looking at December 4, 2012, once again. On that day there were 64 visits from Simply Statistics. Would 64 visits be a rare event according to mdl2? You can confirm that it would by finding mdl2's 95th percentile for that day. Recalling that December 4, 2012 was sample 704, find qpois(.95, mdl2$fitted.values[704])."
+  CorrectAnswer: qpois(.95, mdl2$fitted.values[704])
+  AnswerTests: ANY_of_exprs('qpois(.95, mdl2$fitted.values[704])', 'qpois(0.95, mdl2$fitted.values[704])')
+  Hint: Just type qpois(.95, mdl2$fitted.values[704]).
+
+- Class: mult_question  
+  Output: "A Poisson distribution with lambda=1000 will be well approximated by a normal distribution. What will be the variance of that normal distribution?"
+  AnswerChoices: lambda;lambda squared;the square root of lambda.
+  CorrectAnswer: lambda
+  AnswerTests: omnitest(correctVal= 'lambda')
+  Hint: The mean and the variance of a Poisson distribution are equal.
+
+- Class: mult_question  
+  Output: "When modeling count outcomes as a Poisson process, what is modeled as a linear combination of the predictors?"
+  AnswerChoices: The log of the mean;The mean;The counts
+  CorrectAnswer: The log of the mean
+  AnswerTests: omnitest(correctVal= 'The log of the mean')
+  Hint: Count outcomes and their means are never negative, but linear combinations of predictors may be.
+
+- Class: mult_question  
+  Output: "What parameter of the glm function allows you to include a predictor whose coefficient is fixed to the value 1?"
+  AnswerChoices: offset;data;b0;family;formula
+  CorrectAnswer: offset
+  AnswerTests: omnitest(correctVal= 'offset')
+  Hint: We used this parameter to include log(visits+1) when computing mdl2.
+
+- Class: text
+  Output: "That completes the Poisson GLM example. Thanks for sticking with it. I hope we've made it count."
