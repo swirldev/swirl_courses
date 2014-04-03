@@ -99,6 +99,29 @@
   Figure: bursts.R
   FigureType: new
 
+- Class: cmd_question
+  Output: "In the figure, the maximum number of visits occurred in late 2012. Visits from the Simply Statistics blog were also at their maximum that day. To find the exact date we can use which.max(hits[,'visits']. Do this now."
+  CorrectAnswer: which.max(hits[,'visits'])
+  AnswerTests: omnitest("which.max(hits[,'visits'])", 704)
+  Hint: Type which.max(hits[,'visits']) or something equivalent.
+
+- Class: cmd_question
+  Output: "The maximum number of visits is recorded in row 704 of our data frame. Print that row by typing hits[704,]."
+  CorrectAnswer: hits[704,]
+  AnswerTests: omnitest(correctExpr='hits[704,]')
+  Hint: Just type hits[704,].
+
+- Class: cmd_question
+  Output: "The maximum number of visits, 94, occurred on December 4, 2012, of which 64 came from the Simply Statistics blog. If visits from Simply Statistics can explain the anomalously high n"
+  CorrectAnswer: EXPR or VAL
+  AnswerTests: omnitest(correctExpr='EXPR', correctVal=VAL)
+  Hint: hint
+
+- Class: video
+  Output: "If you are connected to the internet right now, would you care to visit the Simply Statistics website?"
+  VideoLink: 'http://simplystatistics.org'
+
+
 # - Interpret effect of SS.
 # Predicts simply stats controlling for leek group visits
 # glm2 <- glm(gaData$simplystats ~ julian(gaData$date),offset=log(visits+1),
@@ -107,3 +130,5 @@
 # plot(julian(gaData$date),glm2$fitted,col="blue",pch=19,xlab="Date",ylab="Fitted Counts")
 # Overplots 1st model's lambda's 
 # points(julian(gaData$date),glm1$fitted,col="red",pch=19)
+
+
