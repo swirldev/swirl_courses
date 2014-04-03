@@ -7,15 +7,17 @@
   Version: 2.1.1
 
 - Class: figure
-  Output: Here are the galton data and the regression line we generated in the last lesson. The regression line shows the relationship between parents' heights (the predictors) and their childrens' (the outcomes) when Galton took his survey. The regression line provides estimates of the heights of children who weren't measured by using their parents' heights as predictors.
+  Output: Here are the galton data and the regression line we generated in the last lesson. The regression line shows the relationship between parents' heights (the predictors) and their childrens' (the outcomes) when Galton took his survey. The regression line provides estimates of  heights of children who weren't measured. It uses their parents' heights as predictors.
   Figure: plot1.R
   FigureType: new
 
 - Class: text
-  Output: We learned in the last lesson that the regression line is the line through the data which has the minimum (least) squared error. Error is the sum of the squared (vertical) distances between the 928 children's heights and the line. (Squaring the distances ensures that data points above and below the line are treated the same.) The regression line fits the data best in the sense of ordinary least squares.
+  Output: We learned in the last lesson that the regression line is the line through the data which has the minimum (least) squared "error", the distance between the 928 actual children's heights and the line. (Squaring the distances ensures that data points above and below the line are treated the same.) The regression line fits the data best in the sense of ordinary least squares.
 
-- Class: text
-  Output: From the slides and video we learned that the regression line contains the point representing the means of the two sets of heights. This is the point whose x-coordinate is the mean of the parents' heights and y-coordinate is the mean of the childrens' heights. Also, the slope of the regression line is the correlation between the two sets of heights multiplied by the ratio of the standard deviations (parents' to childrens').
+- Class: figure
+  Output: From the slides and video we learned that the regression line contains the point representing the means of the two sets of heights (the triangle on the plot). This is the point whose x-coordinate is the mean of the parents' heights and y-coordinate is the mean of the childrens' heights. Also, the slope of the regression line is the correlation between the two sets of heights multiplied by the ratio of the standard deviations (parents' to childrens').
+  Figure: meanpt.R
+  FigureType: add
 
 - Class: text
   Output: This lesson will focus on the residuals, the distances between the actual children's heights and the estimates given by the regression line. Since all lines are characterized by two parameters, a slope and an intercept, we'll use the least squares criteria to provide two equations in two unknowns so we can solve for these parameters, the slope and intercept.
@@ -53,13 +55,22 @@
   Output: Recall the algebra of the slides and video. The equations for the intercept and slope are found by supposing a change is made to the intercept and slope. Squaring out the resulting expressions produces three summations. The first sum is the original terms squared, before the slope and intercept were changed. The third sum totals the squared changes themselves. For instance, if we had changed the OLS fit’s intercept by adding 2, the third sum would be the total of 928 4’s. The middle sum is guaranteed to be zero precisely when the two equations (the conditions on the residuals) are satisfied.
 
 - Class: text
-  Output: We'll verify these claims now. We've defined for you two R functions, est and sqe. Both take two inputs, a slope and an intercept. The function est calculates a child's height (y-coordinate) using the line defined by the slope and intercept parameters (and the galton parents' heights as x-coordinates). The function sqe calculates the sum of the squared residuals, the differences between the actual children's heights and the estimated heights specified by the line defined by the given parameters.
+  Output: We'll verify these claims now. We've defined for you two R functions, est and sqe. Both take two inputs, a slope and an intercept. The function est calculates a child's height (y-coordinate) using the line defined by the two parameters, the slope and intercept. The function  uses the parents' heights in the galton data as x-coordinates. 
 
 - Class: text
-  Output: We'll see that when we tweak the slope and intercept values of the regression line which are stored in fit$coef, the resulting squared residuals are approximately identical to the sum of two sums of squares - that of the original regression residuals and that of the tweaks themselves. To be more precise, sqe(ols.slope+sl,ols.intercept+ic) == sqe(ols.slope, ols.intercept) + sum( est(sl,ic)ˆ2 )
+  Output: The function sqe calculates the sum of the squared residuals, the differences between the actual children's heights and the estimated heights specified by the line defined by the given parameters.
+
+- Class: text
+  Output: We'll see that when we vary or tweak the slope and intercept values of the regression line which are stored in fit$coef, the resulting squared residuals are approximately equal to the sum of two sums of squares - that of the original regression residuals and that of the tweaks themselves. More precisely,
+
+- Class: text
+  Output: sqe(ols.slope+sl,ols.intercept+ic) == sqe(ols.slope, ols.intercept) + sum(est(sl,ic)ˆ2 )
+
+- Class: text
+  Output: The left side of the equation represents the squared residuals of a new line, the "tweaked" regression line. The terms "sl" and "ic" represent the variations in the slope and intercept respectively. The right side has two terms. The first represents the squared residuals of the regression line and the second is the sum of squares of the variations themselves. 
 
 - Class: cmd_question
-  Output: First extract the intercept from fit$coef and put it in a variable called ols.ic . The intercept is the first element in the fit$coef vector, that is fit$coef[1].
+  Output: We'll demonstrate this now. First extract the intercept from fit$coef and put it in a variable called ols.ic . The intercept is the first element in the fit$coef vector, that is fit$coef[1].
   CorrectAnswer: ols.ic <- fit$coef[1]
   AnswerTests: omnitest(correctExpr='ols.ic <- fit$coef[1]')
   Hint: Type "ols.ic <- fit$coef[1]" at the R prompt.
@@ -70,18 +81,9 @@
   AnswerTests: omnitest(correctExpr='ols.slope <- fit$coef[2]')
   Hint: Type "ols.slope <- fit$coef[2]" at the R prompt.
 
-- Class: cmd_question
-  Output: Now form a 6-long vector of small variations that we can use to tweak the slope. Call the vector sltweak. Type "sltweak <- c(.01, .02, .03, -.01, -.02, -.03)"
-  CorrectAnswer: sltweak <- c(.01, .02, .03, -.01, -.02, -.03)
-  AnswerTests: omnitest(correctExpr='sltweak <- c(.01, .02, .03, -.01, -.02, -.03)')
-  Hint: Type "sltweak <- c(.01, .02, .03, -.01, -.02, -.03)" at the R prompt.
-
-- Class: cmd_question
-  Output: Now form a 6-long vector of small variations that we can use to tweak the intercept. Call the vector ictweak. Type "ictweak <- c(.1, .2, .3, -.1, -.2, -.3)"
-  CorrectAnswer: ictweak <- c(.1, .2, .3, -.1, -.2, -.3) 
-  AnswerTests: omnitest(correctExpr='ictweak <- c(.1, .2, .3, -.1, -.2, -.3)')
-  Hint: Type "ictweak <- c(.1, .2, .3, -.1, -.2, -.3)" at the R prompt.
-
+- Class: text
+  Output: We've formed for you two 6-long vectors of variations, one for the slope and one for the intercept, sltweak and ictweak, respectively. 
+ 
 - Class: cmd_question
   Output: Now we'll form the left hand side of the identity we're trying to establish, the squared errors of the 6 regression line tweaks. Type "for (n in 1:6) lhs[n] <- sqe(ols.slope+sltweak[n],ols.ic+ictweak[n])"
   CorrectAnswer: for (n in 1:6) lhs[n] <- sqe(ols.slope+sltweak[n],ols.ic+ictweak[n]) 
@@ -89,7 +91,7 @@
   Hint: Type "for (n in 1:6) lhs[n] <- sqe(ols.slope+sltweak[n],ols.ic+ictweak[n])" at the R prompt.
 
 - Class: cmd_question
-  Output: Now we'll form the right hand side of the identity we're trying to establish. This is the sum of the squared error of the actual regression line (a constant) and the sum of the squares of the tweak estimates. Type "for (n in 1:6) rhs[n] <- sqe(ols.slope,ols.ic) + sum(est(sltweak[n],ictweak[n])^2)"
+  Output: Now we'll form the right hand side of the identity we're trying to establish. This is the sum of the squared error of the actual regression line and the sum of the squares of the tweaks. Type "for (n in 1:6) rhs[n] <- sqe(ols.slope,ols.ic) + sum(est(sltweak[n],ictweak[n])^2)"
   CorrectAnswer: for (n in 1:6) rhs[n] <- sqe(ols.slope,ols.ic) + sum(est(sltweak[n],ictweak[n])^2)
   AnswerTests: omnitest(correctExpr='for (n in 1:6) rhs[n] <- sqe(ols.slope,ols.ic) + sum(est(sltweak[n],ictweak[n])^2)')
   Hint: Type "for (n in 1:6) rhs[n] <- sqe(ols.slope,ols.ic) + sum(est(sltweak[n],ictweak[n])^2)" at the R prompt.
@@ -153,13 +155,13 @@
   Hint: Type "sRes <- sqe(ols.slope, ols.ic)" at the R prompt.
 
 - Class: cmd_question
-  Output: Finally form the fraction sRes/sTot and subtract it from 1.  This is the value R^2.
+  Output: Finally, subtract from 1 the fraction sRes/sTot.  This is the value R^2.
   CorrectAnswer: 1-sRes/sTot
   AnswerTests: omnitest(correctExpr='1-sRes/sTot')
   Hint: Type "1-sRes/sTot" at the R prompt.
 
 - Class: text
-  Output: For fun you can compare your result to the value shown in summary(fit) to see if they look alike.
+  Output: For fun you can compare your result to the values shown in summary(fit) to see if any look like it.
 
 - Class: text
   Output: The two properties of the residuals we've emphasized here can be applied to datasets which have multiple predictors. In this lesson we've loaded the dataset attenu which gives data for 23 earthquakes in California. Accelerations are estimated based on distance and magnitude. 
