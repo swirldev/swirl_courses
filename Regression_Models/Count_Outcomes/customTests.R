@@ -24,7 +24,7 @@ creates_glm_model <- function(correctExpr){
   # Check for effective equality of the models
   isTRUE(all.equal(as.vector(mdlUsr$coefficients), as.vector(mdlSw$coefficients))) &
     identical(mdlUsr$family$family, mdlSw$family$family) &
-    is.TRUE(all.equal(mdlUsr$fitted.values, mdlSw$fitted.values))
+    isTRUE(all.equal(mdlUsr$fitted.values, mdlSw$fitted.values))
 }
 
 # Returns TRUE if e$expr matches any of the expressions given

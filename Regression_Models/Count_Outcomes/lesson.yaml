@@ -36,8 +36,8 @@
   FigureType: new
 
 - Class: video
-  Output: "If you are connected to the internet right now, would you care to visit the Simply Statistics website?"
-  VideoLink: 'http://simplystatistics.org'
+  Output: "If you are connected to the internet right now, would you care to visit the Leek Group website?"
+  VideoLink: 'http://biostat.jhsph.edu/~jleek/'
 
 - Class: cmd_question
   Output: "Our data is in a data frame named hits. Use View(hits), head(hits), or tail(hits) to examine the data now."
@@ -51,14 +51,14 @@
 - Class: cmd_question
   Output: "Our dates are represented in terms of R's class, Date. Verify this by typing class(hits[,'date']), or something equivalent." 
   CorrectAnswer: class(hits[,'date'])
-  AnswerTests: ANY_of_exprs("class(hits[,'date']", 'class(hits[,"date"])', 'class(hits[,1])'))
-  Hint: Type class(hits[,'date']), class(hits[,"date"]), or class(hits[,1]).
+  AnswerTests: ANY_of_exprs("class(hits[,'date'])", 'class(hits[,"date"])', 'class(hits[,1])', 'class(hits$date)')
+  Hint: Type class(hits[,'date']), or something equivalent.
 
 - Class: cmd_question
   Output: "R's Date class represents dates as days since or prior to January 1, 1970. They are essentially numbers, and to some extent can be treated as such. Dates can, for example, be added or subtracted, or easily coverted to numbers. Type as.integer(head(hits[,'date'])) to see what I mean." 
   CorrectAnswer: class(hits[,'date'])
-  AnswerTests: ANY_of_exprs("as.integer(head(hits[,'date'])", 'as.integer(head(hits[,"date"]))', 'as.integer(head(hits[,1])'))
-  Hint: Type "as.integer(head(hits[,'date'])", 'as.integer(head(hits[,"date"]))', or 'as.integer(head(hits[,1])').
+  AnswerTests: ANY_of_exprs("as.integer(head(hits[,'date']))", 'as.integer(head(hits[,"date"]))', 'as.integer(head(hits[,1]))', 'as.integer(head(hits$date))')
+  Hint: Type as.integer(head(hits[,'date']), or something equivalent.
 
 - Class: cmd_question
   Output: "The arithmetic properties of Dates allow us to use them as predictors. We'll use Poisson regression to predict log(lambda) as a linear function of date in a way which maximizes the likelihood of the counts we actually see. Our formula will be visits ~ date. Since our outcomes (visits) are counts, our family will be 'poisson', and our third argument will be the data, hits. Create such a model and store it in a variable called mdl using the following expression or something equivalent, mdl <- glm(visits ~ date, poisson, hits)."
@@ -67,14 +67,14 @@
   Hint: Type mdl <- glm(visits ~ date, poisson, hits) or something equivalent.
 
 - Class: figure
-  Output: "Our Poisson regression seems to fit the data very well. The black line is the estimated lambda, or mean number of visits per day. We see that mean visits per day increased from around 5 in early 2011 to around 10 by 2012, and to around 20 by late 2013. It is doubling every year."
+  Output: "The figure suggests that our Poisson regression to fit the data very well. The black line is the estimated lambda, or mean number of visits per day. We see that mean visits per day increased from around 5 in early 2011 to around 10 by 2012, and to around 20 by late 2013. It is approximately doubling every year."
   Figure: model_1.R
   FigureType: new
 
 - Class: cmd_question
   Output: "Type summary(mdl) to examine the estimated coefficients and their significance."
   CorrectAnswer: summary(mdl)
-  AnswerTests: omnitest('summay(mdl)')
+  AnswerTests: omnitest('summary(mdl)')
   Hint: Just type summary(mdl)
 
 - Class: txt
@@ -90,7 +90,7 @@
   Output: "Visits are estimated to increase by a factor of between 1.002192 and 1.002399 per day. That is, between 0.2192% and 0.2399% per day. This actually represents more than a doubling every year."
 
 - Class: figure
-  Output: "Our model looks like a pretty good description of the data, but no model is perfect and we can often learn about a data generation process by looking for a model's shortcomings. One obvious thing about our model is so-called zero inflation in the first two weeks of January 2011, before the site had any visits. The model systematically overestimates the number of visits during this time. A less obvious thing is that the standard deviation of the data may be increasing with lambda faster than a Poisson model allows, as the right hand plot suggests. In the plot at the right, compare the spread of green dots with the standard deviation predicted by the model (black dashes.) Also, there are four or five bursts of popularity during which the number of visits far exceeds two standard deviations over average. Perhaps these are due to mentions from another site."
+  Output: "Our model looks like a pretty good description of the data, but no model is perfect and we can often learn about a data generation process by looking for a model's shortcomings. As shown in the figure, one thing about our model is 'zero inflation' in the first two weeks of January 2011, before the site had any visits. The model systematically overestimates the number of visits during this time. A less obvious thing is that the standard deviation of the data may be increasing with lambda faster than a Poisson model allows. This possibility can be seen the rightmost plot by visually comparing the spread of green dots with the standard deviation predicted by the model (black dashes.) Also, there are four or five bursts of popularity during which the number of visits far exceeds two standard deviations over average. Perhaps these are due to mentions on another site."
   Figure: shortcomings.R
   FigureType: new
 
@@ -120,7 +120,7 @@
 - Class: cmd_question
   Output: "The number of visits explained by our model on December 4, 2012 are those of a Poisson random variable with mean lambda. We can find the 95th percentile of this distribution using qpois(.95, lambda). Try this now."
   CorrectAnswer: qpois(.95, lambda)
-  AnswerTests: ANY_of_expr('qpois(.95, lambda)', 'qpois(0.95, lambda)')
+  AnswerTests: ANY_of_exprs('qpois(.95, lambda)', 'qpois(0.95, lambda)')
   Hint: Type qpois(.95, lambda) or qpois(0.95, lambda).
 
 - Class: text
@@ -136,7 +136,7 @@
   Hint: "Enter mdl2 <- glm(formula = simplystats ~ date, family = poisson, data = hits, offset = log(visits + 1)), or something equivalent."
 
 - Class: cmd_question
-  Output: "Although summary(mdl2) will show that the estimated coefficients are significantly different than zero, the model is actually not impressive. We can illustrate why by looking at December 4, 2012, once again. On that day there were 64 visits from Simply Statistics. Would 64 visits be a rare event according to mdl2? You can confirm that it would by finding mdl2's 95th percentile for that day. Recalling that December 4, 2012 was sample 704, find qpois(.95, mdl2$fitted.values[704])."
+  Output: "Although summary(mdl2) will show that the estimated coefficients are significantly different than zero, the model is actually not impressive. We can illustrate why by looking at December 4, 2012, once again. On that day there were 64 actual visits from Simply Statistics. However, according to mdl2, 64 visits would be extremely unlikely. You can verify this weakness in the model by finding mdl2's 95th percentile for that day. Recalling that December 4, 2012 was sample 704, find qpois(.95, mdl2$fitted.values[704])."
   CorrectAnswer: qpois(.95, mdl2$fitted.values[704])
   AnswerTests: ANY_of_exprs('qpois(.95, mdl2$fitted.values[704])', 'qpois(0.95, mdl2$fitted.values[704])')
   Hint: Just type qpois(.95, mdl2$fitted.values[704]).
