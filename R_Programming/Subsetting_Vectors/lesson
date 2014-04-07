@@ -179,7 +179,7 @@
 - Class: mult_question
   Output: Now, back to the matter of subsetting a vector by named elements. Which of the following commands do you think would give us the second element of vect?
   AnswerChoices: vect["bar"]; vect[bar]; vect["2"]
-  CorrectAnswer: 
+  CorrectAnswer: vect["bar"]
   AnswerTests: omnitest(correctVal='vect["bar"]')
   Hint: If we want the element named "bar" (i.e. the second element of vect), which command would get us that?
 
