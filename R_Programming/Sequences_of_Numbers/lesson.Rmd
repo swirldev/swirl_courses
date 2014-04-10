@@ -165,7 +165,7 @@ One more function related to creating sequences of numbers is rep(), which stand
 
 --- &cmd_question
 
-If we're interesting in creating a vector that contains 40 zeros, we can use rep(0, times = 40). Try it out.
+If we're interested in creating a vector that contains 40 zeros, we can use rep(0, times = 40). Try it out.
 
 ```{r}
 rep(0, times = 40)
