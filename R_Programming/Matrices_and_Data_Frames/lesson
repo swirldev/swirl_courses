@@ -127,7 +127,7 @@
   Output: This is called 'implicit coersion', because we didn't ask for it. It just happened. But why didn't R just convert the names of our patients to numbers? I'll let you ponder that question on your own.
 
 - Class: cmd_question
-  Output: So, we're still left with the question of how to include the names of our patients in the table without destroying the intregrity of our numeric data. Try the following -- myData <- data.frame(patients, myMatrix)
+  Output: So, we're still left with the question of how to include the names of our patients in the table without destroying the integrity of our numeric data. Try the following -- myData <- data.frame(patients, myMatrix)
   CorrectAnswer: myData <- data.frame(patients, myMatrix)
   AnswerTests: omnitest(correctExpr='myData <- data.frame(patients, myMatrix)')
   Hint: Type myData <- data.frame(patients, myMatrix), so we can explore what happens.
