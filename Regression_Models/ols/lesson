@@ -52,7 +52,7 @@
   Hint: Type "cov(fit$residuals, galton$parent)" at the R prompt.
 
 - Class: text
-  Output: Recall the algebra of the slides and video. The equations for the intercept and slope are found by supposing a change is made to the intercept and slope. Squaring out the resulting expressions produces three summations. The first sum is the original terms squared, before the slope and intercept were changed. The third sum totals the squared changes themselves. For instance, if we had changed the OLS fit’s intercept by adding 2, the third sum would be the total of 928 4’s. The middle sum is guaranteed to be zero precisely when the two equations (the conditions on the residuals) are satisfied.
+  Output: Recall the algebra of the slides and video. The equations for the intercept and slope are found by supposing a change is made to the intercept and slope. Squaring out the resulting expressions produces three summations. The first sum is the original term squared, before the slope and intercept were changed. The third sum totals the squared changes themselves. For instance, if we had changed the OLS fit’s intercept by adding 2, the third sum would be the total of 928 4’s. The middle sum is guaranteed to be zero precisely when the two equations (the conditions on the residuals) are satisfied.
 
 - Class: text
   Output: We'll verify these claims now. We've defined for you two R functions, est and sqe. Both take two inputs, a slope and an intercept. The function est calculates a child's height (y-coordinate) using the line defined by the two parameters, the slope and intercept. The function  uses the parents' heights in the galton data as x-coordinates. 
