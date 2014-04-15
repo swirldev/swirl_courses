@@ -1,0 +1,10 @@
+- Class: meta
+  Course: Regression Models
+  Lesson: Variance_Inflation_Factors
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization
+  Version: 2.2.0
+
+- Class: text
+  Output: put your exposition here.
