@@ -1,23 +1,11 @@
 - Class: meta
   Course: Regression_Models
-  Lesson: ols
-  Author: Your name goes here
+  Lesson: Residuals
+  Author: Swirl Coders
   Type: Standard
-  Organization: Your organization goes here (optional)
-  Version: 2.1.1
+  Organization: Johns Hopkins Bloomberg School of Public Health
+  Version: 2.2.0
 
-- Class: figure
-  Output: Here are the galton data and the regression line we generated in the last lesson. The regression line shows the relationship between parents' heights (the predictors) and their childrens' (the outcomes) when Galton took his survey. The regression line provides estimates of  heights of children who weren't measured. It uses their parents' heights as predictors.
-  Figure: plot1.R
-  FigureType: new
-
-- Class: text
-  Output: We learned in the last lesson that the regression line is the line through the data which has the minimum (least) squared "error", the distance between the 928 actual children's heights and the line. (Squaring the distances ensures that data points above and below the line are treated the same.) The regression line fits the data best in the sense of ordinary least squares.
-
-- Class: figure
-  Output: From the slides and video we learned that the regression line contains the point representing the means of the two sets of heights (the triangle on the plot). This is the point whose x-coordinate is the mean of the parents' heights and y-coordinate is the mean of the childrens' heights. Also, the slope of the regression line is the correlation between the two sets of heights multiplied by the ratio of the standard deviations (parents' to childrens').
-  Figure: meanpt.R
-  FigureType: add
 
 - Class: text
   Output: This lesson will focus on the residuals, the distances between the actual children's heights and the estimates given by the regression line. Since all lines are characterized by two parameters, a slope and an intercept, we'll use the least squares criteria to provide two equations in two unknowns so we can solve for these parameters, the slope and intercept.
@@ -27,7 +15,7 @@
 
 
 - Class: cmd_question
-  Output: We'll demonstrate these concepts now. First regenerate the regression line. Type "fit <- lm(child ~ parent, galton)" 
+  Output: We'll demonstrate these concepts now. First regenerate the regression line and call it fit. Use the R function lm. Recall that by default its first argument is a formula such as "child ~ parent" and its second is the dataset, in this case galton. 
   CorrectAnswer: fit <- lm(child ~ parent, galton)
   AnswerTests: omnitest(correctExpr='fit <- lm(child ~ parent, galton)')
   Hint: Type "fit <- lm(child ~ parent, galton)" at the R prompt.
@@ -37,7 +25,6 @@
   CorrectAnswer: summary(fit)
   AnswerTests: omnitest(correctExpr='summary(fit)')
   Hint: Type "summary(fit)" at the R prompt.
-
 
 - Class: cmd_question
   Output: First check the mean of fit$residuals to see if it's close to 0.
@@ -52,7 +39,7 @@
   Hint: Type "cov(fit$residuals, galton$parent)" at the R prompt.
 
 - Class: text
-  Output: Recall the algebra of the slides and video. The equations for the intercept and slope are found by supposing a change is made to the intercept and slope. Squaring out the resulting expressions produces three summations. The first sum is the original term squared, before the slope and intercept were changed. The third sum totals the squared changes themselves. For instance, if we had changed the OLS fit’s intercept by adding 2, the third sum would be the total of 928 4’s. The middle sum is guaranteed to be zero precisely when the two equations (the conditions on the residuals) are satisfied.
+  Output: Recall the algebra of the slides and video. The equations for the intercept and slope are found by supposing a change is made to the intercept and slope. Squaring out the resulting expressions produces three summations. The first sum is the original term squared, before the slope and intercept were changed. The third sum totals the squared changes themselves. For instance, if we had changed fit’s intercept by adding 2, the third sum would be the total of 928 4’s. The middle sum is guaranteed to be zero precisely when the two equations (the conditions on the residuals) are satisfied.
 
 - Class: text
   Output: We'll verify these claims now. We've defined for you two R functions, est and sqe. Both take two inputs, a slope and an intercept. The function est calculates a child's height (y-coordinate) using the line defined by the two parameters, the slope and intercept. The function  uses the parents' heights in the galton data as x-coordinates. 
@@ -83,7 +70,7 @@
 
 - Class: text
   Output: We've formed for you two 6-long vectors of variations, one for the slope and one for the intercept, sltweak and ictweak, respectively. 
- 
+
 - Class: cmd_question
   Output: Now we'll form the left hand side of the identity we're trying to establish, the squared errors of the 6 regression line tweaks. Type "for (n in 1:6) lhs[n] <- sqe(ols.slope+sltweak[n],ols.ic+ictweak[n])"
   CorrectAnswer: for (n in 1:6) lhs[n] <- sqe(ols.slope+sltweak[n],ols.ic+ictweak[n]) 
@@ -190,6 +177,3 @@
   CorrectAnswer: cov(efit$residuals, attenu$dist)
   AnswerTests: ANY_of_exprs('cov(efit$residuals, attenu$dist)','cov(attenu$dist,efit$residuals)')
   Hint: Type "cov(efit$residuals, attenu$dist)" at the R prompt.
-
-- Class: text
-  Output: Congrats! You've concluded this lesson on ordinary least squares which are truly extraordinary!

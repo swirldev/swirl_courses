@@ -1,1 +1,0 @@
-points(mean(galton$parent),mean(galton$child),col="purple",lwd=2,pch=2,cex=1.5)
