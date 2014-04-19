@@ -27,7 +27,6 @@ rgp1 <- function(){
   x3 <- rnorm(n)
   # Point B:
   betas <- sapply(1 : nosim, function(i)makelms(x1, x2, x3))
-  # Point C:
   round(apply(betas, 1, sd), 5)
 }
 
@@ -40,12 +39,11 @@ rgp2 <- function(){
   nosim <- 1000
   # set seed for reproducability
   set.seed(4321)
-  # Point D:
+  # Point C:
   x1 <- rnorm(n)
-  # Point E:
   x2 <- x1/sqrt(2) + rnorm(n) /sqrt(2)
-  # Point F:
   x3 <- x1 * 0.95 + rnorm(n) * sqrt(1 - 0.95^2)
+  # Point D:
   betas <- sapply(1 : nosim, function(i)makelms(x1, x2, x3))
   round(apply(betas, 1, sd), 5)
 }
