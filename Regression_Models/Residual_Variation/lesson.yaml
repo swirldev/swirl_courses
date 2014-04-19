@@ -10,17 +10,16 @@
   Output: From the lecture and slides we learned that residuals are useful for indicating how well data points fit a statistical model. They "can be thought of as the outcome (Y) with the linear association of the predictor (X) removed. One differentiates residual variation (variation after removing the predictor) from systematic variation (variation explained by the regression model)."
 
 - Class: text
-  Output: We also learned from the lectures that, given a model, the maximum likelihood estimate of the variance is the average squared residual. However, for a large enough sample, n-2 is close to n
-so the formula for the estimated variance is 1/(n-2) * the sum of the squared residuals.
+  Output: We also learned from the lectures that, given a model, the maximum likelihood estimate of the variance of the random error is the average squared residual. However, it is common to use (n-2) instead of n in the formula, so the estimated variance is calculated as 1/(n-2) * the sum of the squared residuals.
 
 - Class: cmd_question
-  Output: To see this we'll use our favorite Galton height data. First regenerate the regression line and call it fit. Use the R function lm. Recall that by default its first argument is a formula such as "child ~ parent" and its second is the dataset, in this case galton. 
+  Output: To see this we'll use our favorite Galton height data. First regenerate the regression line and call it fit. Use the R function lm and recall that by default its first argument is a formula such as "child ~ parent" and its second is the dataset, in this case galton. 
   CorrectAnswer: fit <- lm(child ~ parent, galton)
   AnswerTests: omnitest(correctExpr='fit <- lm(child ~ parent, galton)')
   Hint: Type "fit <- lm(child ~ parent, galton)" at the R prompt.
 
 - Class: cmd_question
-  Output: First we'll repeat what Professor Caffo's experiment. We'll use the residuals (fit$residuals) to estimate the standard deviation sigma. Calculate the sum of the squared residuals divided by the quantity (n-2). Then take the square root.
+  Output: First we'll repeat Professor Caffo's experiment. We'll use the residuals (fit$residuals) of our model to estimate the standard deviation (sigma) of the error. Calculate the sum of the squared residuals divided by the quantity (n-2). Then take the square root.
   CorrectAnswer: sqrt(sum(fit$residuals^2) / (n - 2))
   AnswerTests: omnitest(correctExpr=sqrt(sum(fit$residuals^2) / (n - 2))')
   Hint: Type "sqrt(sum(fit$residuals^2) / (n - 2))" at the R prompt.
@@ -42,7 +41,7 @@ so the formula for the estimated variance is 1/(n-2) * the sum of the squared re
   Output: Total Variation = Residual Variation + Regression Variation
 
 - Class: mult_question
-  Output: Recall the beauty of that  slide just full of algebra which proved this fact. Which sum of squared term represents Total Variation?
+  Output: Recall the beauty of the  slide full of algebra which proved this fact. It had a bunch of Y's, some with hats and some with bars and several summations of squared values. The Y's with hats were the estimates provided by the model. (They were on the regression line.) The Y with the bar was the mean or average of the data. Which sum of squared term represented Total Variation?
   AnswerChoices: Yi-mean(Yi); Yi-Yi_hat; Yi_hat-mean(Yi)
   CorrectAnswer: Yi-mean(Yi)
   AnswerTests: omnitest(correctVal='Yi-mean(Yi)')
@@ -82,16 +81,23 @@ so the formula for the estimated variance is 1/(n-2) * the sum of the squared re
   AnswerTests: omnitest(correctExpr='1-sRes/sTot')
   Hint: Type "1-sRes/sTot" at the R prompt.
 
-- Class: text
-  Output: For fun you can compare your result to the values shown in summary(fit)$sigma to see if it looks familiar.
+- Class: cmd_question
+  Output: For fun you can compare your result to the values shown in summary(fit)$r.squared to see if it looks familiar. Do this now.
+  CorrectAnswer: summary(fit)$r.squared
+  AnswerTests: omnitest(correctExpr='summary(fit).r.squared')
+  Hint: Type "summary(fit).r.squared" at the R prompt.
 
 - Class: cmd_question
-  Output: Now compute the square of the correlation of the data. Use the R function cor.
-  CorrectAnswer: 
-  AnswerTests: omnitest(correctExpr='')
-  Hint: Type "" at the R prompt.
+  Output: To see some real magic, compute the square of the correlation of the data. Use the R function cor.
+  CorrectAnswer: cor(galton$parent,galton$child)^2
+  AnswerTests: omnitest(correctExpr='cor(galton$parent,galton$child)^2')
+  Hint: Type "cor(galton$parent,galton$child)^2" at the R prompt.
 
 
 - Class: text
-  Output: We'll wrap up with a summary of R^2. It is the percentage of variation explained by the regression model. It is the sample correlation squared. R2 can be a misleading summary of model fit.
+  Output: We'll wrap up with a summary of R^2. It is the percentage of variation explained by the regression model, so it is between 0 and 1. It equals the sample correlation squared. R^2 can be a misleading summary of model fit.
 
+- Class: figure
+  Output: We'll close by showing the code (complements of Rstudio's help page) which generates the Anscombe data and plots it. These are four data sets with the same statistical properties but which are different from one another.
+  Figure: demofile.R
+  FigureType: new
