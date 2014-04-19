@@ -54,7 +54,7 @@
   Output: sqe(ols.slope+sl,ols.intercept+ic) == sqe(ols.slope, ols.intercept) + sum(est(sl,ic)ˆ2 )
 
 - Class: text
-  Output: The left side of the equation represents the squared residuals of a new line, the "tweaked" regression line. The terms "sl" and "ic" represent the variations in the slope and intercept respectively. The right side has two terms. The first represents the squared residuals of the regression line and the second is the sum of squares of the variations themselves. 
+  Output: The left side of the equation represents the squared residuals of a new line, the "tweaked" regression line. The terms "sl" and "ic" represent the variations in the slope and intercept respectively. The right side has two terms. The first represents the squared residuals of the original regression line and the second is the sum of squares of the variations themselves. 
 
 - Class: cmd_question
   Output: We'll demonstrate this now. First extract the intercept from fit$coef and put it in a variable called ols.ic . The intercept is the first element in the fit$coef vector, that is fit$coef[1].
@@ -68,23 +68,13 @@
   AnswerTests: omnitest(correctExpr='ols.slope <- fit$coef[2]')
   Hint: Type "ols.slope <- fit$coef[2]" at the R prompt.
 
-- Class: text
-  Output: We've formed for you two 6-long vectors of variations, one for the slope and one for the intercept, sltweak and ictweak, respectively. 
+- Class: figure
+  Output: Now we'll show you some R code which generates the left and right sides of this equation.  Take a moment to look it over. We've formed two 6-long vectors of variations, one for the slope and one for the intercept. Then we have two for loops to generate the two sides of the equation.
+  Figure: demofile.R
+  FigureType: new
 
 - Class: cmd_question
-  Output: Now we'll form the left hand side of the identity we're trying to establish, the squared errors of the 6 regression line tweaks. Type "for (n in 1:6) lhs[n] <- sqe(ols.slope+sltweak[n],ols.ic+ictweak[n])"
-  CorrectAnswer: for (n in 1:6) lhs[n] <- sqe(ols.slope+sltweak[n],ols.ic+ictweak[n]) 
-  AnswerTests: omnitest(correctExpr='for (n in 1:6) lhs[n] <- sqe(ols.slope+sltweak[n],ols.ic+ictweak[n])')
-  Hint: Type "for (n in 1:6) lhs[n] <- sqe(ols.slope+sltweak[n],ols.ic+ictweak[n])" at the R prompt.
-
-- Class: cmd_question
-  Output: Now we'll form the right hand side of the identity we're trying to establish. This is the sum of the squared error of the actual regression line and the sum of the squares of the tweaks. Type "for (n in 1:6) rhs[n] <- sqe(ols.slope,ols.ic) + sum(est(sltweak[n],ictweak[n])^2)"
-  CorrectAnswer: for (n in 1:6) rhs[n] <- sqe(ols.slope,ols.ic) + sum(est(sltweak[n],ictweak[n])^2)
-  AnswerTests: omnitest(correctExpr='for (n in 1:6) rhs[n] <- sqe(ols.slope,ols.ic) + sum(est(sltweak[n],ictweak[n])^2)')
-  Hint: Type "for (n in 1:6) rhs[n] <- sqe(ols.slope,ols.ic) + sum(est(sltweak[n],ictweak[n])^2)" at the R prompt.
-
-- Class: cmd_question
-  Output: Subtract the right side from the left to see the relationship between the two sides of the equation. You should get a vector of very small, almost 0, numbers.
+  Output: Subtract the right side, the vector rhs, from the left, the vector lhs to see the relationship between them. You should get a vector of very small, almost 0, numbers.
   CorrectAnswer: lhs-rhs
   AnswerTests: omnitest(correctExpr='lhs-rhs')
   Hint: Type "lhs-rhs" at the R prompt.
@@ -108,50 +98,24 @@
   Hint: Type "varEst <- var(est(ols.slope, ols.ic))" at the R prompt.
 
 - Class: cmd_question
-  Output: Now compute the sum of varRes and varEst and store the result in a variable called varPutative.
-  CorrectAnswer: varPutative <- varEst + varRes
-  AnswerTests: ANY_of_exprs('varPutative <- varEst + varRes','varPutative <- varRes + varEst')
-  Hint: Type "varPutative <- varEst + varRes" at the R prompt.
+  Output: Now compute the sum of varRes and varEst and store the result in a variable called varSum.
+  CorrectAnswer: varSum <- varEst + varRes
+  AnswerTests: ANY_of_exprs('varSum <- varEst + varRes','varSum <- varRes + varEst')
+  Hint: Type "varSum <- varEst + varRes" at the R prompt.
 
 - Class: cmd_question
-  Output: Finally, subtract varPutative from the variance of the children's heights, varChild, to see if the two are close. You should get a result near 0. 
-  CorrectAnswer: varChild - varPutative 
-  AnswerTests: omnitest(correctExpr='varChild - varPutative')
-  Hint: Type "varChild - varPutative" at the R prompt.
+  Output: Finally, subtract varSum from the variance of the children's heights, varChild, to see if the two are close. You should get a result near 0. 
+  CorrectAnswer: varChild - varSum 
+  AnswerTests: omnitest(correctExpr='varChild - varSum')
+  Hint: Type "varChild - varSum" at the R prompt.
 
 
 - Class: text
   Output: Since variances are sums of squares (and hence always positive), this equation which we've just demonstrated,  var(data)=var(estimate)+var(residuals), shows that the variance of the estimate is ALWAYS less than the variance of the data.
 
-- Class: cmd_question
-  Output: From Wikipedia we learn that the value R^2 (R squared), the coefficient of determination, indicates how well data points fit a statistical model. We can calculate R^2 for our line of regression and galton data. First calculate the mean of the children's heights and store it in a variable called mu.
-  CorrectAnswer: mu <- mean(galton$child) 
-  AnswerTests: omnitest(correctExpr='mu <- mean(galton$child)')
-  Hint: Type "mu <- mean(galton$child)" at the R prompt.
-
-- Class: cmd_question
-  Output: Now calculate the sum of the squares of the children's heights normalized by mu and store the result in a variable called sTot.
-  CorrectAnswer: sTot <- sum((galton$child-mu)^2)
-  AnswerTests: ANY_of_exprs('sTot <- sum((galton$child-mu)^2)','sTot <- sum((galton$child-mu)*(galton$child-mu))')
-  Hint: Type "sTot <- sum((galton$child-mu)^2)" at the R prompt.
-
-- Class: cmd_question
-  Output: Now use the function sqe to calculate the sum of the squares of the distances between the children's heights and the regression line (the residuals). Recall that sqe takes two parameters, a slope (ols.slope) and an intercept (ols.ic). Do this now and store it in a variable called sRes.
-  CorrectAnswer: sRes <- sqe(ols.slope, ols.ic)
-  AnswerTests: omnitest(correctExpr='sRes <- sqe(ols.slope, ols.ic)')
-  Hint: Type "sRes <- sqe(ols.slope, ols.ic)" at the R prompt.
-
-- Class: cmd_question
-  Output: Finally, subtract from 1 the fraction sRes/sTot.  This is the value R^2.
-  CorrectAnswer: 1-sRes/sTot
-  AnswerTests: omnitest(correctExpr='1-sRes/sTot')
-  Hint: Type "1-sRes/sTot" at the R prompt.
 
 - Class: text
-  Output: For fun you can compare your result to the values shown in summary(fit) to see if any look like it.
-
-- Class: text
-  Output: The two properties of the residuals we've emphasized here can be applied to datasets which have multiple predictors. In this lesson we've loaded the dataset attenu which gives data for 23 earthquakes in California. Accelerations are estimated based on distance and magnitude. 
+  Output: The two properties of the residuals we've emphasized here can be applied to datasets which have multiple predictors. In this lesson we've loaded the dataset attenu which gives data for 23 earthquakes in California. Accelerations are estimated based on two predictors, distance and magnitude. 
 
 
 - Class: cmd_question
