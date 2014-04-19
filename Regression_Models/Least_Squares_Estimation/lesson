@@ -7,7 +7,7 @@
   Version: 2.1.1
 
 - Class: text
-  Output: In this lesson you'll be able to play with some of the code Professor Caffo showed in his lecture. We provide it for you so you can examine it carefully without having to type it all out.  We'll get to that soon.
+  Output: In this lesson you'll be able to play with some of the code Professor Caffo showed in his lecture. We provide it for you so you can examine it without having to type it all out.  When the edit window displays code, make sure your flashing cursor is back in the console window before you hit "Enter" or any keyboard buttons, otherwise you might accidentally alter the code. 
 
 - Class: figure
   Output: Here are the Galton data and the regression line seen in the video. The regression line summarizes the relationship between parents' heights (the predictors) and their childrens' (the outcomes). 
