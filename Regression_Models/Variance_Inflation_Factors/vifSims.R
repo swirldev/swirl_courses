@@ -1,4 +1,3 @@
-
 makelms <- function(x1, x2, x3){
   # Simulate a dependent variable, y, as x1
   # plus a normally distributed error of mean 0 and 

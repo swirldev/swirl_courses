@@ -18,7 +18,7 @@ creates_glm_model <- function(correctExpr){
   # If not, highlight the misspelling
   if(!nameGood){
     swirl_out(paste0("You seem to have misspelled the model's name. I was expecting ", names(eSw), 
-                     " but you apparenlty typed ", names(eUsr), "."))
+                     " but you apparently typed ", names(eUsr), "."))
     return(FALSE)
   }
   # Check for effective equality of the models
