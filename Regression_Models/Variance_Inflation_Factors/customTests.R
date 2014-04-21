@@ -1,9 +1,16 @@
 # So swirl does not repeat execution of plot commands
 AUTO_DETECT_NEWVAR <- FALSE
 
-# Returns TRUE if the user has created a specified glm model
+# Returns TRUE if e$expr matches any of the expressions given
+# (as characters) in the argument.
+ANY_of_exprs <- function(...){
+  e <- get("e", parent.frame())
+  any(sapply(c(...), function(expr)omnitest(expr)))
+}
+
+# Returns TRUE if the user has created a specified lm model
 # with a specified name.
-creates_glm_model <- function(correctExpr){
+creates_lm_model <- function(correctExpr){
   e <- get("e", parent.frame())
   # Recreate what the user has done
   eUsr <- cleanEnv(e$snapshot)
@@ -22,14 +29,6 @@ creates_glm_model <- function(correctExpr){
     return(FALSE)
   }
   # Check for effective equality of the models
-  isTRUE(all.equal(as.vector(mdlUsr$coefficients), as.vector(mdlSw$coefficients))) &
-    identical(mdlUsr$family$family, mdlSw$family$family) &
+  isTRUE(all.equal(sort(as.vector(mdlUsr$coefficients)), sort(as.vector(mdlSw$coefficients)))) &
     isTRUE(all.equal(mdlUsr$fitted.values, mdlSw$fitted.values))
-}
-
-# Returns TRUE if e$expr matches any of the expressions given
-# (as characters) in the argument.
-ANY_of_exprs <- function(...){
-  e <- get("e", parent.frame())
-  any(sapply(c(...), function(expr)omnitest(expr)))
 }

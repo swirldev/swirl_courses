@@ -91,7 +91,7 @@
   Hint: Print myData to the console.
 
 - Class: cmd_question
-  Output: Now that's we've got NAs down pat, let's look at a second type of missing value -- NaN, which stands for 'not a number'. To generate NaN, try dividing (using a forward slash) 0 by 0 now.
+  Output: Now that we've got NAs down pat, let's look at a second type of missing value -- NaN, which stands for 'not a number'. To generate NaN, try dividing (using a forward slash) 0 by 0 now.
   CorrectAnswer: 0/0
   AnswerTests: omnitest(correctExpr='0/0')
   Hint: Try 0/0.
