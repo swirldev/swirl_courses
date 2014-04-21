@@ -1,21 +1,21 @@
 - Class: meta
   Course: Regression_Models
   Lesson: Least_Squares_Estimation
-  Author: Your name goes here
+  Author: Swirl Coders
   Type: Standard
-  Organization: Your organization goes here (optional)
-  Version: 2.1.1
+  Organization: Johns Hopkins Bloomberg School of Public Health
+  Version: 2.2.0
 
 - Class: text
-  Output: In this lesson you'll be able to play with some of the code Professor Caffo showed in his lecture. We provide it for you so you can examine it without having to type it all out.  When the edit window displays code, make sure your flashing cursor is back in the console window before you hit "Enter" or any keyboard buttons, otherwise you might accidentally alter the code. 
+  Output: In this lesson, if you're using RStudio, you'll be able to play with some of the code Professor Caffo showed in his lecture. If you're not using RStudio, you can look at the code but you won't be able to experiment with the function "manipulate". We provide the code for you so you can examine it without having to type it all out.  In RStudio, when the edit window displays code, make sure your flashing cursor is back in the console window before you hit "Enter" or any keyboard buttons, otherwise you might accidentally alter the code. If you do accidentally alter the file just hit Ctrl z in the editor until all the unwanted changes disappear.
 
 - Class: figure
-  Output: Here are the Galton data and the regression line seen in the video. The regression line summarizes the relationship between parents' heights (the predictors) and their childrens' (the outcomes). 
+  Output: Here are the Galton data and the regression line seen in the Introduction. We loaded the data with the R command 'galton <- UsingR::galton'. This Galton data is one of the many datasets that R provides for users. The regression line summarizes the relationship between parents' heights (the predictors) and their childrens' (the outcomes). 
   Figure: plot1.R
   FigureType: new
 
 - Class: text
-  Output: We learned in the last lesson that the regression line is the line through the data which has the minimum (least) squared "error", the vertical distance between the 928 actual children's heights and the heights predicted by the line. Squaring the distances ensures that data points above and below the line are treated the same. The regression line fits the data best in the sense of ordinary least squares.
+  Output: We learned in the last lesson that the regression line is the line through the data which has the minimum (least) squared "error", the vertical distance between the 928 actual children's heights and the heights predicted by the line. Squaring the distances ensures that data points above and below the line are treated the same. This method of choosing the 'best' regression line (or 'fitting' a line to the data) is known as ordinary least squares.
 
 - Class: figure
   Output: From the slides and video we learned that the regression line contains the point representing the means of the two sets of heights. These are shown by the thin horizontal and vertical lines. The intersection point is shown by the triangle on the plot. Its x-coordinate is the mean of the parents' heights and y-coordinate is the mean of the childrens' heights. 
@@ -93,7 +93,7 @@
   Hint: Since you're swapping X and Y, swap the X and Y in the formula. Swapping X and Y in the correlation function doesn't change anything.
 
 - Class: figure
-  Output: We'll close with a final display of source code from the Professor Caffo's lecture. It plots the galton data with three regression lines, the original in red with the children as the outcome,  a new blue line with the parents' as outcome and childrens' as predictor, and a black line with the slope scaled so it equals the correlation. 
+  Output: We'll close with a final display of source code from the Professor Caffo's lecture. It plots the galton data with three regression lines, the original in red with the children as the outcome,  a new blue line with the parents' as outcome and childrens' as predictor, and a black line with the slope scaled so it equals the ratio of the standard deviations. 
   Figure: demofile2.R
   FigureType: new
 

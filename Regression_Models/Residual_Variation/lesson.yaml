@@ -18,8 +18,11 @@
   AnswerTests: omnitest(correctExpr='fit <- lm(child ~ parent, galton)')
   Hint: Type "fit <- lm(child ~ parent, galton)" at the R prompt.
 
+- Class: text
+  Output: First we'll repeat Professor Caffo's experiment. We'll use the residuals (fit$residuals) of our model to estimate the standard deviation (sigma) of the error. We've already defined n for you as the number of points in Galton's dataset (928).
+
 - Class: cmd_question
-  Output: First we'll repeat Professor Caffo's experiment. We'll use the residuals (fit$residuals) of our model to estimate the standard deviation (sigma) of the error. Calculate the sum of the squared residuals divided by the quantity (n-2). We've already defined n for you as the number of points in Galton's dataset (928). Then take the square root.
+  Output:  Calculate the sum of the squared residuals divided by the quantity (n-2).  Then take the square root.
   CorrectAnswer: sqrt(sum(fit$residuals^2) / (n - 2))
   AnswerTests: omnitest(correctExpr='sqrt(sum(fit$residuals^2) / (n - 2))')
   Hint: Type "sqrt(sum(fit$residuals^2) / (n - 2))" at the R prompt.
@@ -58,13 +61,13 @@
   Output: The term R^2 represents the percent of total variation described by the model, the regression variation (the term we didn't ask about in the preceding multiple choice questions). Also, since it is a percent we need a ratio or fraction of sums of squares. Let's do this now for our Galton data.
 
 - Class: cmd_question
-  Output: We'll start with easy steps. Calculate the mean of the children's heights and store it in a variable called mu.
+  Output: We'll start with easy steps. Calculate the mean of the children's heights and store it in a variable called mu. Recall that we reference the childrens' heights with the expression 'galton$child' and the parents' heights with the expression 'galton$parent'.
   CorrectAnswer: mu <- mean(galton$child) 
   AnswerTests: omnitest(correctExpr='mu <- mean(galton$child)')
   Hint: Type "mu <- mean(galton$child)" at the R prompt.
 
 - Class: cmd_question
-  Output: Now calculate the sum of the squares of the children's heights normalized by mu and store the result in a variable called sTot. This represents the Total Variation of the data.
+  Output: Recall that centering data means subtracting the mean from each data point. Now calculate the sum of the squares of the centered children's heights  and store the result in a variable called sTot. This represents the Total Variation of the data.
   CorrectAnswer: sTot <- sum((galton$child-mu)^2)
   AnswerTests: ANY_of_exprs('sTot <- sum((galton$child-mu)^2)','sTot <- sum((galton$child-mu)*(galton$child-mu))')
   Hint: Type "sTot <- sum((galton$child-mu)^2)" at the R prompt.
@@ -98,6 +101,6 @@
   Output: We'll now summarize useful facts about R^2. It is the percentage of variation explained by the regression model. As a percentage it is between 0 and 1. It also equals the sample correlation squared. However, R^2 can be a misleading summary of model fit.
 
 - Class: figure
-  Output: Congrats! You've finished. To celebrate we'll close by running the code (complements of Rstudio's help page) which generates the Anscombe data and plots it. These are four different data sets with the same statistical properties (and regression models). 
+  Output: Congrats! You've finished. To celebrate we'll close by running the code (provided in Rstudio's help page) which generates the Anscombe data and plots it. These are four very different data sets with the same statistical properties and regression models. We're showing the code and we've taken the liberty of commenting out some of the print and summary lines.
   Figure: demofile.R
   FigureType: new

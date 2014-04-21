@@ -9,12 +9,12 @@ for(i in 1:4) {
   ## or   ff[[2]] <- as.name(paste0("y", i))
   ##      ff[[3]] <- as.name(paste0("x", i))
   mods[[i]] <- lmi <- lm(ff, data = anscombe)
-  print(anova(lmi))
+ # print(anova(lmi))
 }
 
 ## See how close they are (numerically!)
-sapply(mods, coef)
-lapply(mods, function(fm) coef(summary(fm)))
+#sapply(mods, coef)
+#lapply(mods, function(fm) coef(summary(fm)))
 
 ## Now, do what you should have done in the first place: PLOTS
 op <- par(mfrow = c(2, 2), mar = 0.1+c(4,4,1,1), oma =  c(0, 0, 2, 0))
