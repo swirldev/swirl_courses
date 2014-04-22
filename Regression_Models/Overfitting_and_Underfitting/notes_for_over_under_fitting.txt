@@ -1,0 +1,166 @@
+# Notes for VIF
+
+## Preamble:
+In the Variance Inflation Factors lesson we demonstrated that including new variables increases standard errors of other, correlated regressors. Hence, we don't want to idly throw variables into the model. On the other hand, omitting variables results in bias in the coefficients of interest, unless their regressors are uncorrelated with the omitted ones. In this lesson we demonstrate the effect of omitted variables and discuss various methods for constructing parsimonious, interpretable representations of the data.
+
+
+# Omitting variables results in bias in the coefficients of interest - unless their regressors are uncorrelated with the omitted ones.
+Simulation:
+> temp <- rnorm(100)
+> x1 <- (temp + rnorm(100))/sqrt(2)
+> x2 <- (temp + rnorm(100))/sqrt(2)
+> x3 <- rnorm(100)
+> y <- x1 + x2 + x3 + rnorm(100)
+> coef(y ~ 0 + x1 + x2 + x3) etc.
+
+## (muliple variable linear) model design
+Good design can often eliminate the need for complex model searches at analyses; though often control over the design is limited. If the models of interest are nested and without lots of parameters differentiating them, it's fairly uncontroversial to use nested likelihood ratio tests. (Example to follow.)
+My favoriate approach is as follows. Given a coefficient that I'm interested in, I like to use covariate adjustment and multiple models to probe that effect to evaluate it for robustness and to see what other covariates knock it out. This isn't a terribly systematic approach, but it tends to teach you a lot about the the data as you get your hands dirty.
+
+
+# The model must tend toward perfect fit as the number of non-redundant regressors approaches n.
+Simulation: R2 increases monotonically as more regressors are included.
+# Residual variance decreases monotonically as more regressors are included.
+> temp <- swiss
+> for(n in 1:41){temp[,paste0("random",n)] <- rnorm(nrow(temp))}
+> f <- function(n){summary(lm(Fertility ~ ., temp[,1:n])$r.squared)}
+> r.temp <- sapply(6:46, f)
+> plot(r.temp)
+
+
+## ANOVA for multiple linear regression
+Essentially tests if including additional regressors significantly improves R^2. Assumption is that the terms in the ratio are chi-square distributed with suitable df's. Null hypothesis is that two R^2 are the same (suitably adjusted for df.)
+
+# Note: no reason to use update here; it's just a complication
+fit1 <- lm(Fertility ~ Agriculture, data = swiss)
+fit3 <- update(fit, Fertility ~ Agriculture + Examination + Education)
+fit5 <- update(fit, Fertility ~ Agriculture + Examination + Education + Catholic + Infant.Mortality)
+anova(fit1, fit3, fit5)
+
+# Judging from the results below, I think what he's getting at might be best demonstrated by 
+# including a junk variamble.
+fit6 <- fit6 <- lm(Fertility ~ Agriculture + Examination + Education+ Catholic + 
++                Infant.Mortality + junk, swiss)
+
+Analysis of Variance Table
+
+Model 1: Fertility ~ Agriculture
+Model 2: Fertility ~ Agriculture + Examination + Education
+Model 3: Fertility ~ Agriculture + Examination + Education + Catholic + 
+    Infant.Mortality
+  Res.Df  RSS Df Sum of Sq    F  Pr(>F)      RSS is sum(fitx$residuals^2)
+1     45 6283                                Sum of sq is difference of RSS with previous model
+2     43 3181  2      3102 30.2 8.6e-09 ***  Df is number of additional predictors.
+3     41 2105  2      1076 10.5 0.00021 ***  scale is deviance()
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+## compuations
+fit2 <- lm(Fertility ~ Agriculture + Examination, swiss)
+debug(stat.anova)
+anova(fit1, fit2)
+
+Browse[2]> table
+table:
+  Res.Df      RSS Df Sum of Sq
+1     45 6283.116 NA        NA
+2     44 4072.740  1  2210.376
+
+sum(fit1$residuals^2)
+[1] 6283.116
+fit1$df.residual
+[1] 45
+sum(fit2$residuals^2)
+[1] 4072.74
+fit2$df.residual
+[1] 44
+
+debug: Fvalue <- (table[, dev.col]/dfs)/scale
+debug: Fvalue[dfs %in% 0] <- NA
+
+Browse[2]> Fvalue
+[1]       NA 23.87988
+
+Browse[2]> dfs # Df column of table; essentially diffs of residual df's
+[1] NA  1
+
+Browse[2]> scale
+[1] 92.56226
+
+deviance(fit2)/fit2$df.residual
+[1] 92.56226
+
+Browse[2]> df.scale
+[1] 44
+
+From calling function:
+ resdf <- as.numeric(lapply(objects, df.residual))
+ df.scale = resdf[bigmodel]
+and
+df.residual(fit2)
+[1] 44
+
+debug: cbind(table, F = Fvalue, `Pr(>F)` = pf(Fvalue, abs(dfs), df.scale, 
+    lower.tail = FALSE))
+
+Browse[2]> pf(Fvalue[2], df.residual(fit1)-df.residual(fit2), df.residual(fit2), lower.tail=FALSE)
+[1] 1.400471e-05
+
+scale <- resdev[bigmodel]/resdf[bigmodel]
+resdev <- as.numeric(lapply(objects, deviance)) # ordered by deviance
+resdf <- as.numeric(lapply(objects, df.residual)) # same (length of data - number of predictors)
+df.scale = resdf[bigmodel]
+
+> debugonce(stat.anova)
+> anova(fit1, fit3)
+
+Browse[2]> table
+  Res.Df      RSS Df Sum of Sq
+1     45 6283.116 NA        NA
+2     43 3180.925  2  3102.191
+sum(fit1$residuals^2)
+[1] 6283.116
+sum(fit3$residuals^2)
+[1] 3180.925
+fit1$df.residual
+[1] 45
+fit3$df.residual
+[1] 43
+
+Fvalue <- (table[, dev.col]/dfs)/scale
+
+Browse[2]> table[,dev.col]
+[1]       NA 3102.191
+sum(fit1$residuals^2) - sum(fit3$residuals^2)
+[1] 3102.191
+deviance(fit1)-deviance(fit3)
+[1] 3102.191
+
+Browse[2]> scale
+[1] 73.975
+deviance(fit3)/df.residual(fit3)
+[1] 73.975
+
+Browse[2]> dfs
+[1] NA  2
+df.residual(fit1)-df.residual(fit3)
+[1] 2
+
+Browse[2]> Fvalue
+[1]       NA 20.96783
+(deviance(fit1)-deviance(fit3))/(df.residual(fit1)-df.residual(fit3))/(deviance(fit3)/df.residual(fit3))
+[1] 20.96783
+
+cbind(table, F = Fvalue, `Pr(>F)` = pf(Fvalue, abs(dfs), df.scale, lower.tail = FALSE))
+[1]       NA 20.96783 # as above
+Browse[2]> abs(dfs)   
+[1] NA  2             # df.residual(fit1)-df.residual(fit3)
+Browse[2]> df.scale
+[1] 43                # df.residual(fit3)
+
+norm.cnst <- (df.residual(fit1)-df.residual(fit3))/df.residual(fit3)
+[1] 0.04651163
+dev.ratio <- (deviance(fit1)-deviance(fit3))/deviance(fit3)
+[1] 0.9752481
+dev.ratio/norm.cnst
+[1] 20.96783
