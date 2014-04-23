@@ -1,44 +1,60 @@
 # Notes for VIF
 
 ## Preamble:
-In the Variance Inflation Factors lesson we demonstrated that including new variables increases standard errors of other, correlated regressors. Hence, we don't want to idly throw variables into the model. On the other hand, omitting variables results in bias in the coefficients of interest, unless their regressors are uncorrelated with the omitted ones. In this lesson we demonstrate the effect of omitted variables and discuss various methods for constructing parsimonious, interpretable representations of the data.
+The Variance Inflation Factors lesson demonstrated that including new variables will increase standard errors of other, correlated regressors. Hence, we don't want to idly throw variables into the model. On the other hand, omitting variables results in bias in other coefficients with which the omitted regressors are correlated. In this lesson we demonstrate the effect of omitted variables and discuss methods for constructing parsimonious, interpretable representations of the data.
 
+## Source file:
+We shall use a combination of real and simulated data. Relevant code is in a file named fitting.R which I have copied into your working directory and tried to display in your source code editor. If I've failed to display it, you should open it manually.
 
-# Omitting variables results in bias in the coefficients of interest - unless their regressors are uncorrelated with the omitted ones.
-Simulation:
-> temp <- rnorm(100)
-> x1 <- (temp + rnorm(100))/sqrt(2)
-> x2 <- (temp + rnorm(100))/sqrt(2)
-> x3 <- rnorm(100)
-> y <- x1 + x2 + x3 + rnorm(100)
-> coef(y ~ 0 + x1 + x2 + x3) etc.
+## Inspecting simbias
+1. A: x1 and x2 are correlated. B: x1 and x3 are not.
+2. C: what is the actual coefficient of x1?
+3. D: returns the coefficient of x1 as estimated in regression omitting x3 and x2 resp. Which is biased?
 
-## (muliple variable linear) model design
-Good design can often eliminate the need for complex model searches at analyses; though often control over the design is limited. If the models of interest are nested and without lots of parameters differentiating them, it's fairly uncontroversial to use nested likelihood ratio tests. (Example to follow.)
-My favoriate approach is as follows. Given a coefficient that I'm interested in, I like to use covariate adjustment and multiple models to probe that effect to evaluate it for robustness and to see what other covariates knock it out. This isn't a terribly systematic approach, but it tends to teach you a lot about the the data as you get your hands dirty.
+## Running simbias
+1. cx1 <- simbias()
+2. calculate means and sds with apply(temp, 1, mean) etc.
+3. plot histograms with labels. Indicate code but say it's incidental to the point of the lesson.
 
+## Irrelevant regressors
+Adding even irrelevant regressors can cause a model to tend toward a perfect fit. We illustrate by adding random regressors to the swiss data and regressing on progressively more of them. As the number of regressors approaches the number of data points (47), deviance approaches 0.
+1. form data
+2. collect deviances
+3. plot
 
-# The model must tend toward perfect fit as the number of non-redundant regressors approaches n.
-Simulation: R2 increases monotonically as more regressors are included.
-# Residual variance decreases monotonically as more regressors are included.
-> temp <- swiss
-> for(n in 1:41){temp[,paste0("random",n)] <- rnorm(nrow(temp))}
-> f <- function(n){summary(lm(Fertility ~ ., temp[,1:n])$r.squared)}
-> r.temp <- sapply(6:46, f)
-> plot(r.temp)
+## Introduce ANOVA
+In the illustration, adding random regressors decrease deviance but we would be mistaken to believe that such decreases are significant. To assess significance, we should take into account that adding regressors reduces residual degrees of freedom. Analysis of variance (ANOVA) is a way to do so.
+#
+Good design can often eliminate the need for complex model searches and analyses. If the phenomena of interest involve relatively few regressors, it's feasible and fairly uncontroversial to model by trial and error. We illustrate by testing nested models of the Swiss data using ANOVA to test if including additional regressors significantly improves deviance, accounting for degrees of freedom.
 
+## Illustrating anova()
+* fit1 <- lm(Fertility ~ Agriculture, swiss)
+* fit3 <- lm(Fertility ~ Agriculture + Examination + Education, swiss)
+* anova(fit1, fit3)
+* Explain and question 1) Res.Df, 2) RSS (deviance), 3) Df 4) F
+* Interpretation: at least one of the two additional regressors is significant. (Null hypothesis is neither.)
 
-## ANOVA for multiple linear regression
-Essentially tests if including additional regressors significantly improves R^2. Assumption is that the terms in the ratio are chi-square distributed with suitable df's. Null hypothesis is that two R^2 are the same (suitably adjusted for df.)
+## Demonstrate calculation of the F value.
+* Recall that the F distribution is the ratio of two chi-square distributions with degrees of freedom df1 and df2, respectively, where each chi-square has first been divided by its degrees of freedom.
+* temp.1 <- (deviance(fit1) -deviance(fit3))/2 
+* df of delta deviance = 2, not obvious, requires a bit of proof. But the basic idea is that fit3 has 2 additional regressors.
+* might show that cor(fit1$residuals-fit3$residuals, fit3$residuals) is essentially 0.
+* temp.2 <- deviance(fit3)/43 # deviance(fit3) ~ chi-square with 43 df
+* Fvalue <- temp.1/temp.2
+* The ratio is pf(Fvalue, 2, 43, lower.tail = FALSE)) # prob of Fvalue or greater. The one-tailed version only tests in one direction, that is the variance from the first population is either greater than or less than (but not both) the second population variance.
 
-# Note: no reason to use update here; it's just a complication
-fit1 <- lm(Fertility ~ Agriculture, data = swiss)
-fit3 <- update(fit, Fertility ~ Agriculture + Examination + Education)
-fit5 <- update(fit, Fertility ~ Agriculture + Examination + Education + Catholic + Infant.Mortality)
+# Do at least fit5 & maybe bogus regressors.
+fit1 <- lm(Fertility ~ Agriculture, swiss)
+fit3 <- lm(Fertility ~ Agriculture + Examination + Education, swiss)
+fit5 <- lm(Fertility ~ Agriculture + Examination + Education + Catholic + Infant.Mortality, swiss)
 anova(fit1, fit3, fit5)
 
+# review questions
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 # Judging from the results below, I think what he's getting at might be best demonstrated by 
-# including a junk variamble.
+# including a junk variable.
 fit6 <- fit6 <- lm(Fertility ~ Agriculture + Examination + Education+ Catholic + 
 +                Infant.Mortality + junk, swiss)
 
