@@ -37,6 +37,13 @@
 - Class: text
   Output: Pretty cool,  huh? 
 
+- Class: cmd_question
+  Output: Another cool thing - take the sqrt of  "deviance(fit)/(n-2)" at the R prompt.
+  CorrectAnswer: sqrt(deviance(fit)/(n-2))
+  AnswerTests: omnitest(correctExpr='sqrt(deviance(fit)/(n-2))')
+  Hint: Type "sqrt(deviance(fit)/(n-2))" at the R prompt.
+
+
 - Class: text
   Output: Another useful fact shown in the slides and lecture was
 
@@ -73,10 +80,10 @@
   Hint: Type "sTot <- sum((galton$child-mu)^2)" at the R prompt.
 
 - Class: cmd_question
-  Output: Now use the function we used in the last lesson, sqe, to calculate the sum of the squares of the distances between the children's heights and the regression line (the residuals). This represents the Residual Variation. Recall that sqe takes two parameters, a slope (fit$coef[2]) and an intercept (fit$coef[1]). Do this now and store it in a variable called sRes.
-  CorrectAnswer: sRes <- sqe(fit$coef[2],fit$coef[1])
-  AnswerTests: omnitest(correctExpr='sRes <- sqe(fit$coef[2],fit$coef[1])')
-  Hint: Type "sRes <- sqe(fit$coef[2],fit$coef[1])" at the R prompt.
+  Output: Now use the R function deviance to calculate the sum of the squares of the distances between the children's heights and the regression line (the residuals). This represents the Residual Variation. 
+  CorrectAnswer: sRes <- deviance(fit)
+  AnswerTests: omnitest(correctExpr='sRes <- deviance(fit)')
+  Hint: Type "sRes <- deviance(fit)" at the R prompt.
 
 - Class: cmd_question
   Output: Finally, the ratio sRes/sTot represents the percent of total variation contributed by the residuals. To find the percent contributed by the model, i.e., the regression variation,  subtract the fraction sRes/sTot from 1.  This is the value R^2.
