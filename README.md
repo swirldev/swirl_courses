@@ -12,15 +12,17 @@ The following are some of our more popular courses:
 
 For more information regarding swirl, visit [swirlstats.com](http://swirlstats.com) or the [swirl GitHub repository](https://github.com/swirldev/swirl).
 
-## How to install and run a course automatically from swirl
+## Install and run a course automatically from swirl
 
-- Make sure you have a recent version version of swirl:
+**This is the preferred method of installing courses.** It automates the process by allowing you to do everything right from the R console.
+
+1) Make sure you have a recent version version of swirl:
 
 ```
 install.packages("swirl")
 ```
 
-- Enter the following from the R console, substituting the name of the course that you wish to install:
+2) Enter the following from the R console, **substituting the name of the course** that you wish to install:
 
 ```
 library(swirl)
@@ -30,13 +32,15 @@ swirl()
 
 For example, `install_from_swirl("R Programming")` will install the R Programming course. **Please note that course names are case sensitive!**
 
-## How to install and run a course manually
+If that doesn't work for you...
 
-If the method outlined above does not work for you, then there's a simple alternative.
+## Install and run a course manually
 
-- Click on the **Download Zip** button on the righthand side of this page.
+If the automatic course installation method outlined above does not work for you, then there's a simple alternative.
 
-- Then, enter the following from the R console, substituting the correct file path to your downloaded file and the name of your desired course:
+1) Click on the **Download Zip** button on the righthand side of this page.
+
+2) Enter the following from the R console, **substituting the correct file path** to your downloaded file and the **name of your desired course**:
 
 ```
 library(swirl)
@@ -50,10 +54,12 @@ For example, if you download the zip file to `~/Downloads/swirl_courses-master.z
 install_course_zip("~/Downloads/swirl_courses-master.zip", multi=TRUE, which_course="R Programming")
 ```
 
-If you omit the `which_course` argument, then all available courses from this repository will be installed:
+**Please note that course names are case sensitive!**
+
+Although we recommend you install one course at a time, if you omit the `which_course` argument, then all available courses from this repository will be installed:
 
 ```
 install_course_zip("~/Downloads/swirl_courses-master.zip", multi=TRUE)
 ```
 
-If you'd like to remove a course, you can use `uninstall_course("Course Name Here")`.
+If you'd like to remove a course at any time, you can use `uninstall_course("Course Name Here")`.
