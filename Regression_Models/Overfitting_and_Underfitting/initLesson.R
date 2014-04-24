@@ -1,4 +1,4 @@
-swiss <- car::swiss
+swiss <- datasets::swiss
 file.copy(from=file.path(find.package("swirl"),
                          "Courses/Regression_Models",
                          "Overfitting_and_Underfitting/fitting.R"), 

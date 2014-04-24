@@ -7,7 +7,7 @@
   Version: 2.2.0
 
 - Class: text
-  Output:"The Variance Inflation Factors lesson demonstrated that including new variables will increase standard errors of coefficient estimates of other, correlated regressors. Hence, we don't want to idly throw variables into the model. On the other hand, omitting variables results in bias in coefficients of regressors which are correlated with the omitted ones. In this lesson we demonstrate the effect of omitted variables and discuss the use of ANOVA to construct parsimonious, interpretable representations of the data."
+  Output: "The Variance Inflation Factors lesson demonstrated that including new variables will increase standard errors of coefficient estimates of other, correlated regressors. Hence, we don't want to idly throw variables into the model. On the other hand, omitting variables results in bias in coefficients of regressors which are correlated with the omitted ones. In this lesson we demonstrate the effect of omitted variables and discuss the use of ANOVA to construct parsimonious, interpretable representations of the data."
 
 - Class: text
   Output: "First, I would like to illustrate how omitting a correlated regressor can bias estimates of a coefficient. The relevant source code is in a file named fitting.R which I have copied into your working directory and tried to display in your source code editor. If I've failed to display it, you should open it manually."
@@ -77,7 +77,7 @@
   Hint: "It's the only number in the column labeled F in the printed table."
 
 - Class: mult_question
-  Output: "An F statistic is a ratio of two sums of squares divided by their respective degrees of freedom. If the two scaled sums are independent and centrally chi-squared with the same variance, the statistic will have an F distribution with parameters given by the two degrees of freedom. In our case, the two sums are residual sums of squares which, as we know, have mean zero hence are centrally chi-squared provided the residuals themselves are normally distributed. The two relevant sums are given in the RSS (Residual Sum of Squares) column of the table. What are they?"
+  Output: "An F statistic is a ratio of two sums of squares divided by their respective degrees of freedom. If the two scaled sums are independent and centrally chi-squared distributed with the same variance, the statistic will have an F distribution with parameters given by the two degrees of freedom. In our case, the two sums are residual sums of squares which, as we know, have mean zero hence are centrally chi-squared provided the residuals themselves are normally distributed. The two relevant sums are given in the RSS (Residual Sum of Squares) column of the table. What are they?"
   AnswerChoices: 6283.1 and 3180.9;2 and 3102.2;45 and 43
   CorrectAnswer: 6283.1 and 3180.9
   AnswerTests: omnitest(correctVal= '6283.1 and 3180.9')
@@ -90,7 +90,7 @@
   Hint: "Enter deviance(fit3) at the R prompt."
 
 - Class: cmd_question
-  Output: "In the next several steps, we will show how to calculate the F value, 20.968, which appears in the table printed by anova(). We'll begin with the denominator, which is fit3's residual sum of squares divided by its degrees of freedom. Fit3 has 43 residual degrees of freedom. This figure is obtained by subtracting 4, the the number of fit3's predictors (the 3 named and the intercept,) from 47, the number of samples in swiss. Store the value of deviance(fit3)/43 in a variable named denom."
+  Output: "In the next several steps, we will show how to calculate the F value, 20.968, which appears in the table printed by anova(). We'll begin with the denominator, which is fit3's residual sum of squares divided by its degrees of freedom. Fit3 has 43 residual degrees of freedom. This figure is obtained by subtracting 4, the the number of fit3's predictors (the 3 named and the intercept,) from 47, the number of samples in swiss. Store the value of deviance(fit3)/43 in a variable named d."
   CorrectAnswer: d <- deviance(fit3)/43
   AnswerTests: "ANY_of_exprs('d <- deviance(fit3)/43', 'd <- deviance(fit3)/df.residual(fit3)', 'd <- deviance(fit3)/fit3$df.residual')"
   Hint: "Enter d <- deviance(fit3)/43 at the R prompt."
@@ -98,7 +98,7 @@
 - Class: cmd_question
   Output: "The numerator is the difference, deviance(fit1)-deviance(fit3), divided by the difference in the residual degrees of freedom of fit1 and fit3, namely 2. This calculation requires some theoretical justification which we omit, but the essential idea is that fit3 has 2 predictors in addition to those of fit1. Calculate the numerator and store it in a variable named n."
   CorrectAnswer: n <- (deviance(fit1) - deviance(fit3))/2
-  AnswerTests: "ANY_of_exprs('n <- (deviance(fit1) - deviance(fit3))/2', 'n <- (deviance(fit1) - deviance(fit3))/(45-43)', 'n <- (deviance(fit1) - deviance(fit3))/(df.residual(fit1)-df.residual(fit3))', 'n <- (deviance(fit1) - deviance(fit3))/fit1$df.residual - fit3$df.residual)')"
+  AnswerTests: "ANY_of_exprs('n <- (deviance(fit1) - deviance(fit3))/2', 'n <- (deviance(fit1) - deviance(fit3))/(45-43)', 'n <- (deviance(fit1) - deviance(fit3))/(df.residual(fit1)-df.residual(fit3))', 'n <- (deviance(fit1) - deviance(fit3))/(fit1$df.residual - fit3$df.residual)')"
   Hint: "Enter n <- (deviance(fit1) - deviance(fit3))/2 at the R prompt."
 
 - Class: cmd_question
@@ -114,10 +114,40 @@
   Hint: Just enter pf(n/d, 2, 43, lower.tail=FALSE) at the R prompt.
 
 - Class: cmd_question
-  Output: "Based on the calculated p-value, a false rejection of the null hypothesis is extremely unlikely. We are confident that fit3 is significantly better than fit1, with one caveat: ANOVA is sensitive to the assumption that model residuals are approximately normal. If they are not, we could get a small p-value for that reason. It is thus worth testing residuals for normality. The Shapiro-Wilk test is quick and easy in R. Normality is its null hypothesis. Use shapiro.test(fit1$residuals) to test fit1."
-  CorrectAnswer: shapiro.test(fit1$residuals)
-  AnswerTests: ANY_of_exprs('shapiro.test(fit1$residuals)', 'shapiro.test(residuals(fit1))')
-  Hint: Enter shapiro.test(fit1$residuals) at the R prompt.
+  Output: "Based on the calculated p-value, a false rejection of the null hypothesis is extremely unlikely. We are confident that fit3 is significantly better than fit1, with one caveat: analysis of variance is sensitive to its assumption that model residuals are approximately normal. If they are not, we could get a small p-value for that reason. It is thus worth testing residuals for normality. The Shapiro-Wilk test is quick and easy in R. Normality is its null hypothesis. Use shapiro.test(fit3$residuals) to test the residual of fit3."
+  CorrectAnswer: shapiro.test(fit3$residuals)
+  AnswerTests: ANY_of_exprs('shapiro.test(fit3$residuals)', 'shapiro.test(residuals(fit3))')
+  Hint: Enter shapiro.test(fit3$residuals) at the R prompt.
+
+- Class: cmd_question
+  Output: "The Shapiro-Wilk p-value of 0.336 fails to reject normality, supporting confidence in our analysis of variance. In order to illustrate the use of anova() with more than two models, I have constructed fit5 and fit6 using the first 5 and all 6 regressors respectively. Thus fit1, fit3, fit5, and fit6 form a nested sequence of models; the regressors of one are included in those of the next. Enter anova(fit1, fit3, fit5, fit6) at the R prompt now to get the flavor."
+  CorrectAnswer: anova(fit1, fit3, fit5, fit6)
+  AnswerTests: omnitest(correctExpr='anova(fit1, fit3, fit5, fit6)')
+  Hint: Enter anova(fit1, fit3, fit5, fit6) at the R prompt.
 
 - Class: text
-  Output: "The Shapiro-Wilk p-value of 0.6121 fails to reject normality. Shapiro "
+  Output: "It appears that each model is a significant improvement on its predecessor. Before ending the lesson, let's review a few salient points."
+
+- Class: mult_question  
+  Output: "Omitting a regressor can bias estimation of the coefficient of certain other regressors. Which ones?"
+  AnswerChoices: Correlated regressors;Uncorrelated regressors
+  CorrectAnswer: Correlated regressors
+  AnswerTests: omnitest(correctVal= 'Correlated regressors')
+  Hint: The other one.
+
+- Class: mult_question  
+  Output: "Including more regressors will reduce a model's residual sum of squares, even if the new regressors are irrelevant. True or False?"
+  AnswerChoices: True;False;It depends on circumstances.
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal= 'True')
+  Hint: It doesn't depend on circumstances.
+
+- Class: mult_question  
+  Output: "When adding regressors, the reduction in residual sums of squares should be tested for significance above and beyond that of reducing residual degrees of freedom. R's anova() function uses an F-test for this purpose. What else should be done to insure that anova() applies?"
+  AnswerChoices: "Model residuals should be tested for normality.;Regressors should be tested for normality.;The residuals should be tested for having zero means."
+  CorrectAnswer: Model residuals should be tested for normality.
+  AnswerTests: omnitest(correctVal= 'Model residuals should be tested for normality.')
+  Hint: F-tests are sensitive to the assumption of normality.
+
+- Class: text
+  Output: "That completes the lesson on underfitting and overfitting."

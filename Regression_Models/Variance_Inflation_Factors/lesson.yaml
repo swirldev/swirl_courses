@@ -66,7 +66,7 @@
   Output: "In these two simulations we had 1000 samples of estimated coefficients, hence could calculate sample variance in order to illustrate the effect. In a real case, we have only one set of coefficients and we depend on theoretical estimates. However, theoretical estimates contain an unknown constant of proportionality. We therefore depend on ratios of theoretical estimates called Variance Inflation Factors, or VIFs."
 
 - Class: text
-  Output: "A variance inflation factor (VIF) is a ratio of estimated variances, the variance due to including the ith regressor, divided by that due to including a corresponding ideal regressor which is uncorrelated with the others. VIF's can be calculated directly, but the car package provides a convenient method for the purpose as we will illustrate using the Swiss data from the same package."
+  Output: "A variance inflation factor (VIF) is a ratio of estimated variances, the variance due to including the ith regressor, divided by that due to including a corresponding ideal regressor which is uncorrelated with the others. VIF's can be calculated directly, but the car package provides a convenient method for the purpose as we will illustrate using the Swiss data from the datasets package."
 
 - Class: cmd_question
   Output: "According to its documentation, the Swiss data set consists of a standardized fertility measure and socioeconomic indicators for each of 47 French-speaking provinces of Switzerland in about 1888 when Swiss fertility rates began to fall. Type head(swiss) or View(swiss) to examine the data."
