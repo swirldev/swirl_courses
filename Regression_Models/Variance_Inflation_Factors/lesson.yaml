@@ -75,7 +75,7 @@
   Hint: Enter either head(swiss) or View(swiss) at the R prompt.
 
 - Class: cmd_question
-  Output: "Fertility was thought to depend on five socioeconomic factors: the percent of males working in Agriculture, the percent of draftees receiving the highest grade on the army's Examination, the percent of draftees with Education beyond primary school, and the percent of the population which was Roman Catholic. Use linear regression to model Fertility in terms of these five regressors and an intercept. Store the model in a variable named mdl."
+  Output: "Fertility was thought to depend on six socioeconomic factors: the percent of males working in Agriculture, the percent of draftees receiving the highest grade on the army's Examination, the percent of draftees with Education beyond primary school, the percent of the population which was Roman Catholic, and the rate of Infant Mortality in the province. Use linear regression to model Fertility in terms of these six regressors and an intercept. Store the model in a variable named mdl."
   CorrectAnswer: mdl <- lm(Fertility ~ ., swiss)
   AnswerTests: creates_lm_model('mdl <- lm(Fertility ~ ., swiss)')
   Hint: "Entering mdl <- lm(Fertility ~ ., swiss) is the easiest way to model Fertility as a function of all five regressors. The dot after the ~ means to include all."

@@ -47,3 +47,77 @@
   Output: "Adding even irrelevant regressors can cause a model to tend toward a perfect fit. We illustrate this by adding random regressors to the swiss data and regressing on progressively more of them. As the number of regressors approaches the number of data points (47), the residual sum of squares, also known as the deviance, approaches 0. (The source code for this figure can be found as function bogus() in fitting.R."
   Figure: bogus.R
   FigureType: new
+
+- Class: text
+  Output: "In the figure, adding random regressors decreased deviance, but we would be mistaken to believe that such decreases are significant. To assess significance, we should take into account that adding regressors reduces residual degrees of freedom. Analysis of variance (ANOVA) is a useful way to quantify the sigificance of additional regressors. To exemplify its use, we will use the swiss data."
+
+- Class: cmd_question
+  Output: "Recall that the Swiss data set consists of a standardized fertility measure and socioeconomic indicators for each of 47 French-speaking provinces of Switzerland in 1888. Fertility was thought to depend on six factors, denoted as Agriculture, Examination, Education, Catholic, and Infant Mortality. To begin our ANOVA example, regress Fertility on Agriculture and store the result in a variable named fit1."
+  CorrectAnswer: fit1 <- lm(Fertiliy ~ Agriculture, swiss)
+  AnswerTests: creates_lm_model('fit1 <- lm(Fertility ~ Agriculture, swiss)')
+  Hint: Enter fit1 <- lm(Fertility ~ Agriculture, swiss) or something equivalent at the R prompt.
+
+- Class: cmd_question
+  Output: "Create another model, named fit3, by regressing Fertility on Agriculture and two additonal regressors, Examination and Education."
+  CorrectAnswer: fit3 <- lm(Fertility ~ Agriculture + Examination + Education, swiss)
+  AnswerTests: creates_lm_model('fit3 <- lm(Fertility ~ Agriculture + Examination + Education, swiss)')
+  Hint: "Enter fit3 <- lm(Fertility ~ Agriculture + Examination + Education, swiss) or something equivalent at the R prompt."
+
+- Class: cmd_question
+  Output: "We'll now use anova to assess the significance of the two added regressors. The null hypothesis is that the added regressors are not significant. We'll explain in detail shortly, but right now just apply the significance test by entering anova(fit1, fit3)."
+  CorrectAnswer: anova(fit1, fit3)
+  AnswerTests: omnitest(correctExpr='anova(fit1, fit3)')
+  Hint: Enter anova(fit1, fit3) at the R prompt.
+
+- Class: mult_question  
+  Output: "The three asterisks, ***, at the lower right of the printed table indicate that the null hypothesis is rejected at the 0.001 level, so at least one of the two additional regressors is significant. Rejection is based on a right-tailed F test, Pr(>F), applied to an F value. According to the table, what is that F value?"
+  AnswerChoices: 20.968;3102.2;45
+  CorrectAnswer: 20.968
+  AnswerTests: omnitest(correctVal= '20.968')
+  Hint: "It's the only number in the column labeled F in the printed table."
+
+- Class: mult_question
+  Output: "An F statistic is a ratio of two sums of squares divided by their respective degrees of freedom. If the two scaled sums are independent and centrally chi-squared with the same variance, the statistic will have an F distribution with parameters given by the two degrees of freedom. In our case, the two sums are residual sums of squares which, as we know, have mean zero hence are centrally chi-squared provided the residuals themselves are normally distributed. The two relevant sums are given in the RSS (Residual Sum of Squares) column of the table. What are they?"
+  AnswerChoices: 6283.1 and 3180.9;2 and 3102.2;45 and 43
+  CorrectAnswer: 6283.1 and 3180.9
+  AnswerTests: omnitest(correctVal= '6283.1 and 3180.9')
+  Hint: "The two numbers are under the RSS label in the table printed by anova(fit1, fit3)."
+
+- Class: cmd_question
+  Output: "R's function, deviance(model), calculates the residual sum of squares, also known as the deviance, of the linear model given as its argument. Using deviance(fit3), verify that 3180.9 is fit3's residual sum of squares. (Of course, fit3 is called Model 2 in the table.)"
+  CorrectAnswer: deviance(fit3)
+  AnswerTests: omnitest(correctExpr='deviance(fit3)')
+  Hint: "Enter deviance(fit3) at the R prompt."
+
+- Class: cmd_question
+  Output: "In the next several steps, we will show how to calculate the F value, 20.968, which appears in the table printed by anova(). We'll begin with the denominator, which is fit3's residual sum of squares divided by its degrees of freedom. Fit3 has 43 residual degrees of freedom. This figure is obtained by subtracting 4, the the number of fit3's predictors (the 3 named and the intercept,) from 47, the number of samples in swiss. Store the value of deviance(fit3)/43 in a variable named denom."
+  CorrectAnswer: d <- deviance(fit3)/43
+  AnswerTests: "ANY_of_exprs('d <- deviance(fit3)/43', 'd <- deviance(fit3)/df.residual(fit3)', 'd <- deviance(fit3)/fit3$df.residual')"
+  Hint: "Enter d <- deviance(fit3)/43 at the R prompt."
+
+- Class: cmd_question
+  Output: "The numerator is the difference, deviance(fit1)-deviance(fit3), divided by the difference in the residual degrees of freedom of fit1 and fit3, namely 2. This calculation requires some theoretical justification which we omit, but the essential idea is that fit3 has 2 predictors in addition to those of fit1. Calculate the numerator and store it in a variable named n."
+  CorrectAnswer: n <- (deviance(fit1) - deviance(fit3))/2
+  AnswerTests: "ANY_of_exprs('n <- (deviance(fit1) - deviance(fit3))/2', 'n <- (deviance(fit1) - deviance(fit3))/(45-43)', 'n <- (deviance(fit1) - deviance(fit3))/(df.residual(fit1)-df.residual(fit3))', 'n <- (deviance(fit1) - deviance(fit3))/fit1$df.residual - fit3$df.residual)')"
+  Hint: "Enter n <- (deviance(fit1) - deviance(fit3))/2 at the R prompt."
+
+- Class: cmd_question
+  Output: "Calculate the ratio, n/d, to show it is essentially equal to the F value, 20.968, given by anova()."
+  CorrectAnswer: n/d
+  AnswerTests: omnitest(correctExpr='n/d')
+  Hint: Just enter n/d at the R prompt.
+
+- Class: cmd_question
+  Output: "We'll now calculate the p-value, the probability that a value of n/d or larger from an F distribution with parameters 2 and 43. This value was given as 4.407e-07 in the column labeled Pr(>F) in the table printed by anova(), a very unlikely value if the null hypothesis were true. Calculate this p-value using pf(n/d, 2, 43, lower.tail=FALSE)."
+  CorrectAnswer: pf(n/d, 2, 43, lower.tail=FALSE)
+  AnswerTests: omnitest(correctExpr='pf(n/d, 2, 43, lower.tail=FALSE)')
+  Hint: Just enter pf(n/d, 2, 43, lower.tail=FALSE) at the R prompt.
+
+- Class: cmd_question
+  Output: "Based on the calculated p-value, a false rejection of the null hypothesis is extremely unlikely. We are confident that fit3 is significantly better than fit1, with one caveat: ANOVA is sensitive to the assumption that model residuals are approximately normal. If they are not, we could get a small p-value for that reason. It is thus worth testing residuals for normality. The Shapiro-Wilk test is quick and easy in R. Normality is its null hypothesis. Use shapiro.test(fit1$residuals) to test fit1."
+  CorrectAnswer: shapiro.test(fit1$residuals)
+  AnswerTests: ANY_of_exprs('shapiro.test(fit1$residuals)', 'shapiro.test(residuals(fit1))')
+  Hint: Enter shapiro.test(fit1$residuals) at the R prompt.
+
+- Class: text
+  Output: "The Shapiro-Wilk p-value of 0.6121 fails to reject normality. Shapiro "

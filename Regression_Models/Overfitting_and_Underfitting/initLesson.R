@@ -5,3 +5,5 @@ file.copy(from=file.path(find.package("swirl"),
           to="fitting.R")
 file.edit("fitting.R")
 source("fitting.R")
+fit5 <- lm(Fertility ~ Agriculture + Examination + Education + Catholic, swiss)
+fit6 <- lm(Fertility ~ ., swiss)
