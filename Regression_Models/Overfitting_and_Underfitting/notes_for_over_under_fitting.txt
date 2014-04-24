@@ -1,0 +1,182 @@
+# Notes for VIF
+
+## Preamble:
+The Variance Inflation Factors lesson demonstrated that including new variables will increase standard errors of other, correlated regressors. Hence, we don't want to idly throw variables into the model. On the other hand, omitting variables results in bias in other coefficients with which the omitted regressors are correlated. In this lesson we demonstrate the effect of omitted variables and discuss methods for constructing parsimonious, interpretable representations of the data.
+
+## Source file:
+We shall use a combination of real and simulated data. Relevant code is in a file named fitting.R which I have copied into your working directory and tried to display in your source code editor. If I've failed to display it, you should open it manually.
+
+## Inspecting simbias
+1. A: x1 and x2 are correlated. B: x1 and x3 are not.
+2. C: what is the actual coefficient of x1?
+3. D: returns the coefficient of x1 as estimated in regression omitting x3 and x2 resp. Which is biased?
+
+## Running simbias
+1. cx1 <- simbias()
+2. calculate means and sds with apply(temp, 1, mean) etc.
+3. plot histograms with labels. Indicate code but say it's incidental to the point of the lesson.
+
+## Irrelevant regressors
+Adding even irrelevant regressors can cause a model to tend toward a perfect fit. We illustrate by adding random regressors to the swiss data and regressing on progressively more of them. As the number of regressors approaches the number of data points (47), deviance approaches 0.
+1. form data
+2. collect deviances
+3. plot
+
+## Introduce ANOVA
+In the illustration, adding random regressors decrease deviance but we would be mistaken to believe that such decreases are significant. To assess significance, we should take into account that adding regressors reduces residual degrees of freedom. Analysis of variance (ANOVA) is a way to do so.
+#
+Good design can often eliminate the need for complex model searches and analyses. If the phenomena of interest involve relatively few regressors, it's feasible and fairly uncontroversial to model by trial and error. We illustrate by testing nested models of the Swiss data using ANOVA to test if including additional regressors significantly improves deviance, accounting for degrees of freedom.
+
+## Illustrating anova()
+* fit1 <- lm(Fertility ~ Agriculture, swiss)
+* fit3 <- lm(Fertility ~ Agriculture + Examination + Education, swiss)
+* anova(fit1, fit3)
+* Explain and question 1) Res.Df, 2) RSS (deviance), 3) Df 4) F
+* Interpretation: at least one of the two additional regressors is significant. (Null hypothesis is neither.)
+
+## Demonstrate calculation of the F value.
+* Recall that the F distribution is the ratio of two chi-square distributions with degrees of freedom df1 and df2, respectively, where each chi-square has first been divided by its degrees of freedom.
+* temp.1 <- (deviance(fit1) -deviance(fit3))/2 
+* df of delta deviance = 2, not obvious, requires a bit of proof. But the basic idea is that fit3 has 2 additional regressors.
+* might show that cor(fit1$residuals-fit3$residuals, fit3$residuals) is essentially 0.
+* temp.2 <- deviance(fit3)/43 # deviance(fit3) ~ chi-square with 43 df
+* Fvalue <- temp.1/temp.2
+* The ratio is pf(Fvalue, 2, 43, lower.tail = FALSE)) # prob of Fvalue or greater. The one-tailed version only tests in one direction, that is the variance from the first population is either greater than or less than (but not both) the second population variance.
+
+# Do at least fit5 & maybe bogus regressors.
+fit1 <- lm(Fertility ~ Agriculture, swiss)
+fit3 <- lm(Fertility ~ Agriculture + Examination + Education, swiss)
+fit5 <- lm(Fertility ~ Agriculture + Examination + Education + Catholic + Infant.Mortality, swiss)
+anova(fit1, fit3, fit5)
+
+# review questions
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# Judging from the results below, I think what he's getting at might be best demonstrated by 
+# including a junk variable.
+fit6 <- fit6 <- lm(Fertility ~ Agriculture + Examination + Education+ Catholic + 
++                Infant.Mortality + junk, swiss)
+
+Analysis of Variance Table
+
+Model 1: Fertility ~ Agriculture
+Model 2: Fertility ~ Agriculture + Examination + Education
+Model 3: Fertility ~ Agriculture + Examination + Education + Catholic + 
+    Infant.Mortality
+  Res.Df  RSS Df Sum of Sq    F  Pr(>F)      RSS is sum(fitx$residuals^2)
+1     45 6283                                Sum of sq is difference of RSS with previous model
+2     43 3181  2      3102 30.2 8.6e-09 ***  Df is number of additional predictors.
+3     41 2105  2      1076 10.5 0.00021 ***  scale is deviance()
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+## compuations
+fit2 <- lm(Fertility ~ Agriculture + Examination, swiss)
+debug(stat.anova)
+anova(fit1, fit2)
+
+Browse[2]> table
+table:
+  Res.Df      RSS Df Sum of Sq
+1     45 6283.116 NA        NA
+2     44 4072.740  1  2210.376
+
+sum(fit1$residuals^2)
+[1] 6283.116
+fit1$df.residual
+[1] 45
+sum(fit2$residuals^2)
+[1] 4072.74
+fit2$df.residual
+[1] 44
+
+debug: Fvalue <- (table[, dev.col]/dfs)/scale
+debug: Fvalue[dfs %in% 0] <- NA
+
+Browse[2]> Fvalue
+[1]       NA 23.87988
+
+Browse[2]> dfs # Df column of table; essentially diffs of residual df's
+[1] NA  1
+
+Browse[2]> scale
+[1] 92.56226
+
+deviance(fit2)/fit2$df.residual
+[1] 92.56226
+
+Browse[2]> df.scale
+[1] 44
+
+From calling function:
+ resdf <- as.numeric(lapply(objects, df.residual))
+ df.scale = resdf[bigmodel]
+and
+df.residual(fit2)
+[1] 44
+
+debug: cbind(table, F = Fvalue, `Pr(>F)` = pf(Fvalue, abs(dfs), df.scale, 
+    lower.tail = FALSE))
+
+Browse[2]> pf(Fvalue[2], df.residual(fit1)-df.residual(fit2), df.residual(fit2), lower.tail=FALSE)
+[1] 1.400471e-05
+
+scale <- resdev[bigmodel]/resdf[bigmodel]
+resdev <- as.numeric(lapply(objects, deviance)) # ordered by deviance
+resdf <- as.numeric(lapply(objects, df.residual)) # same (length of data - number of predictors)
+df.scale = resdf[bigmodel]
+
+> debugonce(stat.anova)
+> anova(fit1, fit3)
+
+Browse[2]> table
+  Res.Df      RSS Df Sum of Sq
+1     45 6283.116 NA        NA
+2     43 3180.925  2  3102.191
+sum(fit1$residuals^2)
+[1] 6283.116
+sum(fit3$residuals^2)
+[1] 3180.925
+fit1$df.residual
+[1] 45
+fit3$df.residual
+[1] 43
+
+Fvalue <- (table[, dev.col]/dfs)/scale
+
+Browse[2]> table[,dev.col]
+[1]       NA 3102.191
+sum(fit1$residuals^2) - sum(fit3$residuals^2)
+[1] 3102.191
+deviance(fit1)-deviance(fit3)
+[1] 3102.191
+
+Browse[2]> scale
+[1] 73.975
+deviance(fit3)/df.residual(fit3)
+[1] 73.975
+
+Browse[2]> dfs
+[1] NA  2
+df.residual(fit1)-df.residual(fit3)
+[1] 2
+
+Browse[2]> Fvalue
+[1]       NA 20.96783
+(deviance(fit1)-deviance(fit3))/(df.residual(fit1)-df.residual(fit3))/(deviance(fit3)/df.residual(fit3))
+[1] 20.96783
+
+cbind(table, F = Fvalue, `Pr(>F)` = pf(Fvalue, abs(dfs), df.scale, lower.tail = FALSE))
+[1]       NA 20.96783 # as above
+Browse[2]> abs(dfs)   
+[1] NA  2             # df.residual(fit1)-df.residual(fit3)
+Browse[2]> df.scale
+[1] 43                # df.residual(fit3)
+
+norm.cnst <- (df.residual(fit1)-df.residual(fit3))/df.residual(fit3)
+[1] 0.04651163
+dev.ratio <- (deviance(fit1)-deviance(fit3))/deviance(fit3)
+[1] 0.9752481
+dev.ratio/norm.cnst
+[1] 20.96783
