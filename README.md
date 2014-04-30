@@ -6,6 +6,7 @@ This is a collection of interactive courses for use with the swirl R package. So
 The following are some of our more popular courses: 
 
 - R Programming
+- Regression Models (in progress)
 - Data Analysis
 - Mathematical Biostatistics Boot Camp
 - Open Intro
