@@ -107,5 +107,5 @@
 - Class: text
   Output: We'll now summarize useful facts about R^2. It is the percentage of variation explained by the regression model. As a percentage it is between 0 and 1. It also equals the sample correlation squared. However, R^2 doesn't tell the whole story. 
 
-- Class: figure
-  Output: Congrats! You've finished. 
+- Class: text
+  Output: Congrats! You've finished this lesson on Residual Variation. 
