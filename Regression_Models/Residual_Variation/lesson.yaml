@@ -10,7 +10,7 @@
   Output: From the lecture and slides we learned that residuals are useful for indicating how well data points fit a statistical model. They "can be thought of as the outcome (Y) with the linear association of the predictor (X) removed. One differentiates residual variation (variation after removing the predictor) from systematic variation (variation explained by the regression model)."
 
 - Class: text
-  Output: We also learned from the lectures that, given a model, the maximum likelihood estimate of the variance of the random error is the average squared residual. However, it is common to use (n-2) instead of n in the formula, so the estimated variance is calculated as 1/(n-2) * the sum of the squared residuals.
+  Output: We also learned from the lectures that, given a model, the maximum likelihood estimate of the variance of the random error is the average squared residual. However,  since our linear model with one predictor requires two parameters we have only (n-2) degrees of freedom. Therefore, to calculate an "average" squared residual to estimate the variance we use the formula 1/(n-2) * (the sum of the squared residuals). If we divided the sum of the squared residuals by n, instead of n-2, the result would give a biased estimate.
 
 - Class: cmd_question
   Output: To see this we'll use our favorite Galton height data. First regenerate the regression line and call it fit. Use the R function lm and recall that by default its first argument is a formula such as "child ~ parent" and its second is the dataset, in this case galton. 
@@ -80,7 +80,7 @@
   Hint: Type "sTot <- sum((galton$child-mu)^2)" at the R prompt.
 
 - Class: cmd_question
-  Output: Now use the R function deviance to calculate the sum of the squares of the distances between the children's heights and the regression line (the residuals). This represents the Residual Variation. 
+  Output: Now create the variable sRes. Use the R function deviance to calculate the sum of the squares of the distances between the children's heights and the regression line (the residuals). This represents the Residual Variation. 
   CorrectAnswer: sRes <- deviance(fit)
   AnswerTests: omnitest(correctExpr='sRes <- deviance(fit)')
   Hint: Type "sRes <- deviance(fit)" at the R prompt.
@@ -105,9 +105,7 @@
 
 
 - Class: text
-  Output: We'll now summarize useful facts about R^2. It is the percentage of variation explained by the regression model. As a percentage it is between 0 and 1. It also equals the sample correlation squared. However, R^2 can be a misleading summary of model fit.
+  Output: We'll now summarize useful facts about R^2. It is the percentage of variation explained by the regression model. As a percentage it is between 0 and 1. It also equals the sample correlation squared. However, R^2 doesn't tell the whole story. 
 
 - Class: figure
-  Output: Congrats! You've finished. To celebrate we'll close by running the code (provided in Rstudio's help page) which generates the Anscombe data and plots it. These are four very different data sets with the same statistical properties and regression models. We're showing the code and we've taken the liberty of commenting out some of the print and summary lines.
-  Figure: demofile.R
-  FigureType: new
+  Output: Congrats! You've finished. 
