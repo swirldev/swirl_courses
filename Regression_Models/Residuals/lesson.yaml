@@ -11,7 +11,7 @@
   Output: This lesson will focus on the residuals, the distances between the actual children's heights and the estimates given by the regression line. Since all lines are characterized by two parameters, a slope and an intercept, we'll use the least squares criteria to provide two equations in two unknowns so we can solve for these parameters, the slope and intercept.
 
 - Class: text
-  Output: The first equation says that the "errors" in our estimates, the residuals, have mean zero. In other words, the residuals are "balanced" among the data points; they're equally likely to be positive and negative. The second equation says that our residuals must be uncorrelated with our predictors, the parents’ height. This makes sense - if the residuals and predictors were correlated then you could make a better prediction and reduce the distances (residuals) between the actual outcomes and the predictions.
+  Output: The first equation says that the "errors" in our estimates, the residuals, have mean zero. In other words, the residuals are "balanced" among the data points; they're just as likely to be positive as negative. The second equation says that our residuals must be uncorrelated with our predictors, the parents’ height. This makes sense - if the residuals and predictors were correlated then you could make a better prediction and reduce the distances (residuals) between the actual outcomes and the predictions.
 
 
 - Class: cmd_question
@@ -44,11 +44,18 @@
 - Class: text
   Output: We'll verify these claims now. We've defined for you two R functions, est and sqe. Both take two inputs, a slope and an intercept. The function est calculates a child's height (y-coordinate) using the line defined by the two parameters, (slope and intercept), and the parents' heights in the Galton data as x-coordinates.  
 
+- Class: mult_question
+  Output: Let "mch"" represent the mean of the galton childrens' heights and "pch"" the mean of the galton parents' heights. Let "ic" and "slope" represent the intercept and slope of the regression line respectively. We've seen in the lectures and slides and past lessons that the point (mph,mch) lies on the regression line. This means
+  AnswerChoices: mch = ic + slope*mph; mph = ic + slope*mch; I haven't the slightest idea.
+  CorrectAnswer: mch = ic + slope*mph
+  AnswerTests: omnitest(correctVal='mch = ic + slope*mph')
+  Hint: A line is the set of all points (x,y) satisfying the equation y = mx + b, where m is the slope of the line and b is its intercept. Remember that the point (mph,mch) lies on the regression line with intercept ic and slope "slope".
+
 - Class: text
   Output: The function sqe calculates the sum of the squared residuals, the differences between the actual children's heights and the estimated heights specified by the line defined by the given parameters (slope and intercept).  R provides the function deviance to do exactly this using a fitted model (e.g., fit) as its argument. However, we provide sqe because we'll use it to test regression lines different from fit. 
 
 - Class: text
-  Output: We'll see that when we vary or tweak the slope and intercept values of the regression line which are stored in fit$coef, the resulting squared residuals are approximately equal to the sum of two sums of squares - that of the original regression residuals and that of the tweaks themselves. More precisely,
+  Output: We'll see that when we vary or tweak the slope and intercept values of the regression line which are stored in fit$coef, the resulting squared residuals are approximately equal to the sum of two sums of squares - that of the original regression residuals and that of the tweaks themselves. More precisely, up to numerical error, 
 
 - Class: text
   Output: sqe(ols.slope+sl,ols.intercept+ic) == deviance(fit) + sum(est(sl,ic)ˆ2 )
@@ -73,7 +80,7 @@
   Hint: Type "ols.slope <- fit$coef[2]" at the R prompt.
 
 - Class: figure
-  Output: Now we'll show you some R code which generates the left and right sides of this equation.  Take a moment to look it over. We've formed two 6-long vectors of variations, one for the slope and one for the intercept. Then we have two for loops to generate the two sides of the equation.
+  Output: Now we'll show you some R code which generates the left and right sides of this equation.  Take a moment to look it over. We've formed two 6-long vectors of variations, one for the slope and one for the intercept. Then we have two "for" loops to generate the two sides of the equation.
   Figure: demofile.R
   FigureType: new
 

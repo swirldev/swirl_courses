@@ -7,10 +7,10 @@
   Version: 2.2.0
 
 - Class: text
-  Output: In this lesson, if you're using RStudio, you'll be able to play with some of the code Professor Caffo showed in his lecture. If you're not using RStudio, you can look at the code but you won't be able to experiment with the function "manipulate". We provide the code for you so you can examine it without having to type it all out.  In RStudio, when the edit window displays code, make sure your flashing cursor is back in the console window before you hit "Enter" or any keyboard buttons, otherwise you might accidentally alter the code. If you do accidentally alter the file just hit Ctrl z in the editor until all the unwanted changes disappear.
+  Output: In this lesson, if you're using RStudio, you'll be able to play with some of the code Professor Caffo showed in his lecture. If you're not using RStudio, you can look at the code but you won't be able to experiment with the function "manipulate". We provide the code for you so you can examine it without having to type it all out.  In RStudio, when the edit window displays code, make sure your flashing cursor is back in the console window before you hit "Enter" or any keyboard buttons, otherwise you might accidentally alter the code. If you do alter the file, in RStudio, you can hit Ctrl z in the editor until all the unwanted changes disappear. In other editors, you'll have to use whatever key combination performs "undo" to remove all your unwanted changes.
 
 - Class: figure
-  Output: Here are the Galton data and the regression line seen in the Introduction. We loaded the data with the R command 'galton <- UsingR::galton'. This Galton data is one of the many datasets that R provides for users. The regression line summarizes the relationship between parents' heights (the predictors) and their childrens' (the outcomes). 
+  Output: Here are the Galton data and the regression line seen in the Introduction. We loaded the data with the R command 'galton <- UsingR::galton'. This Galton data is one of the many datasets that R and its package system provide for users. The regression line summarizes the relationship between parents' heights (the predictors) and their childrens' (the outcomes). 
   Figure: plot1.R
   FigureType: new
 
@@ -31,7 +31,7 @@
   FigureType: new
 
 - Class: mult_question  
-  Output: What R function allows the user to play with the data to see the effects of the changes?
+  Output: What RStudio graphics package allows the user to play with the data to see the effects of the changes?
   AnswerChoices: manipulate; plot; abline; points
   CorrectAnswer: manipulate
   AnswerTests: omnitest(correctVal='manipulate')
@@ -73,7 +73,7 @@
   Hint: Have you really changed anything?
 
 - Class: cmd_question
-  Output: Use R's function "lm" to generate the regression line using this normalized data. Store it in a variable called l_nor. Use the parents' heights as the predictors (independent variable) and the childrens' as the predicted (dependent). Remember, 'lm' needs a formula of the form dependent ~ independent.
+  Output: Use R's function "lm" to generate the regression line using this normalized data. Store it in a variable called l_nor. Use the parents' heights as the predictors (independent variable) and the childrens' as the predicted (dependent). Remember, 'lm' needs a formula of the form dependent ~ independent. Since we've created the data vectors for you there's no need to provide a second "data" argument as you have previously.
   CorrectAnswer: l_nor <- lm(gch_nor ~ gpa_nor)
   AnswerTests: omnitest(correctExpr='l_nor <- lm(gch_nor ~ gpa_nor)')
   Hint: Type "l_nor <- lm(gch_nor ~ gpa_nor)" at the R prompt.
