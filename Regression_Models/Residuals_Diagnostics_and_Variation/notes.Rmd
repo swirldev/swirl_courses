@@ -27,19 +27,25 @@ The general objective is to illustrate the meaning of diagnostics referred to in
 * residuals vs fit (which=1)
 * QQ plots against normal (which=2)
 
-#### Perhaps the simplest leave-one-out 
+#### Perhaps the simplest leave-one-out diagnostics are
 
 * `dfbetas` - change in individual coefficients when the $i^{th}$ point is deleted in fitting the model.
 * `cooks.distance` - overall change in the coefficients when the $i^{th}$ point is deleted.
 
 #### Hatvalues as measures of leverage.
 
-Since linear algebra should be avoided, perhaps hat values should be glossed, and the mean-shift derivation of Studentized residuals should be illustrated.
-
 * dffits?
 * Studentized residuals?
 * hatvalues?
 
+Since linear algebra should be avoided the mean-shift derivation of Studentized residuals should be illustrated. I've checked it numerically and it works.
+
+Hat values can be derived in terms of a measure of distance from the sample centroid.
+
+An equivalent procedure for finding the studentized residuals employs a ‘mean-shift’ outlier model$$Y = α + β_1X_1 + · · · + β_kX_k + γD + ε$$where $D$ is an indicator variable for observation $i$. Thus$$ E(Y_i ) = α + β_1 X_{i1} + · · · + β_k X{ik} + γ$$ 
+$$E(Y_j ) = α + β_1 X_{j1} + · · · + β_k X_{jk}$$for $j \ne i.$
+
+It would be natural to specify this model if, before examining the data, we suspected that observation i differed from the others. Then to test $H_0 : γ = 0$ , we can calculate $t_0 = \frac{\hat{γ}}{SD(\hat{γ})}.$ This test statistic is distributed as $t_{n−k−2}$ under $H_0$ , and is the studentized residual $E^*_i.$
 
 ## The linear model
 * Specified as $Y_i =  \sum_{k=1}^p X_{ik} \beta_j + \epsilon_{i}$
