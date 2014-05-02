@@ -20,6 +20,13 @@ The general objective is to illustrate the meaning of diagnostics referred to in
   * `cooks.distance` - overall change in the coefficients when the $i^{th}$ point is deleted.
   * `resid` - returns the ordinary residuals
   * `resid(fit) / (1 - hatvalues(fit))` where `fit` is the linear model fit returns the PRESS residuals, i.e. the leave one out cross validation residuals - the difference in the response and the predicted response at data point $i$, where it was not included in the model fitting.
+  
+All of these admit elementary explanations as shown in the analysis below.
+
+
+  
+  
+# Analysis  
 
 #### Perhaps the simplest are
 
@@ -45,7 +52,33 @@ Hat values can be derived in terms of a measure of distance from the sample cent
 An equivalent procedure for finding the studentized residuals employs a ‘mean-shift’ outlier model$$Y = α + β_1X_1 + · · · + β_kX_k + γD + ε$$where $D$ is an indicator variable for observation $i$. Thus$$ E(Y_i ) = α + β_1 X_{i1} + · · · + β_k X{ik} + γ$$ 
 $$E(Y_j ) = α + β_1 X_{j1} + · · · + β_k X_{jk}$$for $j \ne i.$
 
+```{r}
+swiss <- datasets::swiss
+fit <- lm(Fertility ~ ., swiss)
+swiss[,"dummy"] <- as.numeric(1:47 == 1)
+fit.1 <- lm(Fertility ~ ., swiss)
+dummy.coef <- summary(fit.1)$coefficients["dummy",]
+c(dummy.coef[1]/dummy.coef[2], rstudent(fit)[1])
+```
+
+
 It would be natural to specify this model if, before examining the data, we suspected that observation i differed from the others. Then to test $H_0 : γ = 0$ , we can calculate $t_0 = \frac{\hat{γ}}{SD(\hat{γ})}.$ This test statistic is distributed as $t_{n−k−2}$ under $H_0$ , and is the studentized residual $E^*_i.$
+
+Brian: resid(fit) / (1 - hatvalues(fit)) where fit is the linear model fit returns the PRESS residuals, i.e. the leave one out cross validation residuals - the difference in the response and the predicted response at data point i, where it was not included in the model fitting.
+
+```{r}
+fit.m1 <- lm(Fertility ~ . -dummy, swiss[-1,])
+yval.m1 <- predict(fit.m1, swiss[1,])
+res.m1 <- swiss[1,"Fertility"] - yval.m1
+c(res.m1, resid(fit)[1]/(1-hatvalues(fit)[1]))
+```
+
+$$h_i = 1 - \frac{E_i}{E_{i,[-i]}}$$
+
+
+
+
+# Brian:
 
 ## The linear model
 * Specified as $Y_i =  \sum_{k=1}^p X_{ik} \beta_j + \epsilon_{i}$
