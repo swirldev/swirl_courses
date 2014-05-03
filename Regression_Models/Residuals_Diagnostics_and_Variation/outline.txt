@@ -1,0 +1,13 @@
+# Explain objectives.
+
+# An outlier is influential if its inclusion substantially changes the model. Illustrate with figures.
+
+# Elementary diagnostic plot: residuals against fitted values
+
+# Two less elementary techniques: leave one out and mean shift.
+
+# Mean shift first since it only leads to student?
+
+# leave one out:
+# dffits, dfbetas, PRESS residuals (leave on out and predict), hatvalues.
+# Cook's distance, provided leverage means hat values or something derived from hat values.
