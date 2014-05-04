@@ -2,18 +2,21 @@
 # here will show up in the user's workspace when he or she begins
 # the lesson.
 library(datasets); 
-data(swiss); 
+data(InsectSprays); 
 require(stats); 
 require(graphics)
-pairs(swiss, panel = panel.smooth, main = "Swiss data", col = 3 + (swiss$Catholic > 50))
+
+boxplot(count ~ spray, data = InsectSprays,
+        xlab = "Type of spray", ylab = "Insect count",
+        main = "InsectSprays data", varwidth = TRUE, col = "lightgray")
 
 # Put initialization code in this file.
-file.copy(from=file.path(find.package("swirl"),
-                         "Courses/Regression_Models",
-                         "MultiVar_Examples/swissLMs.R"), 
-          to="swissLMs.R")
-file.edit("swissLMs.R")
-source("swissLMs.R", globalenv())
+# file.copy(from=file.path(find.package("swirl"),
+#                          "Courses/Regression_Models",
+#                          "MultiVar_Examples2/swissLMs.R"), 
+#           to="swissLMs.R")
+# file.edit("swissLMs.R")
+# source("swissLMs.R", globalenv())
 
 # if  ((Sys.getenv("RSTUDIO") == "1")&&(nchar(maniflg)>0 )){
 #   library(manipulate)

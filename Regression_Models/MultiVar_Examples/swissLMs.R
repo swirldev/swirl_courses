@@ -1,10 +1,11 @@
 makelms <- function(){
-  # Find the coefficient of 
-  c(coef(lm(Fertility ~ Agriculture, swiss))[2], 
-    coef(lm(Fertility ~ Agriculture + Education, swiss))[2], 
-    coef(lm(Fertility ~ Agriculture + Education + Examination, swiss))[2],
-    coef(lm(Fertility ~ Agriculture + Education + Examination + Catholic, swiss))[2],
-    coef(lm(Fertility ~ Agriculture + Education + Examination + Catholic + Infant.Mortality, swiss))[2])
+  # Store the coefficient of linear models with different independent variables
+  cf <- c(coef(lm(Fertility ~ Agriculture, swiss))[2], 
+          coef(lm(Fertility ~ Agriculture + Catholic,swiss))[2],
+          coef(lm(Fertility ~ Agriculture + Catholic + Education,swiss))[2],
+          coef(lm(Fertility ~ Agriculture + Catholic + Education + Examination,swiss))[2],
+          coef(lm(Fertility ~ Agriculture + Catholic + Education + Examination +Infant.Mortality, swiss))[2])
+  print(cf)
 }
 
 # Regressor generation process 1.

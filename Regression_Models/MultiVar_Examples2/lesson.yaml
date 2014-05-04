@@ -1,48 +1,62 @@
 - Class: meta
   Course: Regression_Models
-  Lesson: MultiVar_Examples
+  Lesson: MultiVar_Examples2
   Author: Swirl Coders
   Type: Standard
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
 - Class: text
-  Output: In this lesson, we'll look at some examples of regression models with more than one variable. We'll begin with the Swiss data which we've taken the liberty to load for you. This data is part of RStudio's datasets package. It was gathered in 1888, a time of demographic change in Switzerland, and measured six quantities in 47 French-speaking provinces of Switzerland. We used the code from the slides (the R function pairs) to display here a 6 by 6 array of scatterplots showing pairwise relationships between the variables. All of the variables, except for fertility, are proportions of population. For example, "Examination" shows the percentage of draftees receiving the highest mark on an army exam, and "Education" the percentage of draftees with education beyond primary school.
+  Output: This is the second lesson in which we'll look at some regression models with more than one variable. We'll begin with the InsectSprays data which we've taken the liberty to load for you. This data is part of RStudio's datasets package. It shows the effectiveness of different insect sprays. We've used the code from the slides to show you a boxplot of the data.
 
-- Class: mult_question  
-  Output: From the plot, which is NOT one of the factors measured?
-  AnswerChoices: Obesity; Catholic; Fertility; Infant Mortality
-  CorrectAnswer: Obesity
-  AnswerTests: omnitest(correctVal='Obesity')
-  Hint: Which of the choices doesn't appear on the plot at all?
+- Class: exact_question
+  Output: How many Insect Sprays are in this dataset?
+  CorrectAnswer: 6
+  AnswerTests: omnitest(correctVal=6)
+  Hint: How many letters are  in the sequence: A, B, C, D, E, F ?
+
+
+- Class: text_question
+  Output: From the boxplot, which spray has the largest median?
+  CorrectAnswer: B
+  AnswerTests: omnitest(correctVal='B')
+  Hint: The median of each spray is indicated by the thick horizontal line in each box. Which spray has its median furthest from 0?
+
 
 - Class: cmd_question
-  Output: First, use the R function lm to generate the linear model "all" in which Fertility is the variable dependent on all the others. Use the R shorthand "." to represent the five independent variables in the formula passed to lm.  Remember the data is "swiss". 
-  CorrectAnswer: all <- lm(Fertility ~ ., swiss)
-  AnswerTests: creates_lm_model('all <- lm(Fertility ~ . , swiss)')
-  Hint: Type "all <- lm(Fertility ~ ., swiss)" at the R prompt.
+  Output: Let's first try to get a better understanding of the dataset InsectSprays. Use the R function dim to find the dimensions of the data.
+  CorrectAnswer: dim(InsectSprays)
+  AnswerTests: omnitest(correctExpr='dim(InsectSprays)')
+  Hint: Type "dim(InsectSprays)" at the R prompt.
 
 - Class: cmd_question
-  Output: Now look at the summary of the linear model all.
-  CorrectAnswer: summary(all)
-  AnswerTests: omnitest(correctExpr='summary(all)')
-  Hint: Type "summary(all)" at the R prompt.
-
-- Class: text
-  Output: Recall that the Estimates are the coeffients of the independent variables of the linear model (all of which are percentages) and they reflect an estimated change in the dependent variable (fertility) when the corresonding independent variable changes. So, for every 1% increase in percent of males involved in agriculture as an occupation we expect a .17 decrease in fertility, holding all the other variables constant; for every 1% increase in Catholicism, we expect a .10 increase in fertility, holding all other variables constant.  
+  Output: So InsectSprays is a 72 by 2 array. Use the R function head to look at the first 15 elements of InsectSprays.
+  CorrectAnswer: head(InsectSprays,15)
+  AnswerTests: omnitest(correctExpr='head(InsectSprays,15)')
+  Hint: Type "head(InsectSprays,15)" at the R prompt.
 
 - Class: mult_question
-  Output: The "*" at the far end of the row indicates that the influence of Agriculture on Fertility is significant. At what alpha level is the t-test of Agriculture significant?
-  AnswerChoices: 0.05; 0.01; 0.1; R doesn't say
-  CorrectAnswer: 0.05
-  AnswerTests: omnitest(correctVal='0.05')
-  Hint: Look at the "Signif. codes" line in the summary output.
+  Output: So this dataset contains 72 counts, each associated with a particular different spray. The counts are in the first column and a letter identifying the spray in the second. Reassuringly, the output from head matches the data shown in the displayed boxplot of the spray labeled A. From the boxplot which spray seems to have the largest overall counts?
+  AnswerChoices: F; A; C; E
+  CorrectAnswer: F
+  AnswerTests: omnitest(correctVal='F')
+  Hint: Which spray has the box associated with the largest numbers?
 
 - Class: cmd_question
-  Output: Now generate the summary of another linear model (don't store it in a new variable) in which Fertility depends only on agriculture.
-  CorrectAnswer: summary(lm(Fertility ~ Agriculture, swiss))
-  AnswerTests: omnitest(correctExpr='summary(lm(Fertility ~ Agriculture, swiss))')
-  Hint: Type "summary(lm(Fertility ~ Agriculture, swiss))" at the R prompt.
+  Output: If we run the R command summary on the second column of the dataset we'll see how many entries we have for each spray. Do this now.
+  CorrectAnswer: summary(InsectSprays[,2])
+  AnswerTests: omnitest(correctExpr='summary(InsectSprays[,2])')
+  Hint: Type "summary(InsectSprays[,2])" at the R prompt.
+
+- Class: text
+  Output: It's not surprising that with 72 counts we'd have 12 count for each of the 6 sprays. In this lesson we'll consider multilevel factor levels and how we interpret the linear models. Recall from the slides 
+
+
+- Class: cmd_question
+  Output: 
+  CorrectAnswer: 
+  AnswerTests: omnitest(correctExpr='')
+  Hint: Type "" at the R prompt.
 
 - Class: mult_question
   Output: What is the coefficient of agriculture in this new model?
@@ -128,3 +142,5 @@
 
 - Class: text
   Output: Congrats! You've concluded this first lesson on multivariable linear models.
+
+
