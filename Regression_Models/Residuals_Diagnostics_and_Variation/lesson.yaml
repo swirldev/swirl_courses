@@ -1,7 +1,26 @@
 - Class: meta
   Course: Regression Models
   Lesson: Residuals Diagnostics and Variation
-  Author: your name goes here
+  Author: Swirl Coders
   Type: Standard
-  Organization: your organization
+  Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
+
+- Class: figure
+  Output: "In the accompanying figure there is a fairly obvious outlier. However obvious, it does not affect the fit very much as can be seen by comparing the orange line with the black. The orange line represents a fit in which the outlier is included in the data set, and the black line represents a fit in which the outlier is excluded. Including this outlier does not change the fit very much, so it is said to lack influence."
+  Figure: noninfluential.R
+  FigureType: new
+
+- Class: figure
+  Output: "This next figure also has a fairly obvious outlier, but in this case including the outlier changes the fit a great deal. The slope and the residuals of the orange line are very different than those of the black line. This outlier is said to be influential."
+  Figure: influential.R
+  FigureType: new
+
+- Class: text
+  Output: "Outliers may or may not belong in the data. They may represent real events or they may be spurious. In any case, they should be examined. In order to spot them, R provides various diagnostic plots and measures of influence. In this lesson we'll illustrate their meanings and use."
+
+- Class: cmd_question
+  Output: "The influential outlier is in a data frame named out2. It has two columns, labeled y and x, respectively. To begin, create a model named fit using fit <- lm(y ~ x, out2) or an equivalent expression."
+  CorrectAnswer: fit <- lm(y ~ x, out2)
+  AnswerTests: creates_lm_model('fit <- lm(y ~ x, out2)')
+  Hint: "Enter fit <- lm(y ~ x, out2) or something equivalent at the R prompt."

@@ -44,18 +44,16 @@ local({
 })
 ```
 
+Objectives: to illustrate the diagnostics available in plot.lm and ?influence.measures.
 
-Objectives: to illustrate the meaning of diagnostics available in plot.lm and ?influence.measures.
+Dfbeta, as difference between full leave-one-out models.
 
-Technique: Using a dummy to eliminate the effect of a given point, deriving all diagnostics from its coefficient and standard error.
+* residuals against fitted values, which =1
+* a Scale-Location plot of sqrt(| residuals |) against fitted values, which=3
 
-Dummified vs leave-one-out model.
+Measures based on leaving out a sample (aka cross validation).
 
-Dfbeta, as difference between full and dummified model.
-
-Rstudent as ratio of dummy coefficient to its standard error.
-
-Hat value, aka leverage, from Rstudent and residual as in notes.
+Hat value, aka leverage.
 
 ```{r}
 local({
@@ -88,6 +86,20 @@ local({
   })
 ```
 
+* a Normal Q-Q plot , which=1, uses standardized residuals.
+
+Rstudent using leave-one-out
+
+```{r}
+local({
+    fit <- lm(y ~ x, out2)
+    h1 <- hatvalues(fit)[1]
+    fit.m1 <- lm(y ~ x, out2[-1,]) # fit omitting first sample
+    sigma2.m1 <- deviance(fit.m1)/df.residual(fit.m1)
+    c(rstudent(fit)[1], resid(fit)[1]/sqrt(sigma2.m1*(1-h1)))
+})
+```
+
 
 Cook's distance, [see this](https://en.wikipedia.org/wiki/Cook's_distance)
 
@@ -105,6 +117,7 @@ local({
 })
 ```
 
+  * Cook's distances against hat values (aka leverage.) which=5
 
 dffits from Rstudent and hat value: $diffits = rstudent \sqrt{\frac{h}{1-h}}$ [see this](https://en.wikipedia.org/wiki/DFFITS)
 
