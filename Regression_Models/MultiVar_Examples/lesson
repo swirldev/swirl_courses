@@ -1,0 +1,140 @@
+- Class: meta
+  Course: Regression_Models
+  Lesson: MultiVar_Examples
+  Author: Swirl Coders
+  Type: Standard
+  Organization: Johns Hopkins Bloomberg School of Public Health
+  Version: 2.2.0
+
+- Class: text
+  Output: In this lesson, we'll look at some examples of regression models with more than one variable. We'll begin with the Swiss data which we've taken the liberty to load for you. This data is part of RStudio's datasets package. It was gathered in 1888, a time of demographic change in Switzerland, and measured six quantities in 47 French-speaking provinces of Switzerland. We show here a 6 by 6 array of scatterplots showing pairwise relationships between the variables. All of the variables, except for fertility, are proportions of population. For example, "Examination" shows the percentage of draftees receiving the highest mark on an army exam, and "Education" the percentage of draftees with education beyond primary school.
+
+- Class: mult_question  
+  Output: From the plot, which is NOT one of the factors measured?
+  AnswerChoices: Obesity; Catholic; Fertility, Infant Mortality
+  CorrectAnswer: Obesity
+  AnswerTests: omnitest(correctVal='Obesity')
+  Hint: Which of the choices doesn't appear on the plot at all?
+
+- Class: cmd_question
+  Output: First, use the R function lm to generate the linear model "all" in which Fertility is the variable dependent on all the others. Use the R shorthand "." to represent the five independent variables in the formula passed to lm.  Remember the data is "swiss". 
+  CorrectAnswer: all <- lm(Fertility ~ ., swiss)
+  AnswerTests: creates_lm_model('all <- lm(Fertility ~ . , swiss)')
+  Hint: Type "all <- lm(Fertility ~ ., swiss)" at the R prompt.
+
+- Class: cmd_question
+  Output: Now look at the summary of the linear model all.
+  CorrectAnswer: summary(all)
+  AnswerTests: omnitest(correctExpr='summary(all)')
+  Hint: Type "summary(all)" at the R prompt.
+
+- Class: text
+  Output: Recall that the "estimates" are the coeffients of the independent variables of the linear model (all of which are percentages) and they reflect an estimated change in the dependent variable (fertility) when the corresonding independent variable changes. So, for every 1% increase in percent of males involved in agriculture as an occupation we expect a .17 decrease in fertility, holding all the other variables constant; for every 1% increase in Catholicism, we expect a .10 increase in fertility, holding all other variables constant.  
+
+- Class: cmd_question
+  Output: Now generate the summary of another linear model (don't store it in a new variable) in which Fertility depends only on agriculture.
+  CorrectAnswer: summary(lm(Fertility ~ Agriculture, swiss))
+  AnswerTests: omnitest(correctExpr='summary(lm(Fertility ~ Agriculture, swiss))')
+  Hint: Type "summary(lm(Fertility ~ Agriculture, swiss))" at the R prompt.
+
+- Class: mult_question
+  Output: What is the coefficient of agriculture in this new model?
+  AnswerChoices: 0.19420; 60.30438; 0.07671; *
+  CorrectAnswer: 0.19420
+  AnswerTests: omnitest(correctVal='0.19420')
+  Hint: Look at the "Estimate" column and "Agriculture" row of the summary data you just generated.
+
+- Class: text  
+  Output: The interesting point is that the sign of the Agriculture coefficient changed from negative (when all the variables were included in the model) to positive (when the model only considered Agriculture). Obviously the presence of the other factors affects the influence Agriculture has on Fertility.
+
+- Class: mult_question
+  Output: Let's consider the relationship between some of the factors. How would you expect level Education and performance on an Examination to be related?
+  AnswerChoices: They'd be correlated;  They'd be uncorrelated; I wouldn't be able to guess without more information
+  CorrectAnswer: They'd be correlated
+  AnswerTests: omnitest(correctVal='They'd be correlated')
+  Hint: How well would you do on an exam without any class or preparation or swirl lesson?
+
+- Class: cmd_question
+  Output: Now use the R command "cor" to find the correlation between Examination and Education. 
+  CorrectAnswer: cor(swiss$Examination,swiss$Education)
+  AnswerTests: ANY_of_exprs('cor(swiss$Examination,swiss$Education)','cor(swiss$Education,swiss$Examination)')
+  Hint: Type "cor(swiss$Examination,swiss$Education)" at the R prompt.
+
+- Class: cmd_question
+  Output: The correlation of .6984 shows the two are highly correlated. Now find the correlation between Agriculture  and Education. 
+  CorrectAnswer: cor(swiss$Agriculture,swiss$Education)
+  AnswerTests: ANY_of_exprs('cor(swiss$Agriculture,swiss$Education)','cor(swiss$Education,swiss$Agriculture)')
+  Hint: Type "cor(swiss$Agriculture,swiss$Education)" at the R prompt.
+
+- Class: text  
+  Output: The negative correlation (-.6395) between Agriculture and Education might be affecting Agriculture's influence on Fertility. I've loaded and sourced the file swissLMs.R in your working directory. In it is a function makelms() which generates a sequence of five linear models. Each model has one more independent variable than the preceding model, so the first has just one independent variable, Agriculture, and the last has all 5. I've tried loading the source code in your editor. If I haven't done this, open the file manually so you can look at the code. 
+
+- Class: cmd_question  
+  Output: Now run the function makelms().
+  CorrectAnswer: makelms()
+  AnswerTests: omnitest(correctExpr='makelms()')
+  Hint: Type "makelms()" at the R prompt.
+
+
+- Class: figure
+  Output: Now you can actually play with the code to use R's manipulate function and find the minimum squared error. You can adjust the slider with the left mouse button or use the right and left arrow keys to see how changing the slope (beta) affects the mean squared error (mse). If the slider disappears you can call it back by clicking on the little gear in the upper left corner of the plot window.
+  Figure: sourceit.R
+  FigureType: new
+
+- Class: mult_question  
+  Output:  Which value of the slope minimizes the mean squared error?
+  AnswerChoices: .64; .44; .70; 5
+  CorrectAnswer: .64
+  AnswerTests: omnitest(correctVal='.64')
+  Hint: If you list the choices from least to biggest pick one of the two middle choices.
+
+- Class: mult_question  
+  Output:  What was the minimum mse?
+  AnswerChoices: 5.0; .64; 44; .66
+  CorrectAnswer: 5.0
+  AnswerTests: omnitest(correctVal='5.0')
+  Hint: You don't want an error that's too big or too small.
+
+- Class: text
+  Output: Recall that you normalize data by subtracting its mean and dividing by its standard deviation. We've done this for the galton child and parent data for you. We've stored these normalized values in two vectors, gpa_nor and gch_nor, the normalized galton parent and child data.
+
+- Class: cmd_question
+  Output: Use R's function "cor" to compute the correlation between these normalized data sets.
+  CorrectAnswer: cor(gpa_nor,gch_nor)
+  AnswerTests: ANY_of_exprs('cor(gpa_nor,gch_nor)','cor(gch_nor,gpa_nor)')
+  Hint: Type "cor(gpa_nor,gch_nor)" at the R prompt.
+
+- Class: mult_question  
+  Output:  How does this correlation relate to the correlation of the unnormalized data?
+  AnswerChoices: It is the same.; It is bigger.; It is smaller.
+  CorrectAnswer: It is the same.
+  AnswerTests: omnitest(correctVal='It is the same.')
+  Hint: Have you really changed anything?
+
+- Class: cmd_question
+  Output: Use R's function "lm" to generate the regression line using this normalized data. Store it in a variable called l_nor. Use the parents' heights as the predictors (independent variable) and the childrens' as the predicted (dependent). Remember, 'lm' needs a formula of the form dependent ~ independent. Since we've created the data vectors for you there's no need to provide a second "data" argument as you have previously.
+  CorrectAnswer: l_nor <- lm(gch_nor ~ gpa_nor)
+  AnswerTests: omnitest(correctExpr='l_nor <- lm(gch_nor ~ gpa_nor)')
+  Hint: Type "l_nor <- lm(gch_nor ~ gpa_nor)" at the R prompt.
+
+- Class: mult_question  
+  Output:  What is the slope of this line?
+  AnswerChoices: The correlation of the 2 data sets; I have no idea; 1.
+  CorrectAnswer:  The correlation of the 2 data sets
+  AnswerTests: omnitest(correctVal='The correlation of the 2 data sets')
+  Hint: Think correlation.
+
+- Class: mult_question  
+  Output:  If you swapped the outcome (Y) and predictor (X) of your original (unnormalized) data, (for example, used childrens' heights to predict their parents), what would the slope of the new regression line be?
+  AnswerChoices: correlation(X,Y) * sd(X)/sd(Y); the same as the original; I have no idea; 1.
+  CorrectAnswer: correlation(X,Y) * sd(X)/sd(Y) 
+  AnswerTests: omnitest(correctVal='correlation(X,Y) * sd(X)/sd(Y)')
+  Hint: Since you're swapping X and Y, swap the X and Y in the formula. Swapping X and Y in the correlation function doesn't change anything.
+
+- Class: figure
+  Output: We'll close with a final display of source code from the Professor Caffo's lecture. It plots the galton data with three regression lines, the original in red with the children as the outcome,  a new blue line with the parents' as outcome and childrens' as predictor, and a black line with the slope scaled so it equals the ratio of the standard deviations. 
+  Figure: demofile2.R
+  FigureType: new
+
+- Class: text
+  Output: Congrats! You've concluded this lesson on ordinary least squares which are truly extraordinary!
