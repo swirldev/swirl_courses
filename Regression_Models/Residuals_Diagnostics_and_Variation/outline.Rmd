@@ -1,0 +1,111 @@
+Initialization
+
+```{r}
+local({
+  set.seed(13121098)
+  n <- 50
+  x <- rnorm(n, sd=.5)
+  y <- x + rnorm(n, sd=.3)
+  out1 <<- data.frame(y=c(5,y), x=c(0,x))
+  out2 <<- data.frame(y=c(0,y), x=c(5,x))
+})
+
+```
+
+
+Figure, outlier with minor influence
+```{r}
+local({
+  fit.1 <- lm(y ~ x, out1[-1,])
+  fit <- lm(y ~ x, out1)
+  plot(c(-3, 6), c(-3, 6), type='n', xlab="x", ylab="y", main="Outlier with minor influence")
+  points(y ~ x, out1, pch=21, bg="lightblue")
+  points(out1[1,2], out1[1,1], cex = 2, bg = "darkorange", col = "black", pch = 21)
+  text(out1[1,2], out1[1,1]+.25, "Outlier", pos=3)
+  abline(fit.1, lwd=2)
+  abline(fit, col='darkorange', lwd=4, lty=2)
+  legend('bottomright', c("Fit omitting outlier", "Fit with outlier"), lty=1:2, col=c("black", "darkorange"), lwd=c(2,4))
+})
+```
+
+
+Figure: outlier with major influence
+```{r}
+local({
+  fit.1 <- lm(y ~ x, out2[-1,])
+  fit <- lm(y ~ x, out2)
+  plot(c(-3, 6), c(-3, 6), type='n', xlab="x", ylab="y", main="Outlier with major influence")
+  points(y ~ x, out2, pch=21, bg="lightblue")
+  points(out2[1,2], out2[1,1], cex = 2, bg = "darkorange", col = "black", pch = 21)
+  text(out2[1,2], out2[1,1]+.25, "Outlier", pos=3)
+  abline(fit.1, lwd=2)
+  abline(fit, col='darkorange', lwd=4, lty=2)
+  legend('bottomright', c("Fit omitting outlier", "Fit with outlier"), lty=1:2, col=c("black", "darkorange"), lwd=c(2,4))
+})
+```
+
+
+Objectives: to illustrate the meaning of diagnostics available in plot.lm and ?influence.measures.
+
+Technique: Using a dummy to eliminate the effect of a given point, deriving all diagnostics from its coefficient and standard error.
+
+Dummified vs leave-one-out model.
+
+Dfbeta, as difference between full and dummified model.
+
+Rstudent as ratio of dummy coefficient to its standard error.
+
+Hat value, aka leverage, from Rstudent and residual as in notes.
+
+```{r}
+local({
+  fit.m1 <- lm(y ~ x, out2[-1,]) # fit omitting first sample
+  yval.m1 <- predict(fit.m1, out2[1,]) # predict the first sample based on that fit
+  res.m1 <- out2[1,"y"] - yval.m1 # calculate the residual of the prediction
+  c(res.m1, resid(fit)[1]/(1-hatvalues(fit)[1])) # show Brian's equality is true
+  c(hatvalues(fit)[1], 1-resid(fit)[1]/res.m1)
+  })
+```
+
+Standardized residuals (which use hat values.)
+
+```{r}
+local({
+  fit <- lm(y ~ x, out2)
+  df.residual(fit)
+  # [1] 49
+  sqrt(deviance(fit)/49)
+  # [1] 0.4965815
+  resid(fit)[1]/0.4965815
+  #        1 
+  # -3.153734 
+  rstandard(fit)[1]
+  #        1 
+  # -5.192816 
+  -3.15/sqrt(1-h1)
+  #        1 
+  # -5.186668
+  })
+```
+
+
+Cook's distance, [see this](https://en.wikipedia.org/wiki/Cook's_distance)
+
+```{r}
+local({
+  fit <- lm(y ~ x, out2)
+  E1 <- rstandard(fit)[1]
+  h1 <- hatvalues(fit)[1]
+  c(E1^2*h1/(1-h1)/2, cooks.distance(fit)[1])
+  # Another way
+  fit.m1 <- lm(y ~ x, out2[-1,]) # fit omitting first sample
+  yval.m1 <- predict(fit.m1, out2[1,]) # predict the first sample based on that fit
+  res.m1 <- out2[1,"y"] - yval.m1 # calculate the residual of the prediction
+  # h1 <- 1-resid(fit)[1]/res.m1 => h1/(1-h1) == res.m1/resid(fit)[1] - 1
+})
+```
+
+
+dffits from Rstudent and hat value: $diffits = rstudent \sqrt{\frac{h}{1-h}}$ [see this](https://en.wikipedia.org/wiki/DFFITS)
+
+

@@ -15,7 +15,7 @@ The general objective is to illustrate the meaning of diagnostics referred to in
   * `rstandard` - standardized residuals, residuals divided by their standard deviations)
   * `rstudent` - standardized residuals, residuals divided by their standard deviations, where the ith data point was deleted in the calculation of the standard deviation for the residual to follow a t distribution
   * `hatvalues` - measures of leverage
-  * `dffits` - change in the predicted response when the $i^{th}$ point is deleted in fitting the model.
+  * `dffits` - the change in the predicted value for a point, obtained when that point is left out of the regression, "Studentized" by dividing by the estimated standard deviation of the fit at that point:
   * `dfbetas` - change in individual coefficients when the $i^{th}$ point is deleted in fitting the model.
   * `cooks.distance` - overall change in the coefficients when the $i^{th}$ point is deleted.
   * `resid` - returns the ordinary residuals
@@ -70,6 +70,8 @@ c(res.m1, resid(fit)[1]/(1-hatvalues(fit)[1])) # show Brian's equality is true
 ```
 
 $$h_i = 1 - \frac{E_i}{E_{i,[-i]}}$$
+
+###  predict(lm(y ~ x, out2[-1,]), out2[1,]) = - coefficient of the dummy variable in mean shift.
 
 
 
