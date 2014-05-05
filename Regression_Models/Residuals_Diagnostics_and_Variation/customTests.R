@@ -33,36 +33,11 @@ creates_lm_model <- function(correctExpr){
     isTRUE(all.equal(mdlUsr$fitted.values, mdlSw$fitted.values))
 }
 
-# The following adds a feature which restores plots and
-# other side effects of expressions entered by users.
-# It does not preserve plots in their original order,
-# because, all plots produced by figure questions are restored
-# after plots restored by this code.
-#
-# A proper fix will require minor changes to the swirl core.
-# This hack is here to remind us of the problem's exact nature.
-
-# This function will be called when this file is sourced.
-# At that point, e is five frames up in the call stack. 
-restore_expr <- function(){
-  e <- get("e", parent.frame(5))
-  if(exists("plotexpr", e, inherits=FALSE)){
-    for(expr in e$plotexpr){
-      eval(expr)
-    }
-  }
-}
-
-# Call restore_expr when this file is sourced.
-restore_expr()
-
-# This function is a custom test, called whenever it occurs
-# as an AnswerTest. At that point, e is one frame up in
-# the call stack.
-save_expr <- function(){
+# Returns TRUE if the user has calculated a value equal to that calculated by the given expression.
+calculates_same_value <- function(expr){
   e <- get("e", parent.frame())
-  if(!exists("plotexpr", e, inherits=FALSE))e$plotexpr <- list()
-  n <- length(e$plotexpr)
-  e$plotexpr[[n+1]] <- e$expr
-  return(TRUE)
+  # Calculate what the user should have done.
+  eSnap <- cleanEnv(e$snapshot)
+  val <- eval(parse(text=expr), eSnap)
+  isTRUE(all.equal(val, e$val))
 }
