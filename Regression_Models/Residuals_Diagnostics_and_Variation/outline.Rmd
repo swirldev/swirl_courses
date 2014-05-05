@@ -49,7 +49,6 @@ Objectives: to illustrate the diagnostics available in plot.lm and ?influence.me
 Dfbeta, as difference between full leave-one-out models.
 
 * residuals against fitted values, which =1
-* a Scale-Location plot of sqrt(| residuals |) against fitted values, which=3
 
 Measures based on leaving out a sample (aka cross validation).
 
@@ -86,7 +85,8 @@ local({
   })
 ```
 
-* a Normal Q-Q plot , which=1, uses standardized residuals.
+* a Normal Q-Q plot , which=2, uses standardized residuals.
+* so does a Scale-Location plot of sqrt(| residuals |) against fitted values, which=3
 
 Rstudent using leave-one-out
 
