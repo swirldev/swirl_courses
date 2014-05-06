@@ -180,7 +180,10 @@
   Hint: Enter sum(dy^2)/(2*sigma^2) or an equivalent expression at the R prompt.
 
 - Class: cmd_question
-  Output: "cooks.distance: The function, cooks.distance, will calculate Cook's distance for each sample. Rather than verify that cooks.distance(fit)[1] is equal to the value just calculated, a procedure which must be getting tedious by now, display a diagnostic plot which uses Cook's distance using plot(fit, which=5)."
+  Output: "cooks.distance: The function, cooks.distance, will calculate Cook's distance for each sample. Rather than verify that cooks.distance(fit)[1] is equal to the value just calculated, because that sort of thing must be getting tedious by now, display a diagnostic plot which uses Cook's distance using plot(fit, which=5)."
   CorrectAnswer: plot(fit, which=5)
   AnswerTests: omnitest(correctExpr='plot(fit, which=5)')
   Hint: Enter plot(fit, which=5) at the R prompt.
+
+- Class: text
+  Output: "That concludes swirl's coverage of Residuals, Diagnostics, and Variation. The HTML5 slides for this as well as other units in the Johns Hopkins Data Science Specialiation can be found here: https://github.com/DataScienceSpecialization/courses. They must be downloaded and viewed locally."
