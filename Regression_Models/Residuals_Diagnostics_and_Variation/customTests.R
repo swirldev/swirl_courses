@@ -44,7 +44,7 @@ calculates_same_value <- function(expr){
 
 # Returns TRUE of the user has calculated a value equal to any of those computed by the given
 # expressions.
-calculates_ANY_value(...){
+calculates_ANY_value <- function(...){
   e <- get("e", parent.frame())
   any(sapply(c(...), function(expr)calculates_same_value(expr)))
 }
