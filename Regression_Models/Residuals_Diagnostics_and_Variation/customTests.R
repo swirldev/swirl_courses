@@ -41,3 +41,10 @@ calculates_same_value <- function(expr){
   val <- eval(parse(text=expr), eSnap)
   isTRUE(all.equal(val, e$val))
 }
+
+# Returns TRUE of the user has calculated a value equal to any of those computed by the given
+# expressions.
+calculates_ANY_value(...){
+  e <- get("e", parent.frame())
+  any(sapply(c(...), function(expr)calculates_same_value(expr)))
+}

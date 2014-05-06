@@ -85,7 +85,7 @@
   FigureType: new
 
 - Class: cmd_question
-  Output: "This measure is sometimes called influence, sometimes leverage, and sometimes hatvalue. Since it is 1 minus the ratio of two residuals, to calculate it from scratch we must first obtain the two residuals. The ratio's numerator (orange dots) is the residual of the first sample of the model we called fit. The model fitno, which excludes this sample, also excludes its residual, so we will have to calculate its value. This is easily done. We use R's predict function to calculate fitno's predicted value of y and subtract it from the actual value. Use the expression resno <- out2[1, \"y\"] - predict(fitno, out2[1,]) to do the calculation."
+  Output: "This measure is sometimes called influence, sometimes leverage, and sometimes hat value. Since it is 1 minus the ratio of two residuals, to calculate it from scratch we must first obtain the two residuals. The ratio's numerator (orange dots) is the residual of the first sample of the model we called fit. The model fitno, which excludes this sample, also excludes its residual, so we will have to calculate its value. This is easily done. We use R's predict function to calculate fitno's predicted value of y and subtract it from the actual value. Use the expression resno <- out2[1, \"y\"] - predict(fitno, out2[1,]) to do the calculation."
   CorrectAnswer: resno <- out2[1, "y"] - predict(fitno, out2[1,])
   AnswerTests: ANY_of_exprs('resno <- out2[1, "y"] - predict(fitno, out2[1,])', "resno <- out2[1, 'y'] - predict(fitno, out2[1,])")
   Hint: Enter the expression resno <- out2[1, "y"] - predict(fitno, out2[1,]) at the R prompt.
@@ -97,28 +97,31 @@
   Hint: Enter 1-resid(fit)[1]/resno or an equivalent expression at the R prompt.
 
 - Class: cmd_question
-  Output: "hatvalues: The function, hatvalues, performs an equivalent calculation for each sample. Thus the first entry of hatvalues(fit) should match the value which you just calculated. Since there are quite a few samples, use head(hatvalues(fit)) or View(hatvalues(fit)) to compare the influence measure of our outlier to that of some other samples."
+  Output: "hatvalues: The function, hatvalues, performs an equivalent calculation for each sample. Thus the first entry of hatvalues(fit) should match the value which you have just calculated. Since there are quite a few samples, use head(hatvalues(fit)) or View(hatvalues(fit)) to compare the influence measure of our outlier to that of some other samples."
   CorrectAnswer: head(hatvalues(fit))
   AnswerTests: ANY_of_exprs("head(hatvalues(fit))", "View(hatvalues(fit))")
   Hint: Enter head(hatvalues(fit)) or View(hatvalues(fit)) at the R prompt.
 
+- Class: text
+  Output: "Residuals of individual samples are sometimes treated as having the same variance, which is estimated as the sample variance of the entire set of residuals. Theoretically, however, residuals of individual samples have different variances and these differences can become large in the presence of outliers. Standardized and Studentized residuals attempt to compensate for this effect in two slightly different ways. Both use hat values."
+
 - Class: cmd_question
-  Output: "The remaining diagnostic measures and plots all depend on hatvalues. Standardized residuals are the first we shall consider. Data is generally normalized by subtracting an estimated mean and dividing be an estimated standard deviation. In the current context, we also adjust for influence. To begin, estimate the standard deviation of fit's residual by dividing its deviance, i.e., the residual sum of squares, by the residual degrees of freedom and taking the square root. Store the result in a variable called sigma."
+  Output: "We'll consider standardized residuals first. To begin, calculate the sample standard deviation of fit's residual by dividing fit's deviance, i.e., its residual sum of squares, by the residual degrees of freedom and taking the square root. Store the result in a variable called sigma."
   CorrectAnswer: sigma <- sqrt(deviance(fit)/df.residual(fit))
   AnswerTests: calculates_same_value('sigma <- sqrt(deviance(fit)/df.residual(fit))');expr_creates_var('sigma')
   Hint: "Enter sigma <- sqrt(deviance(fit)/df.residual(fit)) or an equivalent expression at the R prompt."
 
 - Class: cmd_question
-  Output: "Ordinarily we would just divide fit's residual (which has mean 0) by sigma. In the present case we divide by sigma times sqrt(1-hatvalues(fit)) to account for influence. The result is called the standardized residual. Form fit's standardized residual and store it in a variable named stdresid."
-  CorrectAnswer: stdresid <- resid(fit)/(sigma * sqrt(1-hatvalues(fit)))
-  AnswerTests: calculates_same_value('stdresid <- resid(fit)/(sigma * sqrt(1-hatvalues(fit))));expr_creates_var('stdresid')
-  Hint: "Enter stdresid <- resid(fit)/(sigma * sqrt(1-hatvalues(fit))) or an equivalent expression at the R prompt."
+  Output: "Ordinarily we would just divide fit's residual (which has mean 0) by sigma. In the present case we multiply sigma times sqrt(1-hatvalues(fit)) to estimate standard deviations of individual samples. Thus, instead of dividing resid(fit) by sigma, we divide by sigma*sqrt(1-hatvalues(fit)). The result is called the standardized residual. Form fit's standardized residual and store it in a variable named rstd."
+  CorrectAnswer: rstd <- resid(fit)/(sigma * sqrt(1-hatvalues(fit)))
+  AnswerTests: calculates_same_value('rstd <- resid(fit)/(sigma * sqrt(1-hatvalues(fit))));expr_creates_var('rstd')
+  Hint: "Enter rstd <- resid(fit)/(sigma * sqrt(1-hatvalues(fit))) or an equivalent expression at the R prompt."
 
 - Class: cmd_question
-  Output: "rstandard: The function, rstandard, computes the standardized residual which we have just computed step by step. Use head(cbind(stdresid, rstandard(fit))) or View(cbind(stdresid, rstandard(fit))) to compare the two calculations."
-  CorrectAnswer: head(cbind(stdresid, rstandard(fit)))
-  AnswerTests: ANY_of_exprs('head(cbind(stdresid, rstandard(fit)))', 'View(cbind(stdresid, rstandard(fit)))')
-  Hint: "Enter head(cbind(stdresid, rstandard(fit))) or View(cbind(stdresid, rstandard(fit))) at the R prompt."
+  Output: "rstandard: The function, rstandard, computes the standardized residual which we have just computed step by step. Use head(cbind(rstd, rstandard(fit))) or View(cbind(rstd, rstandard(fit))) to compare the two calculations."
+  CorrectAnswer: head(cbind(rstd, rstandard(fit)))
+  AnswerTests: ANY_of_exprs('head(cbind(rstd, rstandard(fit)))', 'View(cbind(rstd, rstandard(fit)))')
+  Hint: "Enter head(cbind(rstd, rstandard(fit))) or View(cbind(rstd, rstandard(fit))) at the R prompt."
 
 - Class: cmd_question
   Output: "A Scale-Location plot shows the square root of standardized residuals against fitted values. Use plot(fit, which=3) to display it."
@@ -129,8 +132,8 @@
   FigureType: new
 
 - Class: cmd_question
-  Output: "Most of the diagnostic statistics under discussion were chosen because their distributions could be characterized, given a null hypothesis of no significant influence. The assumption that residuals are approximately normal is implicit in such characterizations. A QQ plot of standardized residuals against normal would amplify departures from normality which might be associated with outliers. Use plot(fit, which=2) to display this diagnostic plot."
-  CorrectAnswer: EXPR or VAL
+  Output: "Most of the diagnostic statistics under discussion were developed because of perceived shortcomings of other diagnostics and because their distributions under a null hypothesis could be characterized. The assumption that residuals are approximately normal is implicit in such characterizations. Since standardized residuals adjust for individual residual variances, a QQ plot of standardized residuals against normal with constant variance is of interest. Use plot(fit, which=2) to display this diagnostic plot."
+  CorrectAnswer: plot(fit, which=2)
   AnswerTests: omnitest(correctExpr='plot(fit, which=2)')
   Hint: Enter plot(fit, which=2) at the R prompt.
   Figure: restore_4.R
@@ -142,3 +145,42 @@
   CorrectAnswer: About -5
   AnswerTests: omnitest(correctVal= 'About -5')
   Hint: This would be its position on the vertical axis.
+
+- Class: cmd_question
+  Output: "Studentized residuals, (sometimes called externally Studentized residuals,) estimate the standard deviations of individual residuals using, in addition to individual hat values, the deviance of a model which leaves the associated sample out. We'll illustrate using the outlier. Recalling that the model we called fitno omits the outlier sample, calculate the sample standard deviation of fitno's residual by dividing its deviance, by its residual degrees of freedom and taking the square root. Store the result in a variable called sigma1."
+  CorrectAnswer: sigma1 <- sqrt(deviance(fitno)/df.residual(fitno))
+  AnswerTests: calculates_same_value('sigma1 <- sqrt(deviance(fitno)/df.residual(fitno))');expr_creates_var('sigma1')
+  Hint: Enter sigma1 <- sqrt(deviance(fitno)/df.residual(fitno)) or an equivalent expression at the R prompt.
+
+- Class: cmd_question
+  Output: "Calculate the Studentized residual for the outlier sample by dividing resid(fit)[1] by the product of sigma1 and sqrt(1-hatvalues(fit)[1]). There is no need to store this in a variable."
+  CorrectAnswer: resid(fit)[1]/(sigma1*sqrt(1-hatvalues(fit)[1]))
+  AnswerTests: calculates_same_value('resid(fit)[1]/(sigma1*sqrt(1-hatvalues(fit)[1]))')
+  Hint: Enter resid(fit)[1]/(sigma1*sqrt(1-hatvalues(fit)[1])) or an equivalent expression at the R prompt.
+
+- Class: cmd_question
+  Output: "rstudent: The function, rstudent, calculates Studentized residuals for each sample using a procedure equivalent to that which we just used for the outlier. Thus rstudent(fit)[1] should match the value we calculated in the previous question. Use head(rstudent(fit)) or View(rstudent(fit)) to verify this and to compare the Studentized residual of the outlier with those of other samples."
+  CorrectAnswer: head(rstudent(fit))
+  AnswerTests: ANY_of_exprs('head(rstudent(fit))', 'View(rstudent(fit))', 'rstudent(fit)')
+  Hint: Enter head(rstudent(fit)) or an equivalent expression at the R prompt.
+
+- Class: text
+  Output: "Cook's distance is the last influence measure we will consider. It is essentially the sum of squared differences between values fitted with and without a particular sample. It is normalized (divided by) residual sample variance times the number of predictors which is 2 in our case (the intercept and x.) It essentially tells how much a given sample changes a model. We'll illustrate once again by calculating Cook's distance for the outlier."
+
+- Class: cmd_question
+  Output: "We'll begin by calculating the difference in predicted values between fit and fitno, the models which respectively include and omit the outlier. This is most easily done by subtracting predict(fit, out2) from predict(fitno, out2). Store the difference in a variable named dy."
+  CorrectAnswer: dy <- predict(fitno, out2)-predict(fit, out2)
+  AnswerTests: calculates_ANY_value('dy <- predict(fitno, out2)-predict(fit, out2)', 'dy <- predict(fit, out2)-predict(fitno, out2)');expr_creates_var('dy')
+  Hint: Enter dy <- predict(fitno, out2)-predict(fit, out2) or an equivalent expression at the R prompt.
+
+- Class: cmd_question
+  Output: "Recall the we calculated the sample standard deviation of fit's residual, sigma, earlier. Divide the summed squares of dy by 2*sigma^2 to calculate the outlier's Cook's distance. There is no need to store the result in a variable."
+  CorrectAnswer: sum(dy^2)/(2*sigma^2)
+  AnswerTests: calculates_same_value('sum(dy^2)/(2*sigma^2)')
+  Hint: Enter sum(dy^2)/(2*sigma^2) or an equivalent expression at the R prompt.
+
+- Class: cmd_question
+  Output: "cooks.distance: The function, cooks.distance, will calculate Cook's distance for each sample. Rather than verify that cooks.distance(fit)[1] is equal to the value just calculated, a procedure which must be getting tedious by now, display a diagnostic plot which uses Cook's distance using plot(fit, which=5)."
+  CorrectAnswer: plot(fit, which=5)
+  AnswerTests: omnitest(correctExpr='plot(fit, which=5)')
+  Hint: Enter plot(fit, which=5) at the R prompt.
