@@ -186,4 +186,4 @@
   Hint: Enter plot(fit, which=5) at the R prompt.
 
 - Class: text
-  Output: "That concludes swirl's coverage of Residuals, Diagnostics, and Variation. The HTML5 slides for this as well as other units in the Johns Hopkins Data Science Specialiation can be found here: https://github.com/DataScienceSpecialization/courses. They must be downloaded and viewed locally."
+  Output: "That concludes swirl's coverage of Residuals, Diagnostics, and Variation. The HTML5 slides for this as well as other units in the Johns Hopkins Data Science Specialization can be found here: https://github.com/DataScienceSpecialization/courses. They must be downloaded and viewed locally."

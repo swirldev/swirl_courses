@@ -34,9 +34,10 @@
 - Class: cmd_question
   Output: Now's your chance to plot in R. Type "plot(child ~ parent, galton)" at the R prompt. 
   CorrectAnswer: plot(child ~ parent, galton)
-  AnswerTests: omnitest(correctExpr='plot(child ~ parent, galton)');save_expr()
+  AnswerTests: omnitest(correctExpr='plot(child ~ parent, galton)')
   Hint: Type "plot(child ~ parent, galton)" at the R prompt.
-
+  Figure: restore_1.R
+  FigureType: new
 
 - Class: text
   Output: You'll notice that this plot looks a lot different than the original we displayed. Why? Many people are the same height to within measurement error, so points fall on top of one another. You can see that some circles appear darker than others. However, by using R's function "jitter" on the children's heights, we can spread out the data to simulate the measurement errors and make high frequency heights more visible. 
@@ -45,8 +46,10 @@
 - Class: cmd_question
   Output: Now it's your turn to try. Just type "plot(jitter(child,4) ~ parent,galton)" and see the magic.
   CorrectAnswer: plot(jitter(child,4) ~ parent,galton)
-  AnswerTests: omnitest(correctExpr='plot(jitter(child,4) ~ parent,galton)');save_expr()
+  AnswerTests: omnitest(correctExpr='plot(jitter(child,4) ~ parent,galton)')
   Hint: You can do it! Type "plot(jitter(child,4) ~ parent,galton)"
+  Figure: restore_2.R
+  FigureType: new
 
 - Class: text
   Output: Now for the regression line. This is quite easy in R. The function lm (linear model) needs a "formula" and dataset. You can type "?formula" for more information, but, in simple terms, we just need to specify the dependent variable (children's heights) ~ the independent variable (parents' heights). 
@@ -54,19 +57,21 @@
 - Class: cmd_question
   Output: So generate the regression line and store it in the variable regrline. Type "regrline <- lm(child ~ parent, galton)"
   CorrectAnswer: regrline <- lm(child ~ parent, galton)
-  AnswerTests: omnitest(correctExpr='regrline <- lm(child ~ parent, galton)')
+  AnswerTests: omnitest(correctExpr='regrline <- lm(child ~ parent, galton)');expr_creates_var('regrline')
   Hint: You CAN do it! Type "regrline <- lm(child ~ parent, galton)"
 
 - Class: cmd_question
   Output: Now add the regression line to the plot with "abline". Make the line wide and red for visibility. Type "abline(regrline, lwd=3, col='red')"
   CorrectAnswer: abline(regrline, lwd=3, col='red')
-  AnswerTests: omnitest(correctExpr='abline(regrline, lwd=3, col=\'red\')');save_expr()
+  AnswerTests: omnitest(correctExpr='abline(regrline, lwd=3, col=\'red\')')
   Hint: Yes, you can! Type "abline(regrline, lwd=3, col='red')"
+  Figure: restore_3.R
+  FigureType: add
 
 - Class: cmd_question
   Output: The regression line will have a slope and intercept which are estimated from data. Estimates are not exact. Their accuracy is gauged by theoretical techniques and expressed in terms of "standard error." You can use  "summary(regrline)" to examine the Galton regression line. Do this now.
   CorrectAnswer: summary(regrline)
-  AnswerTests: omnitest(correctExpr='summary(regrline)');save_expr()
+  AnswerTests: omnitest(correctExpr='summary(regrline)')
   Hint: This one's easy. Type "summary(regrline)"
 
 - Class: mult_question  

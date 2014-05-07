@@ -1,0 +1,1 @@
+plot(jitter(child,4) ~ parent,galton)
