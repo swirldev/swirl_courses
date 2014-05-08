@@ -2,9 +2,12 @@
   Course: Regression_Models
   Lesson: Count_Outcomes
   Author: Swirl Coders
-  Type: Standard
+  Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
+
+- Class: text
+  Output: "Count Outcomes. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Regression_Models/03_03_countOutcomes.)"
 
 - Class: text
   Output: "Many data take the form of counts. These might be calls to a call center, number of flu cases in an area, or number of cars that cross a bridge. Data may also be in the form of rates, e.g., percent of children passing a test. In this lesson we will use Poisson regression to analyze daily visits to a web site as the web site's popularity grows, and to analyze the percent of visits which are due to references from a different site."
