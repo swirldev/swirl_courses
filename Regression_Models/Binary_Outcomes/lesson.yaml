@@ -2,9 +2,12 @@
   Course: Regression_Models
   Lesson: Binary_Outcomes
   Author: Swirl Coders
-  Type: Standard
+  Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
+
+- Class: text
+  Output: "Binary Outcomes. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Regression_Models/03_02_binaryOutcomes.)"
 
 - Class: text
   Output: Frequently we care about outcomes that have two values such as alive or dead, win or lose, success or failure. Such outcomes are called binary, Bernoulli, or 0/1. A collection of exchangeable binary outcomes for the same covariate data are called binomial outcomes. (Outcomes are exchangeable if their order doesn't matter.)
