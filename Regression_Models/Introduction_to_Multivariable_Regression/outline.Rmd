@@ -1,0 +1,17 @@
+# Outline
+
+## constant and one variable
+
+* Regression in one variable produced 2 coefficients, if you count the intercept.
+* The intercept is really the coefficient of a regressor with value 1 for every sample.
+* Previously shown (Residual Variation) that you could remove the intercept by subtracting the mean from both outcome and regressor.
+* Once you do that you get the slope. How would you get the intercept?
+
+* You would regress child - predict(child, fit) against constant, 1.
+* Show it.
+
+* Subtracting the mean, to get the slope, then recovering the intercept as above is a special case of general method, sometimes called Gaussian elimination.
+* The mean is really the coefficient of regression against the constant=1 predictor.
+* Show it.
+
+* Program which eliminates a variable from a data frame.
