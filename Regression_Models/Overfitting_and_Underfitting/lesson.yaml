@@ -2,9 +2,12 @@
   Course: Regression Models
   Lesson: Overfitting and Underfitting
   Author: Swirl Coders
-  Type: Standard
+  Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
+
+- Class: text
+  Output: "Overfitting and Underfitting. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Regression_Models/02_04_regression_variation_diagnostics.)"
 
 - Class: text
   Output: "The Variance Inflation Factors lesson demonstrated that including new variables will increase standard errors of coefficient estimates of other, correlated regressors. Hence, we don't want to idly throw variables into the model. On the other hand, omitting variables results in bias in coefficients of regressors which are correlated with the omitted ones. In this lesson we demonstrate the effect of omitted variables and discuss the use of ANOVA to construct parsimonious, interpretable representations of the data."
