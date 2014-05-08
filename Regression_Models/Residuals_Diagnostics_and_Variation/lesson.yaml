@@ -2,9 +2,12 @@
   Course: Regression Models
   Lesson: Residuals Diagnostics and Variation
   Author: Swirl Coders
-  Type: Standard
+  Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
+
+- Class: text
+  Output: "Residuals, Diagnostics, and Variation. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Regression_Models/02_04_residuals_variation_diagnostics.)"
 
 - Class: figure
   Output: "In the accompanying figure there is a fairly obvious outlier. However obvious, it does not affect the fit very much as can be seen by comparing the orange line with the black. The orange line represents a fit in which the outlier is included in the data set, and the black line represents a fit in which the outlier is excluded. Including this outlier does not change the fit very much, so it is said to lack influence."
