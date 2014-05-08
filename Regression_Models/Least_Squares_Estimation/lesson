@@ -26,7 +26,7 @@
   FigureType: add
 
 - Class: text
-  Output: Also, we learned from the lecture that the slope of the regression line is the correlation between the two sets of heights multiplied by the ratio of the standard deviations (childrens' to parents' or outcomes to predictors).
+  Output: As shown in the slides, the slope of the regression line is the correlation between the two sets of heights multiplied by the ratio of the standard deviations (childrens' to parents' or outcomes to predictors).
 
 - Class: figure
   Output: Here we show code which demonstrates how changing the slope of the regression line affects the mean squared error between actual and predicted values. Look it over to see how straightforward it is. 

@@ -30,7 +30,7 @@
   FigureType: add
 
 - Class: figure
-  Output: Now we've added a blue regression line to the plot. This is the line which has the minimum variation of the data around it. (For theory see the slides and videos.) Its slope is greater than zero indicating that parents' heights do affect their children's. The slope is also less than 1 as would have been the case if children tended to be the same height as their parents.
+  Output: Now we've added a blue regression line to the plot. This is the line which has the minimum variation of the data around it. (For theory see the slides.) Its slope is greater than zero indicating that parents' heights do affect their children's. The slope is also less than 1 as would have been the case if children tended to be the same height as their parents.
   Figure: plot3_regression_line.R
   FigureType: add
 
