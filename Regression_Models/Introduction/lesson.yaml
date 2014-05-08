@@ -1,10 +1,13 @@
 - Class: meta
   Course: Regression Models
   Lesson: Introduction
-  Author: your name goes here
-  Type: Standard
-  Organization: your organization
-  Version: 2.1.0
+  Author: Swirl Coders
+  Type: Coursera
+  Organization: Johns Hopkins Bloomberg School of Public Health
+  Version: 2.2.0
+
+- Class: text
+  Output: "Introduction to Regression Models. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses if you want to use them. They must be downloaded as a zip file and viewed locally. This lesson corresponds to Regression_Models/01_01_introduction.)"
 
 - Class: text
   Output: This is the first lesson on Regression Models. We'll begin with the concept of "regression toward the mean" and illustrate it with some pioneering work of the father of forensic science, Sir Francis Galton.
