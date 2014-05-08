@@ -2,9 +2,12 @@
   Course: Regression Models
   Lesson: Variance_Inflation_Factors
   Author: Swirl Coders
-  Type: Standard
+  Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
+
+- Class: text
+  Output: "Variance Inflation Factors. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Regression_Models/02_04_residuals_variation_diagnostics.)"
 
 - Class: text
   Output: "In modeling, our interest lies in parsimonious, interpretable representations of the data that enhance our understanding of the phenomena under study. Omitting variables results in bias in the coefficients of interest - unless their regressors are uncorrelated with the omitted ones. On the other hand, including any new variables increases (actual, not estimated) standard errors of other regressors. So we don't want to idly throw variables into the model. This lesson is about the second of these two issues, which is known as variance inflation."
