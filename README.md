@@ -1,9 +1,7 @@
 swirl courses
 =============
 
-This is a collection of interactive courses for use with the swirl R package. Some courses are still in development and may only run on a particular development version of swirl.
-
-The following are some of our more popular courses: 
+This is a collection of interactive courses for use with the swirl R package. Some courses are still in development and we'd love to hear your feedback as you work through them.
 
 - R Programming
 - Regression Models (in progress)
