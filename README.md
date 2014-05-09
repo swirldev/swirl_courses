@@ -3,13 +3,26 @@ swirl courses
 
 This is a collection of interactive courses for use with the [swirl R package](http://swirlstats.com). Some courses are still in development and we'd love to hear any [suggestions](https://github.com/swirldev/swirl_courses/issues/new) you have as you work through them.
 
+For more information regarding swirl, visit [swirlstats.com](http://swirlstats.com) or the [swirl GitHub repository](https://github.com/swirldev/swirl). If you'd like to write your own interactive content, please visit the [Instructors page](http://swirlstats.com/instructors.html) of our website.
+
+Here are our current offerings, organized by level of difficulty:
+
+#### Beginner
+
 - R Programming
-- Regression Models (in progress)
 - Data Analysis
 - Mathematical Biostatistics Boot Camp
 - Open Intro
 
-For more information regarding swirl, visit [swirlstats.com](http://swirlstats.com) or the [swirl GitHub repository](https://github.com/swirldev/swirl). If you'd like to write your own interactive content, please visit the [Instructors page](http://swirlstats.com/instructors.html) of our website.
+#### Intermediate
+
+- Regression Models
+
+#### Advanced
+
+- *Coming soon!*
+
+**NOTE: Since our users come from so many different backgrounds, it's very hard to label material as *Beginner*, *Intermediate*, and *Advanced*. If you find something that is labelled *Beginner* to be challenging, please don't be discouraged. The first step of learning anything is to acknowledge that you are capable of understanding it. True understanding will come with time and practice.**
 
 ## Install and run a course automatically from swirl
 
