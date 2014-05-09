@@ -22,8 +22,6 @@ Here are our current offerings, organized by level of difficulty:
 
 - *Coming soon!*
 
-<br>
-
 Since our users come from a variety backgrounds, it's very hard to label material as **Beginner**, **Intermediate**, or **Advanced**. If you find something that is labelled **Beginner** to be challenging, please don't be discouraged. The first step of learning anything is to acknowledge that you are capable of understanding it. True understanding will come with time and practice.
 
 ***
