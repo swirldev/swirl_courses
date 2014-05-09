@@ -43,7 +43,8 @@ If the automatic course installation method outlined above does not work for you
 
 ```
 library(swirl)
-install_course_zip("path/to/file/here/swirl_courses-master.zip", multi=TRUE, which_course="Course Name Here")
+install_course_zip("path/to/file/here/swirl_courses-master.zip", multi=TRUE, 
+                   which_course="Course Name Here")
 swirl()
 ```
 
