@@ -2,15 +2,18 @@
   Course: Regression_Models
   Lesson: Residual_Variation
   Author: Swirl Coders
-  Type: Standard
+  Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
 - Class: text
-  Output: From the lecture and slides we learned that residuals are useful for indicating how well data points fit a statistical model. They "can be thought of as the outcome (Y) with the linear association of the predictor (X) removed. One differentiates residual variation (variation after removing the predictor) from systematic variation (variation explained by the regression model)."
+  Output: "Residual Variation. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Regression_Models/01_06_residualVariation.)"
 
 - Class: text
-  Output: We also learned from the lectures that, given a model, the maximum likelihood estimate of the variance of the random error is the average squared residual. However,  since our linear model with one predictor requires two parameters we have only (n-2) degrees of freedom. Therefore, to calculate an "average" squared residual to estimate the variance we use the formula 1/(n-2) * (the sum of the squared residuals). If we divided the sum of the squared residuals by n, instead of n-2, the result would give a biased estimate.
+  Output: As shown in the slides, residuals are useful for indicating how well data points fit a statistical model. They "can be thought of as the outcome (Y) with the linear association of the predictor (X) removed. One differentiates residual variation (variation after removing the predictor) from systematic variation (variation explained by the regression model)."
+
+- Class: text
+  Output: It can also be shown that, given a model, the maximum likelihood estimate of the variance of the random error is the average squared residual. However,  since our linear model with one predictor requires two parameters we have only (n-2) degrees of freedom. Therefore, to calculate an "average" squared residual to estimate the variance we use the formula 1/(n-2) * (the sum of the squared residuals). If we divided the sum of the squared residuals by n, instead of n-2, the result would give a biased estimate.
 
 - Class: cmd_question
   Output: To see this we'll use our favorite Galton height data. First regenerate the regression line and call it fit. Use the R function lm and recall that by default its first argument is a formula such as "child ~ parent" and its second is the dataset, in this case galton. 
@@ -19,7 +22,7 @@
   Hint: Type "fit <- lm(child ~ parent, galton)" at the R prompt.
 
 - Class: text
-  Output: First we'll repeat Professor Caffo's experiment. We'll use the residuals (fit$residuals) of our model to estimate the standard deviation (sigma) of the error. We've already defined n for you as the number of points in Galton's dataset (928).
+  Output: First, we'll use the residuals (fit$residuals) of our model to estimate the standard deviation (sigma) of the error. We've already defined n for you as the number of points in Galton's dataset (928).
 
 - Class: cmd_question
   Output:  Calculate the sum of the squared residuals divided by the quantity (n-2).  Then take the square root.
@@ -43,9 +46,8 @@
   AnswerTests: omnitest(correctExpr='sqrt(deviance(fit)/(n-2))')
   Hint: Type "sqrt(deviance(fit)/(n-2))" at the R prompt.
 
-
 - Class: text
-  Output: Another useful fact shown in the slides and lecture was
+  Output: Another useful fact shown in the slides was
 
 - Class: text
   Output: Total Variation = Residual Variation + Regression Variation

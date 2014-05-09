@@ -2,10 +2,12 @@
   Course: Regression_Models
   Lesson: Residuals
   Author: Swirl Coders
-  Type: Standard
+  Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
+- Class: text
+  Output: "Residuals. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Regression_Models/01_02_linearRegression.)"
 
 - Class: text
   Output: This lesson will focus on the residuals, the distances between the actual children's heights and the estimates given by the regression line. Since all lines are characterized by two parameters, a slope and an intercept, we'll use the least squares criteria to provide two equations in two unknowns so we can solve for these parameters, the slope and intercept.
@@ -39,13 +41,13 @@
   Hint: Type "cov(fit$residuals, galton$parent)" at the R prompt.
 
 - Class: text
-  Output: Recall the algebra of the slides and video. The equations for the intercept and slope are found by supposing a change is made to the intercept and slope. Squaring out the resulting expressions produces three summations. The first sum is the original term squared, before the slope and intercept were changed. The third sum totals the squared changes themselves. For instance, if we had changed fit’s intercept by adding 2, the third sum would be the total of 928 4’s. The middle sum is guaranteed to be zero precisely when the two equations (the conditions on the residuals) are satisfied.
+  Output: As shown algebraically in the slides, the equations for the intercept and slope are found by supposing a change is made to the intercept and slope. Squaring out the resulting expressions produces three summations. The first sum is the original term squared, before the slope and intercept were changed. The third sum totals the squared changes themselves. For instance, if we had changed fit’s intercept by adding 2, the third sum would be the total of 928 4’s. The middle sum is guaranteed to be zero precisely when the two equations (the conditions on the residuals) are satisfied.
 
 - Class: text
   Output: We'll verify these claims now. We've defined for you two R functions, est and sqe. Both take two inputs, a slope and an intercept. The function est calculates a child's height (y-coordinate) using the line defined by the two parameters, (slope and intercept), and the parents' heights in the Galton data as x-coordinates.  
 
 - Class: mult_question
-  Output: Let "mch"" represent the mean of the galton childrens' heights and "pch"" the mean of the galton parents' heights. Let "ic" and "slope" represent the intercept and slope of the regression line respectively. We've seen in the lectures and slides and past lessons that the point (mph,mch) lies on the regression line. This means
+  Output: Let "mch"" represent the mean of the galton childrens' heights and "pch"" the mean of the galton parents' heights. Let "ic" and "slope" represent the intercept and slope of the regression line respectively. As shown in the slides and past lessons, the point (mph,mch) lies on the regression line. This means
   AnswerChoices: mch = ic + slope*mph; mph = ic + slope*mch; I haven't the slightest idea.
   CorrectAnswer: mch = ic + slope*mph
   AnswerTests: omnitest(correctVal='mch = ic + slope*mph')

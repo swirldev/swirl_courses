@@ -1,0 +1,11 @@
+local({
+  plot(c(-3, 6), c(-3, 6), type='n', xlab="x", ylab="y", main="Influence")
+  points(y ~ x, out2, pch=21, bg="lightblue")
+  points(out2[1,2], out2[1,1], cex = 2, bg = "darkorange", col = "black", pch = 21)
+  text(out2[1,2], out2[1,1]-.25, "Outlier", pos=1)
+  abline(fitno, lwd=2)
+  abline(fit, col='darkorange', lwd=4, lty=2)
+  segments(out2[1,"x"]-.1, out2[1,"y"], out2[1,"x"]-.1, predict(fitno, out2[1,]), lty=3, lwd=3)
+  segments(out2[1,"x"]+.1, out2[1,"y"], out2[1,"x"]+.1, fit$fitted.values[1], lty=3, lwd=3, col="darkorange")
+  legend('bottomright', c("Fit with outlier omitted", "Fit with outlier included"), lty=1:2, col=c("black", "darkorange"), lwd=c(2,4))
+})

@@ -1,0 +1,1 @@
+plot(fitno, which=1)

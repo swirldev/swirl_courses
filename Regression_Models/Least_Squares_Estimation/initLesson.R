@@ -10,9 +10,9 @@ gch_nor <- (gch - mean(gch))/sd(gch)
 maniflg <- find.package("manipulate",quiet=TRUE)
 if  ((Sys.getenv("RSTUDIO") == "1")&&(nchar(maniflg)>0 )){
   library(manipulate)
-  fname <- paste(getwd(),"Regression_Models","Least_Squares_Estimation","slopedemo.R",sep="/")
+  fname <- paste(find.package("swirl"),"Courses/Regression_Models","Least_Squares_Estimation","slopedemo.R",sep="/")
 } else {
-  fname <- paste(getwd(),"Regression_Models","Least_Squares_Estimation","slopedemo_no_mani.R",sep="/")  
+  fname <- paste(find.package("swirl"),"Courses/Regression_Models","Least_Squares_Estimation","slopedemo_no_mani.R",sep="/")  
 }
 file.edit(fname)
-fname2 <- paste(getwd(),"Regression_Models","Least_Squares_Estimation","finalplot.R",sep="/")
+fname2 <- paste(find.package("swirl"),"Courses/Regression_Models","Least_Squares_Estimation","finalplot.R",sep="/")

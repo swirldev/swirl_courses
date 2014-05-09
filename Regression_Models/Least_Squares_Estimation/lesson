@@ -2,12 +2,15 @@
   Course: Regression_Models
   Lesson: Least_Squares_Estimation
   Author: Swirl Coders
-  Type: Standard
+  Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
 - Class: text
-  Output: In this lesson, if you're using RStudio, you'll be able to play with some of the code Professor Caffo showed in his lecture. If you're not using RStudio, you can look at the code but you won't be able to experiment with the function "manipulate". We provide the code for you so you can examine it without having to type it all out.  In RStudio, when the edit window displays code, make sure your flashing cursor is back in the console window before you hit "Enter" or any keyboard buttons, otherwise you might accidentally alter the code. If you do alter the file, in RStudio, you can hit Ctrl z in the editor until all the unwanted changes disappear. In other editors, you'll have to use whatever key combination performs "undo" to remove all your unwanted changes.
+  Output: "Least Squares Estimation. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Regression_Models/01_03_ols.)"
+
+- Class: text
+  Output: In this lesson, if you're using RStudio, you'll be able to play with some of the code which appears in the slides. If you're not using RStudio, you can look at the code but you won't be able to experiment with the function "manipulate". We provide the code for you so you can examine it without having to type it all out.  In RStudio, when the edit window displays code, make sure your flashing cursor is back in the console window before you hit "Enter" or any keyboard buttons, otherwise you might accidentally alter the code. If you do alter the file, in RStudio, you can hit Ctrl z in the editor until all the unwanted changes disappear. In other editors, you'll have to use whatever key combination performs "undo" to remove all your unwanted changes.
 
 - Class: figure
   Output: Here are the Galton data and the regression line seen in the Introduction. We loaded the data with the R command 'galton <- UsingR::galton'. This Galton data is one of the many datasets that R and its package system provide for users. The regression line summarizes the relationship between parents' heights (the predictors) and their childrens' (the outcomes). 
@@ -18,15 +21,15 @@
   Output: We learned in the last lesson that the regression line is the line through the data which has the minimum (least) squared "error", the vertical distance between the 928 actual children's heights and the heights predicted by the line. Squaring the distances ensures that data points above and below the line are treated the same. This method of choosing the 'best' regression line (or 'fitting' a line to the data) is known as ordinary least squares.
 
 - Class: figure
-  Output: From the slides and video we learned that the regression line contains the point representing the means of the two sets of heights. These are shown by the thin horizontal and vertical lines. The intersection point is shown by the triangle on the plot. Its x-coordinate is the mean of the parents' heights and y-coordinate is the mean of the childrens' heights. 
+  Output: As shown in the slides, the regression line contains the point representing the means of the two sets of heights. These are shown by the thin horizontal and vertical lines. The intersection point is shown by the triangle on the plot. Its x-coordinate is the mean of the parents' heights and y-coordinate is the mean of the childrens' heights. 
   Figure: meanpt.R
   FigureType: add
 
 - Class: text
-  Output: Also, we learned from the lecture that the slope of the regression line is the correlation between the two sets of heights multiplied by the ratio of the standard deviations (childrens' to parents' or outcomes to predictors).
+  Output: As shown in the slides, the slope of the regression line is the correlation between the two sets of heights multiplied by the ratio of the standard deviations (childrens' to parents' or outcomes to predictors).
 
 - Class: figure
-  Output: Here we show Professor Caffo's code (slightly modified) which demonstrates how changing the slope of the regression line affects the mean squared error between actual and predicted values. Look it over to see how straightforward it is. 
+  Output: Here we show code which demonstrates how changing the slope of the regression line affects the mean squared error between actual and predicted values. Look it over to see how straightforward it is. 
   Figure: demofile.R
   FigureType: new
 
@@ -93,7 +96,7 @@
   Hint: Since you're swapping X and Y, swap the X and Y in the formula. Swapping X and Y in the correlation function doesn't change anything.
 
 - Class: figure
-  Output: We'll close with a final display of source code from the Professor Caffo's lecture. It plots the galton data with three regression lines, the original in red with the children as the outcome,  a new blue line with the parents' as outcome and childrens' as predictor, and a black line with the slope scaled so it equals the ratio of the standard deviations. 
+  Output: We'll close with a final display of source code from the slides. It plots the galton data with three regression lines, the original in red with the children as the outcome,  a new blue line with the parents' as outcome and childrens' as predictor, and a black line with the slope scaled so it equals the ratio of the standard deviations. 
   Figure: demofile2.R
   FigureType: new
 
