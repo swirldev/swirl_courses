@@ -9,7 +9,7 @@ This is a collection of interactive courses for use with the [swirl R package](h
 - Mathematical Biostatistics Boot Camp
 - Open Intro
 
-For more information regarding swirl, visit [swirlstats.com](http://swirlstats.com) or the [swirl GitHub repository](https://github.com/swirldev/swirl).
+For more information regarding swirl, visit [swirlstats.com](http://swirlstats.com) or the [swirl GitHub repository](https://github.com/swirldev/swirl). If you'd like to write your own interactive content, please visit the [Instructors page](http://swirlstats.com/instructors.html) of our website.
 
 ## Install and run a course automatically from swirl
 
