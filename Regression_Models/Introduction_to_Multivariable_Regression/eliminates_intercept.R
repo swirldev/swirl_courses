@@ -1,6 +1,6 @@
 local({
   freqData <- as.data.frame(table(galton$child-mean(galton$child), galton$parent-mean(galton$parent)))
-  names(freqData) <- c("child-mean(child)", "parent-mean(parent)", "freq")
+  names(freqData) <- c("child", "parent", "freq")
   plot(as.numeric(as.vector(freqData$parent)), 
        as.numeric(as.vector(freqData$child)), 
        pch = 21, col = "black", bg = "lightblue",
