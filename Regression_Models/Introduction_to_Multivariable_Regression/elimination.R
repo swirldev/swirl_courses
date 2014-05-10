@@ -17,8 +17,21 @@ regress <- function(outcome, predictor, dataframe){
 # and returning a data frame containing the residuals
 # of those regressions.
 eliminate <- function(predictor=1, dataframe){
-  outcomes <- setdiff(names(dataframe), predictor)
-  temp <- sapply(outcomes, function(outcome)resid(regress(outcome, predictor, dataframe)))
-  names(temp) <- outcomes
+  others <- setdiff(names(dataframe), predictor)
+  temp <- sapply(others, function(other)resid(regress(other, predictor, dataframe)))
+  names(temp) <- others
   as.data.frame(temp)
+}
+
+# Given a predictor and its known coefficient subtract
+# the coefficient times the predictor from the outcome,
+# remove the predictor from the data frame and return
+# the result.
+reduce <- function(outcome, predictor, coefficient, dataframe){
+  if(predictor==1){
+    dataframe[, outcome] <- dataframe[, outcome] - coefficient*1
+  } else {
+    dataframe[, outcome] <- dataframe[, outcome] - coefficient*dataframe[, predictor]
+  }
+  dataframe[, setdiff(names(dataframe), predictor)]
 }

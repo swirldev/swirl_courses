@@ -1,7 +1,52 @@
 - Class: meta
   Course: Regression Models
   Lesson: Introduction to Multivariable Regression
-  Author: your name goes here
-  Type: Standard
-  Organization: your organization
+  Author: Swirl Coders
+  Type: Coursera
+  Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
+
+- Class: text
+  Output: "Introduction to Multivariable Regression. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Regression_Models/02_01_multivariate.)"
+
+- Class: text
+  Output: "When we perform a regression in ones variable, such as lm(child ~ parent, galton), we get two coefficients, a slope and an intercept. The intercept is really the coefficient of a special regressor which has the same value, 1, at every sample. The function, lm, includes this regressor by default."
+
+- Class: cmd_question
+  Output: "We'll demonstrate by substituting an all-ones regressor of our own. This regressor must have the same number of samples as galton (928.) Form such an object and name it ones using ones <- rep(1, nrow(galton)), or some equivalent expression."
+  CorrectAnswer: ones <- rep(1, nrow(galton))
+  AnswerTests: calculates_same_value('ones <- rep(1, nrow(galton))');expr_creates_var('one')
+  Hint: "Entering ones <- rep(1, nrow(galton)) at the R prompt is a straightforward way to form a vector of 1's having precisely as many samples as the galton data set."
+
+- Class: cmd_question
+  Output: "The default intercept can be excluded by using -1 in the formula. Perform a regression which substitutes our regressor, ones, for the default using lm(child ~ ones + parent - 1, galton). Since we want the result to print, don't assign the result to a variable."
+  CorrectAnswer: lm(child ~ ones + parent - 1, galton)
+  AnswerTests: creates_lm_model('lm(child ~ ones + parent - 1, galton)');!expr_is_a("<-")
+  Hint: "Enter lm(child ~ ones + parent - 1, galton) at the R prompt. Don't assign the result to a variable."
+
+- Class: cmd_question
+  Output: "The coefficient of ones is 23.9415. Now use the default, lm(child ~ parent, galton), to show the intercept has the same value."
+  CorrectAnswer: lm(child ~ parent, galton)
+  AnswerTests: creates_lm_model('lm(child ~ parent, galton)');!expr_is_a("<-")
+  Hint: "Entering lm(child ~ parent, galton) at the R prompt is the easiest thing to do. Don't assign the result to a variable."
+
+- Class: mult_question  
+  Output: "The regression in one variable given by lm(child ~ parent, galton) really involves two regressors, the variable, parent, and a regressor of all ones."
+  AnswerChoices: True;False
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal= 'True')
+  Hint: "Since it produces two coefficients, it must involve two regressors. One is a variable named parent, the other is the constant, 1."
+
+- Class: figure
+  Output: "In earlier lessons we demonstrated that the regression line given by lm(child ~ parent, galton) goes through the point x=mean(parent), y=mean(child). We also showed that if we subtract its mean from each variable, the regression line goes through the origin, x=0, y=0, hence its intercept is zero. Thus, by subtracting the means, we eliminate one of the two regressors, the constant, leaving ourselves with just one. The coefficient of the remaining regressor, parent-mean(parent), is the slope."
+  Figure: eliminates_intercept.R
+  FigureType: new
+
+- Class: txt
+  Output: "Subtracting the means to eliminate the intercept is a special case of general technique which is sometimes called Gaussian Elimination. The general technique is to pick one regressor and replace all other variables by the residuals of their regressions against the chosen one."
+
+- Class: cmd_question
+  Output: "It may be surprising that child-mean(child) is the residual of a regression of child against the constant, 1. "
+  CorrectAnswer: EXPR or VAL
+  AnswerTests: omnitest(correctExpr='EXPR', correctVal=VAL)
+  Hint: hint
