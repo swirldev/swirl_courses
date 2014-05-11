@@ -10,6 +10,9 @@
   Output: "Introduction to Multivariable Regression. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Regression_Models/02_01_multivariate.)"
 
 - Class: text
+  Output: "In this lesson we'll illustrate that regression in many variables amounts to a series of regressions in one. Using regression in one variable, we will show how eliminate a regressor, thus reducing a regression in N variables, to a regression in N-1. So, if we know how to do a regression in 1 variable, we can do a regression in 2. Once we know how to do a regression in 2 variables, we can do a regression in 3, and so on. We begin with the galton data and a review of eliminating the intercept by subtracting the means."
+
+- Class: text
   Output: "When we perform a regression in one variable, such as lm(child ~ parent, galton), we get two coefficients, a slope and an intercept. The intercept is really the coefficient of a special regressor which has the same value, 1, at every sample. The function, lm, includes this regressor by default."
 
 - Class: cmd_question
@@ -50,7 +53,7 @@
   AnswerChoices: The constant, 1;The variable itself;The outcome
   CorrectAnswer: The constant, 1
   AnswerTests: omnitest(correctVal= 'The constant, 1')
-  Hint: "A residual is the difference between a variable and its predicted value. If, for example, child-mean(child) is a residual, then mean(child) must be its predicted value. But mean(child) is a constant, so the regressor must be a constant."
+  Hint: "A residual is the difference between a variable and its predicted value. If, for example, child-mean(child) is a residual, then mean(child) must be its predicted value. But mean(child) is a constant, so the regressor would be a constant."
 
 - Class: cmd_question
   Output: "In an R formula, the constant regressor can be represented by a 1 on the right hand side. Thus, the expression, lm(child ~ 1, galton), regresses child against the constant, 1. Recall that in the galton data, the mean height of a child was 68.09 inches. Use lm(child ~ 1, galton) to compare the resulting coefficient (the intercept) and the mean height of 68.09. Since we want the result to print, don't assign it a name."
