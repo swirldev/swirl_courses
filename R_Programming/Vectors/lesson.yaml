@@ -224,8 +224,7 @@
 
 - Class: cmd_question
   Output: For a slightly more complicated example, we can join two vectors, each of
-    length 3. Use paste() to join the numeric vector 1:3 (recall this is the same
-    as c(1, 2, 3)) with the character vector c("X", "Y", "Z"). This time, use sep
+    length 3. Use paste() to join the integer vector 1:3 with the character vector c("X", "Y", "Z"). This time, use sep
     = "" to leave no space between the joined elements.
   CorrectAnswer: paste(1:3, c("X", "Y", "Z"), sep = "")
   AnswerTests: omnitest(correctExpr='paste(1:3, c("X", "Y", "Z"), sep = "")')
