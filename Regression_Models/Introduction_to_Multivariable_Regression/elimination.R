@@ -1,8 +1,12 @@
-# Make a formula of the type outcome ~ 0 + predictor.
-# The zero suppresses the intercept unless 1 is explicitly
-# given as the predictor.
+# Make a formula for regressing the outcome against
+# the predictor, suppressing the intercept except
+# in the special case for predictor = 1.
 makeFormula <- function(outcome, predictor){
-  paste0(outcome, " ~ 0 + ", predictor)
+  if(predictor!=1){
+    paste0(outcome, " ~ ", predictor, "- 1")
+  } else {
+    paste0(outcome, "~ 1")
+  }
 }
 
 # Return a linear regression of the outcome against the

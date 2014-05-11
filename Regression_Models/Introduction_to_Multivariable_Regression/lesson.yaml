@@ -19,7 +19,7 @@
   Hint: "Entering ones <- rep(1, nrow(galton)) at the R prompt is a straightforward way to form a vector of 1's having precisely as many samples as the galton data set."
 
 - Class: cmd_question
-  Output: "The galton data has already been loaded. The default intercept can be excluded by using -1 in the formula. Perform a regression which substitutes our regressor, ones, for the default using lm(child ~ ones + parent - 1, galton). Since we want the result to print, don't assign the result to a variable."
+  Output: "The galton data has already been loaded. The default intercept can be excluded by using -1 in the formula. Perform a regression which substitutes our regressor, ones, for the default using lm(child ~ ones + parent - 1, galton). Since we want the result to print, don't assign it to a variable."
   CorrectAnswer: lm(child ~ ones + parent - 1, galton)
   AnswerTests: creates_lm_model('lm(child ~ ones + parent - 1, galton)');!expr_is_a("<-")
   Hint: "Enter lm(child ~ ones + parent - 1, galton) at the R prompt. Don't assign the result to a variable."
@@ -43,9 +43,17 @@
   FigureType: new
 
 - Class: text
-  Output: "Subtracting the means to eliminate the intercept is a special case of general technique which is sometimes called Gaussian Elimination. The general technique is to pick one regressor and replace all other variables by the residuals of their regressions against the chosen one."
+  Output: "Subtracting the means to eliminate the intercept is a special case of a general technique which is sometimes called Gaussian Elimination. As it applies here, the general technique is to pick one regressor and to replace all other variables by the residuals of their regressions against that one."
 
-- Class: figure
-  Output: "Some "
-  Figure: editSource.R
-  FigureType: new
+- Class: mult_question  
+  Output: "Suppose, as claimed, that subtracting a variable's mean is a special case of replacing the variable with a residual. This would be the residual of a regression against what?"
+  AnswerChoices: The constant, 1;The variable itself;The outcome
+  CorrectAnswer: The constant, 1
+  AnswerTests: omnitest(correctVal= 'The constant, 1')
+  Hint: "A residual is the difference between a variable and its predicted value. If, for example, child-mean(child) is a residual, then mean(child) must be its predicted value. But mean(child) is a constant, so the regressor must be a constant."
+
+- Class: cmd_question
+  Output: "In an R formula, the constant regressor can be represented by a 1 on the right hand side. Thus, the expression, lm(child ~ 1, galton), regresses child against the constant, 1. Recall that in the galton data, the mean height of a child was 68.09 inches. Use lm(child ~ 1, galton) to compare the resulting coefficient (the intercept) and the mean height of 68.09. Since we want the result to print, don't assign it a name."
+  CorrectAnswer: lm(child ~ 1, galton)
+  AnswerTests: creates_lm_model('lm(child ~ 1, galton)');!expr_is_a('<-')
+  Hint: "Enter lm(child ~ 1, galton) at the R prompt. Don't use the assignment operater, <-."
