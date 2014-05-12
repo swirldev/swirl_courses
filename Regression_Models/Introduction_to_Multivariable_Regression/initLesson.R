@@ -7,3 +7,4 @@ local({
 source("elimination.R")
 galton <- UsingR::galton
 trees <- datasets::trees
+trees <- cbind(Constant=rep(1.0, nrow(trees)), trees)
