@@ -10,13 +10,13 @@
   Output: "Introduction to Multivariable Regression. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Regression_Models/02_01_multivariate.)"
 
 - Class: text
-  Output: "In this lesson we'll illustrate that regression in many variables amounts to a series of regressions in one. Using regression in one variable, we will show how eliminate a regressor, thus reducing a regression in N variables, to a regression in N-1. So, if we know how to do a regression in 1 variable, we can do a regression in 2. Once we know how to do a regression in 2 variables, we can do a regression in 3, and so on. We begin with the galton data and a review of eliminating the intercept by subtracting the means."
+  Output: "In this lesson we'll illustrate that regression in many variables amounts to a series of regressions in one. Using regression in one variable, we'll show how to eliminate any chosen regressor, thus reducing a regression in N variables, to a regression in N-1. Hence, if we know how to do a regression in 1 variable, we can do a regression in 2. Once we know how to do a regression in 2 variables, we can do a regression in 3, and so on. We begin with the galton data and a review of eliminating the intercept by subtracting the means."
 
 - Class: text
   Output: "When we perform a regression in one variable, such as lm(child ~ parent, galton), we get two coefficients, a slope and an intercept. The intercept is really the coefficient of a special regressor which has the same value, 1, at every sample. The function, lm, includes this regressor by default."
 
 - Class: cmd_question
-  Output: "We'll demonstrate by substituting an all-ones regressor of our own. This regressor must have the same number of samples as galton (928.) Form such an object and name it ones using ones <- rep(1, nrow(galton)), or some equivalent expression."
+  Output: "We'll demonstrate by substituting an all-ones regressor of our own. This regressor must have the same number of samples as galton (928.) Create such an object and name it ones, using ones <- rep(1, nrow(galton)), or some equivalent expression."
   CorrectAnswer: ones <- rep(1, nrow(galton))
   AnswerTests: calculates_same_value('ones <- rep(1, nrow(galton))');expr_creates_var('ones')
   Hint: "Entering ones <- rep(1, nrow(galton)) at the R prompt is a straightforward way to form a vector of 1's having precisely as many samples as the galton data set."
@@ -41,7 +41,7 @@
   Hint: "Since it produces two coefficients, it must involve two regressors. One is a variable named parent, the other is the constant, 1."
 
 - Class: figure
-  Output: "In earlier lessons we demonstrated that the regression line given by lm(child ~ parent, galton) goes through the point x=mean(parent), y=mean(child). We also showed that if we subtract its mean from each variable, the regression line goes through the origin, x=0, y=0, hence its intercept is zero. Thus, by subtracting the means, we eliminate one of the two regressors, the constant, leaving ourselves with just one. The coefficient of the remaining regressor, parent-mean(parent), is the slope."
+  Output: "In earlier lessons we demonstrated that the regression line given by lm(child ~ parent, galton) goes through the point x=mean(parent), y=mean(child). We also showed that if we subtract its mean from each variable, the regression line goes through the origin, x=0, y=0, hence its intercept is zero. Thus, by subtracting the means, we eliminate one of the two regressors, the constant, leaving just one. The coefficient of the remaining regressor, parent-mean(parent), is the slope."
   Figure: eliminates_intercept.R
   FigureType: new
 
@@ -60,3 +60,13 @@
   CorrectAnswer: lm(child ~ 1, galton)
   AnswerTests: creates_lm_model('lm(child ~ 1, galton)');!expr_is_a('<-')
   Hint: "Enter lm(child ~ 1, galton) at the R prompt. Don't use the assignment operater, <-."
+
+- Class: mult_question  
+  Output: "The mean of a variable is equal to its regression against the constant, 1."
+  AnswerChoices: True;False
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal= 'True')
+  Hint: "The mean minimizes the sum of squared differences between itself and the variable."
+
+- Class: text
+  Output: "Having reviewed elimination of the intercept, we'll procede to the general case. Illustrative source code has been copied to your working directory, sourced, and should have appeared in your editor. If the file, elimination.R, has not appeared in your editor, please open it manually now."
