@@ -41,21 +41,21 @@
     but nonetheless it's good to know how it could happen.
 
 - Class: text
-  Output: 'Remember that if you have questions about a particular R function, you
+  Output: "Remember that if you have questions about a particular R function, you
     can access its documentation with a question mark followed by the function name:
     ?function_name_here. However, in the case of an operator like the colon used above,
     you must enclose the symbol in backticks like this: ?`:`. (NOTE: The backtick
     (`) key is generally located in the top left corner of a keyboard, above the Tab
-    key.)'
+    key. If you don't have a backtick key, you can use regular quotes.)"
 
 - Class: cmd_question
   Output: Pull up the documentation for `:` now.
   CorrectAnswer: ?`:`
-  AnswerTests: omnitest(correctExpr='?`:`')
-  Hint: 'In order to view the documentation for a symbol like the colon operator,
-    you have to use backticks. This is so R knows you are not attempting to use the
-    symbol in the command. Here''s what it looks like: ?`:`. Don''t forgot the question
-    mark out front.'
+  AnswerTests: ANY_of_exprs('?`:`', "?':'", '?":"')
+  Hint: "In order to view the documentation for a symbol like the colon operator,
+    you have to use backticks (or quotes). This is so R knows you are not attempting to use the
+    symbol in the command. Here's what it looks like: ?`:`. Don't forget the question
+    mark out front."
 
 - Class: text
   Output: Often, we'll desire more control over a sequence we're creating than what
