@@ -129,7 +129,7 @@
   Output: Without an intercept (group reference) the tests are whether the expected counts (the groups means) are different from zero. Clearly, which level is first is important to the model. If you wanted a different reference group, for instance, to compare sprayB to sprayC, you could refit the model with a different reference group.
 
 - Class: cmd_question
-  Output: The R function relevel does precisely this -  re-orders the levels of a factor. Do this now. Call relevel with two arguments, the first is the factor, in this case InsectSprays$spray,  and the second is the level that you want to be first,  in this case "C". Store the result in a new variable spray2
+  Output: The R function relevel does precisely this. It re-orders the levels of a factor. We'll do this now. We'll call relevel with two arguments. The first is the factor, in this case InsectSprays$spray,  and the second is the level that we want to be first,  in this case "C". Store the result in a new variable spray2.
   CorrectAnswer: spray2 <- relevel(InsectSprays$spray,"C")
   AnswerTests: omnitest(correctExpr='spray2 <- relevel(InsectSprays$spray,"C")')
   Hint: Type "spray2 <- relevel(InsectSprays$spray,\"C\")" at the R prompt.
@@ -142,7 +142,7 @@
 
 
 - Class: cmd_question
-  Output: As before, look at the coef portion of the summary of this new model fit2. See how the levels have been shifted down and sprayC is now the intercept.
+  Output: As before, look at the coef portion of the summary of this new model fit2. See how sprayC is now the intercept the levels have been shifted down and .
   CorrectAnswer: summary(fit2)$coef
   AnswerTests: omnitest(correctExpr='summary(fit2)$coef')
   Hint: Type "summary(fit2)$coef" at the R prompt.
