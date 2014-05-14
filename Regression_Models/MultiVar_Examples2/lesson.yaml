@@ -116,7 +116,7 @@
   Hint: Type "summary(nfit)$coef" at the R prompt.
 
 - Class: text
-  Output: Notice that sprayA now appears explicitly in the list of Estimates. Also notice how the values of the other columns have changed. Remember that previously, with an intercept, sprayA was excluded, its mean was the intercept, and the values for the other sprays (estimates, standard errors, and t-tests) were all computed relative to sprayA, the reference group. Omitting the intercept clearly affected the model.
+  Output: Notice that sprayA now appears explicitly in the list of Estimates. Also notice how the values of the columns have changed. The means of all the groups are now explicitly shown in the Estimate column. Remember that previously, with an intercept, sprayA was excluded, its mean was the intercept, and the values for the other sprays (estimates, standard errors, and t-tests) were all computed relative to sprayA, the reference group. Omitting the intercept clearly affected the model.
 
 - Class: mult_question
   Output: What values does the Estimate column now show?
@@ -149,7 +149,7 @@
 
 
 - Class: cmd_question
-  Output: As before, look at the coef portion of the summary of this new model fit2. See how sprayC is now the intercept the levels have been shifted down and .
+  Output: As before, look at the coef portion of the summary of this new model fit2. See how sprayC is now the intercept (since it doesn't appear explicitly in the list).
   CorrectAnswer: summary(fit2)$coef
   AnswerTests: omnitest(correctExpr='summary(fit2)$coef')
   Hint: Type "summary(fit2)$coef" at the R prompt.
@@ -176,10 +176,15 @@
   Hint: Recall that when there is an intercept, the mean of a level that's not the reference, is the intercept + the coefficient (or estimate) of that level, in this case spray2a, so you'll have to add together two numbers. Alternatively, just look back and see what the mean was for the original model.
 
 - Class: text
-  Output: Note that the t-test statistics (shown in column 3 of the summary coefficients) can be computed by hand. The slides show the details of this. For instance, in the original model, if the coefficient of sprayC is subtracted from the coefficient of sprayB and the result is divided by the standard error (column 2 of the summary), the result is the t value. 
+  Output: Remember that with this model sprayC is the reference group, so the t-test statistics (shown in column 3 of the summary coefficients) compare the other sprays to sprayC. These can be computed by hand using the Estimates and standard error from the original model (fit) which used sprayA as the references. 
 
+- Class: cmd_question
+  Output: The slides show the details of this but here we'll demonstrate by calculating the spray2B t value.  Subtract fit's sprayC coefficient (fit$coef[3]) from sprayB's (fit$coef[2]) and divide by the standard error which we saw was 1.6011. The result is spray2B's t value. Do this now.
+  CorrectAnswer: (fit$coef[2]-fit$coef[3])/1.6011
+  AnswerTests: omnitest(correctExpr='(fit$coef[2]-fit$coef[3])/1.6011')
+  Hint: Type "(fit$coef[2]-fit$coef[3])/1.6011" at the R prompt.
 
 - Class: text
-  Output: Since counts can never be 0 the assumption of normality is violated. We'll explore this more when we discuss Poisson GLMs. For now be glad that you've concluded this second lesson on multivariable linear models.
+  Output: We glossed over some details in this lesson. For instance, counts can never be 0 so the assumption of normality is violated. We'll explore this issue more when we discuss Poisson GLMs. For now be glad that you've concluded this second lesson on multivariable linear models.
 
 
