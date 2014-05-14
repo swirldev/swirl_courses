@@ -1,4 +1,4 @@
 UsingR
-datasets 
+datasets
 stats
 graphics

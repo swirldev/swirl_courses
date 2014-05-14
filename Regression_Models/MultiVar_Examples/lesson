@@ -32,7 +32,7 @@
   Hint: Type "summary(all)" at the R prompt.
 
 - Class: text
-  Output: Recall that the Estimates are the coeffients of the independent variables of the linear model (all of which are percentages) and they reflect an estimated change in the dependent variable (fertility) when the corresonding independent variable changes. So, for every 1% increase in percent of males involved in agriculture as an occupation we expect a .17 decrease in fertility, holding all the other variables constant; for every 1% increase in Catholicism, we expect a .10 increase in fertility, holding all other variables constant.  
+  Output: Recall that the Estimates are the coeffients of the independent variables of the linear model (all of which are percentages) and they reflect an estimated change in the dependent variable (fertility) when the corresponding independent variable changes. So, for every 1% increase in percent of males involved in agriculture as an occupation we expect a .17 decrease in fertility, holding all the other variables constant; for every 1% increase in Catholicism, we expect a .10 increase in fertility, holding all other variables constant.  
 
 - Class: mult_question
   Output: The "*" at the far end of the row indicates that the influence of Agriculture on Fertility is significant. At what alpha level is the t-test of Agriculture significant?

@@ -16,7 +16,7 @@
   Output: How many Insect Sprays are in this dataset?
   CorrectAnswer: 6
   AnswerTests: omnitest(correctVal=6)
-  Hint: How many letters are  in the sequence: A, B, C, D, E, F ?
+  Hint: How many letters are  in the sequence of letters  A, B, C, D, E, F ?
 
 
 - Class: text_question
@@ -71,8 +71,8 @@
 - Class: cmd_question
   Output: Using R's summary function, look at the coefficients of the model. Recall that these can be accessed with the R construct x$coef.
   CorrectAnswer: summary(fit)$coef
-  AnswerTests: omnitest(correctExpr='')
-  Hint: Type "" at the R prompt.
+  AnswerTests: omnitest(correctExpr='summary(fit)$coef')
+  Hint: Type "summary(fit)$coef" at the R prompt.
 
 - Class: cmd_question
   Output: Notice that R returns a 6 by 4 array. For convenience, store off the first column of this array, the Estimate column, in a variable called est. Remember the R construct for accessing the first column is x[,1].
@@ -135,7 +135,7 @@
   Hint: Type "spray2 <- relevel(InsectSprays$spray,\"C\")" at the R prompt.
 
 - Class: cmd_question
-  Output: Now generate a the new linear model and put the result in the variable sfit.
+  Output: Now generate a the new linear model and put the result in the variable fit2.
   CorrectAnswer: fit2 <- lm(count ~ spray2, InsectSprays)
   AnswerTests: creates_lm_model(correctExpr='fit2 <- lm(count ~ spray2, InsectSprays)')
   Hint: Type "fit2 <- lm(count ~ spray2, InsectSprays)" at the R prompt.
@@ -166,7 +166,7 @@
   AnswerChoices: 14.50000; 12.416667; 14.583333; I don't have a clue
   CorrectAnswer: 14.50000
   AnswerTests: omnitest(correctVal='14.50000')
-  Hint: Recall that the mean of a level that's not the reference, is the intercept + the coefficient (or estimate) of that level, in this case spray2a, so you'll have to add together two numbers. Alternatively, just look back and see what the mean was for the original model.
+  Hint: Recall that when there is an intercept, the mean of a level that's not the reference, is the intercept + the coefficient (or estimate) of that level, in this case spray2a, so you'll have to add together two numbers. Alternatively, just look back and see what the mean was for the original model.
 
 - Class: text
   Output: Note that the t-test statistics (shown in column 3 of the summary coefficients) can be computed by hand. The slides show the details of this. For instance, in the original model, if the coefficient of sprayC is subtracted from the coefficient of sprayB and the result is divided by the standard error (column 2 of the summary), the result is the t value. 
