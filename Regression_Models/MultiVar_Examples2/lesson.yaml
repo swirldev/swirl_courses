@@ -125,8 +125,15 @@
   AnswerTests: omnitest(correctVal='The means of all 6 levels')
   Hint: The numbers should look familiar, especially for sprayA and sprayB. What values have you computed for these two sprays?
 
+- Class: mult_question
+  Output: Without an intercept (reference group) the tests are whether the expected counts (the groups means) are different from zero. Which spray has the least significant result?
+  AnswerChoices: sprayC; sprayF; sprayB; sprayA
+  CorrectAnswer: sprayC
+  AnswerTests: omnitest(correctVal='sprayC')
+  Hint: Which spray has the highest probability?
+
 - Class: text
-  Output: Without an intercept (group reference) the tests are whether the expected counts (the groups means) are different from zero. Clearly, which level is first is important to the model. If you wanted a different reference group, for instance, to compare sprayB to sprayC, you could refit the model with a different reference group.
+  Output: Clearly, which level is first is important to the model. If you wanted a different reference group, for instance, to compare sprayB to sprayC, you could refit the model with a different reference group.
 
 - Class: cmd_question
   Output: The R function relevel does precisely this. It re-orders the levels of a factor. We'll do this now. We'll call relevel with two arguments. The first is the factor, in this case InsectSprays$spray,  and the second is the level that we want to be first,  in this case "C". Store the result in a new variable spray2.
