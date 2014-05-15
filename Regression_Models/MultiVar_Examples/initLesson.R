@@ -11,4 +11,4 @@ file.copy(from=file.path(find.package("swirl"),
                          "MultiVar_Examples/swissLMs.R"), 
           to="swissLMs.R")
 file.edit("swissLMs.R")
-source("swissLMs.R", globalenv())
+source("swissLMs.R", local=TRUE)

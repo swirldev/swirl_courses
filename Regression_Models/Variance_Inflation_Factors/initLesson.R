@@ -5,5 +5,5 @@
                           to="vifSims.R")
  data(swiss)
  file.edit("vifSims.R")
- source("vifSims.R", globalenv())
+ source("vifSims.R", local=TRUE)
  
