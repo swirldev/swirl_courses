@@ -137,14 +137,14 @@
     the absolute value, use the abs() function.
 
 - Class: cmd_question
-  Output: Take the square root of z - 1 and assign it to a new variable called mySqrt.
-  CorrectAnswer: mySqrt <- sqrt(z - 1)
-  AnswerTests: omnitest(correctExpr='mySqrt <- sqrt(z - 1)')
-  Hint: Variable names are case-sensitive and you are creating a variable called mySqrt,
+  Output: Take the square root of z - 1 and assign it to a new variable called my_sqrt.
+  CorrectAnswer: my_sqrt <- sqrt(z - 1)
+  AnswerTests: omnitest(correctExpr='my_sqrt <- sqrt(z - 1)')
+  Hint: Variable names are case-sensitive and you are creating a variable called my_sqrt,
     so make sure the letter S is capitalized and everything else is lowercase.
 
 - Class: mult_question
-  Output: Before we view the contents of the mySqrt variable, what do you think it
+  Output: Before we view the contents of the my_sqrt variable, what do you think it
     contains?
   CorrectAnswer: a vector of length 3
   AnswerChoices: a vector of length 3; a single number (i.e a vector of length 1);
@@ -153,10 +153,10 @@
   Hint: 'Think about how R handled the other ''vectorized'' operations: element-by-element.'
 
 - Class: cmd_question
-  Output: Print the contents of mySqrt.
-  CorrectAnswer: mySqrt
-  AnswerTests: omnitest(correctExpr='mySqrt')
-  Hint: Just type mySqrt and press Enter to view its value.
+  Output: Print the contents of my_sqrt.
+  CorrectAnswer: my_sqrt
+  AnswerTests: omnitest(correctExpr='my_sqrt')
+  Hint: Just type my_sqrt and press Enter to view its value.
 
 - Class: text
   Output: As you may have guessed, R first subtracted 1 from each element of z, then
@@ -164,30 +164,30 @@
     length as the original vector z.
 
 - Class: cmd_question
-  Output: Now, create a new variable called myDiv that gets the value of z divided
-    by mySqrt.
-  CorrectAnswer: myDiv <- z / mySqrt
-  AnswerTests: omnitest(correctExpr='myDiv <- z / mySqrt')
-  Hint: Enter myDiv <- z / mySqrt. The spaces on either side of the `/` sign are not
+  Output: Now, create a new variable called my_div that gets the value of z divided
+    by my_sqrt.
+  CorrectAnswer: my_div <- z / my_sqrt
+  AnswerTests: omnitest(correctExpr='my_div <- z / my_sqrt')
+  Hint: Enter my_div <- z / my_sqrt. The spaces on either side of the `/` sign are not
     required, but can often improve readability by making code appear less cluttered.
     In the end, it's personal preference.
 
 - Class: mult_question
   Output: Which statement do you think is true?
-  CorrectAnswer: The first element of myDiv is equal to the first element of z divided
-    by the first element of mySqrt, and so on...
-  AnswerChoices: The first element of myDiv is equal to the first element of z divided
-    by the first element of mySqrt, and so on...; myDiv is a single number (i.e a
-    vector of length 1); myDiv is undefined
-  AnswerTests: omnitest(correctVal='The first element of myDiv is equal to the first
-    element of z divided by the first element of mySqrt, and so on...')
+  CorrectAnswer: The first element of my_div is equal to the first element of z divided
+    by the first element of my_sqrt, and so on...
+  AnswerChoices: The first element of my_div is equal to the first element of z divided
+    by the first element of my_sqrt, and so on...; my_div is a single number (i.e a
+    vector of length 1); my_div is undefined
+  AnswerTests: omnitest(correctVal='The first element of my_div is equal to the first
+    element of z divided by the first element of my_sqrt, and so on...')
   Hint: Think about how R handled the other 'vectorized' operations like `+` and `*`.
 
 - Class: cmd_question
-  Output: Go ahead and print the contents of myDiv.
-  CorrectAnswer: myDiv
-  AnswerTests: omnitest(correctExpr='myDiv')
-  Hint: Type myDiv and press Enter to see its contents.
+  Output: Go ahead and print the contents of my_div.
+  CorrectAnswer: my_div
+  AnswerTests: omnitest(correctExpr='my_div')
+  Hint: Type my_div and press Enter to see its contents.
 
 - Class: text
   Output: When given two vectors of the same length, R simply performs the specified
