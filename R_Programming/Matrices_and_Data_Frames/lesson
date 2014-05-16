@@ -16,7 +16,7 @@
   Output: Let's create a vector containing the numbers 1 through 20 using the `:` operator. Store the result in a variable called myVector.
   CorrectAnswer: myVector <- 1:20
   AnswerTests: omnitest(correctExpr='myVector <- 1:20')
-  Hint: You learned about the `:` operator in the lesson on sequences. If you wanted to create a vector containing the numbers 1, 2, and 3 (in that order), you could use either c(1, 2, 3) or 1:3. In this case, we want the numbers 1 through 20 stored in a variable called myVector.
+  Hint: You learned about the `:` operator in the lesson on sequences. If you wanted to create a vector containing the numbers 1, 2, and 3 (in that order), you could use either c(1, 2, 3) or 1:3. In this case, we want the numbers 1 through 20 stored in a variable called myVector. Also, remember that you don't need the c() function when using `:`.
 
 - Class: cmd_question
   Output: View the contents of the vector you just created.
