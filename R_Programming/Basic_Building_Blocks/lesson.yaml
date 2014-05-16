@@ -18,7 +18,7 @@
     Alternatively, a simple web search often yields the answer you're looking for.
 
 - Class: cmd_question
-  Output: In it's simplest form, R can be used as an interactive calculator. Type
+  Output: In its simplest form, R can be used as an interactive calculator. Type
     5 + 7 and press Enter.
   CorrectAnswer: 5 + 7
   AnswerTests: omnitest(correctExpr='5 + 7')
@@ -105,7 +105,7 @@
   Hint: Type ?c and press Enter. This will bring up the help file for the c() function.
 
 - Class: cmd_question
-  Output: Type z to view it's contents. Notice that there are no commas separating
+  Output: Type z to view its contents. Notice that there are no commas separating
     the values in the output.
   CorrectAnswer: z
   AnswerTests: omnitest(correctExpr='z')
