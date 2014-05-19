@@ -31,7 +31,7 @@
     in our sequence would be greater than 10.
 
 - Class: cmd_question
-  Output: 'What happens if we do this: 15:1? Give it a try to find out.'
+  Output: 'What happens if we do 15:1? Give it a try to find out.'
   CorrectAnswer: '15:1'
   AnswerTests: omnitest(correctExpr='15:1')
   Hint: Type 15:1 and press Enter.
