@@ -193,10 +193,10 @@
   Output: Finally, we note that things are a little trickier when we're dealing with an interaction between predictors which are continuous (and not factors). The slides show the underlying algebra, but we can summarize. 
 
 - Class: text
-  Output: When one of the (interacting) predictors is held constant, the expected change in the outcome is a function of that predictor. More precisely, the expected change in the outcome for a unit change in the one predictor is the estimate (coefficient) of that changing predictor  + the estimate of the interaction * the value of the predictor held constant.
+  Output: Suppose we have two interacting predictors and one of them is held constant. The expected change in the outcome for a unit change in the other predictor is the coefficient of that changing predictor  + the coefficient of the interaction * the value of the predictor held constant.
 
 - Class: text
-  Output: Suppose the linear model is Hi = b0 + (b1*Ii) + (b2*Yi)+ (b3*Ii*Yi) + ei. Here the H's represent the outcomes, the I's and Y's the predictors, neither of which is a category, and the b's represent the estimates (or coefficients) of the predictors. We can ignore the e's which represent the errors of the model. This equation models a continuous interaction since neither I nor Y is a category or factor. Suppose we fix I at some value and let Y vary.
+  Output: Suppose the linear model is Hi = b0 + (b1*Ii) + (b2*Yi)+ (b3*Ii*Yi) + ei. Here the H's represent the outcomes, the I's and Y's the predictors, neither of which is a category, and the b's represent the estimated coefficients of the predictors. We can ignore the e's which represent the residuals of the model. This equation models a continuous interaction since neither I nor Y is a category or factor. Suppose we fix I at some value and let Y vary.
 
 - Class: mult_question
   Output: Which expression represents the change in H per unit change in Y given that I is fixed at 5?
