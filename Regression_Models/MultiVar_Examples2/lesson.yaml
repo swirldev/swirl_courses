@@ -65,7 +65,7 @@
 - Class: cmd_question
   Output: Using R's lm function, generate the linear model in which count is the dependent variable and spray is the independent. Recall that in R formula has the form y ~ x, where y depends on the predictor x. The data set is InsectSprays. Store the model in the variable fit.
   CorrectAnswer: fit <- lm(count ~ spray, InsectSprays)
-  AnswerTests: creates_lm_model(correctExpr='fit <- lm(count ~ spray, InsectSprays)')
+  AnswerTests: creates_lm_model('fit <- lm(count ~ spray, InsectSprays)')
   Hint: Type "fit <- lm(count ~ spray, InsectSprays)" at the R prompt.
 
 - Class: cmd_question
@@ -106,7 +106,7 @@
 - Class: cmd_question
   Output: Let's generate another model of this data, this time omitting the intercept. We can easily use R's lm function to do this by appending  " - 1" to the formula, e.g., count ~ spray - 1. This tells R to omit the first level. Do this now and store the new model in the variable nfit.
   CorrectAnswer: nfit <- lm(count ~ spray - 1, InsectSprays)
-  AnswerTests: creates_lm_model(correctExpr='nfit <- lm(count ~ spray - 1, InsectSprays)')
+  AnswerTests: creates_lm_model('nfit <- lm(count ~ spray - 1, InsectSprays)')
   Hint: Type "nfit <- lm(count ~ spray - 1, InsectSprays)" at the R prompt.
 
 - Class: cmd_question
@@ -144,7 +144,7 @@
 - Class: cmd_question
   Output: Now generate a the new linear model and put the result in the variable fit2.
   CorrectAnswer: fit2 <- lm(count ~ spray2, InsectSprays)
-  AnswerTests: creates_lm_model(correctExpr='fit2 <- lm(count ~ spray2, InsectSprays)')
+  AnswerTests: creates_lm_model('fit2 <- lm(count ~ spray2, InsectSprays)')
   Hint: Type "fit2 <- lm(count ~ spray2, InsectSprays)" at the R prompt.
 
 
