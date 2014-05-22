@@ -10,7 +10,7 @@
   Output: "MultiVar_Examples2. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Regression_Models/02_02_multivariateExamples.)"
 
 - Class: text
-  Output: This is the second lesson in which we'll look at some regression models with more than one independent variable. We'll begin with the InsectSprays data which we've taken the liberty to load for you. This data is part of RStudio's datasets package. It shows the effectiveness of different insect sprays. We've used the code from the slides to show you a boxplot of the data.
+  Output: This is the second lesson in which we'll look at some regression models with more than one independent variable. We'll begin with the InsectSprays data which we've taken the liberty to load for you. This data is part of R's datasets package. It shows the effectiveness of different insect sprays. We've used the code from the slides to show you a boxplot of the data.
 
 - Class: exact_question
   Output: How many Insect Sprays are in this dataset?
