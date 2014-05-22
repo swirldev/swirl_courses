@@ -132,7 +132,7 @@
   AnswerChoices: they have the same slope; they have slopes that are very close; I have no idea
   CorrectAnswer: they have the same slope
   AnswerTests: omnitest(correctVal='they have the same slope')
-  Hint: By definition parallel lines have the same slope. 
+  Hint: By definition parallel lines have the same slope.
 
 - Class: text
   Output: Now we'll consider the interaction between year and gender to see how that affects changes in rates of hunger. To do this we'll add a third term to the predictor portion of our model formula, the product of year and gender.
