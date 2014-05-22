@@ -1,2 +1,2 @@
 file.edit(fname)
-source(fname)
+source(fname, local=TRUE)
