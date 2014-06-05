@@ -65,7 +65,7 @@
   Output: The first element of num_vect is 0.5, which is less than 1 and therefore
     the statement 0.5 < 1 is TRUE. The second element of num_vect is 55, which is
     greater than 1, so the statement 55 < 1 is FALSE. The same logic applies for the
-    third and forth elements.
+    third and fourth elements.
 
 - Class: cmd_question
   Output: Let's try another. Type num_vect >= 6 without assigning the result to a
@@ -79,7 +79,7 @@
 - Class: text
   Output: This time, we are asking whether each individual element of num_vect is
     greater than OR equal to 6. Since only 55 and 6 are greater than or equal to 6,
-    the second and forth elements of the result are TRUE and the first and third elements
+    the second and fourth elements of the result are TRUE and the first and third elements
     are FALSE.
 
 - Class: text
