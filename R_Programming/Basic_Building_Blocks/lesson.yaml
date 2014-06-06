@@ -139,8 +139,7 @@
   Output: Take the square root of z - 1 and assign it to a new variable called my_sqrt.
   CorrectAnswer: my_sqrt <- sqrt(z - 1)
   AnswerTests: omnitest(correctExpr='my_sqrt <- sqrt(z - 1)')
-  Hint: Variable names are case-sensitive and you are creating a variable called my_sqrt,
-    so make sure the letter S is capitalized and everything else is lowercase.
+  Hint: Assign the result of sqrt(z - 1) to a variable called my_sqrt.
 
 - Class: mult_question
   Output: Before we view the contents of the my_sqrt variable, what do you think it
