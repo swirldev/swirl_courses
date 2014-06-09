@@ -1,5 +1,3 @@
-# Put custom tests in this file.
-
 expr_creates_var <- function(correctName=NULL){
   e <- get("e", parent.frame())
   # TODO: Eventually make auto-detection of new variables an option.
@@ -28,15 +26,5 @@ expr_creates_var <- function(correctName=NULL){
   } else if(is(e,"dev")){
     swirl_out(results$message)
   }
-  return(results$passed)
-}
-
-
-creates_val_identical_to <- function(correctExpr){
-  e <- get("e", parent.frame())
-  correctVal <- eval(parse(text=correctExpr), cleanEnv(e$snapshot))
-  results <- expectThat(e$val,
-                        is_identical_to(correctVal, label=correctExpr),
-                        label=deparse(e$expr))
   return(results$passed)
 }
