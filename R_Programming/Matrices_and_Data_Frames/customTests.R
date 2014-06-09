@@ -1,10 +1,8 @@
-# Put custom tests in this file.
-
-creates_val_identical_to <- function(correctExpr){
+# Returns TRUE if the user has calculated a value equal to that calculated by the given expression.
+calculates_same_value <- function(expr){
   e <- get("e", parent.frame())
-  correctVal <- eval(parse(text=correctExpr), cleanEnv(e$snapshot))
-  results <- expectThat(e$val,
-                        is_identical_to(correctVal, label=correctExpr),
-                        label=deparse(e$expr))
-  return(results$passed)
+  # Calculate what the user should have done.
+  eSnap <- cleanEnv(e$snapshot)
+  val <- eval(parse(text=expr), eSnap)
+  isTRUE(all.equal(val, e$val))
 }
