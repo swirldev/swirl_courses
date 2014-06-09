@@ -23,8 +23,8 @@ expr_creates_var <- function(correctName=NULL){
     e$newVar <- e$val
     e$newVarName <- names(delta)[1]
     e$delta <- mergeLists(delta, e$delta)
-  } else if(is(e,"dev")){
-    swirl_out(results$message)
+  } else {
+    e$delta <- list()
   }
   return(results$passed)
 }

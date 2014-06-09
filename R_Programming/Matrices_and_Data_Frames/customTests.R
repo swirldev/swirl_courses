@@ -1,6 +1,3 @@
-
-# Put custom tests in this file.
-
 expr_creates_var <- function(correctName=NULL){
   e <- get("e", parent.frame())
   # TODO: Eventually make auto-detection of new variables an option.
@@ -26,8 +23,8 @@ expr_creates_var <- function(correctName=NULL){
     e$newVar <- e$val
     e$newVarName <- names(delta)[1]
     e$delta <- mergeLists(delta, e$delta)
-  } else if(is(e,"dev")){
-    swirl_out(results$message)
+  } else {
+    e$delta <- list()
   }
   return(results$passed)
 }
@@ -38,5 +35,7 @@ calculates_same_value <- function(expr){
   # Calculate what the user should have done.
   eSnap <- cleanEnv(e$snapshot)
   val <- eval(parse(text=expr), eSnap)
-  isTRUE(all.equal(val, e$val))
+  passed <- isTRUE(all.equal(val, e$val))
+  if(!passed)e$delta <- list()
+  return(passed)
 }
