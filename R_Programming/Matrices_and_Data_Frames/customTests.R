@@ -1,3 +1,4 @@
+
 # Put custom tests in this file.
 
 expr_creates_var <- function(correctName=NULL){
@@ -30,7 +31,6 @@ expr_creates_var <- function(correctName=NULL){
   }
   return(results$passed)
 }
-
 
 creates_val_identical_to <- function(correctExpr){
   e <- get("e", parent.frame())
