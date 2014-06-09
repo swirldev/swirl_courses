@@ -12,12 +12,12 @@ expr_creates_var <- function(correctName=NULL){
   }
   if(is.null(correctName)){
     results <- expectThat(length(delta) >= 1,
-                          is_true(),
+                          testthat::is_true(),
                           label=paste(deparse(e$expr), 
                                       "does not create a variable."))  
   } else {
     results <- expectThat(correctName %in% names(delta), 
-                          is_true(), 
+                          testthat::is_true(), 
                           label=paste(deparse(e$expr),
                                       "does not create a variable named",
                                       correctName))
