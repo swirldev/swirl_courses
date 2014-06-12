@@ -29,17 +29,6 @@ expr_creates_var <- function(correctName=NULL){
   return(results$passed)
 }
 
-# Returns TRUE if the user has calculated a value equal to that calculated by the given expression.
-calculates_same_value <- function(expr){
-  e <- get("e", parent.frame())
-  # Calculate what the user should have done.
-  eSnap <- cleanEnv(e$snapshot)
-  val <- eval(parse(text=expr), eSnap)
-  passed <- isTRUE(all.equal(val, e$val))
-  if(!passed)e$delta <- list()
-  return(passed)
-}
-
 omnitest <- function(correctExpr=NULL, correctVal=NULL, strict=FALSE){
   e <- get("e", parent.frame())
   # Trivial case
@@ -83,4 +72,3 @@ omnitest <- function(correctExpr=NULL, correctVal=NULL, strict=FALSE){
     return(FALSE)
   }
 }
-
