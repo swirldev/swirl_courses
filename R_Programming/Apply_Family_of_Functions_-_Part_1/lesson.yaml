@@ -1,0 +1,83 @@
+- Class: meta
+  Course: R Programming
+  Lesson: Apply Family of Functions - Part 1
+  Author: Nick Carchedi
+  Type: Standard
+  Organization: JHU Biostat
+  Version: 2.2.10
+
+- Class: text
+  Output: In this lesson, you'll learn how to use R's 'apply' family of functions. These functions, which include (but are not limited to) lapply(), sapply(), vapply(), mapply(), and tapply(), offer a concise and convenient alternative to writing 'for' loops.
+
+- Class: text
+  Output: If you don't have any experience with 'for' loops, don't worry. The gist of a 'for' loop is that it performs some operation, or function, 'for' each element of a vector, list, or some other data structure. The important thing for you to understand is that the functions taught in this lesson will allow you to avoid writing 'for' loops in many situations.
+
+- Class: text
+  Output: "We'll be using the Flags dataset from the UCI Machine Learning Repository. This dataset contains details of various nations and their flags. More information can be found here: http://archive.ics.uci.edu/ml/datasets/Flags"
+
+- Class: text
+  Output: Let's jump right in so you can get a feel for how these special functions work!
+
+- Class: cmd_question
+  Output: I've stored the dataset in a variable called flags. Type head(flags) to preview the first six lines (i.e. the 'head') of the dataset now.
+  CorrectAnswer: head(flags)
+  AnswerTests: omnitest(correctExpr='head(flags)')
+  Hint: Type head(flags) to view the 'head' of the dataset.
+
+- Class: cmd_question
+  Output: You may need to scroll up to see all of the output. Now, let's check out the dimensions of the dataset using dim(flags).
+  CorrectAnswer: dim(flags)
+  AnswerTests: omnitest(correctExpr='dim(flags)')
+  Hint: Type dim(flags) to view the dimensions of the dataset.
+
+- Class: text
+  Output: This tells us that there are 194 rows, or observations, and 30 columns, or variables. Each observation is a country and each variable describes some characteristic of that country's flag.
+
+- Class: cmd_question
+  Output: As with any dataset, we'd like to know in what format the variables have been stored. In other words, what is the 'class' of each variable? What happens if we do class(flags)? Try it out.
+  CorrectAnswer: class(flags)
+  AnswerTests: omnitest(correctExpr='class(flags)')
+  Hint: Type class(flags) to see what happens.
+
+- Class: text
+  Output: That just tells us that the entire dataset is stored as a data.frame, which doesn't answer our question. What we really need is to call the class() function on each individual column. While we could do this manually (i.e. one column at a time) it's much faster if we can automate the process. Sounds like a loop!
+
+- Class: text
+  Output: The lapply() function takes a list as input, applies a function to each element of the list, then returns a list of the same length as the original one. Since a data.frame is really just a list of vectors (you can see this with as.list(flags)), we can use lapply() to apply the class() function to each column of the flags dataset. Let's see it in action!
+
+- Class: cmd_question
+  Output: Type cls_list <- lapply(flags, class) to apply the class() function to each column of the flags dataset and store the result in a variable called cls_list. Note that you just supply the name of the function you want to apply (i.e. class), without the usual parentheses after it.
+  CorrectAnswer: cls_list <- lapply(flags, class)
+  AnswerTests: omnitest(correctExpr='cls_list <- lapply(flags, class)')
+  Hint: Type cls_list <- lapply(flags, class) to apply the class() function to each column of our dataset and store the result in a variable called cls_list.
+
+- Class: cmd_question
+  Output: Type cls_list to view the result.
+  CorrectAnswer: cls_list
+  AnswerTests: omnitest(correctExpr='cls_list')
+  Hint: Type cls_list to view the result.
+
+- Class: cmd_question
+  Output: The 'l' in 'lapply' stands for 'list'. Type class(cls_list) to confirm that lapply() returns a list.
+  CorrectAnswer: class(cls_list)
+  AnswerTests: omnitest(correctExpr='class(cls_list)')
+  Hint: Type class(cls_list) to view the result.
+
+- Class: text
+  Output: As expected, we get a list of length 30 -- one element for each variable/column. The output would be considerably more compact if we could represent it as a vector instead of a list.
+
+- Class: cmd_question
+  Output: You may remember from a previous lesson that lists are most helpful for storing multiple classes of data. In this case, since every element of the list returned by lapply() is a character string (i.e. "integer" and "vector"), cls_list can be simplified to a character vector. To do this manually, type as.character(cls_list).
+  CorrectAnswer: as.character(cls_list)
+  AnswerTests: omnitest(correctExpr='as.character(cls_list)')
+  Hint: Type as.character(cls_list) to coerce cls_list to a character vector.
+
+- Class: cmd_question
+  Output: sapply() allows you to automate this process by calling lapply() behind the scenes, but then attempting to simplify (hence the 's' in 'sapply') the result for you. Use sapply() the same way you used lapply() to get the class of each column of the flags dataset and store the result in cls_vect. If you need help, type ?sapply to bring up the documentation.
+  CorrectAnswer: cls_vect <- sapply(flags, class)
+  AnswerTests: omnitest(correctExpr='cls_vect <- sapply(flags, class)')
+  Hint: Type cls_vect <- sapply(flags, class) to store the column classes in a character vector called cls_vect.
+
+- Class: text
+  Output: "We've only touched on the basics of the 'apply' family of functions in this lesson. For a more in depth discussion, I highly recommend the 'Functionals' chapter of Hadley Wickham's free online book, Advanced R: http://adv-r.had.co.nz/Functionals.html"
+
