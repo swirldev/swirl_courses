@@ -7,19 +7,19 @@
   Version: 2.2.10
 
 - Class: text
-  Output: In this lesson, you'll learn how to use R's 'apply' family of functions. These functions, which include (but are not limited to) lapply(), sapply(), vapply(), mapply(), and tapply(), offer a concise and convenient alternative to writing 'for' loops.
+  Output: In this lesson, you'll learn how to use R's *apply family of functions. These powerful functions, which include (but are not limited to) lapply(), sapply(), vapply(), mapply(), and tapply(), offer a concise and convenient means for using the Split-Apply-Combine strategy for data analysis.
 
 - Class: text
-  Output: If you don't have any experience with 'for' loops, don't worry. The gist of a 'for' loop is that it performs some operation, or function, 'for' each element of a vector, list, or some other data structure. The important thing for you to understand is that the functions taught in this lesson will allow you to avoid writing 'for' loops in many situations.
+  Output: Each of the *apply functions will SPLIT up some data into smaller pieces, APPLY a function to each piece, then COMBINE the results. A more detailed discussion of this strategy is found in Hadley Wickham's Journal of Statistical Software paper titled 'The Split-Apply-Combine Strategy for Data Analysis'.
 
 - Class: text
-  Output: "We'll be using the Flags dataset from the UCI Machine Learning Repository. This dataset contains details of various nations and their flags. More information can be found here: http://archive.ics.uci.edu/ml/datasets/Flags"
+  Output: "Throughout this lesson, we'll use the Flags dataset from the UCI Machine Learning Repository. This dataset contains details of various nations and their flags. More information can be found here: http://archive.ics.uci.edu/ml/datasets/Flags"
 
 - Class: text
   Output: Let's jump right in so you can get a feel for how these special functions work!
 
 - Class: cmd_question
-  Output: I've stored the dataset in a variable called flags. Type head(flags) to preview the first six lines (i.e. the 'head') of the dataset now.
+  Output: I've stored the dataset in a variable called flags. Type head(flags) to preview the first six lines (i.e. the 'head') of the dataset.
   CorrectAnswer: head(flags)
   AnswerTests: omnitest(correctExpr='head(flags)')
   Hint: Type head(flags) to view the 'head' of the dataset.
