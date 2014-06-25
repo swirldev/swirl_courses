@@ -139,4 +139,31 @@
   Hint: sapply(flag_colors, mean) will do the trick!
 
 - Class: text
-  Output: "We've only touched on the basics of the 'apply' family of functions in this lesson. For a more in depth discussion, I highly recommend the 'Functionals' chapter of Hadley Wickham's free online book, Advanced R: http://adv-r.had.co.nz/Functionals.html"
+  Output: In the examples we've looked at so far, sapply() has been able to simplify the result to vector. That's because each element of the list returned by lapply() was a vector of length one. Recall that sapply() instead returns a matrix when each element of the list returned by lapply() is a vector of the same length (> 1).
+
+- Class: cmd_question
+  Output: To illustrate this, let's extract columns 19 through 23 from the flags dataset and store the result in a new data frame called flag_shapes. flag_shapes <- flags[, 19:23] will do it.
+  CorrectAnswer: flag_shapes <- flags[, 19:23]
+  AnswerTests: omnitest(correctExpr='flag_shapes <- flags[, 19:23]')
+  Hint: flag_shapes <- flags[, 19:23] will save columns 19 through 23 in a new variable.
+
+- Class: text
+  Output: Each of these columns (i.e. variables) represents the number of times a particular shape or design appears on a country's flag. We are interested in the minimum and maximum number of times each shape or design appears.
+
+- Class: cmd_question
+  Output: The range() function returns the minimum and maximum of its first argument, which should be a numeric vector. Use lapply() to apply the range function to each column of flag_shapes. Don't worry about storing the result in a new variable. By now, we know that lapply() always returns a list.
+  CorrectAnswer: lapply(flag_shapes, range)
+  AnswerTests: omnitest(correctExpr='lapply(flag_shapes, range)')
+  Hint: Try lapply(flag_shapes, range).
+
+- Class: cmd_question
+  Output: Do the same operation, but using sapply() and store the result in a variable called range_mat.
+  CorrectAnswer: shape_mat <- sapply(flag_shapes, range)
+  AnswerTests: omnitest(correctExpr='shape_mat <- sapply(flag_shapes, range)')
+  Hint: shape_mat <- sapply(flag_shapes, range) will apply the range() function to each column of flag_shapes and store the result in shape_mat.
+
+- Class: cmd_question
+  Output: Use the class() function to confirm that sapply() returned a matrix this time.
+  CorrectAnswer: class(shape_mat)
+  AnswerTests: omnitest(correctExpr='class(shape_mat)')
+  Hint: class(shape_mat) returns the class of shape_mat.
