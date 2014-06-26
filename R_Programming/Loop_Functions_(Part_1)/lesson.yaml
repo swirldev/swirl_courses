@@ -1,10 +1,10 @@
 - Class: meta
   Course: R Programming
-  Lesson: Loop Functions - Part 1
+  Lesson: Loop Functions (Part 1)
   Author: Nick Carchedi
   Type: Standard
   Organization: JHU Biostat
-  Version: 2.2.10
+  Version: 2.2.11
 
 - Class: text
   Output: In this lesson, you'll learn how to use lapply() and sapply(), the two most important members of R's *apply family of functions, also known as loop functions.

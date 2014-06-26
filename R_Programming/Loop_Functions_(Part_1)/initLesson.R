@@ -1,6 +1,6 @@
 # Path to installed lesson
 .lessonpath <- file.path(path.package("swirl"), "Courses", "R_Programming",
-                        "Apply_Family_of_Functions_-_Part_1")
+                        "Loop_Functions_(Part_1)")
 # Path to dataset
 .datapath <- file.path(.lessonpath, "flag.data.txt")
 # Load dataset
