@@ -1,4 +1,4 @@
-1. TItle: Flag database
+1. Title: Flag database
 
 2. Source Information
    -- Creators: Collected primarily from the "Collins Gem Guide to Flags":
