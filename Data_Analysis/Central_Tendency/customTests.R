@@ -15,6 +15,5 @@ runTest.exact <- function(keyphrase,e){
 # of "=" in keyphrase
 # keyphrase:equivalent=expression
 runTest.equivalent <- function(keyphrase,e) {
-  print(omnitest(rightside(keyphrase)))
   return(omnitest(rightside(keyphrase)))
 }
