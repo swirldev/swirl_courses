@@ -1,6 +1,6 @@
 - Class: meta
   Course: R Programming
-  Lesson: Loop Functions (Part 1)
+  Lesson: lapply and sapply
   Author: Nick Carchedi
   Type: Standard
   Organization: JHU Biostat
