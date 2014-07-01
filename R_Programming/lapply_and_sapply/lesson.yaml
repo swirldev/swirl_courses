@@ -10,7 +10,7 @@
   Output: In this lesson, you'll learn how to use lapply() and sapply(), the two most important members of R's *apply family of functions, also known as loop functions.
 
 - Class: text
-  Output: These powerful functions, along with their close relatives vapply(), mapply(), and tapply(), offer a concise and convenient means of implementing the Split-Apply-Combine strategy for data analysis.
+  Output: These powerful functions, along with their close relatives (vapply() and tapply(), among others) offer a concise and convenient means of implementing the Split-Apply-Combine strategy for data analysis.
 
 - Class: text
   Output: Each of the *apply functions will SPLIT up some data into smaller pieces, APPLY a function to each piece, then COMBINE the results. A more detailed discussion of this strategy is found in Hadley Wickham's Journal of Statistical Software paper titled 'The Split-Apply-Combine Strategy for Data Analysis'.

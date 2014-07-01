@@ -1,16 +1,16 @@
 - Class: meta
   Course: R Programming
-  Lesson: vapply, mapply, and tapply
+  Lesson: vapply and tapply
   Author: Nick Carchedi
   Type: Standard
   Organization: JHU Biostat
   Version: 2.2.11
 
 - Class: text
-  Output: "In the last lesson, you learned about the two most fundamental members of R's *apply family of functions: lapply() and sapply(). Both take a list as input, apply a function to each element of the list, then combine and return the result. lapply() always returns a *list*, whereas sapply() attempts to *simplify* the result."
+  Output: "In the last lesson, you learned about the two most fundamental members of R's *apply family of functions: lapply() and sapply(). Both take a list as input, apply a function to each element of the list, then combine and return the result. lapply() always returns a list, whereas sapply() attempts to simplify the result."
 
 - Class: text
-  Output: In this lesson, you'll learn how to use vapply(), mapply(), and tapply(), each of which serves a very specific purpose within the Split-Apply-Combine methodology. For consistency, we'll use the same dataset we used in the 'lapply and sapply' lesson.
+  Output: In this lesson, you'll learn how to use vapply() and tapply(), each of which serves a very specific purpose within the Split-Apply-Combine methodology. For consistency, we'll use the same dataset we used in the 'lapply and sapply' lesson.
 
 - Class: text
   Output: "The Flags dataset from the UCI Machine Learning Repository contains details of various nations and their flags. More information may be found here: http://archive.ics.uci.edu/ml/datasets/Flags"
@@ -34,7 +34,26 @@
   Output: Whereas sapply() tries to 'guess' the correct format of the result, vapply() allows you to specify it explicitly. If the result doesn't match the format you specify, vapply() will throw an error, causing the operation to stop. This can prevent significant problems in your code that might be caused by getting unexpected return values from sapply().
 
 - Class: cmd_question
-  Output: Try vapply(flags, unique, numeric(1)), which says that you expect each element of the result to be a numeric vector of length 1. Since this is NOT actually the case, you will get an error. Once you get the error, type ok() to continue to the next question.
+  Output: Try vapply(flags, unique, numeric(1)), which says that you expect each element of the result to be a numeric vector of length 1. Since this is NOT actually the case, YOU WILL GET AN ERROR. Once you get the error, type ok() to continue to the next question.
   CorrectAnswer: ok()
   AnswerTests: omnitest(correctExpr="ok()")
   Hint: Type vapply(flags, unique, numeric(1)), then type ok() to continue to the next question.
+
+- Class: cmd_question
+  Output: Recall from the previous lesson that sapply(flags, class) will return a character vector containing the class of each column in the dataset. Try that again now to see the result.
+  CorrectAnswer: sapply(flags, class)
+  AnswerTests: omnitest(correctExpr="sapply(flags, class)")
+  Hint: Type sapply(flags, class) to get a character vector of column classes.
+
+- Class: cmd_question
+  Output: If we wish to be explicit about the format of the result we expect, we can use vapply(flags, class, character(1)). The 'character(1)' argument tells R that we expect the class function to return a character vector of length 1 when applied to EACH column of the flags dataset. Try it now.
+  CorrectAnswer: vapply(flags, class, character(1))
+  AnswerTests: omnitest(correctExpr="vapply(flags, class, character(1))")
+  Hint: Use vapply(flags, class, character(1)) to return a character vector of column classes.
+
+- Class: text
+  Output: Note that since our expectation was correct (i.e. character(1)), the vapply() result is identical to the sapply() result -- a character vector of column classes.
+
+- Class: text
+  Output: You might think of vapply() as being 'safer' than sapply(), since it requires you to specify the format of the output in advance, instead of just allowing R to 'guess' what you wanted. In addition, vapply() may perform faster than sapply() for large datasets. However, when doing data analysis interactively (at the prompt), sapply() saves you some typing and will often be good enough.
+
