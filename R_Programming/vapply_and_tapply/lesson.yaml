@@ -28,7 +28,7 @@
   Output: What if you had forgotten how unique() works and mistakenly thought it returns the *number* of unique values contained in the object passed to it? Then you might have incorrectly expected sapply(flags, unique) to return a numeric vector, since each element of the list returned would contain a single number and sapply() could then simplify the result to a vector.
 
 - Class: text
-  Output: When working interactively (at the prompt), this is not much of a problem, since you see the result immediately and will quickly recognize your mistake. However, when writing software (i.e. your own functions), a misunderstanding may go undetected and cause incorrect results later on. Therefore, you may wish to be more careful and that's where vapply() is useful.
+  Output: When working interactively (at the prompt), this is not much of a problem, since you see the result immediately and will quickly recognize your mistake. However, when working non-interactively (e.g. writing your own functions), a misunderstanding may go undetected and cause incorrect results later on. Therefore, you may wish to be more careful and that's where vapply() is useful.
 
 - Class: text
   Output: Whereas sapply() tries to 'guess' the correct format of the result, vapply() allows you to specify it explicitly. If the result doesn't match the format you specify, vapply() will throw an error, causing the operation to stop. This can prevent significant problems in your code that might be caused by getting unexpected return values from sapply().
@@ -57,3 +57,42 @@
 - Class: text
   Output: You might think of vapply() as being 'safer' than sapply(), since it requires you to specify the format of the output in advance, instead of just allowing R to 'guess' what you wanted. In addition, vapply() may perform faster than sapply() for large datasets. However, when doing data analysis interactively (at the prompt), sapply() saves you some typing and will often be good enough.
 
+- Class: text
+  Output: As a data analyst, you'll often wish to split your data up into groups based on the value of some variable, then apply a function to the members of each group. tapply() does exactly that.
+
+- Class: cmd_question
+  Output: The 'landmass' variable in our dataset takes on integer values between 1 and 6, each of which represents a different part of the world. Use table(flags$landmass) to see how many flags/countries fall into each group.
+  CorrectAnswer: table(flags$landmass)
+  AnswerTests: omnitest(correctExpr="table(flags$landmass)")
+  Hint: Use table(flags$landmass) to see how many flags/countries fall into each group.
+
+- Class: cmd_question
+  Output: The 'animate' variable in our dataset takes the value 1 if a country's flag contains an animate image (e.g. an eagle, a tree, a human hand) and 0 otherwise. Use table(flags$animate) to see how many flags contain an animate image.
+  CorrectAnswer: table(flags$animate)
+  AnswerTests: omnitest(correctExpr="table(flags$animate)")
+  Hint: Use table(flags$animate) to see how many flags contain an animate image.
+
+- Class: cmd_question
+  Output: If you take the arithmetic mean of a bunch of 0s and 1s, you get the proportion of 1s. Use tapply(flags$animate, flags$landmass, mean) to apply the mean function to the 'animate' variable separately for each of the six landmass groups, thus giving us the proportion of flags containing an animate image WITHIN each landmass group.
+  CorrectAnswer: tapply(flags$animate, flags$landmass, mean)
+  AnswerTests: omnitest(correctExpr="tapply(flags$animate, flags$landmass, mean)")
+  Hint: tapply(flags$animate, flags$landmass, mean) will tell us the proportion of flags containing an animate image within each landmass group.
+
+- Class: text
+  Output: The first landmass group (flags$landmass == 1) corresponds to North America and contains the highest proportion of flags with an animate image (0.4194).
+
+- Class: cmd_question
+  Output: Similarly, we can look at a summary of population values (in round millions) for countries with and without the color red on their flag with tapply(flags$population, flags$red, summary).
+  CorrectAnswer: tapply(flags$population, flags$landmass, summary)
+  AnswerTests: omnitest(correctExpr="tapply(flags$population, flags$landmass, summary)")
+  Hint: You can see a summary of populations within each landmass group with tapply(flags$population, flags$landmass, summary).
+
+- Class: mult_question  
+  Output: What is the maximum population (in millions) for the fourth landmass group (Africa)?
+  AnswerChoices: 56; 1010; 119; 5
+  CorrectAnswer: 56
+  AnswerTests: omnitest(correctVal= '56')
+  Hint: Use your result from the last question.
+
+- Class: text  
+  Output: In this lesson, you learned how to use vapply() as a safer (and possibly faster) alternative to sapply(), which is most helpful when writing your own functions. You also learned how to use tapply() to split your data into groups based on the value of some variable, then apply a function to each group. These functions will come in your quest to become a better data analyst.
