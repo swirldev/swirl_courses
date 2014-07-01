@@ -5,3 +5,4 @@ Missing_Values
 Subsetting_Vectors
 Matrices_and_Data_Frames
 lapply_and_sapply
+vapply,_mapply,_and_tapply
