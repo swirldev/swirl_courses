@@ -1,0 +1,19 @@
+- Class: meta
+  Course: R Programming
+  Lesson: Simulation
+  Author: Nick Carchedi
+  Type: Standard
+  Organization: JHU Biostat
+  Version: 2.2.11
+
+- Class: text
+  Output: One of the great advantages of using a statistical programming language like R is its vast collection of tools for simulating random numbers.
+
+- Class: text
+  Output: This lesson assumes familiarity with common probability distributions and linear models, but these topics will only be discussed with respect to random number generation. Even if you have no prior experience with these concepts, you should be able to complete the lesson and understand the main ideas.
+
+- Class: cmd_question
+  Output: "Let's start by rolling a pair of six-sided dice: sample(1:6, 2)."
+  CorrectAnswer: sample(1:6, 2)
+  AnswerTests: omnitest(correctExpr='sample(1:6, 2)')
+  Hint: Type sample(1:6, 2) to simulate rolling two six-sided dice.
