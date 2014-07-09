@@ -13,7 +13,49 @@
   Output: This lesson assumes familiarity with common probability distributions and linear models, but these topics will only be discussed with respect to random number generation. Even if you have no prior experience with these concepts, you should be able to complete the lesson and understand the main ideas.
 
 - Class: cmd_question
-  Output: "Let's start by rolling a pair of six-sided dice: sample(1:6, 2)."
-  CorrectAnswer: sample(1:6, 2)
-  AnswerTests: omnitest(correctExpr='sample(1:6, 2)')
-  Hint: Type sample(1:6, 2) to simulate rolling two six-sided dice.
+  Output: The first function we'll use to generate random numbers is sample(). Use ?sample to pull up the documentation.
+  CorrectAnswer: ?sample
+  AnswerTests: omnitest(correctExpr='?sample')
+  Hint: Use '?sample' to pull up the documentation for the sample() function.
+
+- Class: cmd_question
+  Output: "Let's simulate rolling four six-sided dice: sample(1:6, 4, replace = TRUE)."
+  CorrectAnswer: sample(1:6, 4, replace = TRUE)
+  AnswerTests: omnitest(correctExpr='sample(1:6, 4, replace = TRUE)')
+  Hint: Type sample(1:6, 4, replace = TRUE) to simulate rolling four six-sided dice.
+
+- Class: cmd_question
+  Output: Now repeat the command to see how your result differs. (The probability of rolling the exact same result is (1/6)^4 = 0.00077, which is pretty small!)
+  CorrectAnswer: sample(1:6, 4, replace = TRUE)
+  AnswerTests: omnitest(correctExpr='sample(1:6, 4, replace = TRUE)')
+  Hint: Type sample(1:6, 4, replace = TRUE) to simulate rolling four six-sided dice again.
+
+- Class: text
+  Output: sample(1:6, 4, replace = TRUE) instructs R to randomly select four numbers between 1 and 6, WITH replacement. Sampling with replacement simply means that each number is "replaced" after it is selected, so that the same number can show up more than once. This is what we want here, since what you roll on one die shouldn't affect what you roll on any of the others.
+
+- Class: cmd_question
+  Output: Now sample 10 numbers between 1 and 20, WITHOUT replacement. To sample without replacement, simply leave off the 'replace' argument.
+  CorrectAnswer: sample(1:20, 10)
+  AnswerTests: omnitest(correctExpr='sample(1:20, 10)')
+  Hint: Type sample(1:20, 10) to sample 10 numbers between 1 and 20, without replacement.
+
+- Class: cmd_question
+  Output: LETTERS is a predefined variable in R containing a vector of all 26 letters of the English alphabet. Take a look at it now.
+  CorrectAnswer: LETTERS
+  AnswerTests: omnitest(correctExpr='LETTERS')
+  Hint: Just type LETTERS to print its contents to the console.
+
+- Class: cmd_question
+  Output: The sample() function can also be used to permute, or rearrange, the elements of a vector. For example, try sample(LETTERS) to permute all 26 letters of the English alphabet.
+  CorrectAnswer: sample(LETTERS)
+  AnswerTests: omnitest(correctExpr='sample(LETTERS)')
+  Hint: Use sample(LETTERS) to permute all 26 letters of the English alphabet.
+
+- Class: text
+  Output: Note that this is identical to taking a sample of size 26 from LETTERS, without replacement. When the 'size' argument to sample() is not specified, R takes a sample equal in size to the vector from which you are sampling.
+
+- Class: cmd_question
+  Output: "THIS IS A TEST!!! Let's simulate rolling four six-sided dice: sample(1:6, 4, replace = TRUE)."
+  CorrectAnswer: sample(1:6, 4, replace = TRUE)
+  AnswerTests: match_call(correct_call='sample(1:6, 4, replace = TRUE)')
+  Hint: Type sample(1:6, 4, replace = TRUE) to simulate rolling four six-sided dice.
