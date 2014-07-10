@@ -1,17 +1,19 @@
-match_call <- function(correct_call = NULL){
-  browser()
+match_call <- function(correct_call = NULL) {
   e <- get("e", parent.frame())
   # Trivial case
   if(is.null(correct_call)) return(TRUE)
   # Fills out a function call with full argument names
-  match_call <- function(call) {
-    qcall <- substitute(call)
+  expand_call <- function(call_string) {
+    qcall <- parse(text=call_string)[[1]]
+    if(length(qcall) <= 1) return(qcall)
     fun <- match.fun(qcall[[1]])
     match.call(fun, qcall)
   }
   # Get full correct call
-  full_correct_call <- match_call(correct_call)
-  # Get full version of user's expression
-  full_user_expr <- match_call(e$expr)
+  full_correct_call <- expand_call(correct_call)  
+  # Expand user's expression
+  expr <- deparse(e$expr)
+  full_user_expr <- expand_call(expr)
+  # Compare function calls with full arg names
   identical(full_correct_call, full_user_expr)
 }

@@ -21,13 +21,13 @@
 - Class: cmd_question
   Output: "Let's simulate rolling four six-sided dice: sample(1:6, 4, replace = TRUE)."
   CorrectAnswer: sample(1:6, 4, replace = TRUE)
-  AnswerTests: omnitest(correctExpr='sample(1:6, 4, replace = TRUE)')
+  AnswerTests: match_call('sample(1:6, 4, replace = TRUE)')
   Hint: Type sample(1:6, 4, replace = TRUE) to simulate rolling four six-sided dice.
 
 - Class: cmd_question
   Output: Now repeat the command to see how your result differs. (The probability of rolling the exact same result is (1/6)^4 = 0.00077, which is pretty small!)
   CorrectAnswer: sample(1:6, 4, replace = TRUE)
-  AnswerTests: omnitest(correctExpr='sample(1:6, 4, replace = TRUE)')
+  AnswerTests: match_call('sample(1:6, 4, replace = TRUE)')
   Hint: Type sample(1:6, 4, replace = TRUE) to simulate rolling four six-sided dice again.
 
 - Class: text
@@ -36,7 +36,7 @@
 - Class: cmd_question
   Output: Now sample 10 numbers between 1 and 20, WITHOUT replacement. To sample without replacement, simply leave off the 'replace' argument.
   CorrectAnswer: sample(1:20, 10)
-  AnswerTests: omnitest(correctExpr='sample(1:20, 10)')
+  AnswerTests: match_call('sample(1:20, 10)')
   Hint: Type sample(1:20, 10) to sample 10 numbers between 1 and 20, without replacement.
 
 - Class: cmd_question
@@ -53,9 +53,3 @@
 
 - Class: text
   Output: Note that this is identical to taking a sample of size 26 from LETTERS, without replacement. When the 'size' argument to sample() is not specified, R takes a sample equal in size to the vector from which you are sampling.
-
-- Class: cmd_question
-  Output: "THIS IS A TEST!!! Let's simulate rolling four six-sided dice: sample(1:6, 4, replace = TRUE)."
-  CorrectAnswer: sample(1:6, 4, replace = TRUE)
-  AnswerTests: match_call(correct_call='sample(1:6, 4, replace = TRUE)')
-  Hint: Type sample(1:6, 4, replace = TRUE) to simulate rolling four six-sided dice.
