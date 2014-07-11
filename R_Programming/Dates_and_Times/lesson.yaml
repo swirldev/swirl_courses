@@ -1,0 +1,10 @@
+- Class: meta
+  Course: R Programming
+  Lesson: Dates and Times
+  Author: Nick Carchedi
+  Type: Coursera
+  Organization: JHU Biostat
+  Version: 2.2.11
+
+- Class: text
+  Output: This is a test!
