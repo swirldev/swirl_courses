@@ -58,7 +58,7 @@
   Output: Now, suppose we want to simulate 100 flips of an unfair two-sided coin. This particular coin has a 0.3 probability of landing 'tails' and a 0.7 probability of landing 'heads'.
 
 - Class: cmd_question
-  Output: Let the value 0 represent tails and the value 1 represent heads. Use sample() to draw a sample of size 100 from the vector c(0,1), with replacement. Since the coin is unfair, we must attach specific probabilities to the values 0 (tails) and 1 (heads) with a fourth argument, prob = c(0.3, 0.7). Finally, assign the result to a new variable called flips.
+  Output: Let the value 0 represent tails and the value 1 represent heads. Use sample() to draw a sample of size 100 from the vector c(0,1), with replacement. Since the coin is unfair, we must attach specific probabilities to the values 0 (tails) and 1 (heads) with a fourth argument, prob = c(0.3, 0.7). Assign the result to a new variable called flips.
   CorrectAnswer: flips <- sample(c(0,1), 100, replace = TRUE, prob = c(0.3, 0.7))
   AnswerTests: match_call('flips <- sample(c(0,1), 100, replace = TRUE, prob = c(0.3, 0.7))')
   Hint: 'The following command will produce 100 flips of an unfair coin and assign the result: flips <- sample(c(0,1), 100, replace = TRUE, prob = c(0.3, 0.7))'
@@ -76,13 +76,16 @@
   Hint: sum(flips) will add up all the 1s and 0s, giving you the total number of 1s in flips.
 
 - Class: cmd_question
-  Output: Since a coin flip is a binary outcome (0 or 1) and we are performing 100 independent trials (coin flips), we can use use rbinom() to simulate a binomial random variable. Pull up the documentation for rbinom() using ?rbinom.
+  Output: A coin flip is a binary outcome (0 or 1) and we are performing 100 independent trials (coin flips), so we can use use rbinom() to simulate a binomial random variable. Pull up the documentation for rbinom() using ?rbinom.
   CorrectAnswer: ?rbinom
   AnswerTests: omnitest(correctExpr='?rbinom')
   Hint: Type ?rbinom to pull up the help file for rbinom().
 
+- Class: text
+  Output: Each probability distribution in R has an r*** function (for "random"), a d*** function (for "density"), a p*** (for "probability"), and q*** (for "quantile"). We are most interested in the r*** functions in this lesson, but I encourage you to explore the others on your own.
+
 - Class: cmd_question
-  Output: A binomial random variable represents the number of 'successes' (heads) in a given number of independent 'trials' (coin flips). Therefore, we can generate a single random variable that represents the number of heads in 100 flips of our unfair coin using rbinom(1, size = 100, prob = 0.7). Note that you only specify the probability of 'success' (heads) and not the probability of 'failure' (tails). Try it now.
+  Output: A binomial random variable represents the number of 'successes' (heads) in a given number of independent 'trials' (coin flips). Therefore, we can generate a single random variable that represents the number of heads in 100 flips of our unfair coin using rbinom(1, size = 100, prob = 0.7). Note that you only specify the probability of 'success' (heads) and NOT the probability of 'failure' (tails). Try it now.
   CorrectAnswer: rbinom(1, size = 100, prob = 0.7)
   AnswerTests: match_call('rbinom(1, size = 100, prob = 0.7)')
   Hint: Call rbinom() with n = 1, size = 100, and prob = 0.7.
@@ -112,7 +115,7 @@
   Hint: Type ?rnorm to view its help file.
 
 - Class: cmd_question
-  Output: The standard normal distribution has mean 0 and standard deviation 1. As you'll see in the documentation, the default values for the 'mean' and 'sd' arguments to rnorm() are 0 and 1, respectively. Thus, rnorm(10) will generate 10 random numbers from a standard normal distribution. Give it a try.
+  Output: The standard normal distribution has mean 0 and standard deviation 1. As you can see under the 'Usage' section in the documentation, the default values for the 'mean' and 'sd' arguments to rnorm() are 0 and 1, respectively. Thus, rnorm(10) will generate 10 random numbers from a standard normal distribution. Give it a try.
   CorrectAnswer: rnorm(10)
   AnswerTests: omnitest('rnorm(10)')
   Hint: Use rnorm(10) to generate 10 random numbers from a standard normal distribution.
@@ -124,7 +127,43 @@
   Hint: Use rnorm(10, mean = 100, sd = 25) to generate 10 random numbers from a normal distribution with mean 100 and standard deviation 25.
 
 - Class: text
-  Output: All of the standard probability distributions are built in to R, including Poisson (rpois()), exponential (rexp()), chi-squared (rchisq()), gamma (rgamma()), .... Well, you see the pattern.
+  Output: Finally, what if we want to simulate 100 groups of random numbers, each containing 5 values generated from a Poisson distribution with mean 10? Let's start with one group of 5 numbers, then I'll show you how to repeat the operation 100 times in a convenient and compact way.
+
+- Class: cmd_question
+  Output: Generate 5 random values from a Poisson distribution with mean 10. Check out the documentation for rpois() if you need help.
+  CorrectAnswer: rpois(5, 10)
+  AnswerTests: match_call('rpois(5, 10)')
+  Hint: Use rpois(5, 10) to generate 5 random numbers from a Poisson distribution with mean 10.
+
+- Class: cmd_question
+  Output: Now use replicate(100, rpois(5, 10)) to perform this operation 100 times. Store the result in a new variable called my_pois.
+  CorrectAnswer: my_pois <- replicate(100, rpois(5, 10))
+  AnswerTests: match_call('my_pois <- replicate(100, rpois(5, 10))')
+  Hint: my_pois <- replicate(100, rpois(5, 10)) will repeat the operation 100 times and store the result.
+
+- Class: cmd_question
+  Output: Take a look at the contents of my_pois.
+  CorrectAnswer: my_pois
+  AnswerTests: omnitest('my_pois')
+  Hint: Print the contents of my_pois to the console.
+
+- Class: cmd_question
+  Output: replicate() created a matrix, each column of which contains 5 random numbers generated from a Poisson distribution with mean 10. Now we can find the mean of each column in my_pois using the colMeans() function. Store the result in a variable called cm.
+  CorrectAnswer: cm <- colMeans(my_pois)
+  AnswerTests: omnitest('cm <- colMeans(my_pois)')
+  Hint: Use cm <- colMeans(my_pois) to create a vector of column means, storing the result in cm.
+
+- Class: cmd_question
+  Output: And let's take a look at the distribution of our column means by plotting a histogram with hist(cm).
+  CorrectAnswer: hist(cm)
+  AnswerTests: omnitest('hist(cm)')
+  Hint: hist(cm) will give you a histogram of column means.
 
 - Class: text
-  Output: Each of these distributions has an r*** function (for "random"), a d*** function (for "density"), a p*** (for "probability"), and q*** (for "quantile"). I encourage you to explore these other functions on your own.
+  Output: Looks like our column means are almost normally distributed, right? That's the Central Limit Theorem at work, but that's a lesson for another day!
+
+- Class: text
+  Output: All of the standard probability distributions are built in to R, including exponential [rexp()], chi-squared [rchisq()], gamma [rgamma()], .... Well, you see the pattern.
+
+- Class: text
+  Output: That concludes our lesson on simulation. Simulation is practically a field of its own and we've only skimmed the surface of what's possible. I encourage you to further explore these and other functions on your own.
