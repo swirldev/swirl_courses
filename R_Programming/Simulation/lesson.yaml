@@ -60,5 +60,5 @@
 - Class: cmd_question
   Output: Let the value 0 represent tails and the value 1 represent heads. Use sample() to draw a sample of size 100 from the vector c(0,1), with replacement. Since the coin is unfair, we must attach specific probabilities to the values 0 (tails) and 1 (heads) with a fourth argument, prob = c(0.3, 0.7). Finally, assign the result to a new variable called flips.
   CorrectAnswer: flips <- sample(c(0,1), 100, replace = TRUE, prob = c(0.3, 0.7))
-  AnswerTests: omnitest(correctExpr='flips <- sample(c(0,1), 100, replace = TRUE, prob = c(0.3, 0.7))')
+  AnswerTests: match_call('flips <- sample(c(0,1), 100, replace = TRUE, prob = c(0.3, 0.7))')
   Hint: 'The following command will produce 100 flips of an unfair coin and assign the result: flips <- sample(c(0,1), 100, replace = TRUE, prob = c(0.3, 0.7))'
