@@ -10,7 +10,7 @@
   Output: One of the great advantages of using a statistical programming language like R is its vast collection of tools for simulating random numbers.
 
 - Class: text
-  Output: This lesson assumes familiarity with common probability distributions and linear models, but these topics will only be discussed with respect to random number generation. Even if you have no prior experience with these concepts, you should be able to complete the lesson and understand the main ideas.
+  Output: This lesson assumes familiarity with a few common probability distributions, but these topics will only be discussed with respect to random number generation. Even if you have no prior experience with these concepts, you should be able to complete the lesson and understand the main ideas.
 
 - Class: cmd_question
   Output: The first function we'll use to generate random numbers is sample(). Use ?sample to pull up the documentation.
@@ -62,3 +62,69 @@
   CorrectAnswer: flips <- sample(c(0,1), 100, replace = TRUE, prob = c(0.3, 0.7))
   AnswerTests: match_call('flips <- sample(c(0,1), 100, replace = TRUE, prob = c(0.3, 0.7))')
   Hint: 'The following command will produce 100 flips of an unfair coin and assign the result: flips <- sample(c(0,1), 100, replace = TRUE, prob = c(0.3, 0.7))'
+
+- Class: cmd_question
+  Output: View the contents of the flips variable.
+  CorrectAnswer: flips
+  AnswerTests: omnitest(correctExpr='flips')
+  Hint: Just type flips to view its contents.
+
+- Class: cmd_question
+  Output: Since we set the probability of landing heads on any given flip to be 0.7, we'd expect approximately 70 of our coin flips to have the value 1. Count the actual number of 1s contained in flips using the sum() function.
+  CorrectAnswer: sum(flips)
+  AnswerTests: omnitest(correctExpr='sum(flips)')
+  Hint: sum(flips) will add up all the 1s and 0s, giving you the total number of 1s in flips.
+
+- Class: cmd_question
+  Output: Since a coin flip is a binary outcome (0 or 1) and we are performing 100 independent trials (coin flips), we can use use rbinom() to simulate a binomial random variable. Pull up the documentation for rbinom() using ?rbinom.
+  CorrectAnswer: ?rbinom
+  AnswerTests: omnitest(correctExpr='?rbinom')
+  Hint: Type ?rbinom to pull up the help file for rbinom().
+
+- Class: cmd_question
+  Output: A binomial random variable represents the number of 'successes' (heads) in a given number of independent 'trials' (coin flips). Therefore, we can generate a single random variable that represents the number of heads in 100 flips of our unfair coin using rbinom(1, size = 100, prob = 0.7). Note that you only specify the probability of 'success' (heads) and not the probability of 'failure' (tails). Try it now.
+  CorrectAnswer: rbinom(1, size = 100, prob = 0.7)
+  AnswerTests: match_call('rbinom(1, size = 100, prob = 0.7)')
+  Hint: Call rbinom() with n = 1, size = 100, and prob = 0.7.
+
+- Class: cmd_question
+  Output: Equivilently, if we want to see all of the 0s and 1s, we can perform 100 observations, each of size 1, with success probability of 0.7. Give it a try, assigning the result to a new variable called flips2.
+  CorrectAnswer: flips2 <- rbinom(100, size = 1, prob = 0.7)
+  AnswerTests: match_call('flips2 <- rbinom(100, size = 1, prob = 0.7)')
+  Hint: Call rbinom() with n = 100, size = 1, and prob = 0.7 and assign the result to flips2.
+
+- Class: cmd_question
+  Output: View the contents of flips2.
+  CorrectAnswer: flips2
+  AnswerTests: omnitest('flips2')
+  Hint: Type flips2 to view its contents.
+
+- Class: cmd_question
+  Output: Now use sum() to count the number of 1s (heads) in flips2. It should be close to 70!
+  CorrectAnswer: sum(flips2)
+  AnswerTests: omnitest('sum(flips2)')
+  Hint: Use sum(flips) to count the number of 1s.
+
+- Class: cmd_question
+  Output: Similar to rbinom(), we can use R to simulate random numbers from many other probability distributions. Pull up the documentation for rnorm() now.
+  CorrectAnswer: ?rnorm
+  AnswerTests: omnitest('?rnorm')
+  Hint: Type ?rnorm to view its help file.
+
+- Class: cmd_question
+  Output: The standard normal distribution has mean 0 and standard deviation 1. As you'll see in the documentation, the default values for the 'mean' and 'sd' arguments to rnorm() are 0 and 1, respectively. Thus, rnorm(10) will generate 10 random numbers from a standard normal distribution. Give it a try.
+  CorrectAnswer: rnorm(10)
+  AnswerTests: omnitest('rnorm(10)')
+  Hint: Use rnorm(10) to generate 10 random numbers from a standard normal distribution.
+
+- Class: cmd_question
+  Output: Now do the same, except with a mean of 100 and a standard deviation of 25.
+  CorrectAnswer: rnorm(10, 100, 25)
+  AnswerTests: match_call('rnorm(10, 100, 25)')
+  Hint: Use rnorm(10, mean = 100, sd = 25) to generate 10 random numbers from a normal distribution with mean 100 and standard deviation 25.
+
+- Class: text
+  Output: All of the standard probability distributions are built in to R, including Poisson (rpois()), exponential (rexp()), chi-squared (rchisq()), gamma (rgamma()), .... Well, you see the pattern.
+
+- Class: text
+  Output: Each of these distributions has an r*** function (for "random"), a d*** function (for "density"), a p*** (for "probability"), and q*** (for "quantile"). I encourage you to explore these other functions on your own.
