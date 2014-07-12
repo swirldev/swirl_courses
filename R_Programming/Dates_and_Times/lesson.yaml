@@ -108,4 +108,66 @@
   AnswerTests: omnitest(correctExpr='str(unclass(t2))')
   Hint: Use str(unclass(t2)) to view its internal structure in a more compact way.
 
+- Class: cmd_question
+  Output: If, for example, we want just the minutes from the time stored in t2, we can access them with t2$min. Give it a try.
+  CorrectAnswer: t2$min
+  AnswerTests: omnitest(correctExpr='t2$min')
+  Hint: t2$min will give you the number of minutes from the time stored in t2.
+
+- Class: cmd_question
+  Output: Now that we have explored all three types of date and time objects, let's look at a few functions that extract useful information from any of these objects -- weekdays(), months(), and quarters().
+
+- Class: cmd_question
+  Output: The weekdays() function will return the day of week from any date or time object. Try it out on d1, which is the Date object that contains today's date.
+  CorrectAnswer: weekdays(d1)
+  AnswerTests: omnitest(correctExpr='weekdays(d1)')
+  Hint: Try weekdays(d1) to get the day of the week.
+
+- Class: cmd_question
+  Output: The months() function also works on any date or time object. Try it on t1, which is the POSIXct object that contains the current time (well, it was the current time when you created it).
+  CorrectAnswer: months(t1)
+  AnswerTests: omnitest(correctExpr='months(t1)')
+  Hint: months(t1) will give you the current month.
+
+- Class: cmd_question
+  Output: The quarters() function returns the quarter of the year (Q1-Q4) from any date or time object. Try it on t2, which is the POSIXlt object that contains the time at which you created it.
+  CorrectAnswer: quarters(t2)
+  AnswerTests: omnitest(correctExpr='quarters(t2)')
+  Hint: quarters(t2) will give you the current quarter.
+
+- Class: text
+  Output: Often, the dates and times in a dataset will be in a format that R does not recognize. The strptime() function can be helpful in this situation.
+
+- Class: text
+  Output: strptime() converts character vectors to POSIXlt. In that sense, it is similar to as.POSIXlt(), except that the input doesn't have to be in a particular format (YYYY-MM-DD).
+
+- Class: cmd_question
+  Output: 'To see how it works, store the following character string in a variable called t3: "October 17, 1986 08:24 EST"'
+  CorrectAnswer: t3 <- "October 17, 1986 08:24 EST"
+  AnswerTests: omnitest(correctExpr='t3 <- "October 17, 1986 08:24 EST"')
+  Hint: Store "October 17, 1986 08:24 EST" (including the quotes) in a new variable called t3.
+
+- Class: cmd_question
+  Output: 'Now, use strptime(t3, "%B %d, %Y %H:%M") to help R convert our date/time object to a format that it understands. Assign the result to a new variable called t4.'
+  CorrectAnswer: t4 <- strptime(t3, "%B %d, %Y %H:%M")
+  AnswerTests: omnitest(correctExpr='t4 <- strptime(t3, "%B %d, %Y %H:%M")')
+  Hint: 't4 <- strptime(t3, "%B %d, %Y %H:%M") will convert our date/time object to a format that R understands.'
+
+- Class: cmd_question
+  Output: Print the contents of t4.
+  CorrectAnswer: t4
+  AnswerTests: omnitest(correctExpr='t4')
+  Hint: Type t4 to print its contents.
+
+- Class: cmd_question
+  Output: That's the format we've come to expect. Now, let's check its class().
+  CorrectAnswer: class(t4)
+  AnswerTests: omnitest(correctExpr='class(t4)')
+  Hint: Type class(t4) to check its class.
+
+- Class: text
+  Output: Finally, there are a number of operations that you can do on dates, including arithmetic operations (+ and -) and comparisons (<, ==, etc.) 
+
+- Class: text
+  Output: To demonstrate these operations, we'll use a dataset called eedata that I've created in your workspace.
 
