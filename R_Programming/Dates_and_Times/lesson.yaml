@@ -7,4 +7,105 @@
   Version: 2.2.11
 
 - Class: text
-  Output: This is a test!
+  Output: R has a special way of representing dates and times, which can be helpful if you're working with data that show how something changes over time (i.e. time-series data) or if your data contain some other temporal information, like dates of birth.
+
+- Class: text
+  Output: Dates are represented by the 'Date' class and times are represented by the 'POSIXct' and 'POSIXlt' classes. Internally, dates are stored as the number of days since 1970-01-01 and times are stored as either the number of seconds since 1970-01-01 (for 'POSIXct') or a list of seconds, minutes, hours, etc (for 'POSIXlt').
+
+- Class: cmd_question
+  Output: Let's start by using d1 <- Sys.Date() to get the current date and store it in the variable d1.
+  CorrectAnswer: d1 <- Sys.Date()
+  AnswerTests: omnitest(correctExpr='d1 <- Sys.Date()')
+  Hint: Type d1 <- Sys.Date() to get the current date and store it in a new variable called d1.
+
+- Class: cmd_question
+  Output: Use the class() function to confirm d1 is a Date object.
+  CorrectAnswer: class(d1)
+  AnswerTests: omnitest(correctExpr='class(d1)')
+  Hint: class(d1) will tell you the class of d1.
+
+- Class: cmd_question
+  Output: We can use the unclass() function to see what d1 looks like internally. Try it out.
+  CorrectAnswer: unclass(d1)
+  AnswerTests: omnitest(correctExpr='unclass(d1)')
+  Hint: Use unclass(d1) to see what d1 looks like internally.
+
+- Class: text
+  Output: It's a pretty big number, huh? That's the exact number of days since 1970-01-01.
+
+- Class: cmd_question
+  Output: However, if you print d1 to the console, you'll get today's date -- YEAR-MONTH-DAY. Give it a try.
+  CorrectAnswer: d1
+  AnswerTests: omnitest(correctExpr='d1')
+  Hint: Type d1 to print its contents.
+
+- Class: cmd_question
+  Output: What if we need to reference a date prior to 1970-01-01? Create a variable d2 containing as.Date("1969-01-01").
+  CorrectAnswer: d2 <- as.Date("1969-01-01")
+  AnswerTests: omnitest(correctExpr='d2 <- as.Date("1969-01-01")')
+  Hint: Try d2 <- as.Date("1969-01-01").
+
+- Class: cmd_question
+  Output: Now use unclass() again to see what d2 looks like internally.
+  CorrectAnswer: unclass(d2)
+  AnswerTests: omnitest(correctExpr='unclass(d2)')
+  Hint: unclass(d2) will show you what d2 looks like internally.
+
+- Class: text
+  Output: As you may have guessed, you get a negative number. In this case, it's -365, since d2 is 1969-01-01 is exactly one calendar year (i.e. 365 days) BEFORE 1970-01-01.
+
+- Class: cmd_question
+  Output: Now, let's take a look at how R stores times. You can access the current date and time using the Sys.time() function with no arguments. Do this and store the result in a variable called t1.
+  CorrectAnswer: t1 <- Sys.time()
+  AnswerTests: omnitest(correctExpr='t1 <- Sys.time()')
+  Hint: t1 <- Sys.time() will store the current date and time in a variable called t1.
+
+- Class: cmd_question
+  Output: View the contents of t1.
+  CorrectAnswer: t1
+  AnswerTests: omnitest(correctExpr='t1')
+  Hint: Type t1 to view its contents.
+
+- Class: cmd_question
+  Output: And check the class() of t1.
+  CorrectAnswer: class(t1)
+  AnswerTests: omnitest(correctExpr='class(t1)')
+  Hint: View the class of t1 with class(t1).
+
+- Class: cmd_question
+  Output: As mentioned earlier, POSIXct is just one of two ways that R represents time information. Use unclass() to see what it looks like internally -- the (large) number of seconds since the beginning of 1970.
+  CorrectAnswer: unclass(t1)
+  AnswerTests: omnitest(correctExpr='unclass(t1)')
+  Hint: Use unclass(t1) to see how many seconds have passed since the beginning of 1970.
+
+- Class: cmd_question
+  Output: By default, Sys.time() returns an object of class POSIXct, but we can coerce the result to POSIXlt with as.POSIXlt(Sys.time()). Give it a try and store the result in t2.
+  CorrectAnswer: t2 <- as.POSIXlt(Sys.time())
+  AnswerTests: omnitest(correctExpr='t2 <- as.POSIXlt(Sys.time())')
+  Hint: t2 <- as.POSIXlt(Sys.time()) will coerce the result of Sys.time to 'POSIXlt' and store the result.
+
+- Class: cmd_question
+  Output: Check the class of t2.
+  CorrectAnswer: class(t2)
+  AnswerTests: omnitest(correctExpr='class(t2)')
+  Hint: Type class(t2) to view its class.
+
+- Class: cmd_question
+  Output: Now view its contents.
+  CorrectAnswer: t2
+  AnswerTests: omnitest(correctExpr='t2')
+  Hint: Type t2 to view its contents.
+
+- Class: cmd_question
+  Output: The printed format of t2 is identical to that of t1 (except for the slight time difference). Now unclass() t2 to see how it is different internally.
+  CorrectAnswer: unclass(t2)
+  AnswerTests: omnitest(correctExpr='unclass(t2)')
+  Hint: Use unclass(t2) to view its internal structure.
+
+- Class: cmd_question
+  Output: t2, like all POSIXlt objects, is just a list of values that make up the date and time. Use str(unclass(t2)) to have a more compact view.
+  CorrectAnswer: str(unclass(t2))
+  AnswerTests: omnitest(correctExpr='str(unclass(t2))')
+  Hint: Use str(unclass(t2)) to view its internal structure in a more compact way.
+
+
