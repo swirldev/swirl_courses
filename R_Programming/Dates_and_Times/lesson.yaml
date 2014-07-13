@@ -166,8 +166,28 @@
   Hint: Type class(t4) to check its class.
 
 - Class: text
-  Output: Finally, there are a number of operations that you can do on dates, including arithmetic operations (+ and -) and comparisons (<, ==, etc.) 
+  Output: Finally, there are a number of operations that you can perform on dates and times, including arithmetic operations (+ and -) and comparisons (<, ==, etc.) 
+
+- Class: cmd_question
+  Output: "The variable t1 contains the time at which you created it (recall you used Sys.time()). Confirm that some time has passed since you created t1 by using the 'greater than' operator to compare it to the current time: Sys.time() > t1"
+  CorrectAnswer: Sys.time() > t1
+  AnswerTests: omnitest(correctExpr='Sys.time() > t1')
+  Hint: Sys.time() > t1 will tell you that the current time is after the time contained in t1 (which was the current time when you created it).
+
+- Class: cmd_question
+  Output: So we know that some time has passed, but how much? Try subtracting t1 from the current time using Sys.time() - t1.
+  CorrectAnswer: Sys.time() - t1
+  AnswerTests: omnitest(correctExpr='Sys.time() - t1')
+  Hint: Sys.time() - t1 will give you the amount of time that has passed since t1 was created.
 
 - Class: text
-  Output: To demonstrate these operations, we'll use a dataset called eedata that I've created in your workspace.
+  Output: The same line of thinking applies to addition and the other comparison operators. If you want more control over the units when finding the above difference in times, you can use difftime(), which allows you to specify a 'units' parameter. 
 
+- Class: cmd_question
+  Output: Use difftime(Sys.time(), t1, units = 'days') to find the amount of time in DAYS that has passed since you created t1.
+  CorrectAnswer: difftime(Sys.time(), t1, units = 'days')
+  AnswerTests: match_call("difftime(Sys.time(), t1, units = 'days')")
+  Hint: difftime(Sys.time(), t1, units = 'days') will tell you the number of days that have passed since t1 was created (which better be less than 1!)
+
+- Class: text
+  Output: In this lesson, you learned how to work with dates and times in R. While it is important to understand the basics, if you find yourself working with dates and times often, you may want to check out the lubridate package by Hadley Wickham.
