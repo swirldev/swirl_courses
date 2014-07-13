@@ -31,7 +31,7 @@
   Hint: Use unclass(d1) to see what d1 looks like internally.
 
 - Class: text
-  Output: It's a pretty big number, huh? That's the exact number of days since 1970-01-01.
+  Output: That's the exact number of days since 1970-01-01!
 
 - Class: cmd_question
   Output: However, if you print d1 to the console, you'll get today's date -- YEAR-MONTH-DAY. Give it a try.
@@ -52,7 +52,7 @@
   Hint: unclass(d2) will show you what d2 looks like internally.
 
 - Class: text
-  Output: As you may have guessed, you get a negative number. In this case, it's -365, since d2 is 1969-01-01 is exactly one calendar year (i.e. 365 days) BEFORE 1970-01-01.
+  Output: As you may have anticipated, you get a negative number. In this case, it's -365, since 1969-01-01 is exactly one calendar year (i.e. 365 days) BEFORE 1970-01-01.
 
 - Class: cmd_question
   Output: Now, let's take a look at how R stores times. You can access the current date and time using the Sys.time() function with no arguments. Do this and store the result in a variable called t1.
@@ -73,7 +73,7 @@
   Hint: View the class of t1 with class(t1).
 
 - Class: cmd_question
-  Output: As mentioned earlier, POSIXct is just one of two ways that R represents time information. Use unclass() to see what it looks like internally -- the (large) number of seconds since the beginning of 1970.
+  Output: As mentioned earlier, POSIXct is just one of two ways that R represents time information. Use unclass() to see what t1 looks like internally -- the (large) number of seconds since the beginning of 1970.
   CorrectAnswer: unclass(t1)
   AnswerTests: omnitest(correctExpr='unclass(t1)')
   Hint: Use unclass(t1) to see how many seconds have passed since the beginning of 1970.
@@ -97,7 +97,7 @@
   Hint: Type t2 to view its contents.
 
 - Class: cmd_question
-  Output: The printed format of t2 is identical to that of t1 (except for the slight time difference). Now unclass() t2 to see how it is different internally.
+  Output: The printed format of t2 is identical to that of t1 (except for the slight difference in time). Now unclass() t2 to see how it is different internally.
   CorrectAnswer: unclass(t2)
   AnswerTests: omnitest(correctExpr='unclass(t2)')
   Hint: Use unclass(t2) to view its internal structure.
@@ -114,7 +114,7 @@
   AnswerTests: omnitest(correctExpr='t2$min')
   Hint: t2$min will give you the number of minutes from the time stored in t2.
 
-- Class: cmd_question
+- Class: text
   Output: Now that we have explored all three types of date and time objects, let's look at a few functions that extract useful information from any of these objects -- weekdays(), months(), and quarters().
 
 - Class: cmd_question
@@ -142,10 +142,10 @@
   Output: strptime() converts character vectors to POSIXlt. In that sense, it is similar to as.POSIXlt(), except that the input doesn't have to be in a particular format (YYYY-MM-DD).
 
 - Class: cmd_question
-  Output: 'To see how it works, store the following character string in a variable called t3: "October 17, 1986 08:24 EST"'
-  CorrectAnswer: t3 <- "October 17, 1986 08:24 EST"
-  AnswerTests: omnitest(correctExpr='t3 <- "October 17, 1986 08:24 EST"')
-  Hint: Store "October 17, 1986 08:24 EST" (including the quotes) in a new variable called t3.
+  Output: 'To see how it works, store the following character string in a variable called t3: "October 17, 1986 08:24"'
+  CorrectAnswer: t3 <- "October 17, 1986 08:24"
+  AnswerTests: omnitest(correctExpr='t3 <- "October 17, 1986 08:24"')
+  Hint: Store "October 17, 1986 08:24" (including the quotes) in a new variable called t3.
 
 - Class: cmd_question
   Output: 'Now, use strptime(t3, "%B %d, %Y %H:%M") to help R convert our date/time object to a format that it understands. Assign the result to a new variable called t4.'
