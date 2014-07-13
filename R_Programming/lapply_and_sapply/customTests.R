@@ -1,5 +1,5 @@
 # So swirl does not repeat execution of commands
-AUTO_DETECT_NEWVAR <- FALSE
+# AUTO_DETECT_NEWVAR <- FALSE
 
 # Returns TRUE if the user has calculated a value equal to that calculated by the given expression.
 calculates_same_value <- function(expr){
