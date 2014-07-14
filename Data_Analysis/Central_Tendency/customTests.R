@@ -9,3 +9,11 @@ runTest.exact <- function(keyphrase,e){
   }
   return(isTRUE(is.correct))
 }
+
+# Returns TRUE if as.expression
+# (e$expr) matches the expression indicated to the right
+# of "=" in keyphrase
+# keyphrase:equivalent=expression
+runTest.equivalent <- function(keyphrase,e) {
+  return(omnitest(rightside(keyphrase)))
+}

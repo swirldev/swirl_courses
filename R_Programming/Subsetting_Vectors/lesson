@@ -63,9 +63,9 @@
 
 - Class: mult_question
   Output: Recall that the expression y > 0 will give us a vector of logical values the same length as y, with TRUEs corresponding to values of y that are greater than zero and FALSEs corresponding to values of y that are less than or equal to zero. What do you think y[y > 0] will give you?
-  AnswerChoices: A vector of all the postive elements of y; A vector of all the negative elements of y; A vector of all NAs; A vector of length 0; A vector of TRUEs and FALSEs
-  CorrectAnswer: A vector of all the postive elements of y
-  AnswerTests: omnitest(correctVal="A vector of all the postive elements of y")
+  AnswerChoices: A vector of all the positive elements of y; A vector of all the negative elements of y; A vector of all NAs; A vector of length 0; A vector of TRUEs and FALSEs
+  CorrectAnswer: A vector of all the positive elements of y
+  AnswerTests: omnitest(correctVal="A vector of all the positive elements of y")
   Hint: The logical expression y > 0 will give us TRUE for each element of y that is positive. Based on that, what do you think y[y > 0] will return?
 
 - Class: cmd_question
@@ -135,7 +135,7 @@
   Hint: Use x[-c(2, 10)] to simply things a bit. This could be a time saver if specifying many negative indexes.
 
 - Class: text
-  Output: So far, we've covered three types of index vectors -- logical, postive integer, and negative integer. The only remaining type requires us to introduce the concept of 'named' elements.
+  Output: So far, we've covered three types of index vectors -- logical, positive integer, and negative integer. The only remaining type requires us to introduce the concept of 'named' elements.
 
 - Class: cmd_question
   Output: Create a numeric vector with three named elements using vect <- c(foo = 11, bar = 2, norf = NA).
