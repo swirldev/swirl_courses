@@ -142,7 +142,7 @@
 
 - Class: cmd_question
   Output: 'Create a character vector that contains the following words: "My", "name",
-    "is". Remember to enclose each word in it''s own set of double quotes, so that
+    "is". Remember to enclose each word in its own set of double quotes, so that
     R knows they are character strings. Store the vector in a variable called my_char.'
   CorrectAnswer: my_char <- c("My", "name", "is")
   AnswerTests: omnitest(correctExpr='my_char <- c("My", "name", "is")')
