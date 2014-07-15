@@ -1,0 +1,287 @@
+
+- Class: meta
+  Course: Mathematical Biostatistics Boot Camp
+  Lesson: Errors Power and Sample Size
+  Author: Nick Carchedi
+  Type: Standard
+  Organization: JHU Biostatistics
+  Version: 1.0.0
+
+- Class: text
+  Output: In this lesson, we will discuss type I and type II errors as well as the
+    closely related concepts of power and sample size calculation.
+
+- Class: text
+  Output: A type I error, also known as a false positive, is the probability of rejecting
+    the null hypothesis when the null hypothesis is true. When performing a statistical
+    test, the type I error rate is typically predetermined by the statistician performing
+    the test and is equivalent to the significance level of the test. Type I error
+    is generally represented by the Greek letter 'alpha'.
+
+- Class: mult_question
+  Output: Another name for a type I error is ___________.
+  AnswerChoices: beta; true positive; false negative; alpha
+  CorrectAnswer: alpha
+  AnswerTests: word= alpha
+  Hint: Review the previous paragraph.
+
+- Class: text
+  Output: On the other hand, a type II error, also known as a false negative, is the
+    probability of failing to reject the null hypothesis when the null hypothesis
+    is false. Notice that we intentionally avoid saying that one 'accepts the null
+    hypothesis' in favor of saying that one 'fails to reject the null hypothesis'.
+    This is comparable to the way in which a court of law avoids declaring someone
+    to be innocent in favor of declaring someone to be not guilty. Type II error is
+    generally represented by the Greek letter 'beta'.
+
+- Class: mult_question
+  Output: Another name for a type II error is ___________.
+  AnswerChoices: false positive; false negative; alpha; true positive
+  CorrectAnswer: false negative
+  AnswerTests: word= false negative
+  Hint: Review the previous paragraph.
+
+- Class: text
+  Output: 'The concept of power is closely related to that of a type II error. Power
+    is the probability of correctly rejecting the null hypothesis when the null hypothesis
+    is false. Since the type II error rate is the probability of INCORRECTLY rejecting
+    the null hypothesis and power is the probability of CORRECTLY rejecting the null
+    hypothesis, power is therefore equal to one minus the type II error rate (or in
+    mathematical terms, power = 1 - beta). '
+
+- Class: mult_question
+  Output: Another name for power is ___________.
+  AnswerChoices: true positive; beta; true negative; false negative
+  CorrectAnswer: true positive
+  AnswerTests: word= true positive
+  Hint: Power is the probability of CORRECTLY detecting something (i.e. having a 'positive'
+    test result).
+
+- Class: text
+  Output: You are part of a research team conducting an experiment on the effectiveness
+    of a new test that is designed to detect the presence of a deadly disease. Existing
+    methods of detecting this disease are extremely reliable, but also very expensive.
+    The appeal of this new test is that it is significantly cheaper than the existing
+    method, although it may not be quite as reliable.
+
+- Class: text
+  Output: 'To estabilish the validity of your new test, your team performs both the
+    new test and the existing test on a large group of consenting individuals. It
+    is assumed that the diagnosis given by the existing test is the true diagnosis.
+    The new test performs as follows: Among people who actually have the disease (as
+    diagnosed by the existing test) the new test correctly diagnoses 80% as having
+    the disease and fails to correctly diagnose the remaining 20%. Among people who
+    do not have the disease, the new test incorrectly diagnoses 4% as having the disease
+    and correctly diagnoses the remaining 96% as not having the disease. Keep in mind
+    that when performing a diagnostic test, the null hypothesis is always that the
+    patient does not have the disease of interest.'
+
+- Class: mult_question
+  Output: What is the type I error of this test?
+  AnswerChoices: 80%; 20%; 4%; 96%
+  CorrectAnswer: 4%
+  AnswerTests: word= 4%
+  Hint: Type I error is the probability of incorrectly diagnosing someone as having
+    the disease when she is in fact healthy.
+
+- Class: mult_question
+  Output: What is the type II error of this test?
+  AnswerChoices: 80%; 20%; 4%; 96%
+  CorrectAnswer: 20%
+  AnswerTests: word= 20%
+  Hint: Type II error is the probability of incorrectly diagnosing someone as healthy
+    when he does in fact have the disease.
+
+- Class: mult_question
+  Output: What is the power of this test?
+  AnswerChoices: 80%; 20%; 4%; 96%
+  CorrectAnswer: 80%
+  AnswerTests: word= 80%
+  Hint: Power is the probability of correctly diagnosing someone as having the disease
+    when she does in fact have the disease.
+
+- Class: text
+  Output: For the remainder of the lesson, we will shift our focus to power and its
+    important role in sample size calculations for experiments.
+
+- Class: text
+  Output: In the lecture, you learned how to compute power given a large sample size
+    and a known population standard deviation (or sigma). This is an important calculation
+    to understand, but we will not review it here.
+
+- Class: text
+  Output: Instead, our focus will be on reversing this calculation to compute the
+    sample size required to achieve a desired level of power (again, given a known
+    sigma.) This calculation is most commonly used when designing experiments in order
+    to ensure sample size is large enough to guarantee a powerful result.
+
+- Class: text
+  Output: 'Note that assuming a known sigma allows us to use the standard normal distribution
+    in place of the t-distribution. We make this simplifying assumption here for the
+    sake of conveying the concept at hand. Later in the lesson, we will review the
+    more complicated process of computing sample size when sigma is unknown. '
+
+- Class: text
+  Output: 'Here are the values we need for our first sample size calculation: population
+    standard deviation (sigma), the difference in means we''d like to be able to detect
+    (delta), the z-critical value for our chosen significance level, and the z-critical
+    value corresponding to our desired level of power.'
+
+- Class: text
+  Output: Let's work through an example. Pretend a road by your house has a posted
+    speed limit of 65 miles per hour. You are interested in knowing if the true average
+    speed at which cars travel on this road during rush hour is greater than or equal
+    to 5 miles per hour ABOVE the speed limit (delta). To determine this, you will
+    measure the speed at which a random selection of cars passes you on the road during
+    rush hour. Assume a significance level of 0.05 (alpha) and that the population
+    standard deviation in speed among all cars at this time is 10 miles per hour (sigma).
+    Let's determine how many cars you will need to record so that you have an 80%
+    chance of detecting a true difference of 5 or more miles per hour (power).
+
+- Class: mult_question
+  Output: For this experiment, are we interested in a one-sided or two-sided test?
+  AnswerChoices: One-sided; Two-sided; Neither, that's a trick question!
+  CorrectAnswer: One-sided
+  AnswerTests: word= One-sided
+  Hint: In this example, are you interested in knowing whether cars are travelling
+    at speeds lower than the posted speed limit?
+
+- Class: cmd_question
+  Output: Now let's define the variables we'll use in our sample size calculation.
+    Assign the appropriate value to a new variable called 'sigma'.
+  CorrectAnswer: sigma <- 10
+  AnswerTests: swirl1cmd=sigma <- 10
+  Hint: Sigma represents the true population standard deviation of speeds.
+
+- Class: cmd_question
+  Output: Assign the appropriate value to a new variable called 'delta'.
+  CorrectAnswer: delta <- 5
+  AnswerTests: swirl1cmd=delta <- 5
+  Hint: Delta represents the difference in true average speeds that you would like
+    to be able to detect.
+
+- Class: cmd_question
+  Output: Since our significance level is 0.05, we need to find the z-critical value
+    for which 5% of the standard normal distribution lies above it. In other words,
+    95% of the standard normal distribution falls below this point. This '95th percentile'
+    is also called a '0.95 quantile', and is thus found with the 'qnorm' function
+    in R ('q' for 'quantile' and 'norm' for 'normal'). Use this function now on the
+    value 0.95 and assign the result to a new variable called 'zAlpha'.
+  CorrectAnswer: zAlpha <- qnorm(0.95)
+  AnswerTests: swirl1cmd=zAlpha <- qnorm(0.95)
+  Hint: Type 'qnorm(0.95)' to find the value of the 0.95 quantile.
+
+- Class: cmd_question
+  Output: Since our desired power level is 80%, that means that we want to design
+    our study in such a way that we have an 80% chance of correctly rejecting our
+    null hypothesis. Thus our corresponding z-critical value should have 80% of the
+    standard normal distribution lying above it and hence 20% below it. Use the 'qnorm'
+    function again to find the 20th percentile and assign the result to a new variable
+    called 'zBeta'.
+  CorrectAnswer: zBeta <- qnorm(0.20)
+  AnswerTests: swirl1cmd=zBeta <- qnorm(0.20)
+  Hint: The 20th percentile is also known as the 0.20 quantile and can be found in
+    the same way as you found the 0.95 quantile above.
+
+- Class: text
+  Output: We now have everything we need to compute our required sample size. Since
+    it's a bit challenging to express the sample size formula in words, I'm going
+    to give you the code for computing it below.
+
+- Class: cmd_question
+  Output: 'To compute the sample size required to achieve 80% power in our example,
+    type the following: ''(sigma / delta)^2 * (zAlpha - zBeta)^2''. Note that ''x^2''
+    is R notation for ''x-squared'' or ''x to the power of 2''.'
+  CorrectAnswer: (sigma / delta)^2 * (zAlpha - zBeta)^2
+  AnswerTests: swirl1cmd=(sigma / delta)^2 * (zAlpha - zBeta)^2
+  Hint: Type '(sigma / delta)^2 * (zAlpha - zBeta)^2' and press Enter.
+
+- Class: text
+  Output: Now that you've computed the required sample size manually, let's perform
+    the same task using a function from the R package called 'pwr'. In case you're
+    new to R packages, they are simply libraries of additional functions that people
+    like you have created for everyone to use. Normally,  you would have to load a
+    new package on your own using the 'library' function, but for simplicity we have
+    already done this for you here.
+
+- Class: text
+  Output: 'The function we will use is called ''pwr.norm.test'' and it will automatically
+    generate the sample size required for 80% power once we specify the necessary
+    information. Here are the items we need to give it: effect size (which is the
+    difference we wish to detect divided by sigma), significance level, power, and
+    whether we are conducting a one- or two-sided test.'
+
+- Class: cmd_question
+  Output: First, compute the effect size using the variables 'delta' and 'sigma',
+    both of which you've already computed. Save the result in a new variable called
+    'effectSize'.
+  CorrectAnswer: effectSize <- delta / sigma
+  AnswerTests: swirl1cmd=effectSize <- delta / sigma
+  Hint: Divide 'delta' by 'sigma' and assign the result to a new variable called 'effectSize'.
+
+- Class: text
+  Output: We already know the significance and power levels that we want and we are
+    interested in a one-sided test. In this case, our one-sided test applies only
+    to the case when the true speed is GREATER or equal to 10 miles per hour above
+    the posted speed limit. Therefore, we will specifiy the test type as "greater".
+
+- Class: cmd_question
+  Output: 'You now have everything you need to call the ''pwr.norm.test'' function.
+    Here is the format: ''pwr.norm.test(d=effectSize, sig.level=0.05, power=0.80,
+    alternative="greater")''. Enter this now.'
+  CorrectAnswer: pwr.norm.test(d=effectSize, sig.level=0.05, power=0.80, alternative="greater")
+  AnswerTests: swirl1cmd=pwr.norm.test(d=effectSize, sig.level=0.05, power=0.80, alternative="greater")
+  Hint: Type 'pwr.norm.test(d=effectSize, sig.level=0.05, power=0.80, alternative="greater")'
+    and press Enter.
+
+- Class: text
+  Output: This function provides several items of interest, but the only one we are
+    concerned with here is the value of 'n', which is our sample size required to
+    achieve a power of 80% in this scenario. You'll notice that it perfectly matches
+    the result you got when doing the manual calculation.
+
+- Class: text
+  Output: Since the sample size is reported as a decimal number, it is good practice
+    to round up to the nearest whole number since we generally can't study a fraction
+    of a car (person, mouse, etc.)
+
+- Class: text
+  Output: Up until this point, we've assumed a known population standard deviation
+    (sigma). Sometimes this is available if a subject has be studied extensively,
+    but this may often not be the case. If you are required to compute sigma from
+    the data, then using a t-test is more appropriate.
+
+- Class: text
+  Output: Doing this manually is considerably more involved for reasons we won't review
+    here, so we'll instead use the t-test version of the function I just showed you
+    above. The name of this function is 'pwr.t.test' and it is also found in the 'pwr'
+    package.
+
+- Class: text
+  Output: The inputs to the 'pwr.t.test' function are identical to 'pwr.norm.test'
+    with only one exception. You must specify whether we are doing a one-sample, two-sample,
+    or paired t-test analysis. In this case we are doing a one-sample analysis so
+    the 'type' parameter will equal "one.sample".
+
+- Class: cmd_question
+  Output: 'Perform the t-test version of your sample size calculation now using the
+    following code: ''pwr.t.test(d=effectSize, sig.level=0.05, power=0.80, type="one.sample",
+    alternative="greater")'''
+  CorrectAnswer: pwr.t.test(d=effectSize, sig.level=0.05, power=0.80, type="one.sample",
+    alternative="greater")
+  AnswerTests: swirl1cmd=pwr.t.test(d=effectSize, sig.level=0.05, power=0.80, type="one.sample",
+    alternative="greater")
+  Hint: Type 'pwr.t.test(d=effectSize, sig.level=0.05, power=0.80, type="one.sample",
+    alternative="greater")' and press Enter.
+
+- Class: text
+  Output: 'You''ll notice that the required sample size using the t-test is larger
+    than the required sample size using the normal distribution. Since we are estimating
+    the standard deviation instead of assuming a known quantity, we are introducing
+    more uncertainty into the process. Hence, a t-test provides a more conservative
+    estimate of the required sample size. '
+
+- Class: text
+  Output: You've completed this lesson! You learned about type I and type II errors,
+    power, and sample size calculations. Great work!
+
