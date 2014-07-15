@@ -1,0 +1,199 @@
+
+- Class: meta
+  Course: Data Analysis
+  Lesson: Central Tendency
+  Author: Nick Carchedi
+  Type: Standard
+  Organization: JHU Biostatistics
+  Version: 1.0.0
+
+- Class: text
+  Output: Today, I'll be teaching you the basics of data analysis. It probably makes
+    sense to start by defining the word DATA.
+
+- Class: text
+  Output: According to Wikipedia, "Data are values of qualitative or quantitative
+    variables, belonging to a set of items."
+
+- Class: text
+  Output: Often the "set of items" that we are interested in studying is referred
+    to as the POPULATION. Data analysis usually involves studying a subset, or SAMPLE,
+    of an entire population.
+
+- Class: figure
+  Output: Here is a diagram showing the relationship between a population and a sample.
+  Figure: mod1_pop_vs_samp.R
+  FigureType: new
+
+- Class: text
+  Output: Data analysis should always start with a specific question of interest.
+    For example, we might ask "What percentage of people living in the United States
+    are over six feet tall?"
+
+- Class: text
+  Output: Here, our population of interest is everyone living in the US. Since it's
+    impractical to measure the heights of over 300 million people, we could instead
+    choose 100 people at random and measure their heights. Our hope would be that
+    this sample of 100 people is REPRESENTATIVE of the entire US population.
+
+- Class: mult_question
+  Output: 'Let''s quickly test your understanding of the term REPRESENTATIVE. If you
+    were interested in studying the health of men living in the US, ages 18-25, which
+    sample would be more representative of the target population: a sample of 50 men
+    who live in a nearby retirement home, or a sample of 50 men who are students at
+    a local university?'
+  AnswerChoices: Men living at the retirement home; College students
+  CorrectAnswer: College students
+  AnswerTests: word= College students
+  Hint: Since your target population is all men ages 18-25 living in the US, which
+    of these 2 sample populations more closely matches the population of interest?
+
+- Class: video
+  Output: Would you like to watch a video on these topics now?
+  VideoLink: http://youtu.be/sRArT81TVEM
+
+- Class: text
+  Output: The purpose of analyzing a sample is to draw conclusions about the population
+    from which the sample was selected. This is called INFERENCE and is the primary
+    goal of INFERENTIAL STATISTICS.
+
+- Class: text
+  Output: In order to make any inferences about the population, we first need to describe
+    the sample. This is the primary goal of DESCRIPTIVE STATISTICS.
+
+- Class: text
+  Output: If we want to describe our sample using just one number, how would we best
+    do it? A good start is to find the center, the middle, or the most common element
+    of our data. Statisticians call this the CENTRAL TENDENCY.
+
+- Class: text
+  Output: There are three different methods for finding such a number and the applicability
+    of each method depends on the situation. Those three methods are called the MEAN,
+    MEDIAN, and MODE.
+
+- Class: video
+  Output: Would you like to watch a brief video on mean, median, and mode?
+  VideoLink: http://youtu.be/h8EYEJ32oQ8
+
+- Class: mult_question
+  Output: Mean, median, and mode are all measures of ____________.
+  AnswerChoices: variation; significance; deviation; central tendency
+  CorrectAnswer: central tendency
+  AnswerTests: word=central tendency
+  Hint: This is a fancy term for the "middle" of a dataset.
+
+- Class: mult_question
+  Output: Which of the following terms are of most importance when describing the
+    central tendency of a data set?
+  AnswerChoices: median, mode, range; statistics, population, mode; population, sample,
+    representative; mode, median, mean
+  CorrectAnswer: mode, median, mean
+  AnswerTests: word= mode, median, mean
+  Hint: These are the three different methods  stated above that are used for describing
+    the center of a data set.
+
+- Class: cmd_question
+  Output: To illustrate these concepts, we will now look at a real dataset from the
+    'openintro' R package, which has already been loaded for you. Type 'cars' and
+    press Enter to see the dataset we'll be working with.
+  CorrectAnswer: cars
+  AnswerTests: equivalent=cars
+  Hint: Type 'cars' and press Enter. Do not use quotes, spaces, or uppercase letters.
+
+- Class: text
+  Output: 'You''ll notice the rows are numbered 1 through 54, each representing exactly
+    one car in the dataset. For each car, the following VARIABLES, or characteristics,
+    are reported: ''type'' (small, midsize, large), ''price'' (USD), ''mpgCity'' (city
+    miles per gallon), ''driveTrain'' (4WD, front, rear), ''passengers'' (total capacity),
+    and ''weight'' (lbs). '
+
+- Class: text
+  Output: We'll be focusing on the 'mpgCity' variable in this lesson. For simplicity,
+    let's extract it from our dataset and store it in a new variable.
+
+- Class: cmd_question
+  Output: Access the 'mpgCity' variable from the 'cars' dataset using the 'dataset$variable'
+    notation.
+  CorrectAnswer: cars$mpgCity
+  AnswerTests: equivalent=cars$mpgCity
+  Hint: Use 'dataset$variable' notation. Remember the name of our dataset is 'cars'
+    and the name of the variable we are interested in is 'mpgCity'.
+
+- Class: cmd_question
+  Output: Now store the contents of the 'cars$mpgCity' in a new variable called 'myMPG'.
+  CorrectAnswer: myMPG <- cars$mpgCity
+  AnswerTests: newcmd=myMPG <- cars$mpgCity
+  Hint: Use the assignment operator to assign 'cars$mpgCity' to a new variable called
+    'myMPG'.
+
+- Class: text
+  Output: The ARITHMETIC MEAN, or simply the MEAN or AVERAGE, is the most common measurement
+    of central tendency. To calculate the mean of a dataset, you first sum all of
+    the values and then divide that sum by the total number of values in the dataset.
+
+- Class: text
+  Output: However, when there are many values of interest, it becomes tedious to do
+    this calculation by hand. Luckily, R has a built-in function for computing the
+    mean. The syntax for doing so is 'mean(variable)'.
+
+- Class: cmd_question
+  Output: Compute the mean value for the 'myMPG' variable now.
+  CorrectAnswer: mean(myMPG)
+  AnswerTests: newcmd=mean(myMPG)
+  Hint: Use the 'mean' function by typing 'mean' followed by the name of your variable
+    placed in parentheses. Don't use any spaces.
+
+- Class: text
+  Output: Extreme values in our dataset can have a significant influence on the mean.
+    For instance, if there was a car in our dataset that got 200 miles per gallon,
+    this would inflate the mean upwards. This could be misleading since none of the
+    other cars get anywhere near this gas mileage.
+
+- Class: text
+  Output: An alternative to the mean, which is not influenced at all by extreme values,
+    is the MEDIAN. The median is computed by sorting all values from least to greatest
+    and then selecting the middle value. If there is an even number of values, then
+    there are actually 2 middle values. In this case, the MEDIAN is equal to the MEAN
+    of the 2 middle values. Don't worry if this is a little confusing. It will become
+    more clear with practice.
+
+- Class: cmd_question
+  Output: R also has a function for computing the median of a dataset and this is
+    done by typing 'median(variable)'. Find the median value of your 'myMPG' variable
+    now.
+  CorrectAnswer: median(myMPG)
+  AnswerTests: newcmd=median(myMPG)
+  Hint: Use the 'median' function by typing 'median' followed by the name of your
+    variable placed in parentheses. Don't use any spaces.
+
+- Class: text
+  Output: Finally, we may be most interested in finding the value that shows up the
+    most in our dataset. In other words, what the most common value in our dataset?
+    This is called the MODE and it is found by counting the number of times that each
+    value appears in the dataset and selecting the most frequent value.
+
+- Class: cmd_question
+  Output: Use the 'table' function to see how many times each value appears for your
+    'myMPG' variable. The syntax for this function is the same as for the others you've
+    seen.
+  CorrectAnswer: table(myMPG)
+  AnswerTests: newcmd=table(myMPG)
+  Hint: Type 'table' followed by your variable name placed in parentheses. As usual,
+    leave out the spaces.
+
+- Class: exact_question
+  Output: Look at your table for the 'myMPG' variable that you created above. The
+    first row gives you the value of your variable and the second row gives you the
+    number of times it appears in your dataset. Since the mode is the value of our
+    variable that appears most frequently, what is the mode of your 'myMPG' variable?
+  CorrectAnswer: '19'
+  AnswerTests: exact=19
+  Hint: Keep in mind that the mode is the value of the variable that is most common,
+    NOT the number of times which it appears.
+
+- Class: text
+  Output: 'Congratulations! You''ve made it through your first lesson. We introduced
+    basic concepts related to data and data analysis. Specifically, you learned three
+    important measures of central tendency: mean, median, and mode. You also know
+    how to compute these using R.'
+
