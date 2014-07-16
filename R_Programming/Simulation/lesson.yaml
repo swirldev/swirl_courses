@@ -106,7 +106,7 @@
   Output: Now use sum() to count the number of 1s (heads) in flips2. It should be close to 70!
   CorrectAnswer: sum(flips2)
   AnswerTests: omnitest('sum(flips2)')
-  Hint: Use sum(flips) to count the number of 1s.
+  Hint: Use sum(flips2) to count the number of 1s.
 
 - Class: cmd_question
   Output: Similar to rbinom(), we can use R to simulate random numbers from many other probability distributions. Pull up the documentation for rnorm() now.
@@ -163,7 +163,7 @@
   Output: Looks like our column means are almost normally distributed, right? That's the Central Limit Theorem at work, but that's a lesson for another day!
 
 - Class: text
-  Output: All of the standard probability distributions are built in to R, including exponential [rexp()], chi-squared [rchisq()], gamma [rgamma()], .... Well, you see the pattern.
+  Output: All of the standard probability distributions are built into R, including exponential (rexp()), chi-squared (rchisq()), gamma (rgamma()), .... Well, you see the pattern.
 
 - Class: text
-  Output: That concludes our lesson on simulation. Simulation is practically a field of its own and we've only skimmed the surface of what's possible. I encourage you to further explore these and other functions on your own.
+  Output: Simulation is practically a field of its own and we've only skimmed the surface of what's possible. I encourage you to explore these and other functions further on your own.

@@ -24,6 +24,8 @@ expand_call <- function(call_string) {
   if(is_assign) {
     # Get righthand side
     rhs <- qcall[[3]]
+    # If righthand side is not a call, can't use match.fun()
+    if(!is.call(rhs)) return(qcall)
     # Get function from function name
     fun <- match.fun(rhs[[1]])
     # match.call() does not support primitive functions

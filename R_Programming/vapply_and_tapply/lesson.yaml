@@ -58,7 +58,7 @@
   Output: You might think of vapply() as being 'safer' than sapply(), since it requires you to specify the format of the output in advance, instead of just allowing R to 'guess' what you wanted. In addition, vapply() may perform faster than sapply() for large datasets. However, when doing data analysis interactively (at the prompt), sapply() saves you some typing and will often be good enough.
 
 - Class: text
-  Output: As a data analyst, you'll often wish to split your data up into groups based on the value of some variable, then apply a function to the members of each group. tapply() does exactly that.
+  Output: As a data analyst, you'll often wish to split your data up into groups based on the value of some variable, then apply a function to the members of each group. The next function we'll look at, tapply(), does exactly that.
 
 - Class: cmd_question
   Output: The 'landmass' variable in our dataset takes on integer values between 1 and 6, each of which represents a different part of the world. Use table(flags$landmass) to see how many flags/countries fall into each group.
@@ -95,4 +95,4 @@
   Hint: Use your result from the last question.
 
 - Class: text  
-  Output: In this lesson, you learned how to use vapply() as a safer (and possibly faster) alternative to sapply(), which is most helpful when writing your own functions. You also learned how to use tapply() to split your data into groups based on the value of some variable, then apply a function to each group. These functions will come in your quest to become a better data analyst.
+  Output: In this lesson, you learned how to use vapply() as a safer (and possibly faster) alternative to sapply(), which is most helpful when writing your own functions. You also learned how to use tapply() to split your data into groups based on the value of some variable, then apply a function to each group. These functions will come in handy on your quest to become a better data analyst.

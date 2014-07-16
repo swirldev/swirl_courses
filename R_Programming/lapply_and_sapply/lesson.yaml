@@ -34,7 +34,7 @@
   Hint: Type dim(flags) to view the dimensions of the dataset.
 
 - Class: text
-  Output: This tells us that there are 194 rows, or observations, and 30 columns, or variables. Each observation is a country and each variable describes some characteristic of that country or its flag. To open a more complete description of the dataset in a separate text file, type viewinfo() when you are at the prompt (>).
+  Output: This tells us that there are 194 rows, or observations, and 30 columns, or variables. Each observation is a country and each variable describes some characteristic of that country or its flag. To open a more complete description of the dataset in a separate text file, type viewinfo() when you are back at the prompt (>).
 
 - Class: cmd_question
   Output: As with any dataset, we'd like to know in what format the variables have been stored. In other words, what is the 'class' of each variable? What happens if we do class(flags)? Try it out.
@@ -205,7 +205,7 @@
   Hint: Apply the length() function to each element of the unique_vals list using sapply(). Remember, no parentheses after the name of the function you are applying (i.e. length).
 
 - Class: text
-  Output: The fact that each element of the lapply() result is a vector of a *different* length poses a problem for sapply(), since there's no obvious way of simplifying the result.
+  Output: The fact that the elements of the unique_vals list are all vectors of *different* length poses a problem for sapply(), since there's no obvious way of simplifying the result.
 
 - Class: cmd_question
   Output: Use sapply() to apply the unique() function to each column of the flags dataset to see that you get the same unsimplified list that you got from lapply().

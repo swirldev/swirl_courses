@@ -97,7 +97,7 @@
   Output: For categorical variables (called 'factor' variables in R), summary() displays the number of times each value (or 'level') occurs in the data. For example, each value of Scientific_Name only appears once, since it is unique to a specific plant. In contrast, the summary for Duration (also a factor variable) tells us that our dataset contains 3031 Perennial plants, 682 Annual plants, etc.
 
 - Class: cmd_question
-  Output: You can see that R truncated the summary for Active_Growth_Period by including by including a catch-all category called 'Other'. Since it is a categorical/factor variable, we can see how many times each value occurs in the data with table(plants$Active_Growth_Period).
+  Output: You can see that R truncated the summary for Active_Growth_Period by including a catch-all category called 'Other'. Since it is a categorical/factor variable, we can see how many times each value occurs in the data with table(plants$Active_Growth_Period).
   CorrectAnswer: table(plants$Active_Growth_Period)
   AnswerTests: omnitest(correctExpr='table(plants$Active_Growth_Period)')
   Hint: table(plants$Active_Growth_Period) will display counts for each level of the factor variable.
@@ -118,4 +118,4 @@
   Output: str() is actually a very general function that you can use on most objects in R. Any time you want to understand the structure of something (a dataset, function, etc.), str() is a good place to start.
 
 - Class: text
-  Output: In this lesson, you learned how to get a feel for the structure of a new dataset using a collection of simple and useful functions. Taking the time to do this upfront can save you time and frustration later on in your analysis.
+  Output: In this lesson, you learned how to get a feel for the structure and contents of a new dataset using a collection of simple and useful functions. Taking the time to do this upfront can save you time and frustration later on in your analysis.
