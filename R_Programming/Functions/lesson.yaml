@@ -1,25 +1,28 @@
 - Class: meta
-  Course: R Programming
-  Lesson: Functions
-  Author: Sean Kross
+  Course: Test Course
+  Lesson: Lesson to test script
+  Author: Nick
   Type: Standard
   Organization: swirlstats
-  Version: 2.2.14
-
-- Class: text
-  Output: Functions are one of the fundamental building blocks of the R language. They are small 
-    pieces of reusable code that can be treated like any other R object.
-
-- Class: text
-  Output: Functions usually take arguments which are variables that the function operates on. For example,
-    the mean() function takes a vector as as argument, like in the case of mean(c(2,6,8)) . The mean()
-    function then adds up all of the numbers in the vector and divides that sum by the
-    length of the vector.
+  Version: 2.2.12
 
 - Class: script
-  Output: The last R expression to be evaluated in a function is the return value of that function.
-    We want this function to take one argument, x, and return x without modifying it. Delete the pound
-    sign so that x is returned without any modification.
+  Output: Update the function f so that it accepts one argument, x, and returns the value of x squared.
   AnswerTests: test_func1()
-  Hint: Make sure to delete the pound sign so the last expression in the function is just x.
-  Script: boring_function.R
+  Hint: Make sure f accepts one argument called x and returns x^2.
+  Script: test-script1.R
+
+- Class: script
+  Output: Now, have f accept a second argument, y, and return the value of x to the power of y.
+  AnswerTests: test_func2()
+  Hint: f should now accept two arguments, x and y, and return x^y.
+  Script: test-script2.R
+
+- Class: script
+  Output: A friend of yours is trying to write a function called min_positive that accepts a vector of numbers and returns the minimum value that is greater than or equal to zero. She keeps getting an error and can't figure out why. Be a good friend and fix min_positive, so that it does what she wants it to do.
+  AnswerTests: test_func3()
+  Hint: You need to fix the error and have the function return the appropriate value.
+  Script: test-script3.R
+
+- Class: text
+  Output: Now you know how functions work!
