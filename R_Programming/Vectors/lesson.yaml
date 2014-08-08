@@ -141,7 +141,7 @@
 
 - Class: cmd_question
   Output: 'Create a character vector that contains the following words: "My", "name",
-    "is". Remember to enclose each word in it''s own set of double quotes, so that
+    "is". Remember to enclose each word in its own set of double quotes, so that
     R knows they are character strings. Store the vector in a variable called my_char.'
   CorrectAnswer: my_char <- c("My", "name", "is")
   AnswerTests: omnitest(correctExpr='my_char <- c("My", "name", "is")')
@@ -226,7 +226,7 @@
     length 3. Use paste() to join the integer vector 1:3 with the character vector c("X", "Y", "Z"). This time, use sep
     = "" to leave no space between the joined elements.
   CorrectAnswer: paste(1:3, c("X", "Y", "Z"), sep = "")
-  AnswerTests: omnitest(correctExpr='paste(1:3, c("X", "Y", "Z"), sep = "")')
+  AnswerTests: any_of_exprs('paste(1:3, c("X", "Y", "Z"), sep = "")', 'paste(c(1:3), c("X", "Y", "Z"), sep = "")')
   Hint: Use paste(1:3, c("X", "Y", "Z"), sep = "") to see what happens when we join
     two vectors of equal length using paste().
 

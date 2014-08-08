@@ -1,0 +1,901 @@
+
+- Class: meta
+  Course: Open Intro
+  Lesson: Overview of Statistics
+  Author: Nick Carchedi
+  Type: Standard
+  Organization: JHU Biostatistics
+  Version: 1.0.0
+
+- Class: text
+  Output: In a very broad sense of the term, a scientist is one who engages in a systematic
+    method to acquire knowledge. More importantly, a scientist seeks to answer important
+    questions or problems through careful observations and methods. These observations
+    - collected from experiments, censuses, surveys, field notes, etc. - are known
+    as DATA. Statistics is the study of how best to collect, analyze, and draw conclusions
+    from data.
+
+- Class: text
+  Output: Once a question has been posed, or a problem identified, the next logical
+    step is to attempt to answer the question. Unfortunately, without any additional
+    information, it is very difficult to answer a question, or diagnose a problem.
+    This is where data collection comes into play! Having a set of observations, or
+    data, related to the question will help reveal an answer.
+
+- Class: text
+  Output: But how exactly does one collect useful data?
+
+- Class: text
+  Output: Remember, when conducting research, a scientist wants to answer a question,
+    one that is usually targeted at a specific population. This population does not
+    have to be a human population, as in the most common meaning of the word. Think
+    of this population as the group of entities - people, animals, cars, salaries,
+    etc. - that is to be studied by the scientist.
+
+- Class: text
+  Output: Unfortunately, it is often very difficult, if not impossible, to collect
+    thorough data from an entire population. Not only can it be very time-consuming
+    to do so, it may also  be an inefficient use of resources. Instead, scientists
+    target a SAMPLE population. This sample population is selected in such a way that
+    it is REPRESENTATIVE of the larger population in question. In mathematical terms,
+    this sample population is called a subset of the target population.
+
+- Class: figure
+  Output: Here is a simple visual illustration of how a sample is related to a population.
+  Figure: mod1_pop_vs_samp.R
+  FigureType: new
+
+- Class: mult_question
+  Output: 'Let''s quickly test your understanding of the term ''representative.''
+    If you were interested in studying the health of men living in the U.S., ages
+    18-25, which sample would be more representative of the target population: a sample
+    of 25 men who live in a nearby retirement home, or a sample of 25 men who are
+    students at a local university?'
+  AnswerChoices: Men living at the retirement home; College students
+  CorrectAnswer: College students
+  AnswerTests: word= College students
+  Hint: Since your target population is technically all men ages 18-25 living in the
+    U.S., which of these 2 sample populations more closely matches the population
+    of interest?
+
+- Class: text
+  Output: Now that you have a basic idea of how a scientist collects data, the next
+    step is to learn what to do with all of this data. While this raw data does contain
+    useful information, this information is usually specific to each individual in
+    the sample population. The scientist seeks to discover trends and correlations
+    among the subjects in the sample population, so that he or she may draw conclusions
+    about the target population as a whole.
+
+- Class: text
+  Output: To check your understanding of some of the concepts of data collection that
+    we have covered thus far, see if you can complete the following sentence.
+
+- Class: text_order_question
+  Output: A statistician collects data from a __________ in order to generalize results
+    to an entire __________. (Separate the two words in your response with a comma.)
+  CorrectAnswer: sample, population
+  AnswerTests: word_order=sample, population
+  Hint: The first term is a subset of the second. Make sure you type two words separated
+    by a comma.
+
+- Class: text
+  Output: To truly gather as much useful information from the data as possible, it
+    is important to learn how to analyze a data set like a statistician!
+
+- Class: text
+  Output: 'Before we delve too deeply into the specifics of data visualization and
+    simple data analysis, I would like to introduce a helpful resource. Throughout
+    our lessons, I will use as a reference the free online textbook, ''OpenIntro Statistics,''
+    written by David M. Diez, Christopher D. Barr, and Mine Cetinkaya-Rundel. If at
+    any time you feel as if you would like a more thorough explanation of the concepts,
+    you may access the textbook via the following URL: http://www.openintro.org/stat/down/OpenIntroStatSecond.pdf'
+
+- Class: text
+  Output: In addition to this textbook, you'll have the option to watch short videos
+    on various topics as you progress through the lessons. Let's keep going!
+
+- Class: text
+  Output: Today, statistical analysis is inseparable from computing. As we collect
+    greater amounts of data and face more complex statistical problems, we must use
+    special software to help us more easily gain insight from this data.
+
+- Class: text
+  Output: There are many such software tools available to us, however, we will be
+    focusing on one in particular called R. There are many good reasons to use R,
+    but most importantly it is high quality, free of cost, and available to anyone
+    who wishes to use it. I will be using R as a teaching tool for the topics we'll
+    cover together and before you know it, you will know R well enough to perform
+    data analysis on your own.
+
+- Class: text
+  Output: Learning R is like learning any other language. There are certain rules
+    that you must follow in order to get the desired results. Let's review some of
+    those basic rules here, so that you can start using R right away.
+
+- Class: text
+  Output: Let's say we wanted to store the value '5' in a new variable 'x'. The way
+    we would do this in R is by typing 'x <- 5'. The ASSIGNMENT OPERATOR is the '<-'
+    in between 'x' and '5,' which says 'x gets the value 5'. It is really just a 'less
+    than' sign followed by a dash. Now it's your turn to try.
+
+- Class: cmd_question
+  Output: Store the value '100' in a new variable called 'y'.
+  CorrectAnswer: y <- 100
+  AnswerTests: swirl1cmd=y <- 100
+  Hint: 'Use the same syntax that we just introduced. Example: ''x <- 5''. Notice
+    there''s a space before and after the assignment operator.'
+
+- Class: text
+  Output: Besides storing a single number in a variable, you can also store text,
+    vectors, matrices, and even whole data sets, which R users call DATA FRAMES. Once
+    you've stored something in a variable, you can then use that variable by name
+    when performing other operations.
+
+- Class: text
+  Output: Each column of a data frame contains the data for one variable. In order
+    to access the values for one particular variable in R, we use the syntax 'data.set.name$variable.name'.
+    A dollar sign is placed after the data set name and before the variable name with
+    no spaces. For example, say we wanted to access the data for the variable 'fruits'
+    from the data set 'foods'. In R, we would do this by typing 'foods$fruits'.
+
+- Class: cmd_question
+  Output: Let's see if you can do this on your own. Type in the command to access
+    the data for the variable called 'type' from the data set called 'cars'. We'll
+    be working with the 'cars' data set quite a bit later in the lesson, but for now
+    don't worry too much about the output you'll see.
+  CorrectAnswer: cars$type
+  AnswerTests: swirl1cmd=cars$type
+  Hint: Type your data set name and then a dollar sign, '$', and finally the variable
+    name with no spaces in between.
+
+- Class: text
+  Output: R has many BUILT-IN FUNCTIONS that you can use to perform analysis. As we
+    progress through our lessons, I will introduce many of these functions to you
+    as they become relevant. To use a particular function, the syntax is usually something
+    like 'FunctionName(variable)'. Some more advanced functions require more information
+    from you in the form of ARGUMENTS, which are just additional inputs placed inside
+    of the parentheses.
+
+- Class: text
+  Output: Let's try a very simple function on the variable 'y' that you just created
+    above.
+
+- Class: cmd_question
+  Output: Since you stored the value 100 in the variable 'y', type 'sqrt(y)' to get
+    the square root of 100.
+  CorrectAnswer: sqrt(y)
+  AnswerTests: swirl1cmd=sqrt(y)
+  Hint: Type 'sqrt(y)' without quotes and press 'enter'.
+
+- Class: cmd_question
+  Output: Now use the same function, but this time try storing 'sqrt(y)' in a new
+    variable 'z' using the assignment operator that you just learned about.
+  CorrectAnswer: z <- sqrt(y)
+  AnswerTests: swirl1cmd=z <- sqrt(y)
+  Hint: Assign 'sqrt(y)' to z.
+
+- Class: text
+  Output: If you ever find yourself unsure about how a particular function works,
+    you can tap into R's help files for answers. The syntax for doing so is 'help(FunctionName)'
+    or more simply just '?FunctionName' with no space between the '?' and the 'FunctionName'.
+    If, instead, you are not sure of the function you are looking for, you can perform
+    a general search through all of R's built-in functions using 'help.search(term_of_interest)'
+    or again, more simply '??term_of_interest'.
+
+- Class: cmd_question
+  Output: View the help file for the 'sqrt' function now. Use the shorthand version
+    I just showed you. Notice the help file that pops up. Feel free to spend a few
+    minutes checking it out. You'll get more comfortable with R help files as you
+    gain more experience using them.
+  CorrectAnswer: ?sqrt
+  AnswerTests: swirl1cmd=?sqrt
+  Hint: Do not include parentheses or variable names when accessing help files. Just
+    type '?FunctionName'.
+
+- Class: text
+  Output: In addition to R's built-in functions, R also contains many built-in data
+    sets that you may easily access and use. I will use one unique data set per lesson
+    to help convey the important concepts at hand.
+
+- Class: text
+  Output: 'In this lesson, I will use the same ''cars'' data set as the ''OpenIntro
+    Statistics'' textbook uses in its first chapter. This data set consists of 54
+    rows and 6 columns. For each of 54 cars from 1993, the following variables are
+    reported: type (large, midsize, small), price (USD), city miles per gallon (MPG),
+    drive train (4WD, front, rear), passengers, and weight (lbs.).'
+
+- Class: cmd_question
+  Output: Type 'cars' now to view the entire data set. You'll see that each row represents
+    one car and each column holds one of the variables we just discussed above. You
+    already saw the contents of the 'type' variable when you entered 'cars$type'.
+  CorrectAnswer: cars
+  AnswerTests: swirl1cmd=cars
+  Hint: Just type 'cars' and press Enter.
+
+- Class: text
+  Output: I chose this data set for a few reasons. To effectively convey the key concepts
+    of this section, I wanted a data set that was neither too large nor too small,
+    and one that had at least two CONTINUOUS VARIABLES and one DISCRETE or CATEGORICAL
+    VARIABLE.
+
+- Class: text
+  Output: A CONTINUOUS VARIABLE is one that can assume any value within the scope
+    of the problem. For the 'cars' data set, price, city MPG, and weight are all continuous
+    variables, as there is no inherent restriction on the possible values of each
+    of the three variables (except for negative numbers, of course!)
+
+- Class: text
+  Output: On the other hand, a DISCRETE VARIABLE is a variable that may take on one
+    of a limited, and usually fixed, number of possible values. A CATEGORICAL VARIABLE
+    is similar to a discrete variable, however, instead of assuming a fixed value,
+    the variable is ascribed a fixed categorical description. In our 'cars' data set,
+    the number of passengers is a discrete variable, while the type and drive train
+    are examples of categorical variables. Notice that the number of passengers is
+    a discrete variable since the capacity of each car may only be described in whole
+    numbers.
+
+- Class: text
+  Output: Let's test your knowledge on these different types of variables. Pretend
+    you are going on a walk through town.
+
+- Class: mult_question
+  Output: The distance you walk would be an example of what type of variable?
+  AnswerChoices: Continuous; Discrete; Categorical
+  CorrectAnswer: Continuous
+  AnswerTests: word= Continuous
+  Hint: This variable is one that can assume any value within the scope of the problem.
+
+- Class: mult_question
+  Output: The types of buildings you pass along the way would be an example of what
+    type of variable?
+  AnswerChoices: Continuous; Discrete; Categorical
+  CorrectAnswer: Categorical
+  AnswerTests: word= Categorical
+  Hint: This variable is one that is ascribed a fixed categorical description.
+
+- Class: mult_question
+  Output: The number of people you pass would be an example of what type of variable?
+  AnswerChoices: Continuous; Discrete; Categorical
+  CorrectAnswer: Discrete
+  AnswerTests: word= Discrete
+  Hint: This variable is one that may take on one of a limited, and usually fixed,
+    number of possible values.
+
+- Class: text
+  Output: You are now ready to learn about data visualization!
+
+- Class: text
+  Output: Before a statistician engages in a thorough analysis of the data set, it
+    is useful to first visualize the data. By organizing the data into a PLOT or GRAPH,
+    a statistician is able to explore and summarize some basic properties of the data
+    set. The discipline of quantitatively describing the main properties of a data
+    set is known as DESCRIPTIVE STATISTICS. In the subsequent sections, I will concurrently
+    introduce techniques for data visualization as well as the related descriptive
+    statistical measures.
+
+- Class: text
+  Output: The simplest type of plot is the DOT PLOT, which is used to visually convey
+    the values of one variable. In a dot plot, there is only a horizontal x-axis,
+    and the data points are represented as dots above this axis. Since dot plots effectively
+    display the specific numerical value of one variable for each individual in the
+    data set, it is a particularly useful tool for smaller data sets.
+
+- Class: figure
+  Output: Here's a dot plot using the variable 'price' from our 'cars' data set. As
+    you may notice, the price is reported along the x-axis in $1000s, and each point
+    above the axis represents the price of one of the 54 cars in our data set.
+  Figure: mod1_dotplot.R
+  FigureType: new
+
+- Class: range_question
+  Output: When looking at this dot plot, around what price (in $1000s) does there
+    appear to be the highest density of data points?
+  CorrectAnswer: 13-Jul
+  AnswerTests: range=7-13
+  Hint: Look at the part of the graph where the dots are the darkest and closest together.
+
+- Class: text
+  Output: This discussion of the dot plot brings me to our first descriptive statistic,
+    the RANGE of a data set. Just as the name would seem to imply, the range is the
+    difference between the maximum and minimum values of the data set.
+
+- Class: cmd_question
+  Output: Now that you know what the range measures, take a look back at our dot plot.
+    Using the R-command 'range(cars$price)', determine the exact values for the minimum
+    and maximum of the data set, respectively.
+  CorrectAnswer: range(cars$price)
+  AnswerTests: swirl1cmd=range(cars$price)
+  Hint: Type in 'range(cars$price)' and hit enter to see the minimum and maximum prices.
+
+- Class: figure
+  Output: The first number given is the minimum and the second number given is the
+    maximum. To represent these numbers visually, I've drawn 2 lines on the dot plot.
+    As you can see, the red vertical line on the far left illustrates where the minimum
+    value lies. The red vertical line on the far right illustrates where the maximum
+    value lies. The range of the data is defined as the distance between these two
+    red lines.
+  Figure: mod1_dotplot_add.R
+  FigureType: addition
+
+- Class: text
+  Output: One of the most common descriptive statistics is a MEASURE OF CENTRAL TENDENCY.
+    For a specific data set, CENTRAL TENDENCY seeks to locate a central value or a
+    typical value for a certain variable. It may also be referred to as the AVERAGE
+    or the CENTER of the data. The most common measures of central tendency are the
+    MEAN, MEDIAN, and MODE of a set of data. In the next few sections, I will continue
+    to introduce different types of plots and show you how to calculate and visualize
+    these measures of central tendency.
+
+- Class: video
+  Output: Would you like to watch a brief YouTube video on mean, median, and mode?
+  VideoLink: http://youtu.be/h8EYEJ32oQ8
+
+- Class: text
+  Output: The ARITHMETIC MEAN, or simply just the MEAN or AVERAGE, is the most common
+    measurement of the center of the data. To calculate the mean, you must first sum
+    all of the values of interest, and then divide that sum by the total number of
+    values used in the sum.
+
+- Class: cmd_question
+  Output: Using the R-command 'sum(cars$price)', can you tell me the sum of the prices
+    of the 54 cars in the data set?
+  CorrectAnswer: sum(cars$price)
+  AnswerTests: swirl1cmd=sum(cars$price)
+  Hint: Type in 'sum(cars$price)'.
+
+- Class: exact_question
+  Output: Now divide this number, using the '/' symbol as the division operator, by
+    the total number of values in the data subset. What is this value?
+  CorrectAnswer: '19.99259'
+  AnswerTests: exact=19.99259
+  Hint: Divide 1,079.6 by 54.
+
+- Class: cmd_question
+  Output: Now you understand the process for calculating the mean. Fortunately for
+    you, R contains a built-in function to automatically complete this process for
+    you. Try typing the R-command 'mean(cars$price)'.
+  CorrectAnswer: mean(cars$price)
+  AnswerTests: swirl1cmd=mean(cars$price)
+  Hint: Just type mean(cars$price) and hit enter.
+
+- Class: text
+  Output: Notice that this value, 19.99259, is exactly the same as what you got above
+    when computing the mean on your own without using the mean() function!
+
+- Class: text
+  Output: Our second measure of central tendency is known as the MEDIAN. Just as the
+    name would imply, the median is the 'middle value' of the data set.
+
+- Class: text
+  Output: To illustrate how to find the median, we will turn our attention to the
+    miles per gallon ('mpgCity') data, since these data are nice round numbers.
+
+- Class: cmd_question
+  Output: I have stored the values of the 'mpgCity' variable for ONLY midsize vehicles
+    in a new variable called 'mpg.midsize', which you can view by typing 'mpg.midsize'
+    below. Try it now.
+  CorrectAnswer: mpg.midsize
+  AnswerTests: swirl1cmd=mpg.midsize
+
+- Class: cmd_question
+  Output: In R, you may organize your data values from least to greatest using the
+    'sort' function. Try using the command 'sort(mpg.midsize)' to sort the values
+    stored in 'mpg.midsize'.
+  CorrectAnswer: sort(mpg.midsize)
+  AnswerTests: swirl1cmd=sort(mpg.midsize)
+
+- Class: cmd_question
+  Output: Try assigning 'sort(mpg.midsize)' to a new variable called 'mpg.sorted'
+    by using the assignment operator we introduced earlier.
+  CorrectAnswer: mpg.sorted <- sort(mpg.midsize)
+  AnswerTests: swirl1cmd=mpg.sorted <- sort(mpg.midsize)
+  Hint: Type 'mpg.sorted <- sort(mpg.midsize)'
+
+- Class: text
+  Output: When the total number of values is odd, finding the median, or 'middle'
+    value, is quite easy. However, if the total number of values is even, there is
+    no middle value amongst the actual data. In this case, you must calculate the
+    average of the two middle values amongst the data points. In other words, in the
+    case of an even number of values, the MEDIAN is reported as the MEAN of the two
+    middle values of the data set.
+
+- Class: exact_question
+  Output: Just by looking at the sorted data you generated above, what do you think
+    the median is?
+  CorrectAnswer: '19'
+  AnswerTests: exact=19
+  Hint: Remember that since we have an even number of values here, the MEDIAN is just
+    the MEAN of the two middle values.
+
+- Class: text
+  Output: Even though we have an even number of data points, and thus two middle values,
+    both middle values are 19, so their average is also 19.
+
+- Class: text
+  Output: Now that you understand what goes on behind the scenes to compute the median
+    of a data set, I'll show you a quicker way to get the same answer using the R
+    command 'median'. And the nice thing about doing it this way is that we don't
+    need to sort the data beforehand.
+
+- Class: cmd_question
+  Output: Try computing the median of our original unsorted 'mpg.midsize' by using
+    R's built-in 'median' function.
+  CorrectAnswer: median(mpg.midsize)
+  AnswerTests: swirl1cmd=median(mpg.midsize)
+  Hint: If we wanted the median of 'x', we would type 'median(x)'.
+
+- Class: text
+  Output: Now you have learned about the RANGE, MEAN, and MEDIAN of a data set, and
+    how to calculate the value of each using simple R-commands.
+
+- Class: cmd_question
+  Output: Another helpful command in R is the 'summary' command. As you will see,
+    this command reports the values for the minimum, median, mean, and maximum of
+    a particular data set. For now, just ignore the values labeled '1st Qu.' and '3rd
+    Qu.', as we will get to those shortly! Try typing 'summary(cars$mpgCity)' to see
+    exactly what it does.
+  CorrectAnswer: summary(cars$mpgCity)
+  AnswerTests: swirl1cmd=summary(cars$mpgCity)
+  Hint: If we wanted the summary of 'x', we would type 'summary(x)'.
+
+- Class: text
+  Output: Let us continue with other types of plots!
+
+- Class: text
+  Output: A HISTOGRAM is similar to a dot plot, but instead of showing every specific
+    value, it partitions the values of your data into several bins, providing a more
+    condensed representation of the data. Taller bars signify the range of values
+    in which the majority of the data is located, whereas shorter bars represent a
+    range of values in which fewer data points are located. In other words, histograms
+    provide a view of the DATA DENSITY.
+
+- Class: video
+  Output: Would you like to watch a brief YouTube video on histograms?
+  VideoLink: http://youtu.be/4eLJGG2Ad30
+
+- Class: figure
+  Output: Here I have created a histogram using the miles per gallon data for ALL
+    of our cars, not just the midsize ones that we worked with above. As you may notice,
+    the values of the MPG along the x-axis are partitioned into bins with a range
+    of 5. The second bin, for example, groups together all of the cars that get 21-25
+    MPG in the city, and so forth. Note that the bin to the left of this contains
+    the cars with 20 MPG since this value cannot be counted in both bins. The frequency
+    of values in each bin, or the number of cars in each of the intervals, is reported
+    along the y-axis.
+  Figure: mod1_histogram.R
+  FigureType: new
+
+- Class: mult_question
+  Output: By simply looking at this histogram, can you tell me which MPG interval
+    has the highest frequency of values? For example, the lowest frequencies of values
+    occur in the intervals 36-40, 41-45, and 46-50.
+  AnswerChoices: 16-20; 21-25; 26-30; 31-35; 36-40; 41-45; 46-50
+  CorrectAnswer: 16-20
+  AnswerTests: word= 16-20
+  Hint: Look for the bin values corresponding to the tallest bar in the histogram.
+
+- Class: exact_question
+  Output: How many cars get 16-20 MPG in the city?
+  CorrectAnswer: '25'
+  AnswerTests: exact=25
+  Hint: Look at the highest value on the y-axis that the '16-20' bar reaches.
+
+- Class: figure
+  Output: A red line has been drawn on our histogram illustrating the previous answer.
+  Figure: mod1_histogram_add.R
+  FigureType: addition
+
+- Class: text
+  Output: A special type of histogram is known as a STEM-AND-LEAF PLOT. This plot
+    organizes numerical data in order of decimal place value. The left-hand column
+    of the plot contains the STEMS, or the numerical values of the tens digit for
+    each of the data points, organized vertically in increasing order. The LEAVES
+    are located in the right-hand column of the plot and are the values of the ones
+    digit for each data point of the corresponding stem, organized horizontally in
+    increasing order. In a stem-and-leaf plot, the number of leaves is equal to the
+    number of items in the data set. The easiest way to understand a stem-and-leaf
+    plot is to see one!
+
+- Class: video
+  Output: Would you like to watch a brief YouTube video on stem-and-leaf plots?
+  VideoLink: http://youtu.be/OaJXJduRiIE
+
+- Class: figure
+  Output: I have created a stem-and-leaf plot above (in the console) using the same values for the
+    'mpgCity' variable as we just used for our histogram. As you can see, a stem-and-leaf
+    plot is a useful type of histogram if you want to see the frequencies of specific
+    values of the data. Often, there will only be one bin per tens digit, but in this
+    case, R gives us the same bins as we saw in our histogram.
+  Figure: mod1_stem.R
+  FigureType: new
+
+- Class: text
+  Output: Now is a perfect time to introduce our last measure of central tendency,
+    the MODE. The mode of a data set is the value that occurs most frequently.
+
+- Class: exact_question
+  Output: By looking at the stem-and-leaf plot above, what is the mode of the MPG?
+  CorrectAnswer: '19'
+  AnswerTests: exact=19
+  Hint: Look for which number \repeats\" the most in the stem-and-leaf plot."
+
+- Class: text
+  Output: The measures of central tendency are very useful in briefly summarizing
+    a data set, and finding the best representation of the central or average value
+    of a data set. These are not the sole measures used to describe a data set, however.
+    It is possible for very different data sets to exhibit the exact same values for
+    their measures of central tendency. 'How is this possible?' you might ask. Well,
+    let's take a look!
+
+- Class: text
+  Output: Another important property specific to each data set is a measure of how
+    spread out or clustered the data values are. This is known as DISPERSION or VARIABILITY.
+    Three measures of variability are interquartile range, variance, and standard
+    deviation.
+
+- Class: text
+  Output: A BOX PLOT, also called a BOX-AND-WHISKER PLOT, is used to summarize the
+    main descriptive statistics of a particular data set and will help illustrate
+    the concept of variability. Remember that the R-command 'summary(cars$price)'
+    returned values for the minimum, median, mean, and maximum of a data set, as well
+    as two other items, which I promised to teach you about later on? Well, a box
+    plot is used to visually represent the MINIMUM, FIRST QUARTILE (Q1), MEDIAN, THIRD
+    QUARTILE (Q3), and MAXIMUM of a data set.
+
+- Class: video
+  Output: Would you like to watch a brief YouTube video on box-and-whisker plots?
+  VideoLink: http://youtu.be/BXq5TFLvsVw
+
+- Class: figure
+  Output: 'Here I have created a box plot to represent the price data for each of
+    the three car types: large, midsize, and small. You''ll notice that each of the
+    3 figures is composed of a closed 4-sided \box\" with \"whiskers\" on the top
+    and bottom'
+  Figure: mod1_boxplot.R
+  FigureType: new
+
+- Class: text
+  Output: The height of each box is referred to as the INTERQUARTILE RANGE (IQR).
+    The more variability within the data, the larger the IQR. On the other hand, less
+    variability within the data means a smaller IQR. The bottom of the box in the
+    box plot corresponds to the value of the first quartile (Q1), and the top of the
+    box corresponds to the value of the third quartile (Q3). To calculate the value
+    of the IQR, simply subtract the value of Q1 from that of Q3.
+
+- Class: text
+  Output: The whiskers, or lines, that extend above and below each box represent roughly
+    the upper 25% and lower 25% of data points, respectively. The only exception is
+    when there are outliers, which I'll explain shortly.
+
+- Class: range_question
+  Output: Looking at the box plot, what is the approximate interquartile range for
+    the midsize vehicles?
+  CorrectAnswer: 16- 20
+  AnswerTests: range=16- 20
+  Hint: Subtract the Q1 value from the Q3 value. The Q1 value is the minimum value
+    contained in the box and the Q3 value is the maximum value contained in the box.
+
+- Class: text
+  Output: Let's take a closer look at how quartiles are calculated. We start by sorting
+    the data from least to greatest, just like when calculating the median. The first
+    quartile (Q1), also known at the 25th PERCENTILE (since 25% of the data points
+    fall at or below this value), is simply the median of the first half of the sorted
+    data. Likewise, the third quartile (Q3), also known as the 75th percentile, is
+    the median of the second half of the sorted data.
+
+- Class: figure
+  Output: As shown in this plot, the blue horizontal line illustrates how to find
+    the value for the first quartile. The green horizontal line illustrates how to
+    find the value for the third quartile. The interquartile range is the range of
+    data values that is contained in between these two lines.
+  Figure: mod1_boxplot_add.R
+  FigureType: addition
+
+- Class: figure
+  Output: Look again at our box plot of price vs. car type. You may be thinking to
+    yourself, 'What is that circle above the box plots for the midsize cars, and why
+    is there no circle above the box plot for the large cars?' Those circles represent
+    OUTLIERS in the data set. An OUTLIER is an observation that is unusual or extreme
+    relative to the other values in the data set. Outliers are useful in identifying
+    a heavy skew in a distribution, and may signify a data collection or data entry
+    error to a scientist. There are many different conventions for identifying outliers
+    within a data set.
+  Figure: mod1_boxplot.R
+  FigureType: new
+
+- Class: text_many_question
+  Output: When looking at the box plot, which car types appear to have outliers? Separate
+    your answers with a comma.
+  CorrectAnswer: small, midsize
+  AnswerTests: word_many=small, midsize
+  Hint: Look for the types of cars that correspond to the box plots with circles above
+    or below them.
+
+- Class: text
+  Output: 'Since we have finished our introduction to the interquartile range, we
+    will now take a look at the two other values used when describing the spread of
+    the data: variance and standard deviation. Mathematically, VARIANCE is the average
+    of the squared differences from the mean. Don''t worry if you find this a little
+    confusing. Intuitively, variance just represents the total distance of the data
+    from the mean of the data.'
+
+- Class: text
+  Output: A low variance indicates that the data points tend to be located near the
+    mean value, while a high variance indicates that the data points are spread further
+    from the mean.
+
+- Class: text
+  Output: A more conventional measure of variability is the STANDARD DEVIATION, which
+    is calculated as the square root of the variance. Statisticians typically refer
+    to standard deviation because it is expressed in the same units as the original
+    data values. If you are interested in the details of how variance and standard
+    deviation are calculated, I recommend taking a look at the following video.
+
+- Class: video
+  Output: Would you like to watch a brief YouTube video on variance and standard deviation?
+  VideoLink: http://youtu.be/E4HAYd0QnRc
+
+- Class: cmd_question
+  Output: Using the R command 'sd()', calculate the standard deviation of the data
+    subset entitled 'mpg.midsize'.
+  CorrectAnswer: sd(mpg.midsize)
+  AnswerTests: swirl1cmd=sd(mpg.midsize)
+  Hint: If you wanted the sd of 'x', you would type 'sd(x)'.
+
+- Class: exact_question
+  Output: Now that you have calculated the standard deviation of this data, can you
+    tell me what is the variance of the data? To square a quantity in R, the notation
+    is 'quantity^2', where the '^' symbol means 'to the power of'.
+  CorrectAnswer: '3.593072'
+  AnswerTests: exact=3.593072
+  Hint: Variance is the standard deviation squared.
+
+- Class: text
+  Output: To demonstrate differences in variability, I will again refer to the box
+    plot of car type vs. price.
+
+- Class: figure
+  Output: As you can see in the box plot, the data for prices of 'midsize' cars vary
+    from around 15 to 62, encompassing a range of approximately 50. This is a great
+    deal larger than the variation for 'small' cars which range from around 5 to 15,
+    encompassing a range of approximately 10. Therefore, since the range is much greater
+    for 'midsize' cars, prices of 'midsize' cars have much higher variability in comparison
+    to the prices of 'small' cars.
+  Figure: mod1_boxplot.R
+  FigureType: new
+
+- Class: text_question
+  Output: Now it is your turn! Is the variability of prices of cars of type 'large'
+    higher or lower than that of cars of type 'small'?
+  CorrectAnswer: higher
+  AnswerTests: word=higher
+  Hint: Look to see if the range of cars of type 'large' is greater or less than that
+    of cars of type 'small'.
+
+- Class: text
+  Output: While dispersion measures the variability from the mean in a data set, another
+    important property is the shape of the distribution of the data. We will learn
+    much more about distributions in one of my subsequent lessons, but for now just
+    think of DISTRIBUTION as a histogram.
+
+- Class: text
+  Output: Histograms are particularly useful in viewing and describing the shape of
+    the distribution of the data. A distribution of data may have a left skew, a right
+    skew, or no skew at all. SKEWNESS is a measure of the extent to which the distribution
+    of the data 'leans' to one side or the other.
+
+- Class: figure
+  Output: A distribution that has a left skew is one in which the left TAIL of the
+    plot is longer. In other words, on a histogram the majority of the distribution
+    is located to the right of the mean. This distribution is also said to be left-skewed.
+    When a distribution is left-skewed, the value of the MEAN is less than that of
+    the MEDIAN, and thus the MEAN is located further to the left of the distribution.
+    In this plot, the green line represents the median and the blue line represents
+    the mean.
+  Figure: mod1_leftskew.R
+  FigureType: new
+
+- Class: figure
+  Output: On the other hand, a distribution that has a right skew is one in which
+    the right tail is longer, such that the majority of the data falls to the left
+    of the mean, when viewed on the histogram. This distribution is said to be right-skewed.
+    When a distribution is right-skewed, the value of the MEAN is greater than that
+    of the MEDIAN, and thus the MEAN is located further to the right of the distribution.
+    In this plot, the green line represents the median and the blue line represents
+    the mean.
+  Figure: mod1_rightskew.R
+  FigureType: new
+
+- Class: figure
+  Output: A plot that has no skew is one in which the tails on both sides of the mean
+    balance out, and is referred to as symmetric. When a distribution is symmetric,
+    the MEAN and MEDIAN are approximately equal in value. In this plot, the green
+    line represents the median and the blue line represents the mean. The green line
+    is the only one visible since the mean and median are so close to the same value.
+  Figure: mod1_symmetric.R
+  FigureType: new
+
+- Class: figure
+  Output: Let's take a look back at the histogram we made earlier, which represents
+    the distribution of the values for city MPG for each of the 54 cars from our 'cars'
+    data set.
+  Figure: mod1_histogram.R
+  FigureType: new
+
+- Class: mult_question
+  Output: How would you classify the shape of the distribution represented by this
+    histogram?
+  AnswerChoices: Symmetric; Right-skewed; Left-skewed
+  CorrectAnswer: Right-skewed
+  AnswerTests: word= Right-skewed
+  Hint: Look to see which tail extends further. The plot is said to be skewed in that
+    direction.
+
+- Class: mult_question
+  Output: Referring to the same histogram, and keeping in mind your answer to the
+    previous question, would you expect the MEDIAN to be greater than, less than,
+    or equal to the MEAN?
+  AnswerChoices: Greater than; Less than; Equal to
+  CorrectAnswer: Less than
+  AnswerTests: word= Less than
+  Hint: Keep in mind that data points that create a plot's long tail will tend to
+    'pull' the mean in that direction. The median is not affected by how far away
+    the data points are.
+
+- Class: text
+  Output: Up to this point, I have covered useful techniques to visualize numerical,
+    or continuous variables, but what about categorical variables? Well, one useful
+    way to display a single categorical variable is via a BAR GRAPH, in which the
+    various categories lie on the x-axis and the numerical values corresponding to
+    each category lie on the y-axis.
+
+- Class: figure
+  Output: 'Here is a BAR GRAPH representing the average price for each of the three
+    car types: large, midsize, and small. Because there are numerous data points within
+    each category, the height of each bar is the MEAN price ($1000s) of all of the
+    cars within that category.'
+  Figure: mod1_bargraph.R
+  FigureType: new
+
+- Class: text_order_question
+  Output: According to the bar graph, which car type is the most expensive, on average?
+    Which is the least expensive, on average? Answer the two questions in the same
+    order with a comma separating the two answers.
+  CorrectAnswer: midsize, small
+  AnswerTests: word_order=midsize, small
+  Hint: Look at the corresponding car type for the tallest bar to determine which
+    car is the most expensive. Look at the corresponding car type for the shortest
+    bar to determine which car is the least expensive.
+
+- Class: figure
+  Output: The 'midsize' bar has been highlighted green and is the most expensive on
+    average. The 'small' bar has been highlighted blue and is the least expensive
+    on average.
+  Figure: mod1_bargraph_add.R
+  FigureType: addition
+
+- Class: range_question
+  Output: According to the bar graph, what is the average price for a 'large' car
+    (in $1000s)?
+  CorrectAnswer: 22- 26
+  AnswerTests: range=22- 26
+  Hint: Look at the highest value on the y-axis that the \large\" bar reaches."
+
+- Class: figure
+  Output: The red horizontal line added to the plot illustrates how to find your previous
+    answer.
+  Figure: mod1_bargraph_add1.R
+  FigureType: addition
+
+- Class: text
+  Output: Up until now, every plot I have introduced has involved only one variable.
+    But what if you are trying to analyze two variables? A SCATTER PLOT provides a
+    comparative view of data for two numerical variables, with one on the x-axis and
+    the other on the y-axis. This type of a plot is useful because it allows you to
+    see whether two variables are related and to what degree.
+
+- Class: figure
+  Output: Here's an example of a scatter plot.
+  Figure: mod1_scatter.R
+  FigureType: new
+
+- Class: mult_question
+  Output: 'Of the three variables discussed previously: continuous, discrete, and
+    categorical, which do you think would be most appropriate to use in a scatter
+    plot?'
+  AnswerChoices: Continuous; Discrete; Categorical
+  CorrectAnswer: Continuous
+  AnswerTests: word= Continuous
+  Hint: Think about which of the three variable types has an indefinite number of
+    possible values.
+
+- Class: text
+  Output: To conclude this lesson, you are going to revisit all of the different types
+    of plots I have discussed. After each plot appears, try your best to classify
+    it. You will be amazed to see how much you have learned already!
+
+- Class: figure
+  Output: Here's your first plot.
+  Figure: mod1_bargraph.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Which type of plot is shown here?
+  AnswerChoices: Dot plot; Histogram; Stem-and-leaf plot; Bar graph; Box plot; Scatter
+    plot
+  CorrectAnswer: Bar graph
+  AnswerTests: word= Bar graph
+  Hint: This type of graph is used to display a single categorical variable.
+
+- Class: figure
+  Output: Here's another.
+  Figure: mod1_scatter.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Which type of plot is shown here?
+  AnswerChoices: Dot plot; Histogram; Stem-and-leaf plot; Bar graph; Box plot; Scatter
+    plot
+  CorrectAnswer: Scatter plot
+  AnswerTests: word= Scatter plot
+  Hint: This type of plot is used to show the relationship between two continuous
+    variables.
+
+- Class: figure
+  Output: And another.
+  Figure: mod1_dotplot.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Which type of plot is shown here?
+  AnswerChoices: Dot plot; Histogram; Stem-and-leaf plot; Bar graph; Box plot; Scatter
+    plot
+  CorrectAnswer: Dot plot
+  AnswerTests: word= Dot plot
+  Hint: This type of plot is used to visually convey the values of one variable using
+    only one axis.
+
+- Class: figure
+  Output: Just a few more.
+  Figure: mod1_histogram.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Which type of plot is shown here?
+  AnswerChoices: Dot plot; Histogram; Stem-and-leaf plot; Bar graph; Box plot; Scatter
+    plot
+  CorrectAnswer: Histogram
+  AnswerTests: word= Histogram
+  Hint: This type of plot partitions the values of your data into several bins.
+
+- Class: figure
+  Output: Keep going.
+  Figure: mod1_boxplot.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Which type of plot is shown here?
+  AnswerChoices: Dot plot; Histogram; Stem-and-leaf plot; Bar graph; Box plot; Scatter
+    plot
+  CorrectAnswer: Box plot
+  AnswerTests: word= Box plot
+  Hint: This type of plot is used to summarize the main descriptive statistics of
+    a particular data set.
+
+- Class: figure
+  Output: Last one!
+  Figure: mod1_stem.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Which type of plot is shown above?
+  AnswerChoices: Dot plot; Histogram; Stem-and-leaf plot; Bar graph; Box plot; Scatter
+    plot
+  CorrectAnswer: Stem-and-leaf plot
+  AnswerTests: word= Stem-and-leaf plot
+  Hint: This type of plot organizes numerical data in order of decimal place value.
+
+- Class: text
+  Output: CONGRATULATIONS! You've completed your first lesson! I look forward to having
+    you back for many more in the future.
+
