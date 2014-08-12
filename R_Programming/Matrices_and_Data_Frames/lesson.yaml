@@ -96,7 +96,7 @@
 - Class: cmd_question
   Output: Finally, let's confirm that my_matrix and my_matrix2 are actually identical. The identical() function will tell us if its first two arguments are the same. Try it out.
   CorrectAnswer: identical(my_matrix, my_matrix2)
-  AnswerTests: omnitest(correctExpr='identical(my_matrix, my_matrix2)')
+  AnswerTests: any_of_exprs('identical(my_matrix, my_matrix2)', 'identical(my_matrix2, my_matrix)')
   Hint: If you're not sure about this one, then checkout the documentation for identical() using the `?` function.
 
 - Class: text
