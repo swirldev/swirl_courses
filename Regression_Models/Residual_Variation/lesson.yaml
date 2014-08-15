@@ -7,7 +7,7 @@
   Version: 2.2.0
 
 - Class: text
-  Output: "Residual Variation. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Regression_Models/01_06_residualVariation.)"
+  Output: "Residual Variation. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Regression_Models/01_06_residualVariation. Galton data is from John Verzani's website, http://wiener.math.csi.cuny.edu/UsingR/)"
 
 - Class: text
   Output: As shown in the slides, residuals are useful for indicating how well data points fit a statistical model. They "can be thought of as the outcome (Y) with the linear association of the predictor (X) removed. One differentiates residual variation (variation after removing the predictor) from systematic variation (variation explained by the regression model)."
