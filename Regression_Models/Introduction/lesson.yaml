@@ -16,8 +16,7 @@
   Output: Sir Francis studied the relationship between heights of parents and their children. His work showed that parents who were taller than average had children who were also tall but closer to the average height. Similarly, parents who were shorter than average had children who were also shorter than average but less so than mom and dad. That is, they were closer to the average height. From one generation to the next the heights moved closer to the average or regressed toward the mean.
 
 - Class: text
-  Output: For this lesson we'll use Sir Francis's parent/child height data which we've taken the liberty to load for you. We've done this with the R command 'galton <- UsingR::galton' when you began the lesson. This is one of many datasets that R provides for users. So let's get started!
-
+  Output: For this lesson we'll use Sir Francis's parent/child height data which we've taken the liberty to load for you as the variable, galton. (Data is from John Verzani's website, http://wiener.math.csi.cuny.edu/UsingR/.) So let's get started!
 
 - Class: figure
   Output: Here is a plot of Galton's data, a set of 928 parent/child height pairs. Moms' and dads' heights were averaged together (after moms' heights were adjusted by a factor of 1.08). In our plot we used the R function "jitter" on the children's heights to highlight heights that occurred most frequently. The dark spots in each column rise from left to right suggesting that children's heights do depend on their parents'. Tall parents have tall children and short parents have short children.

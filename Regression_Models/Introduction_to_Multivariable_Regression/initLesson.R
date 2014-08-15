@@ -5,6 +5,6 @@ local({
   file.edit("elimination.R")
 })
 source("elimination.R")
-galton <- UsingR::galton
+galton <- read.csv(file.path(find.package("swirl"), "Courses/Regression_Models/Introduction", "galton.csv"))
 trees <- datasets::trees
 trees <- cbind(Constant=rep(1.0, nrow(trees)), trees)
