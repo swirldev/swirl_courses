@@ -25,8 +25,6 @@ Here are our current offerings, organized by level of difficulty:
 
 Since our users come from a variety backgrounds, it's very hard to label material as **Beginner**, **Intermediate**, or **Advanced**. If you find something that is labelled **Beginner** to be challenging, please don't be discouraged. The first step of learning anything is to acknowledge that you are capable of understanding it. True understanding will come with time and practice.
 
-***
-
 ## Install and run a course automatically from swirl
 
 **This is the preferred method of installing courses.** It automates the process by allowing you to do everything right from the R console.
@@ -48,8 +46,6 @@ swirl()
 For example, `install_from_swirl("R Programming")` will install the R Programming course. **Please note that course names are case sensitive!**
 
 If that doesn't work for you...
-
-***
 
 ## Install and run a course manually
 
@@ -80,13 +76,9 @@ Although we recommend you install one course at a time, if you omit the `which_c
 install_course_zip("~/Downloads/swirl_courses-master.zip", multi=TRUE)
 ```
 
-***
-
 ## Uninstall a course
 
 If you'd like to remove a course at any time, you can use `uninstall_course("Course Name Here")`.
-
-***
 
 ## Using swirl in the classroom
 
