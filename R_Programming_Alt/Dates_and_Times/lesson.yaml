@@ -191,3 +191,10 @@
 
 - Class: text
   Output: In this lesson, you learned how to work with dates and times in R. While it is important to understand the basics, if you find yourself working with dates and times often, you may want to check out the lubridate package by Hadley Wickham.
+
+- Class: mult_question
+  Output: Would you like to inform someone about your successful completion of this lesson?
+  CorrectAnswer: NULL
+  AnswerChoices: Yes; No
+  AnswerTests: notify()
+  Hint: NULL

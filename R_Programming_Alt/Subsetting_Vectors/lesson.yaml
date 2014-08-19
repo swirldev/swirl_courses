@@ -197,3 +197,10 @@
 
 - Class: text
   Output: Now you know all four methods of subsetting data from vectors. Different approaches are best in different scenarios and when in doubt, try it out!
+
+- Class: mult_question
+  Output: Would you like to inform someone about your successful completion of this lesson?
+  CorrectAnswer: NULL
+  AnswerChoices: Yes; No
+  AnswerTests: notify()
+  Hint: NULL

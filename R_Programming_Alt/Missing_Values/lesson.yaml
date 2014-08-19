@@ -101,3 +101,11 @@
   CorrectAnswer: Inf - Inf
   AnswerTests: omnitest(correctExpr='Inf - Inf')
   Hint: Type Inf - Inf. Can you guess the result?
+  
+- Class: mult_question
+  Output: Would you like to inform someone about your successful completion of this lesson?
+  CorrectAnswer: NULL
+  AnswerChoices: Yes; No
+  AnswerTests: notify()
+  Hint: NULL
+

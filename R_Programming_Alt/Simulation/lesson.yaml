@@ -167,3 +167,10 @@
 
 - Class: text
   Output: Simulation is practically a field of its own and we've only skimmed the surface of what's possible. I encourage you to explore these and other functions further on your own.
+
+- Class: mult_question
+  Output: Would you like to inform someone about your successful completion of this lesson?
+  CorrectAnswer: NULL
+  AnswerChoices: Yes; No
+  AnswerTests: notify()
+  Hint: NULL

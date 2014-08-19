@@ -257,3 +257,9 @@
     numbers 1, 2, 3, and 4 in the output above are no longer numbers to R, but rather
     characters "1", "2", "3", and "4".
 
+- Class: mult_question
+  Output: Would you like to inform someone about your successful completion of this lesson?
+  CorrectAnswer: NULL
+  AnswerChoices: Yes; No
+  AnswerTests: notify()
+  Hint: NULL
