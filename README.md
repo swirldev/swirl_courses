@@ -9,14 +9,15 @@ Here are our current offerings, organized by level of difficulty:
 
 #### Beginner
 
-- R Programming
-- Data Analysis
-- Mathematical Biostatistics Boot Camp
-- Open Intro
+- **R Programming**: The basics of programming in R
+- **R Programming Alt**: Same as the original, but modified slightly for in-class use
+- **Data Analysis**: Basic ideas in statistics and data visualization
+- **Mathematical Biostatistics Boot Camp**: One- and two-sample t-tests, power, and sample size
+- **Open Intro**: A very basic introduction to statistics, data analysis, and data visualization
 
 #### Intermediate
 
-- Regression Models
+- **Regression Models**: The basics of regression modeling in R
 
 #### Advanced
 
@@ -79,4 +80,16 @@ Although we recommend you install one course at a time, if you omit the `which_c
 install_course_zip("~/Downloads/swirl_courses-master.zip", multi=TRUE)
 ```
 
+***
+
+## Uninstall a course
+
 If you'd like to remove a course at any time, you can use `uninstall_course("Course Name Here")`.
+
+***
+
+## Using swirl in the classroom
+
+Instructors around the world are using swirl in their classrooms. We think this is awesome. If you're an instructor, please feel free to do the same -- free of charge. While your students may be paying to take your course or attend your institution, we simply ask that you don't charge people *directly* for the use of our software or instructional content.
+
+If you are not sure about a particular use case, don't hesitate to send us an email at info@swirlstats.com.
