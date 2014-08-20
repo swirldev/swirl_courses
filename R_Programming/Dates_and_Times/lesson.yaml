@@ -10,7 +10,7 @@
   Output: R has a special way of representing dates and times, which can be helpful if you're working with data that show how something changes over time (i.e. time-series data) or if your data contain some other temporal information, like dates of birth.
 
 - Class: text
-  Output: Dates are represented by the 'Date' class and times are represented by the 'POSIXct' and 'POSIXlt' classes. Internally, dates are stored as the number of days since 1970-01-01 and times are stored as either the number of seconds since 1970-01-01 (for 'POSIXct') or a list of seconds, minutes, hours, etc (for 'POSIXlt').
+  Output: Dates are represented by the 'Date' class and times are represented by the 'POSIXct' and 'POSIXlt' classes. Internally, dates are stored as the number of days since 1970-01-01 and times are stored as either the number of seconds since 1970-01-01 (for 'POSIXct') or a list of seconds, minutes, hours, etc. (for 'POSIXlt').
 
 - Class: cmd_question
   Output: Let's start by using d1 <- Sys.Date() to get the current date and store it in the variable d1. (That's the letter 'd' and the number 1.)
@@ -97,7 +97,7 @@
   Hint: Type t2 to view its contents.
 
 - Class: cmd_question
-  Output: The printed format of t2 is identical to that of t1 (except for the slight difference in time). Now unclass() t2 to see how it is different internally.
+  Output: The printed format of t2 is identical to that of t1. Now unclass() t2 to see how it is different internally.
   CorrectAnswer: unclass(t2)
   AnswerTests: omnitest(correctExpr='unclass(t2)')
   Hint: Use unclass(t2) to view its internal structure.

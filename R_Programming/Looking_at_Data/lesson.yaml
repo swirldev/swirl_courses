@@ -28,7 +28,7 @@
   Output: It's very common for data to be stored in a data frame. It is the default class for data read into R using functions like read.csv() and read.table(), which you'll learn about in another lesson.
 
 - Class: cmd_question
-  Output: Since the dataset is stored in a data frame, we know it is rectangular. In other words, it has two dimensions (rows and columns) and fits neatly into a table or spreadsheet. Now use dim(plants) to see exactly how many rows and columns we're dealing with.
+  Output: Since the dataset is stored in a data frame, we know it is rectangular. In other words, it has two dimensions (rows and columns) and fits neatly into a table or spreadsheet. Use dim(plants) to see exactly how many rows and columns we're dealing with.
   CorrectAnswer: dim(plants)
   AnswerTests: omnitest(correctExpr='dim(plants)')
   Hint: Use dim(plants) to see the exact dimensions of the plants dataset.
@@ -97,7 +97,7 @@
   Output: For categorical variables (called 'factor' variables in R), summary() displays the number of times each value (or 'level') occurs in the data. For example, each value of Scientific_Name only appears once, since it is unique to a specific plant. In contrast, the summary for Duration (also a factor variable) tells us that our dataset contains 3031 Perennial plants, 682 Annual plants, etc.
 
 - Class: cmd_question
-  Output: You can see that R truncated the summary for Active_Growth_Period by including a catch-all category called 'Other'. Since it is a categorical/factor variable, we can see how many times each value occurs in the data with table(plants$Active_Growth_Period).
+  Output: You can see that R truncated the summary for Active_Growth_Period by including a catch-all category called 'Other'. Since it is a categorical/factor variable, we can see how many times each value actually occurs in the data with table(plants$Active_Growth_Period).
   CorrectAnswer: table(plants$Active_Growth_Period)
   AnswerTests: omnitest(correctExpr='table(plants$Active_Growth_Period)')
   Hint: table(plants$Active_Growth_Period) will display counts for each level of the factor variable.
