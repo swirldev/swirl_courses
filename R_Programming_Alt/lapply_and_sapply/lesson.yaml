@@ -100,7 +100,7 @@
   Output:  Therefore, if we want to know the total number of countries (in our dataset) with, for example, the color orange on their flag, we can just add up all of the 1s and 0s in the 'orange' column. Try sum(flags$orange) to see this.
   CorrectAnswer: sum(flags$orange)
   AnswerTests: omnitest(correctExpr='sum(flags$orange)')
-  Hint: Use sum(flags$orange) to add up all of the 1s in the 'orange' column.
+  Hint: Use sum(flags$orange) to add up all of the 1s and 0s in the 'orange' column.
 
 - Class: text
   Output: Now we want to repeat this operation for each of the colors recorded in the dataset.
@@ -157,7 +157,7 @@
   Output: The range() function returns the minimum and maximum of its first argument, which should be a numeric vector. Use lapply() to apply the range function to each column of flag_shapes. Don't worry about storing the result in a new variable. By now, we know that lapply() always returns a list.
   CorrectAnswer: lapply(flag_shapes, range)
   AnswerTests: omnitest(correctExpr='lapply(flag_shapes, range)')
-  Hint: Try lapply(flag_shapes, range).
+  Hint: Try lapply(flag_shapes, range) to apply the range() function to each column of flag_shapes.
 
 - Class: cmd_question
   Output: Do the same operation, but using sapply() and store the result in a variable called range_mat.
@@ -171,6 +171,9 @@
   AnswerTests: any_of_exprs('shape_mat', 'print(shape_mat)')
   Hint: Type shape_mat to view its contents.
 
+- Class: text
+  Output: Each column of shape_mat gives the minimum (row 1) and maximum (row 2) number of times its respective shape appears in different flags.
+
 - Class: cmd_question
   Output: Use the class() function to confirm that shape_mat is a matrix.
   CorrectAnswer: class(shape_mat)
@@ -178,7 +181,7 @@
   Hint: class(shape_mat) returns the class of shape_mat.
 
 - Class: text
-  Output: As we've seen, sapply() always attempts to simplify the result given by lapply(). It has been successful in doing so for each of the examples we've looked at so far. Let's look at an example that where sapply() can't figure out how to simplify the result and thus returns a list, just like lapply().
+  Output: As we've seen, sapply() always attempts to simplify the result given by lapply(). It has been successful in doing so for each of the examples we've looked at so far. Let's look at an example where sapply() can't figure out how to simplify the result and thus returns a list, no different from lapply().
 
 - Class: cmd_question
   Output: When given a vector, the unique() function returns a vector with all duplicate elements removed. In other words, unique() returns a vector of only the 'unique' elements. To see how it works, try unique(c(3, 4, 5, 5, 5, 6, 6)).
