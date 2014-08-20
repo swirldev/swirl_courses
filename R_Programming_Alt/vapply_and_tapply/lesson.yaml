@@ -61,6 +61,12 @@
   Output: As a data analyst, you'll often wish to split your data up into groups based on the value of some variable, then apply a function to the members of each group. The next function we'll look at, tapply(), does exactly that.
 
 - Class: cmd_question
+  Output: Use ?tapply to pull up the documentation.
+  CorrectAnswer: ?tapply
+  AnswerTests: any_of_exprs('?tapply', 'help(tapply)')
+  Hint: Pull up the help file with ?tapply.
+
+- Class: cmd_question
   Output: The 'landmass' variable in our dataset takes on integer values between 1 and 6, each of which represents a different part of the world. Use table(flags$landmass) to see how many flags/countries fall into each group.
   CorrectAnswer: table(flags$landmass)
   AnswerTests: omnitest(correctExpr="table(flags$landmass)")
@@ -72,6 +78,9 @@
   AnswerTests: omnitest(correctExpr="table(flags$animate)")
   Hint: Use table(flags$animate) to see how many flags contain an animate image.
 
+- Class: text
+  Output: This tells us that 39 flags contain an animate object (animate = 1) and 155 do not (animate = 0).
+
 - Class: cmd_question
   Output: If you take the arithmetic mean of a bunch of 0s and 1s, you get the proportion of 1s. Use tapply(flags$animate, flags$landmass, mean) to apply the mean function to the 'animate' variable separately for each of the six landmass groups, thus giving us the proportion of flags containing an animate image WITHIN each landmass group.
   CorrectAnswer: tapply(flags$animate, flags$landmass, mean)
@@ -79,23 +88,36 @@
   Hint: tapply(flags$animate, flags$landmass, mean) will tell us the proportion of flags containing an animate image within each landmass group.
 
 - Class: text
-  Output: The first landmass group (flags$landmass == 1) corresponds to North America and contains the highest proportion of flags with an animate image (0.4194).
+  Output: The first landmass group (landmass = 1) corresponds to North America and contains the highest proportion of flags with an animate image (0.4194).
 
 - Class: cmd_question
   Output: Similarly, we can look at a summary of population values (in round millions) for countries with and without the color red on their flag with tapply(flags$population, flags$red, summary).
+  CorrectAnswer: tapply(flags$population, flags$red, summary)
+  AnswerTests: omnitest(correctExpr="tapply(flags$population, flags$red, summary)")
+  Hint: You can see a summary of populations for countries with and without the color red on their flag with tapply(flags$population, flags$red, summary).
+
+- Class: mult_question  
+  Output: What is the median population (in millions) for counties *without* the color red on their flag?
+  AnswerChoices: 9.0; 4.0; 27.6; 3.0; 22.1; 0.0
+  CorrectAnswer: 3.0
+  AnswerTests: omnitest(correctVal= '3.0')
+  Hint: Use your result from the last question. Recall that red = 0 means that the color red is NOT present on a countries flag.
+
+- Class: cmd_question
+  Output: Lastly, use the same approach to look at a summary of population values for each of the six landmasses.
   CorrectAnswer: tapply(flags$population, flags$landmass, summary)
   AnswerTests: omnitest(correctExpr="tapply(flags$population, flags$landmass, summary)")
-  Hint: You can see a summary of populations within each landmass group with tapply(flags$population, flags$landmass, summary).
+  Hint: "You can see a summary of populations for each of the six landmasses by calling tapply() with three arguments: flags$population, flags$landmass, and summary."
 
 - Class: mult_question  
   Output: What is the maximum population (in millions) for the fourth landmass group (Africa)?
-  AnswerChoices: 56; 1010; 119; 5
-  CorrectAnswer: 56
-  AnswerTests: omnitest(correctVal= '56')
+  AnswerChoices: 56.00; 1010.0; 119.0; 5.00; 157.00
+  CorrectAnswer: 56.00
+  AnswerTests: omnitest(correctVal= '56.00')
   Hint: Use your result from the last question.
 
 - Class: text  
-  Output: In this lesson, you learned how to use vapply() as a safer (and possibly faster) alternative to sapply(), which is most helpful when writing your own functions. You also learned how to use tapply() to split your data into groups based on the value of some variable, then apply a function to each group. These functions will come in handy on your quest to become a better data analyst.
+  Output: In this lesson, you learned how to use vapply() as a safer alternative to sapply(), which is most helpful when writing your own functions. You also learned how to use tapply() to split your data into groups based on the value of some variable, then apply a function to each group. These functions will come in handy on your quest to become a better data analyst.
 
 - Class: mult_question
   Output: Would you like to inform someone about your successful completion of this lesson?
