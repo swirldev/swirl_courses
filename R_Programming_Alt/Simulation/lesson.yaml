@@ -39,11 +39,14 @@
   AnswerTests: match_call('sample(1:20, 10)')
   Hint: Type sample(1:20, 10) to sample 10 numbers between 1 and 20, without replacement.
 
+- Class: text
+  Output: Since the last command sampled without replacement, no number appears more than once in the output.
+
 - Class: cmd_question
   Output: LETTERS is a predefined variable in R containing a vector of all 26 letters of the English alphabet. Take a look at it now.
   CorrectAnswer: LETTERS
   AnswerTests: omnitest(correctExpr='LETTERS')
-  Hint: Just type LETTERS to print its contents to the console.
+  Hint: Type LETTERS to print its contents to the console.
 
 - Class: cmd_question
   Output: The sample() function can also be used to permute, or rearrange, the elements of a vector. For example, try sample(LETTERS) to permute all 26 letters of the English alphabet.
@@ -91,7 +94,7 @@
   Hint: Call rbinom() with n = 1, size = 100, and prob = 0.7.
 
 - Class: cmd_question
-  Output: Equivilently, if we want to see all of the 0s and 1s, we can perform 100 observations, each of size 1, with success probability of 0.7. Give it a try, assigning the result to a new variable called flips2.
+  Output: Equivilently, if we want to see all of the 0s and 1s, we can request 100 observations, each of size 1, with success probability of 0.7. Give it a try, assigning the result to a new variable called flips2.
   CorrectAnswer: flips2 <- rbinom(100, size = 1, prob = 0.7)
   AnswerTests: match_call('flips2 <- rbinom(100, size = 1, prob = 0.7)')
   Hint: Call rbinom() with n = 100, size = 1, and prob = 0.7 and assign the result to flips2.
@@ -127,7 +130,7 @@
   Hint: Use rnorm(10, mean = 100, sd = 25) to generate 10 random numbers from a normal distribution with mean 100 and standard deviation 25.
 
 - Class: text
-  Output: Finally, what if we want to simulate 100 groups of random numbers, each containing 5 values generated from a Poisson distribution with mean 10? Let's start with one group of 5 numbers, then I'll show you how to repeat the operation 100 times in a convenient and compact way.
+  Output: Finally, what if we want to simulate 100 *groups* of random numbers, each containing 5 values generated from a Poisson distribution with mean 10? Let's start with one group of 5 numbers, then I'll show you how to repeat the operation 100 times in a convenient and compact way.
 
 - Class: cmd_question
   Output: Generate 5 random values from a Poisson distribution with mean 10. Check out the documentation for rpois() if you need help.
