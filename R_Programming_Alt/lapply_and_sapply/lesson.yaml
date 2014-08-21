@@ -160,7 +160,7 @@
   Hint: Try lapply(flag_shapes, range) to apply the range() function to each column of flag_shapes.
 
 - Class: cmd_question
-  Output: Do the same operation, but using sapply() and store the result in a variable called range_mat.
+  Output: Do the same operation, but using sapply() and store the result in a variable called shape_mat.
   CorrectAnswer: shape_mat <- sapply(flag_shapes, range)
   AnswerTests: omnitest(correctExpr='shape_mat <- sapply(flag_shapes, range)')
   Hint: shape_mat <- sapply(flag_shapes, range) will apply the range() function to each column of flag_shapes and store the result in shape_mat.
