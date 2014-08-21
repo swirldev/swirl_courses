@@ -161,7 +161,7 @@
 - Class: text
   Output: Let's take a closer look at how quartiles are calculated. We start by sorting
     the data from least to greatest, just like when calculating the median. The first
-    quartile (Q1), also known at the 25th PERCENTILE (since 25% of the data points
+    quartile (Q1), also known as the 25th PERCENTILE (since 25% of the data points
     fall at or below this value), is simply the median of the first half of the sorted
     data. Likewise, the third quartile (Q3), also known as the 75th percentile, is
     the median of the second half of the sorted data.
