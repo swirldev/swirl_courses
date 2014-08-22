@@ -274,7 +274,7 @@
   Hint: mutate(cran3, correct_size = size + 1000) will create one new column that is equal to the original sizes plus 1000.
 
 - Class: cmd_question
-  Output: The last of the five core dplyr verbs, summarize(), collapses the dataset to a single row. Let's say we're interested in knowing the average download size. summarize(cran, avg_bytes = mean(size)) will yield the mean value of the size variable. Here we've chosen to label the result 'avg_bytes', but we could have named it anything.
+  Output: The last of the five core dplyr verbs, summarize(), collapses the dataset to a single row. Let's say we're interested in knowing the average download size. summarize(cran, avg_bytes = mean(size)) will yield the mean value of the size variable. Here we've chosen to label the result 'avg_bytes', but we could have named it anything. Give it a try.
   CorrectAnswer: summarize(cran, avg_bytes = mean(size))
   AnswerTests: omnitest('summarize(cran, avg_bytes = mean(size))')
   Hint: summarize(cran, avg_bytes = mean(size)) will give us the mean size and label the result 'avg_bytes'.
