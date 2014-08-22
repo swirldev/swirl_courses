@@ -1,0 +1,11 @@
+name,test,class1,class2,class3,class4,class5
+Sally,midterm,A,,B,,
+Sally,final,C,,C,,
+Jeff,midterm,,D,,A,
+Jeff,final,,E,,C,
+Roger,midterm,,C,,,B
+Roger,final,,A,,,A
+Karen,midterm,,,C,A,
+Karen,final,,,C,A,
+Brian,midterm,B,,,,A
+Brian,final,B,,,,C

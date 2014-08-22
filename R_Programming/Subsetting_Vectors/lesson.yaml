@@ -3,7 +3,7 @@
   Lesson: Subsetting Vectors
   Author: Nick Carchedi
   Type: Coursera
-  Organization: JHU Biostatistics
+  Organization: JHU Biostat
   Version: 2.2.0
 
 - Class: text
@@ -170,7 +170,7 @@
 - Class: cmd_question
   Output: Now, let's check that vect and vect2 are the same by passing them as arguments to the identical() function.
   CorrectAnswer: identical(vect, vect2)
-  AnswerTests: omnitest(correctExpr='identical(vect, vect2)')
+  AnswerTests: any_of_exprs('identical(vect, vect2)', 'identical(vect2, vect)')
   Hint: The identical() function tells us if its first two arguments are, well, identical.
 
 - Class: text
