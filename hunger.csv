@@ -1,0 +1,949 @@
+"","Indicator","Data.Source","PUBLISH.STATES","Year","WHO.region","Country","Sex","Display.Value","Numeric","Low","High","Comments"
+"8","Children aged <5 years underweight (%)","NLIS_310044","Published",1986,"Africa","Senegal","Male",19.3,19.3,NA,NA,NA
+"11","Children aged <5 years underweight (%)","NLIS_310095","Published",1989,"Africa","Uganda","Female",19.1,19.1,NA,NA,NA
+"13","Children aged <5 years underweight (%)","NLIS_310138","Published",1988,"Africa","Zimbabwe","Female",7.2,7.2,NA,NA,NA
+"16","Children aged <5 years underweight (%)","NLIS_310044","Published",1986,"Africa","Senegal","Female",15.3,15.3,NA,NA,NA
+"18","Children aged <5 years underweight (%)","NLIS_310095","Published",1989,"Africa","Uganda","Male",20.4,20.4,NA,NA,NA
+"21","Children aged <5 years underweight (%)","NLIS_310138","Published",1988,"Africa","Zimbabwe","Male",8.7,8.7,NA,NA,NA
+"26","Children aged <5 years underweight (%)","NLIS_310045","Published",1987,"Africa","Mali","Male",30.9,30.9,NA,NA,NA
+"27","Children aged <5 years underweight (%)","NLIS_310045","Published",1987,"Africa","Mali","Female",27,27,NA,NA,NA
+"29","Children aged <5 years underweight (%)","NLIS_310092","Published",1987,"Africa","Burundi","Male",32.6,32.6,NA,NA,NA
+"30","Children aged <5 years underweight (%)","NLIS_310092","Published",1987,"Africa","Burundi","Female",27.8,27.8,NA,NA,NA
+"37","Children aged <5 years underweight (%)","NLIS_310187","Published",1981,"Americas","Barbados","Female",5.7,5.7,NA,NA,NA
+"38","Children aged <5 years underweight (%)","NLIS_310189","Published",1972,"Americas","Canada","Male",1.8,1.8,NA,NA,NA
+"42","Children aged <5 years underweight (%)","NLIS_310222","Published",1987,"Americas","Trinidad and Tobago","Female",4.7,4.7,NA,NA,NA
+"44","Children aged <5 years underweight (%)","NLIS_310232","Published",1989,"Americas","Bolivia (Plurinational State of)","Female",7.5,7.5,NA,NA,NA
+"45","Children aged <5 years underweight (%)","NLIS_310233","Published",1990,"Americas","Paraguay","Male",2.2,2.2,NA,NA,NA
+"46","Children aged <5 years underweight (%)","NLIS_310234","Published",1989,"Americas","Brazil","Male",5.3,5.3,NA,NA,NA
+"48","Children aged <5 years underweight (%)","NLIS_310240","Published",1975,"Eastern Mediterranean","Tunisia","Female",19.1,19.1,NA,NA,NA
+"50","Children aged <5 years underweight (%)","NLIS_310282","Published",1975,"South-East Asia","Nepal","Male",61.3,61.3,NA,NA,NA
+"53","Children aged <5 years underweight (%)","NLIS_310309","Published",1987,"South-East Asia","Thailand","Female",16,16,NA,NA,NA
+"55","Children aged <5 years underweight (%)","NLIS_310319","Published",1977,"Western Pacific","Singapore","Female",10.8,10.8,NA,NA,NA
+"57","Children aged <5 years underweight (%)","NLIS_310363","Published",1992,"Americas","Peru","Male",9.7,9.7,NA,NA,NA
+"59","Children aged <5 years underweight (%)","NLIS_310365","Published",1991,"Americas","Dominican Republic","Female",7.5,7.5,NA,NA,NA
+"62","Children aged <5 years underweight (%)","NLIS_310375","Published",1991,"Africa","Cameroon","Female",18.3,18.3,NA,NA,NA
+"65","Children aged <5 years underweight (%)","NLIS_310426","Published",1988,"Africa","Ghana","Male",24.8,24.8,NA,NA,NA
+"67","Children aged <5 years underweight (%)","NLIS_310430","Published",1989,"Americas","Mexico","Female",13.1,13.1,NA,NA,NA
+"69","Children aged <5 years underweight (%)","NLIS_310439","Published",1988,"Africa","Togo","Female",19.7,19.7,NA,NA,NA
+"71","Children aged <5 years underweight (%)","NLIS_310441","Published",1987,"Eastern Mediterranean","Morocco","Male",12.5,12.5,NA,NA,NA
+"73","Children aged <5 years underweight (%)","NLIS_310444","Published",1990,"Africa","Mauritania","Female",42.1,42.1,NA,NA,NA
+"75","Children aged <5 years underweight (%)","NLIS_310471","Published",1992,"Africa","Namibia","Male",23.4,23.4,NA,NA,NA
+"78","Children aged <5 years underweight (%)","NLIS_310526","Published",1992,"Africa","Niger","Female",39.7,39.7,NA,NA,NA
+"82","Children aged <5 years underweight (%)","NLIS_310561","Published",1992,"Eastern Mediterranean","Morocco","Female",7.7,7.7,NA,NA,NA
+"84","Children aged <5 years underweight (%)","NLIS_310689","Published",1992,"Eastern Mediterranean","Yemen","Female",27.9,27.9,NA,NA,NA
+"85","Children aged <5 years underweight (%)","NLIS_310750","Published",1992,"Africa","Algeria","Male",9.8,9.8,NA,NA,NA
+"87","Children aged <5 years underweight (%)","NLIS_310904","Published",1980,"Europe","Netherlands","Female",1.1,1.1,NA,NA,NA
+"88","Children aged <5 years underweight (%)","NLIS_310967","Published",1992,"Africa","Rwanda","Male",25.3,25.3,NA,NA,NA
+"90","Children aged <5 years underweight (%)","NLIS_311002","Published",1993,"Africa","Kenya","Female",17.7,17.7,NA,NA,NA
+"97","Children aged <5 years underweight (%)","NLIS_311359","Published",1994,"Americas","Bolivia (Plurinational State of)","Female",9.9,9.9,NA,NA,NA
+"98","Children aged <5 years underweight (%)","NLIS_311408","Published",1993,"Eastern Mediterranean","Egypt","Male",8.6,8.6,NA,NA,NA
+"100","Children aged <5 years underweight (%)","NLIS_311422","Published",1994,"Africa","Ghana","Female",23.2,23.2,NA,NA,NA
+"101","Children aged <5 years underweight (%)","NLIS_311429","Published",1993,"Americas","Nicaragua","Male",10.2,10.2,NA,NA,NA
+"104","Children aged <5 years underweight (%)","NLIS_311473","Published",1992,"Western Pacific","China","Male",13.8,13.8,NA,NA,NA
+"110","Children aged <5 years underweight (%)","NLIS_311547","Published",1995,"Americas","Haiti","Female",22.7,22.7,NA,NA,NA
+"112","Children aged <5 years underweight (%)","NLIS_311549","Published",1993,"South-East Asia","India","Male",52.4,52.4,NA,NA,NA
+"115","Children aged <5 years underweight (%)","NLIS_311561","Published",1994,"Africa","Côte d'Ivoire","Female",18,18,NA,NA,NA
+"119","Children aged <5 years underweight (%)","NLIS_311591","Published",1993,"Western Pacific","Viet Nam","Male",38,38,NA,NA,NA
+"121","Children aged <5 years underweight (%)","NLIS_311605","Published",1995,"Eastern Mediterranean","Libya","Female",3.8,3.8,NA,NA,NA
+"122","Children aged <5 years underweight (%)","NLIS_311608","Published",1995,"Americas","Colombia","Male",7,7,NA,NA,NA
+"128","Children aged <5 years underweight (%)","NLIS_311651","Published",1995,"Africa","Algeria","Female",10.4,10.4,NA,NA,NA
+"130","Children aged <5 years underweight (%)","NLIS_311660","Published",1996,"Eastern Mediterranean","Lebanon","Female",3.3,3.3,NA,NA,NA
+"131","Children aged <5 years underweight (%)","NLIS_311665","Published",1996,"Eastern Mediterranean","Egypt","Female",9.8,9.8,NA,NA,NA
+"132","Children aged <5 years underweight (%)","NLIS_311674","Published",1995,"Europe","Kazakhstan","Male",8.7,8.7,NA,NA,NA
+"134","Children aged <5 years underweight (%)","NLIS_311680","Published",1996,"Americas","Brazil","Female",4.2,4.2,NA,NA,NA
+"135","Children aged <5 years underweight (%)","NLIS_311682","Published",1996,"Africa","Mali","Male",39.2,39.2,NA,NA,NA
+"136","Children aged <5 years underweight (%)","NLIS_311706","Published",1996,"South-East Asia","Nepal","Female",42.5,42.5,NA,NA,NA
+"137","Children aged <5 years underweight (%)","NLIS_311714","Published",1996,"Africa","Benin","Male",29.9,29.9,NA,NA,NA
+"138","Children aged <5 years underweight (%)","NLIS_311752","Published",1996,"Africa","United Republic of Tanzania","Male",28.4,28.4,NA,NA,NA
+"140","Children aged <5 years underweight (%)","NLIS_311757","Published",1996,"Americas","Peru","Female",4.9,4.9,NA,NA,NA
+"141","Children aged <5 years underweight (%)","NLIS_311759","Published",1997,"South-East Asia","Bangladesh","Male",51.9,51.9,NA,NA,NA
+"146","Children aged <5 years underweight (%)","NLIS_311827","Published",1996,"Americas","Dominican Republic","Female",4.1,4.1,NA,NA,NA
+"147","Children aged <5 years underweight (%)","NLIS_311837","Published",1997,"Africa","Chad","Male",35.9,35.9,NA,NA,NA
+"149","Children aged <5 years underweight (%)","NLIS_311841","Published",1997,"Europe","Kyrgyzstan","Male",10.7,10.7,NA,NA,NA
+"152","Children aged <5 years underweight (%)","NLIS_311865","Published",1998,"Europe","Armenia","Male",2.8,2.8,NA,NA,NA
+"155","Children aged <5 years underweight (%)","NLIS_311915","Published",1998,"Africa","Niger","Female",43.9,43.9,NA,NA,NA
+"156","Children aged <5 years underweight (%)","NLIS_311918","Published",1998,"Americas","Nicaragua","Male",11.1,11.1,NA,NA,NA
+"158","Children aged <5 years underweight (%)","NLIS_311927","Published",1997,"Eastern Mediterranean","Jordan","Female",3.8,3.8,NA,NA,NA
+"159","Children aged <5 years underweight (%)","NLIS_311928","Published",1998,"Africa","Cameroon","Male",20.1,20.1,NA,NA,NA
+"161","Children aged <5 years underweight (%)","NLIS_311931","Published",1994,"Eastern Mediterranean","Pakistan","Female",36.5,36.5,NA,NA,NA
+"162","Children aged <5 years underweight (%)","NLIS_311993","Published",1998,"Africa","Kenya","Female",15.1,15.1,NA,NA,NA
+"163","Children aged <5 years underweight (%)","NLIS_311996","Published",1998,"Europe","Turkey","Male",7,7,NA,NA,NA
+"167","Children aged <5 years underweight (%)","NLIS_312017","Published",1999,"Western Pacific","Mongolia","Male",11.3,11.3,NA,NA,NA
+"168","Children aged <5 years underweight (%)","NLIS_312045","Published",1995,"Americas","Jamaica","Male",5,5,NA,NA,NA
+"170","Children aged <5 years underweight (%)","NLIS_312047","Published",1997,"Americas","Jamaica","Female",3.2,3.2,NA,NA,NA
+"172","Children aged <5 years underweight (%)","NLIS_312082","Published",1999,"Americas","Guatemala","Female",17.8,17.8,NA,NA,NA
+"174","Children aged <5 years underweight (%)","NLIS_312086","Published",1996,"Western Pacific","Cambodia","Female",38.2,38.2,NA,NA,NA
+"176","Children aged <5 years underweight (%)","NLIS_312137","Published",1999,"Africa","Burkina Faso","Male",35.2,35.2,NA,NA,NA
+"179","Children aged <5 years underweight (%)","NLIS_312191","Published",2000,"Africa","Niger","Male",44.7,44.7,NA,NA,NA
+"180","Children aged <5 years underweight (%)","NLIS_312220","Published",2000,"Africa","Ethiopia","Male",44.4,44.4,NA,NA,NA
+"182","Children aged <5 years underweight (%)","NLIS_312226","Published",2000,"Africa","Algeria","Female",5.6,5.6,NA,NA,NA
+"184","Children aged <5 years underweight (%)","NLIS_312244","Published",2000,"Europe","Azerbaijan","Female",15,15,NA,NA,NA
+"186","Children aged <5 years underweight (%)","NLIS_312277","Published",2000,"Africa","Malawi","Female",20.1,20.1,NA,NA,NA
+"187","Children aged <5 years underweight (%)","NLIS_312278","Published",2001,"Africa","Gabon","Male",10.1,10.1,NA,NA,NA
+"189","Children aged <5 years underweight (%)","NLIS_312282","Published",2000,"Americas","Colombia","Female",5,5,NA,NA,NA
+"191","Children aged <5 years underweight (%)","NLIS_312312","Published",2000,"Western Pacific","Cambodia","Male",40.5,40.5,NA,NA,NA
+"193","Children aged <5 years underweight (%)","NLIS_312317","Published",1998,"Americas","Jamaica","Female",2.6,2.6,NA,NA,NA
+"195","Children aged <5 years underweight (%)","NLIS_312328","Published",2000,"Africa","Gambia","Male",16.5,16.5,NA,NA,NA
+"197","Children aged <5 years underweight (%)","NLIS_312344","Published",2001,"Europe","Armenia","Female",2.1,2.1,NA,NA,NA
+"200","Children aged <5 years underweight (%)","NLIS_312353","Published",2000,"Africa","Botswana","Female",11,11,NA,NA,NA
+"201","Children aged <5 years underweight (%)","NLIS_312356","Published",2000,"Americas","Dominican Republic","Male",4,4,NA,NA,NA
+"203","Children aged <5 years underweight (%)","NLIS_312358","Published",2000,"Africa","Guinea-Bissau","Female",21.5,21.5,NA,NA,NA
+"205","Children aged <5 years underweight (%)","NLIS_312363","Published",2000,"Africa","Comoros","Male",28,28,NA,NA,NA
+"206","Children aged <5 years underweight (%)","NLIS_312365","Published",2001,"Americas","Honduras","Female",11.9,11.9,NA,NA,NA
+"207","Children aged <5 years underweight (%)","NLIS_312367","Published",2000,"Africa","Sierra Leone","Male",28.2,28.2,NA,NA,NA
+"209","Children aged <5 years underweight (%)","NLIS_312370","Published",2000,"Africa","Swaziland","Female",8.7,8.7,NA,NA,NA
+"210","Children aged <5 years underweight (%)","NLIS_312371","Published",1992,"South-East Asia","Indonesia","Female",26,26,NA,NA,NA
+"211","Children aged <5 years underweight (%)","NLIS_312371","Published",1998,"South-East Asia","Indonesia","Male",28.6,28.6,NA,NA,NA
+"212","Children aged <5 years underweight (%)","NLIS_312371","Published",2000,"South-East Asia","Indonesia","Female",18.4,18.4,NA,NA,NA
+"213","Children aged <5 years underweight (%)","NLIS_312375","Published",1999,"Eastern Mediterranean","Oman","Male",11.7,11.7,NA,NA,NA
+"214","Children aged <5 years underweight (%)","NLIS_312387","Published",2001,"Africa","Mali","Female",28.5,28.5,NA,NA,NA
+"215","Children aged <5 years underweight (%)","NLIS_312388","Published",2001,"Americas","Nicaragua","Male",8.4,8.4,NA,NA,NA
+"216","Children aged <5 years underweight (%)","NLIS_312394","Published",2000,"Africa","Sao Tome and Principe","Female",8.8,8.8,NA,NA,NA
+"217","Children aged <5 years underweight (%)","NLIS_312414","Published",2000,"Eastern Mediterranean","Iraq","Male",13.9,13.9,NA,NA,NA
+"219","Children aged <5 years underweight (%)","NLIS_312436","Published",2000,"Western Pacific","Mongolia","Female",10.6,10.6,NA,NA,NA
+"220","Children aged <5 years underweight (%)","NLIS_312437","Published",2000,"Africa","Liberia","Male",27.6,27.6,NA,NA,NA
+"222","Children aged <5 years underweight (%)","NLIS_312471","Published",2002,"South-East Asia","Democratic People's Republic of Korea","Male",19.2,19.2,NA,NA,NA
+"224","Children aged <5 years underweight (%)","NLIS_312477","Published",2000,"Europe","Romania","Female",2.8,2.8,NA,NA,NA
+"225","Children aged <5 years underweight (%)","NLIS_312477","Published",2001,"Europe","Romania","Male",4.5,4.5,NA,NA,NA
+"227","Children aged <5 years underweight (%)","NLIS_312481","Published",2006,"South-East Asia","Thailand","Female",7.1,7.1,NA,NA,NA
+"229","Children aged <5 years underweight (%)","NLIS_312522","Published",2002,"Eastern Mediterranean","Jordan","Female",3.2,3.2,NA,NA,NA
+"230","Children aged <5 years underweight (%)","NLIS_312523","Published",1997,"Eastern Mediterranean","Morocco","Male",8.2,8.2,NA,NA,NA
+"231","Children aged <5 years underweight (%)","NLIS_312529","Published",2002,"South-East Asia","Timor-Leste","Female",38.1,38.1,NA,NA,NA
+"233","Children aged <5 years underweight (%)","NLIS_312535","Published",2002,"South-East Asia","Indonesia","Female",20.7,20.7,NA,NA,NA
+"234","Children aged <5 years underweight (%)","NLIS_312536","Published",2000,"Western Pacific","Singapore","Female",2.9,2.9,NA,NA,NA
+"235","Children aged <5 years underweight (%)","NLIS_312558","Published",2002,"Americas","Guatemala","Female",17.5,17.5,NA,NA,NA
+"237","Children aged <5 years underweight (%)","NLIS_312568","Published",2000,"Africa","Kenya","Female",15.2,15.2,NA,NA,NA
+"238","Children aged <5 years underweight (%)","NLIS_312580","Published",2002,"Americas","Dominican Republic","Female",3.9,3.9,NA,NA,NA
+"239","Children aged <5 years underweight (%)","NLIS_312588","Published",2001,"Eastern Mediterranean","Pakistan","Male",31.6,31.6,NA,NA,NA
+"241","Children aged <5 years underweight (%)","NLIS_312590","Published",2003,"Africa","Kenya","Female",13.7,13.7,NA,NA,NA
+"242","Children aged <5 years underweight (%)","NLIS_312626","Published",2003,"Africa","Burkina Faso","Male",36.8,36.8,NA,NA,NA
+"244","Children aged <5 years underweight (%)","NLIS_312628","Published",2003,"Africa","Ghana","Female",17,17,NA,NA,NA
+"245","Children aged <5 years underweight (%)","NLIS_312629","Published",2002,"Europe","Uzbekistan","Male",7.8,7.8,NA,NA,NA
+"247","Children aged <5 years underweight (%)","NLIS_312640","Published",2002,"South-East Asia","Bangladesh","Female",43.1,43.1,NA,NA,NA
+"248","Children aged <5 years underweight (%)","NLIS_312644","Published",2002,"Africa","Algeria","Male",12.7,12.7,NA,NA,NA
+"252","Children aged <5 years underweight (%)","NLIS_312666","Published",2004,"Americas","Bolivia (Plurinational State of)","Male",6.1,6.1,NA,NA,NA
+"254","Children aged <5 years underweight (%)","NLIS_312698","Published",2004,"Africa","Cameroon","Male",15.3,15.3,NA,NA,NA
+"255","Children aged <5 years underweight (%)","NLIS_312729","Published",2000,"Africa","Central African Republic","Female",19.5,19.5,NA,NA,NA
+"256","Children aged <5 years underweight (%)","NLIS_312756","Published",2004,"Europe","The former Yugoslav Republic of Macedonia","Male",1.2,1.2,NA,NA,NA
+"258","Children aged <5 years underweight (%)","NLIS_312758","Published",2005,"Eastern Mediterranean","Egypt","Female",4.2,4.2,NA,NA,NA
+"259","Children aged <5 years underweight (%)","NLIS_312759","Published",2005,"Africa","Guinea","Male",24.4,24.4,NA,NA,NA
+"261","Children aged <5 years underweight (%)","NLIS_312762","Published",2005,"Africa","Ethiopia","Female",32.8,32.8,NA,NA,NA
+"262","Children aged <5 years underweight (%)","NLIS_312764","Published",2002,"Europe","Czech Republic","Male",2.5,2.5,NA,NA,NA
+"264","Children aged <5 years underweight (%)","NLIS_312766","Published",2005,"Africa","United Republic of Tanzania","Female",15.4,15.4,NA,NA,NA
+"265","Children aged <5 years underweight (%)","NLIS_312767","Published",2005,"Africa","Congo","Male",12.9,12.9,NA,NA,NA
+"267","Children aged <5 years underweight (%)","NLIS_312769","Published",2005,"Americas","Argentina","Female",2.2,2.2,NA,NA,NA
+"268","Children aged <5 years underweight (%)","NLIS_312771","Published",2005,"Americas","Colombia","Male",5.5,5.5,NA,NA,NA
+"270","Children aged <5 years underweight (%)","NLIS_312773","Published",2000,"Americas","Jamaica","Female",3,3,NA,NA,NA
+"271","Children aged <5 years underweight (%)","NLIS_312774","Published",2001,"Americas","Jamaica","Male",5.5,5.5,NA,NA,NA
+"273","Children aged <5 years underweight (%)","NLIS_312776","Published",2004,"Americas","Jamaica","Female",2.4,2.4,NA,NA,NA
+"274","Children aged <5 years underweight (%)","NLIS_312778","Published",2002,"Americas","Uruguay","Male",5.9,5.9,NA,NA,NA
+"276","Children aged <5 years underweight (%)","NLIS_312779","Published",2003,"Americas","Brazil","Female",3.1,3.1,NA,NA,NA
+"277","Children aged <5 years underweight (%)","NLIS_312780","Published",2000,"Western Pacific","Viet Nam","Female",26.7,26.7,NA,NA,NA
+"278","Children aged <5 years underweight (%)","NLIS_312781","Published",2004,"Europe","Turkey","Male",3.1,3.1,NA,NA,NA
+"280","Children aged <5 years underweight (%)","NLIS_312783","Published",2006,"Europe","Uzbekistan","Female",4.3,4.3,NA,NA,NA
+"281","Children aged <5 years underweight (%)","NLIS_312785","Published",2005,"Europe","Armenia","Male",3.4,3.4,NA,NA,NA
+"283","Children aged <5 years underweight (%)","NLIS_312788","Published",2005,"Europe","Republic of Moldova","Female",3.4,3.4,NA,NA,NA
+"284","Children aged <5 years underweight (%)","NLIS_312789","Published",2002,"Western Pacific","China","Male",7.2,7.2,NA,NA,NA
+"286","Children aged <5 years underweight (%)","NLIS_312791","Published",2006,"South-East Asia","Nepal","Female",39.8,39.8,NA,NA,NA
+"287","Children aged <5 years underweight (%)","NLIS_312793","Published",2006,"Africa","Niger","Male",42.1,42.1,NA,NA,NA
+"289","Children aged <5 years underweight (%)","NLIS_312794","Published",2000,"South-East Asia","Indonesia","Male",25.7,25.7,NA,NA,NA
+"291","Children aged <5 years underweight (%)","NLIS_312796","Published",2005,"South-East Asia","Indonesia","Female",21.9,21.9,NA,NA,NA
+"292","Children aged <5 years underweight (%)","NLIS_312797","Published",2004,"South-East Asia","Indonesia","Female",18.7,18.7,NA,NA,NA
+"293","Children aged <5 years underweight (%)","NLIS_312799","Published",2006,"South-East Asia","India","Male",43.1,43.1,NA,NA,NA
+"295","Children aged <5 years underweight (%)","NLIS_312801","Published",2006,"Western Pacific","Cambodia","Female",27.1,27.1,NA,NA,NA
+"296","Children aged <5 years underweight (%)","NLIS_312809","Published",2005,"Eastern Mediterranean","Saudi Arabia","Male",6.1,6.1,NA,NA,NA
+"298","Children aged <5 years underweight (%)","NLIS_312824","Published",2005,"Europe","Belarus","Female",1,1,NA,NA,NA
+"299","Children aged <5 years underweight (%)","NLIS_312826","Published",2006,"Europe","Bosnia and Herzegovina","Male",2.2,2.2,NA,NA,NA
+"301","Children aged <5 years underweight (%)","NLIS_312828","Published",1991,"South-East Asia","Bangladesh","Female",65.5,65.5,NA,NA,NA
+"302","Children aged <5 years underweight (%)","NLIS_312831","Published",1992,"South-East Asia","Bangladesh","Male",63.5,63.5,NA,NA,NA
+"304","Children aged <5 years underweight (%)","NLIS_312835","Published",1994,"South-East Asia","Bangladesh","Female",61.2,61.2,NA,NA,NA
+"305","Children aged <5 years underweight (%)","NLIS_312839","Published",1996,"South-East Asia","Bangladesh","Male",56.4,56.4,NA,NA,NA
+"307","Children aged <5 years underweight (%)","NLIS_312849","Published",2004,"South-East Asia","Bangladesh","Female",40.7,40.7,NA,NA,NA
+"309","Children aged <5 years underweight (%)","NLIS_312854","Published",2006,"Africa","Côte d'Ivoire","Male",18.8,18.8,NA,NA,NA
+"312","Children aged <5 years underweight (%)","NLIS_312860","Published",2006,"Europe","Kazakhstan","Female",4.3,4.3,NA,NA,NA
+"313","Children aged <5 years underweight (%)","NLIS_312862","Published",2005,"Europe","Tajikistan","Male",16.4,16.4,NA,NA,NA
+"315","Children aged <5 years underweight (%)","NLIS_312867","Published",2005,"Africa","Sierra Leone","Female",26,26,NA,NA,NA
+"316","Children aged <5 years underweight (%)","NLIS_312870","Published",2007,"Americas","Brazil","Female",2.1,2.1,NA,NA,NA
+"317","Children aged <5 years underweight (%)","NLIS_312872","Published",2005,"Western Pacific","Mongolia","Male",5.3,5.3,NA,NA,NA
+"319","Children aged <5 years underweight (%)","NLIS_312874","Published",2007,"Africa","Namibia","Female",16.5,16.5,NA,NA,NA
+"320","Children aged <5 years underweight (%)","NLIS_312878","Published",2006,"South-East Asia","Bangladesh","Male",39.3,39.3,NA,NA,NA
+"322","Children aged <5 years underweight (%)","NLIS_312880","Published",2006,"Eastern Mediterranean","Syrian Arab Republic","Female",8.3,8.3,NA,NA,NA
+"323","Children aged <5 years underweight (%)","NLIS_312881","Published",2006,"Americas","Belize","Male",4,4,NA,NA,NA
+"325","Children aged <5 years underweight (%)","NLIS_312883","Published",2006,"Africa","Ghana","Female",12.5,12.5,NA,NA,NA
+"326","Children aged <5 years underweight (%)","NLIS_312885","Published",2006,"Africa","Uganda","Male",18.2,18.2,NA,NA,NA
+"328","Children aged <5 years underweight (%)","NLIS_312887","Published",2007,"Americas","Guyana","Female",10,10,NA,NA,NA
+"329","Children aged <5 years underweight (%)","NLIS_312888","Published",2007,"Africa","Democratic Republic of the Congo","Male",30.4,30.4,NA,NA,NA
+"331","Children aged <5 years underweight (%)","NLIS_312890","Published",2006,"Africa","Malawi","Female",13.9,13.9,NA,NA,NA
+"332","Children aged <5 years underweight (%)","NLIS_312893","Published",2007,"Africa","Zambia","Male",16.9,16.9,NA,NA,NA
+"334","Children aged <5 years underweight (%)","NLIS_312895","Published",2007,"Africa","Mauritania","Female",22.8,22.8,NA,NA,NA
+"336","Children aged <5 years underweight (%)","NLIS_312910","Published",2007,"Americas","Jamaica","Male",1.9,1.9,NA,NA,NA
+"337","Children aged <5 years underweight (%)","NLIS_312913","Published",2004,"Eastern Mediterranean","Lebanon","Female",2.8,2.8,NA,NA,NA
+"338","Children aged <5 years underweight (%)","NLIS_312916","Published",2007,"South-East Asia","Indonesia","Male",20.7,20.7,NA,NA,NA
+"340","Children aged <5 years underweight (%)","NLIS_312918","Published",2006,"Africa","Burkina Faso","Female",35.8,35.8,NA,NA,NA
+"341","Children aged <5 years underweight (%)","NLIS_312919","Published",2007,"Americas","Dominican Republic","Male",3.2,3.2,NA,NA,NA
+"343","Children aged <5 years underweight (%)","NLIS_312921","Published",2006,"Western Pacific","Lao People's Democratic Republic","Female",30.6,30.6,NA,NA,NA
+"344","Children aged <5 years underweight (%)","NLIS_312923","Published",2007,"Eastern Mediterranean","Libya","Male",6.3,6.3,NA,NA,NA
+"346","Children aged <5 years underweight (%)","NLIS_312925","Published",2008,"Eastern Mediterranean","Egypt","Female",5.4,5.4,NA,NA,NA
+"347","Children aged <5 years underweight (%)","NLIS_312928","Published",2007,"South-East Asia","Bangladesh","Male",40.2,40.2,NA,NA,NA
+"349","Children aged <5 years underweight (%)","NLIS_312932","Published",2005,"Americas","Peru","Female",4.8,4.8,NA,NA,NA
+"350","Children aged <5 years underweight (%)","NLIS_312939","Published",2006,"Europe","Germany","Male",0.9,0.9,NA,NA,NA
+"352","Children aged <5 years underweight (%)","NLIS_312946","Published",2009,"Africa","Sao Tome and Principe","Male",16.6,16.6,NA,NA,NA
+"356","Children aged <5 years underweight (%)","NLIS_312951","Published",2002,"Western Pacific","Viet Nam","Female",23,23,NA,NA,NA
+"357","Children aged <5 years underweight (%)","NLIS_312951","Published",2004,"Western Pacific","Viet Nam","Male",24.1,24.1,NA,NA,NA
+"359","Children aged <5 years underweight (%)","NLIS_312951","Published",2005,"Western Pacific","Viet Nam","Female",22.6,22.6,NA,NA,NA
+"360","Children aged <5 years underweight (%)","NLIS_312951","Published",2007,"Western Pacific","Viet Nam","Male",23.2,23.2,NA,NA,NA
+"362","Children aged <5 years underweight (%)","NLIS_312954","Published",2008,"Africa","Guinea","Female",19.7,19.7,NA,NA,NA
+"363","Children aged <5 years underweight (%)","NLIS_312955","Published",2008,"Africa","Guinea-Bissau","Female",17,17,NA,NA,NA
+"365","Children aged <5 years underweight (%)","NLIS_312963","Published",2008,"Africa","Ghana","Male",15.7,15.7,NA,NA,NA
+"367","Children aged <5 years underweight (%)","NLIS_312965","Published",2005,"Africa","Algeria","Female",3.7,3.7,NA,NA,NA
+"368","Children aged <5 years underweight (%)","NLIS_312967","Published",2008,"South-East Asia","Bhutan","Male",10.5,10.5,NA,NA,NA
+"370","Children aged <5 years underweight (%)","NLIS_312981","Published",1997,"Africa","Equatorial Guinea","Female",12.2,12.2,NA,NA,NA
+"371","Children aged <5 years underweight (%)","NLIS_313003","Published",1990,"Western Pacific","China","Male",13.1,13.1,NA,NA,NA
+"373","Children aged <5 years underweight (%)","NLIS_313005","Published",1998,"Western Pacific","China","Female",6.6,6.6,NA,NA,NA
+"375","Children aged <5 years underweight (%)","NLIS_313010","Published",2002,"Eastern Mediterranean","Kuwait","Male",2.6,2.6,NA,NA,NA
+"377","Children aged <5 years underweight (%)","NLIS_313010","Published",2005,"Eastern Mediterranean","Kuwait","Male",2.9,2.9,NA,NA,NA
+"379","Children aged <5 years underweight (%)","NLIS_313020","Published",2009,"Africa","Kenya","Female",15.5,15.5,NA,NA,NA
+"382","Children aged <5 years underweight (%)","NLIS_313040","Published",2006,"Americas","Suriname","Male",8,8,NA,NA,NA
+"384","Children aged <5 years underweight (%)","NLIS_313048","Published",2006,"Eastern Mediterranean","Kuwait","Female",3.4,3.4,NA,NA,NA
+"385","Children aged <5 years underweight (%)","NLIS_313048","Published",2007,"Eastern Mediterranean","Kuwait","Male",3.1,3.1,NA,NA,NA
+"387","Children aged <5 years underweight (%)","NLIS_313048","Published",2009,"Eastern Mediterranean","Kuwait","Female",1.5,1.5,NA,NA,NA
+"389","Children aged <5 years underweight (%)","NLIS_313054","Published",2007,"Africa","Côte d'Ivoire","Male",30.3,30.3,NA,NA,NA
+"391","Children aged <5 years underweight (%)","NLIS_313062","Published",2009,"Europe","Albania","Female",6,6,NA,NA,NA
+"392","Children aged <5 years underweight (%)","NLIS_313063","Published",2009,"South-East Asia","Maldives","Male",18.4,18.4,NA,NA,NA
+"393","Children aged <5 years underweight (%)","NLIS_313066","Published",2010,"South-East Asia","Timor-Leste","Male",46.8,46.8,NA,NA,NA
+"395","Children aged <5 years underweight (%)","NLIS_313068","Published",2009,"Eastern Mediterranean","Syrian Arab Republic","Female",8.7,8.7,NA,NA,NA
+"396","Children aged <5 years underweight (%)","NLIS_313071","Published",2007,"Americas","Nicaragua","Male",5.6,5.6,NA,NA,NA
+"398","Children aged <5 years underweight (%)","NLIS_313073","Published",2009,"Americas","Costa Rica","Female",1.8,1.8,NA,NA,NA
+"399","Children aged <5 years underweight (%)","NLIS_313074","Published",2009,"South-East Asia","Democratic People's Republic of Korea","Male",18.8,18.8,NA,NA,NA
+"400","Children aged <5 years underweight (%)","NLIS_313076","Published",2010,"Africa","United Republic of Tanzania","Female",14.6,14.6,NA,NA,NA
+"401","Children aged <5 years underweight (%)","NLIS_313082","Published",2009,"Europe","Georgia","Female",1,1,NA,NA,NA
+"402","Children aged <5 years underweight (%)","NLIS_313083","Published",2006,"Western Pacific","Malaysia","Female",12.7,12.7,NA,NA,NA
+"403","Children aged <5 years underweight (%)","NLIS_313086","Published",2007,"Africa","Angola","Male",16.6,16.6,NA,NA,NA
+"407","Children aged <5 years underweight (%)","NLIS_313092","Published",2008,"Africa","Botswana","Male",12.1,12.1,NA,NA,NA
+"409","Children aged <5 years underweight (%)","NLIS_313095","Published",2008,"Africa","Mozambique","Female",16,16,NA,NA,NA
+"410","Children aged <5 years underweight (%)","NLIS_313097","Published",2011,"Western Pacific","Cambodia","Male",28.8,28.8,NA,NA,NA
+"412","Children aged <5 years underweight (%)","NLIS_313099","Published",2009,"Africa","Malawi","Female",11.3,11.3,NA,NA,NA
+"413","Children aged <5 years underweight (%)","NLIS_313106","Published",2005,"Africa","South Africa","Female",9.6,9.6,NA,NA,NA
+"414","Children aged <5 years underweight (%)","NLIS_313109","Published",2008,"South-East Asia","Timor-Leste","Male",52.5,52.5,NA,NA,NA
+"415","Children aged <5 years underweight (%)","NLIS_313110","Published",2011,"Africa","Zimbabwe","Male",11.5,11.5,NA,NA,NA
+"417","Children aged <5 years underweight (%)","NLIS_313112","Published",2008,"Americas","Panama","Male",2.8,2.8,NA,NA,NA
+"419","Children aged <5 years underweight (%)","NLIS_313113","Published",2011,"Eastern Mediterranean","Pakistan","Male",31.4,31.4,NA,NA,NA
+"421","Children aged <5 years underweight (%)","NLIS_313115","Published",2011,"Eastern Mediterranean","Morocco","Female",3.1,3.1,NA,NA,NA
+"423","Children aged <5 years underweight (%)","NLIS_313122","Published",2006,"Africa","Central African Republic","Female",25.4,25.4,NA,NA,NA
+"425","Children aged <5 years underweight (%)","NLIS_313126","Published",2012,"Eastern Mediterranean","Djibouti","Female",28.5,28.5,NA,NA,NA
+"426","Children aged <5 years underweight (%)","NLIS_313127","Published",1999,"Americas","Uruguay","Female",4.2,4.2,NA,NA,NA
+"427","Children aged <5 years underweight (%)","NLIS_313127","Published",2003,"Americas","Uruguay","Male",6.5,6.5,NA,NA,NA
+"428","Children aged <5 years underweight (%)","NLIS_313127","Published",2011,"Americas","Uruguay","Female",4.2,4.2,NA,NA,NA
+"431","Children aged <5 years underweight (%)","NLIS_313129","Published",2010,"Americas","Jamaica","Male",3.8,3.8,NA,NA,NA
+"433","Children aged <5 years underweight (%)","NLIS_313131","Published",2011,"Africa","Uganda","Female",12.8,12.8,NA,NA,NA
+"434","Children aged <5 years underweight (%)","NLIS_313134","Published",2010,"Africa","Sierra Leone","Male",22.6,22.6,NA,NA,NA
+"436","Children aged <5 years underweight (%)","NLIS_313136","Published",2010,"Africa","Burkina Faso","Female",24.7,24.7,NA,NA,NA
+"437","Children aged <5 years underweight (%)","NLIS_313139","Published",2012,"Americas","Mexico","Male",2.8,2.8,NA,NA,NA
+"439","Children aged <5 years underweight (%)","NLIS_313141","Published",2012,"Africa","Senegal","Female",13.2,13.2,NA,NA,NA
+"440","Children aged <5 years underweight (%)","NLIS_313143","Published",2011,"Western Pacific","Philippines","Male",20.1,20.1,NA,NA,NA
+"442","Children aged <5 years underweight (%)","NLIS_313144","Published",2010,"Eastern Mediterranean","Kuwait","Female",1.5,1.5,NA,NA,NA
+"443","Children aged <5 years underweight (%)","NLIS_310187","Published",1981,"Americas","Barbados","Male",5,5,NA,NA,NA
+"451","Children aged <5 years underweight (%)","NLIS_310222","Published",1987,"Americas","Trinidad and Tobago","Male",4.7,4.7,NA,NA,NA
+"454","Children aged <5 years underweight (%)","NLIS_310240","Published",1975,"Eastern Mediterranean","Tunisia","Male",15.5,15.5,NA,NA,NA
+"457","Children aged <5 years underweight (%)","NLIS_310282","Published",1975,"South-East Asia","Nepal","Female",60.3,60.3,NA,NA,NA
+"459","Children aged <5 years underweight (%)","NLIS_310309","Published",1987,"South-East Asia","Thailand","Male",18.7,18.7,NA,NA,NA
+"461","Children aged <5 years underweight (%)","NLIS_310319","Published",1977,"Western Pacific","Singapore","Male",13.6,13.6,NA,NA,NA
+"464","Children aged <5 years underweight (%)","NLIS_310363","Published",1992,"Americas","Peru","Female",7.9,7.9,NA,NA,NA
+"465","Children aged <5 years underweight (%)","NLIS_310365","Published",1991,"Americas","Dominican Republic","Male",9.3,9.3,NA,NA,NA
+"467","Children aged <5 years underweight (%)","NLIS_310375","Published",1991,"Africa","Cameroon","Male",17.6,17.6,NA,NA,NA
+"470","Children aged <5 years underweight (%)","NLIS_310426","Published",1988,"Africa","Ghana","Female",23.4,23.4,NA,NA,NA
+"471","Children aged <5 years underweight (%)","NLIS_310430","Published",1989,"Americas","Mexico","Male",14.6,14.6,NA,NA,NA
+"473","Children aged <5 years underweight (%)","NLIS_310439","Published",1988,"Africa","Togo","Male",22.6,22.6,NA,NA,NA
+"474","Children aged <5 years underweight (%)","NLIS_310441","Published",1987,"Eastern Mediterranean","Morocco","Female",13,13,NA,NA,NA
+"475","Children aged <5 years underweight (%)","NLIS_310442","Published",1991,"Eastern Mediterranean","Egypt","Male",11.9,11.9,NA,NA,NA
+"476","Children aged <5 years underweight (%)","NLIS_310444","Published",1990,"Africa","Mauritania","Male",44.6,44.6,NA,NA,NA
+"479","Children aged <5 years underweight (%)","NLIS_310473","Published",1992,"Africa","United Republic of Tanzania","Female",23.3,23.3,NA,NA,NA
+"480","Children aged <5 years underweight (%)","NLIS_310526","Published",1992,"Africa","Niger","Male",42.1,42.1,NA,NA,NA
+"482","Children aged <5 years underweight (%)","NLIS_310537","Published",1991,"Eastern Mediterranean","Pakistan","Female",37.6,37.6,NA,NA,NA
+"483","Children aged <5 years underweight (%)","NLIS_310561","Published",1992,"Eastern Mediterranean","Morocco","Male",8.4,8.4,NA,NA,NA
+"486","Children aged <5 years underweight (%)","NLIS_310689","Published",1992,"Eastern Mediterranean","Yemen","Male",31.2,31.2,NA,NA,NA
+"488","Children aged <5 years underweight (%)","NLIS_310750","Published",1992,"Africa","Algeria","Female",8.6,8.6,NA,NA,NA
+"490","Children aged <5 years underweight (%)","NLIS_311002","Published",1993,"Africa","Kenya","Male",22.4,22.4,NA,NA,NA
+"495","Children aged <5 years underweight (%)","NLIS_311359","Published",1994,"Americas","Bolivia (Plurinational State of)","Male",15.1,15.1,NA,NA,NA
+"497","Children aged <5 years underweight (%)","NLIS_311408","Published",1993,"Eastern Mediterranean","Egypt","Female",7.9,7.9,NA,NA,NA
+"498","Children aged <5 years underweight (%)","NLIS_311409","Published",1992,"Africa","Malawi","Male",26.3,26.3,NA,NA,NA
+"500","Children aged <5 years underweight (%)","NLIS_311429","Published",1993,"Americas","Nicaragua","Female",8.9,8.9,NA,NA,NA
+"504","Children aged <5 years underweight (%)","NLIS_311473","Published",1992,"Western Pacific","China","Female",14.6,14.6,NA,NA,NA
+"505","Children aged <5 years underweight (%)","NLIS_311509","Published",1988,"Europe","Hungary","Female",1.6,1.6,NA,NA,NA
+"508","Children aged <5 years underweight (%)","NLIS_311539","Published",1995,"Eastern Mediterranean","Tunisia","Male",8,8,NA,NA,NA
+"509","Children aged <5 years underweight (%)","NLIS_311547","Published",1995,"Americas","Haiti","Male",25.3,25.3,NA,NA,NA
+"510","Children aged <5 years underweight (%)","NLIS_311549","Published",1993,"South-East Asia","India","Female",48.8,48.8,NA,NA,NA
+"512","Children aged <5 years underweight (%)","NLIS_311560","Published",1995,"Eastern Mediterranean","Oman","Female",6,6,NA,NA,NA
+"513","Children aged <5 years underweight (%)","NLIS_311561","Published",1994,"Africa","Côte d'Ivoire","Male",23.7,23.7,NA,NA,NA
+"519","Children aged <5 years underweight (%)","NLIS_311591","Published",1993,"Western Pacific","Viet Nam","Female",35.7,35.7,NA,NA,NA
+"520","Children aged <5 years underweight (%)","NLIS_311604","Published",1994,"Americas","Jamaica","Male",5.4,5.4,NA,NA,NA
+"522","Children aged <5 years underweight (%)","NLIS_311608","Published",1995,"Americas","Colombia","Female",5.5,5.5,NA,NA,NA
+"525","Children aged <5 years underweight (%)","NLIS_311648","Published",1995,"Africa","Uganda","Female",19.4,19.4,NA,NA,NA
+"526","Children aged <5 years underweight (%)","NLIS_311651","Published",1995,"Africa","Algeria","Male",12.2,12.2,NA,NA,NA
+"528","Children aged <5 years underweight (%)","NLIS_311660","Published",1996,"Eastern Mediterranean","Lebanon","Male",3.8,3.8,NA,NA,NA
+"531","Children aged <5 years underweight (%)","NLIS_311665","Published",1996,"Eastern Mediterranean","Egypt","Male",11.6,11.6,NA,NA,NA
+"533","Children aged <5 years underweight (%)","NLIS_311674","Published",1995,"Europe","Kazakhstan","Female",5.1,5.1,NA,NA,NA
+"536","Children aged <5 years underweight (%)","NLIS_311682","Published",1996,"Africa","Mali","Female",37.2,37.2,NA,NA,NA
+"538","Children aged <5 years underweight (%)","NLIS_311706","Published",1996,"South-East Asia","Nepal","Male",43.3,43.3,NA,NA,NA
+"542","Children aged <5 years underweight (%)","NLIS_311752","Published",1996,"Africa","United Republic of Tanzania","Female",25.3,25.3,NA,NA,NA
+"543","Children aged <5 years underweight (%)","NLIS_311757","Published",1996,"Americas","Peru","Male",6.4,6.4,NA,NA,NA
+"545","Children aged <5 years underweight (%)","NLIS_311759","Published",1997,"South-East Asia","Bangladesh","Female",53,53,NA,NA,NA
+"547","Children aged <5 years underweight (%)","NLIS_311827","Published",1996,"Americas","Dominican Republic","Male",5.3,5.3,NA,NA,NA
+"551","Children aged <5 years underweight (%)","NLIS_311837","Published",1997,"Africa","Chad","Female",32.8,32.8,NA,NA,NA
+"553","Children aged <5 years underweight (%)","NLIS_311841","Published",1997,"Europe","Kyrgyzstan","Female",5.6,5.6,NA,NA,NA
+"554","Children aged <5 years underweight (%)","NLIS_311853","Published",1997,"Africa","Mozambique","Male",30.8,30.8,NA,NA,NA
+"557","Children aged <5 years underweight (%)","NLIS_311865","Published",1998,"Europe","Armenia","Female",2.6,2.6,NA,NA,NA
+"559","Children aged <5 years underweight (%)","NLIS_311915","Published",1998,"Africa","Niger","Male",46,46,NA,NA,NA
+"560","Children aged <5 years underweight (%)","NLIS_311918","Published",1998,"Americas","Nicaragua","Female",9.6,9.6,NA,NA,NA
+"563","Children aged <5 years underweight (%)","NLIS_311931","Published",1994,"Eastern Mediterranean","Pakistan","Male",34.2,34.2,NA,NA,NA
+"567","Children aged <5 years underweight (%)","NLIS_311993","Published",1998,"Africa","Kenya","Male",20,20,NA,NA,NA
+"569","Children aged <5 years underweight (%)","NLIS_311996","Published",1998,"Europe","Turkey","Female",7.1,7.1,NA,NA,NA
+"571","Children aged <5 years underweight (%)","NLIS_311998","Published",1999,"Europe","The former Yugoslav Republic of Macedonia","Female",1.6,1.6,NA,NA,NA
+"572","Children aged <5 years underweight (%)","NLIS_311999","Published",1998,"South-East Asia","Maldives","Male",53.5,53.5,NA,NA,NA
+"573","Children aged <5 years underweight (%)","NLIS_312017","Published",1999,"Western Pacific","Mongolia","Female",10.4,10.4,NA,NA,NA
+"576","Children aged <5 years underweight (%)","NLIS_312045","Published",1995,"Americas","Jamaica","Female",2.9,2.9,NA,NA,NA
+"578","Children aged <5 years underweight (%)","NLIS_312082","Published",1999,"Americas","Guatemala","Male",22.7,22.7,NA,NA,NA
+"580","Children aged <5 years underweight (%)","NLIS_312086","Published",1996,"Western Pacific","Cambodia","Male",47,47,NA,NA,NA
+"582","Children aged <5 years underweight (%)","NLIS_312108","Published",1999,"Americas","Mexico","Female",5.3,5.3,NA,NA,NA
+"584","Children aged <5 years underweight (%)","NLIS_312137","Published",1999,"Africa","Burkina Faso","Female",32.2,32.2,NA,NA,NA
+"586","Children aged <5 years underweight (%)","NLIS_312181","Published",1999,"Europe","Kazakhstan","Female",3.8,3.8,NA,NA,NA
+"587","Children aged <5 years underweight (%)","NLIS_312182","Published",1999,"Africa","United Republic of Tanzania","Male",23.8,23.8,NA,NA,NA
+"589","Children aged <5 years underweight (%)","NLIS_312191","Published",2000,"Africa","Niger","Female",42.4,42.4,NA,NA,NA
+"590","Children aged <5 years underweight (%)","NLIS_312221","Published",2000,"Eastern Mediterranean","Egypt","Female",3.4,3.4,NA,NA,NA
+"591","Children aged <5 years underweight (%)","NLIS_312226","Published",2000,"Africa","Algeria","Male",5.3,5.3,NA,NA,NA
+"592","Children aged <5 years underweight (%)","NLIS_312244","Published",2000,"Europe","Azerbaijan","Male",13.2,13.2,NA,NA,NA
+"595","Children aged <5 years underweight (%)","NLIS_312282","Published",2000,"Americas","Colombia","Male",4.9,4.9,NA,NA,NA
+"598","Children aged <5 years underweight (%)","NLIS_312312","Published",2000,"Western Pacific","Cambodia","Female",38.6,38.6,NA,NA,NA
+"599","Children aged <5 years underweight (%)","NLIS_312317","Published",1998,"Americas","Jamaica","Male",4.1,4.1,NA,NA,NA
+"601","Children aged <5 years underweight (%)","NLIS_312319","Published",2001,"Africa","Mauritania","Female",28.2,28.2,NA,NA,NA
+"602","Children aged <5 years underweight (%)","NLIS_312320","Published",2000,"Americas","Peru","Male",5.2,5.2,NA,NA,NA
+"604","Children aged <5 years underweight (%)","NLIS_312328","Published",2000,"Africa","Gambia","Female",14.3,14.3,NA,NA,NA
+"605","Children aged <5 years underweight (%)","NLIS_312344","Published",2001,"Europe","Armenia","Male",2.9,2.9,NA,NA,NA
+"607","Children aged <5 years underweight (%)","NLIS_312352","Published",2000,"Americas","Suriname","Female",10.1,10.1,NA,NA,NA
+"608","Children aged <5 years underweight (%)","NLIS_312353","Published",2000,"Africa","Botswana","Male",10.3,10.3,NA,NA,NA
+"610","Children aged <5 years underweight (%)","NLIS_312356","Published",2000,"Americas","Dominican Republic","Female",2.9,2.9,NA,NA,NA
+"611","Children aged <5 years underweight (%)","NLIS_312358","Published",2000,"Africa","Guinea-Bissau","Male",22.3,22.3,NA,NA,NA
+"613","Children aged <5 years underweight (%)","NLIS_312360","Published",2000,"Africa","Burundi","Female",38.9,38.9,NA,NA,NA
+"614","Children aged <5 years underweight (%)","NLIS_312361","Published",2000,"Europe","Albania","Male",19.6,19.6,NA,NA,NA
+"616","Children aged <5 years underweight (%)","NLIS_312363","Published",2000,"Africa","Comoros","Female",21.9,21.9,NA,NA,NA
+"617","Children aged <5 years underweight (%)","NLIS_312365","Published",2001,"Americas","Honduras","Male",13.1,13.1,NA,NA,NA
+"619","Children aged <5 years underweight (%)","NLIS_312367","Published",2000,"Africa","Sierra Leone","Female",21.1,21.1,NA,NA,NA
+"620","Children aged <5 years underweight (%)","NLIS_312368","Published",2000,"Africa","Senegal","Male",21.5,21.5,NA,NA,NA
+"623","Children aged <5 years underweight (%)","NLIS_312371","Published",1998,"South-East Asia","Indonesia","Female",22.8,22.8,NA,NA,NA
+"624","Children aged <5 years underweight (%)","NLIS_312371","Published",2000,"South-East Asia","Indonesia","Male",24.7,24.7,NA,NA,NA
+"629","Children aged <5 years underweight (%)","NLIS_312388","Published",2001,"Americas","Nicaragua","Female",7.1,7.1,NA,NA,NA
+"630","Children aged <5 years underweight (%)","NLIS_312394","Published",2000,"Africa","Sao Tome and Principe","Male",11.5,11.5,NA,NA,NA
+"632","Children aged <5 years underweight (%)","NLIS_312414","Published",2000,"Eastern Mediterranean","Iraq","Female",11.9,11.9,NA,NA,NA
+"634","Children aged <5 years underweight (%)","NLIS_312437","Published",2000,"Africa","Liberia","Female",17.7,17.7,NA,NA,NA
+"636","Children aged <5 years underweight (%)","NLIS_312471","Published",2002,"South-East Asia","Democratic People's Republic of Korea","Female",16.2,16.2,NA,NA,NA
+"637","Children aged <5 years underweight (%)","NLIS_312477","Published",2000,"Europe","Romania","Male",4.5,4.5,NA,NA,NA
+"639","Children aged <5 years underweight (%)","NLIS_312481","Published",2006,"South-East Asia","Thailand","Male",6.9,6.9,NA,NA,NA
+"640","Children aged <5 years underweight (%)","NLIS_312516","Published",2003,"Americas","El Salvador","Male",6.9,6.9,NA,NA,NA
+"642","Children aged <5 years underweight (%)","NLIS_312523","Published",1997,"Eastern Mediterranean","Morocco","Female",7.2,7.2,NA,NA,NA
+"643","Children aged <5 years underweight (%)","NLIS_312529","Published",2002,"South-East Asia","Timor-Leste","Male",43,43,NA,NA,NA
+"645","Children aged <5 years underweight (%)","NLIS_312535","Published",2001,"South-East Asia","Indonesia","Female",20.3,20.3,NA,NA,NA
+"646","Children aged <5 years underweight (%)","NLIS_312535","Published",2002,"South-East Asia","Indonesia","Male",25.2,25.2,NA,NA,NA
+"647","Children aged <5 years underweight (%)","NLIS_312536","Published",2000,"Western Pacific","Singapore","Male",3.6,3.6,NA,NA,NA
+"649","Children aged <5 years underweight (%)","NLIS_312558","Published",2002,"Americas","Guatemala","Male",18,18,NA,NA,NA
+"651","Children aged <5 years underweight (%)","NLIS_312568","Published",2000,"Africa","Kenya","Male",19.6,19.6,NA,NA,NA
+"654","Children aged <5 years underweight (%)","NLIS_312588","Published",2001,"Eastern Mediterranean","Pakistan","Female",31,31,NA,NA,NA
+"655","Children aged <5 years underweight (%)","NLIS_312590","Published",2003,"Africa","Kenya","Male",19.3,19.3,NA,NA,NA
+"657","Children aged <5 years underweight (%)","NLIS_312626","Published",2003,"Africa","Burkina Faso","Female",33.5,33.5,NA,NA,NA
+"658","Children aged <5 years underweight (%)","NLIS_312627","Published",2003,"Eastern Mediterranean","Egypt","Male",10.2,10.2,NA,NA,NA
+"660","Children aged <5 years underweight (%)","NLIS_312629","Published",2002,"Europe","Uzbekistan","Female",6.2,6.2,NA,NA,NA
+"661","Children aged <5 years underweight (%)","NLIS_312640","Published",2002,"South-East Asia","Bangladesh","Male",43.1,43.1,NA,NA,NA
+"663","Children aged <5 years underweight (%)","NLIS_312644","Published",2002,"Africa","Algeria","Female",9.6,9.6,NA,NA,NA
+"665","Children aged <5 years underweight (%)","NLIS_312654","Published",2000,"South-East Asia","Myanmar","Female",28.5,28.5,NA,NA,NA
+"666","Children aged <5 years underweight (%)","NLIS_312661","Published",2003,"South-East Asia","Myanmar","Male",31.1,31.1,NA,NA,NA
+"667","Children aged <5 years underweight (%)","NLIS_312666","Published",2004,"Americas","Bolivia (Plurinational State of)","Female",5.7,5.7,NA,NA,NA
+"668","Children aged <5 years underweight (%)","NLIS_312690","Published",2004,"Eastern Mediterranean","Morocco","Male",10.5,10.5,NA,NA,NA
+"670","Children aged <5 years underweight (%)","NLIS_312698","Published",2004,"Africa","Cameroon","Female",15,15,NA,NA,NA
+"671","Children aged <5 years underweight (%)","NLIS_312729","Published",2000,"Africa","Central African Republic","Male",24.1,24.1,NA,NA,NA
+"673","Children aged <5 years underweight (%)","NLIS_312756","Published",2004,"Europe","The former Yugoslav Republic of Macedonia","Female",1.2,1.2,NA,NA,NA
+"674","Children aged <5 years underweight (%)","NLIS_312757","Published",2000,"Africa","Equatorial Guinea","Male",16.8,16.8,NA,NA,NA
+"676","Children aged <5 years underweight (%)","NLIS_312759","Published",2005,"Africa","Guinea","Female",20.6,20.6,NA,NA,NA
+"677","Children aged <5 years underweight (%)","NLIS_312762","Published",2005,"Africa","Ethiopia","Male",36.5,36.5,NA,NA,NA
+"679","Children aged <5 years underweight (%)","NLIS_312764","Published",2002,"Europe","Czech Republic","Female",1.6,1.6,NA,NA,NA
+"681","Children aged <5 years underweight (%)","NLIS_312769","Published",2005,"Americas","Argentina","Male",2.4,2.4,NA,NA,NA
+"683","Children aged <5 years underweight (%)","NLIS_312771","Published",2005,"Americas","Colombia","Female",4.7,4.7,NA,NA,NA
+"685","Children aged <5 years underweight (%)","NLIS_312776","Published",2004,"Americas","Jamaica","Male",3.9,3.9,NA,NA,NA
+"686","Children aged <5 years underweight (%)","NLIS_312778","Published",2002,"Americas","Uruguay","Female",4.9,4.9,NA,NA,NA
+"689","Children aged <5 years underweight (%)","NLIS_312783","Published",2006,"Europe","Uzbekistan","Male",4.6,4.6,NA,NA,NA
+"690","Children aged <5 years underweight (%)","NLIS_312785","Published",2005,"Europe","Armenia","Female",5.2,5.2,NA,NA,NA
+"691","Children aged <5 years underweight (%)","NLIS_312788","Published",2005,"Europe","Republic of Moldova","Male",3,3,NA,NA,NA
+"693","Children aged <5 years underweight (%)","NLIS_312790","Published",2006,"Africa","Zimbabwe","Female",12.9,12.9,NA,NA,NA
+"694","Children aged <5 years underweight (%)","NLIS_312791","Published",2006,"South-East Asia","Nepal","Male",37.7,37.7,NA,NA,NA
+"696","Children aged <5 years underweight (%)","NLIS_312793","Published",2006,"Africa","Niger","Female",37.5,37.5,NA,NA,NA
+"697","Children aged <5 years underweight (%)","NLIS_312794","Published",2000,"South-East Asia","Indonesia","Female",23.8,23.8,NA,NA,NA
+"698","Children aged <5 years underweight (%)","NLIS_312796","Published",2005,"South-East Asia","Indonesia","Male",26.9,26.9,NA,NA,NA
+"700","Children aged <5 years underweight (%)","NLIS_312797","Published",2004,"South-East Asia","Indonesia","Male",20.7,20.7,NA,NA,NA
+"702","Children aged <5 years underweight (%)","NLIS_312799","Published",2006,"South-East Asia","India","Female",43.9,43.9,NA,NA,NA
+"704","Children aged <5 years underweight (%)","NLIS_312824","Published",2005,"Europe","Belarus","Male",1.5,1.5,NA,NA,NA
+"705","Children aged <5 years underweight (%)","NLIS_312826","Published",2006,"Europe","Bosnia and Herzegovina","Female",1,1,NA,NA,NA
+"706","Children aged <5 years underweight (%)","NLIS_312828","Published",1991,"South-East Asia","Bangladesh","Male",63.1,63.1,NA,NA,NA
+"708","Children aged <5 years underweight (%)","NLIS_312832","Published",1993,"South-East Asia","Bangladesh","Female",58.9,58.9,NA,NA,NA
+"709","Children aged <5 years underweight (%)","NLIS_312835","Published",1994,"South-East Asia","Bangladesh","Male",60.8,60.8,NA,NA,NA
+"711","Children aged <5 years underweight (%)","NLIS_312839","Published",1996,"South-East Asia","Bangladesh","Female",56.9,56.9,NA,NA,NA
+"712","Children aged <5 years underweight (%)","NLIS_312849","Published",2004,"South-East Asia","Bangladesh","Male",39.9,39.9,NA,NA,NA
+"714","Children aged <5 years underweight (%)","NLIS_312851","Published",2006,"Europe","Serbia","Female",1.3,1.3,NA,NA,NA
+"715","Children aged <5 years underweight (%)","NLIS_312852","Published",2006,"Eastern Mediterranean","Somalia","Male",34.2,34.2,NA,NA,NA
+"717","Children aged <5 years underweight (%)","NLIS_312854","Published",2006,"Africa","Côte d'Ivoire","Female",14.4,14.4,NA,NA,NA
+"718","Children aged <5 years underweight (%)","NLIS_312860","Published",2006,"Europe","Kazakhstan","Male",5.4,5.4,NA,NA,NA
+"719","Children aged <5 years underweight (%)","NLIS_312862","Published",2005,"Europe","Tajikistan","Female",13.3,13.3,NA,NA,NA
+"720","Children aged <5 years underweight (%)","NLIS_312867","Published",2005,"Africa","Sierra Leone","Male",30.7,30.7,NA,NA,NA
+"723","Children aged <5 years underweight (%)","NLIS_312874","Published",2007,"Africa","Namibia","Male",18.5,18.5,NA,NA,NA
+"725","Children aged <5 years underweight (%)","NLIS_312878","Published",2006,"South-East Asia","Bangladesh","Female",40.4,40.4,NA,NA,NA
+"727","Children aged <5 years underweight (%)","NLIS_312883","Published",2006,"Africa","Ghana","Male",15.2,15.2,NA,NA,NA
+"728","Children aged <5 years underweight (%)","NLIS_312885","Published",2006,"Africa","Uganda","Female",14.6,14.6,NA,NA,NA
+"729","Children aged <5 years underweight (%)","NLIS_312887","Published",2007,"Americas","Guyana","Male",11.4,11.4,NA,NA,NA
+"731","Children aged <5 years underweight (%)","NLIS_312889","Published",2005,"Europe","Georgia","Female",1.9,1.9,NA,NA,NA
+"732","Children aged <5 years underweight (%)","NLIS_312890","Published",2006,"Africa","Malawi","Male",17.2,17.2,NA,NA,NA
+"734","Children aged <5 years underweight (%)","NLIS_312893","Published",2007,"Africa","Zambia","Female",13,13,NA,NA,NA
+"735","Children aged <5 years underweight (%)","NLIS_312895","Published",2007,"Africa","Mauritania","Male",23.6,23.6,NA,NA,NA
+"737","Children aged <5 years underweight (%)","NLIS_312898","Published",2002,"Eastern Mediterranean","Djibouti","Female",23,23,NA,NA,NA
+"738","Children aged <5 years underweight (%)","NLIS_312902","Published",2005,"Americas","Nicaragua","Male",5.3,5.3,NA,NA,NA
+"740","Children aged <5 years underweight (%)","NLIS_312910","Published",2007,"Americas","Jamaica","Female",1.7,1.7,NA,NA,NA
+"741","Children aged <5 years underweight (%)","NLIS_312913","Published",2004,"Eastern Mediterranean","Lebanon","Male",5.4,5.4,NA,NA,NA
+"743","Children aged <5 years underweight (%)","NLIS_312916","Published",2007,"South-East Asia","Indonesia","Female",18.6,18.6,NA,NA,NA
+"744","Children aged <5 years underweight (%)","NLIS_312917","Published",2009,"Americas","Guatemala","Male",13.9,13.9,NA,NA,NA
+"746","Children aged <5 years underweight (%)","NLIS_312919","Published",2007,"Americas","Dominican Republic","Female",3.7,3.7,NA,NA,NA
+"747","Children aged <5 years underweight (%)","NLIS_312921","Published",2006,"Western Pacific","Lao People's Democratic Republic","Male",32.5,32.5,NA,NA,NA
+"749","Children aged <5 years underweight (%)","NLIS_312923","Published",2007,"Eastern Mediterranean","Libya","Female",4.8,4.8,NA,NA,NA
+"751","Children aged <5 years underweight (%)","NLIS_312932","Published",2005,"Americas","Peru","Male",6,6,NA,NA,NA
+"752","Children aged <5 years underweight (%)","NLIS_312939","Published",2006,"Europe","Germany","Female",1.3,1.3,NA,NA,NA
+"754","Children aged <5 years underweight (%)","NLIS_312946","Published",2009,"Africa","Sao Tome and Principe","Female",12.3,12.3,NA,NA,NA
+"756","Children aged <5 years underweight (%)","NLIS_312948","Published",2008,"Americas","Bolivia (Plurinational State of)","Female",4,4,NA,NA,NA
+"757","Children aged <5 years underweight (%)","NLIS_312950","Published",2006,"Eastern Mediterranean","Djibouti","Male",32.1,32.1,NA,NA,NA
+"758","Children aged <5 years underweight (%)","NLIS_312951","Published",2000,"Western Pacific","Viet Nam","Female",27.6,27.6,NA,NA,NA
+"759","Children aged <5 years underweight (%)","NLIS_312951","Published",2002,"Western Pacific","Viet Nam","Male",23.9,23.9,NA,NA,NA
+"760","Children aged <5 years underweight (%)","NLIS_312951","Published",2004,"Western Pacific","Viet Nam","Female",23.5,23.5,NA,NA,NA
+"761","Children aged <5 years underweight (%)","NLIS_312951","Published",2005,"Western Pacific","Viet Nam","Male",22.9,22.9,NA,NA,NA
+"762","Children aged <5 years underweight (%)","NLIS_312951","Published",2007,"Western Pacific","Viet Nam","Female",22,22,NA,NA,NA
+"763","Children aged <5 years underweight (%)","NLIS_312951","Published",2008,"Western Pacific","Viet Nam","Male",20.5,20.5,NA,NA,NA
+"764","Children aged <5 years underweight (%)","NLIS_312954","Published",2008,"Africa","Guinea","Male",21.9,21.9,NA,NA,NA
+"766","Children aged <5 years underweight (%)","NLIS_312955","Published",2008,"Africa","Guinea-Bissau","Male",16.2,16.2,NA,NA,NA
+"767","Children aged <5 years underweight (%)","NLIS_312963","Published",2008,"Africa","Ghana","Female",12.9,12.9,NA,NA,NA
+"768","Children aged <5 years underweight (%)","NLIS_312965","Published",2005,"Africa","Algeria","Male",3.7,3.7,NA,NA,NA
+"770","Children aged <5 years underweight (%)","NLIS_312971","Published",2008,"Africa","Sierra Leone","Female",18.5,18.5,NA,NA,NA
+"771","Children aged <5 years underweight (%)","NLIS_312981","Published",1997,"Africa","Equatorial Guinea","Male",15.4,15.4,NA,NA,NA
+"773","Children aged <5 years underweight (%)","NLIS_313003","Published",1990,"Western Pacific","China","Female",12.1,12.1,NA,NA,NA
+"774","Children aged <5 years underweight (%)","NLIS_313005","Published",1998,"Western Pacific","China","Male",7.2,7.2,NA,NA,NA
+"776","Children aged <5 years underweight (%)","NLIS_313007","Published",2005,"Western Pacific","China","Female",4.2,4.2,NA,NA,NA
+"777","Children aged <5 years underweight (%)","NLIS_313010","Published",2002,"Eastern Mediterranean","Kuwait","Female",1.5,1.5,NA,NA,NA
+"778","Children aged <5 years underweight (%)","NLIS_313010","Published",2003,"Eastern Mediterranean","Kuwait","Male",2.8,2.8,NA,NA,NA
+"780","Children aged <5 years underweight (%)","NLIS_313010","Published",2005,"Eastern Mediterranean","Kuwait","Female",2.4,2.4,NA,NA,NA
+"781","Children aged <5 years underweight (%)","NLIS_313020","Published",2009,"Africa","Kenya","Male",17.3,17.3,NA,NA,NA
+"783","Children aged <5 years underweight (%)","NLIS_313039","Published",2009,"Africa","Burkina Faso","Female",24.7,24.7,NA,NA,NA
+"784","Children aged <5 years underweight (%)","NLIS_313040","Published",2006,"Americas","Suriname","Female",7,7,NA,NA,NA
+"785","Children aged <5 years underweight (%)","NLIS_313042","Published",2009,"Eastern Mediterranean","Jordan","Male",1.6,1.6,NA,NA,NA
+"786","Children aged <5 years underweight (%)","NLIS_313048","Published",2006,"Eastern Mediterranean","Kuwait","Male",2.1,2.1,NA,NA,NA
+"788","Children aged <5 years underweight (%)","NLIS_313048","Published",2009,"Eastern Mediterranean","Kuwait","Male",2,2,NA,NA,NA
+"790","Children aged <5 years underweight (%)","NLIS_313054","Published",2007,"Africa","Côte d'Ivoire","Female",28.4,28.4,NA,NA,NA
+"791","Children aged <5 years underweight (%)","NLIS_313055","Published",2009,"Eastern Mediterranean","Oman","Male",8.9,8.9,NA,NA,NA
+"793","Children aged <5 years underweight (%)","NLIS_313063","Published",2009,"South-East Asia","Maldives","Female",17.2,17.2,NA,NA,NA
+"795","Children aged <5 years underweight (%)","NLIS_313066","Published",2010,"South-East Asia","Timor-Leste","Female",43.7,43.7,NA,NA,NA
+"796","Children aged <5 years underweight (%)","NLIS_313068","Published",2009,"Eastern Mediterranean","Syrian Arab Republic","Male",11.5,11.5,NA,NA,NA
+"798","Children aged <5 years underweight (%)","NLIS_313071","Published",2007,"Americas","Nicaragua","Female",5.9,5.9,NA,NA,NA
+"801","Children aged <5 years underweight (%)","NLIS_313076","Published",2010,"Africa","United Republic of Tanzania","Male",17.8,17.8,NA,NA,NA
+"803","Children aged <5 years underweight (%)","NLIS_313082","Published",2009,"Europe","Georgia","Male",1.3,1.3,NA,NA,NA
+"805","Children aged <5 years underweight (%)","NLIS_313083","Published",2006,"Western Pacific","Malaysia","Male",13.2,13.2,NA,NA,NA
+"808","Children aged <5 years underweight (%)","NLIS_313086","Published",2007,"Africa","Angola","Female",14.6,14.6,NA,NA,NA
+"809","Children aged <5 years underweight (%)","NLIS_313092","Published",2008,"Africa","Botswana","Female",10.2,10.2,NA,NA,NA
+"812","Children aged <5 years underweight (%)","NLIS_313099","Published",2009,"Africa","Malawi","Male",12.9,12.9,NA,NA,NA
+"814","Children aged <5 years underweight (%)","NLIS_313112","Published",2008,"Americas","Panama","Female",5.2,5.2,NA,NA,NA
+"815","Children aged <5 years underweight (%)","NLIS_313113","Published",2011,"Eastern Mediterranean","Pakistan","Female",30.4,30.4,NA,NA,NA
+"816","Children aged <5 years underweight (%)","NLIS_313115","Published",2011,"Eastern Mediterranean","Morocco","Male",3.1,3.1,NA,NA,NA
+"818","Children aged <5 years underweight (%)","NLIS_313117","Published",2010,"Europe","Armenia","Female",5.9,5.9,NA,NA,NA
+"819","Children aged <5 years underweight (%)","NLIS_313118","Published",2011,"Africa","Senegal","Male",19.7,19.7,NA,NA,NA
+"821","Children aged <5 years underweight (%)","NLIS_313122","Published",2006,"Africa","Central African Republic","Male",30.6,30.6,NA,NA,NA
+"823","Children aged <5 years underweight (%)","NLIS_313124","Published",2010,"South-East Asia","Indonesia","Female",15.7,15.7,NA,NA,NA
+"824","Children aged <5 years underweight (%)","NLIS_313126","Published",2012,"Eastern Mediterranean","Djibouti","Male",31.2,31.2,NA,NA,NA
+"826","Children aged <5 years underweight (%)","NLIS_313127","Published",2003,"Americas","Uruguay","Female",4.9,4.9,NA,NA,NA
+"827","Children aged <5 years underweight (%)","NLIS_313127","Published",2011,"Americas","Uruguay","Male",4.8,4.8,NA,NA,NA
+"831","Children aged <5 years underweight (%)","NLIS_313131","Published",2011,"Africa","Uganda","Male",15.4,15.4,NA,NA,NA
+"833","Children aged <5 years underweight (%)","NLIS_313134","Published",2010,"Africa","Sierra Leone","Female",19.6,19.6,NA,NA,NA
+"834","Children aged <5 years underweight (%)","NLIS_313136","Published",2010,"Africa","Burkina Faso","Male",27.7,27.7,NA,NA,NA
+"836","Children aged <5 years underweight (%)","NLIS_313141","Published",2012,"Africa","Senegal","Male",15.5,15.5,NA,NA,NA
+"837","Children aged <5 years underweight (%)","NLIS_313143","Published",2011,"Western Pacific","Philippines","Female",20.3,20.3,NA,NA,NA
+"838","Children aged <5 years underweight (%)","NLIS_313144","Published",2010,"Eastern Mediterranean","Kuwait","Male",1.9,1.9,NA,NA,NA
+"840","Children aged <5 years underweight (%)","NLIS_313145","Published",2010,"Africa","Swaziland","Female",5,5,NA,NA,NA
+"841","Children aged <5 years underweight (%)","NLIS_313146","Published",2011,"Africa","Mozambique","Male",17.5,17.5,NA,NA,NA
+"843","Children aged <5 years underweight (%)","NLIS_313148","Published",2010,"Africa","Togo","Female",14.4,14.4,NA,NA,NA
+"844","Children aged <5 years underweight (%)","NLIS_313150","Published",2006,"Eastern Mediterranean","South Sudan","Male",35.9,35.9,NA,NA,NA
+"846","Children aged <5 years underweight (%)","NLIS_313152","Published",2010,"Americas","Suriname","Female",5.4,5.4,NA,NA,NA
+"847","Children aged <5 years underweight (%)","NLIS_313153","Published",2004,"Western Pacific","Fiji","Male",4.9,4.9,NA,NA,NA
+"849","Children aged <5 years underweight (%)","NLIS_313155","Published",2010,"Europe","Serbia","Female",1.7,1.7,NA,NA,NA
+"850","Children aged <5 years underweight (%)","NLIS_313157","Published",2011,"Africa","Nigeria","Male",24.6,24.6,NA,NA,NA
+"855","Children aged <5 years underweight (%)","NLIS_310189","Published",1972,"Americas","Canada","Female",1.7,1.7,NA,NA,NA
+"864","Children aged <5 years underweight (%)","NLIS_310232","Published",1989,"Americas","Bolivia (Plurinational State of)","Male",10.4,10.4,NA,NA,NA
+"865","Children aged <5 years underweight (%)","NLIS_310233","Published",1990,"Americas","Paraguay","Female",3.4,3.4,NA,NA,NA
+"867","Children aged <5 years underweight (%)","NLIS_310272","Published",1988,"Eastern Mediterranean","Egypt","Male",11.7,11.7,NA,NA,NA
+"868","Children aged <5 years underweight (%)","NLIS_310272","Published",1988,"Eastern Mediterranean","Egypt","Female",11.6,11.6,NA,NA,NA
+"870","Children aged <5 years underweight (%)","NLIS_310320","Published",1970,"Western Pacific","Solomon Islands","Male",19.5,19.5,NA,NA,NA
+"871","Children aged <5 years underweight (%)","NLIS_310320","Published",1970,"Western Pacific","Solomon Islands","Female",15.5,15.5,NA,NA,NA
+"875","Children aged <5 years underweight (%)","NLIS_310364","Published",1990,"Eastern Mediterranean","Jordan","Male",5.2,5.2,NA,NA,NA
+"876","Children aged <5 years underweight (%)","NLIS_310364","Published",1990,"Eastern Mediterranean","Jordan","Female",4.4,4.4,NA,NA,NA
+"878","Children aged <5 years underweight (%)","NLIS_310377","Published",1990,"Africa","Nigeria","Male",37,37,NA,NA,NA
+"879","Children aged <5 years underweight (%)","NLIS_310377","Published",1990,"Africa","Nigeria","Female",33.3,33.3,NA,NA,NA
+"884","Children aged <5 years underweight (%)","NLIS_310442","Published",1991,"Eastern Mediterranean","Egypt","Female",9,9,NA,NA,NA
+"886","Children aged <5 years underweight (%)","NLIS_310471","Published",1992,"Africa","Namibia","Female",19.7,19.7,NA,NA,NA
+"890","Children aged <5 years underweight (%)","NLIS_310702","Published",1988,"Eastern Mediterranean","Tunisia","Male",9.3,9.3,NA,NA,NA
+"891","Children aged <5 years underweight (%)","NLIS_310702","Published",1988,"Eastern Mediterranean","Tunisia","Female",7.7,7.7,NA,NA,NA
+"893","Children aged <5 years underweight (%)","NLIS_310904","Published",1980,"Europe","Netherlands","Male",2.2,2.2,NA,NA,NA
+"894","Children aged <5 years underweight (%)","NLIS_310967","Published",1992,"Africa","Rwanda","Female",23.2,23.2,NA,NA,NA
+"897","Children aged <5 years underweight (%)","NLIS_311056","Published",1988,"Americas","El Salvador","Male",11.6,11.6,NA,NA,NA
+"898","Children aged <5 years underweight (%)","NLIS_311056","Published",1988,"Americas","El Salvador","Female",10.7,10.7,NA,NA,NA
+"901","Children aged <5 years underweight (%)","NLIS_311293","Published",1993,"Americas","El Salvador","Male",8.2,8.2,NA,NA,NA
+"902","Children aged <5 years underweight (%)","NLIS_311293","Published",1993,"Americas","El Salvador","Female",6.1,6.1,NA,NA,NA
+"905","Children aged <5 years underweight (%)","NLIS_311409","Published",1992,"Africa","Malawi","Female",22.4,22.4,NA,NA,NA
+"909","Children aged <5 years underweight (%)","NLIS_311509","Published",1988,"Europe","Hungary","Male",2.9,2.9,NA,NA,NA
+"914","Children aged <5 years underweight (%)","NLIS_311563","Published",1995,"Africa","Central African Republic","Male",25.2,25.2,NA,NA,NA
+"915","Children aged <5 years underweight (%)","NLIS_311563","Published",1995,"Africa","Central African Republic","Female",21.3,21.3,NA,NA,NA
+"917","Children aged <5 years underweight (%)","NLIS_311569","Published",1994,"South-East Asia","Maldives","Male",33.2,33.2,NA,NA,NA
+"918","Children aged <5 years underweight (%)","NLIS_311569","Published",1994,"South-East Asia","Maldives","Female",31.9,31.9,NA,NA,NA
+"921","Children aged <5 years underweight (%)","NLIS_311604","Published",1994,"Americas","Jamaica","Female",3.5,3.5,NA,NA,NA
+"923","Children aged <5 years underweight (%)","NLIS_311609","Published",1989,"Western Pacific","Solomon Islands","Male",18.1,18.1,NA,NA,NA
+"924","Children aged <5 years underweight (%)","NLIS_311609","Published",1989,"Western Pacific","Solomon Islands","Female",14.2,14.2,NA,NA,NA
+"928","Children aged <5 years underweight (%)","NLIS_311672","Published",1995,"Americas","Guatemala","Male",22.3,22.3,NA,NA,NA
+"929","Children aged <5 years underweight (%)","NLIS_311672","Published",1995,"Americas","Guatemala","Female",21.1,21.1,NA,NA,NA
+"931","Children aged <5 years underweight (%)","NLIS_311680","Published",1996,"Americas","Brazil","Male",4.8,4.8,NA,NA,NA
+"933","Children aged <5 years underweight (%)","NLIS_311705","Published",1996,"Africa","Comoros","Male",25.7,25.7,NA,NA,NA
+"934","Children aged <5 years underweight (%)","NLIS_311705","Published",1996,"Africa","Comoros","Female",18.6,18.6,NA,NA,NA
+"936","Children aged <5 years underweight (%)","NLIS_311756","Published",1997,"Africa","Zambia","Male",21.1,21.1,NA,NA,NA
+"937","Children aged <5 years underweight (%)","NLIS_311756","Published",1997,"Africa","Zambia","Female",18.2,18.2,NA,NA,NA
+"938","Children aged <5 years underweight (%)","NLIS_311766","Published",1994,"Americas","United States of America","Male",0.6,0.6,NA,NA,NA
+"939","Children aged <5 years underweight (%)","NLIS_311766","Published",1994,"Americas","United States of America","Female",1.2,1.2,NA,NA,NA
+"943","Children aged <5 years underweight (%)","NLIS_311828","Published",1995,"South-East Asia","Indonesia","Male",29.5,29.5,NA,NA,NA
+"944","Children aged <5 years underweight (%)","NLIS_311828","Published",1995,"South-East Asia","Indonesia","Female",25.2,25.2,NA,NA,NA
+"946","Children aged <5 years underweight (%)","NLIS_311853","Published",1997,"Africa","Mozambique","Female",25.3,25.3,NA,NA,NA
+"951","Children aged <5 years underweight (%)","NLIS_311911","Published",1998,"Americas","Bolivia (Plurinational State of)","Male",6,6,NA,NA,NA
+"952","Children aged <5 years underweight (%)","NLIS_311911","Published",1998,"Americas","Bolivia (Plurinational State of)","Female",5.8,5.8,NA,NA,NA
+"954","Children aged <5 years underweight (%)","NLIS_311927","Published",1997,"Eastern Mediterranean","Jordan","Male",3.9,3.9,NA,NA,NA
+"955","Children aged <5 years underweight (%)","NLIS_311928","Published",1998,"Africa","Cameroon","Female",15.7,15.7,NA,NA,NA
+"957","Children aged <5 years underweight (%)","NLIS_311935","Published",1998,"South-East Asia","Bangladesh","Male",53.7,53.7,NA,NA,NA
+"958","Children aged <5 years underweight (%)","NLIS_311935","Published",1998,"South-East Asia","Bangladesh","Female",52.8,52.8,NA,NA,NA
+"961","Children aged <5 years underweight (%)","NLIS_311998","Published",1999,"Europe","The former Yugoslav Republic of Macedonia","Male",2.1,2.1,NA,NA,NA
+"962","Children aged <5 years underweight (%)","NLIS_311999","Published",1998,"South-East Asia","Maldives","Female",31.2,31.2,NA,NA,NA
+"964","Children aged <5 years underweight (%)","NLIS_312015","Published",1999,"South-East Asia","Bhutan","Male",16.7,16.7,NA,NA,NA
+"965","Children aged <5 years underweight (%)","NLIS_312015","Published",1999,"South-East Asia","Bhutan","Female",11.5,11.5,NA,NA,NA
+"968","Children aged <5 years underweight (%)","NLIS_312046","Published",1996,"Americas","Jamaica","Male",6.7,6.7,NA,NA,NA
+"969","Children aged <5 years underweight (%)","NLIS_312046","Published",1996,"Americas","Jamaica","Female",4.5,4.5,NA,NA,NA
+"975","Children aged <5 years underweight (%)","NLIS_312108","Published",1999,"Americas","Mexico","Male",6.6,6.6,NA,NA,NA
+"976","Children aged <5 years underweight (%)","NLIS_312113","Published",1997,"Americas","Panama","Male",6.7,6.7,NA,NA,NA
+"977","Children aged <5 years underweight (%)","NLIS_312113","Published",1997,"Americas","Panama","Female",5.9,5.9,NA,NA,NA
+"979","Children aged <5 years underweight (%)","NLIS_312180","Published",1999,"South-East Asia","India","Male",45,45,NA,NA,NA
+"980","Children aged <5 years underweight (%)","NLIS_312180","Published",1999,"South-East Asia","India","Female",43.8,43.8,NA,NA,NA
+"982","Children aged <5 years underweight (%)","NLIS_312189","Published",1998,"South-East Asia","Nepal","Male",38.8,38.8,NA,NA,NA
+"983","Children aged <5 years underweight (%)","NLIS_312189","Published",1998,"South-East Asia","Nepal","Female",37.5,37.5,NA,NA,NA
+"986","Children aged <5 years underweight (%)","NLIS_312221","Published",2000,"Eastern Mediterranean","Egypt","Male",5,5,NA,NA,NA
+"990","Children aged <5 years underweight (%)","NLIS_312277","Published",2000,"Africa","Malawi","Male",23,23,NA,NA,NA
+"991","Children aged <5 years underweight (%)","NLIS_312278","Published",2001,"Africa","Gabon","Female",7.4,7.4,NA,NA,NA
+"993","Children aged <5 years underweight (%)","NLIS_312288","Published",2000,"Europe","Ukraine","Male",4.8,4.8,NA,NA,NA
+"994","Children aged <5 years underweight (%)","NLIS_312288","Published",2000,"Europe","Ukraine","Female",3.5,3.5,NA,NA,NA
+"996","Children aged <5 years underweight (%)","NLIS_312313","Published",2001,"Africa","Uganda","Male",21,21,NA,NA,NA
+"997","Children aged <5 years underweight (%)","NLIS_312313","Published",2001,"Africa","Uganda","Female",17,17,NA,NA,NA
+"999","Children aged <5 years underweight (%)","NLIS_312319","Published",2001,"Africa","Mauritania","Male",32.7,32.7,NA,NA,NA
+"1000","Children aged <5 years underweight (%)","NLIS_312320","Published",2000,"Americas","Peru","Female",5.1,5.1,NA,NA,NA
+"1002","Children aged <5 years underweight (%)","NLIS_312336","Published",2001,"South-East Asia","Nepal","Male",42.3,42.3,NA,NA,NA
+"1003","Children aged <5 years underweight (%)","NLIS_312336","Published",2001,"South-East Asia","Nepal","Female",43.7,43.7,NA,NA,NA
+"1005","Children aged <5 years underweight (%)","NLIS_312355","Published",2000,"Western Pacific","Lao People's Democratic Republic","Male",38.4,38.4,NA,NA,NA
+"1006","Children aged <5 years underweight (%)","NLIS_312355","Published",2000,"Western Pacific","Lao People's Democratic Republic","Female",34.5,34.5,NA,NA,NA
+"1007","Children aged <5 years underweight (%)","NLIS_312359","Published",2000,"Africa","Chad","Male",30.4,30.4,NA,NA,NA
+"1008","Children aged <5 years underweight (%)","NLIS_312359","Published",2000,"Africa","Chad","Female",28.3,28.3,NA,NA,NA
+"1010","Children aged <5 years underweight (%)","NLIS_312362","Published",2000,"Europe","Bosnia and Herzegovina","Male",5.1,5.1,NA,NA,NA
+"1011","Children aged <5 years underweight (%)","NLIS_312362","Published",2000,"Europe","Bosnia and Herzegovina","Female",3.3,3.3,NA,NA,NA
+"1013","Children aged <5 years underweight (%)","NLIS_312366","Published",2000,"Africa","Lesotho","Male",17.4,17.4,NA,NA,NA
+"1014","Children aged <5 years underweight (%)","NLIS_312366","Published",2000,"Africa","Lesotho","Female",12.6,12.6,NA,NA,NA
+"1016","Children aged <5 years underweight (%)","NLIS_312370","Published",2000,"Africa","Swaziland","Male",9.5,9.5,NA,NA,NA
+"1018","Children aged <5 years underweight (%)","NLIS_312371","Published",1999,"South-East Asia","Indonesia","Male",24.4,24.4,NA,NA,NA
+"1019","Children aged <5 years underweight (%)","NLIS_312371","Published",1999,"South-East Asia","Indonesia","Female",21.1,21.1,NA,NA,NA
+"1021","Children aged <5 years underweight (%)","NLIS_312375","Published",1999,"Eastern Mediterranean","Oman","Female",10.9,10.9,NA,NA,NA
+"1023","Children aged <5 years underweight (%)","NLIS_312387","Published",2001,"Africa","Mali","Male",31.6,31.6,NA,NA,NA
+"1025","Children aged <5 years underweight (%)","NLIS_312413","Published",2001,"South-East Asia","Bangladesh","Male",46.1,46.1,NA,NA,NA
+"1026","Children aged <5 years underweight (%)","NLIS_312413","Published",2001,"South-East Asia","Bangladesh","Female",44.5,44.5,NA,NA,NA
+"1028","Children aged <5 years underweight (%)","NLIS_312436","Published",2000,"Western Pacific","Mongolia","Male",12.6,12.6,NA,NA,NA
+"1030","Children aged <5 years underweight (%)","NLIS_312477","Published",1999,"Europe","Romania","Male",4,4,NA,NA,NA
+"1031","Children aged <5 years underweight (%)","NLIS_312477","Published",1999,"Europe","Romania","Female",2.8,2.8,NA,NA,NA
+"1035","Children aged <5 years underweight (%)","NLIS_312522","Published",2002,"Eastern Mediterranean","Jordan","Male",4,4,NA,NA,NA
+"1038","Children aged <5 years underweight (%)","NLIS_312548","Published",2001,"South-East Asia","Maldives","Male",25.5,25.5,NA,NA,NA
+"1039","Children aged <5 years underweight (%)","NLIS_312548","Published",2001,"South-East Asia","Maldives","Female",26,26,NA,NA,NA
+"1040","Children aged <5 years underweight (%)","NLIS_312580","Published",2002,"Americas","Dominican Republic","Male",4.6,4.6,NA,NA,NA
+"1042","Children aged <5 years underweight (%)","NLIS_312606","Published",2002,"Americas","United States of America","Male",1.4,1.4,NA,NA,NA
+"1043","Children aged <5 years underweight (%)","NLIS_312606","Published",2002,"Americas","United States of America","Female",0.7,0.7,NA,NA,NA
+"1045","Children aged <5 years underweight (%)","NLIS_312624","Published",2000,"Americas","Guyana","Male",13.6,13.6,NA,NA,NA
+"1046","Children aged <5 years underweight (%)","NLIS_312624","Published",2000,"Americas","Guyana","Female",9.9,9.9,NA,NA,NA
+"1048","Children aged <5 years underweight (%)","NLIS_312628","Published",2003,"Africa","Ghana","Male",20.6,20.6,NA,NA,NA
+"1050","Children aged <5 years underweight (%)","NLIS_312641","Published",2003,"South-East Asia","Bangladesh","Male",40.6,40.6,NA,NA,NA
+"1051","Children aged <5 years underweight (%)","NLIS_312641","Published",2003,"South-East Asia","Bangladesh","Female",41.3,41.3,NA,NA,NA
+"1053","Children aged <5 years underweight (%)","NLIS_312673","Published",2004,"Africa","Madagascar","Male",39.2,39.2,NA,NA,NA
+"1054","Children aged <5 years underweight (%)","NLIS_312673","Published",2004,"Africa","Madagascar","Female",34.5,34.5,NA,NA,NA
+"1057","Children aged <5 years underweight (%)","NLIS_312691","Published",2003,"Africa","Mozambique","Male",22.6,22.6,NA,NA,NA
+"1058","Children aged <5 years underweight (%)","NLIS_312691","Published",2003,"Africa","Mozambique","Female",19.9,19.9,NA,NA,NA
+"1060","Children aged <5 years underweight (%)","NLIS_312755","Published",2004,"Western Pacific","Mongolia","Male",5.3,5.3,NA,NA,NA
+"1061","Children aged <5 years underweight (%)","NLIS_312755","Published",2004,"Western Pacific","Mongolia","Female",4.2,4.2,NA,NA,NA
+"1063","Children aged <5 years underweight (%)","NLIS_312758","Published",2005,"Eastern Mediterranean","Egypt","Male",6.6,6.6,NA,NA,NA
+"1065","Children aged <5 years underweight (%)","NLIS_312763","Published",2005,"Africa","Malawi","Male",19.7,19.7,NA,NA,NA
+"1066","Children aged <5 years underweight (%)","NLIS_312763","Published",2005,"Africa","Malawi","Female",17.2,17.2,NA,NA,NA
+"1068","Children aged <5 years underweight (%)","NLIS_312766","Published",2005,"Africa","United Republic of Tanzania","Male",18,18,NA,NA,NA
+"1069","Children aged <5 years underweight (%)","NLIS_312767","Published",2005,"Africa","Congo","Female",10.6,10.6,NA,NA,NA
+"1071","Children aged <5 years underweight (%)","NLIS_312770","Published",2006,"Americas","Honduras","Male",8.9,8.9,NA,NA,NA
+"1072","Children aged <5 years underweight (%)","NLIS_312770","Published",2006,"Americas","Honduras","Female",8.3,8.3,NA,NA,NA
+"1074","Children aged <5 years underweight (%)","NLIS_312773","Published",2000,"Americas","Jamaica","Male",4.5,4.5,NA,NA,NA
+"1075","Children aged <5 years underweight (%)","NLIS_312774","Published",2001,"Americas","Jamaica","Female",2.7,2.7,NA,NA,NA
+"1077","Children aged <5 years underweight (%)","NLIS_312777","Published",2004,"Americas","Uruguay","Male",6.7,6.7,NA,NA,NA
+"1078","Children aged <5 years underweight (%)","NLIS_312777","Published",2004,"Americas","Uruguay","Female",5.3,5.3,NA,NA,NA
+"1080","Children aged <5 years underweight (%)","NLIS_312779","Published",2003,"Americas","Brazil","Male",4.3,4.3,NA,NA,NA
+"1081","Children aged <5 years underweight (%)","NLIS_312782","Published",2004,"Americas","Ecuador","Male",6.5,6.5,NA,NA,NA
+"1082","Children aged <5 years underweight (%)","NLIS_312782","Published",2004,"Americas","Ecuador","Female",6,6,NA,NA,NA
+"1084","Children aged <5 years underweight (%)","NLIS_312786","Published",2006,"Americas","Mexico","Male",4.3,4.3,NA,NA,NA
+"1085","Children aged <5 years underweight (%)","NLIS_312786","Published",2006,"Americas","Mexico","Female",2.6,2.6,NA,NA,NA
+"1087","Children aged <5 years underweight (%)","NLIS_312790","Published",2006,"Africa","Zimbabwe","Male",15.1,15.1,NA,NA,NA
+"1089","Children aged <5 years underweight (%)","NLIS_312795","Published",2003,"South-East Asia","Indonesia","Male",25.5,25.5,NA,NA,NA
+"1090","Children aged <5 years underweight (%)","NLIS_312795","Published",2003,"South-East Asia","Indonesia","Female",20.6,20.6,NA,NA,NA
+"1091","Children aged <5 years underweight (%)","NLIS_312800","Published",2005,"Africa","Rwanda","Male",18.9,18.9,NA,NA,NA
+"1092","Children aged <5 years underweight (%)","NLIS_312800","Published",2005,"Africa","Rwanda","Female",17.2,17.2,NA,NA,NA
+"1094","Children aged <5 years underweight (%)","NLIS_312819","Published",2004,"Eastern Mediterranean","Afghanistan","Male",32.7,32.7,NA,NA,NA
+"1095","Children aged <5 years underweight (%)","NLIS_312819","Published",2004,"Eastern Mediterranean","Afghanistan","Female",33,33,NA,NA,NA
+"1097","Children aged <5 years underweight (%)","NLIS_312827","Published",2006,"Europe","Kyrgyzstan","Male",2.9,2.9,NA,NA,NA
+"1098","Children aged <5 years underweight (%)","NLIS_312827","Published",2006,"Europe","Kyrgyzstan","Female",2.5,2.5,NA,NA,NA
+"1100","Children aged <5 years underweight (%)","NLIS_312832","Published",1993,"South-East Asia","Bangladesh","Male",59,59,NA,NA,NA
+"1102","Children aged <5 years underweight (%)","NLIS_312844","Published",2000,"South-East Asia","Bangladesh","Male",49,49,NA,NA,NA
+"1103","Children aged <5 years underweight (%)","NLIS_312844","Published",2000,"South-East Asia","Bangladesh","Female",47.3,47.3,NA,NA,NA
+"1105","Children aged <5 years underweight (%)","NLIS_312851","Published",2006,"Europe","Serbia","Male",2.2,2.2,NA,NA,NA
+"1106","Children aged <5 years underweight (%)","NLIS_312852","Published",2006,"Eastern Mediterranean","Somalia","Female",31.3,31.3,NA,NA,NA
+"1108","Children aged <5 years underweight (%)","NLIS_312855","Published",2006,"Africa","Mali","Male",29.7,29.7,NA,NA,NA
+"1109","Children aged <5 years underweight (%)","NLIS_312855","Published",2006,"Africa","Mali","Female",26,26,NA,NA,NA
+"1111","Children aged <5 years underweight (%)","NLIS_312859","Published",2004,"Americas","United States of America","Male",1.6,1.6,NA,NA,NA
+"1112","Children aged <5 years underweight (%)","NLIS_312859","Published",2004,"Americas","United States of America","Female",0.9,0.9,NA,NA,NA
+"1114","Children aged <5 years underweight (%)","NLIS_312866","Published",2005,"Europe","The former Yugoslav Republic of Macedonia","Male",1.7,1.7,NA,NA,NA
+"1115","Children aged <5 years underweight (%)","NLIS_312866","Published",2005,"Europe","The former Yugoslav Republic of Macedonia","Female",1.9,1.9,NA,NA,NA
+"1118","Children aged <5 years underweight (%)","NLIS_312873","Published",2007,"Africa","Liberia","Male",21.9,21.9,NA,NA,NA
+"1119","Children aged <5 years underweight (%)","NLIS_312873","Published",2007,"Africa","Liberia","Female",18.7,18.7,NA,NA,NA
+"1120","Children aged <5 years underweight (%)","NLIS_312879","Published",2005,"Europe","Albania","Male",7.3,7.3,NA,NA,NA
+"1121","Children aged <5 years underweight (%)","NLIS_312879","Published",2005,"Europe","Albania","Female",5.8,5.8,NA,NA,NA
+"1123","Children aged <5 years underweight (%)","NLIS_312882","Published",2006,"Africa","Togo","Male",23.5,23.5,NA,NA,NA
+"1124","Children aged <5 years underweight (%)","NLIS_312882","Published",2006,"Africa","Togo","Female",21,21,NA,NA,NA
+"1126","Children aged <5 years underweight (%)","NLIS_312886","Published",2006,"Africa","Benin","Male",22.7,22.7,NA,NA,NA
+"1127","Children aged <5 years underweight (%)","NLIS_312886","Published",2006,"Africa","Benin","Female",17.6,17.6,NA,NA,NA
+"1129","Children aged <5 years underweight (%)","NLIS_312889","Published",2005,"Europe","Georgia","Male",2.6,2.6,NA,NA,NA
+"1131","Children aged <5 years underweight (%)","NLIS_312894","Published",2007,"Africa","Swaziland","Male",6.3,6.3,NA,NA,NA
+"1132","Children aged <5 years underweight (%)","NLIS_312894","Published",2007,"Africa","Swaziland","Female",5.9,5.9,NA,NA,NA
+"1134","Children aged <5 years underweight (%)","NLIS_312898","Published",2002,"Eastern Mediterranean","Djibouti","Male",27.7,27.7,NA,NA,NA
+"1135","Children aged <5 years underweight (%)","NLIS_312902","Published",2005,"Americas","Nicaragua","Female",3.3,3.3,NA,NA,NA
+"1137","Children aged <5 years underweight (%)","NLIS_312912","Published",2005,"Western Pacific","Papua New Guinea","Male",21,21,NA,NA,NA
+"1138","Children aged <5 years underweight (%)","NLIS_312912","Published",2005,"Western Pacific","Papua New Guinea","Female",14.6,14.6,NA,NA,NA
+"1140","Children aged <5 years underweight (%)","NLIS_312917","Published",2009,"Americas","Guatemala","Female",12.1,12.1,NA,NA,NA
+"1142","Children aged <5 years underweight (%)","NLIS_312920","Published",2008,"Americas","Chile","Male",0.6,0.6,NA,NA,NA
+"1143","Children aged <5 years underweight (%)","NLIS_312920","Published",2008,"Americas","Chile","Female",0.5,0.5,NA,NA,NA
+"1144","Children aged <5 years underweight (%)","NLIS_312924","Published",2006,"Eastern Mediterranean","Tunisia","Male",3.7,3.7,NA,NA,NA
+"1145","Children aged <5 years underweight (%)","NLIS_312924","Published",2006,"Eastern Mediterranean","Tunisia","Female",2.9,2.9,NA,NA,NA
+"1147","Children aged <5 years underweight (%)","NLIS_312931","Published",2008,"Western Pacific","Cambodia","Male",28.4,28.4,NA,NA,NA
+"1148","Children aged <5 years underweight (%)","NLIS_312931","Published",2008,"Western Pacific","Cambodia","Female",29.2,29.2,NA,NA,NA
+"1150","Children aged <5 years underweight (%)","NLIS_312948","Published",2008,"Americas","Bolivia (Plurinational State of)","Male",4.9,4.9,NA,NA,NA
+"1151","Children aged <5 years underweight (%)","NLIS_312950","Published",2006,"Eastern Mediterranean","Djibouti","Female",26.7,26.7,NA,NA,NA
+"1154","Children aged <5 years underweight (%)","NLIS_312951","Published",2003,"Western Pacific","Viet Nam","Male",25.1,25.1,NA,NA,NA
+"1155","Children aged <5 years underweight (%)","NLIS_312951","Published",2003,"Western Pacific","Viet Nam","Female",24.2,24.2,NA,NA,NA
+"1157","Children aged <5 years underweight (%)","NLIS_312951","Published",2008,"Western Pacific","Viet Nam","Female",19.9,19.9,NA,NA,NA
+"1159","Children aged <5 years underweight (%)","NLIS_312952","Published",2008,"Africa","Mauritania","Male",17.8,17.8,NA,NA,NA
+"1160","Children aged <5 years underweight (%)","NLIS_312952","Published",2008,"Africa","Mauritania","Female",13.9,13.9,NA,NA,NA
+"1162","Children aged <5 years underweight (%)","NLIS_312956","Published",2008,"Africa","Togo","Male",20.5,20.5,NA,NA,NA
+"1163","Children aged <5 years underweight (%)","NLIS_312956","Published",2008,"Africa","Togo","Female",20.5,20.5,NA,NA,NA
+"1165","Children aged <5 years underweight (%)","NLIS_312967","Published",2008,"South-East Asia","Bhutan","Female",10.3,10.3,NA,NA,NA
+"1167","Children aged <5 years underweight (%)","NLIS_312989","Published",2009,"South-East Asia","Sri Lanka","Male",21.6,21.6,NA,NA,NA
+"1168","Children aged <5 years underweight (%)","NLIS_312989","Published",2009,"South-East Asia","Sri Lanka","Female",21.6,21.6,NA,NA,NA
+"1169","Children aged <5 years underweight (%)","NLIS_313006","Published",2000,"Western Pacific","China","Male",7.3,7.3,NA,NA,NA
+"1170","Children aged <5 years underweight (%)","NLIS_313006","Published",2000,"Western Pacific","China","Female",7.5,7.5,NA,NA,NA
+"1173","Children aged <5 years underweight (%)","NLIS_313010","Published",2001,"Eastern Mediterranean","Kuwait","Male",2.5,2.5,NA,NA,NA
+"1174","Children aged <5 years underweight (%)","NLIS_313010","Published",2001,"Eastern Mediterranean","Kuwait","Female",1.9,1.9,NA,NA,NA
+"1176","Children aged <5 years underweight (%)","NLIS_313023","Published",2008,"Americas","Peru","Male",4.5,4.5,NA,NA,NA
+"1177","Children aged <5 years underweight (%)","NLIS_313023","Published",2008,"Americas","Peru","Female",4.5,4.5,NA,NA,NA
+"1178","Children aged <5 years underweight (%)","NLIS_313028","Published",2007,"Western Pacific","Vanuatu","Male",14.1,14.1,NA,NA,NA
+"1179","Children aged <5 years underweight (%)","NLIS_313028","Published",2007,"Western Pacific","Vanuatu","Female",9,9,NA,NA,NA
+"1181","Children aged <5 years underweight (%)","NLIS_313037","Published",2007,"Africa","Nigeria","Male",27.2,27.2,NA,NA,NA
+"1182","Children aged <5 years underweight (%)","NLIS_313037","Published",2007,"Africa","Nigeria","Female",24.2,24.2,NA,NA,NA
+"1184","Children aged <5 years underweight (%)","NLIS_313042","Published",2009,"Eastern Mediterranean","Jordan","Female",2.1,2.1,NA,NA,NA
+"1186","Children aged <5 years underweight (%)","NLIS_313048","Published",2007,"Eastern Mediterranean","Kuwait","Female",2.7,2.7,NA,NA,NA
+"1188","Children aged <5 years underweight (%)","NLIS_313048","Published",2008,"Eastern Mediterranean","Kuwait","Male",2.8,2.8,NA,NA,NA
+"1189","Children aged <5 years underweight (%)","NLIS_313048","Published",2008,"Eastern Mediterranean","Kuwait","Female",1.8,1.8,NA,NA,NA
+"1190","Children aged <5 years underweight (%)","NLIS_313062","Published",2009,"Europe","Albania","Male",6.6,6.6,NA,NA,NA
+"1192","Children aged <5 years underweight (%)","NLIS_313069","Published",2007,"Europe","Tajikistan","Male",15.9,15.9,NA,NA,NA
+"1193","Children aged <5 years underweight (%)","NLIS_313069","Published",2007,"Europe","Tajikistan","Female",14,14,NA,NA,NA
+"1195","Children aged <5 years underweight (%)","NLIS_313072","Published",2008,"Western Pacific","Philippines","Male",20.9,20.9,NA,NA,NA
+"1196","Children aged <5 years underweight (%)","NLIS_313072","Published",2008,"Western Pacific","Philippines","Female",20.6,20.6,NA,NA,NA
+"1198","Children aged <5 years underweight (%)","NLIS_313077","Published",2010,"South-East Asia","Bhutan","Male",13.4,13.4,NA,NA,NA
+"1199","Children aged <5 years underweight (%)","NLIS_313077","Published",2010,"South-East Asia","Bhutan","Female",12.3,12.3,NA,NA,NA
+"1201","Children aged <5 years underweight (%)","NLIS_313080","Published",2009,"Western Pacific","China","Male",4.7,4.7,NA,NA,NA
+"1202","Children aged <5 years underweight (%)","NLIS_313080","Published",2009,"Western Pacific","China","Female",4.5,4.5,NA,NA,NA
+"1206","Children aged <5 years underweight (%)","NLIS_313098","Published",2010,"Africa","Lesotho","Male",16,16,NA,NA,NA
+"1207","Children aged <5 years underweight (%)","NLIS_313098","Published",2010,"Africa","Lesotho","Female",11.1,11.1,NA,NA,NA
+"1210","Children aged <5 years underweight (%)","NLIS_313106","Published",2005,"Africa","South Africa","Male",13.6,13.6,NA,NA,NA
+"1211","Children aged <5 years underweight (%)","NLIS_313109","Published",2008,"South-East Asia","Timor-Leste","Female",44.5,44.5,NA,NA,NA
+"1213","Children aged <5 years underweight (%)","NLIS_313116","Published",2011,"Africa","Ethiopia","Male",30.9,30.9,NA,NA,NA
+"1214","Children aged <5 years underweight (%)","NLIS_313116","Published",2011,"Africa","Ethiopia","Female",27.3,27.3,NA,NA,NA
+"1216","Children aged <5 years underweight (%)","NLIS_313119","Published",2009,"Americas","Guyana","Male",12.8,12.8,NA,NA,NA
+"1217","Children aged <5 years underweight (%)","NLIS_313119","Published",2009,"Americas","Guyana","Female",9.4,9.4,NA,NA,NA
+"1218","Children aged <5 years underweight (%)","NLIS_313121","Published",2011,"Africa","Rwanda","Male",12.9,12.9,NA,NA,NA
+"1219","Children aged <5 years underweight (%)","NLIS_313121","Published",2011,"Africa","Rwanda","Female",10.4,10.4,NA,NA,NA
+"1221","Children aged <5 years underweight (%)","NLIS_313124","Published",2010,"South-East Asia","Indonesia","Male",19.5,19.5,NA,NA,NA
+"1224","Children aged <5 years underweight (%)","NLIS_313127","Published",2007,"Americas","Uruguay","Male",6.1,6.1,NA,NA,NA
+"1225","Children aged <5 years underweight (%)","NLIS_313127","Published",2007,"Americas","Uruguay","Female",3.2,3.2,NA,NA,NA
+"1230","Children aged <5 years underweight (%)","NLIS_313130","Published",2011,"Africa","Cameroon","Male",15.8,15.8,NA,NA,NA
+"1231","Children aged <5 years underweight (%)","NLIS_313130","Published",2011,"Africa","Cameroon","Female",14.5,14.5,NA,NA,NA
+"1232","Children aged <5 years underweight (%)","NLIS_313135","Published",2011,"South-East Asia","Bangladesh","Male",34.8,34.8,NA,NA,NA
+"1233","Children aged <5 years underweight (%)","NLIS_313135","Published",2011,"South-East Asia","Bangladesh","Female",38.8,38.8,NA,NA,NA
+"1235","Children aged <5 years underweight (%)","NLIS_313140","Published",2011,"Africa","Burundi","Male",32,32,NA,NA,NA
+"1236","Children aged <5 years underweight (%)","NLIS_313140","Published",2011,"Africa","Burundi","Female",26.1,26.1,NA,NA,NA
+"1238","Children aged <5 years underweight (%)","NLIS_313144","Published",2011,"Eastern Mediterranean","Kuwait","Female",1.8,1.8,NA,NA,NA
+"1240","Children aged <5 years underweight (%)","NLIS_313144","Published",2012,"Eastern Mediterranean","Kuwait","Male",2.1,2.1,NA,NA,NA
+"1241","Children aged <5 years underweight (%)","NLIS_313144","Published",2012,"Eastern Mediterranean","Kuwait","Female",2.3,2.3,NA,NA,NA
+"1242","Children aged <5 years underweight (%)","NLIS_313145","Published",2010,"Africa","Swaziland","Male",6.7,6.7,NA,NA,NA
+"1244","Children aged <5 years underweight (%)","NLIS_313149","Published",2010,"Africa","Sierra Leone","Male",20.8,20.8,NA,NA,NA
+"1245","Children aged <5 years underweight (%)","NLIS_313149","Published",2010,"Africa","Sierra Leone","Female",16.5,16.5,NA,NA,NA
+"1247","Children aged <5 years underweight (%)","NLIS_313152","Published",2010,"Americas","Suriname","Male",6.2,6.2,NA,NA,NA
+"1248","Children aged <5 years underweight (%)","NLIS_313153","Published",2004,"Western Pacific","Fiji","Female",5.7,5.7,NA,NA,NA
+"1250","Children aged <5 years underweight (%)","NLIS_313156","Published",2010,"Africa","Democratic Republic of the Congo","Male",27.2,27.2,NA,NA,NA
+"1251","Children aged <5 years underweight (%)","NLIS_313156","Published",2010,"Africa","Democratic Republic of the Congo","Female",21.3,21.3,NA,NA,NA
+"1253","Children aged <5 years underweight (%)","NLIS_313160","Published",2012,"Africa","Guinea","Female",15.2,15.2,NA,NA,NA
+"1255","Children aged <5 years underweight (%)","NLIS_313165","Published",2012,"Americas","Honduras","Male",7.7,7.7,NA,NA,NA
+"1256","Children aged <5 years underweight (%)","NLIS_313165","Published",2012,"Americas","Honduras","Female",6.5,6.5,NA,NA,NA
+"1257","Children aged <5 years underweight (%)","NLIS_313168","Published",2012,"Eastern Mediterranean","Jordan","Female",2.6,2.6,NA,NA,NA
+"1259","Children aged <5 years underweight (%)","NLIS_313171","Published",2009,"Europe","Kyrgyzstan","Female",4.7,4.7,NA,NA,NA
+"1270","Children aged <5 years underweight (%)","NLIS_310214","Published",1986,"Americas","Dominican Republic","Male",11.4,11.4,NA,NA,NA
+"1271","Children aged <5 years underweight (%)","NLIS_310214","Published",1986,"Americas","Dominican Republic","Female",7.3,7.3,NA,NA,NA
+"1272","Children aged <5 years underweight (%)","NLIS_310221","Published",1986,"Americas","Colombia","Male",9,9,NA,NA,NA
+"1273","Children aged <5 years underweight (%)","NLIS_310221","Published",1986,"Americas","Colombia","Female",8.1,8.1,NA,NA,NA
+"1275","Children aged <5 years underweight (%)","NLIS_310234","Published",1989,"Americas","Brazil","Female",5.2,5.2,NA,NA,NA
+"1279","Children aged <5 years underweight (%)","NLIS_310303","Published",1987,"South-East Asia","Sri Lanka","Male",31,31,NA,NA,NA
+"1280","Children aged <5 years underweight (%)","NLIS_310303","Published",1987,"South-East Asia","Sri Lanka","Female",27.3,27.3,NA,NA,NA
+"1283","Children aged <5 years underweight (%)","NLIS_310357","Published",1983,"Western Pacific","Papua New Guinea","Male",26.2,26.2,NA,NA,NA
+"1284","Children aged <5 years underweight (%)","NLIS_310357","Published",1983,"Western Pacific","Papua New Guinea","Female",23,23,NA,NA,NA
+"1290","Children aged <5 years underweight (%)","NLIS_310414","Published",1992,"Africa","Zambia","Male",22.4,22.4,NA,NA,NA
+"1291","Children aged <5 years underweight (%)","NLIS_310414","Published",1992,"Africa","Zambia","Female",20.1,20.1,NA,NA,NA
+"1293","Children aged <5 years underweight (%)","NLIS_310427","Published",1987,"Americas","Guatemala","Male",29,29,NA,NA,NA
+"1294","Children aged <5 years underweight (%)","NLIS_310427","Published",1987,"Americas","Guatemala","Female",26.6,26.6,NA,NA,NA
+"1297","Children aged <5 years underweight (%)","NLIS_310473","Published",1992,"Africa","United Republic of Tanzania","Male",27,27,NA,NA,NA
+"1298","Children aged <5 years underweight (%)","NLIS_310537","Published",1991,"Eastern Mediterranean","Pakistan","Male",40.3,40.3,NA,NA,NA
+"1301","Children aged <5 years underweight (%)","NLIS_310878","Published",1992,"Africa","Madagascar","Male",38.3,38.3,NA,NA,NA
+"1302","Children aged <5 years underweight (%)","NLIS_310878","Published",1992,"Africa","Madagascar","Female",32.6,32.6,NA,NA,NA
+"1304","Children aged <5 years underweight (%)","NLIS_310968","Published",1993,"Africa","Burkina Faso","Male",31.7,31.7,NA,NA,NA
+"1305","Children aged <5 years underweight (%)","NLIS_310968","Published",1993,"Africa","Burkina Faso","Female",27.5,27.5,NA,NA,NA
+"1306","Children aged <5 years underweight (%)","NLIS_310998","Published",1993,"Africa","Senegal","Male",23.1,23.1,NA,NA,NA
+"1307","Children aged <5 years underweight (%)","NLIS_310998","Published",1993,"Africa","Senegal","Female",20.8,20.8,NA,NA,NA
+"1315","Children aged <5 years underweight (%)","NLIS_311387","Published",1993,"Europe","Turkey","Male",9.5,9.5,NA,NA,NA
+"1316","Children aged <5 years underweight (%)","NLIS_311387","Published",1993,"Europe","Turkey","Female",7.9,7.9,NA,NA,NA
+"1318","Children aged <5 years underweight (%)","NLIS_311422","Published",1994,"Africa","Ghana","Male",27,27,NA,NA,NA
+"1320","Children aged <5 years underweight (%)","NLIS_311474","Published",1994,"Africa","Zimbabwe","Male",13.6,13.6,NA,NA,NA
+"1321","Children aged <5 years underweight (%)","NLIS_311474","Published",1994,"Africa","Zimbabwe","Female",9.8,9.8,NA,NA,NA
+"1323","Children aged <5 years underweight (%)","NLIS_311508","Published",1993,"Eastern Mediterranean","Syrian Arab Republic","Male",12.5,12.5,NA,NA,NA
+"1324","Children aged <5 years underweight (%)","NLIS_311508","Published",1993,"Eastern Mediterranean","Syrian Arab Republic","Female",10.4,10.4,NA,NA,NA
+"1328","Children aged <5 years underweight (%)","NLIS_311539","Published",1995,"Eastern Mediterranean","Tunisia","Female",8.3,8.3,NA,NA,NA
+"1331","Children aged <5 years underweight (%)","NLIS_311560","Published",1995,"Eastern Mediterranean","Oman","Male",13.9,13.9,NA,NA,NA
+"1337","Children aged <5 years underweight (%)","NLIS_311605","Published",1995,"Eastern Mediterranean","Libya","Male",4.6,4.6,NA,NA,NA
+"1342","Children aged <5 years underweight (%)","NLIS_311648","Published",1995,"Africa","Uganda","Male",23.8,23.8,NA,NA,NA
+"1349","Children aged <5 years underweight (%)","NLIS_311711","Published",1996,"Africa","Eritrea","Male",39.4,39.4,NA,NA,NA
+"1350","Children aged <5 years underweight (%)","NLIS_311711","Published",1996,"Africa","Eritrea","Female",37.1,37.1,NA,NA,NA
+"1352","Children aged <5 years underweight (%)","NLIS_311714","Published",1996,"Africa","Benin","Female",23.8,23.8,NA,NA,NA
+"1355","Children aged <5 years underweight (%)","NLIS_311758","Published",1996,"Europe","Uzbekistan","Male",16.8,16.8,NA,NA,NA
+"1356","Children aged <5 years underweight (%)","NLIS_311758","Published",1996,"Europe","Uzbekistan","Female",13.7,13.7,NA,NA,NA
+"1359","Children aged <5 years underweight (%)","NLIS_311785","Published",1997,"Eastern Mediterranean","Yemen","Male",49.2,49.2,NA,NA,NA
+"1360","Children aged <5 years underweight (%)","NLIS_311785","Published",1997,"Eastern Mediterranean","Yemen","Female",45.8,45.8,NA,NA,NA
+"1364","Children aged <5 years underweight (%)","NLIS_311864","Published",1997,"Africa","Madagascar","Male",39.8,39.8,NA,NA,NA
+"1365","Children aged <5 years underweight (%)","NLIS_311864","Published",1997,"Africa","Madagascar","Female",31.1,31.1,NA,NA,NA
+"1368","Children aged <5 years underweight (%)","NLIS_311917","Published",1996,"Americas","Honduras","Male",18.3,18.3,NA,NA,NA
+"1369","Children aged <5 years underweight (%)","NLIS_311917","Published",1996,"Americas","Honduras","Female",20.1,20.1,NA,NA,NA
+"1371","Children aged <5 years underweight (%)","NLIS_311929","Published",1998,"Africa","Togo","Male",25.5,25.5,NA,NA,NA
+"1372","Children aged <5 years underweight (%)","NLIS_311929","Published",1998,"Africa","Togo","Female",20.9,20.9,NA,NA,NA
+"1375","Children aged <5 years underweight (%)","NLIS_311995","Published",1999,"Africa","Ghana","Male",20.7,20.7,NA,NA,NA
+"1376","Children aged <5 years underweight (%)","NLIS_311995","Published",1999,"Africa","Ghana","Female",19.9,19.9,NA,NA,NA
+"1381","Children aged <5 years underweight (%)","NLIS_312047","Published",1997,"Americas","Jamaica","Male",3.7,3.7,NA,NA,NA
+"1382","Children aged <5 years underweight (%)","NLIS_312083","Published",1996,"Africa","Angola","Male",38.2,38.2,NA,NA,NA
+"1383","Children aged <5 years underweight (%)","NLIS_312083","Published",1996,"Africa","Angola","Female",35.7,35.7,NA,NA,NA
+"1384","Children aged <5 years underweight (%)","NLIS_312101","Published",1998,"Americas","El Salvador","Male",9.9,9.9,NA,NA,NA
+"1385","Children aged <5 years underweight (%)","NLIS_312101","Published",1998,"Americas","El Salvador","Female",9.3,9.3,NA,NA,NA
+"1387","Children aged <5 years underweight (%)","NLIS_312104","Published",1999,"South-East Asia","Bangladesh","Male",53.3,53.3,NA,NA,NA
+"1388","Children aged <5 years underweight (%)","NLIS_312104","Published",1999,"South-East Asia","Bangladesh","Female",50.5,50.5,NA,NA,NA
+"1391","Children aged <5 years underweight (%)","NLIS_312138","Published",1999,"Africa","Guinea","Male",21.3,21.3,NA,NA,NA
+"1392","Children aged <5 years underweight (%)","NLIS_312138","Published",1999,"Africa","Guinea","Female",21,21,NA,NA,NA
+"1395","Children aged <5 years underweight (%)","NLIS_312181","Published",1999,"Europe","Kazakhstan","Male",3.8,3.8,NA,NA,NA
+"1396","Children aged <5 years underweight (%)","NLIS_312182","Published",1999,"Africa","United Republic of Tanzania","Female",26.8,26.8,NA,NA,NA
+"1398","Children aged <5 years underweight (%)","NLIS_312197","Published",1999,"Africa","Zimbabwe","Male",12.6,12.6,NA,NA,NA
+"1399","Children aged <5 years underweight (%)","NLIS_312197","Published",1999,"Africa","Zimbabwe","Female",10.4,10.4,NA,NA,NA
+"1401","Children aged <5 years underweight (%)","NLIS_312220","Published",2000,"Africa","Ethiopia","Female",39.6,39.6,NA,NA,NA
+"1404","Children aged <5 years underweight (%)","NLIS_312276","Published",2000,"Americas","Haiti","Male",15.7,15.7,NA,NA,NA
+"1405","Children aged <5 years underweight (%)","NLIS_312276","Published",2000,"Americas","Haiti","Female",12.2,12.2,NA,NA,NA
+"1407","Children aged <5 years underweight (%)","NLIS_312280","Published",2000,"South-East Asia","Bangladesh","Male",41.4,41.4,NA,NA,NA
+"1408","Children aged <5 years underweight (%)","NLIS_312280","Published",2000,"South-East Asia","Bangladesh","Female",43.2,43.2,NA,NA,NA
+"1410","Children aged <5 years underweight (%)","NLIS_312318","Published",1999,"Africa","Côte d'Ivoire","Male",16.7,16.7,NA,NA,NA
+"1411","Children aged <5 years underweight (%)","NLIS_312318","Published",1999,"Africa","Côte d'Ivoire","Female",19.7,19.7,NA,NA,NA
+"1413","Children aged <5 years underweight (%)","NLIS_312321","Published",2000,"Africa","Rwanda","Male",22.4,22.4,NA,NA,NA
+"1414","Children aged <5 years underweight (%)","NLIS_312321","Published",2000,"Africa","Rwanda","Female",18.3,18.3,NA,NA,NA
+"1415","Children aged <5 years underweight (%)","NLIS_312352","Published",2000,"Americas","Suriname","Male",12.6,12.6,NA,NA,NA
+"1417","Children aged <5 years underweight (%)","NLIS_312357","Published",2001,"Africa","Benin","Male",23.5,23.5,NA,NA,NA
+"1418","Children aged <5 years underweight (%)","NLIS_312357","Published",2001,"Africa","Benin","Female",19.6,19.6,NA,NA,NA
+"1420","Children aged <5 years underweight (%)","NLIS_312360","Published",2000,"Africa","Burundi","Male",38.8,38.8,NA,NA,NA
+"1421","Children aged <5 years underweight (%)","NLIS_312361","Published",2000,"Europe","Albania","Female",14.2,14.2,NA,NA,NA
+"1423","Children aged <5 years underweight (%)","NLIS_312364","Published",1999,"Americas","Jamaica","Male",2.2,2.2,NA,NA,NA
+"1424","Children aged <5 years underweight (%)","NLIS_312364","Published",1999,"Americas","Jamaica","Female",2.5,2.5,NA,NA,NA
+"1426","Children aged <5 years underweight (%)","NLIS_312368","Published",2000,"Africa","Senegal","Female",19.2,19.2,NA,NA,NA
+"1428","Children aged <5 years underweight (%)","NLIS_312371","Published",1989,"South-East Asia","Indonesia","Male",36.4,36.4,NA,NA,NA
+"1429","Children aged <5 years underweight (%)","NLIS_312371","Published",1989,"South-East Asia","Indonesia","Female",25.4,25.4,NA,NA,NA
+"1431","Children aged <5 years underweight (%)","NLIS_312371","Published",1992,"South-East Asia","Indonesia","Male",33.6,33.6,NA,NA,NA
+"1433","Children aged <5 years underweight (%)","NLIS_312393","Published",2001,"Africa","Democratic Republic of the Congo","Male",36.5,36.5,NA,NA,NA
+"1434","Children aged <5 years underweight (%)","NLIS_312393","Published",2001,"Africa","Democratic Republic of the Congo","Female",30.7,30.7,NA,NA,NA
+"1436","Children aged <5 years underweight (%)","NLIS_312433","Published",1998,"Americas","Nicaragua","Male",11.2,11.2,NA,NA,NA
+"1437","Children aged <5 years underweight (%)","NLIS_312433","Published",1998,"Americas","Nicaragua","Female",8.9,8.9,NA,NA,NA
+"1440","Children aged <5 years underweight (%)","NLIS_312477","Published",2001,"Europe","Romania","Female",3,3,NA,NA,NA
+"1442","Children aged <5 years underweight (%)","NLIS_312477","Published",2002,"Europe","Romania","Male",4,4,NA,NA,NA
+"1443","Children aged <5 years underweight (%)","NLIS_312477","Published",2002,"Europe","Romania","Female",2.9,2.9,NA,NA,NA
+"1444","Children aged <5 years underweight (%)","NLIS_312490","Published",2002,"Africa","Zambia","Male",24.4,24.4,NA,NA,NA
+"1445","Children aged <5 years underweight (%)","NLIS_312490","Published",2002,"Africa","Zambia","Female",22.3,22.3,NA,NA,NA
+"1447","Children aged <5 years underweight (%)","NLIS_312494","Published",2002,"Africa","Eritrea","Male",35.9,35.9,NA,NA,NA
+"1448","Children aged <5 years underweight (%)","NLIS_312494","Published",2002,"Africa","Eritrea","Female",33,33,NA,NA,NA
+"1450","Children aged <5 years underweight (%)","NLIS_312516","Published",2003,"Americas","El Salvador","Female",5.3,5.3,NA,NA,NA
+"1452","Children aged <5 years underweight (%)","NLIS_312526","Published",2000,"Americas","Trinidad and Tobago","Male",4.4,4.4,NA,NA,NA
+"1453","Children aged <5 years underweight (%)","NLIS_312526","Published",2000,"Americas","Trinidad and Tobago","Female",4.3,4.3,NA,NA,NA
+"1455","Children aged <5 years underweight (%)","NLIS_312535","Published",2001,"South-East Asia","Indonesia","Male",22.9,22.9,NA,NA,NA
+"1458","Children aged <5 years underweight (%)","NLIS_312557","Published",2000,"Africa","Namibia","Male",21.2,21.2,NA,NA,NA
+"1459","Children aged <5 years underweight (%)","NLIS_312557","Published",2000,"Africa","Namibia","Female",19.4,19.4,NA,NA,NA
+"1462","Children aged <5 years underweight (%)","NLIS_312589","Published",2003,"Africa","Nigeria","Male",29.1,29.1,NA,NA,NA
+"1463","Children aged <5 years underweight (%)","NLIS_312589","Published",2003,"Africa","Nigeria","Female",25.4,25.4,NA,NA,NA
+"1465","Children aged <5 years underweight (%)","NLIS_312627","Published",2003,"Eastern Mediterranean","Egypt","Female",7,7,NA,NA,NA
+"1467","Children aged <5 years underweight (%)","NLIS_312634","Published",2000,"South-East Asia","Sri Lanka","Male",22,22,NA,NA,NA
+"1468","Children aged <5 years underweight (%)","NLIS_312634","Published",2000,"South-East Asia","Sri Lanka","Female",23.8,23.8,NA,NA,NA
+"1469","Children aged <5 years underweight (%)","NLIS_312654","Published",2000,"South-East Asia","Myanmar","Male",31.7,31.7,NA,NA,NA
+"1470","Children aged <5 years underweight (%)","NLIS_312661","Published",2003,"South-East Asia","Myanmar","Female",28.2,28.2,NA,NA,NA
+"1474","Children aged <5 years underweight (%)","NLIS_312690","Published",2004,"Eastern Mediterranean","Morocco","Female",9.2,9.2,NA,NA,NA
+"1476","Children aged <5 years underweight (%)","NLIS_312705","Published",2004,"South-East Asia","Bangladesh","Male",42.8,42.8,NA,NA,NA
+"1477","Children aged <5 years underweight (%)","NLIS_312705","Published",2004,"South-East Asia","Bangladesh","Female",42.7,42.7,NA,NA,NA
+"1479","Children aged <5 years underweight (%)","NLIS_312757","Published",2000,"Africa","Equatorial Guinea","Female",14.6,14.6,NA,NA,NA
+"1481","Children aged <5 years underweight (%)","NLIS_312760","Published",2004,"Africa","Chad","Male",35,35,NA,NA,NA
+"1482","Children aged <5 years underweight (%)","NLIS_312760","Published",2004,"Africa","Chad","Female",32.9,32.9,NA,NA,NA
+"1483","Children aged <5 years underweight (%)","NLIS_312765","Published",2005,"Africa","Senegal","Male",14.4,14.4,NA,NA,NA
+"1484","Children aged <5 years underweight (%)","NLIS_312765","Published",2005,"Africa","Senegal","Female",14.6,14.6,NA,NA,NA
+"1486","Children aged <5 years underweight (%)","NLIS_312768","Published",2004,"Europe","Bulgaria","Male",1.3,1.3,NA,NA,NA
+"1487","Children aged <5 years underweight (%)","NLIS_312768","Published",2004,"Europe","Bulgaria","Female",1.9,1.9,NA,NA,NA
+"1488","Children aged <5 years underweight (%)","NLIS_312772","Published",2003,"Western Pacific","Philippines","Male",20.3,20.3,NA,NA,NA
+"1489","Children aged <5 years underweight (%)","NLIS_312772","Published",2003,"Western Pacific","Philippines","Female",21.3,21.3,NA,NA,NA
+"1491","Children aged <5 years underweight (%)","NLIS_312775","Published",2002,"Americas","Jamaica","Male",2.5,2.5,NA,NA,NA
+"1492","Children aged <5 years underweight (%)","NLIS_312775","Published",2002,"Americas","Jamaica","Female",2.6,2.6,NA,NA,NA
+"1494","Children aged <5 years underweight (%)","NLIS_312780","Published",2000,"Western Pacific","Viet Nam","Male",26.6,26.6,NA,NA,NA
+"1495","Children aged <5 years underweight (%)","NLIS_312781","Published",2004,"Europe","Turkey","Female",3.9,3.9,NA,NA,NA
+"1497","Children aged <5 years underweight (%)","NLIS_312784","Published",2005,"South-East Asia","Bangladesh","Male",38.9,38.9,NA,NA,NA
+"1498","Children aged <5 years underweight (%)","NLIS_312784","Published",2005,"South-East Asia","Bangladesh","Female",39.5,39.5,NA,NA,NA
+"1500","Children aged <5 years underweight (%)","NLIS_312789","Published",2002,"Western Pacific","China","Female",6.5,6.5,NA,NA,NA
+"1502","Children aged <5 years underweight (%)","NLIS_312792","Published",2006,"Americas","Haiti","Male",20.4,20.4,NA,NA,NA
+"1503","Children aged <5 years underweight (%)","NLIS_312792","Published",2006,"Americas","Haiti","Female",17.4,17.4,NA,NA,NA
+"1505","Children aged <5 years underweight (%)","NLIS_312794","Published",2001,"South-East Asia","Indonesia","Male",24.4,24.4,NA,NA,NA
+"1506","Children aged <5 years underweight (%)","NLIS_312794","Published",2001,"South-East Asia","Indonesia","Female",22.4,22.4,NA,NA,NA
+"1508","Children aged <5 years underweight (%)","NLIS_312798","Published",2005,"Africa","Lesotho","Male",17.3,17.3,NA,NA,NA
+"1509","Children aged <5 years underweight (%)","NLIS_312798","Published",2005,"Africa","Lesotho","Female",15.9,15.9,NA,NA,NA
+"1511","Children aged <5 years underweight (%)","NLIS_312801","Published",2006,"Western Pacific","Cambodia","Male",29.8,29.8,NA,NA,NA
+"1512","Children aged <5 years underweight (%)","NLIS_312809","Published",2005,"Eastern Mediterranean","Saudi Arabia","Female",4.5,4.5,NA,NA,NA
+"1514","Children aged <5 years underweight (%)","NLIS_312825","Published",2006,"Eastern Mediterranean","Iraq","Male",7.7,7.7,NA,NA,NA
+"1515","Children aged <5 years underweight (%)","NLIS_312825","Published",2006,"Eastern Mediterranean","Iraq","Female",6.6,6.6,NA,NA,NA
+"1517","Children aged <5 years underweight (%)","NLIS_312831","Published",1992,"South-East Asia","Bangladesh","Female",63.9,63.9,NA,NA,NA
+"1519","Children aged <5 years underweight (%)","NLIS_312836","Published",1995,"South-East Asia","Bangladesh","Male",57.4,57.4,NA,NA,NA
+"1520","Children aged <5 years underweight (%)","NLIS_312836","Published",1995,"South-East Asia","Bangladesh","Female",58.6,58.6,NA,NA,NA
+"1521","Children aged <5 years underweight (%)","NLIS_312850","Published",2004,"Africa","Equatorial Guinea","Male",11.3,11.3,NA,NA,NA
+"1522","Children aged <5 years underweight (%)","NLIS_312850","Published",2004,"Africa","Equatorial Guinea","Female",9.9,9.9,NA,NA,NA
+"1524","Children aged <5 years underweight (%)","NLIS_312853","Published",2006,"Europe","Montenegro","Male",2.8,2.8,NA,NA,NA
+"1525","Children aged <5 years underweight (%)","NLIS_312853","Published",2006,"Europe","Montenegro","Female",1.6,1.6,NA,NA,NA
+"1528","Children aged <5 years underweight (%)","NLIS_312861","Published",2006,"Africa","Gambia","Male",16.7,16.7,NA,NA,NA
+"1529","Children aged <5 years underweight (%)","NLIS_312861","Published",2006,"Africa","Gambia","Female",15,15,NA,NA,NA
+"1531","Children aged <5 years underweight (%)","NLIS_312870","Published",2007,"Americas","Brazil","Male",2.2,2.2,NA,NA,NA
+"1532","Children aged <5 years underweight (%)","NLIS_312872","Published",2005,"Western Pacific","Mongolia","Female",5.3,5.3,NA,NA,NA
+"1534","Children aged <5 years underweight (%)","NLIS_312875","Published",2001,"Eastern Mediterranean","Syrian Arab Republic","Male",12.7,12.7,NA,NA,NA
+"1535","Children aged <5 years underweight (%)","NLIS_312875","Published",2001,"Eastern Mediterranean","Syrian Arab Republic","Female",9.4,9.4,NA,NA,NA
+"1537","Children aged <5 years underweight (%)","NLIS_312880","Published",2006,"Eastern Mediterranean","Syrian Arab Republic","Male",11.5,11.5,NA,NA,NA
+"1538","Children aged <5 years underweight (%)","NLIS_312881","Published",2006,"Americas","Belize","Female",5.7,5.7,NA,NA,NA
+"1540","Children aged <5 years underweight (%)","NLIS_312884","Published",2006,"Africa","Guinea-Bissau","Male",18.2,18.2,NA,NA,NA
+"1541","Children aged <5 years underweight (%)","NLIS_312884","Published",2006,"Africa","Guinea-Bissau","Female",16.7,16.7,NA,NA,NA
+"1543","Children aged <5 years underweight (%)","NLIS_312888","Published",2007,"Africa","Democratic Republic of the Congo","Female",26.1,26.1,NA,NA,NA
+"1545","Children aged <5 years underweight (%)","NLIS_312891","Published",2003,"Eastern Mediterranean","Yemen","Male",44.3,44.3,NA,NA,NA
+"1546","Children aged <5 years underweight (%)","NLIS_312891","Published",2003,"Eastern Mediterranean","Yemen","Female",41.8,41.8,NA,NA,NA
+"1547","Children aged <5 years underweight (%)","NLIS_312896","Published",2006,"Africa","Cameroon","Male",18.9,18.9,NA,NA,NA
+"1548","Children aged <5 years underweight (%)","NLIS_312896","Published",2006,"Africa","Cameroon","Female",14.3,14.3,NA,NA,NA
+"1550","Children aged <5 years underweight (%)","NLIS_312909","Published",2006,"Americas","Jamaica","Male",2.3,2.3,NA,NA,NA
+"1551","Children aged <5 years underweight (%)","NLIS_312909","Published",2006,"Americas","Jamaica","Female",5.1,5.1,NA,NA,NA
+"1553","Children aged <5 years underweight (%)","NLIS_312915","Published",1999,"Africa","Zambia","Male",22.2,22.2,NA,NA,NA
+"1554","Children aged <5 years underweight (%)","NLIS_312915","Published",1999,"Africa","Zambia","Female",16.7,16.7,NA,NA,NA
+"1556","Children aged <5 years underweight (%)","NLIS_312918","Published",2006,"Africa","Burkina Faso","Male",39.5,39.5,NA,NA,NA
+"1558","Children aged <5 years underweight (%)","NLIS_312922","Published",2007,"South-East Asia","Sri Lanka","Male",21.8,21.8,NA,NA,NA
+"1559","Children aged <5 years underweight (%)","NLIS_312922","Published",2007,"South-East Asia","Sri Lanka","Female",20.4,20.4,NA,NA,NA
+"1561","Children aged <5 years underweight (%)","NLIS_312925","Published",2008,"Eastern Mediterranean","Egypt","Male",8.1,8.1,NA,NA,NA
+"1562","Children aged <5 years underweight (%)","NLIS_312928","Published",2007,"South-East Asia","Bangladesh","Female",42.4,42.4,NA,NA,NA
+"1564","Children aged <5 years underweight (%)","NLIS_312933","Published",2006,"Europe","Azerbaijan","Male",8.7,8.7,NA,NA,NA
+"1565","Children aged <5 years underweight (%)","NLIS_312933","Published",2006,"Europe","Azerbaijan","Female",8,8,NA,NA,NA
+"1567","Children aged <5 years underweight (%)","NLIS_312951","Published",1999,"Western Pacific","Viet Nam","Male",31.9,31.9,NA,NA,NA
+"1568","Children aged <5 years underweight (%)","NLIS_312951","Published",1999,"Western Pacific","Viet Nam","Female",30.3,30.3,NA,NA,NA
+"1570","Children aged <5 years underweight (%)","NLIS_312951","Published",2000,"Western Pacific","Viet Nam","Male",31.6,31.6,NA,NA,NA
+"1572","Children aged <5 years underweight (%)","NLIS_312951","Published",2006,"Western Pacific","Viet Nam","Male",22.2,22.2,NA,NA,NA
+"1573","Children aged <5 years underweight (%)","NLIS_312951","Published",2006,"Western Pacific","Viet Nam","Female",21.9,21.9,NA,NA,NA
+"1576","Children aged <5 years underweight (%)","NLIS_312964","Published",2008,"Africa","Nigeria","Male",28.6,28.6,NA,NA,NA
+"1577","Children aged <5 years underweight (%)","NLIS_312964","Published",2008,"Africa","Nigeria","Female",24.8,24.8,NA,NA,NA
+"1579","Children aged <5 years underweight (%)","NLIS_312971","Published",2008,"Africa","Sierra Leone","Male",24.2,24.2,NA,NA,NA
+"1581","Children aged <5 years underweight (%)","NLIS_313004","Published",1995,"Western Pacific","China","Male",11.6,11.6,NA,NA,NA
+"1582","Children aged <5 years underweight (%)","NLIS_313004","Published",1995,"Western Pacific","China","Female",9.6,9.6,NA,NA,NA
+"1584","Children aged <5 years underweight (%)","NLIS_313007","Published",2005,"Western Pacific","China","Male",4.7,4.7,NA,NA,NA
+"1585","Children aged <5 years underweight (%)","NLIS_313010","Published",2003,"Eastern Mediterranean","Kuwait","Female",1.9,1.9,NA,NA,NA
+"1587","Children aged <5 years underweight (%)","NLIS_313010","Published",2004,"Eastern Mediterranean","Kuwait","Male",2.9,2.9,NA,NA,NA
+"1588","Children aged <5 years underweight (%)","NLIS_313010","Published",2004,"Eastern Mediterranean","Kuwait","Female",2.7,2.7,NA,NA,NA
+"1591","Children aged <5 years underweight (%)","NLIS_313039","Published",2009,"Africa","Burkina Faso","Male",27.1,27.1,NA,NA,NA
+"1592","Children aged <5 years underweight (%)","NLIS_313055","Published",2009,"Eastern Mediterranean","Oman","Female",8.3,8.3,NA,NA,NA
+"1594","Children aged <5 years underweight (%)","NLIS_313067","Published",2010,"Americas","Colombia","Male",3.5,3.5,NA,NA,NA
+"1595","Children aged <5 years underweight (%)","NLIS_313067","Published",2010,"Americas","Colombia","Female",3.3,3.3,NA,NA,NA
+"1597","Children aged <5 years underweight (%)","NLIS_313070","Published",2008,"Americas","El Salvador","Male",6.5,6.5,NA,NA,NA
+"1598","Children aged <5 years underweight (%)","NLIS_313070","Published",2008,"Americas","El Salvador","Female",6.7,6.7,NA,NA,NA
+"1600","Children aged <5 years underweight (%)","NLIS_313073","Published",2009,"Americas","Costa Rica","Male",0.6,0.6,NA,NA,NA
+"1601","Children aged <5 years underweight (%)","NLIS_313074","Published",2009,"South-East Asia","Democratic People's Republic of Korea","Female",18.8,18.8,NA,NA,NA
+"1606","Children aged <5 years underweight (%)","NLIS_313095","Published",2008,"Africa","Mozambique","Male",20.6,20.6,NA,NA,NA
+"1607","Children aged <5 years underweight (%)","NLIS_313097","Published",2011,"Western Pacific","Cambodia","Female",29.1,29.1,NA,NA,NA
+"1609","Children aged <5 years underweight (%)","NLIS_313100","Published",2010,"Africa","Malawi","Male",15.2,15.2,NA,NA,NA
+"1610","Children aged <5 years underweight (%)","NLIS_313100","Published",2010,"Africa","Malawi","Female",12.6,12.6,NA,NA,NA
+"1612","Children aged <5 years underweight (%)","NLIS_313102","Published",2010,"Western Pacific","China","Male",3.5,3.5,NA,NA,NA
+"1613","Children aged <5 years underweight (%)","NLIS_313102","Published",2010,"Western Pacific","China","Female",3.3,3.3,NA,NA,NA
+"1615","Children aged <5 years underweight (%)","NLIS_313110","Published",2011,"Africa","Zimbabwe","Female",8.7,8.7,NA,NA,NA
+"1617","Children aged <5 years underweight (%)","NLIS_313114","Published",2011,"South-East Asia","Nepal","Male",29.8,29.8,NA,NA,NA
+"1618","Children aged <5 years underweight (%)","NLIS_313114","Published",2011,"South-East Asia","Nepal","Female",28.4,28.4,NA,NA,NA
+"1620","Children aged <5 years underweight (%)","NLIS_313117","Published",2010,"Europe","Armenia","Male",4.7,4.7,NA,NA,NA
+"1621","Children aged <5 years underweight (%)","NLIS_313118","Published",2011,"Africa","Senegal","Female",18.8,18.8,NA,NA,NA
+"1624","Children aged <5 years underweight (%)","NLIS_313123","Published",2010,"South-East Asia","Myanmar","Male",23,23,NA,NA,NA
+"1625","Children aged <5 years underweight (%)","NLIS_313123","Published",2010,"South-East Asia","Myanmar","Female",22.1,22.1,NA,NA,NA
+"1627","Children aged <5 years underweight (%)","NLIS_313127","Published",1999,"Americas","Uruguay","Male",6.1,6.1,NA,NA,NA
+"1629","Children aged <5 years underweight (%)","NLIS_313129","Published",2010,"Americas","Jamaica","Female",2.6,2.6,NA,NA,NA
+"1631","Children aged <5 years underweight (%)","NLIS_313133","Published",2011,"Western Pacific","Viet Nam","Male",11.8,11.8,NA,NA,NA
+"1632","Children aged <5 years underweight (%)","NLIS_313133","Published",2011,"Western Pacific","Viet Nam","Female",12.1,12.1,NA,NA,NA
+"1634","Children aged <5 years underweight (%)","NLIS_313139","Published",2012,"Americas","Mexico","Female",2.8,2.8,NA,NA,NA
+"1636","Children aged <5 years underweight (%)","NLIS_313142","Published",2008,"Americas","Jamaica","Male",3,3,NA,NA,NA
+"1637","Children aged <5 years underweight (%)","NLIS_313142","Published",2008,"Americas","Jamaica","Female",0.9,0.9,NA,NA,NA
+"1639","Children aged <5 years underweight (%)","NLIS_313147","Published",2012,"Africa","Mauritania","Male",21.8,21.8,NA,NA,NA
+"1640","Children aged <5 years underweight (%)","NLIS_313147","Published",2012,"Africa","Mauritania","Female",17.2,17.2,NA,NA,NA
+"1641","Children aged <5 years underweight (%)","NLIS_313151","Published",2006,"Eastern Mediterranean","Sudan","Male",28.1,28.1,NA,NA,NA
+"1642","Children aged <5 years underweight (%)","NLIS_313151","Published",2006,"Eastern Mediterranean","Sudan","Female",25.9,25.9,NA,NA,NA
+"1644","Children aged <5 years underweight (%)","NLIS_313154","Published",2011,"Americas","Belize","Male",5.7,5.7,NA,NA,NA
+"1645","Children aged <5 years underweight (%)","NLIS_313154","Published",2011,"Americas","Belize","Female",6.6,6.6,NA,NA,NA
+"1647","Children aged <5 years underweight (%)","NLIS_313158","Published",2012,"Europe","Bosnia and Herzegovina","Male",1.8,1.8,NA,NA,NA
+"1648","Children aged <5 years underweight (%)","NLIS_313158","Published",2012,"Europe","Bosnia and Herzegovina","Female",1.3,1.3,NA,NA,NA
+"1650","Children aged <5 years underweight (%)","NLIS_313162","Published",2012,"Africa","Gabon","Male",7.9,7.9,NA,NA,NA
+"1652","Children aged <5 years underweight (%)","NLIS_313167","Published",2011,"Africa","United Republic of Tanzania","Female",12.9,12.9,NA,NA,NA
+"1654","Children aged <5 years underweight (%)","NLIS_313169","Published",2010,"Western Pacific","Viet Nam","Male",18.4,18.4,NA,NA,NA
+"1655","Children aged <5 years underweight (%)","NLIS_313144","Published",2011,"Eastern Mediterranean","Kuwait","Male",2.4,2.4,NA,NA,NA
+"1658","Children aged <5 years underweight (%)","NLIS_313146","Published",2011,"Africa","Mozambique","Female",13.6,13.6,NA,NA,NA
+"1659","Children aged <5 years underweight (%)","NLIS_313148","Published",2010,"Africa","Togo","Male",18.4,18.4,NA,NA,NA
+"1661","Children aged <5 years underweight (%)","NLIS_313150","Published",2006,"Eastern Mediterranean","South Sudan","Female",28.7,28.7,NA,NA,NA
+"1663","Children aged <5 years underweight (%)","NLIS_313155","Published",2010,"Europe","Serbia","Male",1.5,1.5,NA,NA,NA
+"1664","Children aged <5 years underweight (%)","NLIS_313157","Published",2011,"Africa","Nigeria","Female",24.1,24.1,NA,NA,NA
+"1665","Children aged <5 years underweight (%)","NLIS_313159","Published",2011,"Europe","Kazakhstan","Male",3.7,3.7,NA,NA,NA
+"1667","Children aged <5 years underweight (%)","NLIS_313162","Published",2012,"Africa","Gabon","Female",5,5,NA,NA,NA
+"1668","Children aged <5 years underweight (%)","NLIS_313163","Published",2012,"Americas","Haiti","Male",12.5,12.5,NA,NA,NA
+"1670","Children aged <5 years underweight (%)","NLIS_313167","Published",2009,"Africa","United Republic of Tanzania","Female",15.1,15.1,NA,NA,NA
+"1671","Children aged <5 years underweight (%)","NLIS_313167","Published",2011,"Africa","United Republic of Tanzania","Male",14.2,14.2,NA,NA,NA
+"1672","Children aged <5 years underweight (%)","NLIS_313168","Published",2012,"Eastern Mediterranean","Jordan","Male",3.4,3.4,NA,NA,NA
+"1674","Children aged <5 years underweight (%)","NLIS_313170","Published",2009,"Europe","Tajikistan","Male",9,9,NA,NA,NA
+"1676","Children aged <5 years underweight (%)","NLIS_313159","Published",2011,"Europe","Kazakhstan","Female",3.6,3.6,NA,NA,NA
+"1677","Children aged <5 years underweight (%)","NLIS_313160","Published",2012,"Africa","Guinea","Male",17.3,17.3,NA,NA,NA
+"1679","Children aged <5 years underweight (%)","NLIS_313163","Published",2012,"Americas","Haiti","Female",10.7,10.7,NA,NA,NA
+"1680","Children aged <5 years underweight (%)","NLIS_313167","Published",2009,"Africa","United Republic of Tanzania","Male",16.8,16.8,NA,NA,NA
+"1682","Children aged <5 years underweight (%)","NLIS_313169","Published",2010,"Western Pacific","Viet Nam","Female",16.6,16.6,NA,NA,NA
+"1683","Children aged <5 years underweight (%)","NLIS_313170","Published",2009,"Europe","Tajikistan","Female",7.7,7.7,NA,NA,NA
+"1684","Children aged <5 years underweight (%)","NLIS_313171","Published",2009,"Europe","Kyrgyzstan","Male",4.7,4.7,NA,NA,NA
