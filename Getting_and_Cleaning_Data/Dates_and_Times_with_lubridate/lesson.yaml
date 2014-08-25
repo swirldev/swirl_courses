@@ -10,6 +10,15 @@
   Output: In this lesson, we'll explore the lubridate R package, by Garrett Grolemund and Hadley Wickham. According to the package authors, "lubridate has a consistent, memorable syntax, that makes working with dates fun instead of frustrating." If you've ever worked with dates in R, that statement probably has your attention.
 
 - Class: cmd_question
+  Output: Unfortunately, due to different date and time representations, this lesson is only guaranteed to work with an "en_US.UTF-8" locale. To view your locale, type Sys.getlocale("LC_TIME").
+  CorrectAnswer: Sys.getlocale("LC_TIME")
+  AnswerTests: start_timer(); omnitest(correctExpr='Sys.getlocale("LC_TIME")')
+  Hint: Type Sys.getlocale("LC_TIME") to view your time locale.
+
+- Class: text
+  Output: If the output above is not "en_US.UTF-8", this lesson is not guaranteed to work correctly. Of course, you are welcome to try it anyways. We apologize for this inconvenience.
+
+- Class: cmd_question
   Output: lubridate was automatically installed (if necessary) and loaded upon starting this lesson. To build the habit, we'll go ahead and (re)load the package now. Type library(lubridate) to do so.
   CorrectAnswer: library(lubridate)
   AnswerTests: start_timer(); omnitest(correctExpr='library(lubridate)')
