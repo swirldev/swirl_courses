@@ -40,6 +40,15 @@
   Hint: Use library(dplyr) to load the dplyr package.
 
 - Class: cmd_question
+  Output: It's important that you have dplyr version 2.0 or later. To confirm this, type packageVersion("dplyr").
+  CorrectAnswer: packageVersion("dplyr")
+  AnswerTests: omnitest(correctExpr='packageVersion("dplyr")')
+  Hint: Check what version of dplyr you have with packageVersion("dplyr").
+
+- Class: text
+  Output: If your dplyr version is not at least 2.0, then you should hit the Esc key now, reinstall dplyr, then resume this lesson where you left off.
+
+- Class: cmd_question
   Output: "The first step of working with data in dplyr is to load the data into what the package authors call a 'data frame tbl' or 'tbl_df'. Use the following code to create a new tbl_df called cran: \n\ncran <- tbl_df(mydf)."
   CorrectAnswer: cran <- tbl_df(mydf)
   AnswerTests: omnitest(correctExpr='cran <- tbl_df(mydf)')
