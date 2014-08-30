@@ -5,4 +5,6 @@
 file.copy(from=file.path(find.package("swirl"),
                          "Courses/Regression_Models/MultiVar_Examples3/hunger.csv"),
           to="hunger.csv")
-hunger <-read.csv(paste(getwd(),"hunger.csv",sep="/"))
+                         
+hunger <-read.csv(file.path(find.package("swirl"),
+                            "Courses/Regression_Models/MultiVar_Examples3/hunger.csv"))
