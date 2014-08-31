@@ -85,7 +85,7 @@
 
 - Class: cmd_question
   Output: "In order to negate boolean expressions you can use the NOT operator. An exclamation point `!` will cause
-    !TRUE (say: not true) to evaluate to FALSE and !FALSE (say > not false) to evaluate to TRUE. Try using the NOT
+    !TRUE (say: not true) to evaluate to FALSE and !FALSE (say: not false) to evaluate to TRUE. Try using the NOT
     operator and the equals operator to find the opposite of whether 5 is equal to 7."
   CorrectAnswer: '!5 == 7'
   AnswerTests: omnitest(correctExpr='!5 == 7')
