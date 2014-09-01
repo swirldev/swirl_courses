@@ -73,9 +73,9 @@
   Output: Instead of returning a single value, summarize() now returns the mean size for EACH package in our dataset.
 
 - Class: script
-  Output: "Let's take it a step further. I just opened an R script for you that contains a partially constructed call to summarize(). Follow the instructions in the script comments.\n\nWhen you are ready to move on, type submit(), or type reset() to reset the script to its original state."
+  Output: "Let's take it a step further. I just opened an R script for you that contains a partially constructed call to summarize(). Follow the instructions in the script comments.\n\nWhen you are ready to move on, save the script and type submit(), or type reset() to reset the script to its original state."
   AnswerTests: script_results_identical('pack_sum'); multi_expr_creates_var('pack_sum')
-  Hint: Follow the directions in the script comments very carefully. If R gave you an error above, try to understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then submit() when you are ready.
+  Hint: Follow the directions in the script comments very carefully. If R gave you an error above, try to understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then save the script and type submit() when you are ready.
   Script: summarize1.R
 
 - Class: cmd_question
@@ -204,25 +204,25 @@
 - Class: script
   Output: Let's build a chain of dplyr commands one step at a time, starting with the script I just opened for you.
   AnswerTests: script_vals_identical()
-  Hint: Follow the directions in the script comments very carefully. If R gave you an error above, try to understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then submit() when you are ready.
+  Hint: Follow the directions in the script comments very carefully. If R gave you an error above, try to understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then save the script and type submit() when you are ready.
   Script: chain1.R
 
 - Class: script
   Output: Let's add to the chain.
   AnswerTests: script_vals_identical()
-  Hint: Follow the directions in the script comments very carefully. If R gave you an error above, try to understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then submit() when you are ready.
+  Hint: Follow the directions in the script comments very carefully. If R gave you an error above, try to understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then save the script and type submit() when you are ready.
   Script: chain2.R
 
 - Class: script
   Output: A little bit more now.
   AnswerTests: script_vals_identical()
-  Hint: Follow the directions in the script comments very carefully. If R gave you an error above, try to understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then submit() when you are ready.
+  Hint: Follow the directions in the script comments very carefully. If R gave you an error above, try to understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then save the script and type submit() when you are ready.
   Script: chain3.R
 
 - Class: script
   Output: And finish it off.
   AnswerTests: script_vals_identical()
-  Hint: Follow the directions in the script comments very carefully. If R gave you an error above, try to understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then submit() when you are ready.
+  Hint: Follow the directions in the script comments very carefully. If R gave you an error above, try to understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then save the script and type submit() when you are ready.
   Script: chain4.R
 
 - Class: text
