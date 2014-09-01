@@ -39,7 +39,7 @@
   Hint: Use the equality operator and type 6 == 7
 
 - Class: text
-  Output: Of course the previous expression evaluates to FALSE becase 6 is less than 7. Thankfully there
+  Output: The previous expression evaluates to FALSE because 6 is less than 7. Thankfully, there
     are inequality operators that allow us to test if a value is less than or greater than another value.
 
 - Class: cmd_question
@@ -52,7 +52,7 @@
 
 - Class: cmd_question
   Output: There is also a less-than-or-equal-to operator `<=` which tests whether the left operand 
-    is less than the right operand. Write an expression to test whether 10 is less than or equal to 10.
+    is less than or equal to the right operand. Write an expression to test whether 10 is less than or equal to 10.
   CorrectAnswer: 10 <= 10
   AnswerTests: omnitest(correctExpr='10 <= 10')
   Hint: Use the `<=` operator and type 10 <= 10
@@ -62,21 +62,21 @@
     `>=` operators.
 
 - Class: mult_question
-  Output: 'Just to review: which of the followig evaluates to FALSE?'
+  Output: 'Which of the following evaluates to FALSE?'
   CorrectAnswer: 9 >= 10
   AnswerChoices: 9 >= 10; 7 == 7; 6 < 8; 0 > -36 
   AnswerTests: omnitest(correctVal='9 >= 10')
-  Hint: 'If you need to: evaluate each expression yourself to find the correct answer.'
+  Hint: 'If you need to, you can evaluate each expression in a separate R session to find the correct answer.'
 
 - Class: mult_question
-  Output: 'Just to review: which of the followig evaluates to TRUE?'
+  Output: 'Which of the following evaluates to TRUE?'
   CorrectAnswer: 9 >= 10
   AnswerChoices: 9 >= 10; 7 == 9; 57 < 8; -6 > -7 
   AnswerTests: omnitest(correctVal='-6 > -7')
-  Hint: 'If you need to: evaluate each expression yourself to find the correct answer.'
+  Hint: 'If you need to, you can evaluate each expression in a separate R session to find the correct answer.'
 
 - Class: cmd_question
-  Output: The next operator we will discuss is the not equals operator represented by `!=`. Not equals tests whether two
+  Output: The next operator we will discuss is the 'not equals' operator represented by `!=`. Not equals tests whether two
     values are unequal, so TRUE != FALSE evaluates to TRUE. Like the equality operator, `!=` can also
     be used with numbers. Try writing an expression to see if 5 is not equal to 7.
   CorrectAnswer: 5 != 7
@@ -98,11 +98,11 @@
     logical expressions so that TRUE expressions become FALSE and FALSE expressions become TRUE.
 
 - Class: mult_question
-  Output: Which of the followig evaluates to FALSE?
+  Output: Which of the following evaluates to FALSE?
   CorrectAnswer: "!(0 >= -1)"
   AnswerChoices: "!(0 >= -1); !FALSE; 7 != 8; 9 < 10"
   AnswerTests: omnitest(correctVal='!(0 >= -1)')
-  Hint: "If you need to: evaluate each expression yourself to find the correct answer."
+  Hint: 'If you need to, you can evaluate each expression in a separate R session to find the correct answer.'
 
 - Class: mult_question
   Output: 'What do you think the following expression will evaluate to?: (TRUE != FALSE) == !(6 == 7)'
@@ -116,23 +116,23 @@
     This is where the AND operator and the OR operator come in.
 
 - Class: cmd_question
-  Output: Let me show you how the AND operator works. There are two AND operators in R, `&` and `&&`.
+  Output: Let's look at how the AND operator works. There are two AND operators in R, `&` and `&&`.
     Both operators work similarly, if the right and left operands of AND are both TRUE the entire
-    expression is TRUE, otherwise it is FALSE. So for example TRUE & TRUE evaluates to TRUE. Try typing 
+    expression is TRUE, otherwise it is FALSE. For example, TRUE & TRUE evaluates to TRUE. Try typing 
     FALSE & FALSE to how it is evaluated.
   CorrectAnswer: FALSE & FALSE
   AnswerTests: omnitest(correctExpr='FALSE & FALSE')
   Hint: Just type FALSE & FALSE
 
 - Class: cmd_question
-  Output: "You can use the `&` operator to evaluate AND across a vector. The `&&` version of AND only evalutes 
+  Output: "You can use the `&` operator to evaluate AND across a vector. The `&&` version of AND only evaluates 
     the first member of a vector. Let's test both for practice. Type the expression TRUE & c(TRUE, FALSE, FALSE)."
   CorrectAnswer: "TRUE & c(TRUE, FALSE, FALSE)"
   AnswerTests: omnitest(correctExpr='TRUE & c(TRUE, FALSE, FALSE)')
   Hint: Just type TRUE & c(TRUE, FALSE, FALSE)
 
 - Class: text
-  Output: As you can see the AND `&` operation is applied across the entire vector.
+  Output: As you can see, the AND `&` operation is applied across the entire vector.
 
 - Class: cmd_question
   Output: "Now we'll type the same expression except we'll use the `&&` operator. Type the expression TRUE && c(TRUE, FALSE, FALSE)."
@@ -141,7 +141,7 @@
   Hint: Just type TRUE && c(TRUE, FALSE, FALSE)
 
 - Class: text
-  Output: As you can see the left operand is only evaluated with the first member
+  Output: In this case, the left operand is only evaluated with the first member
     of the vector.
     
 - Class : text
@@ -175,7 +175,7 @@
     || FALSE` are perfectly normal to see."
   
 - Class : cmd_question
-  Output: "As you may recall arithmetic has an order of operations and so do logical
+  Output: "As you may recall, arithmetic has an order of operations and so do logical
     expressions. All AND operators are evaluated before OR operators. Let's look at
     an example of an ambiguous case. Type: 5 > 8 || 6 != 8 && 4 > 3.9"
   CorrectAnswer: "5 > 8 || 6 != 8 && 4 > 3.9"
@@ -211,7 +211,7 @@
     
 - Class : cmd_question
   Output: "The function isTRUE() takes one argument. If that argument evaluates to
-    TRUE, the function will return TRUE, otherwise the function will return FALSE.
+    TRUE, the function will return TRUE. Otherwise, the function will return FALSE.
     Try using this function by typing: isTRUE(6 > 4)"
   CorrectAnswer: "isTRUE(6 > 4)"
   AnswerTests: omnitest(correctExpr='isTRUE(6 > 4)')
@@ -236,10 +236,10 @@
   CorrectAnswer: "identical(5 > 4, 3 < 3.1)"
   AnswerChoices: "identical(5 > 4, 3 < 3.1); identical(4, 3.1); identical('hello', 'Hello'); !identical(7, 7)"
   AnswerTests: omnitest(correctVal='identical(5 > 4, 3 < 3.1)')
-  Hint: "identical() will only evaluate to TRUE if its arguments are TRUE."
+  Hint: "identical() will only evaluate to TRUE if its arguments are exactly the same."
   
 - Class : cmd_question
-  Output: "You should also be aware of the xor() function which takes two arguments. 
+  Output: "You should also be aware of the xor() function, which takes two arguments. 
   The xor() function stands for exclusive OR.
   If one argument evaluates to TRUE and one argument evaluates to FALSE, then this
   function will return TRUE, otherwise it will return FALSE. Try out the xor() function
@@ -327,7 +327,7 @@
 - Class: mult_question
   Output: Which of the following evaluates to TRUE?
   CorrectAnswer: "any(ints == 10)"
-  AnswerChoices: "any(ints == 10); all(int == 10); all(c(TRUE, FALSE, TRUE)); any(ints == 2.5)"
+  AnswerChoices: "any(ints == 10); all(ints == 10); all(c(TRUE, FALSE, TRUE)); any(ints == 2.5)"
   AnswerTests: omnitest(correctVal='any(ints == 10)')
   Hint: "any() will evaluate to TRUE if there is one or more TRUE elements in a logical vector."
   
