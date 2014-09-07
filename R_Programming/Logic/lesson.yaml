@@ -13,6 +13,11 @@
   Output: There are two logical values in R, also called boolean values. They are TRUE and FALSE. 
     In R you can construct logical expressions which will evaluate to either TRUE or FALSE.
 
+- Class: text
+  Output: "Many of the questions in this lesson will involve evaluating logical 
+  expressions. It may be useful to open up a second R terminal where you can 
+  experiment with some of these expressions."
+
 - Class: cmd_question
   Output: Creating logical expressions requires logical operators. You're probably familiar with 
     arithmetic operators like `+`, `-`, `*`, and `/`. The first logical operator we are going to 
@@ -30,7 +35,7 @@
   Output: To test out this property, try evaluating (FALSE == TRUE) == FALSE .
   CorrectAnswer: (FALSE == TRUE) == FALSE
   AnswerTests: omnitest(correctExpr='(FALSE == TRUE) == FALSE')
-  Hint: Just type (FALSE == TRUE) == FALSE . 
+  Hint: "Try typing: (FALSE == TRUE) == FALSE"
 
 - Class: cmd_question
   Output: The equality operator can also be used to compare numbers. Use `==` to see if 6 is equal to 7.
@@ -122,27 +127,32 @@
     FALSE & FALSE to how it is evaluated.
   CorrectAnswer: FALSE & FALSE
   AnswerTests: omnitest(correctExpr='FALSE & FALSE')
-  Hint: Just type FALSE & FALSE
+  Hint: "Just to illustrate how the AND operator works type: FALSE & FALSE"
 
 - Class: cmd_question
   Output: "You can use the `&` operator to evaluate AND across a vector. The `&&` version of AND only evaluates 
     the first member of a vector. Let's test both for practice. Type the expression TRUE & c(TRUE, FALSE, FALSE)."
   CorrectAnswer: "TRUE & c(TRUE, FALSE, FALSE)"
   AnswerTests: omnitest(correctExpr='TRUE & c(TRUE, FALSE, FALSE)')
-  Hint: Just type TRUE & c(TRUE, FALSE, FALSE)
+  Hint: "Now to see how the AND operator works with a vector, type: 
+    TRUE & c(TRUE, FALSE, FALSE)"
 
 - Class: text
-  Output: As you can see, the AND `&` operation is applied across the entire vector.
+  Output: What happens in this case is that the left operand `TRUE` is recycled
+    across every element in the vector of the left operand. This is the equivalent
+    statement as c(TRUE, TRUE, TRUE) & c(TRUE, FALSE, FALSE). 
 
 - Class: cmd_question
   Output: "Now we'll type the same expression except we'll use the `&&` operator. Type the expression TRUE && c(TRUE, FALSE, FALSE)."
   CorrectAnswer: "TRUE && c(TRUE, FALSE, FALSE)"
   AnswerTests: omnitest(correctExpr='TRUE && c(TRUE, FALSE, FALSE)')
-  Hint: Just type TRUE && c(TRUE, FALSE, FALSE)
+  Hint: "As you'll see, the && version of AND works differently. Type: 
+    TRUE && c(TRUE, FALSE, FALSE)"
 
 - Class: text
-  Output: In this case, the left operand is only evaluated with the first member
-    of the vector.
+  Output: "In this case, the left operand is only evaluated with the first member
+    of the right operand (the vector). The rest of the elements in the vector
+    aren't evaluated at all in this expression."
     
 - Class : text
   Output: The OR operator follows a similar set of rules. The `|` version of OR
@@ -160,14 +170,15 @@
     expression TRUE | c(TRUE, FALSE, FALSE)."
   CorrectAnswer: "TRUE | c(TRUE, FALSE, FALSE)"
   AnswerTests: omnitest(correctExpr='TRUE | c(TRUE, FALSE, FALSE)')
-  Hint: "Just type: TRUE | c(TRUE, FALSE, FALSE)"
+  Hint: "Test out the vectorized OR operator by typing: TRUE | c(TRUE, FALSE, FALSE)"
   
 - Class: cmd_question
   Output: "Now let's try out the non-vectorized version of the OR operator. Type the 
     expression TRUE || c(TRUE, FALSE, FALSE)."
   CorrectAnswer: "TRUE || c(TRUE, FALSE, FALSE)"
   AnswerTests: omnitest(correctExpr='TRUE || c(TRUE, FALSE, FALSE)')
-  Hint: "Just type: TRUE || c(TRUE, FALSE, FALSE)"
+  Hint: "As you'll see the || version of OR is not vectorized. Type: 
+    TRUE || c(TRUE, FALSE, FALSE)"
   
 - Class : text
   Output: "Logical operators can be chained together just like arithmetic operators.
@@ -180,7 +191,8 @@
     an example of an ambiguous case. Type: 5 > 8 || 6 != 8 && 4 > 3.9"
   CorrectAnswer: "5 > 8 || 6 != 8 && 4 > 3.9"
   AnswerTests: omnitest(correctExpr='5 > 8 || 6 != 8 && 4 > 3.9')
-  Hint: "Just type: 5 > 8 || 6 != 8 && 4 > 3.9"
+  Hint: "See how the order of operations works by typing: 
+    5 > 8 || 6 != 8 && 4 > 3.9"
   
 - Class : text
   Output: "Let's walk through the order of operations in the above case. First the
@@ -215,7 +227,7 @@
     Try using this function by typing: isTRUE(6 > 4)"
   CorrectAnswer: "isTRUE(6 > 4)"
   AnswerTests: omnitest(correctExpr='isTRUE(6 > 4)')
-  Hint: "Just type: isTRUE(6 > 4)"
+  Hint: "Test out isTRUE() by typing: isTRUE(6 > 4)"
   
 - Class: mult_question
   Output: Which of the following evaluates to TRUE?
@@ -226,10 +238,10 @@
   
 - Class : cmd_question
   Output: "The function identical() will return TRUE if the two R objects passed to it as arguments
-    are identical. Try out the identical() function by typing: identical(identical, identical)"
-  CorrectAnswer: "identical(identical, identical)"
-  AnswerTests: omnitest(correctExpr='identical(identical, identical)')
-  Hint: "Just type: identical(identical, identical)"
+    are identical. Try out the identical() function by typing: identical('twins', 'twins')"
+  CorrectAnswer: "identical('twins', 'twins')"
+  AnswerTests: omnitest(correctExpr='identical('twins', 'twins')')
+  Hint: "If you want to see if two R objects are identical, type: identical('twins', 'twins')"
   
 - Class: mult_question
   Output: Which of the following evaluates to TRUE?
@@ -246,7 +258,7 @@
   by typing: xor(5 == 6, !FALSE)"
   CorrectAnswer: "xor(5 == 6, !FALSE)"
   AnswerTests: omnitest(correctExpr='xor(5 == 6, !FALSE)')
-  Hint: "Just type: xor(5 == 6, !FALSE)"
+  Hint: "Test out the xor() function by typing: xor(5 == 6, !FALSE)"
   
 - Class : text
   Output: "5 == 6 evaluates to FALSE, !FALSE evaluates to TRUE, so xor(FALSE, TRUE)
@@ -263,16 +275,16 @@
     
 - Class : cmd_question
   Output: "For the next few questions, we're going to need to create a vector of 
-   integers called ints. Create this vector by typing: ints <- sample(1:10, 10)"
-  CorrectAnswer: "ints <- sample(1:10, 10)"
-  AnswerTests: omnitest(correctExpr='ints <- sample(1:10, 10)')
-  Hint: "Just type: ints <- sample(1:10, 10)"
+   integers called ints. Create this vector by typing: ints <- sample(10)"
+  CorrectAnswer: "ints <- sample(10)"
+  AnswerTests: omnitest(correctExpr='ints <- sample(10)')
+  Hint: "To create a vector of ten integers without replacement type: ints <- sample(10)"
   
 - Class : cmd_question
   Output: "Now simply display the contents of ints."
   CorrectAnswer: "ints"
   AnswerTests: omnitest(correctExpr='ints')
-  Hint: "Just type: ints"
+  Hint: "To view the vector type: ints"
   
 - Class : cmd_question
   Output: "The vector `ints` is a random sampling of integers from 1 to 10 without
@@ -281,7 +293,7 @@
     whether each element of ints is greater than 5. Try typing: ints > 5"
   CorrectAnswer: "ints > 5"
   AnswerTests: omnitest(correctExpr='ints > 5')
-  Hint: "Just type: ints > 5"
+  Hint: "To see which elements of `ints` are larger than 5 type: ints > 5"
   
 - Class : text
   Output: "We can use the resulting logical vector to ask other questions about ints.
