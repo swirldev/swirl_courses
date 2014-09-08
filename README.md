@@ -9,22 +9,23 @@ Here are our current offerings, organized by level of difficulty:
 
 #### Beginner
 
-- R Programming
-- Data Analysis
-- Mathematical Biostatistics Boot Camp
-- Open Intro
+- **R Programming**: The basics of programming in R
+- **R Programming Alt**: Same as the original, but modified slightly for in-class use (see below*)
+- **Data Analysis**: Basic ideas in statistics and data visualization
+- **Mathematical Biostatistics Boot Camp**: One- and two-sample t-tests, power, and sample size
+- **Open Intro**: A very basic introduction to statistics, data analysis, and data visualization
+
+\* *R Programming Alt is identical to R Programming, except we've eliminated the prompts for Coursera credentials at the end of each lesson and instead give students the option to send an email to their instructor notifying them of completion. Admittedly, it's sort of a hack until we come up with a more robust solution for in-class use (i.e. an instructor "dashboard").*
 
 #### Intermediate
 
-- Regression Models
+- **Regression Models**: The basics of regression modeling in R
 
 #### Advanced
 
-- *Coming soon!*
+- **Getting and Cleaning Data**: dplyr, tidyr, lubridate, oh my!
 
 Since our users come from a variety backgrounds, it's very hard to label material as **Beginner**, **Intermediate**, or **Advanced**. If you find something that is labelled **Beginner** to be challenging, please don't be discouraged. The first step of learning anything is to acknowledge that you are capable of understanding it. True understanding will come with time and practice.
-
-***
 
 ## Install and run a course automatically from swirl
 
@@ -47,8 +48,6 @@ swirl()
 For example, `install_from_swirl("R Programming")` will install the R Programming course. **Please note that course names are case sensitive!**
 
 If that doesn't work for you...
-
-***
 
 ## Install and run a course manually
 
@@ -79,4 +78,12 @@ Although we recommend you install one course at a time, if you omit the `which_c
 install_course_zip("~/Downloads/swirl_courses-master.zip", multi=TRUE)
 ```
 
+## Uninstall a course
+
 If you'd like to remove a course at any time, you can use `uninstall_course("Course Name Here")`.
+
+## Using swirl in the classroom
+
+Instructors around the world are using swirl in their classrooms. We think this is awesome. If you're an instructor, please feel free to do the same -- free of charge. While your students may be paying to take your course or attend your institution, we simply ask that you don't charge people *directly* for the use of our software or instructional content.
+
+If you are not sure about a particular use case, don't hesitate to send us an email at info@swirlstats.com.

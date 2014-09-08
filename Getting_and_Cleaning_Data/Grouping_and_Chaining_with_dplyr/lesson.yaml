@@ -1,0 +1,229 @@
+- Class: meta
+  Course: Getting and Cleaning Data
+  Lesson: Grouping and Chaining with dplyr
+  Author: Nick Carchedi
+  Type: Coursera
+  Organization: JHU Biostat
+  Version: 2.2.13
+
+- Class: text
+  Output: 'In the last lesson, you learned about the five main data manipulation ''verbs'' in dplyr: select(), filter(), arrange(), mutate(), and summarize(). The last of these, summarize(), is most powerful when applied to grouped data.'
+
+- Class: text
+  Output: The main idea behind grouping data is that you want to break up your dataset into groups of rows based on the values of one or more variables. The group_by() function is reponsible for doing this.
+
+- Class: text
+  Output: We'll continue where we left off with RStudio's CRAN download log from July 8, 2014, which contains information on roughly 225,000 R package downloads (http://cran-logs.rstudio.com/).
+
+- Class: cmd_question
+  Output: As with the last lesson, the dplyr package was automatically installed (if necessary) and loaded at the beginning of this lesson. Normally, this is something you would have to do on your own. Just to build the habit, type library(dplyr) now to load the package again.
+  CorrectAnswer: library(dplyr)
+  AnswerTests: omnitest(correctExpr='library(dplyr)')
+  Hint: Use library(dplyr) to load the dplyr package.
+
+- Class: cmd_question
+  Output: I've made the dataset available to you in a data frame called mydf. Put it in a 'data frame tbl' using the tbl_df() function and store the result in a variable called cran. If you're not sure what I'm talking about, you should start with the previous lesson. Otherwise, practice makes perfect!
+  CorrectAnswer: cran <- tbl_df(mydf)
+  AnswerTests: omnitest(correctExpr='cran <- tbl_df(mydf)')
+  Hint: Type cran <- tbl_df(mydf) to store the data in a new tbl_df called cran.
+
+- Class: cmd_question
+  Output: To avoid confusion and keep things running smoothly, let's remove the original dataframe from your workspace with rm("mydf").
+  CorrectAnswer: rm("mydf")
+  AnswerTests: omnitest(correctExpr='rm("mydf")')
+  Hint: Use rm("mydf") to remove the original dataframe from your workspace.
+
+- Class: cmd_question
+  Output: Print cran to the console.
+  CorrectAnswer: cran
+  AnswerTests: omnitest(correctExpr='cran')
+  Hint: Type cran to print its contents.
+
+- Class: cmd_question
+  Output: Our first goal is to group the data by package name. Bring up the help file for group_by().
+  CorrectAnswer: ?group_by
+  AnswerTests: any_of_exprs('?group_by', 'help(group_by)')
+  Hint: Use ?group_by to bring up the documentation.
+
+- Class: cmd_question
+  Output: Group cran by the package variable and store the result in a new variable called by_package.
+  CorrectAnswer: by_package <- group_by(cran, package)
+  AnswerTests: omnitest('by_package <- group_by(cran, package)')
+  Hint: Store the result of group_by(cran, package) in a new variable called by_package.
+
+- Class: cmd_question
+  Output: Let's take a look at by_package. Print it to the console.
+  CorrectAnswer: by_package
+  AnswerTests: any_of_exprs('by_package', 'print(by_package)')
+  Hint: Type by_package to view its contents.
+
+- Class: text
+  Output: "At the top of the output above, you'll see 'Groups: package', which tells us that this tbl has been grouped by the package variable. Everything else looks the same, but now any operation we apply to the grouped data will take place on a per package basis."
+
+- Class: text
+  Output: Recall that when we applied mean(size) to the original tbl_df via summarize(), it returned a single number -- the mean of all values in the size column. We may care about what that number is, but wouldn't it be so much more interesting to look at the mean download size for each unique package?
+
+- Class: cmd_question
+  Output: That's exactly what you'll get if you use summarize() to apply mean(size) to the grouped data in by_package. Give it a shot.
+  CorrectAnswer: summarize(by_package, mean(size))
+  AnswerTests: omnitest('summarize(by_package, mean(size))')
+  Hint: 'Call summarize() with two arguments: by_package and mean(size).'
+
+- Class: text
+  Output: Instead of returning a single value, summarize() now returns the mean size for EACH package in our dataset.
+
+- Class: script
+  Output: "Let's take it a step further. I just opened an R script for you that contains a partially constructed call to summarize(). Follow the instructions in the script comments.\n\nWhen you are ready to move on, save the script and type submit(), or type reset() to reset the script to its original state."
+  AnswerTests: script_results_identical('pack_sum'); multi_expr_creates_var('pack_sum')
+  Hint: Follow the directions in the script comments very carefully. If R gave you an error above, try to understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then save the script and type submit() when you are ready.
+  Script: summarize1.R
+
+- Class: cmd_question
+  Output: Print the resulting tbl, pack_sum, to the console to examine its contents.
+  CorrectAnswer: pack_sum
+  AnswerTests: any_of_exprs('pack_sum', 'print(pack_sum)')
+  Hint: Type pack_sum to view its contents.
+
+- Class: text
+  Output: The 'count' column, created with n(), contains the total number of rows (i.e. downloads) for each package. The 'unique' column, created with n_distinct(ip_id), gives the total number of unique downloads for each package, as measure by the number of distinct ip_id's. The 'countries' column, created with n_distinct(country), provides the number of countries in which the each package was downloaded. And finally, the 'avg_bytes' column, created with mean(size), contains the mean download size (in bytes) for each package.
+
+- Class: text
+  Output: It's important that you understand how each column of pack_sum was created and what it means. Now that we've summarized the data by individual packages, let's play around with it some more to see what we can learn.
+
+- Class: text
+  Output: Naturally, we'd like to know which packages were most popular on the day these data were collected (July 8, 2014). Let's start by isolating the top 1% of packages, based on the total number of downloads as measured by the 'count' column.
+
+- Class: cmd_question
+  Output: We need to know the value of 'count' that splits the data into the top 1% and bottom 99% of packages based on total downloads. In statistics, this is called the 0.99, or 99%, sample quantile. Use quantile(pack_sum$count, probs = 0.99) to determine this number.
+  CorrectAnswer: quantile(pack_sum$count, probs = 0.99)
+  AnswerTests: omnitest('quantile(pack_sum$count, probs = 0.99)')
+  Hint: quantile(pack_sum$count, probs = 0.99) will give us the 0.99, or 99%, sample quantile for the 'count' variable.
+
+- Class: cmd_question
+  Output: Now we can isolate only those packages which had more than 679 total downloads. Use filter() to select all rows from pack_sum for which 'count' is strictly greater (>) than 679. Store the result in a new variable called top_counts.
+  CorrectAnswer: top_counts <- filter(pack_sum, count > 679)
+  AnswerTests: omnitest('top_counts <- filter(pack_sum, count > 679)')
+  Hint: Store the result of filter(pack_sum, count > 679) in a new variable called top_counts.
+
+- Class: cmd_question
+  Output: Let's take a look at top_counts. Print it to the console.
+  CorrectAnswer: top_counts
+  AnswerTests: any_of_exprs('top_counts', 'print(top_counts)')
+  Hint: Type top_counts to view its contents.
+
+- Class: text
+  Output: Hey, that's the first time we've seen more than the first 10 rows of our data! By default, if the dataset your working with has more than 100 rows, dplyr will only print the first 10. Otherwise, it will print all rows, since it's not as overwhelming.
+
+- Class: cmd_question
+  Output: "In this case, there are 61 packages in our top 1%, so dplyr has printed all of them. If we only want to see the first 20, we can use the head function like so: head(top_counts, 20)."
+  CorrectAnswer: head(top_counts, 20)
+  AnswerTests: omnitest('head(top_counts, 20)')
+  Hint: head(top_counts, 20) will display the first 20 rows of top_counts.
+
+- Class: cmd_question
+  Output: Okay, back to the task at hand. arrange() the rows of top_counts based on the 'count' column. We want the packages with the highest number of downloads at the top, which means we want 'count' to be in descending order. If you need help, check out ?arrange and/or ?desc.
+  CorrectAnswer: arrange(top_counts, desc(count))
+  AnswerTests: omnitest('arrange(top_counts, desc(count))')
+  Hint: arrange(top_counts, desc(count)) will arrange the rows of top_counts based on the values of the 'count' variable, in descending order.
+
+- Class: text
+  Output: If we use total number of downloads as our metric for popularity, then the above output shows us the most popular packages downloaded from the RStudio CRAN mirror on July 8, 2014. Not surprisingly, ggplot2 leads the pack with 4602 downloads, followed by Rcpp, plyr, rJava, ....
+
+- Class: text
+  Output: ...And if you keep on going, you'll see swirl at number 43, with 820 total downloads. Sweet!
+
+- Class: text
+  Output: Perhaps we're more interested in the number of *unique* downloads on this particular day. In other words, if a package is downloaded ten times in one day from the same computer, we may wish to count that as only one download. That's what the 'unique' column will tell us.
+
+- Class: cmd_question
+  Output: Like we did with 'count', let's find the 0.99, or 99%, quantile for the 'unique' variable with quantile(pack_sum$unique, probs = 0.99).
+  CorrectAnswer: quantile(pack_sum$unique, probs = 0.99)
+  AnswerTests: omnitest('quantile(pack_sum$unique, probs = 0.99)')
+  Hint: Use quantile(pack_sum$unique, probs = 0.99) to get the 0.99, or 99% quantile for 'unique'.
+
+- Class: cmd_question
+  Output: Apply filter() to pack_sum to select all rows corresponding to values of 'unique' that are strictly greater than 465. Assign the result to a variable called top_unique.
+  CorrectAnswer: top_unique <- filter(pack_sum, unique > 465)
+  AnswerTests: omnitest('top_unique <- filter(pack_sum, unique > 465)')
+  Hint: filter(pack_sum, unique > 465) will select all rows corresponding to values of 'unique' that are strictly greater than 465. Assign the result to top_unique.
+
+- Class: cmd_question
+  Output: Let's see our top contenders! Print top_unique to the console.
+  CorrectAnswer: top_unique
+  AnswerTests: any_of_exprs('top_unique', 'print(top_unique)')
+  Hint: Type top_unique to view its contents.
+
+- Class: cmd_question
+  Output: Now arrange() top_unique by the 'unique' column, in descending order, to see which packages were downloaded from the greatest number of unique IP addresses.
+  CorrectAnswer: arrange(top_unique, desc(unique))
+  AnswerTests: omnitest('arrange(top_unique, desc(unique))')
+  Hint: arrange(top_unique, desc(unique)) will arrange the rows of top_unique based on the values of the 'unique' variable, in descending order.
+
+- Class: text
+  Output: Now Rcpp is in the lead, followed by stringr, digest, plyr, and ggplot2. swirl moved up a few spaces to number 40, with 698 unique downloads. Nice!
+
+- Class: text
+  Output: Our final metric of popularity is the number of distinct countries from which each package was downloaded. We'll approach this one a little differently to introduce you to a method called 'chaining' (or 'piping').
+
+- Class: text
+  Output: Chaining allows you to string together multiple function calls in a way that is compact and readable, while still accomplishing the desired result. To make it more concrete, let's compute our last popularity metric from scratch, starting with our original data.
+
+- Class: script
+  Output: I've opened up a script that contains code similar to what you've seen so far. Don't change anything. Just study it for a minute, make sure you understand everything that's there, then submit() when you are ready to move on.
+  AnswerTests: script_results_identical('result1'); multi_expr_creates_var('result1')
+  Hint: If you accidentally changed something in the script, just type reset() to undo your changes, then submit() again.
+  Script: summarize2.R
+
+- Class: text
+  Output: It's worth noting that we sorted primarily by country, but used avg_bytes (in ascending order) as a tie breaker. This means that if two packages were downloaded from the same number of countries, the package with a smaller average download size received a higher ranking.
+
+- Class: text
+  Output: We'd like to accomplish the same result as the last script, but avoid saving our intermediate results. This requires embedding function calls within one another.
+
+- Class: script
+  Output: That's exactly what we've done in this script. The result is equivilent, but the code is much less readable and some of the arguments are far away from the function to which they belong. Again, just try to understand what is going on here, then submit() when you are ready to see a better solution.
+  AnswerTests: script_results_identical('result2'); multi_expr_creates_var('result2')
+  Hint: If you accidentally changed something in the script, just type reset() to undo your changes, then submit() again.
+  Script: summarize3.R
+
+- Class: script
+  Output: "In this script, we've used a special chaining operator, %>%, which is part of the dplyr package. You can pull up the related documentation with ?chain. The benefit of %>% is that it allows us to chain the function calls in a linear fashion. The code to the right of %>% operates on the result from the code to the left of %>%.\n\nOnce again, just try to understand the code, then type submit() to continue."
+  AnswerTests: script_results_identical('result3'); multi_expr_creates_var('result3')
+  Hint: If you accidentally changed something in the script, just type reset() to undo your changes, then submit() again.
+  Script: summarize4.R
+
+- Class: text
+  Output: So, the results of the last three scripts are all identical. But, the third script provides a convenient and concise alternative to the more traditional method that we've taken previously, which involves saving results as we go along.
+
+- Class: text
+  Output: It looks like Rcpp is on top with downloads from 84 different countries, followed by digest, stringr, plyr, and ggplot2. swirl jumped up the rankings again, this time to 27th.
+
+- Class: text
+  Output: To help drive the point home, let's work through a few more examples of chaining.
+
+- Class: script
+  Output: Let's build a chain of dplyr commands one step at a time, starting with the script I just opened for you.
+  AnswerTests: script_vals_identical()
+  Hint: Follow the directions in the script comments very carefully. If R gave you an error above, try to understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then save the script and type submit() when you are ready.
+  Script: chain1.R
+
+- Class: script
+  Output: Let's add to the chain.
+  AnswerTests: script_vals_identical()
+  Hint: Follow the directions in the script comments very carefully. If R gave you an error above, try to understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then save the script and type submit() when you are ready.
+  Script: chain2.R
+
+- Class: script
+  Output: A little bit more now.
+  AnswerTests: script_vals_identical()
+  Hint: Follow the directions in the script comments very carefully. If R gave you an error above, try to understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then save the script and type submit() when you are ready.
+  Script: chain3.R
+
+- Class: script
+  Output: And finish it off.
+  AnswerTests: script_vals_identical()
+  Hint: Follow the directions in the script comments very carefully. If R gave you an error above, try to understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then save the script and type submit() when you are ready.
+  Script: chain4.R
+
+- Class: text
+  Output: In this lesson, you learned about grouping and chaining using dplyr. You combined some of the things you learned in the previous lesson with these more advanced ideas to produce concise, readable, and highly effective code. Welcome to the wonderful world of dplyr!

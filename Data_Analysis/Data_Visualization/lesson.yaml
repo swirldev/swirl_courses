@@ -29,9 +29,7 @@
     and the data points are represented as dots above this axis.
 
 - Class: figure
-  Output: |2-
-
-    Here is a dot plot created using the variable 'price' from our 'cars' data set. As you may notice, the price is reported along the x-axis in $1000s, and each point above the axis represents the price of one of the
+  Output: Here is a dot plot created using the variable 'price' from our 'cars' data set. As you may notice, the price is reported along the x-axis in $1000s, and each point above the axis represents the price of one of the
     54 cars in our data set.
   Figure: mod1_dotplot.R
   FigureType: new
@@ -211,10 +209,5 @@
   AnswerTests: swirl1cmd=summary(cars$price)
 
 - Class: text
-  Output: 'Up until now, every plot I have introduced has involved only one continous
-    or discrete variable.But what if you are trying to analyze a categorical variable
-    or two variables? In the next lesson, we will learn about the plots that are used
-    for categorical variables and multiple variables. If you aren''t sure what the
-    difference is between continous, discrete, and categorical variables don''t worry
-    because we will discuss this in the next lesson. '
+  Output: 'Up until now, every plot I have introduced has involved only one continous or discrete variable. In a future lesson, we will learn about the plots that are used for categorical variables and multiple variables.'
 

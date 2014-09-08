@@ -501,7 +501,7 @@
   VideoLink: http://youtu.be/OaJXJduRiIE
 
 - Class: figure
-  Output: I have created a stem-and-leaf plot above using the same values for the
+  Output: I have created a stem-and-leaf plot above (in the console) using the same values for the
     'mpgCity' variable as we just used for our histogram. As you can see, a stem-and-leaf
     plot is a useful type of histogram if you want to see the frequencies of specific
     values of the data. Often, there will only be one bin per tens digit, but in this

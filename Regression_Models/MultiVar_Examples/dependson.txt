@@ -1,4 +1,3 @@
-UsingR
 datasets
 stats
 graphics

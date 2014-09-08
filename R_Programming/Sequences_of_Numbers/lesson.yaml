@@ -1,10 +1,9 @@
-
 - Class: meta
   Course: R Programming
   Lesson: Sequences of Numbers
   Author: Nick Carchedi
   Type: Coursera
-  Organization: JHU Biostatistics
+  Organization: JHU Biostat
   Version: 2.2.0
 
 - Class: text
@@ -110,12 +109,12 @@
   Hint: Try 1:length(my_seq), without assigning the result to a new variable.
 
 - Class: cmd_question
-  Output: Another option is to use seq(along = my_seq). Give that a try.
-  CorrectAnswer: seq(along = my_seq)
-  AnswerTests: omnitest(correctExpr='seq(along = my_seq)')
-  Hint: Type seq(along = my_seq). Notice we're using the same seq() function, but
-    with a different argument called `along`. This tells R that you want a sequence
-    'along' the sequence my_seq. Remember you can type ?seq if you have questions
+  Output: Another option is to use seq(along.with = my_seq). Give that a try.
+  CorrectAnswer: seq(along.with = my_seq)
+  AnswerTests: omnitest(correctExpr='seq(along.with = my_seq)')
+  Hint: Type seq(along.with = my_seq). Notice we're using the same seq() function, but
+    with a different argument called `along.with`. This tells R that you want a sequence
+    'along with' the sequence my_seq. Remember you can type ?seq if you have questions
     about the seq() function.
 
 - Class: cmd_question

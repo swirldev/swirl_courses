@@ -3,7 +3,7 @@
   Lesson: Basic Building Blocks
   Author: Nick Carchedi
   Type: Coursera
-  Organization: JHU Biostatistics
+  Organization: JHU Biostat
   Version: 2.2.0
 
 - Class: text
@@ -46,7 +46,7 @@
   Output: To assign the result of 5 + 7 to a new variable called x, you type x <-
     5 + 7. This can be read as 'x gets 5 plus 7'. Give it a try now.
   CorrectAnswer: x <- 5 + 7
-  AnswerTests: omnitest(correctExpr='x <- 5 + 7')
+  AnswerTests: any_of_exprs('x <- 5 + 7', 'x <- 7 + 5')
   Hint: Type x <- 5 + 7. It's important to include a single space on each side of
     the assignment operator, but do NOT put a space between the `<` and the `-` that
     form the arrow.
@@ -230,16 +230,16 @@
   Output: Earlier in the lesson, you computed z * 2 + 100. Let's pretend that you made a mistake and that you meant to add 1000 instead of 100. You could either re-type the expression, or...
 
 - Class: cmd_question
-  Output: In many programming environments, the up arrow will cycle through previous commands. Try hitting the up arrow on your keyboard until you get to this command, then change 100 to 1000 and hit Enter.
+  Output: In many programming environments, the up arrow will cycle through previous commands. Try hitting the up arrow on your keyboard until you get to this command (z * 2 + 100), then change 100 to 1000 and hit Enter. If the up arrow doesn't work for you, just type the corrected command.
   CorrectAnswer: z * 2 + 1000
   AnswerTests: omnitest(correctExpr='z * 2 + 1000')
-  Hint: If your environment does not support the up arrow feature, then you can just retype the command from scratch.
+  Hint: If your environment does not support the up arrow feature, then just type the corrected command to move on.
 
 - Class: text
   Output: Finally, let's pretend you'd like to view the contents of a variable that you created earlier, but you can't seem to remember if you named it my_div or myDiv. You could try both and see what works, or...
 
 - Class: cmd_question
-  Output: You can type the first two letters of the variable name, then hit the Tab key. Most programming environments will provide a list of variables that you've created that begin with 'my'. This is called auto-completion and can be quite handy when you have many variables in your workspace. Give it a try.
+  Output: You can type the first two letters of the variable name, then hit the Tab key (possibly more than once). Most programming environments will provide a list of variables that you've created that begin with 'my'. This is called auto-completion and can be quite handy when you have many variables in your workspace. Give it a try. (If auto-completion doesn't work for you, just type my_div and press Enter.)
   CorrectAnswer: my_div
   AnswerTests: omnitest(correctExpr='my_div')
-  Hint: If your programming environment doesn't support auto-completion, you can just type the variable name directly and hit Enter.
+  Hint: If your programming environment doesn't support auto-completion, just type my_div and hit Enter to move on.
