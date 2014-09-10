@@ -10,10 +10,12 @@ Here are our current offerings, organized by level of difficulty:
 #### Beginner
 
 - **R Programming**: The basics of programming in R
-- **R Programming Alt**: Same as the original, but modified slightly for in-class use
+- **R Programming Alt**: Same as the original, but modified slightly for in-class use (see below*)
 - **Data Analysis**: Basic ideas in statistics and data visualization
 - **Mathematical Biostatistics Boot Camp**: One- and two-sample t-tests, power, and sample size
 - **Open Intro**: A very basic introduction to statistics, data analysis, and data visualization
+
+\* *R Programming Alt is identical to R Programming, except we've eliminated the prompts for Coursera credentials at the end of each lesson and instead give students the option to send an email to their instructor notifying them of completion. Admittedly, it's sort of a hack until we come up with a more robust solution for in-class use (i.e. an instructor "dashboard").*
 
 #### Intermediate
 
