@@ -80,7 +80,7 @@
   AnswerTests: omnitest('summary(mdl)')
   Hint: Just type summary(mdl)
 
-- Class: txt
+- Class: text
   Output: "Both coefficients are significant, being far more than two standard errors from zero. The Residual deviance is also very significantly less than the Null, indicating a strong effect. (Recall that the difference between Null and Residual deviance is approximately chi-square with 1 degree of freedom.) The Intercept coefficient, b0, just represents log average hits on R's Date 0, namely January 1, 1970. We will ignore it and focus on the coefficient of date, b1, since exp(b1) will estimate the percentage at which average visits increase per day of the site's life."
 
 - Class: cmd_question
