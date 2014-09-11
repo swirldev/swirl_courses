@@ -88,7 +88,7 @@
   Output: "The remaining function, eliminate, applies regressOneOnOne to all variables except a given predictor and collects the residuals in a data frame. We'll first show that when we eliminate one regressor from the data, a regression on the remaining will produce their correct coefficients. (Of course, the coefficient of the eliminated regressor will be missing, but more about that later.)"
 
 - Class: cmd_question
-  Output: "For reference, create a model based on all three regressors, Girth, Height, and Constant, and assign the result to a variable named fit. Use an expression such as fit <- lm(Volume ~ Girth + Height + Constant -1, trees). Don't forget the -1."
+  Output: "For reference, create a model named fit, based on all three regressors, Girth, Height, and Constant, and assign the result to a variable named fit. Use an expression such as fit <- lm(Volume ~ Girth + Height + Constant -1, trees). Don't forget the -1, and be sure to name the model fit for later use."
   CorrectAnswer: fit <- lm(Volume ~ . - 1, trees)
   AnswerTests: creates_lm_model('fit <- lm(Volume ~ . - 1, trees)')
   Hint: "Enter an expression such as fit <- lm(Volume ~ Girth + Height + Constant - 1, trees), or fit <- lm(Volume ~ . -1, trees) at the R prompt."
