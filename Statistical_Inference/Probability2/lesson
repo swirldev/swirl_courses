@@ -10,14 +10,42 @@
   Output: "Probability. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Statistical_Inference/Probability.)"
 
 - Class: text
-  Output: In this lesson, we'll continue our review of basic ideas of probability.
+  Output: In this lesson, we'll continue our review of basic ideas of probability. Instead of rolling dice, we'll look at drawing cards.
+
+- Class: cmd_question
+  Output: A deck of cards is a set of 52 cards, 4 suits of 13 cards each. There are two red suits, diamonds and hearts, and two black suits, spades and clubs. Each of the 13 cards in a suit has a value -  an ace which is sometimes thought of as 1, a number from 2 to 10, and 3 face cards, king, queen, and jack. We've created a deck in R for you. Type 'deck' to see it now.
+  CorrectAnswer: 'deck'
+  AnswerTests: omnitest(correctExpr='deck')
+  Hint: Type deck at the R prompt.
+
+- Class: exact_question
+  Output: For drawing a single card, how many outcomes are possible?
+  CorrectAnswer: 52
+  AnswerTests: omnitest(correctVal=52)
+  Hint: How many cards are in the deck?
+
+- Class: cmd_question
+  Output: What is the probability of drawing a jack?
+  CorrectAnswer: 4/52
+  AnswerTests: equiv_val(1/13)
+  Hint: How many jacks are in the deck? Divide this number by the number of cards in the deck.
 
 - Class: mult_question
-  Output: The first step in understanding probability is to count all possible outcomes of an experiment. For instance, if you were rolling a single, fair die once, how many outcomes are possible?
-  AnswerChoices: 6; 1; 4; Too many
-  CorrectAnswer: 6
-  AnswerTests: omnitest(correctVal='6')
-  Hint: How many sides or faces does a die (or any cube or box) have?
+  Output: What is the probability of drawing a jack?
+  AnswerChoices: 4/52; 1/4; 1; Not good
+  CorrectAnswer: 4/52
+  AnswerTests: omnitest(correctVal='1/13')
+  Hint: How many jacks are in the deck? Divide this number by the number of cards in the deck.
+
+- Class: cmd_question
+  Output: The simplest way to create a sequence of numbers in R is by using the `:`
+    operator. Type 1:20 to see how it works.
+  CorrectAnswer: '1:20'
+  AnswerTests: omnitest(correctExpr='1:20')
+  Hint: Type 1:20 with no spaces. Make sure to use a regular colon and NOT a semi-colon.
+
+
+
 
 - Class: mult_question
   Output: The probability of a particular outcome of an experiment is the ratio of the number of ways that outcome can occur to all possible outcomes of the experiment. Since there are 6 possible outcomes to the experiment of rolling a die, and we assume the die is fair, each outcome is equally likely. So what is the probability of rolling a 2?
