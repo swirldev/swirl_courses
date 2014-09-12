@@ -39,12 +39,15 @@
 - Class: text
   Output: If you're doing an experiment with n possible outcomes, say e1, e2, ..., en, then the sum of the probabilities of all the outcomes is 1. If all the outcomes are equally likely, as in the case of a fair die, then the probability of each is 1/n. 
 
+- Class: text
+  Output: The probability of both of two independent events, A and B, is the product of the probabilities. P(A&B) = P(A) * P(B)
+
 - Class: mult_question
-  Output: Suppose you rolled the fair die twice. What is the probability of rolling two 4's?
+  Output: Suppose you rolled the fair die twice in succession. What is the probability of rolling two 4's?
   AnswerChoices: 1/36; 2/6; 0; 1/6
   CorrectAnswer: 1/36
   AnswerTests: omnitest(correctVal='1/36')
-  Hint: The probability of rolling the first 4 is 1/6. The second roll of the dice doesn't depend on the outcome of the first, so that also has a probability of 1/6. The probability of both events occurring is 1/6 * 1/6.
+  Hint: The probability of rolling the first 4 is 1/6. The second roll of the dice doesn't depend on the outcome of the first, so that also has a probability of 1/6. The probability of both events occurring is 1/6 * 1/6. This makes intuitive sense since the probability of 2 such events occurring has to be smaller than the probability of only 1 event.
 
 - Class: mult_question
   Output: Suppose you rolled the fair die twice. What is the probability of rolling the same number two times in a row?
@@ -100,12 +103,60 @@
   AnswerTests: omnitest(correctVal='(2+1)/36')
   Hint: The only outcomes greater than 10 are 11 and 12 which are mutually exclusive. The first, 11, can occur in two ways, and the second, 12, can occur only with a roll of double 6's.   
 
-- Class: exact_question
+- Class: cmd_question
   Output: Use the answer to the previous question and the fact that the sum of all outcomes must sum to 1 to determine the probability of rolling a number less than or equal to 10.
   CorrectAnswer: 11/12
-  AnswerTests: omnitest(correctVal=11/12)
+  AnswerTests: equiv_val(correctVal=11/12)
   Hint: Subtract the previous answer from 1.
+
+- Class: figure
+  Output: Now we'll applies the concepts of probability to playing cards.
+  Figure: runCards.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: A deck of cards is a set of 52 cards, 4 suits of 13 cards each. There are two red suits, diamonds and hearts, and two black suits, spades and clubs. Each of the 13 cards in a suit has a value -  an ace which is sometimes thought of as 1, a number from 2 to 10, and 3 face cards, king, queen, and jack. We've created a deck in R for you. Type 'deck' to see it now.
+  CorrectAnswer: 'deck'
+  AnswerTests: omnitest(correctExpr='deck')
+  Hint: Type deck at the R prompt.
+
+- Class: exact_question
+  Output: When drawing a single card, how many outcomes are possible?
+  CorrectAnswer: 52
+  AnswerTests: omnitest(correctVal=52)
+  Hint: How many cards are in the deck?
+
+- Class: cmd_question
+  Output: What is the probability of drawing a jack?
+  CorrectAnswer: 4/52
+  AnswerTests: equiv_val(1/13)
+  Hint: How many jacks are in the deck? Divide this number by the number of cards in the deck.
+
+- Class: cmd_question
+  Output: If you're dealt a hand of 5 cards, what is the probability of getting all 5 of the same value?
+  CorrectAnswer: 0
+  AnswerTests: equiv_val(0)
+  Hint: There are only 4 different suits in a deck.
+
+- Class: cmd_question
+  Output: What is the probability of drawing a face card?
+  CorrectAnswer: 3/13
+  AnswerTests: equiv_val(3/13)
+  Hint: There are 3 face cards in each of the 4 suits in the deck.
+
+- Class: mult_question
+  Output: Suppose you draw a face card and don't replace it in the deck. What is the probability that when you draw a second card it also will be a face card?
+  AnswerChoices: 11/51; 0; 12/51; 11/52
+  CorrectAnswer: 11/51
+  AnswerTests: omnitest(correctVal='11/51')
+  Hint: There are only 51 cards remaining in the deck, and of those, only 11 are face cards. 
+
+- Class: cmd_question
+  Output: Suppose you draw a face card and don't replace it in the deck. What is the probability that when you draw a second card it also will be a face card of the same suit?
+  CorrectAnswer: 2/51
+  AnswerTests: equiv_val(2/51)
+  Hint: There are 2 face cards of the same suit left in the deck.
 
 
 - Class: text
-  Output: Congrats! With probability 1, you've concluded this first lesson on basic probability.
+  Output: Congrats! With probability 1, you've concluded this first lesson on basic probability. 

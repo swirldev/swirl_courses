@@ -10,7 +10,7 @@
   Output: "Probability. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Statistical_Inference/Probability.)"
 
 - Class: text
-  Output: In this lesson, we'll continue our review of basic ideas of probability. Instead of rolling dice, we'll look at drawing cards.
+  Output: In this lesson, we'll continue to discuss probability. 
 
 - Class: cmd_question
   Output: A deck of cards is a set of 52 cards, 4 suits of 13 cards each. There are two red suits, diamonds and hearts, and two black suits, spades and clubs. Each of the 13 cards in a suit has a value -  an ace which is sometimes thought of as 1, a number from 2 to 10, and 3 face cards, king, queen, and jack. We've created a deck in R for you. Type 'deck' to see it now.
@@ -19,7 +19,7 @@
   Hint: Type deck at the R prompt.
 
 - Class: exact_question
-  Output: For drawing a single card, how many outcomes are possible?
+  Output: When drawing a single card, how many outcomes are possible?
   CorrectAnswer: 52
   AnswerTests: omnitest(correctVal=52)
   Hint: How many cards are in the deck?
@@ -30,12 +30,11 @@
   AnswerTests: equiv_val(1/13)
   Hint: How many jacks are in the deck? Divide this number by the number of cards in the deck.
 
-- Class: mult_question
-  Output: What is the probability of drawing a jack?
-  AnswerChoices: 4/52; 1/4; 1; Not good
-  CorrectAnswer: 4/52
-  AnswerTests: omnitest(correctVal='1/13')
-  Hint: How many jacks are in the deck? Divide this number by the number of cards in the deck.
+- Class: cmd_question
+  Output: If you're dealt a hand of 5 cards, what is the probability of getting all 5 of the same value?
+  CorrectAnswer: 0
+  AnswerTests: equiv_val(0)
+  Hint: There are only 4 different suits in a deck.
 
 - Class: cmd_question
   Output: The simplest way to create a sequence of numbers in R is by using the `:`
