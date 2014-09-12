@@ -19,13 +19,13 @@ creates_lm_model <- function(correctExpr){
   eUsr <- cleanEnv(e$snapshot)
   mdlUsr <- eval(e$expr, eUsr)
   # If the correct model is named:
-  if(length(ls(eSw))>1){
+  if(length(ls(eSw))>0){
     # Check whether the model's name is correct
     nameGood <- sum(ls(eUsr) %in% ls(eSw)) & sum(ls(eSw) %in% ls(eUsr))
     # If not, highlight the misspelling
     if(!nameGood){
-      swirl_out(paste0("You seem to have misspelled the model's name. I was expecting ", names(eSw), 
-                       " but you apparently typed ", names(eUsr), "."))
+      swirl_out(paste0("You seem to have misspelled the model's name. I was expecting ", ls(eSw), 
+                       " but you apparently typed ", ls(eUsr), "."))
       return(FALSE)
     } else {
       # Append the result, as a list to e$delta for progress restoration
