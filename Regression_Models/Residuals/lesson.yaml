@@ -19,7 +19,7 @@
 - Class: cmd_question
   Output: We'll demonstrate these concepts now. First regenerate the regression line and call it fit. Use the R function lm. Recall that by default its first argument is a formula such as "child ~ parent" and its second is the dataset, in this case galton. 
   CorrectAnswer: fit <- lm(child ~ parent, galton)
-  AnswerTests: omnitest(correctExpr='fit <- lm(child ~ parent, galton)')
+  AnswerTests: creates_lm_model('fit <- lm(child ~ parent, galton)')
   Hint: Type "fit <- lm(child ~ parent, galton)" at the R prompt.
 
 - Class: cmd_question
@@ -141,7 +141,7 @@
 - Class: cmd_question
   Output: Generate the regression line for this data. Type efit <- lm(accel ~ mag+dist, attenu) at the R prompt.
   CorrectAnswer: efit <- lm(accel ~ mag+dist, attenu)
-  AnswerTests: omnitest(correctExpr='efit <- lm(accel ~ mag+dist, attenu)')
+  AnswerTests: creates_lm_model('efit <- lm(accel ~ mag+dist, attenu)')
   Hint: Type "efit <- lm(accel ~ mag+dist, attenu)" at the R prompt.
 
 - Class: cmd_question
