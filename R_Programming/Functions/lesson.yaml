@@ -11,15 +11,89 @@
     pieces of reusable code that can be treated like any other R object.
 
 - Class: text
+  Output: "If you've worked through any other part of this course, you've probably
+    used some functions already. Functions are usually characterized by the name
+    of the function followed by parentheses."
+
+- Class: cmd_question
+  Output: "Let's try using a few basic functions just for fun. The Sys.Date()
+    function returns a string representing today's date. Type Sys.Date() below 
+      and see what happens."
+  CorrectAnswer: Sys.Date()
+  AnswerTests: omnitest(correctExpr='Sys.Date()')
+  Hint: "Display today's date by typing: Sys.Date()"
+
+- Class: text
+  Output: "Most functions in R return a value. Functions like Sys.Date() return a
+    value based on your computer's environment, while other functions manipulate 
+    input data in order to compute a return value."
+
+- Class: cmd_question
+  Output: "The mean() function takes a vector of numbers as input, and returns
+    the average of all of the numbers in the input vector. Inputs to functions
+    are often called arguments. Providing arguments to a function is also
+    sometimes called passing arguments to that function. Arguments you want to 
+    pass to a function go inside the function's parentheses. Try passing the argument 
+    c(2, 4, 5) to the mean() function."
+  CorrectAnswer: mean(c(2, 4, 5))
+  AnswerTests: omnitest(correctExpr='mean(c(2, 4, 5))')
+  Hint: "Compute the avergae of 2, 4, and 5 by typing: mean(c(2, 4, 5))"
+
+- Class: text
   Output: Functions usually take arguments which are variables that the function operates on. For example,
     the mean() function takes a vector as as argument, like in the case of mean(c(2,6,8)) . The mean()
     function then adds up all of the numbers in the vector and divides that sum by the
     length of the vector.
 
+- Class: text
+  Output: In the following question you will be asked to modify a script that will
+    appear as soon as you move on from this question. When you have finished modifying
+    the script save your changes to the script and type submit() then the script
+    will be evaluated There will be some comments in the script that opens up be
+    sure to read them!
+
 - Class: script
-  Output: The last R expression to be evaluated in a function is the return value of that function.
-    We want this function to take one argument, x, and return x without modifying it. Delete the pound
-    sign so that x is returned without any modification.
+  Output: The last R expression to be evaluated in a function will become the 
+    return value of that function. We want this function to take one argument, 
+    x, and return x without modifying it. Delete the pound
+    sign so that x is returned without any modification. Make sure to save your
+    script before you type submit().
   AnswerTests: test_func1()
   Hint: Make sure to delete the pound sign so the last expression in the function is just x.
   Script: boring_function.R
+
+- Class: cmd_question
+  Output: "Now that you've created your first function let's test it! Type: 
+    boring_function('My first function!'). If your function works, it should
+    just return the string: 'My first function!'"
+  CorrectAnswer: "boring_function('My first function!')"
+  AnswerTests: omnitest(correctExpr="boring_function('My first function!')")
+  Hint: "Test boring_function by typing: boring_function('My first function!')"
+
+- Class: text
+  Output: "Congratulations on writing your first function. By writing functions,
+    you can gain serious insight into how R works. As John Chambers, the creator
+    of R once said:\n\n To understand computations in R, two slogans are helpful:
+    1. Everything that exists is an object. 2. Everything that happens is a function call."
+
+- Class: cmd_question
+  Output: "If you want to see the source code for any function, just type the
+    function name without any arguments or parentheses. Let's try this out with
+    the function you just created. Type: boring_function to view its source code."
+  CorrectAnswer: boring_function
+  AnswerTests: omnitest(correctExpr='boring_function')
+  Hint: "To see the souce code for boring_function just type: boring_function"
+
+- Class: text
+  Output: "Time to make a more useful function! We're going to replicate the 
+    functionality of the mean() function by creating a function called: my_mean().
+    Remember that to calculate the average of all of the numbers in a vector you
+    find the sum of all the numbers in the vector, and then divide that sum by the
+    number of numbers in the vector." 
+
+- Class: script
+  Output: Make sure to save your script before you type submit().
+  AnswerTests: test_func2()
+  Hint: "Use the sum() function to find the sum of all the numbers in the vector. Use
+    the length() function to find the size of the vector."
+  Script: my_mean.R
