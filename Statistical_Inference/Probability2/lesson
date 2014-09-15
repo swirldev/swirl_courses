@@ -36,7 +36,7 @@
   Output: A probability mass function (pmf) gives the probability that a discrete random variable is exactly equal to some value. 
 
 - Class: mult_question
-  Output: For instance, suppose we have a coin which may or may not be fair. Let x=0 represent a 'heads' outcome and x=1 represent a 'tails' outcome of a coin toss. If p is the probability of 'heads' which of the following represents the pmf of the coin toss?  The variable x is either 0 or 1.
+  Output: For instance, suppose we have a coin which may or may not be fair. Let x=0 represent a 'heads' outcome and x=1 represent a 'tails' outcome of a coin toss. If p is the probability of 'heads' which of the following represents the pmf of the coin toss?  The variable x is either 0 (heads) or 1 (tails).
   AnswerChoices: (p^x)*(1-p)^(1-x); (p^(1-x))*(1-p)^x
   CorrectAnswer: (p^(1-x))*(1-p)^x
   AnswerTests: omnitest(correctVal='(p^(1-x))*(1-p)^x')
@@ -54,11 +54,11 @@
   FigureType: new
 
 - Class: mult_question
-  Output: Could the diagonal line represent a probability density function?
+  Output: Could the diagonal line represent a probability density function? Assume the lower side of the rectangle is the x axis.
   AnswerChoices: Yes; No
   CorrectAnswer: Yes
   AnswerTests: omnitest(correctVal='Yes')
-  Hint: The line segment falls about the x axis. Does the area under the diagonal have area equal to 1?
+  Hint: The diagonal falls about the x axis. Does the area under the diagonal have area equal to 1?
 
 - Class: figure
   Output: Now consider the shaded portion of the triangle - a smaller triangle with a base of length 1.6 and height determined by the diagonal. We'll answer the question, "What proportion of the big triangle is shaded?"
@@ -66,10 +66,10 @@
   FigureType: new
 
 - Class: text
-  Output: This proportion represents the probability that throwing a piece of cat kibble at the bigger triangle hits the blue portion.
+  Output: This proportion represents the probability that throwing a piece of cat kibble at the bigger triangle (below the diagonal) hits the blue portion.
 
 - Class: mult_question
-  Output:  We have to compute the area of the blue triangle. We know the base, but what is its height?
+  Output:  We have to compute the area of the blue triangle. (Since the area of the big triangle is 1, the area of the blue triangle is the proportion of the big triangle that is shaded.) We know the base, but what is its height?
   AnswerChoices: .5; .25; .8; I can't tell
   CorrectAnswer: .8
   AnswerTests: omnitest(correctVal='.8')
@@ -88,42 +88,48 @@
   Hint: The area of the blue triangle divided by the area of the big triangle gives you the probability.
 
 - Class: text
-  Output: This artificial example was to meant to illustrate a simple probability density function (pdf). Most pdf's have underlying formulae more complicated than lines. We'll see more of these in future lessons.  
+  Output: This artificial example was to meant to illustrate a simple probability density function (PDF). Most PDF's have underlying formulae more complicated than lines. We'll see more of these in future lessons.  
 
 - Class: text
-  Output: The cumulative distribution function (cdf) of a random variable X, either discrete or continuous, is the function F(x) equal to the probability that X is less than or equal to x. In the example above, the area of the blue triangle represented the probability that the random variable was less than the value 1.6. 
+  Output: The cumulative distribution function (CDF) of a random variable X, either discrete or continuous, is the function F(x) equal to the probability that X is less than or equal to x. In the example above, the area of the blue triangle represents the probability that the random variable was less than the value 1.6. 
 
 - Class: mult_question
-  Output: In the triangle example from above, which of the following expressions represents the cdf F(x)? 
+  Output: In the triangle example from above, which of the following expressions represents the CDF F(x)? 
   AnswerChoices: x*x/4; x*x/2; x*2x/2; x^2
   CorrectAnswer: x*x/4
-  AnswerTests: omnitest(correctExpr='x*x/4')
+  AnswerTests: omnitest(correctVal='x*x/4')
   Hint: The term 'x' is the base, x/2 is the height.  Plug these into the formula for the area of a triangle.
 
 - Class: text
-  Output: If you're familiar with calculus you might recognize that when you're computing areas under curves you're integrating functions. When the random variable is continuous the pdf is the derivative of the cdf.  
+  Output: If you're familiar with calculus you might recognize that when you're computing areas under curves you're integrating functions. When the random variable is continuous the PDF is the derivative of the CDF.  
 
 - Class: cmd_question
-  Output: To see this in the example, we've defined a function, myfun, for you which is the derivative of the cdf F(x). Look at myfun now.
-  CorrectAnswer: myfun
-  AnswerTests: omnitest(correctExpr='myfun')
-  Hint: Type 'myfun' at the R prompt.
+  Output: To see this in the example, we've defined  the function mypdf for you which is the derivative of the CDF F(x). Look at mypdf now.
+  CorrectAnswer: mypdf
+  AnswerTests: omnitest(correctExpr='mypdf')
+  Hint: Type 'mypdf' at the R prompt.
 
 - Class: cmd_question
-  Output: Now use the R function integrate to integrate myfun with the parameters lower equal to 0 and upper equal to 1.6. See if you get the same area (probability) you got before
-  CorrectAnswer: integrate(myfun,0,1.6)
-  AnswerTests: omnitest(correctExpr='integrate(myfun,0,1.6)')
-  Hint: Type 'integrate(myfun,0,1.6)' at the R prompt.
+  Output: Now use the R function integrate to integrate mypdf with the parameters lower equal to 0 and upper equal to 1.6. See if you get the same area (probability) you got before
+  CorrectAnswer: integrate(mypdf,0,1.6)
+  AnswerTests: omnitest(correctExpr='integrate(mypdf,0,1.6)')
+  Hint: Type 'integrate(mypdf,0,1.6)' at the R prompt.
+
+- Class: figure
+  Output: Here is the graph of the CDF which is the function (x^2)/4. It is the result of integrating the PDF x/2.
+  Figure: figure3.R
+  FigureType: new
+
 
 - Class: text
-  Output: The survivor function S(x) of a random variable X is defined as the function of x equal to the probaiblity that X is greater than x. This is the complement of the cdf.
+  Output: The survivor function S(x) of a random variable X is defined as the function of x equal to the probability that X is greater than x. This is the complement of the CDF.
 
 - Class: mult_question
   Output: In the triangle example from above, which of the following expressions represents the survival function?  
   AnswerChoices: 1-x*x/4; 1-x*x/2; 1-x*2x/2; 1-x^2
   CorrectAnswer: 1-x*x/4
-  AnswerTests: omnitest(correctExpr='1-x*x/4')
-  Hint: Since areas under pdf's must be 1 and the survival function is the complement of the cdf, the survival function and the cdf sum to 1.
+  AnswerTests: omnitest(correctVal='1-x*x/4')
+  Hint: Since areas under PDF's must be 1 and the survival function is the complement of the CDF, the survival function and the CDF sum to 1.
 
 - Class: text
   Output: The quantile v of a CDF is the point x_v at which the CDF has the value v. More precisely, F(x_v)=v. A percentile is a quantile in which v is expressed as a percentage.
@@ -132,127 +138,33 @@
   Output: What percentile is the median?  
   AnswerChoices: 50-th; 25-th; 95-th; I can't tell
   CorrectAnswer: 50-th
-  AnswerTests: omnitest(correctExpr='50-th')
+  AnswerTests: omnitest(correctVal='50-th')
   Hint: The median is the point at which half of the outcomes are above and half are below.
 
-- Class: text
-  Output: Remember, when we're talking about medians we're referring to population quantities. A probability model connects the data to the population using assumptions. Therefore the  the sample median will be the estimator of the  population median (the estimand).
-
-- Class: exact_question
-  Output: When drawing a single card, how many outcomes are possible?
-  CorrectAnswer: 52
-  AnswerTests: omnitest(correctVal=52)
-  Hint: How many cards are in the deck?
-
 - Class: cmd_question
-  Output: What is the probability of drawing a jack?
-  CorrectAnswer: 4/52
-  AnswerTests: equiv_val(1/13)
-  Hint: How many jacks are in the deck? Divide this number by the number of cards in the deck.
-
-- Class: cmd_question
-  Output: If you're dealt a hand of 5 cards, what is the probability of getting all 5 of the same value?
-  CorrectAnswer: 0
-  AnswerTests: equiv_val(0)
-  Hint: There are only 4 different suits in a deck.
-
-- Class: cmd_question
-  Output: The simplest way to create a sequence of numbers in R is by using the `:`
-    operator. Type 1:20 to see how it works.
-  CorrectAnswer: '1:20'
-  AnswerTests: omnitest(correctExpr='1:20')
-  Hint: Type 1:20 with no spaces. Make sure to use a regular colon and NOT a semi-colon.
-
-
-
+  Output: What is the 50th percentile of the example above?
+  CorrectAnswer: 1.414214
+  AnswerTests: equiv_val(sqrt(2))
+  Hint: Solve for the x such that x^2=4*.5=2
 
 - Class: mult_question
-  Output: The probability of a particular outcome of an experiment is the ratio of the number of ways that outcome can occur to all possible outcomes of the experiment. Since there are 6 possible outcomes to the experiment of rolling a die, and we assume the die is fair, each outcome is equally likely. So what is the probability of rolling a 2?
-  AnswerChoices: 1/6; 2/6; 1/3; 0
-  CorrectAnswer: 1/6
-  AnswerTests: omnitest(correctVal='1/6')
-  Hint: The '2' is one of six possibilities.
-
-- Class: mult_question
-  Output: What is the probability of rolling an even number?
-  AnswerChoices: 1/2; 1/3; 0; 1
-  CorrectAnswer: 1/2
-  AnswerTests: omnitest(correctVal='1/2')
-  Hint: Half of the outcomes are even and half are odd. There are three even outcomes (2,4, and 6) and three odd (1,3, and 5)
+  Output: What does this mean with respect to the kibble we're tossing at the triangle?
+  AnswerChoices: Half of it falls to the left of 1.41; All of it falls to the left of 1.41; All of it falls to the right of 1.41; All of it falls on the vertical line at 1.41
+  CorrectAnswer: Half of it falls to the left of 1.41
+  AnswerTests: omnitest(correctVal='Half of it falls to the left of 1.41')
+  Hint: Recall the meaning of median (half).
 
 - Class: text
-  Output: Since the probability of a particular outcome or event E is the ratio of ways that E could occur to the number of all possible outcomes or events, the probability of E, denoted P(E), is always between 0 and 1. Impossible events have a probability of 0 (since they can't occur) and events that are certain to occur have a probability of 1. 
+  Output: We'll close by repeating some important points.
 
 - Class: text
-  Output: If you're doing an experiment with n possible outcomes, say e1, e2, ..., en, then the sum of the probabilities of all the outcomes is 1. If all the outcomes are equally likely, as in the case of a fair die, then the probability of each is 1/n. 
-
-- Class: mult_question
-  Output: Suppose you rolled the fair die twice. What is the probability of rolling two 4's?
-  AnswerChoices: 1/36; 2/6; 0; 1/6
-  CorrectAnswer: 1/36
-  AnswerTests: omnitest(correctVal='1/36')
-  Hint: The probability of rolling the first 4 is 1/6. The second roll of the dice doesn't depend on the outcome of the first, so that also has a probability of 1/6. The probability of both events occurring is 1/6 * 1/6.
-
-- Class: mult_question
-  Output: Suppose you rolled the fair die twice. What is the probability of rolling the same number two times in a row?
-  AnswerChoices: 1/6; 2/6; 0; 1/36
-  CorrectAnswer: 1/6
-  AnswerTests: omnitest(correctVal='1/6')
-  Hint: Since we don't care what the outcome of the first roll is, its probability is 1. The second roll of the dice has to match the outcome of the first, so that  has a probability of 1/6. The probability of both events occurring is 1 * 1/6.
-
-- Class: mult_question
-  Output: Now consider the experiment of rolling 2 dice, one red and one green. Assume the dice are fair and not loaded. How many distinct outcomes are possible?
-  AnswerChoices: 36; 12; 11; 1
-  CorrectAnswer: 36
-  AnswerTests: omnitest(correctVal='36')
-  Hint: Each of the dice has 6 ways to land, and their outcomes are independent of each other. Each way the red die lands can be paired with each way the green die lands. For instance, a "1" on the red dice can occur independently of any of the 6 outcomes of the green dice. 
+  Output: A probability model connects data to a population using assumptions.
 
 - Class: text
-  Output: If an event E can occur in more than one way and these ways are disjoint (mutually exclusive) then P(E) is the sum of the probabilities of each of the ways in which it can occur. 
-
-- Class: mult_question
-  Output: Rolling these two dice, what's the probability of rolling a 10?
-  AnswerChoices: 3/36; 2/36; 1/6; 0
-  CorrectAnswer: 3/36
-  AnswerTests: omnitest(correctVal='3/36')
-  Hint: Since the highest possible dice roll is a '6', the only combinations which give '10' are 4+6 and 5+5. The first occurs in two ways - red dice gets '4' and green gets '6' OR red gets '6' and green gets '4'. 
-
-- Class: mult_question
-  Output: What is the most likely outcome rolling these two dice?
-  AnswerChoices: 7; 2; 12; 9; 1
-  CorrectAnswer: 7
-  AnswerTests: omnitest(correctVal='7')
-  Hint: The choice of '1' is impossible rolling two dice, and '2' and '12' each occur in only one possible way (snake-eyes and double 6's, respectively), so '7' and '9' are the only reasonable choices. To roll '7' you can use any number from '1' to '6', while '9' can only use outcomes of '3' and above.  
+  Output: Be careful to distinguish between population medians and sample medians.
 
 - Class: text
-  Output: The probability of at least one of two events, A and B, occurring is the sum of their individual probabilities minus the probability of their intersection. P(A U B) = P(A) + P(B) - P(A&B). 
+  Output:  A sample median is an estimator of a population median (the estimand).
 
 - Class: text
-  Output: It's easy to see why this is. Calculating P(A) and P(B) counts outcomes that are in both A and B twice, so they're overcounted. The probability of the intersection of the two events, denoted as A&B, must be subtracted from the sum.
-
-- Class: mult_question
-  Output: Back to rolling two dice. Which expression represents the probability of rolling an even number or a number greater than 8?
-  AnswerChoices: (18+10-4)/36; (18+10)/36; (18+4-2)/36; (18+10-2)/36
-  CorrectAnswer: (18+10-4)/36
-  AnswerTests: omnitest(correctVal='(18+10-4)/36')
-  Hint: The probability of rolling an even number is 1/2 or 18/36. There are 10 ways of rolling a number greater than '8' - 4 ways for rolling '9', 3 for '10', 2 for '11' and 1 for '12'. How big is the intersection between rolling an even number and those greater than '8'?  
-
-- Class: text
-  Output: It follows that if A and B are disjoint or mutually exclusive, i.e. only one of them can occur, then  P(A U B) = P(A)+P(B) .
-
-- Class: mult_question
-  Output: Which of the following expressions represents the probability of rolling a number greater than 10?
-  AnswerChoices: (2+1)/36; (1+1)/36; (3+1)/36; (3+1-1)/36
-  CorrectAnswer: (2+1)/36
-  AnswerTests: omnitest(correctVal='(2+1)/36')
-  Hint: The only outcomes greater than 10 are 11 and 12 which are mutually exclusive. The first, 11, can occur in two ways, and the second, 12, can occur only with a roll of double 6's.   
-
-- Class: exact_question
-  Output: Use the answer to the previous question and the fact that the sum of all outcomes must sum to 1 to determine the probability of rolling a number less than or equal to 10.
-  CorrectAnswer: 11/12
-  AnswerTests: omnitest(correctVal=11/12)
-  Hint: Subtract the previous answer from 1.
-
-
-- Class: text
-  Output: Congrats! With probability 1, you've concluded this first lesson on basic probability.
+  Output: Congrats! You've concluded this lesson on probability.

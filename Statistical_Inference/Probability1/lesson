@@ -10,10 +10,10 @@
   Output: "Probability. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Statistical_Inference/Probability.)"
 
 - Class: text
-  Output: In this lesson, we'll review basic ideas of probability, the study of quantifying the likelihood of certain events occurring. Note the similarity between the words probability and probably. Every time you use the latter word you're implying that an event is more likely than not to occur.
+  Output: In this lesson, we'll review basic ideas of probability, the study of quantifying the likelihood of particular events occurring. Note the similarity between the words probability and probably. Every time you use the latter word you're implying that an event is more likely than not to occur.
 
 - Class: mult_question
-  Output: The first step in understanding probability is to count all possible outcomes of an experiment. For instance, if you were rolling a single, fair die once, how many outcomes are possible?
+  Output: The first step in understanding probability is to see if you understand what outcomes of an experiment are possible. For instance, if you were rolling a single, fair die once, how many outcomes are possible?
   AnswerChoices: 6; 1; 4; Too many
   CorrectAnswer: 6
   AnswerTests: omnitest(correctVal='6')
