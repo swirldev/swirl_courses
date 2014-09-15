@@ -14,12 +14,14 @@ creates_glm_model <- function(correctExpr){
   eSw <- cleanEnv(e$snapshot)
   mdlSw <- eval(parse(text=correctExpr), eSw)
   # Check whether the model's name is correct
-  nameGood <- sum(ls(eUsr) %in% ls(eSw)) & sum(ls(eSw) %in% ls(eUsr))
-  # If not, highlight the misspelling
-  if(!nameGood){
-    swirl_out(paste0("You seem to have misspelled the model's name. I was expecting ", names(eSw), 
-                     " but you apparently typed ", names(eUsr), "."))
-    return(FALSE)
+  if(length(ls(eSw)) > 0){
+    nameGood <- sum(ls(eUsr) %in% ls(eSw)) & sum(ls(eSw) %in% ls(eUsr))
+    # If not, highlight the misspelling
+    if(!nameGood){
+      swirl_out(paste0("You seem to have misspelled the model's name. I was expecting ", ls(eSw), 
+                       " but you apparenlty typed ", ls(eUsr), "."))
+      return(FALSE)
+    }
   }
   # Check for effective equality of the models
   isTRUE(all.equal(as.vector(mdlUsr$coefficients), as.vector(mdlSw$coefficients))) &

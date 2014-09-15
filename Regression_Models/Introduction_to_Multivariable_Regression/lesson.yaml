@@ -90,13 +90,13 @@
 - Class: cmd_question
   Output: "For reference, create a model named fit, based on all three regressors, Girth, Height, and Constant, and assign the result to a variable named fit. Use an expression such as fit <- lm(Volume ~ Girth + Height + Constant -1, trees). Don't forget the -1, and be sure to name the model fit for later use."
   CorrectAnswer: fit <- lm(Volume ~ . - 1, trees)
-  AnswerTests: creates_lm_model('fit <- lm(Volume ~ . - 1, trees)');expr_creates_var("fit")
+  AnswerTests: creates_lm_model('fit <- lm(Volume ~ . - 1, trees)')
   Hint: "Enter an expression such as fit <- lm(Volume ~ Girth + Height + Constant - 1, trees), or fit <- lm(Volume ~ . -1, trees) at the R prompt."
 
 - Class: cmd_question
   Output: "Now let's eliminate Girth from the data set. Call the reduced data set trees2 to indicate it has only 2 regressors. Use the expression trees2 <- eliminate(\"Girth\", trees)."
   CorrectAnswer: 'trees2 <- eliminate("Girth", trees)'
-  AnswerTests: ANY_of_exprs('trees2 <- eliminate("Girth", trees)', "trees2 <- eliminate('Girth', trees)")
+  AnswerTests: ANY_of_exprs('trees2 <- eliminate("Girth", trees)', "trees2 <- eliminate('Girth', trees)");expr_creates_var("trees2")
   Hint: Enter trees2 <- eliminate("Girth", trees) at the R prompt.
 
 - Class: cmd_question
@@ -115,7 +115,7 @@
 - Class: cmd_question
   Output: "Now create a model, called fit2, using the reduced data set. Use an expression such as fit2 <- lm(Volume ~ Height + Constant -1, trees2). Don't forget to use -1 in the formula."
   CorrectAnswer: fit2 <- lm(Volume ~ . - 1, trees2)
-  AnswerTests: creates_lm_model('fit2 <- lm(Volume ~ . - 1, trees2)');expr_creates_var("fit2")
+  AnswerTests: creates_lm_model('fit2 <- lm(Volume ~ . - 1, trees2)')
   Hint: "Enter an expression such as fit2 <- lm(Volume ~ Height + Constant -1, trees2) or fit2 <- lm(Volume ~ . - 1, trees2). Don't forget to use -1 in the formula, and name the model fit2."
 
 - Class: cmd_question
