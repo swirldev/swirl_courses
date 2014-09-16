@@ -94,38 +94,35 @@
   Output: The cumulative distribution function (CDF) of a random variable X, either discrete or continuous, is the function F(x) equal to the probability that X is less than or equal to x. In the example above, the area of the blue triangle represents the probability that the random variable was less than the value 1.6. 
 
 - Class: mult_question
-  Output: In the triangle example from above, which of the following expressions represents the CDF F(x)? 
+  Output: In the triangle example from above, which of the following expressions represents F(x), the CDF? 
   AnswerChoices: x*x/4; x*x/2; x*2x/2; x^2
   CorrectAnswer: x*x/4
   AnswerTests: omnitest(correctVal='x*x/4')
   Hint: The term 'x' is the base, x/2 is the height.  Plug these into the formula for the area of a triangle.
 
 - Class: text
-  Output: If you're familiar with calculus you might recognize that when you're computing areas under curves you're integrating functions. When the random variable is continuous the PDF is the derivative of the CDF.  
+  Output: If you're familiar with calculus you might recognize that when you're computing areas under curves you're actually integrating functions. 
+
+- Class: text
+  Output: When the random variable is continuous, as in the example, the PDF is the derivative of the CDF. So integrating the PDF (the line represented by the diagonal) yields the CDF. When you evaluate the CDF at the limits of integration the result is an area.
 
 - Class: cmd_question
-  Output: To see this in the example, we've defined  the function mypdf for you which is the derivative of the CDF F(x). Look at mypdf now.
+  Output: To see this in the example, we've defined  the function mypdf for you. This is the equation of the line represented by the diagonal of the rectangle. As the PDF, it is  the derivative of F(x), the CDF. Look at mypdf now.
   CorrectAnswer: mypdf
   AnswerTests: omnitest(correctExpr='mypdf')
   Hint: Type 'mypdf' at the R prompt.
 
 - Class: cmd_question
-  Output: Now use the R function integrate to integrate mypdf with the parameters lower equal to 0 and upper equal to 1.6. See if you get the same area (probability) you got before
+  Output: Now use the R function integrate to integrate mypdf with the parameters lower equal to 0 and upper equal to 1.6. See if you get the same area (probability) you got before.
   CorrectAnswer: integrate(mypdf,0,1.6)
   AnswerTests: omnitest(correctExpr='integrate(mypdf,0,1.6)')
   Hint: Type 'integrate(mypdf,0,1.6)' at the R prompt.
 
-- Class: figure
-  Output: Here is the graph of the CDF which is the function (x^2)/4. It is the result of integrating the PDF x/2.
-  Figure: figure3.R
-  FigureType: new
-
-
 - Class: text
-  Output: The survivor function S(x) of a random variable X is defined as the function of x equal to the probability that X is greater than x. This is the complement of the CDF.
+  Output: The survivor function S(x) of a random variable X is defined as the function of x equal to the probability that the random variable X is greater than the value x. This is the complement of the CDF F(x), in our example, the portion of the lower triangle that is not shaded.
 
 - Class: mult_question
-  Output: In the triangle example from above, which of the following expressions represents the survival function?  
+  Output: In our example, which of the following expressions represents the survival function?  
   AnswerChoices: 1-x*x/4; 1-x*x/2; 1-x*2x/2; 1-x^2
   CorrectAnswer: 1-x*x/4
   AnswerTests: omnitest(correctVal='1-x*x/4')
@@ -142,7 +139,7 @@
   Hint: The median is the point at which half of the outcomes are above and half are below.
 
 - Class: cmd_question
-  Output: What is the 50th percentile of the example above?
+  Output: What is the 50th percentile of the CDF F(x)=(x^2)/4 from the example above?
   CorrectAnswer: 1.414214
   AnswerTests: equiv_val(sqrt(2))
   Hint: Solve for the x such that x^2=4*.5=2
