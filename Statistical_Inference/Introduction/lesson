@@ -10,21 +10,24 @@
   Output: "Introduction to Statistical_Inference. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Statistical_Inference/Introduction.)"
 
 - Class: text
-  Output: In this lesson, we'll introduce basics of statistical inference, the process of deducing conclusions "about a population using noisy
-statistical data where uncertainty must be accounted for". In other words, statistical inference lets scientists formulat conclusions from data and quantify the uncertainty arising from using incomplete data.
+  Output: In this lesson, we'll introduce basics of statistical inference, the process of deducing conclusions "about a population using noisy statistical data where uncertainty must be accounted for". In other words, statistical inference lets scientists formulate conclusions from data and quantify the uncertainty arising from using incomplete data.
 
 - Class: mult_question  
-  Output: From the plot, which is NOT one of the factors measured?
-  AnswerChoices: Obesity; Catholic; Fertility; Infant Mortality
-  CorrectAnswer: Obesity
-  AnswerTests: omnitest(correctVal='Obesity')
-  Hint: Which of the choices doesn't appear on the plot at all?
+  Output: Which of the following is NOT an example of statistical inference? 
+  AnswerChoices: Polling before an election; Constructing a medical image from fMRI data; Testing the efficacy of a new drug; Recording the results of a statistics exam
+  CorrectAnswer: Recording the results of a statistics exam
+  AnswerTests: omnitest(correctVal='Recording the results of a statistics exam')
+  Hint: Which of the choices involves concrete data that doesn't require any induction or generalization?
 
-- Class: cmd_question
-  Output: First, use the R function lm to generate the linear model "all" in which Fertility is the variable dependent on all the others. Use the R shorthand "." to represent the five independent variables in the formula passed to lm.  Remember the data is "swiss". 
-  CorrectAnswer: all <- lm(Fertility ~ ., swiss)
-  AnswerTests: creates_lm_model('all <- lm(Fertility ~ . , swiss)')
-  Hint: Type "all <- lm(Fertility ~ ., swiss)" at the R prompt.
+- Class: text
+  Output: So statistical inference involves formulating conclusions using data AND quantifying the uncertainty associated with those conclusions. The uncertainty arises from incomplete or bad data.
+
+- Class: mult_question  
+  Output: Which of the following is NOT a source of bad data? 
+  AnswerChoices: Small sample size; Selection bias; Representative sample of population; Poorly designed study 
+  CorrectAnswer: Representative sample of population
+  AnswerTests: omnitest(correctVal='Representative sample of population')
+  Hint: Which of the choices would allow one to draw reasonable conclusions?
 
 - Class: cmd_question
   Output: Now look at the summary of the linear model all.
