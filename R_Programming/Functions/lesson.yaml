@@ -37,19 +37,19 @@
     c(2, 4, 5) to the mean() function."
   CorrectAnswer: mean(c(2, 4, 5))
   AnswerTests: omnitest(correctExpr='mean(c(2, 4, 5))')
-  Hint: "Compute the avergae of 2, 4, and 5 by typing: mean(c(2, 4, 5))"
+  Hint: "Compute the average of 2, 4, and 5 by typing: mean(c(2, 4, 5))"
 
 - Class: text
   Output: Functions usually take arguments which are variables that the function operates on. For example,
-    the mean() function takes a vector as as argument, like in the case of mean(c(2,6,8)) . The mean()
+    the mean() function takes a vector as as argument, like in the case of mean(c(2,6,8)). The mean()
     function then adds up all of the numbers in the vector and divides that sum by the
     length of the vector.
 
 - Class: text
   Output: In the following question you will be asked to modify a script that will
     appear as soon as you move on from this question. When you have finished modifying
-    the script save your changes to the script and type submit() then the script
-    will be evaluated There will be some comments in the script that opens up be
+    the script, save your changes to the script and type submit() and the script
+    will be evaluated. There will be some comments in the script that opens up, so be
     sure to read them!
 
 - Class: script
