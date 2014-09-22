@@ -13,16 +13,40 @@
   Output: In this lesson, we'll discuss expectations of random variables. 
 
 - Class: text
-  Output: E[X], the expected value or mean of a random variable X is the center of its distribution. For a discrete random variable $X$ with PMF $p(x)$, E[X] is defined as a sum over all possible values $x$ of x*p(x).
-
-- Class: cmd_question
-  Output: Compute the expectation of the random variable representing a roll of a fair dice.
-  CorrectAnswer: 3.5
-  AnswerTests: equiv_val(3.5)
-  Hint: In a fair dice, each of the 6 values is equally likely to occur so the probability of i for i=1...6 is 1/6.
+  Output: E[X], the expected value of a random variable X is the center of its distribution. For a discrete random variable X with PMF p(x), E[X] is defined as a sum over all possible values x of the quantity x*p(x). E[X] represents the center of mass of a collection of locations and weights, {x, p(x)}.
 
 - Class: text
-  Output: Recall that a random variable is a numerical outcome of an experiment. It can be discrete (take on only a countable number of possibilities), or continuous (take on any value on the real line or subset of it).
+  Output: Another term for expected value is mean. Recall your high school definition of arithmetic mean (or average) as the sum of a bunch of numbers divided by the number of numbers you added together. This is consistent with the formal definition of E[X] if all the numbers are equally weighted.
+
+- Class: cmd_question
+  Output: Consider the random variable X representing a roll of a fair dice. By 'fair' we mean all the sides are equally likely to appear. What is the expected value of X? 
+  CorrectAnswer: 3.5
+  AnswerTests: equiv_val(3.5)
+  Hint: Add the numbers from 1 to 6 and divide by 6.
+
+- Class: cmd_question
+  Output: We've defined a function for you, expect_dice, which takes a pmf as an input. For our purposes, the pmf is represented as a 6-long array of fractions. The i-th entry in the array represents the probability of i being the outcome of a dice roll. Look at expect_dice now.
+  CorrectAnswer: expect_dice
+  AnswerTests: omnitest(correctExpr='expect_dice')
+  Hint: Type 'expect_dice' at the command prompt.
+
+- Class: cmd_question
+  Output: We've also defined a function for you, probability distributions for two loaded dice, dice_high and dice_low. Look at dice_high now. 
+  CorrectAnswer: dice_high
+  AnswerTests: omnitest(correctExpr='dice_high')
+  Hint: Type 'dice_high' at the command prompt.
+
+- Class: cmd_question
+  Output: Using the function expect_dice, calculate the expected value of a roll of dice_high. 
+  CorrectAnswer: expect_dice(dice_high)
+  AnswerTests: omnitest(correctExpr='expect_dice(dice_high)')
+  Hint: Type 'expect_dice(dice_high)' at the command prompt.
+
+- Class: cmd_question
+  Output: Now calculate the expected value of a roll of dice_low. 
+  CorrectAnswer: expect_dice(dice_low)
+  AnswerTests: omnitest(correctExpr='expect_dice(dice_low)')
+  Hint: Type 'expect_dice(dice_low)' at the command prompt.
 
 - Class: mult_question
   Output: If you had a ruler of infinite precision, would measuring the height of adults around the world be continuous or discrete?
