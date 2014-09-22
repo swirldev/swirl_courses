@@ -14,10 +14,10 @@
 
 - Class: mult_question  
   Output: Which of the following is NOT an example of statistical inference? 
-  AnswerChoices: Polling before an election; Constructing a medical image from fMRI data; Testing the efficacy of a new drug; Recording the results of a statistics exam
+  AnswerChoices: Polling before an election to predict its outcome; Constructing a medical image from fMRI data; Testing the efficacy of a new drug; Recording the results of a statistics exam
   CorrectAnswer: Recording the results of a statistics exam
   AnswerTests: omnitest(correctVal='Recording the results of a statistics exam')
-  Hint: Which of the choices involves concrete data that doesn't require any induction or generalization?
+  Hint: Which of the choices involves concrete data that doesn't require any inference or generalization?
 
 - Class: text
   Output: So statistical inference involves formulating conclusions using data AND quantifying the uncertainty associated with those conclusions. The uncertainty could arises from incomplete or bad data.
@@ -30,7 +30,7 @@
   Hint: Which of the choices would allow one to draw reasonable inferences?
 
 - Class: mult_question
-  Output: So with statistical inference we use data to draw general conclusions about a population. Which of the following would concern a scientist using statistical inference techniques?
+  Output: So with statistical inference we use data to draw general conclusions about a population. Which of the following would  a scientist using statistical inference techniques consider a problem?
   AnswerChoices: Our data sample is representative of the population; Our study has no bias and is well-designed; Contaminated data 
   CorrectAnswer: Contaminated data
   AnswerTests: omnitest(correctVal='Contaminated data')
@@ -44,9 +44,7 @@
   Hint: Which of the choices is exact?
 
 - Class: text
-  Output: There are two broad flavors of inference. The first and older is frequency, which uses "long run proportion of times an event occurs in independent, identically distributed repetitions." 
-The second is Bayesian in which the probability estimate for a hypothesis is updated as additional evidence is acquired. Both flavors require an understanding of probability so that's what the next
-lessons will cover.
+  Output: There are two broad flavors of inference. The first is frequency, which uses "long run proportion of times an event occurs in independent, identically distributed repetitions." The second is Bayesian in which the probability estimate for a hypothesis is updated as additional evidence is acquired. Both flavors require an understanding of probability so that's what the next lessons will cover.
 
 - Class: text
   Output: Congrats! You've concluded this brief introduction to statistical inference.

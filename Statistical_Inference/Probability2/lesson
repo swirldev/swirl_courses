@@ -33,7 +33,7 @@
   Output: Continuous random variables are usually associated with measurements of time, distance, or some biological process since they can take on any value, often within some specified range. Limitations of precision in taking the measurements may imply that the values are discrete; we in fact consider them continuous. 
 
 - Class: text
-  Output: A probability mass function (pmf) gives the probability that a discrete random variable is exactly equal to some value. 
+  Output: A probability mass function (PMF) gives the probability that a discrete random variable is exactly equal to some value. 
 
 - Class: mult_question
   Output: For instance, suppose we have a coin which may or may not be fair. Let x=0 represent a 'heads' outcome and x=1 represent a 'tails' outcome of a coin toss. If p is the probability of 'heads' which of the following represents the pmf of the coin toss?  The variable x is either 0 (heads) or 1 (tails).
