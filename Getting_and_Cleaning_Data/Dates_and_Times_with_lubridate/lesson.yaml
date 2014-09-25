@@ -52,7 +52,7 @@
   Hint: Try passing one argument, this_day, to year(), month(), or day().
 
 - Class: cmd_question
-  Output: We can also get the day of the week from this_day using the wday() function. It will be represented as a number, such that 1 = Sunday, 2 = Monday, 3 = Tuesday, etc.
+  Output: We can also get the day of the week from this_day using the wday() function. It will be represented as a number, such that 1 = Sunday, 2 = Monday, 3 = Tuesday, etc. Give it a shot.
   CorrectAnswer: wday(this_day)
   AnswerTests: omnitest('wday(this_day)')
   Hint: wday(this_day) will give the day of the week, represented as a number.
