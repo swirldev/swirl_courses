@@ -110,7 +110,7 @@
   Hint: Subtract the previous answer from 1.
 
 - Class: figure
-  Output: Now we'll applies the concepts of probability to playing cards.
+  Output: Now we'll apply the concepts of probability to playing cards.
   Figure: runCards.R
   FigureType: new
 

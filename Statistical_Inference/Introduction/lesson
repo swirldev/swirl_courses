@@ -10,7 +10,7 @@
   Output: "Introduction to Statistical_Inference. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Statistical_Inference/Introduction.)"
 
 - Class: text
-  Output: In this lesson, we'll briefly introduce basics of statistical inference, the process of deducing conclusions "about a population using noisy statistical data where uncertainty must be accounted for". In other words, statistical inference lets scientists formulate conclusions from data and quantify the uncertainty arising from using incomplete data.
+  Output: In this lesson, we'll briefly introduce basics of statistical inference, the process of drawing conclusions "about a population using noisy statistical data where uncertainty must be accounted for". In other words, statistical inference lets scientists formulate conclusions from data and quantify the uncertainty arising from using incomplete data.
 
 - Class: mult_question  
   Output: Which of the following is NOT an example of statistical inference? 
