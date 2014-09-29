@@ -3,7 +3,7 @@
 # the lesson.
 file.copy(from=file.path(find.package("swirl"),
                          "Courses/Statistical_Inference",
-                         "Probability2/cards.R"), 
+                         "Probability1/cards.R"), 
           to="cards.R")
-file.edit("cards.R")
+# file.edit("cards.R")
 source("cards.R", local=TRUE)
