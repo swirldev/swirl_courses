@@ -1,39 +1,117 @@
 - Class: meta
   Course: Statistical_Inference
-  Lesson: ConditionalProbability
+  Lesson: CommonDistros
   Author: Swirl Coders
   Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
 - Class: text
-  Output: "Conditional Probability. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/03_Conditional_Probability.)"
-
-- Class: text
-  Output: In this lesson, as the name suggests, we'll discuss conditional probability. 
+  Output: "Common Distributions. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/06_Conditional_Probability.)"
 
 - Class: mult_question
-  Output: If you were given a fair die and asked what the probability of rolling a 3 is, what would you reply?
-  AnswerChoices: 1/6; 1/2; 1/3; 1/4; 1 
-  CorrectAnswer: 1/6
-  AnswerTests: omnitest(correctVal='1/6')
-  Hint: There are 6 possible outcomes and you want to know the probability of 1 of them.
+  Output: Given the title of this lesson, what do you think it will cover?
+  AnswerChoices: Common Distributions; Rare Distributions; Common Bistros; I haven't a clue 
+  CorrectAnswer: Common Distributions
+  AnswerTests: omnitest(correctVal='Common Distributions')
+  Hint: Part of the title is an abbreviation for another word we've seen several times in earlier lessons.
+
+- Class: text
+  Output: The first distribution we'll examine is the Bernoulli and it's associated with experiments which have only 2 possible outcomes. These are also called (by people in the know) binary trials.
 
 - Class: mult_question
-  Output: Suppose the person who gave you the dice rolled it behind your back and told you the roll was odd. Now what is the probability that the roll was a 3?
-  AnswerChoices: 1/6; 1/2; 1/3; 1/4; 1 
-  CorrectAnswer: 1/3
-  AnswerTests: omnitest(correctVal='1/3')
-  Hint: Given that there are 3 odd numbers on the die your possibilities have been reduced to 3 and you want to know the probability of 1 of them.
+  Output: It might surprise you to learn that you've probably had experience with Bernoulli trials. Which of the following would be a Bernoulli trial?
+  AnswerChoices: Drawing a card from a deck; Tossing a die; Flipping a coin; Spinning a roulette wheel
+  CorrectAnswer: Flipping a coin
+  AnswerTests: omnitest(correctVal='Flipping a coin')
+  Hint: Which of the choices has only two possible outcomes?
+
+- Class: cmd_question
+  Output: For simplicity, we usually say that Bernoulli random variables take only the values 1 and 0. Suppose we also specify that the probability that the Bernoulli outcome of 1 is p. Given what you know about probabilities, how would you specify the probability of a 0 outcome?
+  CorrectAnswer: 1-p
+  AnswerTests: ANY_of_exprs('1-p','-p+1')
+  Hint: Recall that the sum of the probabilities of all the outcomes is 1.
+
+- Class: mult_question
+  Output: If the probability of a 1 is p and the probability of a 0 is 1-p which of the following represents the PMF of a Bernoulli distribution? Recall that the PMF is the function representing the probability that X=x.
+  AnswerChoices: p^x * (1-p)^(1-x); p^(1-x) *(1-p)*(1-x); p*(1-p); x*(1-x)
+  CorrectAnswer: p^x * (1-p)^(1-x)
+  AnswerTests: omnitest(correctVal='p^x * (1-p)^(1-x)')
+  Hint: When x=1, which of the given expressions yields p?
+
+- Class: cmd_question
+  Output: Recall the definition of the expectation of a random variable. Suppose we have a Bernoulli random variable and, as before, the probability it equals 1 is p and probability it equals 0 is 1-p. What is its mean?
+  CorrectAnswer: p
+  AnswerTests: omnitest(correctVal='p')
+  Hint: Add the two terms x*p(x) where x equals 0 and 1 respectively.
+
+- Class: mult_question
+  Output: Given the same Bernoulli random variable above, which of the following represents E(X^2)
+  AnswerChoices: p(1-p); p^2; (1-p)^2; p; 1-p 
+  CorrectAnswer: p
+  AnswerTests: omnitest(correctVal='p')
+  Hint: Add the two terms x^2*p(x) where x equals 0 and 1 respectively.
+
+- Class: mult_question
+  Output: Use the answers of the last two questions to find the variance of the Bernoulli random variable. Recall Var = E(X^2)-(E(X))^2
+  AnswerChoices: p(1-p); p^2-p; p(p-1); p^2*(1-p)^2 
+  CorrectAnswer: p(1-p)
+  AnswerTests: omnitest(correctVal='p(1-p)')
+  Hint: E(X^2)=p and E(X)=p, so Var=p-p^2. Rewrite this expression by factoring out the p.
 
 - Class: text
-  Output: The probability of this second event is conditional on this new information, so the probability of rolling a 3 is now one third.
+  Output: If we let X be a Bernoulli random variable, it is typical to call X=1 as a "success" and X=0 as a "failure". After all, 1 is greater than 0, no?
 
 - Class: text
-  Output: We represent the conditional probability of an event A given that B has occurred with the notation P(A|B). More specifically, we define the conditional probability of event A, given that B has occurred with the following.
+  Output: The binomial random variables are obtained as the sum of iid Bernoulli trials.  Specifically, let X_1, ..., X_n be iid Bernoulli(p) random variables; then X = X+1 + X_2 + ... X_n is a binomial random variable. 
+
+- Class: mult_question
+  Output: The PMF of this binomial random variable X is the function representing the probability that X=x. Which of the following represents the PMF? Assume x goes from 0 to n and that C(n,x) represents the binomial coefficient 'n choose x'.
+  AnswerChoices: C(n,x) * p^x * (1-p)^(n-x); C(n,x) * p^(n-x) * (1-p)^x; p^x; C(n,x) * p*x*(1-p)*(1-x)
+  CorrectAnswer: C(n,x) * p^x * (1-p)^(n-x)
+  AnswerTests: omnitest(correctVal='C(n,x) * p^x * (1-p)^(n-x)')
+  Hint: To take the value x, the random variable X must have x 'successes'. Each of these occurs with probability p. It also must have n-x 'failures', each of which occurs with probability (1-p). We don't care about the order in which the successes and failures occur.
+
+- Class: cmd_question
+  Output: Suppose we were going to flip a biased coin 5 times. The probability of tossing a head is .8 and a tail .2. What is the probability that you'll toss at least 3 heads.
+  CorrectAnswer: 0.94208
+  AnswerTests: equiv_val(0.94208)
+  Hint: You'll have to add together 3 terms each of the form, C(5,x)*(.8)^x*(.2)(5-x) for x=3,4,5 . 
+
+- Class: cmd_question
+  Output: Now you can verify your answer with the R function pbinom. The quantile is 2, the size is 5, the prob is .8 and the lower.tail is FALSE. Try it now.
+  CorrectAnswer: pbinom(2,size=5,prob=.8,lower.tail=FALSE)
+  AnswerTests: omnitest(correctExpr='pbinom(2,size=5,prob=.8,lower.tail=FALSE)')
+  Hint: Type pbinom(2,size=5,prob=.8,lower.tail=FALSE) at the R prompt.
 
 - Class: text
-  Output:   P(A|B) = P(A & B)/ P(B) . P(A|B) is the probability that BOTH A and B occur divided by the probability that B occurs.
+  Output: Another very common distribution is the normal or Gaussian. It has a complicated density function involving its mean mu and variance sigma^2. The key fact of the density formula is that when plotted, it forms a bell shaped curve, symmetric about its mean mu. The variance sigma^2 represents the width of the bell, the higher the variance, the fatter the bell.
+
+- Class: text
+  Output: We denote a normally distributed random variable X as X ~ N(mu, sigma^2). When mu = 0 and sigma = 1 the resulting distribution is called the standard normal distribution and it is often labeled Z.
+
+- Class: figure
+  Output: Here's a picture of a standard normal distribution. It's centered at its mean 0 and the vertical lines represent the standard deviations.
+  Figure: plotNormal.R
+  FigureType: new
+
+- Class: text
+  Output: Here are two useful facts concerning normal distributions. If X is a normal random variable with mean mu and variance sigma^2, i.e., X ~ N(mu,sigma^2),
+
+- Class: text
+  Output: then the random variable Z defined as Z = (X -mu)/sigma is normally distributed with mean 0 and variance 1, i.e., Z ~ N(0, 1). (Z is standard normal.)
+
+- Class: text
+  Output: The converse is also true. If Z is standard normal, i.e., Z ~ N(0,1), then  the random variable X defined as  X = mu + sigma*Z is normally distributed with mean mu and variance sigma^2, i.e., X ~ N(mu, sigma^2) 
+
+- Class: text
+  Output: These formulae allow you to easily compute percentiles for ANY normally distributed variable if you know its mean and variance. 
+
+- Class: figure
+  Output: Consider this plot again and recall our previous discussions of areas under curves (density functions) and their relationships to probabilities. The area under the entire curve is 1, right? For normally distributed variables, 68% of the area lies within 1 standard deviation
+  Figure: plotNormal.R
+  FigureType: new
+
 
 - Class: mult_question
   Output: Back to our dice example. Which of the following expressions represents P(A&B), where A is the event of rolling a 3 and B is the event of the roll being odd?
