@@ -5,5 +5,5 @@ g <- g+   layer("area",mapping = aes(x=ifelse(x>-2 & x<2 ,x,0)),
                 geom_params=list(fill="red",alpha=0.5))
 g <- g+   layer("area",mapping = aes(x=ifelse(x>-3 & x<3 ,x,0)),
                 geom_params=list(fill="red",alpha=0.35))
-g
+print(g)
 
