@@ -19,3 +19,14 @@ test_func2 <- function() {
   }, silent = TRUE)
   exists('ok') && isTRUE(ok)
 }
+
+test_func3 <- function() {
+  try({
+    func <- get('remainder', globalenv())
+    t1 <- identical(func(9, 4), 9 %% 4)
+    t2 <- identical(func(divisor = 5, num = 2), 2 %% 5)
+    t3 <- identical(func(5), 5 %% 2)
+    ok <- all(t1, t2, t3)
+  }, silent = TRUE)
+  exists('ok') && isTRUE(ok)
+}

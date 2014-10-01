@@ -33,7 +33,7 @@
     the average of all of the numbers in the input vector. Inputs to functions
     are often called arguments. Providing arguments to a function is also
     sometimes called passing arguments to that function. Arguments you want to 
-    pass to a function go inside the function's parentheses. Try passing the argument 
+    pass to a function go inside the function's parentheses. Try passing the argument
     c(2, 4, 5) to the mean() function."
   CorrectAnswer: mean(c(2, 4, 5))
   AnswerTests: omnitest(correctExpr='mean(c(2, 4, 5))')
@@ -82,10 +82,10 @@
     the function you just created. Type: boring_function to view its source code."
   CorrectAnswer: boring_function
   AnswerTests: omnitest(correctExpr='boring_function')
-  Hint: "To see the souce code for boring_function just type: boring_function"
+  Hint: "To see the source code for boring_function just type: boring_function"
 
 - Class: text
-  Output: "Time to make a more useful function! We're going to replicate the 
+  Output: "Time to make a more useful function! We're going to replicate the
     functionality of the mean() function by creating a function called: my_mean().
     Remember that to calculate the average of all of the numbers in a vector you
     find the sum of all the numbers in the vector, and then divide that sum by the
@@ -97,3 +97,82 @@
   Hint: "Use the sum() function to find the sum of all the numbers in the vector. Use
     the length() function to find the size of the vector."
   Script: my_mean.R
+
+- Class: text
+  Output: "Next, let's try writing a function with default argumets. You can set
+    default values for a function's argumets, and this can be useful if you think
+    someone who uses your funciton will set a certain argument to the same value
+    most of the time."
+
+- Class: script
+  Output: Make sure to save your script before you type submit().
+  AnswerTests: test_func3()
+  Hint: "Remember to set the appropriate default values!"
+  Script: remainder.R
+
+- Class: cmd_question
+  Output: "Let's do some testing of the remainder function. Run remainder(5)
+    and see what happens."
+  CorrectAnswer: remainder(5)
+  AnswerTests: omnitest(correctExpr='remainder(5)')
+  Hint: "Let's test your remainder function by running: remainder(5)"
+
+- Class: text
+  Output: "Let's take a moment to examine what just happened. You provided one
+    argument to the function, and R matched that argument to 'num' since 'num'
+    is the first argument. The default value for 'divisor' is 2, so the function
+    used the default value you provided."
+
+- Class: cmd_question
+  Output: "Now let's test the remainder function by providing two arguments.
+    Type: remainder(11, 5) and let's see what happens."
+  CorrectAnswer: remainder(11, 5)
+  AnswerTests: omnitest(correctExpr='remainder(11, 5)')
+  Hint: "Let's test your remainder function by running: remainder(11, 5)"
+
+- Class: text
+  Output: "Once again, the arguments have been matched appropriately."
+
+- Class: cmd_question
+  Output: "You can also explicitly specify arguments in a function. When you
+    explicitly designate argument values by name, the ordering of the arguments
+    becomes unimportant. You can try this out by typing: 
+    remainder(divisor = 11, num = 5)."
+  CorrectAnswer: remainder(divisor = 11, num = 5)
+  AnswerTests: omnitest(correctExpr='remainder(divisor = 11, num = 5)')
+  Hint: "Order no longer matters when you explicity state argument values! Test
+  this out by typing: remainder(divisor = 11, num = 5)"
+
+- Class: text
+  Output: "As you can see, there is a significant difference between
+    remainder(11, 5) and remainder(divisor = 11, num = 5)!"
+
+- Class: cmd_question
+  Output: "R can also partially match arguments. Try typing remainder(4, div = 2)
+    to see this feature in action."
+  CorrectAnswer: remainder(4, div = 2)
+  AnswerTests: omnitest(correctExpr='remainder(4, div = 2)')
+  Hint: "Test out partial matching by typing: remainder(4, div = 2)"
+
+- Class: text
+  Output: "A word of warning: in general you want to make your code as easy to
+    understand as possible. Switching around the orders of arguments by
+    specifying their names or only using partial argument names can be
+    confusing, so use these features with caution!"
+
+- Class: cmd_question
+  Output: "With all of this talk about arguments, you may be wondering if there
+    is a way you can see a function's arguments (besides looking at the 
+    documentation). Thankfully, you can use the args() function! Type:
+    args(remainder) to examine the arguments for the remainder function."
+  CorrectAnswer: args(remainder)
+  AnswerTests: omnitest(correctExpr='args(remainder)')
+  Hint: "Look at the arguments of the remainder function by typing: 
+    args(remainder)"
+
+- Class: text
+  Output: "You may not realize it but I just tricked you into doing something
+    pretty interesting! args() is a function, remainder() is a function, yet
+    remainder was an argument for args(). Yes it's true: you can pass functions
+    as arguments! This is a very powerful concept. Let's write a script to see
+    how it works."
