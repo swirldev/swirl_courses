@@ -88,7 +88,7 @@
   Output:  When mu = 0 and sigma = 1 the resulting distribution is called the standard normal distribution and it is often labeled Z.
 
 - Class: figure
-  Output: Here's a picture of the density function of a standard normal distribution. It's centered at its mean 0 and the vertical lines (at the points of the x-axis) indicate the standard deviations. Remember this is the PDF of N(0,1), so the distance between -1 and 1 represents 2*sigma^2.
+  Output: Here's a picture of the density function of a standard normal distribution. It's centered at its mean 0 and the vertical lines (at the integer points of the x-axis) indicate the standard deviations. 
   Figure: plotNormal.R
   FigureType: new
 
@@ -98,22 +98,22 @@
   FigureType: new
 
 - Class: cmd_question
-  Output: Using the default values for all the arguments except probability, the R function qnorm(prob) returns the value of x (quantile) for which the area under the standard normal distribution to the left of x equals the parameter prob. (Recall that the entire area under the curve is 1.) Use qnorm now to find the 10th percentile of the standard normal. Remember since we're talking about percentiles the argument prob must be between 0 and 1.
+  Output: The R function qnorm(prob) returns the value of x (quantile) for which the area under the standard normal distribution to the left of x equals the parameter prob. (Recall that the entire area under the curve is 1.) Use qnorm now to find the 10th percentile of the standard normal. Remember the argument prob must be between 0 and 1. You don't have to specify any of the other parameters since the default is the standard normal.
   CorrectAnswer: qnorm(.10)
   AnswerTests: omnitest(correctExpr='qnorm(.10)')
   Hint: Type qnorm(.1) at the R prompt.
 
 - Class: figure
-  Output:  We'll see this now by drawing the vertical line at the quantile.
+  Output:  We'll see this now by drawing the vertical line at the quantile -1.281552.
   Figure: plotQuantile.R
   FigureType: new
 
 - Class: mult_question
-  Output: Which of the following would you expect to be the first (1) percentile?
+  Output: Which of the following would you expect to be the 1st percentile?
   AnswerChoices: -2.33; -1.0; 0; 2.33; -1.28
   CorrectAnswer: -2.33
   AnswerTests: omnitest(correctVal='-2.33')
-  Hint: Since 1 is smaller than 10 the quantile for 1 percentile should be smaller than the quantile for 10 percentile.
+  Hint: Since 1 is smaller than 10 the quantile for the 1st percentile should be smaller than the quantile for 10th percentile.
 
 - Class: cmd_question
   Output: By looking at the picture can you say what the 50th percentile is?
@@ -147,13 +147,13 @@
   Hint: Type qnorm(.975,mean=3,sd=2) at the R prompt.
 
 - Class: cmd_question
-  Output: Let's check it using the formula above, X = mu + sigma*Z. Here we'll use the 97.5th percentile as Z. Recall that we previously inferred that for the standard normal this is 1.96. Let's multiply this by the standard deviation of the given normal distribution and add in its mean to see if we get the same result as qnorm. 
+  Output: Let's check it using the formula above, X = mu + sigma*Z. Here we'll use the 97.5th percentile for the standard normal as the value Z in the formula. Recall that we previously calculated this to be 1.96. Let's multiply this by the standard deviation of the given normal distribution (2) and add in its mean (3) to see if we get a result close to the one qnorm gave us. 
   CorrectAnswer: 6.92
   AnswerTests: equiv_val(6.92)
   Hint: Type 1.96*2 + 3 at the R prompt.
 
 - Class: cmd_question
-  Output: Suppose you have a normal distribution with mean 1020 and standard deviation of 50 and you want to compute the probability that X > 1200. The easiest way to do this is to use R's pnorm function in which you specify the quantile (1200), the mean (1020) and standard deviation (50). You also must specify that the lower.tail is FALSE since we're asking for a probability that the random variable is greater than our quantile. Do this now.
+  Output: Suppose you have a normal distribution with mean 1020 and standard deviation of 50 and you want to compute the probability that the associated random variable X > 1200. The easiest way to do this is to use R's pnorm function in which you specify the quantile (1200), the mean (1020) and standard deviation (50). You also must specify that the lower.tail is FALSE since we're asking for a probability that the random variable is greater than our quantile. Do this now.
   CorrectAnswer: pnorm(1200,mean=1020,sd=50,lower.tail=FALSE)
   AnswerTests: omnitest(correctExpr='pnorm(1200,mean=1020,sd=50,lower.tail=FALSE)')
   Hint: Type pnorm(1200,mean=1020,sd=50,lower.tail=FALSE) at the R prompt.
@@ -189,16 +189,16 @@
   Output: In other words, the Poisson distribution models counts or event-times. From Wikipedia, "Any variable that is Poisson distributed only takes on integer values." 
 
 - Class: text
-  Output: The PMF of the Poisson distribution has one parameter, lambda, and it estimates the probability that the Poisson distributed random variable X takes the value x. Specifically, P(X=x)=(lambda^x)e^(-lambda)/x!. Here x ranges from 0 to infinity.
+  Output: The PMF of the Poisson distribution has one parameter, lambda. As with the other distributions the PMF calculates the probability that the Poisson distributed random variable X takes the value x. Specifically, P(X=x)=(lambda^x)e^(-lambda)/x!. Here x ranges from 0 to infinity.
 
 - Class: text
   Output: The mean and variance of the Poisson distribution are both lambda.
 
 - Class: text
-  Output: Poisson random variables are used to model rates. We write X~Poisson(lambda*t) where lambda=E(X/t) is the expected count per unit of time and t is the total monitoring time.
+  Output: Poisson random variables are used to model rates. We write X~Poisson(lambda*t) where lambda is the expected count per unit of time and t is the total monitoring time.
 
 - Class: cmd_question
-  Output: For example, suppose the number of people that show up at a bus stop is Poisson with a mean of $2.5$ per hour, and we want to know the probability that at most 3 people show up in a 4 hour period. The mean for this distribution is 2.5 * 4. We use the R function ppois which returns a probability that the random variable is less than 3. We only need to specify the quantile (3) and the mean (2.5 * 4). We can use the default parameters, lower.tail=TRUE and log.p=FALSE. Try it now.
+  Output: For example, suppose the number of people that show up at a bus stop is Poisson with a mean of 2.5 per hour, and we want to know the probability that at most 3 people show up in a 4 hour period. We use the R function ppois which returns a probability that the random variable is less than 3. We only need to specify the quantile (3) and the mean (2.5 * 4). We can use the default parameters, lower.tail=TRUE and log.p=FALSE. Try it now.
   CorrectAnswer: ppois(3,2.5 * 4)
   AnswerTests: ANY_of_exprs('ppois(3,2.5 * 4)','ppois(3,4*2.5)')
   Hint: Type  ppois(3,2.5 * 4) at the R prompt.
