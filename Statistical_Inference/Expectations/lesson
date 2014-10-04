@@ -10,10 +10,10 @@
   Output: "Expectations. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/Expectations.)"
 
 - Class: text
-  Output: In this lesson, we'll discuss expectations of random variables. 
+  Output: In this lesson, we'll discuss expected values of distributions which are useful in characterizing them. The mean characterizes the center of a distribution while the variance (and standard deviation) characterize its spread. Sample expected values (mean and variance) estimate the population versions.
 
 - Class: text
-  Output: E(X), the expected value of a random variable X is the center of its distribution. For a discrete random variable X with PMF p(x), E(X) is defined as a sum, over all possible values x, of the quantity x*p(x). E(X) represents the center of mass of a collection of locations and weights, {x, p(x)}.
+  Output: E(X), the expected value of a random variable X, is the center of its distribution. For a discrete random variable X with PMF p(x), E(X) is defined as a sum, over all possible values x, of the quantity x*p(x). E(X) represents the center of mass of a collection of locations and weights, {x, p(x)}.
 
 - Class: text
   Output: Another term for expected value is mean. Recall your high school definition of arithmetic mean (or average) as the sum of a bunch of numbers divided by the number of numbers you added together. This is consistent with the formal definition of E(X) if all the numbers are equally weighted.
@@ -31,19 +31,19 @@
   Hint: Type 'expect_dice' at the command prompt.
 
 - Class: cmd_question
-  Output: We've also defined probability distributions for three dice, dice_fair, dice_high and dice_low. The last two are loaded, that is, not fair. Look at dice_high now. 
+  Output: We've also defined PMFs for three dice, dice_fair, dice_high and dice_low. The last two are loaded, that is, not fair. Look at dice_high now. 
   CorrectAnswer: dice_high
   AnswerTests: omnitest(correctExpr='dice_high')
   Hint: Type 'dice_high' at the command prompt.
 
 - Class: cmd_question
-  Output: Using the function expect_dice, calculate the expected value of a roll of dice_high. 
+  Output: Using the function expect_dice with dice_high as its argument, calculate the expected value of a roll of dice_high. 
   CorrectAnswer: expect_dice(dice_high)
   AnswerTests: omnitest(correctExpr='expect_dice(dice_high)')
   Hint: Type 'expect_dice(dice_high)' at the command prompt.
 
 - Class: cmd_question
-  Output: Now calculate the expected value of a roll of dice_low. 
+  Output: See how the expected value of dice_high is higher than that of the fair dice. Now calculate the expected value of a roll of dice_low. 
   CorrectAnswer: expect_dice(dice_low)
   AnswerTests: omnitest(correctExpr='expect_dice(dice_low)')
   Hint: Type 'expect_dice(dice_low)' at the command prompt.
@@ -84,7 +84,7 @@
   Output: One of the nice properties of the expected value operation is that it's linear. This means that, if c is a constant, then E(cX) = c*E(X). Also, if X and Y are two random variables then E(X+Y)=E(X)+E(Y). It follows that E(aX+bY)=aE(X)+bE(Y).
 
 - Class: cmd_question
-  Output: Suppose you were rolling our two loaded dice, dice_high and dice_low. You can use the  linearity property to compute the expected value of their average. Let X_hi and X_lo represent the respective outcomes of the dice roll. The expected value of the average is E((X_hi + X_lo)/2) or .5 *( E(X_hi)+E(X_lo) ). Compute this now. Remember we stored the expected values in edh and edl.
+  Output: Suppose you were rolling our two loaded dice, dice_high and dice_low. You can use this  linearity property of expectation to compute the expected value of their average. Let X_hi and X_lo represent the respective outcomes of the dice roll. The expected value of the average is E((X_hi + X_lo)/2) or .5 *( E(X_hi)+E(X_lo) ). Compute this now. Remember we stored the expected values in edh and edl.
   CorrectAnswer: 3.5
   AnswerTests: equiv_val(3.5)
   Hint: Type '.5*(edh+edl)' at the command prompt.
@@ -115,56 +115,65 @@
   Output: 1/n * (E(X_1) + E(X_2) + ... + E(X_n)) = (1/n)*n*mu = mu. Each E(X_i) equals mu since X_i is drawn from the population with mean mu.
 
 - Class: text
-  Output: The variance of a random variable is a measure of spread or dispersion. It is the expected (squared) distance from the mean. Squaring the distance makes it positive. In other words, if X is a random variable, its variance  is defined as
+  Output: Now that was theoretically showing you that the expected value of the sample mean is the population mean that it's trying to estimate. We can also show this empirically with simulations.
 
 - Class: text
-  Output: Var(x) = E((X-E(X))^2) = E(X^2) - E(2XE(X)) + (E(X)^2) = E(X^2)-E(X)^2 
+  Output: Remember that expected values are properties of distributions. The average of random variables is itself a random variable and its associated distribution itself has an expected value. The center of this distribution is the same as that of the original distribution. 
+
+- Class: figure
+  Output: Here's another figure from the slides. It shows how a sample mean and the mean of averages spike together. The two shaded distributions come from the same data. The blue portion represents the density function of randomly generated standard normal data, 100000 samples. The pink portion represents the density function of 10000 averages, each of 10 random normals. (The original data was stored in a 10000 x 10 array and the average of each row was taken to  generate the pink data.)
+  Figure: normalMeans.R
+  FigureType: new
+
+- Class: figure
+  Output: Here's yet another figure from the slides. Rolling a single die 10000 times yields the first figure. Each of the 6 possible outcomes appears with about the same frequency. The second figure is the histogram of outcomes of the average of rolling two dice. Similarly, the third figure is the histogram of averages of rolling three dice, and the fourth four dice. As we showed previously, the center or mean of the distribution is 3.5 and that's exactly where all the panels are centered.
+  Figure: diceRolls.R
+  FigureType: new
 
 - Class: text
-  Output: Higher variance implies more spread than lower variance.
-
-- Class: cmd_question
-  Output: We've defined a 6-long vector for you, dice_sqr, which holds the squares of the integers 1 through 6. Look at it now.
-  CorrectAnswer: dice_sqr
-  AnswerTests: omnitest(correctExpr='dice_sqr')
-  Hint: Type dice_sqr at the command prompt.
-
-- Class: cmd_question
-  Output: Using R's ability to multiply vectors componentwise and its function 'sum' you can easily compute E(X^2) for any of the three defined dice. Simply sum the product dice_sqr * PDF. Recall that we defined three PDF's, (dice_fair, dice_high, and dice_low). Try this now with dice_fair and put the result in a variable ex2_fair.
-  CorrectAnswer: ex2_fair <- sum(dice_fair * dice_sqr)
-  AnswerTests: ANY_of_exprs('ex2_fair <- sum(dice_fair * dice_sqr)','ex2_fair <- sum(dice_sqr * dice_fair)')
-  Hint: Type 'ex2_fair <- sum(dice_fair * dice_sqr)' at the command prompt.
-
-- Class: cmd_question
-  Output: Recall that the expected value of a fair dice roll is 3.5. Subtract the square of that from ex2_fair to compute the sample variance.
-  CorrectAnswer: ex2_fair-3.5^2
-  AnswerTests: ANY_of_exprs('ex2_fair-3.5^2','ex2_fair-3.5*3.5')
-  Hint: Type 'ex2_fair-3.5^2' at the command prompt.
-
-- Class: cmd_question
-  Output: Now use a similar approach to compute the sample variance of dice_high. Recall that edh holds the expected value of dice_high.
-  CorrectAnswer: sum(dice_high * dice_sqr)-edh^2
-  AnswerTests: ANY_of_exprs('sum(dice_high * dice_sqr)-edh^2','sum(dice_sqr * dice_high)-edh^2','sum(dice_high * dice_sqr)-edh*edh','sum(dice_sqr * dice_high)-edh*edh')
-  Hint: Type 'sum(dice_high * dice_sqr)-edh^2' at the command prompt.
-
-- Class: text
-  Output: Finally, it's easy to show that Var(aX)=a^2*Var(X). 
-
-- Class: text
-  Output: The square root of Var(X) is the standard deviation of X. This is a useful measurement since it is in the same units as X.
-
-- Class: text
-  Output: Chebyshev's inequality helps interpret variances. This inequality states that the probability that a random variable X is at least k standard deviations from its mean is less than 1/(k^2). In other words, the probability that X is at least 2 standard deviations from the mean is less than 1/4, 3 standard deviations 1/9, 4 standard deviations 1/16, etc.
-
-- Class: text
-  Output: However this estimate is quite conservative for random variables that are normally distributed, that is, with bell-curve distributions. In these cases, the probability of being at least 2 standard deviations from the mean is about 5% (as compared to Chebyshev's 25%) and the probability of being at least 3 standard deviations from the mean is roughly .2%.
+  Output: Now let's review!
 
 - Class: mult_question
-  Output: Suppose you had a measurement that was 4 standard deviations from the the distribution's mean. What would be the upper bound  of the probability of this happening using Chebyshev's inequality? 
-  AnswerChoices: 6%; 0%; 11%; 25%; 96% 
-  CorrectAnswer: 6%
-  AnswerTests: omnitest(correctVal='6%')
-  Hint: Chebyshev's inequality estimates that probability as 1/16. Convert this to a probability.
+  Output: Expected values are properties of what?
+  AnswerChoices: demanding parents; distributions; fulcrums; variances 
+  CorrectAnswer: distributions
+  AnswerTests: omnitest(correctVal='distributions')
+  Hint: What would you expect to have a center?
+
+- Class: mult_question
+  Output: A population mean is a center of mass of what?
+  AnswerChoices: a family; a distribution; a population; a sample 
+  CorrectAnswer: a population
+  AnswerTests: omnitest(correctVal='a population')
+  Hint: What word appears in the question?
+
+- Class: mult_question
+  Output: A sample mean is a center of mass of what?
+  AnswerChoices: a family; a distribution; a population; observed data 
+  CorrectAnswer: observed data
+  AnswerTests: omnitest(correctVal='observed data')
+  Hint: If you're sampling you need to observe data, right?
+
+- Class: mult_question
+  Output: True or False? A population mean estimates a sample mean.
+  AnswerChoices: True; False
+  CorrectAnswer: False
+  AnswerTests: omnitest(correctVal='False')
+  Hint: We can only sample a population and calculate the sample mean.
+
+- Class: mult_question
+  Output: True or False? A sample mean is unbiased.
+  AnswerChoices: True; False
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal='True')
+  Hint: The sample mean is the population mean, so by definition it's unbiased.
+
+- Class: mult_question
+  Output: True or False? The more data that goes into the sample mean, the more concentrated its density / mass function is around the population mean.
+  AnswerChoices: True; False
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal='True')
+  Hint: It's better to have more data than less, right?
 
 - Class: text
   Output: Congrats! You've concluded this lesson on expectations. We hope it met yours.
