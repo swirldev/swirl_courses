@@ -12,17 +12,25 @@
 - Class: text
   Output: In this lesson, we'll discuss variances of distributions which, like means, are useful in characterizing them. While the mean characterizes the center of a distribution, the variance and standard deviation characterize the distribution's spread around the mean. A sample variance estimates the population variance.
 
-- Class: text
-  Output: The variance of a random variable, as a measure of spread or dispersion,  is defined as the expected (squared) distance of the variable from the mean. Squaring the distance makes it positive so values lesser and greater than the mean are treated the same. In mathematical terms,
+
+
+
 
 - Class: text
-  Output: Var(x) = E((X-E(X))^2) = E(X^2) - E(2XE(X)) + (E(X)^2) = E(X^2)-E(X)^2 
+  Output: The variance of a random variable, as a measure of spread or dispersion,  is defined as the expected (squared) distance of the variable from its mean. Squaring the distance makes it positive so values less than and greater than the mean are treated the same. In mathematical terms,
+
+- Class: text
+  Output: Var(X) = E( (X-E(X))^2 ) =  E(X^2)-E(X)^2 
 
 - Class: text
   Output: Higher variance implies more spread around a mean than lower variance. 
 
 - Class: text
-  Output: Finally, it's easy to show from the definition and the linearity of expectations that Var(aX)=a^2*Var(X). This will come in handy later.  Here's the proof.
+  Output: Finally, it's easy to show from the definition and the linearity of expectations that Var(aX)=a^2*Var(X). This will come in handy later.  
+
+- Class: video
+  Output: Would you like to see the equation proving this?
+  VideoLink: "http://wilcrofter.github.io/slidex/markDown/sample.html"
 
 - Class: text
   Output: Var(aX) = E(a^2*X^2)-E(aX)^2 = a^2E(X^2)-(aE(X))^2 = a^2E(X^2)-a^2*E(X)^2 = a^2*Var(X) 
@@ -34,7 +42,7 @@
   Hint: Type dice_sqr at the command prompt.
 
 - Class: cmd_question
-  Output: Using R's ability to multiply vectors componentwise and its function 'sum' you can easily compute E(X^2) for any of the three defined dice. Simply sum the product dice_sqr * PDF. Recall that we defined three PDF's, (dice_fair, dice_high, and dice_low). Try this now with dice_fair and put the result in a variable ex2_fair.
+  Output: Using R's ability to multiply vectors componentwise and its function 'sum' you can easily compute E(X^2) for any of the three dice defined in the previous lesson. Simply sum the product dice_sqr * PDF. Recall that we defined three PDF's, (dice_fair, dice_high, and dice_low). Try this now with dice_fair and put the result in a variable ex2_fair.
   CorrectAnswer: ex2_fair <- sum(dice_fair * dice_sqr)
   AnswerTests: ANY_of_exprs('ex2_fair <- sum(dice_fair * dice_sqr)','ex2_fair <- sum(dice_sqr * dice_fair)')
   Hint: Type 'ex2_fair <- sum(dice_fair * dice_sqr)' at the command prompt.
@@ -60,25 +68,27 @@
   FigureType: new
 
 - Class: text
-  Output: Just as we distinguished between a population mean and a sample mean we have to distinguish between a population variance Var(X) and a sample variance S^2. This latter is defined as the sum of n squared distances from the sample mean divided by (n-1), where n is the number of samples. In other words, the sample variance is almost the average squared deviation from the sample mean.
+  Output: Just as we distinguished between a population mean and a sample mean we have to distinguish between a population variance sigma^2 and a sample variance s^2. This latter is defined as the sum of n squared distances from the sample mean divided by (n-1), where n is the number of samples. We divide by n-1 because this is the number of degrees of freedom  in the system. (The first n-1 samples are independent but the last can be calculated from the mean.)
 
 - Class: text
-  Output: The sample variance is also a random variable with an associated population distribution. Its expected value is the population variance and its distribution gets more concentrated around the population variance with more data.
-The sample standard deviation is the square root of the sample variance.
+  Output:  In other words, the sample variance is almost the average squared deviation from the sample mean.
+
+- Class: text
+  Output: The sample variance is also a random variable with an associated population distribution. Its expected value is the population variance and its distribution gets more concentrated around the population variance with more data. The sample standard deviation is the square root of the sample variance.
 
 - Class: figure
   Output: To illustrate this point, consider this figure which plots the distribution of 10000 variances, each of 10 standard normal random samples. The vertical line indicates the standard deviation 1.
-  Figure: moredata1.R
+  Figure: moreData1.R
   FigureType: new
 
 - Class: figure
   Output: Here we do the same experiment but this time each of the 10000 variances is over 20 standard normal samples. We've plotted over the first plot and you can see that the distribution of the variances is getting tighter.
-  Figure: moredata2.R
+  Figure: moreData2.R
   FigureType: new
 
 - Class: figure
   Output: Finally, we repeat the experiment using 30 samples for each of the 10000 variances. You can see that with more data, the distribution gets more concentrated around the population variance it is trying to estimate. 
-  Figure: moredata3.R
+  Figure: moreData3.R
   FigureType: new
 
 - Class: text
@@ -122,5 +132,5 @@ The sample standard deviation is the square root of the sample variance.
   Hint: Chebyshev's inequality estimates that probability as 1/16. Convert this to a probability.
 
 - Class: text
-  Output: Congrats! You've concluded this lesson on expectations. We hope it met yours.
+  Output: Congrats! You've concluded this lesson on variance. We hope you liked it very much.
 
