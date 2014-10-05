@@ -6,3 +6,5 @@ expect_dice <- function(pmf){ mu <- 0; for (i in 1:6) mu <- mu + i*pmf[i]; mu}
 dice_sqr <- c(1,4,9,16,25,36)
 edh <- expect_dice(dice_high)
 edl <- expect_dice(dice_low)
+nsim <- 1000
+samsz <- 10
