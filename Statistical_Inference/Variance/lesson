@@ -10,20 +10,16 @@
   Output: "Variance. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/Variance.)"
 
 - Class: text
-  Output: In this lesson, we'll discuss variances of distributions which, like means, are useful in characterizing them. While the mean characterizes the center of a distribution, the variance and standard deviation characterize the distribution's spread around the mean. A sample variance estimates the population variance.
-
-
-
-
+  Output: In this lesson, we'll discuss variances of distributions which, like means, are useful in characterizing them. While the mean characterizes the center of a distribution, the variance and standard deviation characterize the distribution's spread around the mean. As the sample mean estimates the population mean, so the sample variance estimates the population variance.
 
 - Class: text
-  Output: The variance of a random variable, as a measure of spread or dispersion,  is defined as the expected (squared) distance of the variable from its mean. Squaring the distance makes it positive so values less than and greater than the mean are treated the same. In mathematical terms,
+  Output: The variance of a random variable, as a measure of spread or dispersion,  is defined as the expected squared distance of the variable from its mean. Squaring the distance makes it positive so values less than and greater than the mean are treated the same. In mathematical terms, if X comes from a population with mean mu, then
 
 - Class: text
-  Output: Var(X) = E( (X-E(X))^2 ) =  E(X^2)-E(X)^2 
+  Output: Var(X) = E( (X-mu)^2 ) = E( (X-E(X))^2 ) =  E(X^2)-E(X)^2 
 
 - Class: text
-  Output: Higher variance implies more spread around a mean than lower variance. 
+  Output: Recall that E(X)=mu. Higher variance implies more spread around a mean than lower variance. 
 
 - Class: text
   Output: Finally, it's easy to show from the definition and the linearity of expectations that Var(aX)=a^2*Var(X). This will come in handy later.  
@@ -35,14 +31,17 @@
 - Class: text
   Output: Var(aX) = E(a^2*X^2)-E(aX)^2 = a^2E(X^2)-(aE(X))^2 = a^2E(X^2)-a^2*E(X)^2 = a^2*Var(X) 
 
+- Class: text
+  Output:  Let's practice computing the variance of a dice roll now. First we need to compute E(X^2). From the definition of expected values, this means we'll take a weighted sum over all possible values of X^2. The weight is the probability of X occurring.  
+
 - Class: cmd_question
-  Output: We've defined a 6-long vector for you, dice_sqr, which holds the squares of the integers 1 through 6. Look at it now.
+  Output: For convenience, we've defined a 6-long vector for you, dice_sqr, which holds the squares of the integers 1 through 6. This will give us the X^2 values. Look at it now.
   CorrectAnswer: dice_sqr
   AnswerTests: omnitest(correctExpr='dice_sqr')
   Hint: Type dice_sqr at the command prompt.
 
 - Class: cmd_question
-  Output: Using R's ability to multiply vectors componentwise and its function 'sum' you can easily compute E(X^2) for any of the three dice defined in the previous lesson. Simply sum the product dice_sqr * PDF. Recall that we defined three PDF's, (dice_fair, dice_high, and dice_low). Try this now with dice_fair and put the result in a variable ex2_fair.
+  Output: Now we need weights. For these we can use any of the three PDF's, (dice_fair, dice_high, and dice_low) we defined in the previous lesson. Using R's ability to multiply vectors componentwise and its function 'sum' we can easily compute E(X^2) for any of these dice. Simply sum the product dice_sqr * PDF.  Try this now with dice_fair and put the result in a variable ex2_fair.
   CorrectAnswer: ex2_fair <- sum(dice_fair * dice_sqr)
   AnswerTests: ANY_of_exprs('ex2_fair <- sum(dice_fair * dice_sqr)','ex2_fair <- sum(dice_sqr * dice_fair)')
   Hint: Type 'ex2_fair <- sum(dice_fair * dice_sqr)' at the command prompt.
@@ -68,13 +67,13 @@
   FigureType: new
 
 - Class: text
-  Output: Just as we distinguished between a population mean and a sample mean we have to distinguish between a population variance sigma^2 and a sample variance s^2. This latter is defined as the sum of n squared distances from the sample mean divided by (n-1), where n is the number of samples. We divide by n-1 because this is the number of degrees of freedom  in the system. (The first n-1 samples are independent but the last can be calculated from the mean.)
+  Output: Just as we distinguished between a population mean and a sample mean we have to distinguish between a population variance sigma^2 and a sample variance s^2. This latter is defined as the sum of n squared distances from the sample mean divided by (n-1), where n is the number of samples. We divide by n-1 because this is the number of degrees of freedom in the system. The first n-1 samples are independent but the last isn't since it can be calculated from the mean.
 
 - Class: text
   Output:  In other words, the sample variance is almost the average squared deviation from the sample mean.
 
 - Class: text
-  Output: The sample variance is also a random variable with an associated population distribution. Its expected value is the population variance and its distribution gets more concentrated around the population variance with more data. The sample standard deviation is the square root of the sample variance.
+  Output: As with the sample mean, the sample variance is also a random variable with an associated population distribution. Its expected value is the population variance and its distribution gets more concentrated around the population variance with more data. The sample standard deviation is the square root of the sample variance.
 
 - Class: figure
   Output: To illustrate this point, consider this figure which plots the distribution of 10000 variances, each of 10 standard normal random samples. The vertical line indicates the standard deviation 1.
