@@ -29,10 +29,7 @@
 
 - Class: video
   Output: Would you like to see the equation proving this?
-  VideoLink: "http://wilcrofter.github.io/slidex/markDown/sample.html"
-
-- Class: text
-  Output: Var(aX) = E(a^2*X^2)-E(aX)^2 = a^2E(X^2)-(aE(X))^2 = a^2E(X^2)-a^2*E(X)^2 = a^2*Var(X) 
+  VideoLink: "http://wilcrofter.github.io/slidex/markDown/varAX.html"
 
 - Class: text
   Output:  Let's practice computing the variance of a dice roll now. First we need to compute E(X^2). From the definition of expected values, this means we'll take a weighted sum over all possible values of X^2. The weight is the probability of X occurring.  
@@ -70,7 +67,7 @@
   FigureType: new
 
 - Class: text
-  Output: Just as we distinguished between a population mean and a sample mean we have to distinguish between a population variance sigma^2 and a sample variance s^2. This latter is defined similarly as before. However, since populations are often too big to measure, we have to use samples. The sample variance is defined as the sum of n squared distances from the sample mean divided by (n-1), where n is the number of samples. We divide by n-1 because this is the number of degrees of freedom in the system. The first n-1 samples are independent but the last isn't since it can be calculated from the sample mean we're using in the formula.
+  Output: Just as we distinguished between a population mean and a sample mean we have to distinguish between a population variance sigma^2 and a sample variance s^2. They are defined similarly but with a slight difference. The sample variance is defined as the sum of n squared distances from the sample mean divided by (n-1), where n is the number of samples. We divide by n-1 because this is the number of degrees of freedom in the system. The first n-1 samples are independent but the last isn't since it can be calculated from the sample mean we're using in the formula.
 
 - Class: text
   Output:  In other words, the sample variance is ALMOST the average squared deviation from the sample mean.
@@ -94,13 +91,13 @@
   FigureType: new
 
 - Class: text
-  Output: Recall that unbiased estimators equal the value they're trying to estimate. We can infer  from the above that the sample variance is an unbiased estimator of population variance. 
+  Output: Now recall that unbiased estimators equal the values they're trying to estimate. We can infer  from the above that the sample variance is an unbiased estimator of population variance. 
 
 - Class: text
   Output: Recall that the average of random samples from a population is itself a random variable with a distribution centered around the population mean. Specifically, E(X') = mu, where X' represents a sample mean and mu is the population mean.
 
 - Class: text
-  Output:  We also can show that, if the population is infinite, the variance of the sample mean is the population variance divided by the sample size. Specifically,  Var(X') = sigma^2 / n. Let's work through this in four short steps.
+  Output:  We can show that, if the population is infinite, the variance of the sample mean is the population variance divided by the sample size. Specifically,  Var(X') = sigma^2 / n. Let's work through this in four short steps.
 
 - Class: mult_question
   Output: Which of the following does Var(X') equal? Here X' represents the sample mean and 'Sum(X_i)' represents the sum of the n samples X_1,...X_n.
@@ -134,31 +131,85 @@
   Output: So we shown Var(X')=Var(1/n*Sum(X_i))=(1/n^2)*Var(Sum(X_i))=(1/n^2)*Sum(sigm^2)=sigma^2/n for infinite populations. 
 
 - Class: text
-  Output: The standard deviation of a statistic is called its standard error, so the standard error of the sample mean is the square root of its variance. 
+  Output: The standard deviation of a statistic is called its standard error, so the standard error of the sample mean is the square root of its variance.
 
 - Class: text
-  Output: The sample variance, s^2, estimates the population variance, sigma^2, so as we saw from our simulations, the distribution of the sample variance is centered around sigma^2. 
-
-- Class: text
-  Output: The variance of sample mean is sigma^2 / n and we estimate it with s^2 / n. It follows that  s / sqrt(n) is the standard error.
+  Output: The variance of sample mean is sigma^2 / n and we estimate it with s^2 / n. It follows that  s / sqrt(n) is the standard error of the sample mean.
 
 - Class: text
   Output: The sample standard deviation, s, tells us how variable the population is, and s/sqrt(n), the standard error, tells us how much averages of random samples of size n from the population vary.
 
 - Class: cmd_question
-  Output: The R function rnorm(n,mean,sd) generates n random normal numbers with the specified mean and standard deviation. The defaults for the latter are mean 0 and standard deviation 1. Type the expression sd(apply(matrix(rnorm(10000),10),1,mean)) at the prompt. 
-  CorrectAnswer: sd(apply(matrix(rnorm(10000),10),1,mean))
-  AnswerTests: omnitest(correctExpr='sd(apply(matrix(rnorm(10000),10),1,mean))')
-  Hint: Type 'sd(apply(matrix(rnorm(10000),10),1,mean))' at the command prompt.
+  Output: The R function rnorm(n,mean,sd) generates n random normal numbers with the specified mean and standard deviation. The defaults for the latter are mean 0 and standard deviation 1. Type the expression sd(apply(matrix(rnorm(10000),1000),1,mean)) at the prompt. 
+  CorrectAnswer: sd(apply(matrix(rnorm(10000),1000),1,mean))
+  AnswerTests: omnitest(correctExpr='sd(apply(matrix(rnorm(10000),1000),1,mean))')
+  Hint: Type 'sd(apply(matrix(rnorm(10000),1000),1,mean))' at the command prompt.
 
 - Class: cmd_question
-  Output: This returns the standard deviation of 1000 averages, each of a sample of 10 random normal numbers with mean 0 and standard deviation 1. Now compute 1/sqrt(10) to see if it matches.
+  Output: This returns the standard deviation of 1000 averages, each of a sample of 10 random normal numbers with mean 0 and standard deviation 1. The theory tells us that the standard error, s/sqrt(n), of the sample means indicates how much averages of random samples of size n (in this case 10) vary. Now compute 1/sqrt(10) to see if it the standard error we computed from our samples.
   CorrectAnswer: 1/sqrt(10)
   AnswerTests: omnitest(correctExpr='1/sqrt(10)')
   Hint: Type '1/sqrt(10)' at the command prompt.
 
+- Class: mult_question
+  Output: Pretty close, right? Let's try a few more. Standard uniform distributions have variance 1/12. The theory tells us the standard error of means of samples of size n would have which standard error?
+  AnswerChoices: 1/(12*sqrt(n)); 12/sqrt(n); 1/sqrt(12*n); I haven't a clue 
+  CorrectAnswer: 1/sqrt(12*n)
+  AnswerTests: omnitest(correctVal='1/sqrt(12*n)')
+  Hint: In this case s is the sqrt(1/12). Divide this by sqrt(n).
+
+- Class: cmd_question
+  Output:  Compute 1/sqrt(120). This would be the standard error of the means of uniform samples of size 10. 
+  CorrectAnswer: 1/sqrt(120)
+  AnswerTests: omnitest(correctExpr='1/sqrt(120)')
+  Hint: Type '1/sqrt(120)' at the command prompt.
+
+- Class: cmd_question
+  Output: Now check it as we did before. Use the default values for the last 2 arguments of the R function runif(n,min,max) which generates n random samples from a uniform distribution. Let n=10000 and treat the data as a 1000 x 10 matrix. Find the standard deviation of the rows with the expression sd(apply(matrix(runif(10000),1000),1,mean)). 
+  CorrectAnswer: sd(apply(matrix(runif(10000),1000),1,mean))
+  AnswerTests: omnitest(correctExpr='sd(apply(matrix(runif(10000),1000),1,mean))')
+  Hint: Type 'sd(apply(matrix(runif(10000),1000),1,mean))' at the command prompt.
+
+- Class: mult_question
+  Output: Pretty close again, right? Poisson(4) are distributions with variance 4; what standard error would means of random samples of n Poisson(4) have?
+  AnswerChoices: 2/sqrt(n); 1/sqrt(2*n); 2*sqrt(n); I haven't a clue 
+  CorrectAnswer:  2/sqrt(n)
+  AnswerTests: omnitest(correctVal='2/sqrt(n)')
+  Hint: In this case s is 2. Divide this by sqrt(n).
+
+- Class: cmd_question
+  Output:  We'll check this now. Assume you're taking averages of 10 Poisson(4) samples and compute the standard error of these means. Use the formula you just chose.
+  CorrectAnswer: 2/sqrt(10)
+  AnswerTests: omnitest(correctExpr='2/sqrt(10)')
+  Hint: Type '2/sqrt(10)' at the command prompt.
+
+- Class: cmd_question
+  Output: Now check it as we did before. Use  n=10000 and lambda=4 with the R function rpois. Treat the data as a 1000 x 10 matrix. Find the standard deviation of the rows with the expression sd(apply(matrix(rpois(10000,4),1000),1,mean)). 
+  CorrectAnswer: sd(apply(matrix(rpois(10000,4),1000),1,mean))
+  AnswerTests: omnitest(correctExpr='sd(apply(matrix(rpois(10000,4),1000),1,mean))')
+  Hint: Type 'sd(apply(matrix(rpois(10000,4),1000),1,mean))' at the command prompt.
+
+- Class: mult_question
+  Output: Like magic, right? One final test. Fair coin flips have variance 0.25; means of random samples of n coin flips have  what standard error?
+  AnswerChoices: 2/sqrt(n); 1/sqrt(2*n); 2*sqrt(n); 1/(2*sqrt(n)); I haven't a clue 
+  CorrectAnswer:  1/(2*sqrt(n))
+  AnswerTests: omnitest(correctVal=' 1/(2*sqrt(n))')
+  Hint: In this case s is 1/2 which is the sqrt of 1/4, the variance. Divide this by sqrt(n).
+
+- Class: cmd_question
+  Output:  You know the drill. Assume you're taking averages of 10 coin flips and compute the standard error of these means with the theoretical formula you just picked.
+  CorrectAnswer: 1/(2*sqrt(10))
+  AnswerTests: omnitest(correctExpr=' 1/(2*sqrt(10))')
+  Hint: Type ' 1/(2*sqrt(10))' at the command prompt.
+
+- Class: cmd_question
+  Output: Now check it as we did before. Use  size=10000 and the R function sample. Here the argument x is the expression 0:1 which tells R to pick either 0 or 1 randomly. replacement is TRUE and don't specify a value for the prob argument. Treat the data as a 1000 x 10 matrix. Find the standard deviation of the rows with the expression sd(apply(matrix(sample(0:1,10000,TRUE),1000),1,mean)). 
+  CorrectAnswer: sd(apply(matrix(sample(0:1,10000,TRUE),1000),1,mean))
+  AnswerTests: omnitest(correctExpr='sd(apply(matrix(sample(0:1,10000,TRUE),1000),1,mean))')
+  Hint: Type 'sd(apply(matrix(sample(0:1,10000,TRUE),1000),1,mean))' at the command prompt.
+
 - Class: text
-  Output: Chebyshev's inequality helps interpret variances. This inequality states that the probability that a random variable X is at least k standard deviations from its mean is less than 1/(k^2). In other words, the probability that X is at least 2 standard deviations from the mean is less than 1/4, 3 standard deviations 1/9, 4 standard deviations 1/16, etc.
+  Output: Finally, here's something interesting. Chebyshev's inequality helps interpret variances. It states that the probability that a random variable X is at least k standard deviations from its mean is less than 1/(k^2). In other words, the probability that X is at least 2 standard deviations from the mean is less than 1/4, 3 standard deviations 1/9, 4 standard deviations 1/16, etc.
 
 - Class: text
   Output: However this estimate is quite conservative for random variables that are normally distributed, that is, with bell-curve distributions. In these cases, the probability of being at least 2 standard deviations from the mean is about 5% (as compared to Chebyshev's 25%) and the probability of being at least 3 standard deviations from the mean is roughly .2%.
@@ -170,6 +221,42 @@
   AnswerTests: omnitest(correctVal='6%')
   Hint: Chebyshev's inequality estimates that probability as 1/16. Convert this to a probability.
 
+
+- Class: mult_question
+  Output: Now to review. The sample variance estimates what?
+  AnswerChoices: population variance; sample mean; sample standard deviation; population
+  CorrectAnswer: population variance
+  AnswerTests: omnitest(correctVal='population variance')
+  Hint: Which choice has the word variance in it?
+
+- Class: mult_question
+  Output: The distribution of the sample variance is centered at what?
+  AnswerChoices: population variance; sample mean; sample standard deviation; population
+  CorrectAnswer: population variance
+  AnswerTests: omnitest(correctVal='population variance')
+  Hint: What is the sample variance estimating?
+
+- Class: mult_question
+  Output: True or False - The sample variance gets more concentrated around the population variance with larger sample sizes
+  AnswerChoices: True; False
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal='True')
+  Hint: Is more data better than less data?
+
+- Class: mult_question
+  Output: The variance of the sample mean is the population variance divided by ?
+  AnswerChoices: n; n^2; sqrt(n); I haven't a clue
+  CorrectAnswer: n
+  AnswerTests: omnitest(correctVal='n')
+  Hint: Remember the 4 step proof starting with Var(X')=...? The last step had an n divided by an n^2.
+
+- Class: mult_question
+  Output: The standard error of the sample mean is the sample standard deviation s divided by ?
+  AnswerChoices: n; n^2; sqrt(n); I haven't a clue
+  CorrectAnswer: sqrt(n)
+  AnswerTests: omnitest(correctVal='sqrt(n)')
+  Hint: Remember the many many examples we went through. The sqrt(n) figured prominently in them.
+
 - Class: text
-  Output: Congrats! You've concluded this lesson on variance. We hope you liked it very much.
+  Output: Congrats! You've concluded this vary long lesson on variance. We hope you liked it vary much.
 
