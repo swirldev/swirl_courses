@@ -13,7 +13,7 @@
   Output: In this lesson, as the name suggests, we'll discuss conditional probability. 
 
 - Class: mult_question
-  Output: If you were given a fair dice and asked what the probability of rolling a 3 is, what would you reply?
+  Output: If you were given a fair die and asked what the probability of rolling a 3 is, what would you reply?
   AnswerChoices: 1/6; 1/2; 1/3; 1/4; 1 
   CorrectAnswer: 1/6
   AnswerTests: omnitest(correctVal='1/6')
@@ -24,7 +24,7 @@
   AnswerChoices: 1/6; 1/2; 1/3; 1/4; 1 
   CorrectAnswer: 1/3
   AnswerTests: omnitest(correctVal='1/3')
-  Hint: Given that there are 3 odd numbers on the dice your possibilities have been reduced to 3 and you want to know the probability of 1 of them.
+  Hint: Given that there are 3 odd numbers on the die your possibilities have been reduced to 3 and you want to know the probability of 1 of them.
 
 - Class: text
   Output: The probability of this second event is conditional on this new information, so the probability of rolling a 3 is now one third.
@@ -47,7 +47,7 @@
   AnswerChoices: (1/6)/(1/2); (1/2)/(1/6); (1/3)/(1/2); 1/6 
   CorrectAnswer: (1/6)/(1/2)
   AnswerTests: omnitest(correctVal='(1/6)/(1/2)')
-  Hint: Here A is a subset of B so the probability of both A AND B happening is the probability of A happening. The probability of B is the number of odd numbers between 1 and 6 (includsive).
+  Hint: Here A is a subset of B so the probability of both A AND B happening is the probability of A happening. The probability of B is the reciprocal of the number of odd numbers between 1 and 6 (inclusive).
 
 - Class: text
   Output: From the definition of P(A|B), we can write P(A&B) = P(A|B) * P(B), right?  Let's use this to express P(B|A).
@@ -94,13 +94,13 @@
   Output: Disease prevalence is .001. Test sensitivity is 99.7% and specificity is 98.5%. First compute the numerator, P(+|D)*P(D). (This is also part of the denominator.)
   CorrectAnswer: .997*.001
   AnswerTests: ANY_of_exprs('.997*.001','.001*.997')
-  Hint: Multiple the test sensitivity by the prevalence.
+  Hint: Multiply the test sensitivity by the prevalence.
 
 - Class: cmd_question
   Output: Now solve for the remainder of the denominator, P(+|~D)*P(~D).
   CorrectAnswer: (1-.985)*(1-.001)
   AnswerTests: equiv_val(.014985)
-  Hint: Multiple the complement of test specificity by the complement of prevalence.
+  Hint: Multiply the complement of test specificity by the complement of prevalence.
 
 - Class: cmd_question
   Output: Now put the pieces together to compute the probability that the patient has the disease given his positive test result.
@@ -180,7 +180,7 @@
   Hint: The events aren't independent since genetic or environmental factors likely will affect the outcome.
 
 - Class: text
-  Output: We'll conclude with iid. Random variables are said to be iid if they are independent and identically distributed. By indedpendent we mean "statistically unrelated from one another". Identically distributed means that "all have been drawn from the same population distribution".
+  Output: We'll conclude with iid. Random variables are said to be iid if they are independent and identically distributed. By independent we mean "statistically unrelated from one another". Identically distributed means that "all have been drawn from the same population distribution".
 
 - Class: text
   Output: Random variables which are iid are the default model for random samples and many of the important theories of statistics assume that variables are iid. We'll usually assume our samples are random and variables are iid.
