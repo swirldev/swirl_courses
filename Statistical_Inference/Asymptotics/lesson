@@ -78,20 +78,47 @@
   FigureType: new
 
 - Class: text
-  Output: Notice that the CLT said nothing about the original population being normally distributed. That's precisely where its usefulness lies! We can assume normality of a population mean no matter what kind of population it is, as long as our sample size is large enough. Let's look at how it works with a binomial experiment like flipping a coin.
-
-- Class: video
-  Output: Would you like to see the equation proving this? You'll need an internet connection to see it.
-  VideoLink: "http://wilcrofter.github.io/slidex/markDown/varAX.html"
+  Output: Notice that the CLT said nothing about the original population being normally distributed. That's precisely where its usefulness lies! We can assume normality of a population mean no matter what kind of population we have, as long as our sample size is large enough. Let's look at how it works with a binomial experiment like flipping a coin.
 
 - Class: text
-  Output:  Let's practice computing the variance of a dice roll now. First we need to compute E(X^2). From the definition of expected values, this means we'll take a weighted sum over all possible values of X^2. The weight is the probability of X occurring.  
+  Output: Recall that if the probability of a head (call it 1) is p, then the probability of a tail (0) is 1-p. The expected value then is p and the variance is p-p^2 or p(1-p). Suppose we do n coin flips and let p' represent the average of these n flips. We normalize p' by subtracting p and dividing by sqrt(p(1-p)/n). Let's do this for 1000 trials and plot the resulting histogram. 
+
+- Class: figure
+  Output: Here's a figure from the slides showing the results of 3 such trials where each trial is for a different value of n (10, 20, and 30) and the coin is fair,so E(X)=.5 and the standard error is 1/(2sqrt(n)). Notice how with larger n the histogram tightens up around the mean 0.
+  Figure: cltFairCoin.R
+  FigureType: new
+
+- Class: figure
+  Output: Here's another plot from the slides of the same experiment, this time using a biassed coin. We set the probability of a head to .9, so E(X)=.9 and the standard error is sqrt(.09/n) Again, the larger the sample size the more closely the distribution looks normal.
+  Figure: cltUnfairCoin.R
+  FigureType: new
+
+- Class: text
+  Output: Now let's talk about confidence intervals.
+
+- Class: figure
+  Output:  We know from the CLT that for large n, the sample mean is normal with mean mu and standard deviation sigma/sqrt(n). We also know that 95% of the area under a normal curve is within two standard deviations of the mean. We see that in this figure, the shaded area is within 2 standard deviations of the mean and the darker portion is within 1 standard deviation. 
+  Figure: stddev1.R
+  FigureType: new
+
+- Class: text
+  Output: It follows that 5% of the area under the curve is not shaded. By symmetry of the curve, only 2.5% of the data is greater than the mean + 2 standard deviations (mu+2*sigma/sqrt(n)) and only 2.5% is less than the  mean - 2 standard deviations (mu-2*sigma/sqrt(n)). 
+
+- Class: text
+  Output: So the probability that the sample mean X' is bigger than mu + 2sigma/sqrt(n) or smaller than mu-2sigma/sqrt(n) is 5%.  Equivalently, the probability of being between these limits is 95%. 
+
+- Class: text
+  Output: The quantity X' + or - 2 sigma/sqrt(n) is called a 95% interval for mu. The 95% says that if one were to repeatly get samples of size n, about 95% of the intervals obtained would contain mu.
 
 - Class: cmd_question
   Output: For convenience, we've defined a 6-long vector for you, dice_sqr, which holds the squares of the integers 1 through 6. This will give us the X^2 values. Look at it now.
   CorrectAnswer: dice_sqr
   AnswerTests: omnitest(correctExpr='dice_sqr')
   Hint: Type dice_sqr at the command prompt.
+
+- Class: video
+  Output: Would you like to see the equation proving this? You'll need an internet connection to see it.
+  VideoLink: "http://wilcrofter.github.io/slidex/markDown/varAX.html"
 
 - Class: cmd_question
   Output: Now we need weights. For these we can use any of the three PDF's, (dice_fair, dice_high, and dice_low) we defined in the previous lesson. Using R's ability to multiply vectors componentwise and its function 'sum' we can easily compute E(X^2) for any of these dice. Simply sum the product dice_sqr * PDF.  Try this now with dice_fair and put the result in a variable ex2_fair.
