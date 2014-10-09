@@ -207,7 +207,7 @@
   Output: A quick fix to the small n problem is to use the Agresti/Coull interval. This simply means we add 2 successes and 2 failures to the counts when calculating p'. Specifically, if X is the number of successes out of the 20 coin flips, then instead of  p'=X/20, let p'=(X+2)/24. We use 24 as the number of trials since we've added 2 successes and 2 failures to the counts. Note that we still use 20 in the calculation of the upper and lower bounds (in the standard error portion of the formula).
 
 - Class: figure
-  Output: Here's a plot using this Agressi/Coull interval, with 1000 trials of 20 coin flips each. It looks much better than both the original Wald with 20 coin flips and the improved Wald with 100 trials.
+  Output: Here's a plot using this Agresti/Coull interval, with 1000 trials of 20 coin flips each. It looks much better than both the original Wald with 20 coin flips and the improved Wald with 100 trials. However, it might make the confidence interval too wide and make you overconfident that the interval contains the true value. 
   Figure: ACDemo.R
   FigureType: new
 
