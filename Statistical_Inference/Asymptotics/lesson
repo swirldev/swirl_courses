@@ -89,7 +89,7 @@
   FigureType: new
 
 - Class: figure
-  Output: Here's another plot from the slides of the same experiment, this time using a biassed coin. We set the probability of a head to .9, so E(X)=.9 and the standard error is sqrt(.09/n) Again, the larger the sample size the more closely the distribution looks normal.
+  Output: Here's another plot from the slides of the same experiment, this time using a biassed coin. We set the probability of a head to .9, so E(X)=.9 and the standard error is sqrt(.09/n) Again, the larger the sample size the more closely the distribution looks normal, although with this biassed coin the normal approximation isn't as good as it was with the fair coin.
   Figure: cltUnfairCoin.R
   FigureType: new
 
@@ -97,7 +97,7 @@
   Output: Now let's talk about confidence intervals.
 
 - Class: figure
-  Output:  We know from the CLT that for large n, the sample mean is normal with mean mu and standard deviation sigma/sqrt(n). We also know that 95% of the area under a normal curve is within two standard deviations of the mean. We see that in this figure, the shaded area is within 2 standard deviations of the mean and the darker portion is within 1 standard deviation. 
+  Output:  We know from the CLT that for large n, the sample mean is normal with mean mu and standard deviation sigma/sqrt(n). We also know that 95% of the area under a normal curve is within two standard deviations of the mean.This figure illustrates this point; the entire shaded portion depicts the area within 2 standard deviations of the mean and the darker portion shows the 68% of the area within 1 standard deviation. 
   Figure: stddev1.R
   FigureType: new
 
@@ -105,20 +105,114 @@
   Output: It follows that 5% of the area under the curve is not shaded. By symmetry of the curve, only 2.5% of the data is greater than the mean + 2 standard deviations (mu+2*sigma/sqrt(n)) and only 2.5% is less than the  mean - 2 standard deviations (mu-2*sigma/sqrt(n)). 
 
 - Class: text
-  Output: So the probability that the sample mean X' is bigger than mu + 2sigma/sqrt(n) or smaller than mu-2sigma/sqrt(n) is 5%.  Equivalently, the probability of being between these limits is 95%. 
+  Output: So the probability that the sample mean X' is bigger than mu + 2sigma/sqrt(n) OR smaller than mu-2sigma/sqrt(n) is 5%.  Equivalently, the probability of being between these limits is 95%. 
 
 - Class: text
-  Output: The quantity X' + or - 2 sigma/sqrt(n) is called a 95% interval for mu. The 95% says that if one were to repeatly get samples of size n, about 95% of the intervals obtained would contain mu.
+  Output: The quantity X' + or - 2 sigma/sqrt(n) is called a 95% interval for mu. The 95% says that if one were to repeatly get samples of size n, about 95% of the intervals obtained would contain mu, the quantity we're trying to estimate. 
+
+- Class: mult_question
+  Output: Note that for a 95% confidence interval we divide (100-95) by 2 (since we have both left and right tails) and add the result to 95 to compute the quantile we need. The 97.5 quantile is actually 1.96, but for simplicity it's often just rounded up to 2. If you wanted to find a 90% confidence interval what quantile would you want?
+  AnswerChoices: 90; 95; 85; 100
+  CorrectAnswer: 95
+  AnswerTests: omnitest(correctVal='95')
+  Hint: Divide (100-90) by 2 and add this result to 90.
 
 - Class: cmd_question
-  Output: For convenience, we've defined a 6-long vector for you, dice_sqr, which holds the squares of the integers 1 through 6. This will give us the X^2 values. Look at it now.
-  CorrectAnswer: dice_sqr
-  AnswerTests: omnitest(correctExpr='dice_sqr')
-  Hint: Type dice_sqr at the command prompt.
+  Output: Use the R function qnorm to find the 95 quantile for a standard normal distribution. Remember that qnorm takes a probability as an input. You can use default values for all the other arguments.
+  CorrectAnswer: qnorm(.95)
+  AnswerTests: omnitest(correctExpr='qnorm(.95)')
+  Hint: Type qnorm(.95) at the command prompt.
 
-- Class: video
-  Output: Would you like to see the equation proving this? You'll need an internet connection to see it.
-  VideoLink: "http://wilcrofter.github.io/slidex/markDown/varAX.html"
+- Class: text
+ Output: As we've seen before, in a binomial distribution in which p represents the probability or proportion of success, the variance sigma^2 is p(1-p), so the standard error of the sample mean p' is sqrt(p(1-p)/n) where n is the sample size. The 95% confidence interval of p is then p' +/- 2*sqrt(p(1-p)/n). (As before, we use 2 as the 97.5 quantile.) We don't know the true value of p; that's what we're trying to estimate. The Wald confidence interval replaces p with p'.
+
+- Class: text
+   Output:  Since we don't know p, we want to maximize the 95% confidence interval represented by 2*sqrt(p(1-p)/n). From calculus we know that p(1-p) is maximized when p=1/2, so our biggest 95% confidence interval estimate would use 1/2 for a value of p in the formula p'+/- 2*sqrt(p(1-p)/n). 1/sqrt(n).
+
+- Class: mult_question
+  Output: Using 1/2 for the value of p in the formula yields what 95% confidence interval for p?
+  AnswerChoices: p'+/- 1/sqrt(n); p'+/- 1/2sqrt(n); p'+/ 2sqrt(n)
+  CorrectAnswer: p'+/- 1/sqrt(n)
+  AnswerTests: omnitest(correctVal='p'+/- 1/sqrt(n)')
+  Hint: p(1-p)=1/4 when p=1/2 and the sqrt(1/4n)=1/(2sqrt(n)). What happens when you multiply this by 2?
+
+- Class: mult_question
+  Output: We'll illustrate how to use this formula with an example from the slides. Suppose you were running for office and your pollster polled 100 people. Of these 60 claimed they were going to vote for you. You'd like to see if the true proportion of people who will vote for you and you want to be 95% confident of your estimate. We need to find the limits that will contain the true proportion of your supporters with 95% confidence, so we'll use the formula p' +/- 1/sqrt(n) to answer this question. First, what value would you use for p', the sampled estimate?
+  AnswerChoices: 60; 56; 100; 10
+  CorrectAnswer: 60
+  AnswerTests: omnitest(correctVal='60')
+  Hint: The only sampled number here is the number of people who said they would vote for you.
+
+- Class: mult_question
+  Output: What would you use for 1/sqrt(n)?
+  AnswerChoices: 1/sqrt(60); 1/sqrt(56); 1/100; 1/10
+  CorrectAnswer: 1/10
+  AnswerTests: omnitest(correctVal='1/10')
+  Hint: The sample size is n, and in this case n=100. What is 1/sqrt(100)?
+
+- Class: mult_question
+  Output: The bounds of the interval then are what?
+  AnswerChoices: .5 and .7; .46 and .66; .55 and .65; I haven't a clue
+  CorrectAnswer: .5 and .7
+  AnswerTests: omnitest(correctVal='.5 and .7')
+  Hint: We know p'- 1/sqrt(n) is the lower bound and p'+ 1/sqrt(n) is the upper bound, so use the answers from the two previous answers to fill in values for these variables.
+
+- Class: mult_question
+  Output: How do you feel about the election?
+  AnswerChoices: confident; unsure; I'll pull out;  Perseverance, that's the answer; 
+  CorrectAnswer: confident
+  AnswerTests: omnitest(correctVal='confident')
+  Hint: With 95% confidence, between .5 and .7 of the voters support you. You look like a winner to me!
+
+- Class: cmd_question
+  Output: To reassure you that this is a pretty good estimate, we can use R to get a more precise confidence interval using the actual quantile 1.96 instead of our ballpark estimate of 2. Use the formula  p'+/- qnorm(.975)*sqrt(p'(1-p')/100). Use the p' and n values from above and the R construct p'+c(-1,1)... to handle the plus/minus portion of the formula. You should see bounds similar to the ones you just estimated.
+  CorrectAnswer: .6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100)
+  AnswerTests: omnitest(correctExpr='.6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100)')
+  Hint: Type .6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100) at the command prompt. 
+
+- Class: cmd_question
+  Output: As an alternative to this Wald interval, we can also use the R function binom.test with the parameters 60 and 100 and let all the others default. This function "performs an exact test of a simple null hypothesis about the probability of success in a Bernoulli experiment." (This means it uses a lot of computation and doesn't rely on the CLT.) It returns a lot of information but all we want to look at now is the values of the confidence interval, conf.int, that it returns. Use the R construct x$conf.int to find these now.
+  CorrectAnswer: binom.test(60,100)$conf.int
+  AnswerTests: omnitest(correctExpr='binom.test(60,100)$conf.int')
+  Hint: Type binom.test(60,100)$conf.int at the command prompt. 
+
+- Class: text
+  Output: Now we're going to see that the Wald interval isn't very accurate when n is small. We'll use the example from the slides. 
+
+- Class: figure
+  Output: Suppose we flip a coin a small number of times, say 20. Also suppose we have a function mywald which takes a probability p, and generates 30 sets of 20 coin flips using that probability p. It uses the sampled proportion of success, p', for those 20 coin flips to compute the upper and lower bounds of the 95% Wald interval, that is, it computes the two numbers p'+/- qnorm(.975) * sqrt(p' * (1-p') / n) for each of the 30 trials. For the given true probability p, we  count the number of times out of those 30 trials that the true probability p was in the Wald confidence interval. We'll call this the coverage.
+  Figure: WaldDemo.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: To make sure you understand what's going on, trying running mywald now with the probability .2. It will print out 30 p' values (which you don't really need to see), followed by 30 lower bounds, 30 upper bounds and lastly the percentage of times that the input .2 was between the two bounds. See if you agree with the percentage you get. Usually it suffices to just count the number of times (out of the 30) that .2 is less than the upper bound.
+  CorrectAnswer: mywald(.2)
+  AnswerTests: omnitest(correctExpr='mywald(.2)')
+  Hint: Type mywald(.2) at the command prompt. 
+
+- Class: text
+  Output: Now that you understand the underlying principle, suppose instead of counting the number of times the true (input) probability fell within the 95% Wald interval out of 30 trials, we used 1000 trials. Also suppose we did this experiment for a series of probabilities, say from .1 to .9 taking steps of size .05. More specifically, we call our function using 17 different probabilities, namely .1, .15, .2, .25, ... .9 . We can then plot the percentages of coverage for each of the probabilities. 
+
+- Class: figure
+  Output: Here's the plot of our results. Each of the 17 vertices show the percentage of coverage for a particular true probability p passed to the function. Results will vary, but usually the only probability that hits above the 95% line is the p=.5 . So this shows that when n, the number of flips, is small the CLT doesn't hold for many values of p, so the Wald interval doesn't work very well.
+  Figure: WaldFail.R
+  FigureType: new
+
+- Class: figure
+  Output: Let's try the same experiment and increase n from 20 to 100 to see if the plot improves. Again, results may vary, but all the probabilities are much closer to the 95% line, so the CLT works better with a bigger value of n.
+  Figure: WaldPass.R
+  FigureType: new
+
+- Class: text
+  Output: A quick fix to the small n problem is to use the Agresti/Coull interval. This simply means we add 2 successes and 2 failures to the counts when calculating p'. Specifically, if X is the number of successes out of the 20 coin flips, then instead of  p'=X/20, let p'=(X+2)/24. We use 24 as the number of trials since we've added 2 successes and 2 failures to the counts. Note that we still use 20 in the calculation of the upper and lower bounds (in the standard error portion of the formula).
+
+- Class: figure
+  Output: Here's a plot using this Agressi/Coull interval, with 1000 trials of 20 coin flips each. It looks much better than both the original Wald with 20 coin flips and the improved Wald with 100 trials.
+  Figure: ACDemo.R
+  FigureType: new
+
+- Class: text
+  Output: Let's move on to Poisson distributions and confidence intervals.
 
 - Class: cmd_question
   Output: Now we need weights. For these we can use any of the three PDF's, (dice_fair, dice_high, and dice_low) we defined in the previous lesson. Using R's ability to multiply vectors componentwise and its function 'sum' we can easily compute E(X^2) for any of these dice. Simply sum the product dice_sqr * PDF.  Try this now with dice_fair and put the result in a variable ex2_fair.
