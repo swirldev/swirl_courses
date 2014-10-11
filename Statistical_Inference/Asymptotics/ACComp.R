@@ -6,5 +6,6 @@ ACCompar <- function(n){
  nf <- nn/nd
  of <- num/den
  scor <- nf<of
+ print(scor)
  sum(scor)
 }

@@ -10,26 +10,26 @@
   Output: "Asymptotics. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 07_Statistical_Inference/Asymptopia.)"
 
 - Class: text
-  Output: In this lesson, we'll discuss asymptotics which describes how statistics behave as sample sizes get very large and approach infinity. Pretending sample sizes and populations are infinite is incredibly useful for simple statistical inference and approximations since it often lead to a nice understanding of procedures.
+  Output: In this lesson, we'll discuss asymptotics, a topic which describes how statistics behave as sample sizes get very large and approach infinity. Pretending sample sizes and populations are infinite is incredibly useful for simple statistical inference and approximations since it often leads to a nice understanding of procedures.
 
 - Class: text
   Output: Asymptotics generally give no assurances about finite sample performance, but they form the basis for frequency interpretation of probabilities (the long run proportion of times an event occurs).
 
 - Class: mult_question
-  Output: Recall our simulations and discussions of sample means in previous lessons. We can now talk about the large sample distribution of sample means of a collection of iid observations. The mean of the sample mean estimates what?
+  Output: Recall our simulations and discussions of sample means in previous lessons. We can now talk about the  distribution of sample means of a collection of iid observations. The mean of the sample mean estimates what?
   AnswerChoices: population mean; population variance; standard error; sigma^2/n
   CorrectAnswer: population mean
   AnswerTests: omnitest(correctVal='population mean')
   Hint: Which choice has the word 'mean' in it?
 
 - Class: text
-  Output: The Law of Large Numbers (LLN) says that the average approaches what it's estimating. We saw in our simulations that the larger the sample size the better the estimation.  As we flip a fair coin over and over, it eventually converges to the true probability of a head (.5). 
+  Output: The Law of Large Numbers (LLN) says that the average (mean) approaches what it's estimating. We saw in our simulations that the larger the sample size the better the estimation.  As we flip a fair coin over and over, it eventually converges to the true probability of a head (.5). 
 
 - Class: text
   Output: The LLN forms the basis of frequency style thinking. 
 
 - Class: cmd_question
-  Output: To see this in action, we've copied some code from the slides and created a function for you called cointPlot. It takes an integer, n, as a parameter which is the number of coin tosses you want to simulate. It then does this and computes the cumulative sum (assuming heads are 1 and tails 0), but as it performs each toss it divides the cumulative sum by the number of flips performed. It then plots this value for each of the k=1...n tosses. Try it now for n=10. 
+  Output: To see this in action, we've copied some code from the slides and created the function coinPlot. It takes an integer n which is the number of coin tosses that will be simulated. As coinPlot does these coin flips it computes the cumulative sum (assuming heads are 1 and tails 0), but after each toss it divides the cumulative sum by the number of flips performed so far. It then plots this value for each of the k=1...n tosses. Try it now for n=10. 
   CorrectAnswer: coinPlot(10)
   AnswerTests: omnitest(correctExpr='coinPlot(10)')
   Hint: Type coinPlot(10) at the command prompt.
@@ -51,29 +51,29 @@
   AnswerChoices: Yes; No
   CorrectAnswer: Yes
   AnswerTests: omnitest(correctVal='Yes')
-  Hint: Recall our simulations of sample variances and how, as we increased the sample size, they converged to the population variance.
+  Hint: Recall our simulations of sample variances and how, as we increased the sample size, they converged to the population variance. Sounds like consistency, right?
 
 - Class: text
   Output: Now for something really important - the CENTRAL LIMIT THEOREM (CLT) - one of the most important in all of statistics. It states that the distribution of averages of iid variables (properly normalized) becomes that of a standard normal as the sample size increases. 
  
 - Class: text
-  Output: Let's dissect this to see what it means. First, 'properly normalized' means that you subtract the population mean mu from the sample mean X' and divided this difference by sigma/sqrt(n). Here sigma is the standard deviation of the population and n is the sample size. 
+  Output: Let's dissect this to see what it means. First, 'properly normalized' means that you transformed the sample mean X'. You subtracted the population mean mu from it and divided the difference by sigma/sqrt(n). Here sigma is the standard deviation of the population and n is the sample size. 
 
 - Class: text
-  Output: Second, this normalized variable, (X'-mu)/(sigma/sqrt(n)) is a random variable from a normal distribution with mean 0 and variance 1. Remember that n must be large for the CLT to apply.
+  Output: Second, this normalized variable, (X'-mu)/(sigma/sqrt(n)) is a random variable with a normal distribution with mean 0 and variance 1. Remember that n must be large for the CLT to apply.
 
 - Class: mult_question
-  Output: Do you recognize sigma/sqrt(n) from our lesson on variance? It is the often approximated by what? 
+  Output: Do you recognize sigma/sqrt(n) from our lesson on variance? Since the population std deviation sigma is unknown, sigma/sqrt(n) is often approximated by what? 
   AnswerChoices: the standard error of the sample mean; the variance of the population; the mean of the population; I give up
-  CorrectAnswer: standard error of the sample mean
-  AnswerTests: omnitest(correctVal='standard error of the sample mean')
-  Hint: Recall all our simulation experiments in the variance lesson where we calculated standard deviations of means using R's sd function, then we calculated an approximation using a formula involving the population variance and the square root of the sample size.
+  CorrectAnswer: the standard error of the sample mean
+  AnswerTests: omnitest(correctVal='the standard error of the sample mean')
+  Hint: Recall our many simulation experiments in the variance lesson where we calculated standard deviations of means using R's sd function, then we calculated an approximation using a formula involving the population variance and the square root of the sample size.
 
 - Class: text
-  Output: Let's repeat this in an equivalent but different way. Suppose X_1, X_2, ... X_n are independent random variables from an infinite population with mean mu and variance sigma^2. Then if n is large, the mean of the X's, call it X', is approximately normal with mean mu and variance sigma^2/n. We denote this as N(mu,sigma^2/n).
+  Output: Let's rephrase the CLT. Suppose X_1, X_2, ... X_n are independent random variables from an infinite population with mean mu and variance sigma^2. Then if n is large, the mean of the X's, call it X', is approximately normal with mean mu and variance sigma^2/n. We denote this as N(mu,sigma^2/n).
 
 - Class: figure
-  Output: To show the CLT in action consider this figure from the slides. It presents the histogram of 1000 averages of dice rolls with sample sizes of 10, 20 and 30 respectively. Each average of n dice rolls (n=10,20,30) has been normalized by subtracting off the mean (3.5) then dividing by the standard error, sqrt(2.92/n). Recall that for a dice roll the mean is 3.5 and variance is 2.92. The normalization has made each histogram look like a standard normal, i.e., mean 0 and standard deviation 1.
+  Output: To show the CLT in action consider this figure from the slides. It presents 3 histograms of 1000 averages of dice rolls with sample sizes of 10, 20 and 30 respectively. Each average of n dice rolls (n=10,20,30) has been normalized by subtracting off the mean (3.5) then dividing by the standard error, sqrt(2.92/n). The normalization has made each histogram look like a standard normal, i.e., mean 0 and standard deviation 1.
   Figure: cltDice.R
   FigureType: new
 
@@ -97,7 +97,7 @@
   Output: Now let's talk about confidence intervals.
 
 - Class: figure
-  Output:  We know from the CLT that for large n, the sample mean is normal with mean mu and standard deviation sigma/sqrt(n). We also know that 95% of the area under a normal curve is within two standard deviations of the mean.This figure illustrates this point; the entire shaded portion depicts the area within 2 standard deviations of the mean and the darker portion shows the 68% of the area within 1 standard deviation. 
+  Output:  We know from the CLT that for large n, the sample mean is normal with mean mu and standard deviation sigma/sqrt(n). We also know that 95% of the area under a normal curve is within two standard deviations of the mean. This figure, a standard normal with mu=0 and sigma=1, illustrates this point; the entire shaded portion depicts the area within 2 standard deviations of the mean and the darker portion shows the 68% of the area within 1 standard deviation. 
   Figure: stddev1.R
   FigureType: new
 
@@ -108,7 +108,7 @@
   Output: So the probability that the sample mean X' is bigger than mu + 2sigma/sqrt(n) OR smaller than mu-2sigma/sqrt(n) is 5%.  Equivalently, the probability of being between these limits is 95%. 
 
 - Class: text
-  Output: The quantity X' + or - 2 sigma/sqrt(n) is called a 95% interval for mu. The 95% says that if one were to repeatly get samples of size n, about 95% of the intervals obtained would contain mu, the quantity we're trying to estimate. 
+  Output: The quantity X' plus or minus 2 sigma/sqrt(n) is called a 95% interval for mu. The 95% says that if one were to repeatly get samples of size n, about 95% of the intervals obtained would contain mu, the quantity we're trying to estimate. 
 
 - Class: mult_question
   Output: Note that for a 95% confidence interval we divide (100-95) by 2 (since we have both left and right tails) and add the result to 95 to compute the quantile we need. The 97.5 quantile is actually 1.96, but for simplicity it's often just rounded up to 2. If you wanted to find a 90% confidence interval what quantile would you want?
@@ -124,24 +124,24 @@
   Hint: Type qnorm(.95) at the command prompt.
 
 - Class: text
- Output: As we've seen before, in a binomial distribution in which p represents the probability or proportion of success, the variance sigma^2 is p(1-p), so the standard error of the sample mean p' is sqrt(p(1-p)/n) where n is the sample size. The 95% confidence interval of p is then p' +/- 2*sqrt(p(1-p)/n). (As before, we use 2 as the 97.5 quantile.) We don't know the true value of p; that's what we're trying to estimate. The Wald confidence interval replaces p with p'.
+  Output: As we've seen before, in a binomial distribution in which p represents the probability or proportion of success, the variance sigma^2 is p(1-p), so the standard error of the sample mean p' is sqrt(p(1-p)/n) where n is the sample size. The 95% confidence interval of p is then p' +/- 2*sqrt(p(1-p)/n). (As before, we use 2 as the 97.5 quantile.) We don't know the true value of p; that's what we're trying to estimate. The Wald confidence interval replaces p with p'.
 
 - Class: text
-   Output:  Since we don't know p, we want to maximize the 95% confidence interval represented by 2*sqrt(p(1-p)/n). From calculus we know that p(1-p) is maximized when p=1/2, so our biggest 95% confidence interval estimate would use 1/2 for a value of p in the formula p'+/- 2*sqrt(p(1-p)/n). 1/sqrt(n).
+  Output:  Since we don't know p, we want to maximize the 95% confidence interval represented by 2*sqrt(p(1-p)/n). From calculus we know that p(1-p) is maximized when p=1/2, so our biggest 95% confidence interval estimate would use 1/2 for a value of p in the formula p'+/- 2*sqrt(p(1-p)/n). 
 
 - Class: mult_question
-  Output: Using 1/2 for the value of p in the formula yields what 95% confidence interval for p?
+  Output: Using 1/2 for the value of p in the formula above yields what 95% confidence interval for p?
   AnswerChoices: p'+/- 1/sqrt(n); p'+/- 1/2sqrt(n); p'+/ 2sqrt(n)
   CorrectAnswer: p'+/- 1/sqrt(n)
-  AnswerTests: omnitest(correctVal='p'+/- 1/sqrt(n)')
+  AnswerTests: omnitest(correctVal='p\'+/- 1/sqrt(n)')
   Hint: p(1-p)=1/4 when p=1/2 and the sqrt(1/4n)=1/(2sqrt(n)). What happens when you multiply this by 2?
 
 - Class: mult_question
-  Output: We'll illustrate how to use this formula with an example from the slides. Suppose you were running for office and your pollster polled 100 people. Of these 60 claimed they were going to vote for you. You'd like to see if the true proportion of people who will vote for you and you want to be 95% confident of your estimate. We need to find the limits that will contain the true proportion of your supporters with 95% confidence, so we'll use the formula p' +/- 1/sqrt(n) to answer this question. First, what value would you use for p', the sampled estimate?
-  AnswerChoices: 60; 56; 100; 10
-  CorrectAnswer: 60
-  AnswerTests: omnitest(correctVal='60')
-  Hint: The only sampled number here is the number of people who said they would vote for you.
+  Output: We'll illustrate how to use this formula with an example from the slides. Suppose you were running for office and your pollster polled 100 people. Of these 60 claimed they were going to vote for you. You'd like to estimate the true proportion of people who will vote for you and you want to be 95% confident of your estimate. We need to find the limits that will contain the true proportion of your supporters with 95% confidence, so we'll use the formula p' +/- 1/sqrt(n) to answer this question. First, what value would you use for p', the sampled estimate?
+  AnswerChoices: .60; .56; 1.00; .10
+  CorrectAnswer: .60
+  AnswerTests: omnitest(correctVal='.60')
+  Hint: The only sampled number here is the number of people who said they would vote for you. Make it a proportion by dividing it by the sample size.
 
 - Class: mult_question
   Output: What would you use for 1/sqrt(n)?
@@ -171,13 +171,13 @@
   Hint: Type .6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100) at the command prompt. 
 
 - Class: cmd_question
-  Output: As an alternative to this Wald interval, we can also use the R function binom.test with the parameters 60 and 100 and let all the others default. This function "performs an exact test of a simple null hypothesis about the probability of success in a Bernoulli experiment." (This means it uses a lot of computation and doesn't rely on the CLT.) It returns a lot of information but all we want to look at now is the values of the confidence interval, conf.int, that it returns. Use the R construct x$conf.int to find these now.
+  Output: As an alternative to this Wald interval, we can also use the R function binom.test with the parameters 60 and 100 and let all the others default. This function "performs an exact test of a simple null hypothesis about the probability of success in a Bernoulli experiment." (This means it guarantees the coverages, uses a lot of computation and doesn't rely on the CLT.) This function returns a lot of information but all we want to look at now is the values of the confidence interval, conf.int, that it returns. Use the R construct x$conf.int to find these now.
   CorrectAnswer: binom.test(60,100)$conf.int
   AnswerTests: omnitest(correctExpr='binom.test(60,100)$conf.int')
   Hint: Type binom.test(60,100)$conf.int at the command prompt. 
 
 - Class: text
-  Output: Now we're going to see that the Wald interval isn't very accurate when n is small. We'll use the example from the slides. 
+  Output: Close to what we've seen before, right? Now we're going to see that the Wald interval isn't very accurate when n is small. We'll use the example from the slides. 
 
 - Class: figure
   Output: Suppose we flip a coin a small number of times, say 20. Also suppose we have a function mywald which takes a probability p, and generates 30 sets of 20 coin flips using that probability p. It uses the sampled proportion of success, p', for those 20 coin flips to compute the upper and lower bounds of the 95% Wald interval, that is, it computes the two numbers p'+/- qnorm(.975) * sqrt(p' * (1-p') / n) for each of the 30 trials. For the given true probability p, we  count the number of times out of those 30 trials that the true probability p was in the Wald confidence interval. We'll call this the coverage.
@@ -191,7 +191,7 @@
   Hint: Type mywald(.2) at the command prompt. 
 
 - Class: text
-  Output: Now that you understand the underlying principle, suppose instead of counting the number of times the true (input) probability fell within the 95% Wald interval out of 30 trials, we used 1000 trials. Also suppose we did this experiment for a series of probabilities, say from .1 to .9 taking steps of size .05. More specifically, we call our function using 17 different probabilities, namely .1, .15, .2, .25, ... .9 . We can then plot the percentages of coverage for each of the probabilities. 
+  Output: Now that you understand the underlying principle, suppose instead of 30 trials, we used 1000 trials. Also suppose we did this experiment for a series of probabilities, say from .1 to .9 taking steps of size .05. More specifically, we'll call our function using 17 different probabilities, namely .1, .15, .2, .25, ... .9 . We can then plot the percentages of coverage for each of the probabilities. 
 
 - Class: figure
   Output: Here's the plot of our results. Each of the 17 vertices show the percentage of coverage for a particular true probability p passed to the function. Results will vary, but usually the only probability that hits above the 95% line is the p=.5 . So this shows that when n, the number of flips, is small the CLT doesn't hold for many values of p, so the Wald interval doesn't work very well.
@@ -204,233 +204,161 @@
   FigureType: new
 
 - Class: text
-  Output: A quick fix to the small n problem is to use the Agresti/Coull interval. This simply means we add 2 successes and 2 failures to the counts when calculating p'. Specifically, if X is the number of successes out of the 20 coin flips, then instead of  p'=X/20, let p'=(X+2)/24. We use 24 as the number of trials since we've added 2 successes and 2 failures to the counts. Note that we still use 20 in the calculation of the upper and lower bounds (in the standard error portion of the formula).
+  Output: A quick fix to the problem of having a small n is to use the Agresti/Coull interval. This simply means we add 2 successes and 2 failures to the counts when calculating the proportion p'. Specifically, if X is the number of successes out of the 20 coin flips, then instead of  setting p'=X/20, let p'=(X+2)/24. We use 24 as the number of trials since we've added 2 successes and 2 failures to the counts. Note that we still use 20 in the calculation of the upper and lower bounds.
 
 - Class: figure
-  Output: Here's a plot using this Agresti/Coull interval, with 1000 trials of 20 coin flips each. It looks much better than both the original Wald with 20 coin flips and the improved Wald with 100 trials. However, it might make the confidence interval too wide. 
+  Output: Here's a plot using this Agresti/Coull interval, with 1000 trials of 20 coin flips each. It looks much better than both the original Wald with 20 coin flips and the improved Wald with 100 coin flips. However, this technique might make the confidence interval too wide. 
   Figure: ACDemo.R
   FigureType: new
 
 - Class: text
-  Output: Let's move on to Poisson distributions and confidence intervals.
-
-- Class: cmd_question
-  Output: Now we need weights. For these we can use any of the three PDF's, (dice_fair, dice_high, and dice_low) we defined in the previous lesson. Using R's ability to multiply vectors componentwise and its function 'sum' we can easily compute E(X^2) for any of these dice. Simply sum the product dice_sqr * PDF.  Try this now with dice_fair and put the result in a variable ex2_fair.
-  CorrectAnswer: ex2_fair <- sum(dice_fair * dice_sqr)
-  AnswerTests: ANY_of_exprs('ex2_fair <- sum(dice_fair * dice_sqr)','ex2_fair <- sum(dice_sqr * dice_fair)')
-  Hint: Type 'ex2_fair <- sum(dice_fair * dice_sqr)' at the command prompt.
-
-- Class: cmd_question
-  Output: Recall that the expected value of a fair dice roll is 3.5. Subtract the square of that from ex2_fair to compute the sample variance.
-  CorrectAnswer: ex2_fair-3.5^2
-  AnswerTests: ANY_of_exprs('ex2_fair-3.5^2','ex2_fair-3.5*3.5')
-  Hint: Type 'ex2_fair-3.5^2' at the command prompt.
-
-- Class: cmd_question
-  Output: Now use a similar approach to compute the sample variance of dice_high in one step. Sum the appropriate product and subtract the square of the mean. Recall that edh holds the expected value of dice_high.
-  CorrectAnswer: sum(dice_high * dice_sqr)-edh^2
-  AnswerTests: ANY_of_exprs('sum(dice_high * dice_sqr)-edh^2','sum(dice_sqr * dice_high)-edh^2','sum(dice_high * dice_sqr)-edh*edh','sum(dice_sqr * dice_high)-edh*edh')
-  Hint: Type 'sum(dice_high * dice_sqr)-edh^2' at the command prompt.
-
-- Class: text
-  Output: Note that when we talk about variance we're using square units. Because it is often more useful to use measurements in the same units as X we define the standard deviation of X as the square root of Var(X). 
+  Output: Why does this work? Adding 2 successes and 2 failures pulls p' closer to .5 which, as we saw, is the value which maximizes the confidence interval.
 
 - Class: figure
-  Output: Here's a figure from the slides. It shows several normal distributions all centered around a common mean 0, but with different standard deviations. As you can see from the color key on the right, the thinner the bell the smaller the standard deviation and the bigger the standard deviation the fatter the bell.
-  Figure: normalVar.R
+  Output:  To show this simply, we wrote a function ACCompar, which takes an integer input n. For each k from 1 to n  it computes two fractions, k/n and (k+2)/(n+4). It then prints out the boolean vector of whether the new (k+2)/(n+4) fraction is less than the old k/n. It also prints out the total number of k's for which the the condition is TRUE. 
+  Figure: ACComp.R
   FigureType: new
 
 - Class: text
-  Output: Just as we distinguished between a population mean and a sample mean we have to distinguish between a population variance sigma^2 and a sample variance s^2. They are defined similarly but with a slight difference. The sample variance is defined as the sum of n squared distances from the sample mean divided by (n-1), where n is the number of samples. We divide by n-1 because this is the number of degrees of freedom in the system. The first n-1 samples are independent but the last isn't since it can be calculated from the sample mean we're using in the formula.
+  Output: For all k less than  n/2, you see FALSE indicating that the new fraction is greater than or equal to k/n. For all k greater than n/2 you see TRUE indicating that the new fraction is less than the old. If k=n/2 the old and new fractions are equal.
+
+- Class: cmd_question
+  Output: Try running ACCompar now with an input of 20.
+  CorrectAnswer: ACCompar(20)
+  AnswerTests: omnitest(correctExpr=' ACCompar(20)')
+  Hint: Type  ACCompar(20) at the command prompt.
 
 - Class: text
-  Output:  In other words, the sample variance is ALMOST the average squared deviation from the sample mean.
+  Output: Let's move on to Poisson distributions and confidence intervals. Recall that Poisson distributions model counts or rates. We write X~Poisson(lambda*t) where lambda is the expected count per unit of time and t is the total monitoring time.
 
 - Class: text
-  Output: As with the sample mean, the sample variance is also a random variable with an associated population distribution. Its expected value or mean is the population variance and its distribution gets more concentrated around the population variance with more data. The sample standard deviation is the square root of the sample variance.
+  Output:  Suppose a nuclear pump failed 5 times out of 94.32 days and we want  a 95% confidence interval for the failure rate per day. The number of failures X is Poisson distributed with parameter (lambda*t). We estimate the failure rate, lambda', as x/t and the variance of our estimated mean is lambda/t, which we estimate as lambda'/t.
 
+- Class: mult_question
+  Output: In this example what would you use as the estimated mean x/t?
+  AnswerChoices: 5/94.32; 94.32/5; I haven't a clue
+  CorrectAnswer: 5/94.32
+  AnswerTests: omnitest(correctVal='5/94.32')
+  Hint: You need a number of failures divided by some measure of time.
+
+- Class: cmd_question
+  Output: Set a variable lamb now with this value.
+  CorrectAnswer: lamb <- 5/94.32
+  AnswerTests: omnitest(correctExpr='lamb <- 5/94.32')
+  Hint: Type lamb <- 5/94.32 at the R prompt.
+
+- Class: cmd_question
+  Output: So lamb is our estimated mean and lamb/t is our estimated variance. The formula we've used to calculate a 95% confidence interval is est mean + c(-1,1)*qnorm(.975)*sqrt(est var). Use this formula now making the appropriate substitutions. 
+  CorrectAnswer: lamb +c(-1,1)*qnorm(.975)*sqrt(lamb/94.32)
+  AnswerTests: omnitest(correctExpr='lamb +c(-1,1)*qnorm(.975)*sqrt(lamb/94.32)')
+  Hint: Type lamb +c(-1,1)*qnorm(.975)*sqrt(lamb/94.32) at the R prompt.
+
+- Class: cmd_question
+  Output: As a check we can use R's function poisson.test with the arguments 5 and 94.32 to check this result. This is an exact test so it guarantees coverage. As with the binomial exact test, we only need to look at the conf portion of the result using the x$conf construct. Do this now. 
+  CorrectAnswer: poisson.test(5,94.32)$conf
+  AnswerTests: omnitest(correctExpr='poisson.test(5,94.32)$conf')
+  Hint: Type 'poisson.test(5,94.32)$conf' at the command prompt.
+
+- Class: text
+  Output: Pretty close, right? Now to check the coverage of our estimate we'll run the same simulation experiment we ran before with binomial distributions. We'll vary our lambda values from .005 to .1 with steps of .01 (so we have 10 of them), and for each one we'll generate 1000 Poisson samples with mean lambda*t. We'll calculate  sample means and use them to compute  95% confidence intervals. We'll then count how often out of the 1000 simulations the true mean (our lambda) was contained in the computed interval.
+ 
 - Class: figure
-  Output: To illustrate this point, consider this figure which plots the distribution of 10000 variances, Each variance was computed on sample of standard normals of size 10. The vertical line indicates the standard deviation 1.
-  Figure: moreData1.R
+  Output: Here's a plot of the results. We see that the coverage improves as lambda gets larger, and it's quite off for small lambda values.
+  Figure: PoisDemo.R
   FigureType: new
 
 - Class: figure
-  Output: Here we do the same experiment but this time each of the 10000 variances is over 20 standard normal samples. We've plotted over the first plot and you can see that the distribution of the variances is getting tighter and shifting closer to the vertical line.
-  Figure: moreData2.R
-  FigureType: new
-
-- Class: figure
-  Output: Finally, we repeat the experiment using 30 samples for each of the 10000 variances. You can see that with more data, the distribution gets more concentrated around the population variance it is trying to estimate. 
-  Figure: moreData3.R
+  Output: Now it's interesting to see how the coverage improves when we increase the unit of time. In the previous plot we used t=100 (rounding the 94.32 up). Here's a plot of the same experiment setting t=1000. We see that the coverage is much better for almost all the values of lambda, except for the smallest ones.
+  Figure: PoisDemoImpr.R
   FigureType: new
 
 - Class: text
-  Output: Now recall that unbiased estimators equal the values they're trying to estimate. We can infer  from the above that the sample variance is an unbiased estimator of population variance. 
-
-- Class: text
-  Output: Recall that the average of random samples from a population is itself a random variable with a distribution centered around the population mean. Specifically, E(X') = mu, where X' represents a sample mean and mu is the population mean.
-
-- Class: text
-  Output:  We can show that, if the population is infinite, the variance of the sample mean is the population variance divided by the sample size. Specifically,  Var(X') = sigma^2 / n. Let's work through this in four short steps.
+  Output: Now for a quick review!
 
 - Class: mult_question
-  Output: Which of the following does Var(X') equal? Here X' represents the sample mean and 'Sum(X_i)' represents the sum of the n samples X_1,...X_n.
-  AnswerChoices: Var(1/n * Sum(X_i)); E(1/n * Sum(X_i)); mu; sigma
-  CorrectAnswer: Var(1/n * Sum(X_i))
-  AnswerTests: omnitest(correctVal='Var(1/n * Sum(X_i))')
-  Hint: Which of the choices has both Var and the definistion of mean in it?
+  Output: What tells us that averages of iid samples converge to the population means that they are estimating?
+  AnswerChoices: the law of small numbers; the law of large numbers; the CLT; the BLT
+  CorrectAnswer: the law of large numbers
+  AnswerTests: omnitest(correctVal='the law of large numbers')
+  Hint: Think Big!
 
 - Class: mult_question
-  Output: Which of the following does Var(1/n * Sum(X_i)') equal?
-  AnswerChoices: 1/n^2*Var(Sum(X_i)); 1/n^2*E(Sum(X_i)); mu/n^2; sigma/n
-  CorrectAnswer: 1/n^2*Var(Sum(X_i))
-  AnswerTests: omnitest(correctVal='1/n^2*Var(Sum(X_i))')
-  Hint: Remember that fact about Var that we said would be useful before? Now is the time to use it.
+  Output: What tells us that averages are approximately normal for large enough sample sizes
+  AnswerChoices: the law of small numbers; the law of large numbers; the CLT; the BLT
+  CorrectAnswer: the CLT
+  AnswerTests: omnitest(correctVal='the CLT')
+  Hint: Keep yourself centered!
 
 - Class: mult_question
-  Output: Recall that Var is an expected value and expected values are linear. What does Var(Sum(X_i)) equal?
-  AnswerChoices: Sum(Var(X_i)); E(Sum(X_i)); E(mu); Var(sigma)
-  CorrectAnswer: Sum(Var(X_i))
-  AnswerTests: omnitest(correctVal='Sum(Var(X_i))')
-  Hint: By linearity, the variance of the sum equals the sum of the variance.
+  Output: The Central Limit Theorem (CLT) tells us that averages have what kind of distributions?
+  AnswerChoices: normal; abnormal; binomial; Poisson
+  CorrectAnswer: normal
+  AnswerTests: omnitest(correctVal='normal')
+  Hint: Remember the previous question?
 
 - Class: mult_question
-  Output: Finally, each X_i comes from a population with variance sigma^2. What does Sum(Var(X_i)) equal? As before, Sum is taken over n values.
-  AnswerChoices: n*(sigma)^2; n*mu; n*E(mu); (n^2)*Var(sigma)
-  CorrectAnswer: n*(sigma)^2
-  AnswerTests: omnitest(correctVal='n*(sigma)^2')
-  Hint: Var(X_i) is the constant value sigma^2 and we're summing over n of them.
-
-- Class: text
-  Output: So we shown Var(X')=Var(1/n*Sum(X_i))=(1/n^2)*Var(Sum(X_i))=(1/n^2)*Sum(sigm^2)=sigma^2/n for infinite populations. 
-
-- Class: text
-  Output: The standard deviation of a statistic is called its standard error, so the standard error of the sample mean is the square root of its variance.
-
-- Class: text
-  Output: We just showed that the variance of sample mean is sigma^2 / n and we estimate it with s^2 / n. It follows that its square root, s / sqrt(n), is the standard error of the sample mean.
-
-- Class: text
-  Output: The sample standard deviation, s, tells us how variable the population is, and s/sqrt(n), the standard error, tells us how much averages of random samples of size n from the population vary. Let's see this with some simulations.
-
-- Class: cmd_question
-  Output: The R function rnorm(n,mean,sd) generates n random normal numbers with the specified mean and standard deviation. The defaults for the latter are mean 0 and standard deviation 1. Type the expression sd(apply(matrix(rnorm(10000),1000),1,mean)) at the prompt. 
-  CorrectAnswer: sd(apply(matrix(rnorm(10000),1000),1,mean))
-  AnswerTests: omnitest(correctExpr='sd(apply(matrix(rnorm(10000),1000),1,mean))')
-  Hint: Type 'sd(apply(matrix(rnorm(10000),1000),1,mean))' at the command prompt.
-
-- Class: cmd_question
-  Output: This returns the standard deviation of 1000 averages, each of a sample of 10 random normal numbers with mean 0 and standard deviation 1. The theory tells us that the standard error, s/sqrt(n), of the sample means indicates how much averages of random samples of size n (in this case 10) vary. Now compute 1/sqrt(10) to see if it matches the standard deviation we just computed with our simulation.
-  CorrectAnswer: 1/sqrt(10)
-  AnswerTests: omnitest(correctExpr='1/sqrt(10)')
-  Hint: Type '1/sqrt(10)' at the command prompt.
+  Output: The Central Limit Theorem (CLT) tells us that averages have normal distributions centered at what?
+  AnswerChoices: the population mean; the population variance; the standard error
+  CorrectAnswer: the population mean
+  AnswerTests: omnitest(correctVal='the population mean')
+  Hint: Remember the old E(X')=mu, where X' is the sample mean and mu is the population mean. Know what I mean?
 
 - Class: mult_question
-  Output: Pretty close, right? Let's try a few more. Standard uniform distributions have variance 1/12. The theory tells us the standard error of means of samples of size n would have which standard error?
-  AnswerChoices: 1/(12*sqrt(n)); 12/sqrt(n); 1/sqrt(12*n); I haven't a clue 
-  CorrectAnswer: 1/sqrt(12*n)
-  AnswerTests: omnitest(correctVal='1/sqrt(12*n)')
-  Hint: In this case s is the sqrt(1/12). Divide this by sqrt(n).
-
-- Class: cmd_question
-  Output:  Compute 1/sqrt(120). This would be the standard error of the means of uniform samples of size 10. 
-  CorrectAnswer: 1/sqrt(120)
-  AnswerTests: omnitest(correctExpr='1/sqrt(120)')
-  Hint: Type '1/sqrt(120)' at the command prompt.
-
-- Class: cmd_question
-  Output: Now check it as we did before. Use the expression sd(apply(matrix(runif(10000),1000),1,mean)). 
-  CorrectAnswer: sd(apply(matrix(runif(10000),1000),1,mean))
-  AnswerTests: omnitest(correctExpr='sd(apply(matrix(runif(10000),1000),1,mean))')
-  Hint: Type 'sd(apply(matrix(runif(10000),1000),1,mean))' at the command prompt.
+  Output: The Central Limit Theorem (CLT) tells us that averages have normal distributions with standard deviations equal to what?
+  AnswerChoices: the population mean; the population variance; the standard error
+  CorrectAnswer: the standard error
+  AnswerTests: omnitest(correctVal='the standard error')
+  Hint: Which choice has the word standard in it?
 
 - Class: mult_question
-  Output: Pretty close again, right? Poisson(4) are distributions with variance 4; what standard error would means of random samples of n Poisson(4) have?
-  AnswerChoices: 2/sqrt(n); 1/sqrt(2*n); 2*sqrt(n); I haven't a clue 
-  CorrectAnswer:  2/sqrt(n)
-  AnswerTests: omnitest(correctVal='2/sqrt(n)')
-  Hint: In this case s is 2. Divide this by sqrt(n).
-
-- Class: cmd_question
-  Output:  We'll do another simulation to test the theory. First, assume you're taking averages of 10 Poisson(4) samples and compute the standard error of these means. Use the formula you just chose.
-  CorrectAnswer: 2/sqrt(10)
-  AnswerTests: omnitest(correctExpr='2/sqrt(10)')
-  Hint: Type '2/sqrt(10)' at the command prompt.
-
-- Class: cmd_question
-  Output: Now check it as we did before. Use the expression sd(apply(matrix(rpois(10000,4),1000),1,mean)). 
-  CorrectAnswer: sd(apply(matrix(rpois(10000,4),1000),1,mean))
-  AnswerTests: omnitest(correctExpr='sd(apply(matrix(rpois(10000,4),1000),1,mean))')
-  Hint: Type 'sd(apply(matrix(rpois(10000,4),1000),1,mean))' at the command prompt.
-
-- Class: mult_question
-  Output: Like magic, right? One final test. Fair coin flips have variance 0.25; means of random samples of n coin flips have  what standard error?
-  AnswerChoices: 2/sqrt(n); 1/sqrt(2*n); 2*sqrt(n); 1/(2*sqrt(n)); I haven't a clue 
-  CorrectAnswer:  1/(2*sqrt(n))
-  AnswerTests: omnitest(correctVal='1/(2*sqrt(n))')
-  Hint: In this case s is 1/2 which is the sqrt of 1/4, the variance. Divide this by sqrt(n).
-
-- Class: cmd_question
-  Output:  You know the drill. Assume you're taking averages of 10 coin flips and compute the standard error of these means with the theoretical formula you just picked.
-  CorrectAnswer: 1/(2*sqrt(10))
-  AnswerTests: omnitest(correctExpr=' 1/(2*sqrt(10))')
-  Hint: Type ' 1/(2*sqrt(10))' at the command prompt.
-
-- Class: cmd_question
-  Output: Now check it as we did before. Use the expression sd(apply(matrix(sample(0:1,10000,TRUE),1000),1,mean)). 
-  CorrectAnswer: sd(apply(matrix(sample(0:1,10000,TRUE),1000),1,mean))
-  AnswerTests: omnitest(correctExpr='sd(apply(matrix(sample(0:1,10000,TRUE),1000),1,mean))')
-  Hint: Type 'sd(apply(matrix(sample(0:1,10000,TRUE),1000),1,mean))' at the command prompt.
-
-- Class: text
-  Output: Finally, here's something interesting. Chebyshev's inequality helps interpret variances. It states that the probability that a random variable X is at least k standard deviations from its mean is less than 1/(k^2). In other words, the probability that X is at least 2 standard deviations from the mean is less than 1/4, 3 standard deviations 1/9, 4 standard deviations 1/16, etc.
-
-- Class: text
-  Output: However this estimate is quite conservative for random variables that are normally distributed, that is, with bell-curve distributions. In these cases, the probability of being at least 2 standard deviations from the mean is about 5% (as compared to Chebyshev's 25%) and the probability of being at least 3 standard deviations from the mean is roughly .2%.
-
-- Class: mult_question
-  Output: Suppose you had a measurement that was 4 standard deviations from the the distribution's mean. What would be the upper bound  of the probability of this happening using Chebyshev's inequality? 
-  AnswerChoices: 6%; 0%; 11%; 25%; 96% 
-  CorrectAnswer: 6%
-  AnswerTests: omnitest(correctVal='6%')
-  Hint: Chebyshev's inequality estimates that probability as 1/16. Convert this to a probability.
-
-
-- Class: mult_question
-  Output: Now to review. The sample variance estimates what?
-  AnswerChoices: population variance; sample mean; sample standard deviation; population
-  CorrectAnswer: population variance
-  AnswerTests: omnitest(correctVal='population variance')
-  Hint: Which choice has the word variance in it?
-
-- Class: mult_question
-  Output: The distribution of the sample variance is centered at what?
-  AnswerChoices: population variance; sample mean; sample standard deviation; population
-  CorrectAnswer: population variance
-  AnswerTests: omnitest(correctVal='population variance')
-  Hint: What is the sample variance estimating?
-
-- Class: mult_question
-  Output: True or False - The sample variance gets more concentrated around the population variance with larger sample sizes
+  Output: True or False - The Central Limit Theorem (CLT) tells us that averages always have normal distributions no matter how big the sample size
   AnswerChoices: True; False
-  CorrectAnswer: True
-  AnswerTests: omnitest(correctVal='True')
-  Hint: Is more data better than less data?
+  CorrectAnswer: False
+  AnswerTests: omnitest(correctVal='False')
+  Hint:  Never trust statements with the words ALWAYS or NEVER in them. There are ALWAYS exceptions to rules. 
 
 - Class: mult_question
-  Output: The variance of the sample mean is the population variance divided by ?
-  AnswerChoices: n; n^2; sqrt(n); I haven't a clue
-  CorrectAnswer: n
-  AnswerTests: omnitest(correctVal='n')
-  Hint: Remember the 4 step proof starting with Var(X')=...? The last step had an n divided by an n^2.
+  Output: To calculate a confidence interval for a mean you take the sample mean and add and subtract the relevant normal quantile times the what?
+  AnswerChoices: standard error; variance; variance/n; mean
+  CorrectAnswer: standard error
+  AnswerTests: omnitest(correctVal='standard error')
+  Hint: You want something like a standard deviation, right? Which choice has the word standard in it?
 
 - Class: mult_question
-  Output: The standard error of the sample mean is the sample standard deviation s divided by ?
-  AnswerChoices: n; n^2; sqrt(n); I haven't a clue
-  CorrectAnswer: sqrt(n)
-  AnswerTests: omnitest(correctVal='sqrt(n)')
-  Hint: Remember the many many examples we went through. The sqrt(n) figured prominently in them.
+  Output: For a 95% confidence interval approximately how many standard errors would you add and subtract from the sample mean? 
+  AnswerChoices: 2; 4; 6; 8
+  CorrectAnswer: 2
+  AnswerTests: omnitest(correctVal='2')
+  Hint: Anything above 3 is pretty far from the mean. Also, purists would prefer 1.96 for this.
+
+- Class: mult_question
+  Output: If you wanted increased coverage what would you do to your confidence interval?
+  AnswerChoices: increase it; decrease it; keep it the same
+  CorrectAnswer: increase it
+  AnswerTests: omnitest(correctVal='increase it')
+  Hint: The key word here is increase. Bigger interval means bigger coverage.
+
+- Class: mult_question
+  Output: If you had less variability in your data would your confidence interval get bigger or smaller?
+  AnswerChoices: bigger; smaller
+  CorrectAnswer: smaller
+  AnswerTests: omnitest(correctVal='smaller')
+  Hint: Recall the size of the confidence interval positively depends on standard error which is sqrt(var/n). If variance is smaller then so is variability and the interval.
+
+- Class: mult_question
+  Output: If you had larger sample size would your confidence interval get bigger or smaller?
+  AnswerChoices: bigger; smaller
+  CorrectAnswer: smaller
+  AnswerTests: omnitest(correctVal='smaller')
+  Hint: Recall the size of the confidence interval positively depends on standard error which is sqrt(var/n). If the sample size, n, gets bigger the standard error gets smaller and so does  the interval.
+
+- Class: mult_question
+  Output:  A quick fix for small sample size binomial calculations is what?
+  AnswerChoices: add 2 successes and 2 failures; add 2 successes and 4 failures; add 2 successes and subtract 2 failures; changing data seem dishonest
+  CorrectAnswer: add 2 successes and 2 failures
+  AnswerTests: omnitest(correctVal='add 2 successes and 2 failures')
+  Hint: Adding 2 successes and 2 failures brings the proportion of successes closer to 1/2 which maximizes the confidence interval.
 
 - Class: text
-  Output: Congrats! You've concluded this vary long lesson on variance. We hope you liked it vary much.
+  Output: Congrats! You've concluded this lesson on asymptotics. We hope you feel confident and are asymptomatic after going through it.
 
