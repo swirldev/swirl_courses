@@ -10,7 +10,7 @@
   Output: "Asymptotics. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 07_Statistical_Inference/Asymptopia.)"
 
 - Class: text
-  Output: In this lesson, we'll discuss asymptotics, a topic which describes how statistics behave as sample sizes get very large and approach infinity. Pretending sample sizes and populations are infinite is incredibly useful for simple statistical inference and approximations since it often leads to a nice understanding of procedures.
+  Output: In this lesson, we'll discuss asymptotics, a topic which describes how statistics behave as sample sizes get very large and approach infinity. Pretending sample sizes and populations are infinite is useful for making statistical inferences and approximations since it often leads to a nice understanding of procedures.
 
 - Class: text
   Output: Asymptotics generally give no assurances about finite sample performance, but they form the basis for frequency interpretation of probabilities (the long run proportion of times an event occurs).
@@ -70,7 +70,7 @@
   Hint: Recall our many simulation experiments in the variance lesson where we calculated standard deviations of means using R's sd function, then we calculated an approximation using a formula involving the population variance and the square root of the sample size.
 
 - Class: text
-  Output: Let's rephrase the CLT. Suppose X_1, X_2, ... X_n are independent random variables from an infinite population with mean mu and variance sigma^2. Then if n is large, the mean of the X's, call it X', is approximately normal with mean mu and variance sigma^2/n. We denote this as N(mu,sigma^2/n).
+  Output: Let's rephrase the CLT. Suppose X_1, X_2, ... X_n are independent random variables from an infinite population with mean mu and variance sigma^2. Then if n is large, the mean of the X's, call it X', is approximately normal with mean mu and variance sigma^2/n. We denote this as X'~N(mu,sigma^2/n).
 
 - Class: figure
   Output: To show the CLT in action consider this figure from the slides. It presents 3 histograms of 1000 averages of dice rolls with sample sizes of 10, 20 and 30 respectively. Each average of n dice rolls (n=10,20,30) has been normalized by subtracting off the mean (3.5) then dividing by the standard error, sqrt(2.92/n). The normalization has made each histogram look like a standard normal, i.e., mean 0 and standard deviation 1.
@@ -81,10 +81,10 @@
   Output: Notice that the CLT said nothing about the original population being normally distributed. That's precisely where its usefulness lies! We can assume normality of a population mean no matter what kind of population we have, as long as our sample size is large enough. Let's look at how it works with a binomial experiment like flipping a coin.
 
 - Class: text
-  Output: Recall that if the probability of a head (call it 1) is p, then the probability of a tail (0) is 1-p. The expected value then is p and the variance is p-p^2 or p(1-p). Suppose we do n coin flips and let p' represent the average of these n flips. We normalize p' by subtracting p and dividing by sqrt(p(1-p)/n). Let's do this for 1000 trials and plot the resulting histogram. 
+  Output: Recall that if the probability of a head (call it 1) is p, then the probability of a tail (0) is 1-p. The expected value then is p and the variance is p-p^2 or p(1-p). Suppose we do n coin flips and let p' represent the average of these n flips. We normalize p' by subtracting the mean p and dividing by the std deviation sqrt(p(1-p)/n). Let's do this for 1000 trials and plot the resulting histogram. 
 
 - Class: figure
-  Output: Here's a figure from the slides showing the results of 3 such trials where each trial is for a different value of n (10, 20, and 30) and the coin is fair,so E(X)=.5 and the standard error is 1/(2sqrt(n)). Notice how with larger n the histogram tightens up around the mean 0.
+  Output: Here's a figure from the slides showing the results of 3 such trials where each trial is for a different value of n (10, 20, and 30) and the coin is fair,so E(X)=.5 and the standard error is 1/(2sqrt(n)). Notice how with larger n (30) the histogram tightens up around the mean 0.
   Figure: cltFairCoin.R
   FigureType: new
 
@@ -105,7 +105,7 @@
   Output: It follows that 5% of the area under the curve is not shaded. By symmetry of the curve, only 2.5% of the data is greater than the mean + 2 standard deviations (mu+2*sigma/sqrt(n)) and only 2.5% is less than the  mean - 2 standard deviations (mu-2*sigma/sqrt(n)). 
 
 - Class: text
-  Output: So the probability that the sample mean X' is bigger than mu + 2sigma/sqrt(n) OR smaller than mu-2sigma/sqrt(n) is 5%.  Equivalently, the probability of being between these limits is 95%. 
+  Output: So the probability that the sample mean X' is bigger than mu + 2sigma/sqrt(n) OR smaller than mu-2sigma/sqrt(n) is 5%.  Equivalently, the probability of being between these limits is 95%. Of course we could have different sizes of intervals. If we wanted something other than 95, then we would use a quantile other than 2.
 
 - Class: text
   Output: The quantity X' plus or minus 2 sigma/sqrt(n) is called a 95% interval for mu. The 95% says that if one were to repeatly get samples of size n, about 95% of the intervals obtained would contain mu, the quantity we're trying to estimate. 
@@ -123,21 +123,25 @@
   AnswerTests: omnitest(correctExpr='qnorm(.95)')
   Hint: Type qnorm(.95) at the command prompt.
 
-- Class: text
-  Output: As we've seen before, in a binomial distribution in which p represents the probability or proportion of success, the variance sigma^2 is p(1-p), so the standard error of the sample mean p' is sqrt(p(1-p)/n) where n is the sample size. The 95% confidence interval of p is then p' +/- 2*sqrt(p(1-p)/n). (As before, we use 2 as the 97.5 quantile.) We don't know the true value of p; that's what we're trying to estimate. The Wald confidence interval replaces p with p'.
+- Class: mult_question
+  Output: As we've seen before, in a binomial distribution in which p represents the probability or proportion of success, the variance sigma^2 is p(1-p), so the standard error of the sample mean p' is sqrt(p(1-p)/n) where n is the sample size. The 95% confidence interval of p is then p' +/- 2*sqrt(p(1-p)/n). The 2 in this formula represents what?
+  AnswerChoices: the mean of p'; the variance of p'; the standard error of p'; the approximate 95% normal quantile
+  CorrectAnswer: the approximate 95% normal quantile
+  AnswerTests: omnitest(correctVal='the approximate 95% normal quantile')
+  Hint: Recall the formula for the interval p' +/- qnorm*sigma/sqrt(n)
 
 - Class: text
-  Output:  Since we don't know p, we want to maximize the 95% confidence interval represented by 2*sqrt(p(1-p)/n). From calculus we know that p(1-p) is maximized when p=1/2, so our biggest 95% confidence interval estimate would use 1/2 for a value of p in the formula p'+/- 2*sqrt(p(1-p)/n). 
+  Output:  A critical point here is that we don't know the true value of p; that's what we're trying to estimate. How can we compute a confidence interval if we don't know p(1-p)? We could be conservative and try to maximize it so we get the largest possible confidence interval. Calculus tells us that p(1-p) is maximized when p=1/2, so we get the biggest 95% confidence interval when we  set p=1/2 in the formula p'+/- 2*sqrt(p(1-p)/n). 
 
 - Class: mult_question
-  Output: Using 1/2 for the value of p in the formula above yields what 95% confidence interval for p?
+  Output: Using 1/2 for the value of p in the formula above yields what expression for the 95% confidence interval for p?
   AnswerChoices: p'+/- 1/sqrt(n); p'+/- 1/2sqrt(n); p'+/ 2sqrt(n)
   CorrectAnswer: p'+/- 1/sqrt(n)
   AnswerTests: omnitest(correctVal='p\'+/- 1/sqrt(n)')
   Hint: p(1-p)=1/4 when p=1/2 and the sqrt(1/4n)=1/(2sqrt(n)). What happens when you multiply this by 2?
 
 - Class: mult_question
-  Output: We'll illustrate how to use this formula with an example from the slides. Suppose you were running for office and your pollster polled 100 people. Of these 60 claimed they were going to vote for you. You'd like to estimate the true proportion of people who will vote for you and you want to be 95% confident of your estimate. We need to find the limits that will contain the true proportion of your supporters with 95% confidence, so we'll use the formula p' +/- 1/sqrt(n) to answer this question. First, what value would you use for p', the sampled estimate?
+  Output:  Here's another example of applying this formula from the slides. Suppose you were running for office and your pollster polled 100 people. Of these 60 claimed they were going to vote for you. You'd like to estimate the true proportion of people who will vote for you and you want to be 95% confident of your estimate. We need to find the limits that will contain the true proportion of your supporters with 95% confidence, so we'll use the formula p' +/- 1/sqrt(n) to answer this question. First, what value would you use for p', the sampled estimate?
   AnswerChoices: .60; .56; 1.00; .10
   CorrectAnswer: .60
   AnswerTests: omnitest(correctVal='.60')
@@ -164,14 +168,17 @@
   AnswerTests: omnitest(correctVal='confident')
   Hint: With 95% confidence, between .5 and .7 of the voters support you. You look like a winner to me!
 
+- Class: text
+  Output: Another technique for calculating confidence intervals for binomial distributions is to replace p with p'. This is called the Wald confidence interval. We can also use the R function qnorm to get a more precise quantile value (closer to 1.96) instead of our ballpark estimate of 2. 
+
 - Class: cmd_question
-  Output: To reassure you that this is a pretty good estimate, we can use R to get a more precise confidence interval using the actual quantile 1.96 instead of our ballpark estimate of 2. Use the formula  p'+/- qnorm(.975)*sqrt(p'(1-p')/100). Use the p' and n values from above and the R construct p'+c(-1,1)... to handle the plus/minus portion of the formula. You should see bounds similar to the ones you just estimated.
+  Output: With the formula  p'+/- qnorm(.975)*sqrt(p'(1-p')/100), use the p' and n values from above and the R construct p'+c(-1,1)... to handle the plus/minus portion of the formula. You should see bounds similar to the ones you just estimated.
   CorrectAnswer: .6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100)
   AnswerTests: omnitest(correctExpr='.6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100)')
   Hint: Type .6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100) at the command prompt. 
 
 - Class: cmd_question
-  Output: As an alternative to this Wald interval, we can also use the R function binom.test with the parameters 60 and 100 and let all the others default. This function "performs an exact test of a simple null hypothesis about the probability of success in a Bernoulli experiment." (This means it guarantees the coverages, uses a lot of computation and doesn't rely on the CLT.) This function returns a lot of information but all we want to look at now is the values of the confidence interval, conf.int, that it returns. Use the R construct x$conf.int to find these now.
+  Output: As an alternative to this Wald interval, we can also use the R function binom.test with the parameters 60 and 100 and let all the others default. This function "performs an exact test of a simple null hypothesis about the probability of success in a Bernoulli experiment." (This means it guarantees the coverages, uses a lot of computation and doesn't rely on the CLT.) This function returns a lot of information but all we want  now are the values of the confidence interval that it returns. Use the R construct x$conf.int to find these now.
   CorrectAnswer: binom.test(60,100)$conf.int
   AnswerTests: omnitest(correctExpr='binom.test(60,100)$conf.int')
   Hint: Type binom.test(60,100)$conf.int at the command prompt. 
@@ -194,12 +201,12 @@
   Output: Now that you understand the underlying principle, suppose instead of 30 trials, we used 1000 trials. Also suppose we did this experiment for a series of probabilities, say from .1 to .9 taking steps of size .05. More specifically, we'll call our function using 17 different probabilities, namely .1, .15, .2, .25, ... .9 . We can then plot the percentages of coverage for each of the probabilities. 
 
 - Class: figure
-  Output: Here's the plot of our results. Each of the 17 vertices show the percentage of coverage for a particular true probability p passed to the function. Results will vary, but usually the only probability that hits above the 95% line is the p=.5 . So this shows that when n, the number of flips, is small the CLT doesn't hold for many values of p, so the Wald interval doesn't work very well.
+  Output: Here's the plot of our results. Each of the 17 vertices show the percentage of coverage for a particular true probability p passed to the function. Results will vary, but usually the only probability that hits close to or above the 95% line is the p=.5 . So this shows that when n, the number of flips, is small (20) the CLT doesn't hold for many values of p, so the Wald interval doesn't work very well.
   Figure: WaldFail.R
   FigureType: new
 
 - Class: figure
-  Output: Let's try the same experiment and increase n from 20 to 100 to see if the plot improves. Again, results may vary, but all the probabilities are much closer to the 95% line, so the CLT works better with a bigger value of n.
+  Output: Let's try the same experiment and increase n, the number of coin flips in each of our 1000 trials, from 20 to 100 to see if the plot improves. Again, results may vary, but all the probabilities are much closer to the 95% line, so the CLT works better with a bigger value of n.
   Figure: WaldPass.R
   FigureType: new
 
@@ -229,10 +236,10 @@
   Hint: Type  ACCompar(20) at the command prompt.
 
 - Class: text
-  Output: Let's move on to Poisson distributions and confidence intervals. Recall that Poisson distributions model counts or rates. We write X~Poisson(lambda*t) where lambda is the expected count per unit of time and t is the total monitoring time.
+  Output: Let's move on to Poisson distributions and confidence intervals. Recall that Poisson distributions model counts or rates. For the latter, we write X~Poisson(lambda*t) where lambda is the expected count per unit of time and t is the total monitoring time.
 
 - Class: text
-  Output:  Suppose a nuclear pump failed 5 times out of 94.32 days and we want  a 95% confidence interval for the failure rate per day. The number of failures X is Poisson distributed with parameter (lambda*t). We estimate the failure rate, lambda', as x/t and the variance of our estimated mean is lambda/t, which we estimate as lambda'/t.
+  Output:  Here's another example from the slides. Suppose a nuclear pump failed 5 times out of 94.32 days and we want  a 95% confidence interval for the failure rate per day. The number of failures X is Poisson distributed with parameter (lambda*t). We estimate the failure rate, lambda', as x/t and the variance of our estimated mean is lambda/t, which we estimate as lambda'/t.
 
 - Class: mult_question
   Output: In this example what would you use as the estimated mean x/t?

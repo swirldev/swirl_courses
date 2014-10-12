@@ -7,19 +7,111 @@
   Version: 2.2.0
 
 - Class: text
-  Output: "Asymptotics. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/08_tCIs.)"
+  Output: "T_Confidence_Intervals. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/08_tCIs.)"
 
 - Class: text
-  Output: In this lesson, we'll discuss some statistical methods for dealing with small samples, notably Gosset's t distribution and t confidence intervals. 
+  Output: In this lesson, we'll discuss some statistical methods for dealing with small datasets, specifically the Student's or Gosset's t distribution and t confidence intervals. 
+
+- Class: mult_question
+  Output: In the Asymptotics lesson we discussed confidence intervals using the Central Limit Theorem (CLT) and normal distributions. These needed large sample sizes, and the formula for computing the interval was E +/- qnorm *std error(E), where E was some estimated value such as a sample mean with a standard error. Here qnorm represented what?
+  AnswerChoices: the population mean; the population variance; the standard error; a specified quantile from a normal distribution 
+  CorrectAnswer: a specified quantile from a normal distribution
+  AnswerTests: omnitest(correctVal='a specified quantile from a normal distribution')
+  Hint: Which choice has part of the word 'qnorm' in it?
 
 - Class: text
-  Output: In the Asymptotics lesson we discussed confidence intervals using the CLT and normal distributions. These needed large sample sizes and formula for computing the interval was E +/- qnorm *std error(E), where E was some estimate such as a sample mean with a standard error and qnorm represented a specified quantile for a normal distribution.
+  Output: For t distributions, the formula for computing a confidence interval is similar. However, instead of a quantile for a normal distribution we use a quantile for a t distribution. So the formula is  E +/- t-quantile *std error(E).
 
 - Class: text
-  Output: For t distributions, the formula for computing a confidence interval is similar. Instead of a quantile for a normal distribution we use a quantile for a t distribution. So the formula is  E +/- t-quantile *std error(E).
+  Output: These t confidence intervals are very handy, and if you have a choice between these and normal, pick these. We'll see that as datasets get larger, t-intervals look normal. We'll cover the one and two group versions.
 
 - Class: text
-  Output: These are some of the handiest of intervals, since they're always usable. We'll cover the one and two group versions.
+  Output: The t distribution, invented by William Gosset in 1908, has thicker tails than the normal. Also, instead of having two parameters, mean and variance, as the normal does, the t distribution has only one - the number of degrees of freedom (df). 
+
+- Class: text
+  Output: As df increases, the t distribution gets more like a standard normal, so it's centered around 0. Also, the t assumes that the underlying data are iid Gaussian so (X' - mu}/(S/sqrt(n)) follows the t distribution with n-1 degrees of freedom.
+
+- Class: mult_question
+  Output: In the formula (X' - mu}/(S/sqrt(n)), if we replaced S by sigma the statistic would be what?.
+  AnswerChoices: the standard normal; the standard abnormal; the population variance; Huh?
+  CorrectAnswer: the standard normal
+  AnswerTests: omnitest(correctVal='the standard normal')
+  Hint: With the replacement the formula should look familiar, like a standardized normal perhaps?
+
+- Class: figure
+  Output: To see what we mean, we've taken code from the slides, the function myplot, which takes the integer df as its input and plots the t distribution with df degrees of freedom. It also plots a standard normal distribution so you can see how they relate to one another. 
+  Figure: tPlot.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: Try myplot now with an input of 2.
+  CorrectAnswer: myplot(2)
+  AnswerTests: omnitest(correctExpr='myplot(2)')
+  Hint: Type myplot(2) at the command prompt.
+
+- Class: cmd_question
+  Output: You can see that the hump of t distribution (in blue) is not as high as the normal's and the two tails of the t distribution absorb the extra mass, so they're thicker. Note that with 2 degrees of freedom, you only have 3 data points. Ha! Talk about small sample sizes. Now try myplot  with an input of 20.
+  CorrectAnswer: myplot(20)
+  AnswerTests: omnitest(correctExpr='myplot(20)')
+  Hint: Type myplot(20) at the command prompt.
+
+- Class: figure
+  Output: The two distributions are almost right on top of each other using this higher degree of freedom. Another way to look at these distributions is to plot their quantiles. From the slides, we've provided a second function for you, myplot2, which does this. It plots a lightblue reference line representing normal quantiles and a black line for the t quantiles. Both plot the quantiles from .5 which start at 0 (since the distributions are symmetric about 0) to .99.
+  Figure: tQuant.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: Try myplot2 now with an argument of 2.
+  CorrectAnswer: myplot2(2)
+  AnswerTests: omnitest(correctExpr='myplot2(2)')
+  Hint: Type myplot2(2) at the command prompt.
+
+- Class: text
+  Output: The distance between the two lines represents the difference in sizes between the two sets of intervals. Note the thin horizontal and vertical lines. These represent the .975 quantiles for the t and normal distributions respectively. You probably recognized the placement of the vertical at 1.96 from the Asymptotics lesson. 
+
+- Class: cmd_question
+  Output: Check the placement of the horizontal now using the R function qt with the arguments .975 for the quantile and 2 for the degrees of freedom (df).
+  CorrectAnswer: qt(.975,2)
+  AnswerTests: omnitest(correctExpr='qt(.975,2)')
+  Hint: Type qt(.975,2) at the command prompt.
+
+- Class: cmd_question
+  Output: Now run myplot2 with an argument of 20.
+  CorrectAnswer: myplot2(20)
+  AnswerTests: omnitest(correctExpr='myplot2(20)')
+  Hint: Type myplot2(20) at the command prompt.
+
+- Class: text
+  Output: The quantiles are much closer together with the higher degrees of freedom. At the 97.5 percentile though the t quantile is still greater than the normal. Student's Rule!
+
+- Class: text
+  Output: As we said before, the t-interval is X' +/- t_(n-1) /sqrt(n) where t_(n-1) is the relevant quantile. The t interval  assumes that the data are iid normal, though it is robust to this assumption and  works well whenever the distribution of the data is roughly symmetric and mound shaped.
+
+- Class: text
+  Output: Paired observations are often analyzed using the t interval by taking differences between the observations.
+
+- Class: mult_question
+  Output: Our plots showed us that for large degrees of freedom, t quantiles become the same as what?
+  AnswerChoices: standard normal quantiles; standard abnormal quantiles; very large numbers; very small numbers
+  CorrectAnswer: standard normal quantiles
+  AnswerTests: omnitest(correctVal='standard normal quantiles')
+  Hint: Recall that the larger the degrees of freedom, the more the t distribution looked normal. Smaller degrees of freedom made it look abnormal. 
+
+- Class: text
+  Output: Although it's pretty great, the t interval isn't always applicable. For skewed distributions, the spirit of the t interval assumptions are violated and it doesn't make a lot of sense to center the interval at the mean. There are ways of working around this problem (such as taking logs or using a different summary like the median).
+     
+- Class: text
+  Output: For highly discrete data, like binary, intervals other than the t are available. 
+
+- Class: text
+  Output: We hope you're not tired because now we'll look at some sleep data. This was the data originally analyzed in Gosset's Biometrika paper, which shows the increase in hours for 10 patients on two soporific drugs. 
+
+- Class: cmd_question
+  Output: We've loaded the data for you. R treats it as two groups rather than paired. Type sleep now to see how it's stored.
+  CorrectAnswer: sleep
+  AnswerTests: omnitest(correctExpr='sleep')
+  Hint: Type sleep at the command prompt.
+
 
 
 - Class: mult_question
@@ -76,8 +168,15 @@
   AnswerTests: omnitest(correctVal='the standard error of the sample mean')
   Hint: Recall our many simulation experiments in the variance lesson where we calculated standard deviations of means using R's sd function, then we calculated an approximation using a formula involving the population variance and the square root of the sample size.
 
+ Class: mult_question
+  Output: Suppose you found the sample mean of a set of size 3. Could you use the CLT to say that the sample mean was normally distributed?
+  AnswerChoices: Yes!; No, the sample isn't big enough
+  CorrectAnswer: No, the sample isn't big enough
+  AnswerTests: omnitest(correctVal='No, the sample isn't big enough')
+  Hint: Remember, the CLT says that as the sample size needs to be large and 3 really isn't large.
+
 - Class: text
-  Output: Let's rephrase the CLT. Suppose X_1, X_2, ... X_n are independent random variables from an infinite population with mean mu and variance sigma^2. Then if n is large, the mean of the X's, call it X', is approximately normal with mean mu and variance sigma^2/n. We denote this as N(mu,sigma^2/n).
+  Output: Let's rephrase the CLT. Suppose X_1, X_2, ... X_n are independent random variables from an infinite population with mean mu and variance sigma^2. Then if n is large, the mean of the X's, call it X', is approximately normal with mean mu and variance sigma^2/n. We denote this as Z'~N(mu,sigma^2/n).
 
 - Class: figure
   Output: To show the CLT in action consider this figure from the slides. It presents 3 histograms of 1000 averages of dice rolls with sample sizes of 10, 20 and 30 respectively. Each average of n dice rolls (n=10,20,30) has been normalized by subtracting off the mean (3.5) then dividing by the standard error, sqrt(2.92/n). The normalization has made each histogram look like a standard normal, i.e., mean 0 and standard deviation 1.
@@ -91,7 +190,7 @@
   Output: Recall that if the probability of a head (call it 1) is p, then the probability of a tail (0) is 1-p. The expected value then is p and the variance is p-p^2 or p(1-p). Suppose we do n coin flips and let p' represent the average of these n flips. We normalize p' by subtracting p and dividing by sqrt(p(1-p)/n). Let's do this for 1000 trials and plot the resulting histogram. 
 
 - Class: figure
-  Output: Here's a figure from the slides showing the results of 3 such trials where each trial is for a different value of n (10, 20, and 30) and the coin is fair,so E(X)=.5 and the standard error is 1/(2sqrt(n)). Notice how with larger n the histogram tightens up around the mean 0.
+  Output: Here's a figure from the slides showing the results of 3 such trials where each trial is for a different value of n (10, 20, and 30) and the coin is fair,so E(X)=.5 and the standard error is 1/(2sqrt(n)). Notice how with larger n (30) the histogram tightens up around the mean 0.
   Figure: cltFairCoin.R
   FigureType: new
 
@@ -130,8 +229,14 @@
   AnswerTests: omnitest(correctExpr='qnorm(.95)')
   Hint: Type qnorm(.95) at the command prompt.
 
-- Class: text
-  Output: As we've seen before, in a binomial distribution in which p represents the probability or proportion of success, the variance sigma^2 is p(1-p), so the standard error of the sample mean p' is sqrt(p(1-p)/n) where n is the sample size. The 95% confidence interval of p is then p' +/- 2*sqrt(p(1-p)/n). (As before, we use 2 as the 97.5 quantile.) We don't know the true value of p; that's what we're trying to estimate. The Wald confidence interval replaces p with p'.
+- Class: mult_question
+  Output: As we've seen before, in a binomial distribution in which p represents the probability or proportion of success, the variance sigma^2 is p(1-p), so the standard error of the sample mean p' is sqrt(p(1-p)/n) where n is the sample size. The 95% confidence interval of p is then p' +/- 2*sqrt(p(1-p)/n). The 2 in this formula represents what?
+  AnswerChoices: the standard error of p'; the mean of p'; the variance of p'; the approximate 95 quantile
+  CorrectAnswer: the approximate 95 quantile
+  AnswerTests: omnitest(correctVal='the approximate 95 quantile')
+  Hint: Divide (100-90) by 2 and add this result to 90.
+
+(As before, we use 2 as the 97.5 quantile.) We don't know the true value of p; that's what we're trying to estimate. The Wald confidence interval replaces p with p'.
 
 - Class: text
   Output:  Since we don't know p, we want to maximize the 95% confidence interval represented by 2*sqrt(p(1-p)/n). From calculus we know that p(1-p) is maximized when p=1/2, so our biggest 95% confidence interval estimate would use 1/2 for a value of p in the formula p'+/- 2*sqrt(p(1-p)/n). 
