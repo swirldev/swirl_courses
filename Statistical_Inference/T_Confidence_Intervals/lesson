@@ -32,7 +32,7 @@
   Output: As df increases, the t distribution gets more like a standard normal, so it's centered around 0. Also, the t assumes that the underlying data are iid Gaussian so (X' - mu}/(S/sqrt(n)) follows the t distribution with n-1 degrees of freedom.
 
 - Class: mult_question
-  Output: In the formula (X' - mu}/(S/sqrt(n)), if we replaced S by sigma the statistic would be what?.
+  Output: In the formula Z=(X' - mu}/(S/sqrt(n)), if we replaced S by sigma the statistic Z would be what?.
   AnswerChoices: the standard normal; the standard abnormal; the population variance; Huh?
   CorrectAnswer: the standard normal
   AnswerTests: omnitest(correctVal='the standard normal')
@@ -85,10 +85,7 @@
   Output: The quantiles are much closer together with the higher degrees of freedom. At the 97.5 percentile though the t quantile is still greater than the normal. Student's Rule!
 
 - Class: text
-  Output: As we said before, the t-interval is X' +/- t_(n-1) /sqrt(n) where t_(n-1) is the relevant quantile. The t interval  assumes that the data are iid normal, though it is robust to this assumption and  works well whenever the distribution of the data is roughly symmetric and mound shaped.
-
-- Class: text
-  Output: Paired observations are often analyzed using the t interval by taking differences between the observations.
+  Output: As we said before, the t-interval is X' +/- t_(n-1)*s/sqrt(n) where t_(n-1) is the relevant quantile. The t interval  assumes that the data are iid normal, though it is robust to this assumption and  works well whenever the distribution of the data is roughly symmetric and mound shaped.
 
 - Class: mult_question
   Output: Our plots showed us that for large degrees of freedom, t quantiles become the same as what?
@@ -104,14 +101,70 @@
   Output: For highly discrete data, like binary, intervals other than the t are available. 
 
 - Class: text
-  Output: We hope you're not tired because now we'll look at some sleep data. This was the data originally analyzed in Gosset's Biometrika paper, which shows the increase in hours for 10 patients on two soporific drugs. 
+  Output: However, paired observations are often analyzed using the t interval by taking differences between the observations. We'll show you what we mean now.
+
+- Class: text
+  Output: We hope you're not tired because we're going to look at some sleep data. This was the data originally analyzed in Gosset's Biometrika paper, which shows the increase in hours for 10 patients on two soporific drugs. 
 
 - Class: cmd_question
-  Output: We've loaded the data for you. R treats it as two groups rather than paired. Type sleep now to see how it's stored.
+  Output: We've loaded the data for you. R treats it as two groups rather than paired. To see what we mean type sleep now. This will show you how the data is stored. 
   CorrectAnswer: sleep
   AnswerTests: omnitest(correctExpr='sleep')
   Hint: Type sleep at the command prompt.
 
+- Class: figure
+  Output: We see 20 entries, the first 10 show the results (extra) of the first drug (group 1) on each of the patients (ID), and the last 10 entries the results of the second drug (group 2) on each patient (ID). Here we've plotted the data, connecting each patient's two results with a line, group 1 on the left and group 2 on the right. See that purple line with the steep slope? That's ID 9, with 0 result for group 1 and 4.6 for group 2. 
+  Figure: sleepPlot.R
+  FigureType: new
+
+- Class: text
+  Output: If  we just looked at the 20 data points we'd be comparing group 1 variations with group 2 variations. However, when we look at the data paired for each patient, we see that the variations in results  are subject dependent. 
+
+- Class: cmd_question
+  Output: To clarify, we've defined some variables for you, namely g1 and g2. These are two 10-long vectors, respectively holding the results of the 10 patients for each of the two drugs. Look at the range of g1 using the R command range. 
+  CorrectAnswer: range(g1)
+  AnswerTests: omnitest(correctExpr='range(g1)')
+  Hint: Type range(g1) at the command prompt.
+
+- Class: cmd_question
+  Output: Now look at the range of g2 . 
+  CorrectAnswer: range(g2)
+  AnswerTests: omnitest(correctExpr='range(g2)')
+  Hint: Type  range(g2) at the command prompt.
+
+- Class: cmd_question
+  Output:  Now take advantage of R's componentwise treatment of vectors and create the vector difference by subtracting g1 from g2. 
+  CorrectAnswer: difference <- g2-g1
+  AnswerTests: expr_creates_var("difference"); omnitest(correctExpr='difference <- g2-g1')
+  Hint: Type  difference <- g2-g1 at the command prompt.
+
+- Class: cmd_question
+  Output:  Now use the R function mean to find the average of the vector difference and put the result in the variable mn.
+  CorrectAnswer: mn <- mean(difference)
+  AnswerTests: expr_creates_var("mn"); omnitest(correctExpr='mn <- mean(difference)')
+  Hint: Type mn <- mean(difference) at the command prompt.
+
+- Class: cmd_question
+  Output:  Now use the R function sd to find the standard deviation of the vector difference and put the result in the variable s.
+  CorrectAnswer: s <- sd(difference)
+  AnswerTests: expr_creates_var("s"); omnitest(correctExpr='s <- sd(difference)')
+  Hint: Type s <- sd(difference) at the command prompt.
+
+- Class: cmd_question
+  Output:  Now recall the formula for finding the t confidence interval, X' +/- t_(n-1)*s/sqrt(n). Make the appropriate substitutions to find the 95% confidence intervals for this data. Remember to use the R construct c(-1,1) for the +/- portion of the formula and the R function qt with .975 and n-1 degrees of freedom for the quantile portion. Our data size is 10.
+  CorrectAnswer: mn + c(-1,1)*qt(.975,9)*s/sqrt(10)
+  AnswerTests:  omnitest(correctExpr='mn + c(-1,1)*qt(.975,9)*s/sqrt(10)')
+  Hint: Type mn + c(-1,1)*qt(.975,9)*s/sqrt(10) at the command prompt.
+
+- Class: cmd_question
+  Output:  We could also just have used the R function t.test with the argument difference to get this result. As with the other R test functions, this returns a lot of information. Since all we're interested in at the moment is the confidence interval we can pick this off with the construct x$conf.int. Try this now.
+  CorrectAnswer: t.test(difference)$conf.int
+  AnswerTests:  omnitest(correctExpr='t.test(difference)$conf.int')
+  Hint: Type t.test(difference)$conf.int at the command prompt.
+
+- Class: video
+  Output: As the slides showed,  R provides several ways of using t.test to find the confidence interval of this data. Would you like to see the R code of these alternatives and how to display them nicely? You'll need an internet connection to see it.
+  VideoLink: "http://wilcrofter.github.io/slidex/markDown/t_test.html"
 
 
 - Class: mult_question
