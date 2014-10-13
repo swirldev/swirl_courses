@@ -10,7 +10,7 @@
   Output: "Variance. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/Variance.)"
 
 - Class: text
-  Output: In this lesson, we'll discuss variances of distributions which, like means, are useful in characterizing them. While the mean characterizes the center of a distribution, the variance and standard deviation characterize the distribution's spread around the mean. As the sample mean estimates the population mean, so the sample variance estimates the population variance.
+  Output: In this lesson, we'll discuss variances of distributions which, like means, are useful in characterizing them. While the mean characterizes the center of a distribution, the variance and its square root, the standard deviation, characterize the distribution's spread around the mean. As the sample mean estimates the population mean, so the sample variance estimates the population variance.
 
 - Class: text
   Output: The variance of a random variable, as a measure of spread or dispersion,  is, like a mean, defined as an expected value. It is the expected squared distance of the variable from its mean. Squaring the distance makes it positive so values less than and greater than the mean are treated the same. In mathematical terms, if X comes from a population with mean mu, then
@@ -128,13 +128,13 @@
   Hint: Var(X_i) is the constant value sigma^2 and we're summing over n of them.
 
 - Class: text
-  Output: So we shown Var(X')=Var(1/n*Sum(X_i))=(1/n^2)*Var(Sum(X_i))=(1/n^2)*Sum(sigm^2)=sigma^2/n for infinite populations. 
+  Output: So we've shown that Var(X')=Var(1/n*Sum(X_i))=(1/n^2)*Var(Sum(X_i))=(1/n^2)*Sum(sigm^2)=sigma^2/n for infinite populations. 
 
 - Class: text
   Output: The standard deviation of a statistic is called its standard error, so the standard error of the sample mean is the square root of its variance.
 
 - Class: text
-  Output: We just showed that the variance of sample mean is sigma^2 / n and we estimate it with s^2 / n. It follows that its square root, s / sqrt(n), is the standard error of the sample mean.
+  Output: We just showed that the variance of a sample mean is sigma^2 / n and we estimate it with s^2 / n. It follows that its square root, s / sqrt(n), is the standard error of the sample mean.
 
 - Class: text
   Output: The sample standard deviation, s, tells us how variable the population is, and s/sqrt(n), the standard error, tells us how much averages of random samples of size n from the population vary. Let's see this with some simulations.

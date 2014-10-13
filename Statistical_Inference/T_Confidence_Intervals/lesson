@@ -13,14 +13,24 @@
   Output: In this lesson, we'll discuss some statistical methods for dealing with small datasets, specifically the Student's or Gosset's t distribution and t confidence intervals. 
 
 - Class: mult_question
-  Output: In the Asymptotics lesson we discussed confidence intervals using the Central Limit Theorem (CLT) and normal distributions. These needed large sample sizes, and the formula for computing the interval was E +/- qnorm *std error(E), where E was some estimated value such as a sample mean with a standard error. Here qnorm represented what?
+  Output: In the Asymptotics lesson we discussed confidence intervals using the Central Limit Theorem (CLT) and normal distributions. These needed large sample sizes, and the formula for computing the confidence interval was E +/- qnorm *std error(E), where E was some estimated value such as a sample mean with a standard error. Here qnorm represented what?
   AnswerChoices: the population mean; the population variance; the standard error; a specified quantile from a normal distribution 
   CorrectAnswer: a specified quantile from a normal distribution
   AnswerTests: omnitest(correctVal='a specified quantile from a normal distribution')
   Hint: Which choice has part of the word 'qnorm' in it?
 
+- Class: mult_question
+  Output: In the Asymptotics lesson we also mentioned the statistic Z=(X'-mu)/(sigma/sqrt(n)) which follows a standard normal distribution. This normalized statistic Z is especially nice because we know its mean and variance. They are what, respectively?
+  AnswerChoices: 0 and 1; 1 and 0; 0 and 0; 1 and 1
+  CorrectAnswer:  0 and 1
+  AnswerTests: omnitest(correctVal=' 0 and 1')
+  Hint: Recall the definition of standard normal. It's centered around 0 and it has a standard deviation of 1.
+
 - Class: text
-  Output: For t distributions, the formula for computing a confidence interval is similar. However, instead of a quantile for a normal distribution we use a quantile for a t distribution. So the formula is  E +/- t-quantile *std error(E).
+  Output: So the mean and variance of the standardized normal are fixed and known. Now we'll define the t statistic which looks a lot like the Z. It's defined as t=(X'-mu)/(s/sqrt(n)). Like the Z statistic, the t is centered around 0. The only difference between the two is that the population std deviation, sigma, in Z is replaced by the sample standard deviation in the t. So the t distribution is independent of the population mean and variance. Instead it depends on the sample size n.
+
+- Class: text
+  Output: As a result, for t distributions, the formula for computing a confidence interval is similar to what we did in the last lesson. However, instead of a quantile for a normal distribution we use a quantile for a t distribution. So the formula is  E +/- t-quantile *std error(E). Another distinction is that we'll use the sample standard deviation when we estimate the standard error of E.
 
 - Class: text
   Output: These t confidence intervals are very handy, and if you have a choice between these and normal, pick these. We'll see that as datasets get larger, t-intervals look normal. We'll cover the one and two group versions.
@@ -29,10 +39,10 @@
   Output: The t distribution, invented by William Gosset in 1908, has thicker tails than the normal. Also, instead of having two parameters, mean and variance, as the normal does, the t distribution has only one - the number of degrees of freedom (df). 
 
 - Class: text
-  Output: As df increases, the t distribution gets more like a standard normal, so it's centered around 0. Also, the t assumes that the underlying data are iid Gaussian so (X' - mu}/(S/sqrt(n)) follows the t distribution with n-1 degrees of freedom. Notice another difference from the normal confidence intervals? Here, for the standard error, we use the sample standard deviation divided by the sqrt of the sample size. That's nice, right? 
+  Output: As df increases, the t distribution gets more like a standard normal, so it's centered around 0. Also, the t assumes that the underlying data are iid Gaussian so the statistic (X' - mu}/(s/sqrt(n)) has n-1 degrees of freedom. 
 
 - Class: mult_question
-  Output: In the formula Z=(X' - mu}/(S/sqrt(n)), if we replaced S by sigma the statistic Z would be what?.
+  Output: Quick check. In the formula t=(X' - mu}/(s/sqrt(n)), if we replaced s by sigma the statistic t would be what?.
   AnswerChoices: the standard normal; the standard abnormal; the population variance; Huh?
   CorrectAnswer: the standard normal
   AnswerTests: omnitest(correctVal='the standard normal')
@@ -67,7 +77,7 @@
   Hint: Type myplot2(2) at the command prompt.
 
 - Class: text
-  Output: The distance between the two lines represents the difference in sizes between the two sets of intervals. Note the thin horizontal and vertical lines. These represent the .975 quantiles for the t and normal distributions respectively. You probably recognized the placement of the vertical at 1.96 from the Asymptotics lesson. 
+  Output: The distance between the two lines represents the difference in sizes between the two sets of intervals. Note the thin horizontal and vertical lines. These represent the .975 quantiles for the t and normal distributions respectively. Anyway, you probably recognized the placement of the vertical at 1.96 from the Asymptotics lesson. 
 
 - Class: cmd_question
   Output: Check the placement of the horizontal now using the R function qt with the arguments .975 for the quantile and 2 for the degrees of freedom (df).
@@ -95,7 +105,7 @@
   Hint: Recall that the larger the degrees of freedom, the more the t distribution looked normal. Smaller degrees of freedom made it look abnormal. 
 
 - Class: text
-  Output: Although it's pretty great, the t interval isn't always applicable. For skewed distributions, the spirit of the t interval assumptions are violated and it doesn't make a lot of sense to center the interval at the mean. There are ways of working around this problem (such as taking logs or using a different summary like the median).
+  Output: Although it's pretty great, the t interval isn't always applicable. For skewed distributions, the spirit of the t interval assumptions (being centered around 0) are violated. There are ways of working around this problem (such as taking logs or using a different summary like the median).
      
 - Class: text
   Output: For highly discrete data, like binary, intervals other than the t are available. 
@@ -118,7 +128,7 @@
   FigureType: new
 
 - Class: text
-  Output: If  we just looked at the 20 data points we'd be comparing group 1 variations with group 2 variations. However, when we look at the data paired for each patient, we see that the variations in results  are subject dependent. 
+  Output: If  we just looked at the 20 data points we'd be comparing group 1 variations with group 2 variations. Both groups have quite large ranges. However, when we look at the data paired for each patient, we see that the variations in results are usually much smaller and depend on the particular subject. 
 
 - Class: cmd_question
   Output: To clarify, we've defined some variables for you, namely g1 and g2. These are two 10-long vectors, respectively holding the results of the 10 patients for each of the two drugs. Look at the range of g1 using the R command range. 
@@ -148,7 +158,7 @@
   Output: See how much smaller the mean difference in this paired data compared to the group variations?
 
 - Class: cmd_question
-  Output:  Now use the R function sd to find the standard deviation of the vector difference and put the result in the variable s.
+  Output:  Now use the R function sd to find the standard deviation of  difference and put the result in the variable s.
   CorrectAnswer: s <- sd(difference)
   AnswerTests: expr_creates_var("s"); omnitest(correctExpr='s <- sd(difference)')
   Hint: Type s <- sd(difference) at the command prompt.
@@ -187,10 +197,10 @@ Suppose that we want to compare the mean blood pressure between two groups in a 
   Hint: We lose one degree of freedom from each group because we've calculated the sample mean from each group, so we add the two sizes and subtract two. 
 
 - Class: text
-  Output: The only term remaining is the standard error which for the single group is S/sqrt(n). Our interval will assume for now a common variance S^2 across the two groups. We'll actually pool variance information from the two groups. (We'll deal with the more complicated situation later.) How do we handle the 1/sqrt(n) portion? We can simply add 1/n_x and 1/n_y and take the square root of the sum.
+  Output: The only term remaining is the standard error which for the single group is s/sqrt(n). Our interval will assume (for now) a common variance S^2 across the two groups. We'll actually pool variance information from the two groups using a weighted sum. (We'll deal with the more complicated situation later.) How do we handle the 1/sqrt(n) portion? We can simply add 1/n_x and 1/n_y and take the square root of the sum. Then we MULTIPLY this by the sample variance to estimate the standard error.
 
 - Class: text
-  Output: We call the variance estimator we use the pooled variance S^2. The formula for it requires two variance estimators, one for each group. We multiply each by its respective degrees of freedom and divide the sum by the total number of degrees of freedom.
+  Output: We call the variance estimator we use the pooled variance S^2. The formula for it requires two variance estimators, one for each group. We multiply each by its respective degrees of freedom and divide the sum by the total number of degrees of freedom. This is how we weight the respective variances; those coming from bigger samples get more with weight.
 
 - Class: mult_question
   Output: Which of the following represents the numerator of this expression?
@@ -207,355 +217,109 @@ Suppose that we want to compare the mean blood pressure between two groups in a 
   Hint: Recall that the degrees of freedom is one less than the sample size for each group. We asked this a few questions ago, though we've put this answer in a different, but equivalent form.
 
 - Class: text
-  Output: The Law of Large Numbers (LLN) says that the average (mean) approaches what it's estimating. We saw in our simulations that the larger the sample size the better the estimation.  As we flip a fair coin over and over, it eventually converges to the true probability of a head (.5). 
-
-- Class: text
-  Output: The LLN forms the basis of frequency style thinking. 
+  Output: Now we'll plug in some numbers from the slides based on an example from Rosner's book Fundamentals of Biostatistics, a very good, if heavy, reference book. We want to compare blood pressure from two independent groups.  
 
 - Class: cmd_question
-  Output: To see this in action, we've copied some code from the slides and created the function coinPlot. It takes an integer n which is the number of coin tosses that will be simulated. As coinPlot does these coin flips it computes the cumulative sum (assuming heads are 1 and tails 0), but after each toss it divides the cumulative sum by the number of flips performed so far. It then plots this value for each of the k=1...n tosses. Try it now for n=10. 
-  CorrectAnswer: coinPlot(10)
-  AnswerTests: omnitest(correctExpr='coinPlot(10)')
-  Hint: Type coinPlot(10) at the command prompt.
+  Output: The first is a group of 8 oral contraceptive users and the second is a group of 21 controls. The two means are X'_{oc}=132.86 and X'_{c}=127.44, and the two sample standard deviations are s_{oc}= 15.34 and s_{c}= 18.23. Let's first compute the numerator of the pooled sample variance by weighting the sum of the two by their respective sample sizes. Recall the formula (n_x-1)(S_x)^2+(n_y-1)(S_y)^2 and fill in the values to create a variable sp.
+  CorrectAnswer: sp <- 7*15.34^2 + 20*18.23^2
+  AnswerTests:  omnitest(correctExpr='sp <- 7*15.34^2 + 20*18.23^2')
+  Hint: Type sp <- 7*15.34^2 + 20*18.23^2 at the command prompt. Here 7 and 20 are each one less than the given sample sizes, and 15.34 and 18.23 are the respective standard deviations. We square these to convert them to variances.
 
 - Class: cmd_question
-  Output: Your output depends on R's random number generator, but your plot probably jumps around a bit and, by the 10th flip, your cumulative sum/10 is probably different from mine. If you did this several times, your plots would vary quite a bit. Now call coinPlot again, this time with 10000 as the argument.
-  CorrectAnswer: coinPlot(10000)
-  AnswerTests: omnitest(correctExpr='coinPlot(10000)')
-  Hint: Type coinPlot(10000) at the command prompt.
-
-- Class: text
-  Output: See the difference? Asymptotics in Action! The line approaches its asymptote of .5. This is the probability you expect since what we're plotting, the cumulative sum/number of flips, represents the probability of the coin landing on heads. As we know,  this is .5 .
-
-- Class: text
-  Output: We say that an estimator is CONSISTENT if it converges to what it's trying to estimate. The LLN says that the sample mean of iid samples is consistent for the population mean. This is good, right?
-
-- Class: mult_question
-  Output: Based on our previous lesson do you think the sample variance (and hence sample deviation) are consistent as well?
-  AnswerChoices: Yes; No
-  CorrectAnswer: Yes
-  AnswerTests: omnitest(correctVal='Yes')
-  Hint: Recall our simulations of sample variances and how, as we increased the sample size, they converged to the population variance. Sounds like consistency, right?
-
-- Class: text
-  Output: Now for something really important - the CENTRAL LIMIT THEOREM (CLT) - one of the most important in all of statistics. It states that the distribution of averages of iid variables (properly normalized) becomes that of a standard normal as the sample size increases. 
- 
-- Class: text
-  Output: Let's dissect this to see what it means. First, 'properly normalized' means that you transformed the sample mean X'. You subtracted the population mean mu from it and divided the difference by sigma/sqrt(n). Here sigma is the standard deviation of the population and n is the sample size. 
-
-- Class: text
-  Output: Second, this normalized variable, (X'-mu)/(sigma/sqrt(n)) is a random variable with a normal distribution with mean 0 and variance 1. Remember that n must be large for the CLT to apply.
-
-- Class: mult_question
-  Output: Do you recognize sigma/sqrt(n) from our lesson on variance? Since the population std deviation sigma is unknown, sigma/sqrt(n) is often approximated by what? 
-  AnswerChoices: the standard error of the sample mean; the variance of the population; the mean of the population; I give up
-  CorrectAnswer: the standard error of the sample mean
-  AnswerTests: omnitest(correctVal='the standard error of the sample mean')
-  Hint: Recall our many simulation experiments in the variance lesson where we calculated standard deviations of means using R's sd function, then we calculated an approximation using a formula involving the population variance and the square root of the sample size.
-
- Class: mult_question
-  Output: Suppose you found the sample mean of a set of size 3. Could you use the CLT to say that the sample mean was normally distributed?
-  AnswerChoices: Yes!; No, the sample isn't big enough
-  CorrectAnswer: No, the sample isn't big enough
-  AnswerTests: omnitest(correctVal='No, the sample isn't big enough')
-  Hint: Remember, the CLT says that as the sample size needs to be large and 3 really isn't large.
-
-- Class: text
-  Output: Let's rephrase the CLT. Suppose X_1, X_2, ... X_n are independent random variables from an infinite population with mean mu and variance sigma^2. Then if n is large, the mean of the X's, call it X', is approximately normal with mean mu and variance sigma^2/n. We denote this as Z'~N(mu,sigma^2/n).
-
-- Class: figure
-  Output: To show the CLT in action consider this figure from the slides. It presents 3 histograms of 1000 averages of dice rolls with sample sizes of 10, 20 and 30 respectively. Each average of n dice rolls (n=10,20,30) has been normalized by subtracting off the mean (3.5) then dividing by the standard error, sqrt(2.92/n). The normalization has made each histogram look like a standard normal, i.e., mean 0 and standard deviation 1.
-  Figure: cltDice.R
-  FigureType: new
-
-- Class: text
-  Output: Notice that the CLT said nothing about the original population being normally distributed. That's precisely where its usefulness lies! We can assume normality of a population mean no matter what kind of population we have, as long as our sample size is large enough. Let's look at how it works with a binomial experiment like flipping a coin.
-
-- Class: text
-  Output: Recall that if the probability of a head (call it 1) is p, then the probability of a tail (0) is 1-p. The expected value then is p and the variance is p-p^2 or p(1-p). Suppose we do n coin flips and let p' represent the average of these n flips. We normalize p' by subtracting p and dividing by sqrt(p(1-p)/n). Let's do this for 1000 trials and plot the resulting histogram. 
-
-- Class: figure
-  Output: Here's a figure from the slides showing the results of 3 such trials where each trial is for a different value of n (10, 20, and 30) and the coin is fair,so E(X)=.5 and the standard error is 1/(2sqrt(n)). Notice how with larger n (30) the histogram tightens up around the mean 0.
-  Figure: cltFairCoin.R
-  FigureType: new
-
-- Class: figure
-  Output: Here's another plot from the slides of the same experiment, this time using a biassed coin. We set the probability of a head to .9, so E(X)=.9 and the standard error is sqrt(.09/n) Again, the larger the sample size the more closely the distribution looks normal, although with this biassed coin the normal approximation isn't as good as it was with the fair coin.
-  Figure: cltUnfairCoin.R
-  FigureType: new
-
-- Class: text
-  Output: Now let's talk about confidence intervals.
-
-- Class: figure
-  Output:  We know from the CLT that for large n, the sample mean is normal with mean mu and standard deviation sigma/sqrt(n). We also know that 95% of the area under a normal curve is within two standard deviations of the mean. This figure, a standard normal with mu=0 and sigma=1, illustrates this point; the entire shaded portion depicts the area within 2 standard deviations of the mean and the darker portion shows the 68% of the area within 1 standard deviation. 
-  Figure: stddev1.R
-  FigureType: new
-
-- Class: text
-  Output: It follows that 5% of the area under the curve is not shaded. By symmetry of the curve, only 2.5% of the data is greater than the mean + 2 standard deviations (mu+2*sigma/sqrt(n)) and only 2.5% is less than the  mean - 2 standard deviations (mu-2*sigma/sqrt(n)). 
-
-- Class: text
-  Output: So the probability that the sample mean X' is bigger than mu + 2sigma/sqrt(n) OR smaller than mu-2sigma/sqrt(n) is 5%.  Equivalently, the probability of being between these limits is 95%. 
-
-- Class: text
-  Output: The quantity X' plus or minus 2 sigma/sqrt(n) is called a 95% interval for mu. The 95% says that if one were to repeatly get samples of size n, about 95% of the intervals obtained would contain mu, the quantity we're trying to estimate. 
-
-- Class: mult_question
-  Output: Note that for a 95% confidence interval we divide (100-95) by 2 (since we have both left and right tails) and add the result to 95 to compute the quantile we need. The 97.5 quantile is actually 1.96, but for simplicity it's often just rounded up to 2. If you wanted to find a 90% confidence interval what quantile would you want?
-  AnswerChoices: 90; 95; 85; 100
-  CorrectAnswer: 95
-  AnswerTests: omnitest(correctVal='95')
-  Hint: Divide (100-90) by 2 and add this result to 90.
+  Output: Now how many degrees of freedom are there? Put your answer in the variable ns.
+  CorrectAnswer: ns <- 8+21-2
+  AnswerTests:  omnitest(correctExpr='ns <- 8+21-2')
+  Hint: Add the two sample sizes and subtract 2. Put the result in ns.
 
 - Class: cmd_question
-  Output: Use the R function qnorm to find the 95 quantile for a standard normal distribution. Remember that qnorm takes a probability as an input. You can use default values for all the other arguments.
-  CorrectAnswer: qnorm(.95)
-  AnswerTests: omnitest(correctExpr='qnorm(.95)')
-  Hint: Type qnorm(.95) at the command prompt.
-
-- Class: mult_question
-  Output: As we've seen before, in a binomial distribution in which p represents the probability or proportion of success, the variance sigma^2 is p(1-p), so the standard error of the sample mean p' is sqrt(p(1-p)/n) where n is the sample size. The 95% confidence interval of p is then p' +/- 2*sqrt(p(1-p)/n). The 2 in this formula represents what?
-  AnswerChoices: the standard error of p'; the mean of p'; the variance of p'; the approximate 95 quantile
-  CorrectAnswer: the approximate 95 quantile
-  AnswerTests: omnitest(correctVal='the approximate 95 quantile')
-  Hint: Divide (100-90) by 2 and add this result to 90.
-
-(As before, we use 2 as the 97.5 quantile.) We don't know the true value of p; that's what we're trying to estimate. The Wald confidence interval replaces p with p'.
-
-- Class: text
-  Output:  Since we don't know p, we want to maximize the 95% confidence interval represented by 2*sqrt(p(1-p)/n). From calculus we know that p(1-p) is maximized when p=1/2, so our biggest 95% confidence interval estimate would use 1/2 for a value of p in the formula p'+/- 2*sqrt(p(1-p)/n). 
-
-- Class: mult_question
-  Output: Using 1/2 for the value of p in the formula above yields what 95% confidence interval for p?
-  AnswerChoices: p'+/- 1/sqrt(n); p'+/- 1/2sqrt(n); p'+/ 2sqrt(n)
-  CorrectAnswer: p'+/- 1/sqrt(n)
-  AnswerTests: omnitest(correctVal='p\'+/- 1/sqrt(n)')
-  Hint: p(1-p)=1/4 when p=1/2 and the sqrt(1/4n)=1/(2sqrt(n)). What happens when you multiply this by 2?
-
-- Class: mult_question
-  Output: We'll illustrate how to use this formula with an example from the slides. Suppose you were running for office and your pollster polled 100 people. Of these 60 claimed they were going to vote for you. You'd like to estimate the true proportion of people who will vote for you and you want to be 95% confident of your estimate. We need to find the limits that will contain the true proportion of your supporters with 95% confidence, so we'll use the formula p' +/- 1/sqrt(n) to answer this question. First, what value would you use for p', the sampled estimate?
-  AnswerChoices: .60; .56; 1.00; .10
-  CorrectAnswer: .60
-  AnswerTests: omnitest(correctVal='.60')
-  Hint: The only sampled number here is the number of people who said they would vote for you. Make it a proportion by dividing it by the sample size.
-
-- Class: mult_question
-  Output: What would you use for 1/sqrt(n)?
-  AnswerChoices: 1/sqrt(60); 1/sqrt(56); 1/100; 1/10
-  CorrectAnswer: 1/10
-  AnswerTests: omnitest(correctVal='1/10')
-  Hint: The sample size is n, and in this case n=100. What is 1/sqrt(100)?
-
-- Class: mult_question
-  Output: The bounds of the interval then are what?
-  AnswerChoices: .5 and .7; .46 and .66; .55 and .65; I haven't a clue
-  CorrectAnswer: .5 and .7
-  AnswerTests: omnitest(correctVal='.5 and .7')
-  Hint: We know p'- 1/sqrt(n) is the lower bound and p'+ 1/sqrt(n) is the upper bound, so use the answers from the two previous answers to fill in values for these variables.
-
-- Class: mult_question
-  Output: How do you feel about the election?
-  AnswerChoices: confident; unsure; I'll pull out;  Perseverance, that's the answer; 
-  CorrectAnswer: confident
-  AnswerTests: omnitest(correctVal='confident')
-  Hint: With 95% confidence, between .5 and .7 of the voters support you. You look like a winner to me!
+  Output: Now divide sp by ns, take the square root and put the result back in sp.
+  CorrectAnswer: sp <- sqrt(sp/ns)
+  AnswerTests:  omnitest(correctExpr='sp <- sqrt(sp/ns)')
+  Hint: Type sp <- sqrt(sp/ns) at the command prompt.
 
 - Class: cmd_question
-  Output: To reassure you that this is a pretty good estimate, we can use R to get a more precise confidence interval using the actual quantile 1.96 instead of our ballpark estimate of 2. Use the formula  p'+/- qnorm(.975)*sqrt(p'(1-p')/100). Use the p' and n values from above and the R construct p'+c(-1,1)... to handle the plus/minus portion of the formula. You should see bounds similar to the ones you just estimated.
-  CorrectAnswer: .6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100)
-  AnswerTests: omnitest(correctExpr='.6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100)')
-  Hint: Type .6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100) at the command prompt. 
+  Output: Now to find the 95% confidence interval. Recall our basic formula X' +/- t_(n-1)*s/sqrt(n) and all the changes we need to make for working with two independent samples. We'll plug in the difference of the sample means for X' and our variable ns for the degrees of freedom when finding the t quantile. For the standard error, we multiply sp for the sample variance by the square root of the sum 1/n_{oc} + 1/n_{c}. Recall the values for this problem, X'_{oc}=132.86 and X'_{c}=127.44, n_{oc}=8 and n_{c}=21. Be sure to use the R construct c(-1,1) for the +/- portion and the R function qt with the correct percentile and degrees of freedom.
+  CorrectAnswer: 132.86-127.44+c(-1,1)*qt(.975,ns)*sp*sqrt((1/8)+(1/21))
+  AnswerTests:  omnitest(correctExpr='132.86-127.44+c(-1,1)*qt(.975,ns)*sp*sqrt((1/8)+(1/21))')
+  Hint: Type 132.86-127.44+c(-1,1)*qt(.975,ns)*sp*sqrt((1/8)+(1/21)) at the command prompt.
+
+- Class: text
+  Output: See that 0 is contained in this 95% interval. That means that you can't rule out that the means of the two groups are equal.
 
 - Class: cmd_question
-  Output: As an alternative to this Wald interval, we can also use the R function binom.test with the parameters 60 and 100 and let all the others default. This function "performs an exact test of a simple null hypothesis about the probability of success in a Bernoulli experiment." (This means it guarantees the coverages, uses a lot of computation and doesn't rely on the CLT.) This function returns a lot of information but all we want to look at now is the values of the confidence interval, conf.int, that it returns. Use the R construct x$conf.int to find these now.
-  CorrectAnswer: binom.test(60,100)$conf.int
-  AnswerTests: omnitest(correctExpr='binom.test(60,100)$conf.int')
-  Hint: Type binom.test(60,100)$conf.int at the command prompt. 
-
-- Class: text
-  Output: Close to what we've seen before, right? Now we're going to see that the Wald interval isn't very accurate when n is small. We'll use the example from the slides. 
-
-- Class: figure
-  Output: Suppose we flip a coin a small number of times, say 20. Also suppose we have a function mywald which takes a probability p, and generates 30 sets of 20 coin flips using that probability p. It uses the sampled proportion of success, p', for those 20 coin flips to compute the upper and lower bounds of the 95% Wald interval, that is, it computes the two numbers p'+/- qnorm(.975) * sqrt(p' * (1-p') / n) for each of the 30 trials. For the given true probability p, we  count the number of times out of those 30 trials that the true probability p was in the Wald confidence interval. We'll call this the coverage.
-  Figure: WaldDemo.R
-  FigureType: new
+  Output: Getting tired? Let's revisit the sleep problem and instead of looking at the data as paired over 10 subjects we'll look at it as two independent sets each of size 10. We've stored off the data for you in the two vectors g1 and g2 as well as the difference between their means in the variable md. Let's compute the sample pooled variance and store it in the variable sp. Recall that this is the sqrt(weighted sums of sample variances/deg of freedom). Use the R function var to compute the variances of  g1 and g2. The degrees of freedom is 10+10-2 = 18.
+  CorrectAnswer: sp <- sqrt((9*var(g1)+9*var(g2))/18)
+  AnswerTests:  omnitest(correctExpr='sp <- sqrt((9*var(g1)+9*var(g2))/18)')
+  Hint: Type sp <- sqrt((9*var(g1)+9*var(g2))/18) at the command prompt.
 
 - Class: cmd_question
-  Output: To make sure you understand what's going on, trying running mywald now with the probability .2. It will print out 30 p' values (which you don't really need to see), followed by 30 lower bounds, 30 upper bounds and lastly the percentage of times that the input .2 was between the two bounds. See if you agree with the percentage you get. Usually it suffices to just count the number of times (out of the 30) that .2 is less than the upper bound.
-  CorrectAnswer: mywald(.2)
-  AnswerTests: omnitest(correctExpr='mywald(.2)')
-  Hint: Type mywald(.2) at the command prompt. 
-
-- Class: text
-  Output: Now that you understand the underlying principle, suppose instead of 30 trials, we used 1000 trials. Also suppose we did this experiment for a series of probabilities, say from .1 to .9 taking steps of size .05. More specifically, we'll call our function using 17 different probabilities, namely .1, .15, .2, .25, ... .9 . We can then plot the percentages of coverage for each of the probabilities. 
-
-- Class: figure
-  Output: Here's the plot of our results. Each of the 17 vertices show the percentage of coverage for a particular true probability p passed to the function. Results will vary, but usually the only probability that hits above the 95% line is the p=.5 . So this shows that when n, the number of flips, is small the CLT doesn't hold for many values of p, so the Wald interval doesn't work very well.
-  Figure: WaldFail.R
-  FigureType: new
-
-- Class: figure
-  Output: Let's try the same experiment and increase n from 20 to 100 to see if the plot improves. Again, results may vary, but all the probabilities are much closer to the 95% line, so the CLT works better with a bigger value of n.
-  Figure: WaldPass.R
-  FigureType: new
-
-- Class: text
-  Output: A quick fix to the problem of having a small n is to use the Agresti/Coull interval. This simply means we add 2 successes and 2 failures to the counts when calculating the proportion p'. Specifically, if X is the number of successes out of the 20 coin flips, then instead of  setting p'=X/20, let p'=(X+2)/24. We use 24 as the number of trials since we've added 2 successes and 2 failures to the counts. Note that we still use 20 in the calculation of the upper and lower bounds.
-
-- Class: figure
-  Output: Here's a plot using this Agresti/Coull interval, with 1000 trials of 20 coin flips each. It looks much better than both the original Wald with 20 coin flips and the improved Wald with 100 coin flips. However, this technique might make the confidence interval too wide. 
-  Figure: ACDemo.R
-  FigureType: new
-
-- Class: text
-  Output: Why does this work? Adding 2 successes and 2 failures pulls p' closer to .5 which, as we saw, is the value which maximizes the confidence interval.
-
-- Class: figure
-  Output:  To show this simply, we wrote a function ACCompar, which takes an integer input n. For each k from 1 to n  it computes two fractions, k/n and (k+2)/(n+4). It then prints out the boolean vector of whether the new (k+2)/(n+4) fraction is less than the old k/n. It also prints out the total number of k's for which the the condition is TRUE. 
-  Figure: ACComp.R
-  FigureType: new
-
-- Class: text
-  Output: For all k less than  n/2, you see FALSE indicating that the new fraction is greater than or equal to k/n. For all k greater than n/2 you see TRUE indicating that the new fraction is less than the old. If k=n/2 the old and new fractions are equal.
+  Output: Now  the last term of the formula is standard error of the mean difference is simply sp times the square root of the sum 1/10 + 1/10. Find the 95% t confidence interval of the mean difference of the two groups g1 and g2. Substitute md and sp into the formula you used above.
+  CorrectAnswer: md + c(-1,1)*qt(.975,18)*sp*sqrt(1/5)
+  AnswerTests:  omnitest(correctExpr='semd <- sp*sqrt(1/10 + 1/10)')
+  Hint: Type semd <- sp*sqrt(1/10 + 1/10) at the command prompt.
 
 - Class: cmd_question
-  Output: Try running ACCompar now with an input of 20.
-  CorrectAnswer: ACCompar(20)
-  AnswerTests: omnitest(correctExpr=' ACCompar(20)')
-  Hint: Type  ACCompar(20) at the command prompt.
-
-- Class: text
-  Output: Let's move on to Poisson distributions and confidence intervals. Recall that Poisson distributions model counts or rates. We write X~Poisson(lambda*t) where lambda is the expected count per unit of time and t is the total monitoring time.
-
-- Class: text
-  Output:  Suppose a nuclear pump failed 5 times out of 94.32 days and we want  a 95% confidence interval for the failure rate per day. The number of failures X is Poisson distributed with parameter (lambda*t). We estimate the failure rate, lambda', as x/t and the variance of our estimated mean is lambda/t, which we estimate as lambda'/t.
-
-- Class: mult_question
-  Output: In this example what would you use as the estimated mean x/t?
-  AnswerChoices: 5/94.32; 94.32/5; I haven't a clue
-  CorrectAnswer: 5/94.32
-  AnswerTests: omnitest(correctVal='5/94.32')
-  Hint: You need a number of failures divided by some measure of time.
+  Output: We can check this manual calculation against the R function t.test. Since we subtracted g1 from g2, be sure to place g2 as your first argument and g1 as your second. Also make sure the argument paired is FALSE and var.equal is TRUE. We only need the confidence interval so use the construct x$conf.  Do this now.
+  CorrectAnswer: t.test(g2,g1,paired=FALSE,var.equal=TRUE)$conf
+  AnswerTests:  omnitest(correctExpr='t.test(g2,g1,paired=FALSE,var.equal=TRUE)$conf')
+  Hint: Type t.test(g2,g1,paired=FALSE,var.equal=TRUE)$conf at the command prompt.
 
 - Class: cmd_question
-  Output: Set a variable lamb now with this value.
-  CorrectAnswer: lamb <- 5/94.32
-  AnswerTests: omnitest(correctExpr='lamb <- 5/94.32')
-  Hint: Type lamb <- 5/94.32 at the R prompt.
+  Output: Pretty cool that it matches, right? Note that 0 is again in this 95% interval so you can't reject the claim that the two groups are the same. Let's run t.test again, this time with paired=TRUE and see how different the result is. Don't specify var.equal and look only at the confidence interval
+  CorrectAnswer: t.test(g2,g1,paired=TRUE)$conf
+  AnswerTests:  omnitest(correctExpr='t.test(g2,g1,paired=TRUE)$conf')
+  Hint: Type t.test(g2,g1,paired=TRUE)$conf at the command prompt.
+
+- Class: text
+  Output: See how the interval excludes 0? This means the groups have much different averages.  
+
+- Class: text
+  Output: Now let's talk about calculating confidence intervals for two groups which have unequal variances. We won't be pooling them as we did before.
+
+- Class: text
+  Output: In this case the formula for the interval is similar to what we saw before, Y'-X' +/- t_df * SE, where as before Y'-X' represents the difference of the sample means. However, the standard error SE and the quantile t_df are calculated differently from previous methods. Here SE is the square root of the sum of the squared standard errors of the two means, (s_1)^2/n_1 + (s_2)^2/n_2 .
+
+- Class: text
+  Output: When the underlying X and Y data are iid normal and the variances are different, the normalized statistic we started this lesson with, (X'-mu)/(s/sqrt(n)), doesn't follow a t distribution. However, it can be approximated by a t distribution if we set the degrees of freedom appropriately. 
+
+- Class: text
+  Output: The formula for the degrees of freedom is a complicated fraction that no one remembers. For a 95% interval the formula is this. The numerator is the SQUARE of the sum of the squared standard errors of the two sample means. Each has the s^2/n. The denominator is the sum of two terms, one for each group. Each term has the same form. It is the standard error of the mean raised to the fourth power divided by the sample size-1. More precisely, each term looks like (s^4/n^2)/(n-1). We use this df to find the t quantile.
+
+- Class: video
+  Output: Would you like to see this formula nicely displayed? You'll need an internet connection to do this.
+  VideoLink: "http://wilcrofter.github.io/slidex/markDown/ttest.html"
+
+- Class: text
+  Output: Let's plug in the numbers from the blood pressure study to see how this works. Recall we have two groups, the first with size 8 and X'_{oc}=132.86 and s_{oc}=15.34 and the second with size 21 and X'_{c}=127.44 and s_{c}=18.23. 
 
 - Class: cmd_question
-  Output: So lamb is our estimated mean and lamb/t is our estimated variance. The formula we've used to calculate a 95% confidence interval is est mean + c(-1,1)*qnorm(.975)*sqrt(est var). Use this formula now making the appropriate substitutions. 
-  CorrectAnswer: lamb +c(-1,1)*qnorm(.975)*sqrt(lamb/94.32)
-  AnswerTests: omnitest(correctExpr='lamb +c(-1,1)*qnorm(.975)*sqrt(lamb/94.32)')
-  Hint: Type lamb +c(-1,1)*qnorm(.975)*sqrt(lamb/94.32) at the R prompt.
+  Output: Let's compute the degrees of freedom first. Start with the numerator. It's the square of the sum of two terms. Each term is of the form s^2/n. Do this now and put the result in num. Our numbers were 15.34 with size 8 and 18.23 with size 21. 
+  CorrectAnswer: num <- (15.34^2/8 + 18.23^2/21)^2
+  AnswerTests:  omnitest(correctExpr='num <- (15.34^2/8 + 18.23^2/21)^2')
+  Hint: Type  num <- (15.34^2/8 + 18.23^2/21)^2 at the command prompt.
 
 - Class: cmd_question
-  Output: As a check we can use R's function poisson.test with the arguments 5 and 94.32 to check this result. This is an exact test so it guarantees coverage. As with the binomial exact test, we only need to look at the conf portion of the result using the x$conf construct. Do this now. 
-  CorrectAnswer: poisson.test(5,94.32)$conf
-  AnswerTests: omnitest(correctExpr='poisson.test(5,94.32)$conf')
-  Hint: Type 'poisson.test(5,94.32)$conf' at the command prompt.
+  Output: Now the denominator. This is the sum of two terms. Each term has the form s^4/n^2/(n-1).  Put the result in the variable den. Our numbers were 15.34 with size 8 and 18.23 with size 21. 
+  CorrectAnswer: den <- 15.34^4/8^2/7 + 18.23^4/21^2/20
+  AnswerTests:  omnitest(correctExpr='den <- 15.34^4/8^2/7 + 18.23^4/21^2/20')
+  Hint: Type  den <- 15.34^4/8^2/7 + 18.23^4/21^2/20 at the command prompt.
+
+- Class: cmd_question
+  Output: Now divide num by den and put the result in mydf.
+  CorrectAnswer: mydf <- num/den
+  AnswerTests:  omnitest(correctExpr='mydf <- num/den')
+  Hint: Type  mydf <- num/den at the command prompt.
+
+- Class: cmd_question
+  Output: Now with the R function qt(.975,mydf) compute the interval. Recall the formula. X'_{oc}-X'_{c} +/ t_df * SE. Recall that SE is the square root of the sum of the squared standard errors of the two means, (s_1)^2/n_1 + (s_2)^2/n_2 . Again our numbers are the following. X'_{oc}=132.86  s_{oc}=15.34  and n_{oc}=8 .  X'_{c}=127.44  s_{c}=18.23  and n_{c}=21. 
+  CorrectAnswer: 132.86-127.44 +c(-1,1)*qt(.975,mydf)*sqrt(15.34^2/8 + 18.23^2/21)
+  AnswerTests:  omnitest(correctExpr='132.86-127.44 +c(-1,1)*qt(.975,mydf)*sqrt(15.34^2/8 + 18.23^2/21)')
+  Hint: Type  132.86-127.44 +c(-1,1)*qt(.975,mydf)*sqrt(15.34^2/8 + 18.23^2/21) at the command prompt.
 
 - Class: text
-  Output: Pretty close, right? Now to check the coverage of our estimate we'll run the same simulation experiment we ran before with binomial distributions. We'll vary our lambda values from .005 to .1 with steps of .01 (so we have 10 of them), and for each one we'll generate 1000 Poisson samples with mean lambda*t. We'll calculate  sample means and use them to compute  95% confidence intervals. We'll then count how often out of the 1000 simulations the true mean (our lambda) was contained in the computed interval.
- 
-- Class: figure
-  Output: Here's a plot of the results. We see that the coverage improves as lambda gets larger, and it's quite off for small lambda values.
-  Figure: PoisDemo.R
-  FigureType: new
+  Output: R makes things a lot easier. If you call t.test with var.equal set to FALSE, it will do the nasty degrees of freedom calculation for you.
 
-- Class: figure
-  Output: Now it's interesting to see how the coverage improves when we increase the unit of time. In the previous plot we used t=100 (rounding the 94.32 up). Here's a plot of the same experiment setting t=1000. We see that the coverage is much better for almost all the values of lambda, except for the smallest ones.
-  Figure: PoisDemoImpr.R
-  FigureType: new
 
 - Class: text
-  Output: Now for a quick review!
-
-- Class: mult_question
-  Output: What tells us that averages of iid samples converge to the population means that they are estimating?
-  AnswerChoices: the law of small numbers; the law of large numbers; the CLT; the BLT
-  CorrectAnswer: the law of large numbers
-  AnswerTests: omnitest(correctVal='the law of large numbers')
-  Hint: Think Big!
-
-- Class: mult_question
-  Output: What tells us that averages are approximately normal for large enough sample sizes
-  AnswerChoices: the law of small numbers; the law of large numbers; the CLT; the BLT
-  CorrectAnswer: the CLT
-  AnswerTests: omnitest(correctVal='the CLT')
-  Hint: Keep yourself centered!
-
-- Class: mult_question
-  Output: The Central Limit Theorem (CLT) tells us that averages have what kind of distributions?
-  AnswerChoices: normal; abnormal; binomial; Poisson
-  CorrectAnswer: normal
-  AnswerTests: omnitest(correctVal='normal')
-  Hint: Remember the previous question?
-
-- Class: mult_question
-  Output: The Central Limit Theorem (CLT) tells us that averages have normal distributions centered at what?
-  AnswerChoices: the population mean; the population variance; the standard error
-  CorrectAnswer: the population mean
-  AnswerTests: omnitest(correctVal='the population mean')
-  Hint: Remember the old E(X')=mu, where X' is the sample mean and mu is the population mean. Know what I mean?
-
-- Class: mult_question
-  Output: The Central Limit Theorem (CLT) tells us that averages have normal distributions with standard deviations equal to what?
-  AnswerChoices: the population mean; the population variance; the standard error
-  CorrectAnswer: the standard error
-  AnswerTests: omnitest(correctVal='the standard error')
-  Hint: Which choice has the word standard in it?
-
-- Class: mult_question
-  Output: True or False - The Central Limit Theorem (CLT) tells us that averages always have normal distributions no matter how big the sample size
-  AnswerChoices: True; False
-  CorrectAnswer: False
-  AnswerTests: omnitest(correctVal='False')
-  Hint:  Never trust statements with the words ALWAYS or NEVER in them. There are ALWAYS exceptions to rules. 
-
-- Class: mult_question
-  Output: To calculate a confidence interval for a mean you take the sample mean and add and subtract the relevant normal quantile times the what?
-  AnswerChoices: standard error; variance; variance/n; mean
-  CorrectAnswer: standard error
-  AnswerTests: omnitest(correctVal='standard error')
-  Hint: You want something like a standard deviation, right? Which choice has the word standard in it?
-
-- Class: mult_question
-  Output: For a 95% confidence interval approximately how many standard errors would you add and subtract from the sample mean? 
-  AnswerChoices: 2; 4; 6; 8
-  CorrectAnswer: 2
-  AnswerTests: omnitest(correctVal='2')
-  Hint: Anything above 3 is pretty far from the mean. Also, purists would prefer 1.96 for this.
-
-- Class: mult_question
-  Output: If you wanted increased coverage what would you do to your confidence interval?
-  AnswerChoices: increase it; decrease it; keep it the same
-  CorrectAnswer: increase it
-  AnswerTests: omnitest(correctVal='increase it')
-  Hint: The key word here is increase. Bigger interval means bigger coverage.
-
-- Class: mult_question
-  Output: If you had less variability in your data would your confidence interval get bigger or smaller?
-  AnswerChoices: bigger; smaller
-  CorrectAnswer: smaller
-  AnswerTests: omnitest(correctVal='smaller')
-  Hint: Recall the size of the confidence interval positively depends on standard error which is sqrt(var/n). If variance is smaller then so is variability and the interval.
-
-- Class: mult_question
-  Output: If you had larger sample size would your confidence interval get bigger or smaller?
-  AnswerChoices: bigger; smaller
-  CorrectAnswer: smaller
-  AnswerTests: omnitest(correctVal='smaller')
-  Hint: Recall the size of the confidence interval positively depends on standard error which is sqrt(var/n). If the sample size, n, gets bigger the standard error gets smaller and so does  the interval.
-
-- Class: mult_question
-  Output:  A quick fix for small sample size binomial calculations is what?
-  AnswerChoices: add 2 successes and 2 failures; add 2 successes and 4 failures; add 2 successes and subtract 2 failures; changing data seem dishonest
-  CorrectAnswer: add 2 successes and 2 failures
-  AnswerTests: omnitest(correctVal='add 2 successes and 2 failures')
-  Hint: Adding 2 successes and 2 failures brings the proportion of successes closer to 1/2 which maximizes the confidence interval.
-
-- Class: text
-  Output: Congrats! You've concluded this lesson on asymptotics. We hope you feel confident and are asymptomatic after going through it.
+  Output: Congrats! You've concluded this lesson on all things t related - statistics, distributions, intervals. Tea time at the tee! 
 
