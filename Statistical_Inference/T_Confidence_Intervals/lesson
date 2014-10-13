@@ -29,7 +29,7 @@
   Output: The t distribution, invented by William Gosset in 1908, has thicker tails than the normal. Also, instead of having two parameters, mean and variance, as the normal does, the t distribution has only one - the number of degrees of freedom (df). 
 
 - Class: text
-  Output: As df increases, the t distribution gets more like a standard normal, so it's centered around 0. Also, the t assumes that the underlying data are iid Gaussian so (X' - mu}/(S/sqrt(n)) follows the t distribution with n-1 degrees of freedom.
+  Output: As df increases, the t distribution gets more like a standard normal, so it's centered around 0. Also, the t assumes that the underlying data are iid Gaussian so (X' - mu}/(S/sqrt(n)) follows the t distribution with n-1 degrees of freedom. Notice another difference from the normal confidence intervals? Here, for the standard error, we use the sample standard deviation divided by the sqrt of the sample size. That's nice, right? 
 
 - Class: mult_question
   Output: In the formula Z=(X' - mu}/(S/sqrt(n)), if we replaced S by sigma the statistic Z would be what?.
@@ -127,13 +127,13 @@
   Hint: Type range(g1) at the command prompt.
 
 - Class: cmd_question
-  Output: Now look at the range of g2 . 
+  Output: Now look at the range of g2. We see that the ranges of both groups are relatively large.
   CorrectAnswer: range(g2)
   AnswerTests: omnitest(correctExpr='range(g2)')
   Hint: Type  range(g2) at the command prompt.
 
 - Class: cmd_question
-  Output:  Now take advantage of R's componentwise treatment of vectors and create the vector difference by subtracting g1 from g2. 
+  Output:  Now let's look at the pairwise difference. We can take advantage of R's componentwise subtraction of vectors and create the vector difference by subtracting g1 from g2. Do this now.
   CorrectAnswer: difference <- g2-g1
   AnswerTests: expr_creates_var("difference"); omnitest(correctExpr='difference <- g2-g1')
   Hint: Type  difference <- g2-g1 at the command prompt.
@@ -143,6 +143,9 @@
   CorrectAnswer: mn <- mean(difference)
   AnswerTests: expr_creates_var("mn"); omnitest(correctExpr='mn <- mean(difference)')
   Hint: Type mn <- mean(difference) at the command prompt.
+
+- Class: text
+  Output: See how much smaller the mean difference in this paired data compared to the group variations?
 
 - Class: cmd_question
   Output:  Now use the R function sd to find the standard deviation of the vector difference and put the result in the variable s.
@@ -164,15 +167,44 @@
 
 - Class: video
   Output: As the slides showed,  R provides several ways of using t.test to find the confidence interval of this data. Would you like to see the R code of these alternatives and how to display them nicely? You'll need an internet connection to see it.
-  VideoLink: "http://wilcrofter.github.io/slidex/markDown/t_test.html"
+  VideoLink: "http://wilcrofter.github.io/slidex/markDown/ttest.html"
 
+- Class: text
+  Output: We now present methods, using t confidence intervals, for comparing independent groups.
+Suppose that we want to compare the mean blood pressure between two groups in a randomized trial; those who received the treatment to those who received a placebo. Unlike the sleep study, we cannot use the paired t test because the groups are independent and may have different sample sizes.
+
+- Class: text
+  Output: So our goal is to find a 95% confidence interval of the diffence between two population means. Let's represent this difference as mu_y - mu_x. How do we do this? Recall our formula X' +/- t_(n-1)*s/sqrt(n)
+
+- Class: text
+  Output: First we need a sample mean, but we have two, X' and Y', one from each group. It makes sense that we'd have to take their difference (Y'-X') as well, since we're looking for a confidence interval that contains the difference mu_y-mu_x. Now we need to specify a t quantile. Suppose the groups have different sizes n_x and n_y. 
 
 - Class: mult_question
-  Output: Recall our simulations and discussions of sample means in previous lessons. We can now talk about the  distribution of sample means of a collection of iid observations. The mean of the sample mean estimates what?
-  AnswerChoices: population mean; population variance; standard error; sigma^2/n
-  CorrectAnswer: population mean
-  AnswerTests: omnitest(correctVal='population mean')
-  Hint: Which choice has the word 'mean' in it?
+  Output: For one group we used the  quantile t_(.975,n-1). What do you think we'll use for the quantile of this problem?
+  AnswerChoices: t_(.975,n_x-1); t_(.975,n_y-1); t_(.975,n_x+n_y-1); t_(.975,n_x+n_y-2)
+  CorrectAnswer: t_(.975,n_x+n_y-2)
+  AnswerTests: omnitest(correctVal='t_(.975,n_x+n_y-2)')
+  Hint: We lose one degree of freedom from each group because we've calculated the sample mean from each group, so we add the two sizes and subtract two. 
+
+- Class: text
+  Output: The only term remaining is the standard error which for the single group is S/sqrt(n). Our interval will assume for now a common variance S^2 across the two groups. We'll actually pool variance information from the two groups. (We'll deal with the more complicated situation later.) How do we handle the 1/sqrt(n) portion? We can simply add 1/n_x and 1/n_y and take the square root of the sum.
+
+- Class: text
+  Output: We call the variance estimator we use the pooled variance S^2. The formula for it requires two variance estimators, one for each group. We multiply each by its respective degrees of freedom and divide the sum by the total number of degrees of freedom.
+
+- Class: mult_question
+  Output: Which of the following represents the numerator of this expression?
+  AnswerChoices: (n_x-1)(S_x)^2+(n_y-1)(S_y)^2; (n_x)(S_x)^2+(n_y)(S_y)^2; (n_x)(S_x)+(n_y)(S_y) 
+  CorrectAnswer: (n_x-1)(S_x)^2+(n_y-1)(S_y)^2
+  AnswerTests: omnitest(correctVal='(n_x-1)(S_x)^2+(n_y-1)(S_y)^2')
+  Hint: We need variances so the choice without the squared S terms is incorrect. Recall that the degrees of freedom is one less than the sample size for each group so that eliminates another choice and only one choice remains.
+
+- Class: mult_question
+  Output: Which of the following represents the total number of degrees of freedom?
+  AnswerChoices: (n_x-1)+(n_y-1); (n_x+n_y); (n_x+n_y-1); (n_x+n_y+2)
+  CorrectAnswer: (n_x-1)+(n_y-1)
+  AnswerTests: omnitest(correctVal='(n_x-1)+(n_y-1)')
+  Hint: Recall that the degrees of freedom is one less than the sample size for each group. We asked this a few questions ago, though we've put this answer in a different, but equivalent form.
 
 - Class: text
   Output: The Law of Large Numbers (LLN) says that the average (mean) approaches what it's estimating. We saw in our simulations that the larger the sample size the better the estimation.  As we flip a fair coin over and over, it eventually converges to the true probability of a head (.5). 
