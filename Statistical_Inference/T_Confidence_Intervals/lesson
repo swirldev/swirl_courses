@@ -13,7 +13,7 @@
   Output: In this lesson, we'll discuss some statistical methods for dealing with small datasets, specifically the Student's or Gosset's t distribution and t confidence intervals. 
 
 - Class: mult_question
-  Output: In the Asymptotics lesson we discussed confidence intervals using the Central Limit Theorem (CLT) and normal distributions. These needed large sample sizes, and the formula for computing the confidence interval was E +/- qnorm *std error(E), where E was some estimated value such as a sample mean with a standard error. Here qnorm represented what?
+  Output: In the Asymptotics lesson we discussed confidence intervals using the Central Limit Theorem (CLT) and normal distributions. These needed large sample sizes, and the formula for computing the confidence interval was Est +/- qnorm *std error(Est), where Est was some estimated value (such as a sample mean) with a standard error. Here qnorm represented what?
   AnswerChoices: the population mean; the population variance; the standard error; a specified quantile from a normal distribution 
   CorrectAnswer: a specified quantile from a normal distribution
   AnswerTests: omnitest(correctVal='a specified quantile from a normal distribution')
@@ -23,14 +23,14 @@
   Output: In the Asymptotics lesson we also mentioned the statistic Z=(X'-mu)/(sigma/sqrt(n)) which follows a standard normal distribution. This normalized statistic Z is especially nice because we know its mean and variance. They are what, respectively?
   AnswerChoices: 0 and 1; 1 and 0; 0 and 0; 1 and 1
   CorrectAnswer:  0 and 1
-  AnswerTests: omnitest(correctVal=' 0 and 1')
-  Hint: Recall the definition of standard normal. It's centered around 0 and it has a standard deviation of 1.
+  AnswerTests: omnitest(correctVal='0 and 1')
+  Hint: Recall the definition of standard normal. It's centered around 0 and it has a standard deviation of 1 so its mean and variance are what?.
 
 - Class: text
   Output: So the mean and variance of the standardized normal are fixed and known. Now we'll define the t statistic which looks a lot like the Z. It's defined as t=(X'-mu)/(s/sqrt(n)). Like the Z statistic, the t is centered around 0. The only difference between the two is that the population std deviation, sigma, in Z is replaced by the sample standard deviation in the t. So the t distribution is independent of the population mean and variance. Instead it depends on the sample size n.
 
 - Class: text
-  Output: As a result, for t distributions, the formula for computing a confidence interval is similar to what we did in the last lesson. However, instead of a quantile for a normal distribution we use a quantile for a t distribution. So the formula is  E +/- t-quantile *std error(E). Another distinction is that we'll use the sample standard deviation when we estimate the standard error of E.
+  Output: As a result, for t distributions, the formula for computing a confidence interval is similar to what we did in the last lesson. However, instead of a quantile for a normal distribution we use a quantile for a t distribution. So the formula is  Est +/- t-quantile *std error(Est). Another distinction is that we'll use the sample standard deviation when we estimate the standard error of Est.
 
 - Class: text
   Output: These t confidence intervals are very handy, and if you have a choice between these and normal, pick these. We'll see that as datasets get larger, t-intervals look normal. We'll cover the one and two group versions.
@@ -60,13 +60,16 @@
   Hint: Type myplot(2) at the command prompt.
 
 - Class: cmd_question
-  Output: You can see that the hump of t distribution (in blue) is not as high as the normal's and the two tails of the t distribution absorb the extra mass, so they're thicker. Note that with 2 degrees of freedom, you only have 3 data points. Ha! Talk about small sample sizes. Now try myplot  with an input of 20.
+  Output: You can see that the hump of t distribution (in blue) is not as high as the normal's. Consequently, the two tails of the t distribution absorb the extra mass, so they're thicker than the normal's. Note that with 2 degrees of freedom, you only have 3 data points. Ha! Talk about small sample sizes. Now try myplot  with an input of 20.
   CorrectAnswer: myplot(20)
   AnswerTests: omnitest(correctExpr='myplot(20)')
   Hint: Type myplot(20) at the command prompt.
 
+- Class: text
+  Output: The two distributions are almost right on top of each other using this higher degree of freedom.
+
 - Class: figure
-  Output: The two distributions are almost right on top of each other using this higher degree of freedom. Another way to look at these distributions is to plot their quantiles. From the slides, we've provided a second function for you, myplot2, which does this. It plots a lightblue reference line representing normal quantiles and a black line for the t quantiles. Both plot the quantiles from .5 which start at 0 (since the distributions are symmetric about 0) to .99.
+  Output:  Another way to look at these distributions is to plot their quantiles. From the slides, we've provided a second function for you, myplot2, which does this. It plots a lightblue reference line representing normal quantiles and a black line for the t quantiles. Both plot the quantiles starting at the 50th percentile which is 0 (since the distributions are symmetric about 0) and go to the 99th.
   Figure: tQuant.R
   FigureType: new
 
@@ -95,10 +98,10 @@
   Output: The quantiles are much closer together with the higher degrees of freedom. At the 97.5 percentile though the t quantile is still greater than the normal. Student's Rule!
 
 - Class: text
-  Output: As we said before, the t-interval is X' +/- t_(n-1)*s/sqrt(n) where t_(n-1) is the relevant quantile. The t interval  assumes that the data are iid normal, though it is robust to this assumption and  works well whenever the distribution of the data is roughly symmetric and mound shaped.
+  Output: So the t-interval is defined as X' +/- t_(n-1)*s/sqrt(n) where t_(n-1) is the relevant quantile. The t interval  assumes that the data are iid normal, though it is robust to this assumption and  works well whenever the distribution of the data is roughly symmetric and mound shaped.
 
 - Class: mult_question
-  Output: Our plots showed us that for large degrees of freedom, t quantiles become the same as what?
+  Output: Our plots showed us that for large degrees of freedom, t quantiles become close to what?
   AnswerChoices: standard normal quantiles; standard abnormal quantiles; very large numbers; very small numbers
   CorrectAnswer: standard normal quantiles
   AnswerTests: omnitest(correctVal='standard normal quantiles')
@@ -122,8 +125,11 @@
   AnswerTests: omnitest(correctExpr='sleep')
   Hint: Type sleep at the command prompt.
 
+- Class: text
+  Output: We see 20 entries, the first 10 show the results (extra) of the first drug (group 1) on each of the patients (ID), and the last 10 entries the results of the second drug (group 2) on each patient (ID). 
+
 - Class: figure
-  Output: We see 20 entries, the first 10 show the results (extra) of the first drug (group 1) on each of the patients (ID), and the last 10 entries the results of the second drug (group 2) on each patient (ID). Here we've plotted the data, connecting each patient's two results with a line, group 1 on the left and group 2 on the right. See that purple line with the steep slope? That's ID 9, with 0 result for group 1 and 4.6 for group 2. 
+  Output:  Here we've plotted the data in a paired way, connecting each patient's two results with a line, group 1 results on the left and group 2 on the right. See that purple line with the steep slope? That's ID 9, with 0 result for group 1 and 4.6 for group 2. 
   Figure: sleepPlot.R
   FigureType: new
 
@@ -137,7 +143,7 @@
   Hint: Type range(g1) at the command prompt.
 
 - Class: cmd_question
-  Output: Now look at the range of g2. We see that the ranges of both groups are relatively large.
+  Output: So g1 values go from -1.6 to 3.7. Now look at the range of g2. We see that the ranges of both groups are relatively large.
   CorrectAnswer: range(g2)
   AnswerTests: omnitest(correctExpr='range(g2)')
   Hint: Type  range(g2) at the command prompt.
@@ -149,13 +155,13 @@
   Hint: Type  difference <- g2-g1 at the command prompt.
 
 - Class: cmd_question
-  Output:  Now use the R function mean to find the average of the vector difference and put the result in the variable mn.
-  CorrectAnswer: mn <- mean(difference)
-  AnswerTests: expr_creates_var("mn"); omnitest(correctExpr='mn <- mean(difference)')
-  Hint: Type mn <- mean(difference) at the command prompt.
+  Output:  Now use the R function mean to find the average of difference.
+  CorrectAnswer: mean(difference)
+  AnswerTests: omnitest(correctExpr='mean(difference)')
+  Hint: Type mean(difference) at the command prompt.
 
 - Class: text
-  Output: See how much smaller the mean difference in this paired data compared to the group variations?
+  Output: See how much smaller the mean difference in this paired data is compared to the group variations?
 
 - Class: cmd_question
   Output:  Now use the R function sd to find the standard deviation of  difference and put the result in the variable s.
@@ -164,13 +170,13 @@
   Hint: Type s <- sd(difference) at the command prompt.
 
 - Class: cmd_question
-  Output:  Now recall the formula for finding the t confidence interval, X' +/- t_(n-1)*s/sqrt(n). Make the appropriate substitutions to find the 95% confidence intervals for this data. Remember to use the R construct c(-1,1) for the +/- portion of the formula and the R function qt with .975 and n-1 degrees of freedom for the quantile portion. Our data size is 10.
+  Output:  Now recall the formula for finding the t confidence interval, X' +/- t_(n-1)*s/sqrt(n). Make the appropriate substitutions to find the 95% confidence intervals for the average difference you just computed. We've stored it in the variable mn for you to use here. Remember to use the R construct c(-1,1) for the +/- portion of the formula and the R function qt with .975 and n-1 degrees of freedom for the quantile portion. Our data size is 10.
   CorrectAnswer: mn + c(-1,1)*qt(.975,9)*s/sqrt(10)
   AnswerTests:  omnitest(correctExpr='mn + c(-1,1)*qt(.975,9)*s/sqrt(10)')
   Hint: Type mn + c(-1,1)*qt(.975,9)*s/sqrt(10) at the command prompt.
 
 - Class: cmd_question
-  Output:  We could also just have used the R function t.test with the argument difference to get this result. As with the other R test functions, this returns a lot of information. Since all we're interested in at the moment is the confidence interval we can pick this off with the construct x$conf.int. Try this now.
+  Output:  We could also just have used the R function t.test with the argument difference to get this result. (You can use the default values for all the other arguments.) As with the other R test functions, this returns a lot of information. Since all we're interested in at the moment is the confidence interval we can pick this off with the construct x$conf.int. Try this now.
   CorrectAnswer: t.test(difference)$conf.int
   AnswerTests:  omnitest(correctExpr='t.test(difference)$conf.int')
   Hint: Type t.test(difference)$conf.int at the command prompt.
@@ -180,8 +186,10 @@
   VideoLink: "http://wilcrofter.github.io/slidex/markDown/ttest.html"
 
 - Class: text
-  Output: We now present methods, using t confidence intervals, for comparing independent groups.
-Suppose that we want to compare the mean blood pressure between two groups in a randomized trial; those who received the treatment to those who received a placebo. Unlike the sleep study, we cannot use the paired t test because the groups are independent and may have different sample sizes.
+  Output: We now present methods, using t confidence intervals, for comparing independent groups. 
+
+- Class: text
+  Output: Suppose that we want to compare the mean blood pressure between two groups in a randomized trial. We'll compare those who received the treatment to those who received a placebo. Unlike the sleep study, we cannot use the paired t test because the groups are independent and may have different sample sizes.
 
 - Class: text
   Output: So our goal is to find a 95% confidence interval of the diffence between two population means. Let's represent this difference as mu_y - mu_x. How do we do this? Recall our formula X' +/- t_(n-1)*s/sqrt(n)
@@ -191,16 +199,16 @@ Suppose that we want to compare the mean blood pressure between two groups in a 
 
 - Class: mult_question
   Output: For one group we used the  quantile t_(.975,n-1). What do you think we'll use for the quantile of this problem?
-  AnswerChoices: t_(.975,n_x-1); t_(.975,n_y-1); t_(.975,n_x+n_y-1); t_(.975,n_x+n_y-2)
+  AnswerChoices: t_(.975,n_x-1); t_(.975,n_y-n_x-2); t_(.975,n_x+n_y-1); t_(.975,n_x+n_y-2)
   CorrectAnswer: t_(.975,n_x+n_y-2)
   AnswerTests: omnitest(correctVal='t_(.975,n_x+n_y-2)')
   Hint: We lose one degree of freedom from each group because we've calculated the sample mean from each group, so we add the two sizes and subtract two. 
 
 - Class: text
-  Output: The only term remaining is the standard error which for the single group is s/sqrt(n). Our interval will assume (for now) a common variance S^2 across the two groups. We'll actually pool variance information from the two groups using a weighted sum. (We'll deal with the more complicated situation later.) How do we handle the 1/sqrt(n) portion? We can simply add 1/n_x and 1/n_y and take the square root of the sum. Then we MULTIPLY this by the sample variance to estimate the standard error.
+  Output: The only term remaining is the standard error which for the single group is s/sqrt(n). Let's deal with the numerator first. Our interval will assume (for now) a common variance s^2 across the two groups. We'll actually pool variance information from the two groups using a weighted sum. (We'll deal with the more complicated situation later.) 
 
 - Class: text
-  Output: We call the variance estimator we use the pooled variance S^2. The formula for it requires two variance estimators, one for each group. We multiply each by its respective degrees of freedom and divide the sum by the total number of degrees of freedom. This is how we weight the respective variances; those coming from bigger samples get more with weight.
+  Output: We call the variance estimator we use the pooled variance S^2. The formula for it requires two variance estimators, one for each group. We multiply each by its respective degrees of freedom and divide the sum by the total number of degrees of freedom. This is how we weight the respective variances; those coming from bigger samples get more weight.
 
 - Class: mult_question
   Output: Which of the following represents the numerator of this expression?
@@ -209,12 +217,16 @@ Suppose that we want to compare the mean blood pressure between two groups in a 
   AnswerTests: omnitest(correctVal='(n_x-1)(S_x)^2+(n_y-1)(S_y)^2')
   Hint: We need variances so the choice without the squared S terms is incorrect. Recall that the degrees of freedom is one less than the sample size for each group so that eliminates another choice and only one choice remains.
 
+
 - Class: mult_question
   Output: Which of the following represents the total number of degrees of freedom?
   AnswerChoices: (n_x-1)+(n_y-1); (n_x+n_y); (n_x+n_y-1); (n_x+n_y+2)
   CorrectAnswer: (n_x-1)+(n_y-1)
   AnswerTests: omnitest(correctVal='(n_x-1)+(n_y-1)')
   Hint: Recall that the degrees of freedom is one less than the sample size for each group. We asked this a few questions ago, though we've put this answer in a different, but equivalent form.
+
+- Class: text
+  Output: Now recall we're calculating the standard error term which for the single group case was s/sqrt(n). We've got the numerator done, by pooling the sample variances. How do we handle the 1/sqrt(n) portion? We can simply add 1/n_x and 1/n_y and take the square root of the sum. Then we MULTIPLY this by the sample variance to complete the estimate of the standard error.
 
 - Class: text
   Output: Now we'll plug in some numbers from the slides based on an example from Rosner's book Fundamentals of Biostatistics, a very good, if heavy, reference book. We want to compare blood pressure from two independent groups.  
@@ -228,7 +240,7 @@ Suppose that we want to compare the mean blood pressure between two groups in a 
 - Class: cmd_question
   Output: Now how many degrees of freedom are there? Put your answer in the variable ns.
   CorrectAnswer: ns <- 8+21-2
-  AnswerTests:  omnitest(correctExpr='ns <- 8+21-2')
+  AnswerTests:  ANY_of_exprs('ns <- 8+21-2','ns <- 27', 'ns <-21+8-2')
   Hint: Add the two sample sizes and subtract 2. Put the result in ns.
 
 - Class: cmd_question
@@ -238,25 +250,28 @@ Suppose that we want to compare the mean blood pressure between two groups in a 
   Hint: Type sp <- sqrt(sp/ns) at the command prompt.
 
 - Class: cmd_question
-  Output: Now to find the 95% confidence interval. Recall our basic formula X' +/- t_(n-1)*s/sqrt(n) and all the changes we need to make for working with two independent samples. We'll plug in the difference of the sample means for X' and our variable ns for the degrees of freedom when finding the t quantile. For the standard error, we multiply sp for the sample variance by the square root of the sum 1/n_{oc} + 1/n_{c}. Recall the values for this problem, X'_{oc}=132.86 and X'_{c}=127.44, n_{oc}=8 and n_{c}=21. Be sure to use the R construct c(-1,1) for the +/- portion and the R function qt with the correct percentile and degrees of freedom.
-  CorrectAnswer: 132.86-127.44+c(-1,1)*qt(.975,ns)*sp*sqrt((1/8)+(1/21))
-  AnswerTests:  omnitest(correctExpr='132.86-127.44+c(-1,1)*qt(.975,ns)*sp*sqrt((1/8)+(1/21))')
-  Hint: Type 132.86-127.44+c(-1,1)*qt(.975,ns)*sp*sqrt((1/8)+(1/21)) at the command prompt.
+  Output: Now to find the 95% confidence interval. Recall our basic formula X' +/- t_(n-1)*s/sqrt(n) and all the changes we need to make for working with two independent samples. We'll plug in the difference of the sample means for X' and our variable ns for the degrees of freedom when finding the t quantile. For the standard error, we multiply sp  by the square root of the sum 1/n_{oc} + 1/n_{c}. The values for this problem are X'_{oc}=132.86 and X'_{c}=127.44, n_{oc}=8 and n_{c}=21. Be sure to use the R construct c(-1,1) for the +/- portion and the R function qt with the correct percentile and degrees of freedom.
+  CorrectAnswer: 132.86-127.44+c(-1,1)*qt(.975,ns)*sp*sqrt(1/8+1/21)
+  AnswerTests:  omnitest(correctExpr='132.86-127.44+c(-1,1)*qt(.975,ns)*sp*sqrt(1/8+1/21)')
+  Hint: Type 132.86-127.44+c(-1,1)*qt(.975,ns)*sp*sqrt(1/8+1/21) at the command prompt.
 
 - Class: text
-  Output: See that 0 is contained in this 95% interval. That means that you can't rule out that the means of the two groups are equal.
+  Output: Notice that 0 is contained in this 95% interval. That means that you can't rule out that the means of the two groups are equal since a difference of 0 is in the interval.
+
+- Class: text
+  Output: Getting tired? Let's revisit the sleep problem and instead of looking at the data as paired over 10 subjects we'll look at it as two independent sets each of size 10. Recall the data is stored in the two vectors g1 and g2; we've also stored the difference between their means in the variable md. 
 
 - Class: cmd_question
-  Output: Getting tired? Let's revisit the sleep problem and instead of looking at the data as paired over 10 subjects we'll look at it as two independent sets each of size 10. We've stored off the data for you in the two vectors g1 and g2 as well as the difference between their means in the variable md. Let's compute the sample pooled variance and store it in the variable sp. Recall that this is the sqrt(weighted sums of sample variances/deg of freedom). Use the R function var to compute the variances of  g1 and g2. The degrees of freedom is 10+10-2 = 18.
+  Output: Let's compute the sample pooled variance and store it in the variable sp. Recall that this is the sqrt(weighted sums of sample variances/deg of freedom). The weight of each is the sample size-1. Use the R function var to compute the variances of  g1 and g2. The degrees of freedom is 10+10-2 = 18.
   CorrectAnswer: sp <- sqrt((9*var(g1)+9*var(g2))/18)
   AnswerTests:  omnitest(correctExpr='sp <- sqrt((9*var(g1)+9*var(g2))/18)')
   Hint: Type sp <- sqrt((9*var(g1)+9*var(g2))/18) at the command prompt.
 
 - Class: cmd_question
-  Output: Now  the last term of the formula is standard error of the mean difference is simply sp times the square root of the sum 1/10 + 1/10. Find the 95% t confidence interval of the mean difference of the two groups g1 and g2. Substitute md and sp into the formula you used above.
+  Output: Now  the last term of the formula, the standard error of the mean difference, is simply sp times the square root of the sum 1/10 + 1/10. Find the 95% t confidence interval of the mean difference of the two groups g1 and g2. Substitute md and sp into the formula you used above.
   CorrectAnswer: md + c(-1,1)*qt(.975,18)*sp*sqrt(1/5)
-  AnswerTests:  omnitest(correctExpr='semd <- sp*sqrt(1/10 + 1/10)')
-  Hint: Type semd <- sp*sqrt(1/10 + 1/10) at the command prompt.
+  AnswerTests:  omnitest(correctExpr='md + c(-1,1)*qt(.975,18)*sp*sqrt(1/5)')
+  Hint: Type md + c(-1,1)*qt(.975,18)*sp*sqrt(1/5) at the command prompt.
 
 - Class: cmd_question
   Output: We can check this manual calculation against the R function t.test. Since we subtracted g1 from g2, be sure to place g2 as your first argument and g1 as your second. Also make sure the argument paired is FALSE and var.equal is TRUE. We only need the confidence interval so use the construct x$conf.  Do this now.
@@ -265,13 +280,13 @@ Suppose that we want to compare the mean blood pressure between two groups in a 
   Hint: Type t.test(g2,g1,paired=FALSE,var.equal=TRUE)$conf at the command prompt.
 
 - Class: cmd_question
-  Output: Pretty cool that it matches, right? Note that 0 is again in this 95% interval so you can't reject the claim that the two groups are the same. Let's run t.test again, this time with paired=TRUE and see how different the result is. Don't specify var.equal and look only at the confidence interval
+  Output: Pretty cool that it matches, right? Note that 0 is again in this 95% interval so you can't reject the claim that the two groups are the same. Let's run t.test again, this time with paired=TRUE and see how different the result is. Don't specify var.equal and look only at the confidence interval.
   CorrectAnswer: t.test(g2,g1,paired=TRUE)$conf
   AnswerTests:  omnitest(correctExpr='t.test(g2,g1,paired=TRUE)$conf')
   Hint: Type t.test(g2,g1,paired=TRUE)$conf at the command prompt.
 
 - Class: text
-  Output: See how the interval excludes 0? This means the groups have much different averages.  
+  Output: See how the interval excludes 0? This means the groups when paired have much different averages.  
 
 - Class: text
   Output: Now let's talk about calculating confidence intervals for two groups which have unequal variances. We won't be pooling them as we did before.
@@ -283,11 +298,11 @@ Suppose that we want to compare the mean blood pressure between two groups in a 
   Output: When the underlying X and Y data are iid normal and the variances are different, the normalized statistic we started this lesson with, (X'-mu)/(s/sqrt(n)), doesn't follow a t distribution. However, it can be approximated by a t distribution if we set the degrees of freedom appropriately. 
 
 - Class: text
-  Output: The formula for the degrees of freedom is a complicated fraction that no one remembers. For a 95% interval the formula is this. The numerator is the SQUARE of the sum of the squared standard errors of the two sample means. Each has the s^2/n. The denominator is the sum of two terms, one for each group. Each term has the same form. It is the standard error of the mean raised to the fourth power divided by the sample size-1. More precisely, each term looks like (s^4/n^2)/(n-1). We use this df to find the t quantile.
+  Output: The formula for the degrees of freedom is a complicated fraction that no one remembers.  The numerator is the SQUARE of the sum of the squared standard errors of the two sample means. Each has the form s^2/n. The denominator is the sum of two terms, one for each group. Each term has the same form. It is the standard error of the mean raised to the fourth power divided by the sample size-1. More precisely, each term looks like (s^4/n^2)/(n-1). We use this df to find the t quantile.
 
 - Class: video
   Output: Would you like to see this formula nicely displayed? You'll need an internet connection to do this.
-  VideoLink: "http://wilcrofter.github.io/slidex/markDown/ttest.html"
+  VideoLink: "http://wilcrofter.github.io/slidex/markDown/diffVar.html"
 
 - Class: text
   Output: Let's plug in the numbers from the blood pressure study to see how this works. Recall we have two groups, the first with size 8 and X'_{oc}=132.86 and s_{oc}=15.34 and the second with size 21 and X'_{c}=127.44 and s_{c}=18.23. 
@@ -311,7 +326,7 @@ Suppose that we want to compare the mean blood pressure between two groups in a 
   Hint: Type  mydf <- num/den at the command prompt.
 
 - Class: cmd_question
-  Output: Now with the R function qt(.975,mydf) compute the interval. Recall the formula. X'_{oc}-X'_{c} +/ t_df * SE. Recall that SE is the square root of the sum of the squared standard errors of the two means, (s_1)^2/n_1 + (s_2)^2/n_2 . Again our numbers are the following. X'_{oc}=132.86  s_{oc}=15.34  and n_{oc}=8 .  X'_{c}=127.44  s_{c}=18.23  and n_{c}=21. 
+  Output: Now with the R function qt(.975,mydf) to compute the 95% t interval. Recall the formula. X'_{oc}-X'_{c} +/- t_df * SE. Recall that SE is the square root of the sum of the squared standard errors of the two means, (s_1)^2/n_1 + (s_2)^2/n_2 . Again our numbers are the following. X'_{oc}=132.86  s_{oc}=15.34  and n_{oc}=8 .  X'_{c}=127.44  s_{c}=18.23  and n_{c}=21. 
   CorrectAnswer: 132.86-127.44 +c(-1,1)*qt(.975,mydf)*sqrt(15.34^2/8 + 18.23^2/21)
   AnswerTests:  omnitest(correctExpr='132.86-127.44 +c(-1,1)*qt(.975,mydf)*sqrt(15.34^2/8 + 18.23^2/21)')
   Hint: Type  132.86-127.44 +c(-1,1)*qt(.975,mydf)*sqrt(15.34^2/8 + 18.23^2/21) at the command prompt.
@@ -321,5 +336,5 @@ Suppose that we want to compare the mean blood pressure between two groups in a 
 
 
 - Class: text
-  Output: Congrats! You've concluded this lesson on all things t related - statistics, distributions, intervals. Tea time at the tee! 
+  Output: Congrats! You've concluded this rather t-dious lesson on all things t related - statistics, distributions, intervals. Hope you're not too teed off!
 
