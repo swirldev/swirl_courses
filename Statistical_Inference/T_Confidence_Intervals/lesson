@@ -20,7 +20,7 @@
   Hint: Which choice has part of the word 'qnorm' in it?
 
 - Class: mult_question
-  Output: In the Asymptotics lesson we also mentioned the statistic Z=(X'-mu)/(sigma/sqrt(n)) which follows a standard normal distribution. This normalized statistic Z is especially nice because we know its mean and variance. They are what, respectively?
+  Output: In the Asymptotics lesson we also mentioned the Z statistic Z=(X'-mu)/(sigma/sqrt(n)) which follows a standard normal distribution. This normalized statistic Z is especially nice because we know its mean and variance. They are what, respectively?
   AnswerChoices: 0 and 1; 1 and 0; 0 and 0; 1 and 1
   CorrectAnswer:  0 and 1
   AnswerTests: omnitest(correctVal='0 and 1')

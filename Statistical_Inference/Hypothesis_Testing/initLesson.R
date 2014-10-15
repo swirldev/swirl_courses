@@ -1,9 +1,17 @@
 # Put initialization code in this file.
-data(sleep)
 library(ggplot2)
-g1 <- sleep$extra[1 : 10]
-g2 <- sleep$extra[11 : 20]
-n1 <- length(g1)
-n2 <- length(g2)
-md <- mean(g2)-mean(g1)
-mn <- mean(g2-g1)
+fname <- paste(getwd(),"Statistical_Inference/Hypothesis_Testing/father_son.csv",sep="/")
+fs <- read.csv(fname)
+mybin <- function{
+  rbind(
+    pbinom(-1, size = 8, p = .5, lower.tail = FALSE),
+    pbinom( 0, size = 8, p = .5, lower.tail = FALSE),
+    pbinom( 1, size = 8, p = .5, lower.tail = FALSE),
+    pbinom( 2, size = 8, p = .5, lower.tail = FALSE),
+    pbinom( 3, size = 8, p = .5, lower.tail = FALSE),
+    pbinom( 4, size = 8, p = .5, lower.tail = FALSE),
+    pbinom( 5, size = 8, p = .5, lower.tail = FALSE),
+    pbinom( 6, size = 8, p = .5, lower.tail = FALSE),
+    pbinom( 7, size = 8, p = .5, lower.tail = FALSE)
+)
+}
