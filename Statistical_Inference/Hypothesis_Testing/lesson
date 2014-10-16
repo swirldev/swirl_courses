@@ -297,4 +297,37 @@ The quantile is 1.645, so since 2>1.645 we can reject the null hypothesis. The g
   Output: Similarly, if a (1-alpha)% interval contains mu_0, then we fail to reject H_0.
 
 - Class: text
-  Output: Congrats! We confidently hypothesize that you're happy to have finished this lesson. Can we test this this?
+  Output: Let's see how hypothesis testing works with binomial distributions by considering the example from the slides. A family has 8 childran, 7 of whom are girls and none are twins. Let the null hypothesis be that either gender is equally likely, like an iid coin flip. 
+
+- Class: text
+  Output: So our H_0 is that p=.5. (Here p is the probability of a girl.) We want to see if we should reject H_0 based on this sample of size 8. Our  H_a is that p>.05, so we'll do a one-sided test, i.e., look at only the right tail of the distribution.  Let's set alpha, the level of our test to .05 and try to find the rejection region, that is, what's the fewest number of girls out of the 8, for which the probability is less than .05?
+
+
+
+- Class: cmd_question
+  Output: We've defined for you a 9-long vector, mybin, which shows nine probabilities, the i-th of which is the probability that there are at least i-1 girls out of the 8 possible children. Look at mybin now.
+  CorrectAnswer: mybin
+  AnswerTests: omnitest(correctExpr='mybin')
+  Hint: Type mybin at the command prompt.
+
+- Class: text
+  Output: So mybin[1]=1.0, meaning that with probability 1 there are at least 0 girls, and mybin[2]=.996 is the probability that there's at least 1 girl out of the 8, and so forth. The probabilities decrease as i increases.
+
+- Class: cmd_question
+  Output: What is the least value of i for which the probability is less than .05?
+  CorrectAnswer: 8
+  AnswerTests: equiv_val(8)
+  Hint: mybin[7]=.144 and mybin[8]=.035.
+
+- Class: mult_question
+  Output: So  mybin[8]=.03 is the probability  of having at least 7 girls in the sample. This is less than .05 so it's in the region of rejection. Does that mean we accept or reject H_0, (that either gender is equally likely) based on this sample of size 8?
+  AnswerChoices: accept H_0; reject H_0
+  CorrectAnswer: reject H_0
+  AnswerTests: omnitest(correctVal='reject H_0')
+  Hint: Our sample had 7 daughters which is in the region of rejection. H_0 is OUT.
+
+- Class: text
+  Output:  Finally, we note that a 2-sided test would mean that our alternative hypothesis is that p is not equal to .5, and it's not obvious how to do this with a binomial distribution. Don't worry, though, because the next lesson on p-values will make this clearer. It's interesting that for discrete distributions such as binomial and Poisson, inverting 2-sided tests is how R calculates exact tests. (It doesn't rely on the CLT.)
+
+- Class: text
+  Output: Congrats! We confidently hypothesize that you're happy to have finished this lesson. Can we test this?
