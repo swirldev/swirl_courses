@@ -13,16 +13,16 @@
   Output: In this lesson, as the name suggests, we'll discuss hypothesis testing which is concerned with making decisions using data.
 
 - Class: text
-  Output: An important concept in hypothesis testing is the NULL hypothesis, usually denoted as H_0. This is the hypothesis that represents the status_quo and is assumed true. It's a baseline against which you're testing alternative hypotheses, usually denoted by H_a. Statistical evidence is required to reject H_0 in favor of a research or alternative hypothesis. 
+  Output: An important concept in hypothesis testing is the NULL hypothesis, usually denoted as H_0. This is the hypothesis that represents the status_quo and is assumed true. It's a baseline against which you're testing alternative hypotheses, usually denoted by H_a. Statistical evidence is required to reject H_0 in favor of the research or alternative hypothesis. 
 
 - Class: text
   Output: We'll consider the motivating example from the slides. A respiratory disturbance index (RDI) of more than 30 events / hour is considered evidence of severe sleep disordered breathing (SDB). Suppose that in a sample of 100 overweight subjects with other risk factors for (SDB) at a sleep clinic, the mean RDI (X') was 32 events / hour with a standard deviation (s) of 10 events / hour.
 
 - Class: text
-  Output: We might want to test the null hypothesis H_0 that says mu = 30. Our alternative hypothesis H_a is that mu>30. Here mu is the true population mean RDI.
+  Output: We might want to test the null hypothesis H_0 that says mu = 30. Our alternative hypothesis H_a is that mu>30. Here mu represents the true population mean RDI.
  
 - Class: text
-  Output: So we have two competing hypotheses, H_0 and H_a, of which we'll have to pick one (using statistical evidence of course). That means we have four possible outcomes determined by what really is (truth) and which hypothesis we accept. Two of the outcomes are correct and two are errors. 
+  Output: So we have two competing hypotheses, H_0 and H_a, of which we'll have to pick one (using statistical evidence of course). That means we have four possible outcomes determined by what really is (the truth) and which hypothesis we accept. Two of the outcomes are correct and two are errors. 
 
 - Class: mult_question
   Output: Which of the following outcomes is correct?
@@ -34,8 +34,8 @@
 - Class: mult_question
   Output: Which of the following outcomes is an error?
   AnswerChoices: H_0 is TRUE and we reject it; H_a is TRUE and we accept it; H_0 is FALSE and we reject it; H_a is FALSE and we reject it
-  CorrectAnswer: H_a is TRUE and we accept it
-  AnswerTests: omnitest(correctVal='H_a is TRUE and we accept it')
+  CorrectAnswer: H_0 is TRUE and we reject it
+  AnswerTests: omnitest(correctVal='H_0 is TRUE and we reject it')
   Hint: It's always a mistake to REJECT the TRUTH.
 
 - Class: text
@@ -68,13 +68,13 @@
   Output:  This means that  alpha, the Type I error rate, is the probability of rejecting the null hypothesis when, in fact, the null hypothesis is correct. We don't want alpha too low because then we would never reject the null hypothesis even if it's false.
 
 - Class: cmd_question
-  Output: Recall that the standard error of a sample mean is given by the formula s/sqrt(n). Recall in our sleep example we had a sample of 100 subjects, our mean RDI (X') was 32 events / hour with a standard deviation (s) of 10 events / hour. What is the standard error of the mean?
+  Output: Recall that the standard error of a sample mean is given by the formula s/sqrt(n). Recall in our sleep example we had a sample of 100 subjects, our mean RDI (X') was 32 events / hour with a standard deviation (s) of 10 events / hour. What is the standard error of the mean in this example?
   CorrectAnswer: 1
   AnswerTests: equiv_val(1)
   Hint: Divide s by sqrt(n).
 
 - Class: text
-  Output: Under H_0, X' is normally distributed with mean mu=30 and variance 1. We want to choose the constant C so that the probability that X is greater than C given H_0 is 5%. That is, P(X > C| H_0) is 5%. Sound familiar? 
+  Output: Under H_0, X' is normally distributed with mean mu=30 and variance 1.  We want to choose the constant C so that the probability that X is greater than C given H_0 is 5%. That is, P(X > C| H_0) is 5%. Sound familiar? 
 
 - Class: figure
   Output: Here's a plot to show what we mean. The shaded portion represents 5% of the area under the curve and those X values in it are those for which the probability that X>C is 5%. 
@@ -82,24 +82,23 @@
   FigureType: new
 
 - Class: mult_question
-  Output: The shown curve has a standard deviation of 2. The shaded portion represents 5% of the area under the density curve. Which expression represents the smallest value X for which the area is shaded?
+  Output: This normal curve happens to have a standard deviation of 2. (We're just trying to generalize the point here.) The shaded portion represents 5% of the area under the density curve. Which expression represents the smallest value X for which the area is shaded?
   AnswerChoices: qnorm(.95,sd=2); qnorm(.95); dnorm(.95,sd=2); qnorm(.975,sd=2)
   CorrectAnswer: qnorm(.95,sd=2)
   AnswerTests: omnitest(correctVal='qnorm(.95,sd=2)')
   Hint: The shading begins at the 95th percentile and the smallest value X for which the area is shaded represents the 95th quantile. We have to tell qnorm the standard deviation of the normal.
 
 - Class: text
-  Output: The 95th percentile of a standard normal distribution is 1.645 standard deviations from the mean, so in our example we have to set C to be 1.645 standard deviations MORE than our hypothesized mean of 30. If C = 30 + 1 * 1.645 = 31.645 then if our sample mean X' is greater than or equal to C, the probability that a sample from a normal distribution with mean 30, and variance 1 is larger than C is 5%.
+  Output: The 95th percentile of a standard normal distribution is 1.645 standard deviations from the mean, so in our example  we have to set C to be 1.645 standard deviations MORE than our hypothesized mean of 30. If C = 30 +  1.645 * 1 = 31.645 (recall that the variance and standard deviation equalled 1) then if our sample mean X' >= C, the probability that a sample drawn from this distribution N(30,1) is larger than C is 5%.
 
 - Class: text
-  Output: So the rule "Reject H_0 when the sample mean X' >= 31.645" has the property that the probability of rejection H_0 when it is TRUE is 5% when the hypothesized mean mu=30, sigma=1 and n=100 as given in this example.
+  Output: So the rule "Reject H_0 when the sample mean X' >= 31.645" has the property that the probability of rejecting H_0 when it is TRUE is 5% given the model of this example - hypothesized mean mu=30, sigma=1 and n=100.
 
 - Class: text
   Output: As you might expect, we can generalize the above result. Instead of computing a constant C as a cutpoint for accepting or rejecting the null hypothesis, we can simply compute a Z score, the number of standard deviations the sample mean is from the hypothesized mean. We can then  compare it to the specified quantile.
 
 - Class: text
-  Output: How do we do this? Compute the distance between the two means (32-30) and divide by the standard error of the mean, that is  (s/sqrt(n)). In this example the standard error is 10/sqrt(100)=1. The Z score is thus 2. 
-The quantile is 1.645, so since 2>1.645 we can reject the null hypothesis. The general rule for rejection is if sqrt(n) * ( X' - mu) / s > Z_{1-alpha}.
+  Output: How do we do this? Compute the distance between the two means (32-30) and divide by the standard error of the mean, that is  (s/sqrt(n)). In this example the standard error is 10/sqrt(100)=1. The Z score is thus 2. The quantile is 1.645, so since 2>1.645 we can reject the null hypothesis. The general rule for rejection is if sqrt(n) * ( X' - mu) / s > Z_{1-alpha}.
 
 - Class: text
   Output: Our test statistic is (X'-mu) / s/sqrt(n) which is standard normal.
@@ -138,7 +137,7 @@ The quantile is 1.645, so since 2>1.645 we can reject the null hypothesis. The g
 
 - Class: figure
   Output: Here again is the plot to show what we mean. The shaded portion represents 5% of the area under the curve and those X values in it are those which are at least 1.64 standard deviations greater than (to the right of) the mean. The probability of this is 5%. This means that we would reject a true null hypothesis, that mu=mu_0, with probability  5%.
-  Figure: conf_5pct_left.R
+  Figure: conf_5pct.R
   FigureType: new
 
 - Class: text
@@ -146,17 +145,17 @@ The quantile is 1.645, so since 2>1.645 we can reject the null hypothesis. The g
 
 - Class: figure
   Output: Here's the plot to show what we mean. The shaded portion represents 5% of the area under the curve but it's composed of two pieces, each of which contains 2.5% of the area under the curve. Those X values in the shaded portions are values which are at least 1.96 standard deviations away from the mean in either direction. The total probability of this is 5%. This means that we would reject a true null hypothesis, that mu=mu_0, with probability 5%.
-  Figure: conf_5pct_left.R
+  Figure: conf_5pct_both.R
   FigureType: new
 
 - Class: text
   Output: Notice that we have fixed alpha to be low, so if we reject H_0, either it was FALSE (and hence our model is wrong and we are correct to reject it) OR H_0 is TRUE and we have made an error (Type I). The probability of this is 5%.  
 
 - Class: text
-  Output: Since our tests were based on alpha, the probability of a Type I error, we say that  we "fail to reject H_0" rather than we "accept $H_0$". H_0 could be true or we might not have enough data to reject it.
+  Output: Since our tests were based on alpha, the probability of a Type I error, we say that  we "fail to reject H_0" rather than we "accept H_0". If we fail to reject H_0,  then H_0 could be true OR we just might not have enough data to reject it.
 
 - Class: text
-  Output: We have not fixed the probability of a type II error (accepting H_0 when it is false), which we call beta. The quantity 1-beta which is the probability of rejecting H_0 when it's false, POWER. This is used to determine appropriate sample sizes in experiments. Finally, note that statistical significance is not the same as scientific significance but it's complicated to distinguish between the two. 
+  Output: We have not fixed the probability of a type II error (accepting H_0 when it is false), which we call beta. The quantity 1-beta represents the probability of rejecting H_0 when it's false, so it's called POWER. This is used to determine appropriate sample sizes in experiments. Finally, note that statistical significance is not the same as scientific significance but it's complicated to distinguish between the two. 
 
 - Class: mult_question
   Output: What do you think we call the region of test statistic values for which we reject H_0? 
@@ -203,7 +202,7 @@ The quantile is 1.645, so since 2>1.645 we can reject the null hypothesis. The g
   Hint: Type qt(.95,15) at the command prompt.
 
 - Class: text
-  Output: So the test statistic is within 1.64 standard deviations of the hypothesized mean, so we fail to reject H_0.
+  Output: So the test statistic (.8) is less than 1.75, the  95th percentile of the T distribution with 15 df. This means that our sample mean (32) does not fall within the region of rejection. Therefore  we fail to reject H_0.
 
 - Class: text
   Output: Now let's consider a two-sided test. Suppose that we would reject the null hypothesis if in fact the sample mean was too large or too small. That is, we want to test the alternative H_a that mu is not equal to 30. We will reject if the test statistic, 0.8, is either too large or too small.
@@ -227,9 +226,9 @@ The quantile is 1.645, so since 2>1.645 we can reject the null hypothesis. The g
 
 - Class: mult_question
   Output: Now for the left tail, qt(.025,15). What can we say about it?
-  AnswerChoices: it's less than 0; it's greater than 0; it's bigger than qt(.975,15); we don't know anything about it
-  CorrectAnswer: it's less than 0
-  AnswerTests: omnitest(correctVal='it's less than 0')
+  AnswerChoices: it is less than 0; it is greater than 0; it is bigger than qt(.975,15); we don't know anything about it
+  CorrectAnswer: it is less than 0
+  AnswerTests: omnitest(correctVal='it is less than 0')
   Hint: Any quantile of a percentile less than .5 will be less than 0 by the symmetry of the distribution.
 
 - Class: text
@@ -290,7 +289,7 @@ The quantile is 1.645, so since 2>1.645 we can reject the null hypothesis. The g
   Output: You've probably noticed the strong similarity between the confidence intervals we studied in the last lesson and these hypothesis tests. That's because they're equivalent!
 
 - Class: text
-  Output: If you set alpha to  some value (say .05) and ran many tests checking alternative hypotheses against H_0: mu=mu_0, the set of all possible values for which you fail to reject H_0 forms the  (1-alpha)% (that is 95%) confidence interval for mu_0.
+  Output: If you set alpha to  some value (say .05) and ran many tests checking alternative hypotheses against H_0, that mu=mu_0, the set of all possible values for which you fail to reject H_0 forms the  (1-alpha)% (that is 95%) confidence interval for mu_0.
 
 
 - Class: text

@@ -182,7 +182,7 @@
   Hint: Type t.test(difference)$conf.int at the command prompt.
 
 - Class: video
-  Output: As the slides showed,  R provides several ways of using t.test to find the confidence interval of this data. Would you like to see the R code of these alternatives and how to display them nicely? You'll need an internet connection to see it.
+  Output: As the slides showed,  R provides several ways of using t.test to find the confidence interval of this data. Would you like to see the R code to see 4 alternatives (including the two we just went through) and how to display them nicely? You'll need an internet connection to see it.
   VideoLink: "http://wilcrofter.github.io/slidex/markDown/ttest.html"
 
 - Class: text
@@ -192,7 +192,7 @@
   Output: Suppose that we want to compare the mean blood pressure between two groups in a randomized trial. We'll compare those who received the treatment to those who received a placebo. Unlike the sleep study, we cannot use the paired t test because the groups are independent and may have different sample sizes.
 
 - Class: text
-  Output: So our goal is to find a 95% confidence interval of the diffence between two population means. Let's represent this difference as mu_y - mu_x. How do we do this? Recall our formula X' +/- t_(n-1)*s/sqrt(n)
+  Output: So our goal is to find a 95% confidence interval of the diffence between two population means. Let's represent this difference as mu_y - mu_x. How do we do this? Recall our formula X' +/- t_(n-1)*s/sqrt(n).
 
 - Class: text
   Output: First we need a sample mean, but we have two, X' and Y', one from each group. It makes sense that we'd have to take their difference (Y'-X') as well, since we're looking for a confidence interval that contains the difference mu_y-mu_x. Now we need to specify a t quantile. Suppose the groups have different sizes n_x and n_y. 
