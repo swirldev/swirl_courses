@@ -74,7 +74,7 @@
   Hint: Divide s by sqrt(n).
 
 - Class: text
-  Output: Under H_0, X' is normally distributed with mean mu=30 and variance 1.  We want to choose the constant C so that the probability that X is greater than C given H_0 is 5%. That is, P(X > C| H_0) is 5%. Sound familiar? 
+  Output: Under H_0, X' is normally distributed with mean mu=30 and variance 1. (We're estimating the variance as the square of the standard error or s^2/n=1.) We want to choose the constant C so that the probability that X is greater than C given H_0 is 5%. That is, P(X > C| H_0) is 5%. Sound familiar? 
 
 - Class: figure
   Output: Here's a plot to show what we mean. The shaded portion represents 5% of the area under the curve and those X values in it are those for which the probability that X>C is 5%. 
@@ -92,7 +92,7 @@
   Output: The 95th percentile of a standard normal distribution is 1.645 standard deviations from the mean, so in our example  we have to set C to be 1.645 standard deviations MORE than our hypothesized mean of 30. If C = 30 +  1.645 * 1 = 31.645 (recall that the variance and standard deviation equalled 1) then if our sample mean X' >= C, the probability that a sample drawn from this distribution N(30,1) is larger than C is 5%.
 
 - Class: text
-  Output: So the rule "Reject H_0 when the sample mean X' >= 31.645" has the property that the probability of rejecting H_0 when it is TRUE is 5% given the model of this example - hypothesized mean mu=30, sigma=1 and n=100.
+  Output: So the rule "Reject H_0 when the sample mean X' >= 31.645" has the property that the probability of rejecting H_0 when it is TRUE is 5% given the model of this example - hypothesized mean mu=30, variance=1 and n=100.
 
 - Class: text
   Output: As you might expect, we can generalize the above result. Instead of computing a constant C as a cutpoint for accepting or rejecting the null hypothesis, we can simply compute a Z score, the number of standard deviations the sample mean is from the hypothesized mean. We can then  compare it to the specified quantile.
