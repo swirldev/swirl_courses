@@ -1,48 +1,132 @@
 - Class: meta
   Course: Statistical_Inference
-  Lesson: Hypothesis_Testing
+  Lesson: P_Values
   Author: Swirl Coders
   Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
 - Class: text
-  Output: "Hypothesis_Testing. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/09_HT.)"
+  Output: "P_Values. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/10_pValues.)"
 
 - Class: text
-  Output: In this lesson, as the name suggests, we'll discuss hypothesis testing which is concerned with making decisions about populations using observed data.
+  Output: In this lesson, as the name suggests, we'll discuss p-values. These have nothing to do with urological testing. Instead they are the most common measure of statistical significance.
 
 - Class: text
-  Output: An important concept in hypothesis testing is the NULL hypothesis, usually denoted as H_0. This is the hypothesis that represents the status_quo and is assumed true. It's a baseline against which you're testing alternative hypotheses, usually denoted by H_a. Statistical evidence is required to reject H_0 in favor of the research or alternative hypothesis. 
+  Output: However, because they're popular used so much, they're often misused, that is, misinterpreted. In this lecture we'll focus on how to generate them and interpret them correctly.
 
 - Class: text
-  Output: We'll consider the motivating example from the slides. A respiratory disturbance index (RDI) of more than 30 events / hour is considered evidence of severe sleep disordered breathing (SDB). Suppose that in a sample of 100 overweight subjects with other risk factors for (SDB) at a sleep clinic, the mean RDI (X') was 32 events / hour with a standard deviation (s) of 10 events / hour.
+  Output: The question motivating p-values is this. Given that we have some  null hypothesis concerning the data (like its mean), how unusual is it to see the  sample value we get from our data? So there are, implicitly three steps. 
+
+- Class: mult_question
+  Output: What do you think the first step is?
+  AnswerChoices: Create a null hypothesis; Calculate a test statistic from the data;  Compare the test statistic to a Z or t score; Consult your crystal ball
+  CorrectAnswer: Create a null hypothesis
+  AnswerTests: omnitest(correctVal='Create a null hypothesis')
+  Hint: You always have to start with a null hypothesis.
 
 - Class: text
-  Output: We want to test the null hypothesis H_0 that mu = 30. Our alternative hypothesis H_a is mu>30. Here mu represents the hypothesized population mean RDI.
+  Output: So we have to begin with a null hypothesis which is a reasoned guess at some distribution of a data summary (a statistic), for instance, a mean or average of some population. Recall from the last lesson that the null hypothesis H_0 is a baseline against which we'll measure the actual observed data.
+
+- Class: mult_question
+  Output: So you propose a null hypothesis. What's the next step?
+  AnswerChoices:  Calculate a test statistic from the given data;  Compare the test statistic to a Z or t score; Go back to the crystal ball; Reject H_0
+  CorrectAnswer: Calculate a test statistic from the given data
+  AnswerTests: omnitest(correctVal='Calculate a test statistic from the given data')
+  Hint: You need something to compare the proposed value (in H_0) with.
+
+- Class: text
+  Output: Now you have a proposed statistic (from your reasoned hypothesis) and a test statistic computed from your gathered data. The final step is to compare what we calculated to our hypothetical distribution and see how  "extreme" the test value is toward the alternative hypothesis. 
+
+- Class: text
+  Output: The p-value is the probability under the null hypothesis of obtaining evidence as extreme or more extreme than  your test statistic (obtained from your observed data) in the direction of the alternative hypothesis. 
+
+- Class: text 
+  Output: So if the p-value is small, then either H_0 is true and we have observed a rare event in seeing this unusual test statistic OR H_0 is false. Let's go through an example.
+
+- Class: text 
+  Output: Suppose that you get a t statistic of 2.5 for 15 df testing H_0, mu = mu_0 versus an H_a that mu > mu_0. What's the probability of getting a t statistic as large as 2.5?
+
+- Class: cmd_question
+  Output: R can help us! We can use the R function pt which computes the distribution function of the t distribution. We'll use the arguments q=2.5 and df=15 and set the lower.tail argument to FALSE since we'll  look only at the right tail. We have to gauge the extremity in the direction of H_a, mu>mu_0. Run this now.
+  CorrectAnswer: pt(2.5, 15, lower.tail=FALSE)
+  AnswerTests: omnitest(correctExpr='pt(2.5, 15, lower.tail=FALSE)')
+  Hint: Type pt(2.5, 15, lower.tail=FALSE) at the command prompt.
+
+- Class: text 
+  Output: This result tells us that, if H_0 were true,  we would see this large a test statistic with probability 1%. The other option is that H_0 is false. 
+
+- Class: text 
+  Output: Another way to think about a p-value is as an attained significance level which is defined as the smallest value of alpha at which you will reject the null hypothesis.
+
+- Class: text 
+  Output: Recall the example from our last lesson in which we computed test statistic of 2. Our H_0 said that mu_0 = 30 and the alternative H_a mu > 30.
+Assume we used a Z test (normal distribution). We rejected the one sided test when alpha was set to 0.05.
+
+- Class: cmd_question
+  Output: Why did we reject? Find the quantile associated with this test, that's the place to start. Use qnorm. 
+  CorrectAnswer: qnorm(.95)
+  AnswerTests: omnitest(correctExpr='qnorm(.95)')
+  Hint: Type qnorm(.95) at the command prompt.
+
+- Class: figure 
+  Output: We rejected H_0 because our data (the test statistic actually) favored H_a. The test statistic 2 (shown by the vertical blue line) exceeded the 95th quantile. It falls in the shaded portion of this figure. As you know, the shaded portion represents 5% of the area under the curve.
+  Figure: conf_5pct.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: Let's try the 99th percentile to see if we would still reject H_0. 
+  CorrectAnswer: qnorm(.99)
+  AnswerTests: omnitest(correctExpr='qnorm(.99)')
+  Hint: Type qnorm(.99) at the command prompt.
+
+- Class: mult_question
+  Output: Would we reject H_0 if alpha were .01?
+  AnswerChoices: Yes; No
+  CorrectAnswer: No
+  AnswerTests: omnitest(correctVal='No')
+  Hint: Now the quantile exceeds the test statistic.
+
+- Class: figure 
+  Output: Again, a picture's worth a thousand words, right? The vertical line at the test statistic 2 is not in the region of rejection.
+  Figure: conf_1pct.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: So our data (the test statistic) tells us what the attained significance level is. We use the R function pnorm to give us this number. Try it now with the test statistic value 2. Use the default values for all the other arguments.
+  CorrectAnswer: pnorm(2)
+  AnswerTests: omnitest(correctExpr='pnorm(2)')
+  Hint: Type pnorm(2) at the command prompt.
+
+- Class: text
+  Output: Just as we thought, somewhere between .95 and .99. That's reassuring.
+
+- Class: cmd_question
+  Output: Now let's find the p value associated with this example. As before, we'll use  pnorm. But this time we'll set the lower.tail argument to false. This gives us the probability of X exceeding the test statistic, that is, the area under the curve to the right of test statistic. Try it now with the test statistic value 2. 
+  CorrectAnswer: pnorm(2,lower.tail=FALSE)
+  AnswerTests: omnitest(correctExpr='pnorm(2,lower.tail=FALSE)')
+  Hint: Type pnorm(2,lower.tail=FALSE) at the command prompt.
+
+- Class: text
+  Output: By reporting a p-value reviewers of your work can perform the hypothesis test at any alpha level they choose. If the p-value is less than alpha you reject the null hypothesis and if it's greater you fail to reject.
  
 - Class: text
-  Output: So we have two competing hypotheses, H_0 and H_a, of which we'll have to pick one (using statistical evidence). That means we have four possible outcomes determined by what really is (the truth) and which hypothesis we accept based on our data. Two of the outcomes are correct and two are errors. 
-
-- Class: mult_question
-  Output: Which of the following outcomes would be correct?
-  AnswerChoices: H_0 is TRUE and we reject it; H_a is TRUE and we accept it; H_0 is FALSE and we accept it; H_a is FALSE and we accept it
-  CorrectAnswer: H_a is TRUE and we accept it
-  AnswerTests: omnitest(correctVal='H_a is TRUE and we accept it')
-  Hint: It's always better to ACCEPT the TRUTH.
-
-- Class: mult_question
-  Output: Which of the following outcomes would be an error?
-  AnswerChoices: H_0 is TRUE and we reject it; H_a is TRUE and we accept it; H_0 is FALSE and we reject it; H_a is FALSE and we reject it
-  CorrectAnswer: H_0 is TRUE and we reject it
-  AnswerTests: omnitest(correctVal='H_0 is TRUE and we reject it')
-  Hint: It's always a mistake to REJECT the TRUTH.
-
+  Output: For a two sided hypothesis test, you have to double the smaller of the two one sided  test p values. We'll see an example of this shortly. Most of the software assumes a two-sided test and automatically doubles the p value.
+ 
 - Class: text
-  Output: So it's correct to accept a true hypothesis or reject a false one. Pretty clear, right?
+  Output: Recall the binomial example from the last lesson - the family with 8 children, 7 of whom are girls. You want to test H_0, that p=.5, where p is the probability of a girl (like a fair coin flip). H_a is that p!=.5. 
 
-- Class: text
-  Output: The errors are also clear - rejecting a true hypothesis or accepting a false one. 
+- Class: cmd_question
+  Output: This is a two-sided test. First we find the probability of having at least i girls, for i running from 0 to 8. We have a vector of these probabilities, mybin_g. Look at it now.
+  CorrectAnswer: mybin_g
+  AnswerTests: omnitest(correctExpr='mybin_g')
+  Hint: Type mybin_g at the command prompt.
+
+- Class: cmd_question
+  Output: This shows us that the probability of having at least 7 girls (out of 8 children) is .035, assuming that genders are equally likely (p=.5).  You can verify this with the R function pbinom, with the arguments 6, size=8, prob=.5, and lower.tail=FALSE.(This last gives the probability that X>6.) Try this now.
+  CorrectAnswer: pbinom(6,size=8,prob=.5,lower.tail=FALSE)
+  AnswerTests: omnitest(correctExpr='pbinom(6,size=8,prob=.5,lower.tail=FALSE)')
+  Hint: Type pbinom(6,size=8,prob=.5,lower.tail=FALSE) at the command prompt.
 
 - Class: text
   Output: We distinguish between these two errors. A Type I error REJECTS a TRUE null hypothesis H_0 and a Type II error ACCEPTS a FALSE null hypothesis H_0. 
