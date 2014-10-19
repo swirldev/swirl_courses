@@ -1,16 +1,56 @@
 - Class: meta
   Course: Statistical_Inference
-  Lesson: P_Values
+  Lesson: Power
   Author: Swirl Coders
   Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
 - Class: text
-  Output: "P_Values. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/10_pValues.)"
+  Output: "Power. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/11_Power.)"
 
 - Class: text
-  Output: In this lesson, as the name suggests, we'll discuss p-values which have nothing to do with urological testing. Instead they are the most common measure of statistical significance.
+  Output: In this lesson, as the name suggests, we'll discuss POWER, which  is the probability of rejecting the null hypothesis when it is false, which is good and righeous. 
+
+- Class: text
+  Output: Hence you want more of it.
+
+- Class: text
+  Output: Power comes into play when you're designing an experiment, in particular, trying to determine if a null result (failing to reject a null hypothesis) is meaningful. For instance, you need to determine if your sample size was big enough to yield a meaningful, rather than random, result.
+
+- Class: mult_question
+  Output: Do you recall the definition of a Type II error (which is  bad)?
+  AnswerChoices: Rejecting a true null hypothesis; Accepting a false null hypothesis; Miscalculating a t score; Misspelling the word hypothesis
+  CorrectAnswer:Accepting a false null hypothesis
+  AnswerTests: omnitest(correctVal='Accepting a false null hypothesis')
+  Hint: Remember the courtroom example? Letting a guilty person walk, that is, accepting the null hypothesis of innocence, is a Type II error.
+
+- Class: text
+  Output: Beta is the probability of a Type II error, accepting a false null hypothesis; so Power is the complement of this and so  Power = 1 - beta.
+
+- Class: text
+  Output: Recall our previous example involving the Respiratory Distress Index and sleep disturbances. Our null hypothesis H_0 was that mu = 30 and our alternative hypothesis H_a was that mu > 30.
+ 
+- Class: mult_question
+  Output: Which of the following expressions represents our test statistic under this null hypothesis? Here X' represents the sample mean and n is the sample size. Assume X' follows a t distribution.
+  AnswerChoices: (X'-30)/(s/sqrt(n)); X'/(s^2/n); (X'-30)/(s^2/n); 30/(s/sqrt(n))
+  CorrectAnswer:  (X'-30)/(s/sqrt(n))
+  AnswerTests: omnitest(correctVal=' (X'-30)/(s/sqrt(n))')
+  Hint:  (X'-30)/(s/sqrt(n)) measures the number of standard errors the sample mean is from the mean hypothesized by H_0.
+
+- Class: text
+  Output: Suppose we have an alpha level test, such as .05. Since H_a proposes that mu > 30, the hypothesized mean, POWER is the probability that the test statistic is greater than the t quantile at 1-alpha.
+
+- Class: figure 
+  Output: Here's the picture we've used a lot in these lessons. It's a normal distribution, and as you know, the shaded portion represents 5% of the area under the curve. If a test statistic fell in this shaded portion we would reject it with probabiity .05.
+  Figure: conf_5pct.R
+  FigureType: new
+
+- Class: text
+  Output: Notice that this says absolutely nothing about accepting a false hypothesis. For that we need to look at H_a and what it's proposing as an alternative to H_0. 
+
+- Class: text
+  Output: This means that power is a function that depends of a specific value of an alternative mean, say mu_a, which can take on any value greater than mu_0, the mean hypothesized by H_0.  If mu_a is much bigger than mu_0=30 then the power (probability) is bigger than if mu_a is close to 30. As mu_a approaches 30, the mean under H_0, the power approaches alpha.
 
 - Class: text
   Output: However, because they're popular they're used a lot, and often they're misused or misinterpreted. In this lecture we'll focus on how to generate them and interpret them correctly.

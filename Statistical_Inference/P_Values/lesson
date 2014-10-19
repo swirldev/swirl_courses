@@ -16,7 +16,7 @@
   Output: However, because they're popular they're used a lot, and often they're misused or misinterpreted. In this lecture we'll focus on how to generate them and interpret them correctly.
 
 - Class: text
-  Output: The question motivating p-values is this. Given that we have some  null hypothesis concerning the data (for example, its mean), how unusual or extreme is  the sample value we get from our data? Is it consistent with our hypothesis? So there are, implicitly, three steps we have to take to answer these types of questions. 
+  Output: The question motivating p-values is this. Given that we have some  null hypothesis concerning the data (for example, its mean), how unusual or extreme is  the sample value we get from our data? Is our test statistic consistent with our hypothesis? So there are, implicitly, three steps we have to take to answer these types of questions. 
 
 - Class: mult_question
   Output: What do you think the first step is?
@@ -43,16 +43,16 @@
   Hint: You have to compare your calculated value to a hypothetical.
 
 - Class: text
-  Output: Your comparison tells you how  "extreme" the test value is toward the alternative hypothesis. The p-value is the probability under the null hypothesis of obtaining evidence as extreme or more extreme than  your test statistic (obtained from your observed data) in the direction of the alternative hypothesis. 
+  Output: Your comparison tells you how  "extreme" the test value is toward the alternative hypothesis. The p-value is the probability under the null hypothesis of obtaining evidence as or more extreme than  your test statistic (obtained from your observed data) in the direction of the alternative hypothesis. 
 
 - Class: text 
-  Output: So if the p-value is small, then one of two things happens. EITHER H_0 is true and we have observed a rare event (in this unusual test statistic) OR H_0 is false. Let's go through an example.
+  Output: So if the p-value (probability of seeing your test statistic) is small, then one of two things happens. EITHER H_0 is true and you have observed a rare event (in this unusual test statistic) OR H_0 is false. Let's go through an example.
 
 - Class: text 
   Output: Suppose that you get a t statistic of 2.5 with 15 df testing H_0, (that mu = mu_0) versus an alternative H_a (that mu > mu_0). We want to find the probability of getting a t statistic as large as 2.5.
 
 - Class: cmd_question
-  Output: R can help us! We can use the R function pt, the distribution function of the t distribution. This function returns one of two probabilities, EITHER the probability of X > q (if lower.tail is FALSE) OR  X <= q (if lower.tail is TRUE), where q is the first argument, a quantile. Here we'll set q=2.5, df=15, lower.tail=FALSE since H_a says that mu>mu_0. We have to gauge the extremity in the direction of H_a. Run this now.
+  Output: R can help us! We can use the R function pt, the distribution function of the t distribution. This function returns one of two probabilities, EITHER the probability of X > q (if lower.tail is FALSE) OR  X <= q (if lower.tail is TRUE), where q is a quantile argument. Here we'll set q=2.5, df=15, lower.tail=FALSE since H_a says that mu>mu_0. We have to gauge the extremity in the direction of H_a. Run this now.
   CorrectAnswer: pt(2.5, 15, lower.tail=FALSE)
   AnswerTests: omnitest(correctExpr='pt(2.5, 15, lower.tail=FALSE)')
   Hint: Type pt(2.5, 15, lower.tail=FALSE) at the command prompt.
@@ -112,7 +112,7 @@
   Output: Just as we thought, somewhere between .95 (where we rejected) and .99 (where we failed  to reject). That's reassuring.
 
 - Class: cmd_question
-  Output: Now let's find the p value associated with this example. As before, we'll use  pnorm. But this time we'll set the lower.tail argument to false. This gives us the probability of X exceeding the test statistic, that is, the area under the curve to the right of test statistic. Try it now with the test statistic value 2. 
+  Output: Now let's find the p value associated with this example. As before, we'll use  pnorm. But this time we'll set the lower.tail argument to FALSE. This gives us the probability of X exceeding the test statistic, that is, the area under the curve to the right of test statistic. Try it now with the test statistic value 2. 
   CorrectAnswer: pnorm(2,lower.tail=FALSE)
   AnswerTests: omnitest(correctExpr='pnorm(2,lower.tail=FALSE)')
   Hint: Type pnorm(2,lower.tail=FALSE) at the command prompt.
@@ -121,7 +121,7 @@
   Output: This tells us that the attained level of significance is about 2%.
 
 - Class: text
-  Output: By reporting a p-value reviewers of your work can perform the hypothesis test at any alpha level they choose. The general rule is that if the p-value is less than the specified alpha you reject the null hypothesis and if it's greater you fail to reject.
+  Output: By reporting a p-value, instead of an alpha level and whether or not you reject H_0, reviewers of your work can  hypothesis test at any alpha level they choose. The general rule is that if the p-value is less than the specified alpha you reject the null hypothesis and if it's greater you fail to reject.
  
 - Class: text
   Output: For a two sided hypothesis test, you have to double the smaller of the two one-sided  p values. We'll see an example of this shortly. Most software assumes a two-sided test and automatically doubles the p value.
