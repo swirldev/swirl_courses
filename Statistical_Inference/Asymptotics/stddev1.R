@@ -1,6 +1,5 @@
 x <- seq(-4, 4, length = 1000)
 dat <- data.frame(x=x, y=dnorm(x))
-library(ggplot2)
 g <- ggplot(dat, 
             aes(x = x, y = y)) + geom_line(size = 1.5)
 g <- g+ layer("area",mapping = aes(x=ifelse(x>-1 & x<1,x,0)),

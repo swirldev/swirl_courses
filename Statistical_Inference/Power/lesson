@@ -13,50 +13,196 @@
   Output: In this lesson, as the name suggests, we'll discuss POWER, which  is the probability of rejecting the null hypothesis when it is false, which is good and righeous. 
 
 - Class: text
-  Output: Hence you want more of it.
+  Output: Hence you want more POWER.
 
 - Class: text
-  Output: Power comes into play when you're designing an experiment, in particular, trying to determine if a null result (failing to reject a null hypothesis) is meaningful. For instance, you need to determine if your sample size was big enough to yield a meaningful, rather than random, result.
+  Output: Power comes into play when you're designing an experiment, and in particular, if you're trying to determine if a null result (failing to reject a null hypothesis) is meaningful. For instance, you might have to determine if your sample size was big enough to yield a meaningful, rather than random, result.
+
+- Class: text
+  Output: Power gives you the opportunity to detect if your ALTERNATIVE hypothesis is true. 
 
 - Class: mult_question
-  Output: Do you recall the definition of a Type II error (which is  bad)?
+  Output: Do you recall the definition of a Type II error (remember that errors are bad)?
   AnswerChoices: Rejecting a true null hypothesis; Accepting a false null hypothesis; Miscalculating a t score; Misspelling the word hypothesis
-  CorrectAnswer:Accepting a false null hypothesis
+  CorrectAnswer: Accepting a false null hypothesis
   AnswerTests: omnitest(correctVal='Accepting a false null hypothesis')
-  Hint: Remember the courtroom example? Letting a guilty person walk, that is, accepting the null hypothesis of innocence, is a Type II error.
+  Hint: Remember the courtroom example? Letting a guilty person walk, accepting the null hypothesis of innocence, is a Type II error.
 
 - Class: text
-  Output: Beta is the probability of a Type II error, accepting a false null hypothesis; so Power is the complement of this and so  Power = 1 - beta.
+  Output: Beta is the probability of a Type II error, accepting a false null hypothesis;  the complement of this is obviously (1 - beta) which represents the probability of rejecting a false null hypothesis. This is good and this is POWER!
 
 - Class: text
   Output: Recall our previous example involving the Respiratory Distress Index and sleep disturbances. Our null hypothesis H_0 was that mu = 30 and our alternative hypothesis H_a was that mu > 30.
  
 - Class: mult_question
-  Output: Which of the following expressions represents our test statistic under this null hypothesis? Here X' represents the sample mean and n is the sample size. Assume X' follows a t distribution.
+  Output: Which of the following expressions represents our test statistic under this null hypothesis? Here X' represents the sample mean, s is the sample std deviation, and n is the sample size. Assume X' follows a t distribution.
   AnswerChoices: (X'-30)/(s/sqrt(n)); X'/(s^2/n); (X'-30)/(s^2/n); 30/(s/sqrt(n))
   CorrectAnswer:  (X'-30)/(s/sqrt(n))
-  AnswerTests: omnitest(correctVal=' (X'-30)/(s/sqrt(n))')
+  AnswerTests: omnitest(correctVal='(X'-30)/(s/sqrt(n))')
   Hint:  (X'-30)/(s/sqrt(n)) measures the number of standard errors the sample mean is from the mean hypothesized by H_0.
 
+- Class: mult_question
+  Output: In the expression for the test statistic (X'-30)/(s/sqrt(n)) what does (s/sqrt(n)) represent?
+  AnswerChoices: a standard error; a standard bearer; a standard variance; a standard sample; a standard measure
+  CorrectAnswer:  a standard error
+  AnswerTests: omnitest(correctVal='a standard error')
+  Hint:  Since (X'-30)/(s/sqrt(n)) measures the number of standard errors the sample mean is from the mean hypothesized by H_0, the denominator is the standard error of the sample mean.
+
 - Class: text
-  Output: Suppose we have an alpha level test, such as .05. Since H_a proposes that mu > 30, the hypothesized mean, POWER is the probability that the test statistic is greater than the t quantile at 1-alpha.
+  Output: Suppose we're testing a null hypothesis H_0 with an alpha level of .05. Since H_a proposes that mu > 30, the mean hypothesized by H_0, POWER is the probability that the test statistic is greater than the quantile at 1-alpha or .95. For  simplicity, assume  we're working with normal distributions of which we know the variances and Z scores.
 
 - Class: figure 
-  Output: Here's the picture we've used a lot in these lessons. It's a normal distribution, and as you know, the shaded portion represents 5% of the area under the curve. If a test statistic fell in this shaded portion we would reject it with probabiity .05.
+  Output: Here's the picture we've used a lot in these lessons. As you know, the shaded portion represents 5% of the area under the curve. If a test statistic fell in this shaded portion we would reject H_0 with probabiity .05 because it is too far from the mean (center) of the distribution hypothesized by H_0. Instead we would favor H_a, that  mu > 30.
   Figure: conf_5pct.R
   FigureType: new
 
-- Class: text
-  Output: Notice that this says absolutely nothing about accepting a false hypothesis. For that we need to look at H_a and what it's proposing as an alternative to H_0. 
+- Class: text 
+  Output: You might well ask, "What does this have to do with POWER?" Good question. We'll look at some pictures to show you.
+
+- Class: text 
+  Output: First we have to emphasize a key point. The two hypotheses, H_0 and H_a, actually represent two distributions since they're talking about means which are centers of distributions. H_0 says that the sample mean X' is mu_0 (30 in our example) and H_a says that X' has mean mu_a. We're assuming normality and equal variance, say sigma^2/n, for both hypotheses, so under H_0, X'~ N(mu_0, sigma^2/n) and under H_a, X'~ N(mu_a, sigma^2/n).
+
+- Class: figure 
+  Output: Here's a picture with the two distributions. We've drawn a vertical line at our favorite spot, at the 95th percentile of the red distribution. To the right of the line lies 5% of the distribution.
+  Figure: twoDistros.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Quick quiz! Which distribution represents H_0?
+  AnswerChoices: the red; the blue
+  CorrectAnswer:  the red
+  AnswerTests: omnitest(correctVal='the red')
+  Hint:  The two distributions have the same spread (variance). They differ in their means (centers). Which has a mean equal to that hypothesized by H_0?
+
+- Class: mult_question
+  Output: Which distribution represents H_a?
+  AnswerChoices: the red; the blue
+  CorrectAnswer:  the blue
+  AnswerTests: omnitest(correctVal='the blue')
+  Hint:  The two distributions have the same spread (variance). They differ in their means (centers). Which has a mean different than that hypothesized by H_0?
+
+- Class: mult_question
+  Output: From the picture, what is the mean proposed by H_a?
+  AnswerChoices: 30; 28, 32; 36; 
+  CorrectAnswer:  32
+  AnswerTests: omnitest(correctVal='32')
+  Hint:  At what value of mu does does the center (highest point) of the blue distribution fall?
 
 - Class: text
-  Output: This means that power is a function that depends of a specific value of an alternative mean, say mu_a, which can take on any value greater than mu_0, the mean hypothesized by H_0.  If mu_a is much bigger than mu_0=30 then the power (probability) is bigger than if mu_a is close to 30. As mu_a approaches 30, the mean under H_0, the power approaches alpha.
+  Output: See how much of the blue distribution lies to the right of that big vertical line? 
 
 - Class: text
-  Output: However, because they're popular they're used a lot, and often they're misused or misinterpreted. In this lecture we'll focus on how to generate them and interpret them correctly.
+  Output: That, my friend, is POWER! 
 
 - Class: text
-  Output: The question motivating p-values is this. Given that we have some  null hypothesis concerning the data (for example, its mean), how unusual or extreme is  the sample value we get from our data? Is it consistent with our hypothesis? So there are, implicitly, three steps we have to take to answer these types of questions. 
+  Output: It's the area under the blue curve (H_a) to the right of the vertical line. 
+
+- Class: cmd_question
+  Output:  We've shamelessly stolen code plotting code from the slides so you can see H_a in action. Let's look at pictures before we delve into the numbers. We've fixed mu_0 at 30, sigma (standard deviation) at 4 and n (sample size) at 16. The function myplot just needs a mean as argument. Run myplot now with an argument of 34 to see what it does.
+  CorrectAnswer: myplot(34)
+  AnswerTests: omnitest(correctExpr='myplot(34)')
+  Hint: Type myplot(34) at the command prompt.
+
+- Class: cmd_question
+  Output:  Almost all (100%) of the blue curve is to the right of the line, indicating that if the sample mean were 34, the test is more powerful, i.e., there's a higher probability that the null hypothesis is false. Now try myplot with an argument of 33.3.
+  CorrectAnswer: myplot(33.3)
+  AnswerTests: omnitest(correctExpr='myplot(33.3)')
+  Hint: Type myplot(33.3) at the command prompt.
+
+- Class: cmd_question
+  Output:  This isn't as powerful as the test with mu_a=34 but it makes a pretty picture. Now try myplot with an argument of 30.
+  CorrectAnswer: myplot(30)
+  AnswerTests: omnitest(correctExpr='myplot(30)')
+  Hint: Type myplot(30) at the command prompt.
+
+- Class: text
+  Output: Uh Oh! Did the red curve disappear? No. it's just under the blue curve. The power now, the area under the blue curve to the right of the line, is exactly 5% or alpha!
+
+- Class: text
+  Output: So what did we learn?
+
+- Class: text
+  Output: First, power is a function that depends on a specific value of an alternative mean, mu_a, which is any value greater than mu_0, the mean hypothesized by H_0. (Recall that H_a specified mu>30.)
+
+- Class: text
+  Output: Second, if mu_a is much bigger than mu_0=30 then the power (probability) is bigger than if mu_a is close to 30. As mu_a approaches 30, the mean under H_0, the power approaches alpha.
+
+- Class: cmd_question
+  Output:  Just for fun try myplot with   an argument of 28.
+  CorrectAnswer: myplot(28)
+  AnswerTests: omnitest(correctExpr='myplot(28)')
+  Hint: Type myplot(28) at the command prompt.
+
+- Class: text
+  Output: We see that the blue curve has moved to the left of the red, so the area under it, to the right of the line, is less than the 5% under the red curve. This, then is even less powerful and contradicts H_a so it's not worth looking at.
+
+- Class: figure 
+  Output: Here's a picture of the power curves for different sample sizes. Again, this uses code "borrowed" from the slides. The alternative means, the mu_a's, are plotted along the horizontal axis and power along the vertical.
+  Figure: powerCurve.R
+  FigureType: new 
+
+- Class: mult_question
+  Output: What does the graph show us about mu_a?
+  AnswerChoices: as it gets bigger, it gets more powerful; as it gets bigger, it gets less powerful; power is independent of mu_a
+  CorrectAnswer: as it gets bigger, it gets more powerful
+  AnswerTests: omnitest(correctVal='as it gets bigger, it gets more powerful')
+  Hint: As you move to the right along the horizontal axis, does the line go up or down?
+
+- Class: mult_question
+  Output: What does the graph show us about sample size?
+  AnswerChoices: as it gets bigger, it gets more powerful; as it gets bigger, it gets less powerful; power is independent of sample size
+  CorrectAnswer: as it gets bigger, it gets more powerful
+  AnswerTests: omnitest(correctVal='as it gets bigger, it gets more powerful')
+  Hint: You have to check the color key. The purple line represents a bigger sample size than the red or blue. This purple line goes up faster than any of the other lines.
+
+- Class: text
+  Output: Now back to numbers. Our test for determining rejection of H_0 involved comparing a test statistic, namely Z=(X'-30)/(sigma/sqrt(n)), against some quantile, say Z_95, which depended on our level size alpha (.05 in this case). H_a proposed that mu_a > mu_0, so we tested if Z>Z_95.  This is equivalent to X' > Z_95 * (sigma/sqrt(n)) + 30, right?
+
+- Class: text
+  Output: Recall that nifty R function pnorm, which gives us the probability that a value drawn from a normal distribution is greater or less than/equal to a specified quantile argument depending on the flag lower.tail. The function also takes a mean and standard deviation as arguments. 
+
+- Class: text
+  Output: Suppose we call pnorm with the quantile   Z_95 * (sigma/sqrt(n)) + 30 and specify mu_a as our mean argument. This would return a probability which we can interpret as POWER. Why?
+
+ Class: figure
+  Output: Recall our picture of two distributions. Z_95 * (sigma/sqrt(n)) + 30 represents the point at which our vertical line falls. It's the point on the null distribution at the (1-alpha) level.
+  Figure: twoDistros.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Study this picture. Calling pnorm with Z_95 * (sigma/sqrt(n)) + 30 as the quantile and mu_a, say 32, as the mean and lower.tail=FALSE does what?
+  AnswerChoices: returns the area under the blue curve to the right of the line; returns the area under the blue curve to the left of the line; returns the area under the red curve to the right of the line; returns the area under the red curve to the left of the line
+  CorrectAnswer: returns the area under the blue curve to the right of the line
+  AnswerTests: omnitest(correctVal='returns the area under the blue curve to the right of the line')
+  Hint: The argument lower.tail=FALSE is a big clue. It indicates we should look to the right of a line. The mean argument is the second clue. It specifies which distribution (red or blue) to examine. 
+
+- Class: mult_question
+  Output: Let's try some examples now. Before we do, what do we know pnorm will return if we specify a quantile less than the mean?
+  AnswerChoices: an answer less than .50; an answer dependent on alpha; an answer dependent on beta; an answer greater than 1
+  CorrectAnswer: an answer less than .50
+  AnswerTests: omnitest(correctVal='an answer less than .50')
+  Hint: There are several red herrings in the choices. First pnorm will NEVER return a value greater than 1 because density functions by definition have areas equal to 1. We haven't specified an alpha or beta either. The function pnorm just needs a quantile, mean, standard deviation. By default it looks at the lower tail of the distribution. That leaves one choice.
+
+- Class: cmd_question
+  Output: First, define a variable z as qnorm(.95) 
+  CorrectAnswer: z <- qnorm(.95)
+  AnswerTests: omnitest(correctExpr='z <- qnorm(.95)')
+  Hint: Type z <- qnorm(.95) at the command prompt.
+
+- Class: cmd_question
+  Output: Run pnorm now with the quantile 30+z, mean=30, and lower.tail=FALSE. We've specified sigma and n so that the standard deviation of the sample mean is 1. 
+  CorrectAnswer: pnorm(30+z,mean=30,lower.tail=FALSE)
+  AnswerTests: omnitest(correctExpr='pnorm(30+z,mean=30,lower.tail=FALSE)')
+  Hint: Type pnorm(30+z,mean=30,lower.tail=FALSE) at the command prompt.
+
+- Class: cmd_question
+  Output: That's now surprising, is it? With the mean set to mu_0 the two distributions are the same and power=alpha. Now run pnorm now with the quantile 30+z, mean=32, and lower.tail=FALSE. 
+  CorrectAnswer: pnorm(30+z,mean=32,lower.tail=FALSE)
+  AnswerTests: omnitest(correctExpr='pnorm(30+z,mean=32,lower.tail=FALSE)')
+  Hint: Type pnorm(30+z,mean=32,lower.tail=FALSE) at the command prompt.
+
+- Class: text
+  Output: See how this is much more powerful? 64% as opposed to 5%. When the sample mean is quite different from the mean hypothesized by the null hypothesis, the probability of rejecting it when it is false is much higher.
 
 - Class: mult_question
   Output: What do you think the first step is?
