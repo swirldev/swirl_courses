@@ -49,7 +49,7 @@
   Hint:  Since (X'-30)/(s/sqrt(n)) measures the number of standard errors the sample mean is from the mean hypothesized by H_0, the denominator is the standard error of the sample mean.
 
 - Class: text
-  Output: Suppose we're testing a null hypothesis H_0 with an alpha level of .05. Since H_a proposes that mu > 30 (the mean hypothesized by H_0), POWER is the probability that the test statistic is greater than the (1-alpha) quantile or qnorm(.95). For  simplicity, assume  we're working with normal distributions of which we know the variances.
+  Output: Suppose we're testing a null hypothesis H_0 with an alpha level of .05. Since H_a proposes that mu > 30 (the mean hypothesized by H_0), power is the probability that the true mean mu is greater than the (1-alpha) quantile or qnorm(.95). For  simplicity, assume  we're working with normal distributions of which we know the variances.
 
 - Class: figure 
   Output: Here's the picture we've used a lot in these lessons. As you know, the shaded portion represents 5% of the area under the curve. If a test statistic fell in this shaded portion we would reject H_0 with probabiity .05 because it is too far from the mean (center) of the distribution hypothesized by H_0. Instead we would favor H_a, that  mu > 30.
@@ -102,33 +102,19 @@
   Figure: twoDistros_fat.R
   FigureType: new
 
-- Class: mult_question
-  Output: With this standard deviation=2 (fatter distribution) will power be greater or less than with the standard deviation=1?
-  AnswerChoices: greater; less than; the same 
-  CorrectAnswer:  less than
-  AnswerTests: omnitest(correctVal='less than')
-  Hint:  A greater standard deviation means more variability in the data so the test will be less powerful.
+- Class: figure 
+  Output: Back to our original picture.
+  Figure: twoDistros.R
+  FigureType: new
 
 - Class: cmd_question
-  Output:  To see this, run pnorm now with the quantile 30+qnorm(.95), mean=32 and sd=1. Don't forget to set lower.tail=FALSE so you get the right tail.
-  CorrectAnswer: pnorm(30+qnorm(.95),mean=32,sd=1,lower.tail=FALSE)
-  AnswerTests: omnitest(correctExpr='pnorm(30+qnorm(.95),mean=32,sd=1,lower.tail=FALSE)')
-  Hint: Type pnorm(30+qnorm(.95),mean=32,sd=1,lower.tail=FALSE) at the command prompt.
-
-- Class: cmd_question
-  Output:  Now run pnorm now with the quantile 30+qnorm(.95)*2, mean=32 and sd=2. Don't forget to set lower.tail=FALSE so you get the right tail.
-  CorrectAnswer: pnorm(30+qnorm(.95)*2,mean=32,sd=2,lower.tail=FALSE)
-  AnswerTests: omnitest(correctExpr='pnorm(30+qnorm(.95)*2,mean=32,sd=2,lower.tail=FALSE)')
-  Hint: Type pnorm(30+qnorm(.95)*2,mean=32,sd=2,lower.tail=FALSE) at the command prompt.
-
-- Class: cmd_question
-  Output:  See the decrease! We've shamelessly stolen code plotting code from the slides so you can see H_a in action. Let's look at pictures before we delve into the numbers. We've fixed mu_0 at 30, sigma (standard deviation) at 4 and n (sample size) at 16. The function myplot just needs a mean as argument. Run myplot now with an argument of 34 to see what it does.
+  Output:  We've shamelessly stolen code plotting code from the slides so you can see H_a in action. Let's look at pictures before we delve into the numbers. We've fixed mu_0 at 30, sigma (standard deviation) at 4 and n (sample size) at 16. The function myplot just needs a mean as argument. Run myplot now with an argument of 34 to see what it does.
   CorrectAnswer: myplot(34)
   AnswerTests: omnitest(correctExpr='myplot(34)')
   Hint: Type myplot(34) at the command prompt.
 
 - Class: cmd_question
-  Output:  Almost all (100%) of the blue curve is to the right of the line, indicating that if the sample mean were 34, the test is more powerful, i.e., there's a higher probability that the null hypothesis is false. Now try myplot with an argument of 33.3.
+  Output:  The distribution represented by H_a moved to the right, so almost all (100%) of the blue curve is to the right of the vertical line, indicating that with mu_a=34, the test is more powerful, i.e., there's a higher probability that it's correct to reject the null hypothesis since it appears false. Now try myplot with an argument of 33.3.
   CorrectAnswer: myplot(33.3)
   AnswerTests: omnitest(correctExpr='myplot(33.3)')
   Hint: Type myplot(33.3) at the command prompt.
@@ -141,6 +127,7 @@
 
 - Class: text
   Output: Uh Oh! Did the red curve disappear? No. it's just under the blue curve. The power now, the area under the blue curve to the right of the line, is exactly 5% or alpha!
+
 
 - Class: text
   Output: So what did we learn?
@@ -180,7 +167,7 @@
   Hint: You have to check the color key. The purple line represents a bigger sample size than the red or blue. This purple line goes up faster than any of the other lines.
 
 - Class: text
-  Output: Now back to numbers. Our test for determining rejection of H_0 involved comparing a test statistic, namely Z=(X'-30)/(sigma/sqrt(n)), against some quantile, say Z_95, which depended on our level size alpha (.05 in this case). H_a proposed that mu_a > mu_0, so we tested if Z>Z_95.  This is equivalent to X' > Z_95 * (sigma/sqrt(n)) + 30, right?
+  Output: Now back to numbers. Our test for determining rejection of H_0 involved comparing a test statistic, namely Z=(X'-30)/(sigma/sqrt(n)), against some quantile, say Z_95, which depended on our level size alpha (.05 in this case). H_a proposed that mu > mu_0, so we tested if Z>Z_95.  This is equivalent to X' > Z_95 * (sigma/sqrt(n)) + 30, right?
 
 - Class: text
   Output: Recall that nifty R function pnorm, which gives us the probability that a value drawn from a normal distribution is greater or less than/equal to a specified quantile argument depending on the flag lower.tail. The function also takes a mean and standard deviation as arguments. 
@@ -205,7 +192,7 @@
   AnswerChoices: an answer less than .50; an answer dependent on alpha; an answer dependent on beta; an answer greater than 1
   CorrectAnswer: an answer less than .50
   AnswerTests: omnitest(correctVal='an answer less than .50')
-  Hint: There are several red herrings in the choices. First pnorm will NEVER return a value greater than 1 because density functions by definition have areas equal to 1. We haven't specified an alpha or beta either. The function pnorm just needs a quantile, mean, standard deviation. By default it looks at the lower tail of the distribution. That leaves one choice.
+  Hint: There are several red herrings in the choices. First pnorm will NEVER return a value greater than 1 because density functions by definition have areas equal to 1. We haven't specified an alpha or beta either. The function pnorm just needs a quantile, mean, and standard deviation. By default it looks at the lower tail of the distribution. That leaves one choice.
 
 - Class: cmd_question
   Output: First, define a variable z as qnorm(.95) 
@@ -228,8 +215,33 @@
 - Class: text
   Output: See how this is much more powerful? 64% as opposed to 5%. When the sample mean is quite different from (many standard errors greater than)  the mean hypothesized by the null hypothesis, the probability of rejecting H_0 when it is false is much higher. That is power!
 
+- Class: figure 
+  Output: Let's look again at the portly distributions.
+  Figure: twoDistros_fat.R
+  FigureType: new
+
 - Class: mult_question
-  Output: Let's review some basic facts about power. We saw before in our pictures that the power of the test depends on mu_a. When H_a specifies that mu_a > mu_0, then as mu_a grows and exceeds mu_0 increasingly, what happens to power?
+  Output: With this standard deviation=2 (fatter distribution) will power be greater or less than with the standard deviation=1?
+  AnswerChoices: greater; less than; the same 
+  CorrectAnswer:  less than
+  AnswerTests: omnitest(correctVal='less than')
+  Hint:  A greater standard deviation means more variability in the data so the test will be less powerful.
+
+- Class: cmd_question
+  Output:  To see this, run pnorm now with the quantile 30+z, mean=32 and sd=1. Don't forget to set lower.tail=FALSE so you get the right tail.
+  CorrectAnswer: pnorm(30+z,mean=32,sd=1,lower.tail=FALSE)
+  AnswerTests: omnitest(correctExpr='pnorm(30+z,mean=32,sd=1,lower.tail=FALSE)')
+  Hint: Type pnorm(30+z,mean=32,sd=1,lower.tail=FALSE) at the command prompt.
+
+- Class: cmd_question
+  Output:  Now run pnorm now with the quantile 30+z*2, mean=32 and sd=2. Don't forget to set lower.tail=FALSE so you get the right tail.
+  CorrectAnswer: pnorm(30+z*2,mean=32,sd=2,lower.tail=FALSE)
+  AnswerTests: omnitest(correctExpr='pnorm(30+z*2,mean=32,sd=2,lower.tail=FALSE)')
+  Hint: Type pnorm(30+z*2,mean=32,sd=2,lower.tail=FALSE) at the command prompt.
+
+
+- Class: mult_question
+  Output: See the power drain from 64% to 26% ? Let's review some basic facts about power. We saw before in our pictures that the power of the test depends on mu_a. When H_a specifies that mu_a > mu_0, then as mu_a grows and exceeds mu_0 increasingly, what happens to power?
   AnswerChoices: it increases; it decreases; it doesn't change
   CorrectAnswer: it increases
   AnswerTests: omnitest(correctVal='it increases')
@@ -319,16 +331,19 @@
   Output: An interesting point is that  power doesn't need mu_a, sigma and n individually.  Instead only sqrt(n)*(mu_a - mu_0) /sigma is needed. The quantity (mu_a - mu_0) / sigma is called the effect size which is the difference in the means in standard deviation units. Note that this is unit free so it can be interpreted in different settings.
 
 - Class: text
-  Output: We'll work through some examples of this now. However, instead of assuming that we're working with  normal distributions let's work with t distributions. Remember, they're pretty close with large enough sample sizes. Power is still a probability, namely P( (X' - mu_0)/(S /sqrt(n)) > t_(1-alpha, n-1 given H_a that mu = mu_a ). We use the t quantile instead of the z. Also, since the proposed distribution is not centered at mu_0, we have to use the non-central t distribution. 
+  Output: We'll work through some examples of this now. However, instead of assuming that we're working with  normal distributions let's work with t distributions. Remember, they're pretty close with large enough sample sizes. 
+
+- Class: text
+  Output: Power is still a probability, namely P( (X' - mu_0)/(S /sqrt(n)) > t_(1-alpha, n-1) given H_a that mu > mu_a ). Notice we use the t quantile instead of the z. Also, since the proposed distribution is not centered at mu_0, we have to use the non-central t distribution. 
  
 - Class: text
   Output: R comes to the rescue again with the function power.t.test. We can omit one of the arguments and the function solves for it. Let's first use it to solve for power.
  
 - Class: text
-  Output: . We'll run it three times with the same values for n (16) and alpha (.05) but different delta and standard deviation values. We'll  show that if delta (difference in means) divided by the standard deviation is the same, the power returned will also be the same. In other words, the effect size is constant for all three of our tests.
+  Output:  We'll run it three times with the same values for n (16) and alpha (.05) but different delta and standard deviation values. We'll  show that if delta (difference in means) divided by the standard deviation is the same, the power returned will also be the same. In other words, the effect size is constant for all three of our tests.
 
 - Class: cmd_question
-  Output:  We'll specify a positive delta; this tells power.t.test that H_a is that mu > mu_0 and so we specify a one-sided test. First run  power.t.test(n = 16, delta = 2 / 4, sd=1, type = "one.sample",  alt = "one.sided")$power .
+  Output:  We'll specify a positive delta; this tells power.t.test that H_a proposes that mu > mu_0 and so we'll need a one-sided test. First run  power.t.test(n = 16, delta = 2 / 4, sd=1, type = "one.sample",  alt = "one.sided")$power .
   CorrectAnswer: power.t.test(n = 16, delta = 2 / 4, sd=1, type = "one.sample",  alt = "one.sided")$power
   AnswerTests: omnitest(correctExpr='power.t.test(n = 16, delta = 2 / 4, sd=1, type = "one.sample",  alt = "one.sided")$power')
   Hint: Type power.t.test(n = 16, delta = 2 / 4, sd=1, type = "one.sample",  alt = "one.sided")$power at the prompt.
@@ -420,7 +435,7 @@
   Output: 5. Suppose H_0 proposes mu = mu_0 and H_a proposes that mu < mu_0. You;ll test a series of mu_a with power != alpha. Which of the following is NOT true?
   AnswerChoices: mu_0-mu_a > 0;  mu_a-mu_0 < 0; mu_a-mu_0=0 ; huh?
   CorrectAnswer: mu_a-mu_0=0
-  AnswerTests: omnitest(correctVal=mu_a-mu_0=0')
+  AnswerTests: omnitest(correctVal='mu_a-mu_0=0')
   Hint: As in the case in which H_a proposes that mu > mu_0, when mu_a=mu_0, alpha=power. This was excluded in the problem statement so mu_a=mu_0 cannot be true in this case. 
 
 - Class: mult_question

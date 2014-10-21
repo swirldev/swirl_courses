@@ -5,6 +5,7 @@ sigma <- 4
 n <- 16
 mu0 <-  30
 alpha <- .05
+z <- qnorm(1-alpha)
 myplot <- function(mua) {
   g = ggplot(data.frame(mu = c(27, 36)), aes(x = mu))
   g = g + stat_function(fun=dnorm, geom = "line", 
