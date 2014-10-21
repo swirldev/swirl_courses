@@ -10,7 +10,7 @@
   Output: "Power. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/11_Power.)"
 
 - Class: text
-  Output: In this lesson, as the name suggests, we'll discuss POWER, which  is the probability of rejecting the null hypothesis when it is false, which is good and righeous. 
+  Output: In this lesson, as the name suggests, we'll discuss POWER, which  is the probability of rejecting the null hypothesis when it is false, which is good and righteous. 
 
 - Class: text
   Output: Hence you want more POWER.
@@ -22,7 +22,7 @@
   Output: Power gives you the opportunity to detect if your ALTERNATIVE hypothesis is true. 
 
 - Class: mult_question
-  Output: Do you recall the definition of a Type II error (remember that errors are bad)?
+  Output: Do you recall the definition of a Type II error?  Remember, errors are bad.
   AnswerChoices: Rejecting a true null hypothesis; Accepting a false null hypothesis; Miscalculating a t score; Misspelling the word hypothesis
   CorrectAnswer: Accepting a false null hypothesis
   AnswerTests: omnitest(correctVal='Accepting a false null hypothesis')
@@ -38,7 +38,7 @@
   Output: Which of the following expressions represents our test statistic under this null hypothesis? Here X' represents the sample mean, s is the sample std deviation, and n is the sample size. Assume X' follows a t distribution.
   AnswerChoices: (X'-30)/(s/sqrt(n)); X'/(s^2/n); (X'-30)/(s^2/n); 30/(s/sqrt(n))
   CorrectAnswer:  (X'-30)/(s/sqrt(n))
-  AnswerTests: omnitest(correctVal='(X'-30)/(s/sqrt(n))')
+  AnswerTests: omnitest(correctVal='(X\'-30)/(s/sqrt(n))')
   Hint:  (X'-30)/(s/sqrt(n)) measures the number of standard errors the sample mean is from the mean hypothesized by H_0.
 
 - Class: mult_question
@@ -49,7 +49,7 @@
   Hint:  Since (X'-30)/(s/sqrt(n)) measures the number of standard errors the sample mean is from the mean hypothesized by H_0, the denominator is the standard error of the sample mean.
 
 - Class: text
-  Output: Suppose we're testing a null hypothesis H_0 with an alpha level of .05. Since H_a proposes that mu > 30, the mean hypothesized by H_0, POWER is the probability that the test statistic is greater than the quantile at 1-alpha or .95. For  simplicity, assume  we're working with normal distributions of which we know the variances and Z scores.
+  Output: Suppose we're testing a null hypothesis H_0 with an alpha level of .05. Since H_a proposes that mu > 30 (the mean hypothesized by H_0), POWER is the probability that the test statistic is greater than the (1-alpha) quantile or qnorm(.95). For  simplicity, assume  we're working with normal distributions of which we know the variances.
 
 - Class: figure 
   Output: Here's the picture we've used a lot in these lessons. As you know, the shaded portion represents 5% of the area under the curve. If a test statistic fell in this shaded portion we would reject H_0 with probabiity .05 because it is too far from the mean (center) of the distribution hypothesized by H_0. Instead we would favor H_a, that  mu > 30.
@@ -60,10 +60,10 @@
   Output: You might well ask, "What does this have to do with POWER?" Good question. We'll look at some pictures to show you.
 
 - Class: text 
-  Output: First we have to emphasize a key point. The two hypotheses, H_0 and H_a, actually represent two distributions since they're talking about means which are centers of distributions. H_0 says that the sample mean X' is mu_0 (30 in our example) and H_a says that X' has mean mu_a. We're assuming normality and equal variance, say sigma^2/n, for both hypotheses, so under H_0, X'~ N(mu_0, sigma^2/n) and under H_a, X'~ N(mu_a, sigma^2/n).
+  Output: First we have to emphasize a key point. The two hypotheses, H_0 and H_a, actually represent two distributions since they're talking about means, centers of distributions. H_0 says that the mean is mu_0 (30 in our example) and H_a says that the mean is mu_a. We're assuming normality and equal variance, say sigma^2/n, for both hypotheses, so under H_0, X'~ N(mu_0, sigma^2/n) and under H_a, X'~ N(mu_a, sigma^2/n).
 
 - Class: figure 
-  Output: Here's a picture with the two distributions. We've drawn a vertical line at our favorite spot, at the 95th percentile of the red distribution. To the right of the line lies 5% of the distribution.
+  Output: Here's a picture with the two distributions. We've drawn a vertical line at our favorite spot, at the 95th percentile of the red distribution. To the right of the line lies 5% of the red distribution.
   Figure: twoDistros.R
   FigureType: new
 
@@ -83,7 +83,7 @@
 
 - Class: mult_question
   Output: From the picture, what is the mean proposed by H_a?
-  AnswerChoices: 30; 28, 32; 36; 
+  AnswerChoices: 30; 28; 32; 36; 
   CorrectAnswer:  32
   AnswerTests: omnitest(correctVal='32')
   Hint:  At what value of mu does does the center (highest point) of the blue distribution fall?
@@ -188,7 +188,7 @@
 - Class: text
   Output: Suppose we call pnorm with the quantile 30 + Z_95 * (sigma/sqrt(n)) and specify mu_a as our mean argument. This would return a probability which we can interpret as POWER. Why?
 
- Class: figure
+- Class: figure
   Output: Recall our picture of two distributions. 30 + Z_95 * (sigma/sqrt(n)) represents the point at which our vertical line falls. It's the point on the null distribution at the (1-alpha) level.
   Figure: twoDistros.R
   FigureType: new
@@ -316,8 +316,7 @@
   Output: It should be obvious that specifying any three of these unknowns will allow us to solve for the missing fourth. Usually, you only try to solve for power (1-beta) or the sample size n. 
 
 - Class: text
-  Output: An interesting point is that  power doesn't need mu_a, sigma and n individually.  Instead only sqrt(n)*(mu_a - mu_0) /sigma is needed. The quantity (mu_a - mu_0) / sigma is called the effect size which is the difference in the means in standard deviation units. Note that this is unit free so it can be interpreted in
- different settings.
+  Output: An interesting point is that  power doesn't need mu_a, sigma and n individually.  Instead only sqrt(n)*(mu_a - mu_0) /sigma is needed. The quantity (mu_a - mu_0) / sigma is called the effect size which is the difference in the means in standard deviation units. Note that this is unit free so it can be interpreted in different settings.
 
 - Class: text
   Output: We'll work through some examples of this now. However, instead of assuming that we're working with  normal distributions let's work with t distributions. Remember, they're pretty close with large enough sample sizes. Power is still a probability, namely P( (X' - mu_0)/(S /sqrt(n)) > t_(1-alpha, n-1 given H_a that mu = mu_a ). We use the t quantile instead of the z. Also, since the proposed distribution is not centered at mu_0, we have to use the non-central t distribution. 
@@ -385,6 +384,79 @@
   CorrectAnswer: delta will double
   AnswerTests: omnitest(correctVal='delta will double')
   Hint: Since you're doubling the denominator (sd) you have to double the numerator (delta) in order to keep the effect size constant.
+
+- Class: text
+  Output: Now for a quick review - we call this the power.u.test LOL
+
+- Class: mult_question
+  Output: 1. The level of a test is specified by what?
+  AnswerChoices:  alpha; beta; gamma; delta; None of the others
+  CorrectAnswer: alpha
+  AnswerTests: omnitest(correctVal='alpha')
+  Hint: The level refers to the probability of rejecting  the null hypothesis when it is true. This is the first Greek letter.
+
+- Class: mult_question
+  Output: 2. What is a Type II error?
+  AnswerChoices:  probability of rejecting a true hypothesis; probability of rejecting a false hypothesis; probability of accepting a true hypothesis; probability of accepting a false hypothesis
+  CorrectAnswer: probability of accepting a false hypothesis
+  AnswerTests: omnitest(correctVal='probability of accepting a false hypothesis')
+  Hint: Only two of the choices are errors. Eliminate those and then eliminate the Type I error.
+
+- Class: mult_question
+  Output: 3. What is power?
+  AnswerChoices: thrilling; alpha; beta; gamma; delta; None of the others
+  CorrectAnswer: None of the others
+  AnswerTests: omnitest(correctVal='None of the others')
+  Hint: Power is 1-beta. Is that in the list?
+
+- Class: mult_question
+  Output: 4. You're a perfectionist designing an experiment and you want both alpha and beta to be small. Can they both be 0 for this single test?
+  AnswerChoices: Yes; No  
+  CorrectAnswer: No
+  AnswerTests: omnitest(correctVal='No')
+  Hint: If alpha=0, then you ALWAYS fail to reject (accept) H_0; if H_0 is false, beta=1. Similarly if beta=0, you ALWAYS reject H_0; if H_0 is true then alpha=1. 
+
+- Class: mult_question
+  Output: 5. Suppose H_0 proposes mu = mu_0 and H_a proposes that mu < mu_0. You;ll test a series of mu_a with power != alpha. Which of the following is NOT true?
+  AnswerChoices: mu_0-mu_a > 0;  mu_a-mu_0 < 0; mu_a-mu_0=0 ; huh?
+  CorrectAnswer: mu_a-mu_0=0
+  AnswerTests: omnitest(correctVal=mu_a-mu_0=0')
+  Hint: As in the case in which H_a proposes that mu > mu_0, when mu_a=mu_0, alpha=power. This was excluded in the problem statement so mu_a=mu_0 cannot be true in this case. 
+
+- Class: mult_question
+  Output: 6. Suppose H_0 proposes mu = mu_0 and H_a proposes that mu < mu_0. Which of the following is true?
+  AnswerChoices: the smaller mu_0-mu_a the more powerful the test; the smaller mu_a-mu_0 the more powerful the test; mu_0=mu_a maximizes the power  
+  CorrectAnswer: the smaller mu_a-mu_0 the more powerful the test
+  AnswerTests: omnitest(correctVal='the smaller mu_a-mu_0 the more powerful the test')
+  Hint: Here mu_a < mu_0 and the smaller mu_a-mu_0 is, the easier it is to discriminate between mu_a and mu_0.
+
+- Class: mult_question
+  Output: 7. Which expression represents the size effect? 
+  AnswerChoices: (mu_a - mu_0) / sigma; (mu_a - mu_0) / n; (mu_a - mu_0) / sqrt(sigma); (mu_a - mu_0) / sqrt(n)
+  CorrectAnswer: (mu_a - mu_0) / sigma
+  AnswerTests: omnitest(correctVal='(mu_a - mu_0) / sigma')
+  Hint: The size effect is the distance between the two proposed means in standard deviation units.  
+
+- Class: mult_question
+  Output: 8. True or False? More power is better than less power.
+  AnswerChoices: True; False
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal='True')
+  Hint: Power is good.  
+
+- Class: mult_question
+  Output: 9. True or False? A larger beta (call it beta_max) is bigger than a smaller beta.
+  AnswerChoices: True; False
+  CorrectAnswer: False
+  AnswerTests: omnitest(correctVal='False')
+  Hint: Recall that beta is the probability of an error (Type II), so you'd like a smaller beta.  
+
+- Class: mult_question
+  Output: 10. True or False? The larger the sample size the less powerful the test.
+  AnswerChoices: True; False
+  CorrectAnswer: False
+  AnswerTests: omnitest(correctVal='False')
+  Hint: It's usually better to have more data to work with.  
 
 - Class: text
   Output: Congrats! You finished this powerful lesson. We hope you feel emPOWERED.
