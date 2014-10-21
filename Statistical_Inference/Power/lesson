@@ -10,7 +10,7 @@
   Output: "Power. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/11_Power.)"
 
 - Class: text
-  Output: In this lesson, as the name suggests, we'll discuss POWER, which  is the probability of rejecting the null hypothesis when it is false, which is good and righteous. 
+  Output: In this lesson, as the name suggests, we'll discuss POWER, which  is the probability of rejecting the null hypothesis when it is false, which is good and proper. 
 
 - Class: text
   Output: Hence you want more POWER.
@@ -52,7 +52,7 @@
   Output: Suppose we're testing a null hypothesis H_0 with an alpha level of .05. Since H_a proposes that mu > 30 (the mean hypothesized by H_0), power is the probability that the true mean mu is greater than the (1-alpha) quantile or qnorm(.95). For  simplicity, assume  we're working with normal distributions of which we know the variances.
 
 - Class: figure 
-  Output: Here's the picture we've used a lot in these lessons. As you know, the shaded portion represents 5% of the area under the curve. If a test statistic fell in this shaded portion we would reject H_0 with probabiity .05 because it is too far from the mean (center) of the distribution hypothesized by H_0. Instead we would favor H_a, that  mu > 30.
+  Output: Here's the picture we've used a lot in these lessons. As you know, the shaded portion represents 5% of the area under the curve. If a test statistic fell in this shaded portion we would reject H_0  because the sample mean is too far from the mean (center) of the distribution hypothesized by H_0. Instead we would favor H_a, that  mu > 30. This happens with probabiity .05.
   Figure: conf_5pct.R
   FigureType: new
 
@@ -60,7 +60,10 @@
   Output: You might well ask, "What does this have to do with POWER?" Good question. We'll look at some pictures to show you.
 
 - Class: text 
-  Output: First we have to emphasize a key point. The two hypotheses, H_0 and H_a, actually represent two distributions since they're talking about means, centers of distributions. H_0 says that the mean is mu_0 (30 in our example) and H_a says that the mean is mu_a. We're assuming normality and equal variance, say sigma^2/n, for both hypotheses, so under H_0, X'~ N(mu_0, sigma^2/n) and under H_a, X'~ N(mu_a, sigma^2/n).
+  Output: First we have to emphasize a key point. The two hypotheses, H_0 and H_a, actually represent two distributions since they're talking about means or centers of distributions. H_0 says that the mean is mu_0 (30 in our example) and H_a says that the mean is mu_a. 
+
+- Class: text 
+  Output: We're assuming normality and equal variance, say sigma^2/n, for both hypotheses, so under H_0, X'~ N(mu_0, sigma^2/n) and under H_a, X'~ N(mu_a, sigma^2/n).
 
 - Class: figure 
   Output: Here's a picture with the two distributions. We've drawn a vertical line at our favorite spot, at the 95th percentile of the red distribution. To the right of the line lies 5% of the red distribution.
@@ -98,7 +101,7 @@
   Output: It's the area under the blue curve (H_a) to the right of the vertical line. 
 
 - Class: figure 
-  Output: Note that the placement of the vertical line depends on the standard deviation of the distribution. Here's another picture with fatter distributions. The vertical line is still at the 95th percentile of the red distribution and 5% of the distribution still lies to its right. The line is calibrated to mu_0.
+  Output: Note that the placement of the vertical line depends on the null distribution. Here's another picture with fatter distributions. The vertical line is still at the 95th percentile of the null (red) distribution and 5% of the distribution still lies to its right. The line is calibrated to mu_0 and the variance.
   Figure: twoDistros_fat.R
   FigureType: new
 
@@ -108,7 +111,7 @@
   FigureType: new
 
 - Class: cmd_question
-  Output:  We've shamelessly stolen code plotting code from the slides so you can see H_a in action. Let's look at pictures before we delve into the numbers. We've fixed mu_0 at 30, sigma (standard deviation) at 4 and n (sample size) at 16. The function myplot just needs a mean as argument. Run myplot now with an argument of 34 to see what it does.
+  Output:  We've shamelessly stolen code plotting code from the slides so you can see H_a in action. Let's look at pictures before we delve into numbers. We've fixed mu_0 at 30, sigma (standard deviation) at 4 and n (sample size) at 16. The function myplot just needs an alternative mean, mu_a, as argument. Run myplot now with an argument of 34 to see what it does.
   CorrectAnswer: myplot(34)
   AnswerTests: omnitest(correctExpr='myplot(34)')
   Hint: Type myplot(34) at the command prompt.
@@ -207,7 +210,7 @@
   Hint: Type pnorm(30+z,mean=30,lower.tail=FALSE) at the command prompt.
 
 - Class: cmd_question
-  Output: That's not surprising, is it? With the mean set to mu_0 the two distributions are the same and power=alpha. Now run pnorm now with the quantile 30+z, mean=32, and lower.tail=FALSE. 
+  Output: That's not surprising, is it? With the mean set to mu_0 the two distributions, null and alternative, are the same and power=alpha. Now run pnorm now with the quantile 30+z, mean=32, and lower.tail=FALSE. 
   CorrectAnswer: pnorm(30+z,mean=32,lower.tail=FALSE)
   AnswerTests: omnitest(correctExpr='pnorm(30+z,mean=32,lower.tail=FALSE)')
   Hint: Type pnorm(30+z,mean=32,lower.tail=FALSE) at the command prompt.
@@ -241,14 +244,14 @@
 
 
 - Class: mult_question
-  Output: See the power drain from 64% to 26% ? Let's review some basic facts about power. We saw before in our pictures that the power of the test depends on mu_a. When H_a specifies that mu_a > mu_0, then as mu_a grows and exceeds mu_0 increasingly, what happens to power?
+  Output: See the power drain from 64% to 26% ? Let's review some basic facts about power. We saw before in our pictures that the power of the test depends on mu_a. When H_a specifies that mu > mu_0, then as mu_a grows and exceeds mu_0 increasingly, what happens to power?
   AnswerChoices: it increases; it decreases; it doesn't change
   CorrectAnswer: it increases
   AnswerTests: omnitest(correctVal='it increases')
   Hint: Remember the different distributions and running pnorm? As mu_a got bigger so did the pnorm result.
 
 - Class: figure
-  Output: Here's another question. Recall our power curves.
+  Output: Here's another question. Recall our power curves from before.
   Figure: powerCurve_n.R
   FigureType: new 
 
@@ -302,13 +305,10 @@
   Hint: We just have to look at the right tail and flip all our reasoning.
 
 - Class: text
-  Output: So, when testing H_a, that mu > mu_0, notice that power = 1 - beta, and
-
-- Class: text
-  Output: 1 - beta = Prob ( X' > mu_0 + z_(1-alpha) * sigma/sqrt(n)) assuming that X'~ N(mu_a,sigma^2/n). Which quantities do we know in this statement, given the context of the problem? Let's work through this.
+  Output: Suppoes H_a says that mu > mu_0. Then power = 1 - beta = Prob ( X' > mu_0 + z_(1-alpha) * sigma/sqrt(n)) assuming that X'~ N(mu_a,sigma^2/n). Which quantities do we know in this statement, given the context of the problem? Let's work through this.
 
 - Class: mult_question
-  Output: What does the null hypothesis H_0 tell us?
+  Output: What does the null hypothesis H_0 tell us that the population mean equals?
   AnswerChoices: mu_0; mu_a; beta; alpha
   CorrectAnswer: mu_0
   AnswerTests: omnitest(correctVal='mu_0')
@@ -328,10 +328,10 @@
   Output: It should be obvious that specifying any three of these unknowns will allow us to solve for the missing fourth. Usually, you only try to solve for power (1-beta) or the sample size n. 
 
 - Class: text
-  Output: An interesting point is that  power doesn't need mu_a, sigma and n individually.  Instead only sqrt(n)*(mu_a - mu_0) /sigma is needed. The quantity (mu_a - mu_0) / sigma is called the effect size which is the difference in the means in standard deviation units. Note that this is unit free so it can be interpreted in different settings.
+  Output: An interesting point is that  power doesn't need mu_a, sigma and n individually.  Instead only sqrt(n)*(mu_a - mu_0) /sigma is needed. The quantity (mu_a - mu_0) / sigma is called the EFFECT SIZE. This is the difference in the means in standard deviation units. It is unit free so it can be interpreted in different settings.
 
 - Class: text
-  Output: We'll work through some examples of this now. However, instead of assuming that we're working with  normal distributions let's work with t distributions. Remember, they're pretty close with large enough sample sizes. 
+  Output: We'll work through some examples of this now. However, instead of assuming that we're working with  normal distributions let's work with t distributions. Remember, they're pretty close to normal with large enough sample sizes. 
 
 - Class: text
   Output: Power is still a probability, namely P( (X' - mu_0)/(S /sqrt(n)) > t_(1-alpha, n-1) given H_a that mu > mu_a ). Notice we use the t quantile instead of the z. Also, since the proposed distribution is not centered at mu_0, we have to use the non-central t distribution. 
@@ -432,7 +432,7 @@
   Hint: If alpha=0, then you ALWAYS fail to reject (accept) H_0; if H_0 is false, beta=1. Similarly if beta=0, you ALWAYS reject H_0; if H_0 is true then alpha=1. 
 
 - Class: mult_question
-  Output: 5. Suppose H_0 proposes mu = mu_0 and H_a proposes that mu < mu_0. You;ll test a series of mu_a with power != alpha. Which of the following is NOT true?
+  Output: 5. Suppose H_0 proposes mu = mu_0 and H_a proposes that mu < mu_0. You'll test a series of mu_a with power != alpha. Which of the following is NOT true?
   AnswerChoices: mu_0-mu_a > 0;  mu_a-mu_0 < 0; mu_a-mu_0=0 ; huh?
   CorrectAnswer: mu_a-mu_0=0
   AnswerTests: omnitest(correctVal='mu_a-mu_0=0')
@@ -460,7 +460,7 @@
   Hint: Power is good.  
 
 - Class: mult_question
-  Output: 9. True or False? A larger beta (call it beta_max) is bigger than a smaller beta.
+  Output: 9. True or False? A larger beta (call it beta_max) is more powerful than a smaller beta.
   AnswerChoices: True; False
   CorrectAnswer: False
   AnswerTests: omnitest(correctVal='False')
