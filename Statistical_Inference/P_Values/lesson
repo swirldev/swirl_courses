@@ -16,7 +16,7 @@
   Output: However, because they're popular they're used a lot, and often they're misused or misinterpreted. In this lecture we'll focus on how to generate them and interpret them correctly.
 
 - Class: text
-  Output: The question motivating p-values is this. Given that we have some  null hypothesis concerning the data (for example, its mean), how unusual or extreme is  the sample value we get from our data? Is our test statistic consistent with our hypothesis? So there are, implicitly, three steps we have to take to answer these types of questions. 
+  Output: The question motivating p-values is this. Given that we have some  null hypothesis concerning our data (for example, its mean), how unusual or extreme is  the sample value we get from our data? Is our test statistic consistent with our hypothesis? So there are, implicitly, three steps we have to take to answer these types of questions. 
 
 - Class: mult_question
   Output: What do you think the first step is?
@@ -68,7 +68,7 @@
   Hint: 1% is less than the usual benchmark of 5%
 
 - Class: text 
-  Output: Another way to think about a p-value is as an attained significance level. This is a fancy way of saying that the p-value the smallest value of alpha at which you will reject the null hypothesis.
+  Output: Another way to think about a p-value is as an attained significance level. This is a fancy way of saying that the p-value is the smallest value of alpha at which you will reject the null hypothesis.
 
 - Class: text 
   Output: Recall the example from our last lesson in which we computed a test statistic of 2. Our H_0 said that mu_0 = 30 and the alternative H_a that mu > 30. Assume we used a Z test (normal distribution). We rejected the one sided test when alpha was set to 0.05.
