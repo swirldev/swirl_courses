@@ -1,9 +1,5 @@
 # Put initialization code in this file.
 library(ggplot2)
-data(InsectSprays)
 fname <- paste(getwd(),"Statistical_Inference/Hypothesis_Testing/father_son.csv",sep="/")
 fs <- read.csv(fname)
-sh <- fs$sheight
-fh <- fs$fheight
-nh <- length(sh)
-B <- 10000
+data(InsectSprays)
