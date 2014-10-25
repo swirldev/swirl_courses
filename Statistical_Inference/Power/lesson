@@ -401,7 +401,7 @@
   Hint: Since you're doubling the denominator (sd) you have to double the numerator (delta) in order to keep the effect size constant.
 
 - Class: text
-  Output: Now for a quick review - we call this the power.u.test LOL
+  Output: Now for a quick review. We call this the power.u.test since it comes after the power.t.test. LOL. 
 
 - Class: mult_question
   Output: 1. The level of a test is specified by what?

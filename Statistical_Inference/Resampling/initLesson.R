@@ -2,3 +2,4 @@
 library(ggplot2)
 fname <- paste(getwd(),"Statistical_Inference/Hypothesis_Testing/father_son.csv",sep="/")
 fs <- read.csv(fname)
+data(InsectSprays)
