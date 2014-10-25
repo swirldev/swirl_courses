@@ -1,32 +1,56 @@
 - Class: meta
   Course: Statistical_Inference
-  Lesson: Resampling
+  Lesson: Multiple_Testing
   Author: Swirl Coders
   Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
 - Class: text
-  Output: "Resampling. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/13_Resampling.)"
+  Output: "Multiple_Testing. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/12_MultipleTesting.)"
 
 - Class: text
-  Output: In this lesson, you get a bonus! We'll talk about two topics in statistical inference, bootstrapping AND permutation testing. These both fall under the broader category of resampling methods. We'll start with bootstrapping.
+  Output: In this lesson, we'll talk about multiple testing. Given a valuable set of data, we might want to get the most out of it so we'll try to test several hypotheses using this one dataset. If we have an alpha level of .05 and we test 20 hypotheses, on average, we expect one error, just by chance.   
 
 - Class: text
-  Output: The bootstrap is a handy tool for making statistical inferences. It is used in constructing confidence intervals and calculating standard errors for difficult statistics such as medians. Wikipedia tells us that it's a technique which "allows estimation of the sampling distribution of almost any statistic using very simple methods."  Simple is good, right?
+  Output: Luckily, we have clever ways of minimizing errors in this situation. That's what multiple testing addresses.
 
 - Class: text
-  Output: The beauty of bootstrapping is that it avoids complicated mathematics and instead uses  simulation and computation to infer distributional properties you might not otherwise be able to determine.
-
-- Class: text
-  Output: It's a relatively new concept, developed in 1979, by Bradley Efron, a statistician at Stanford.  The basic bootstrap principle uses OBSERVED data to construct an ESTIMATED population distribution using random samplings with replacement. From this distribution constructed from the observed data we can estimate the distribution of the statistic we're interested in. 
+  Output: Multiple testing is particularly relevant now in this age of BIG data. Statisticians are tasked with questions such as "Which variables matter among the thousands measured?" and "How do you relate unrelated information?"
 
 - Class: mult_question
-  Output: So, in bootstrapping the observed data substitutes for what?
-  AnswerChoices: a population; a statistic; a hypothesis; observations
-  CorrectAnswer: a population
-  AnswerTests: omnitest(correctVal='a population')
-  Hint: We'll used the observed data and sample it with replacement, just as we would do to find out information about some population.
+  Output: Since multiple testing addresses compensating for errors let's review what we know about them. A Type I error is  
+  AnswerChoices: rejecting a false hypothesis; failing to reject a false hypothesis; rejecting a true hypothesis; failing to reject a true hypothesis
+  CorrectAnswer: rejecting a true hypothesis
+  AnswerTests: omnitest(correctVal='rejecting a true hypothesis')
+  Hint: Eliminate the two choices that are not errors. A Type I error involves rejection.
+
+- Class: mult_question
+  Output: In an American court, an example of a Type I error is 
+  AnswerChoices: convicting an innocent person; acquitting a guilty person; letting the indicted off on a technicality
+  CorrectAnswer: convicting an innocent person
+  AnswerTests: omnitest(correctVal='convicting an innocent person')
+  Hint: In an American court, the null hypothesis is that the accused is innocent. If he is convicted when he really is innocent then the null hypothesis is rejected incorrectly.
+
+- Class: text
+  Output:  Another name for a Type I error is False Positive.
+
+- Class: mult_question
+  Output:  A Type II error is  
+  AnswerChoices: rejecting a false hypothesis; failing to reject a false hypothesis; rejecting a true hypothesis; failing to reject a true hypothesis
+  CorrectAnswer: failing to reject a false hypothesis
+  AnswerTests: omnitest(correctVal='failing to reject a false hypothesis')
+  Hint: Eliminate the two choices that are not errors. A Type II error involves failing to  reject.
+
+- Class: mult_question
+  Output: In an American court, an example of a Type II error is 
+  AnswerChoices: convicting an innocent person; acquitting a guilty person; letting the indicted off on a technicality
+  CorrectAnswer: acquitting a guilty person
+  AnswerTests: omnitest(correctVal='acquitting a guilty person')
+  Hint: In an American court, the null hypothesis is that the accused is innocent. If this is accepted (not rejected) by the jury and the defendant is in fact guilty a Type II error has been made.
+
+- Class: text
+  Output:  Another name for a Type II error is False Negative.
 
 - Class: mult_question
   Output: So, in bootstrapping if the observed data is the population, what would the random samplings correspond to?
