@@ -94,7 +94,7 @@
   Hint: Call rbinom() with n = 1, size = 100, and prob = 0.7.
 
 - Class: cmd_question
-  Output: Equivilently, if we want to see all of the 0s and 1s, we can request 100 observations, each of size 1, with success probability of 0.7. Give it a try, assigning the result to a new variable called flips2.
+  Output: Equivalently, if we want to see all of the 0s and 1s, we can request 100 observations, each of size 1, with success probability of 0.7. Give it a try, assigning the result to a new variable called flips2.
   CorrectAnswer: flips2 <- rbinom(100, size = 1, prob = 0.7)
   AnswerTests: match_call('flips2 <- rbinom(100, size = 1, prob = 0.7)')
   Hint: Call rbinom() with n = 100, size = 1, and prob = 0.7 and assign the result to flips2.

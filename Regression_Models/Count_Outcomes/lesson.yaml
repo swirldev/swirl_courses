@@ -34,7 +34,7 @@
   FigureType: new
 
 - Class: figure
-  Output: "In a Poisson regression, the log of lambda is assumed to be a linear function of the predictors. Since we will try to model the growth of visits to a web site, the log of lambda will be a linear function the date: log(lambda) = b0 + b1*date. This implies that the average number of hits per day, lambda, is exponential in the date: lambda = exp(b0)*exp(b1)^date. Exponential growth is also suggested by the smooth, black curve drawn though the data. Thus exp(b1) would represent the percentage by which visits grow per day."
+  Output: "In a Poisson regression, the log of lambda is assumed to be a linear function of the predictors. Since we will try to model the growth of visits to a web site, the log of lambda will be a linear function of the date: log(lambda) = b0 + b1*date. This implies that the average number of hits per day, lambda, is exponential in the date: lambda = exp(b0)*exp(b1)^date. Exponential growth is also suggested by the smooth, black curve drawn though the data. Thus exp(b1) would represent the percentage by which visits grow per day."
   Figure: hits.R
   FigureType: new
 
@@ -80,7 +80,7 @@
   AnswerTests: omnitest('summary(mdl)')
   Hint: Just type summary(mdl)
 
-- Class: txt
+- Class: text
   Output: "Both coefficients are significant, being far more than two standard errors from zero. The Residual deviance is also very significantly less than the Null, indicating a strong effect. (Recall that the difference between Null and Residual deviance is approximately chi-square with 1 degree of freedom.) The Intercept coefficient, b0, just represents log average hits on R's Date 0, namely January 1, 1970. We will ignore it and focus on the coefficient of date, b1, since exp(b1) will estimate the percentage at which average visits increase per day of the site's life."
 
 - Class: cmd_question
@@ -103,7 +103,7 @@
   FigureType: new
 
 - Class: cmd_question
-  Output: "In the figure, the maximum number of visits occurred in late 2012. Visits from the Simply Statistics blog were also at their maximum that day. To find the exact date we can use which.max(hits[,'visits']. Do this now."
+  Output: "In the figure, the maximum number of visits occurred in late 2012. Visits from the Simply Statistics blog were also at their maximum that day. To find the exact date we can use which.max(hits[,'visits']). Do this now."
   CorrectAnswer: which.max(hits[,'visits'])
   AnswerTests: omnitest("which.max(hits[,'visits'])", 704)
   Hint: Type which.max(hits[,'visits']) or something equivalent.

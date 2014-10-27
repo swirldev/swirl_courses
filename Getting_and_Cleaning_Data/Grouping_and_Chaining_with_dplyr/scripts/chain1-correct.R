@@ -11,7 +11,7 @@
 # The call to print() at the end of the chain is optional,
 # but necessary if you want your results printed to the
 # console. Note that since there are no additional arguments
-# to print(), you can just leave of the parentheses after
+# to print(), you can leave off the parentheses after
 # the function name. This is a convenient feature of the %>%
 # operator.
 

@@ -16,4 +16,4 @@ myPlot <- function(beta){
   mse <- mean( (y - beta * x)^2 )
   title(paste("beta = ", beta, "mse = ", round(mse, 3)))
 }
-manipulate(myPlot(beta), beta = slider(0.4, .8, step = 0.02))
+manipulate(myPlot(beta), beta = manipulate::slider(0.4, .8, step = 0.02))
