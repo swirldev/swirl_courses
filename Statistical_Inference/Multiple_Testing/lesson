@@ -10,10 +10,11 @@
   Output: "Multiple_Testing. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/12_MultipleTesting.)"
 
 - Class: text
-  Output: In this lesson, we'll talk about multiple testing. Given a valuable set of data, we might want to get the most out of it so we'll try to test several hypotheses using this one dataset. If we have an alpha level of .05 and we test 20 hypotheses, on average, we expect one error, just by chance.   
+  Output: In this lesson, we'll talk about multiple testing. Given some data, we want to get the most out of it so we might test several hypotheses. If we have an alpha level of .05 and we test 20 hypotheses, then on average, we expect one error, just by chance.   
 
 - Class: text
-  Output: Luckily, we have clever ways of minimizing errors in this situation. That's what multiple testing addresses.
+  Output: Luckily, we have clever ways of minimizing errors in this situation. That's what multiple testing addresses.    Two  of its key components are error measure and correction.
+
 
 - Class: text
   Output: Multiple testing is particularly relevant now in this age of BIG data. Statisticians are tasked with questions such as "Which variables matter among the thousands measured?" and "How do you relate unrelated information?"
@@ -32,8 +33,6 @@
   AnswerTests: omnitest(correctVal='convicting an innocent person')
   Hint: In an American court, the null hypothesis is that the accused is innocent. If he is convicted when he really is innocent then the null hypothesis is rejected incorrectly.
 
-- Class: text
-  Output:  Another name for a Type I error is False Positive.
 
 - Class: mult_question
   Output:  A Type II error is  
@@ -50,7 +49,48 @@
   Hint: In an American court, the null hypothesis is that the accused is innocent. If this is accepted (not rejected) by the jury and the defendant is in fact guilty a Type II error has been made.
 
 - Class: text
-  Output:  Another name for a Type II error is False Negative.
+  Output: Good. Now that we've reviewed, recall our previous discussions of null hypotheses and p-values. Remember when we said that the null hypothesis was "the hypothesis that represents the status_quo and is assumed true" ?
+
+- Class: text
+  Output: We also said that "the p-value is the probability under the null hypothesis of obtaining evidence as or more extreme than  your test statistic (obtained from your observed data) in the direction of the alternative hypothesis." Of course p-values are related to significance or alpha levels, which are set before the test is conducted (often at 0.05). 
+
+- Class: text
+  Output: If a p-value is found to be less than alpha (say 0.05), then the test result is considered statistically significant, i.e., surprising and unusual, and the null hypothesis (the status quo) is rejected.
+
+- Class: figure
+  Output:  Now consider this chart copied from http://en.wikipedia.org/wiki/Familywise_error_rate. Suppose we've tested m null hypotheses, m_0 of which are actually true, and m-m_0 are actually false. Out of the m tests R have been declared significant, that is, the associated p-values were less than alpha, and m-R were nonsignificant, or boring results. (Here m and R are obviously known, while m_0, S, T, U and V are unknown.)
+  Figure: errorMat.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Of the m_0 true null hypotheses, V were declared significant. What type of error does this represent?  
+  AnswerChoices: Type I; Type II; Type III; a serious one
+  CorrectAnswer: Type I
+  AnswerTests: omnitest(correctVal='Type I')
+  Hint: By declaring the test result significant the true null hypothesis was rejected, like convicting an innocent person.
+
+- Class: text
+  Output:  Another name for a Type I error is False Positive, since it is falsely claiming a significant (positive) result.
+
+- Class: mult_question
+  Output: Of the m-m_0 false null hypotheses, T were declared nonsignificant. This means that these T null hypotheses were accepted (failed to be rejected). What type of error does this represent?  
+  AnswerChoices: Type I; Type II; Type III; a serious one
+  CorrectAnswer: Type II
+  AnswerTests: omnitest(correctVal='Type II')
+  Hint: By declaring the test result nonsignificant the false null hypothesis was accepted (failed to be rejected), like letting a guilty person go free.
+
+- Class: text
+  Output:  Another name for a Type II error is False Negative, since it is falsely claiming a nonsignificant (negative) result.
+
+- Class: text
+  Output:  We 
+False positive rate - The rate at which false results ($\beta = 0$) are called significant: $E\left[\frac{V}{m_0}\right]$*
+
+Family wise error rate (FWER) - The probability of at least one false positive ${\rm Pr}(V \geq 1)$
+
+False discovery rate (FDR) - The rate at which claims of significance are false $E\left[\frac{V}{R}\right]$
+
+    The false positive rate is closely related to the type I error rate http://en.wikipedia.org/wiki/False_positive_rate
 
 - Class: mult_question
   Output: So, in bootstrapping if the observed data is the population, what would the random samplings correspond to?
