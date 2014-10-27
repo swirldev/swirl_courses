@@ -30,3 +30,14 @@ test_func3 <- function() {
   }, silent = TRUE)
   exists('ok') && isTRUE(ok)
 }
+
+test_func4 <- function() {
+  try({
+    func <- get('evaluate', globalenv())
+    t1 <- identical(func(sum, c(2, 4, 7)), 13)
+    t2 <- identical(func(median, c(9, 200, 100)), 100)
+    t3 <- identical(func(floor, 12.1), 12)
+    ok <- all(t1, t2, t3)
+  }, silent = TRUE)
+  exists('ok') && isTRUE(ok)
+}

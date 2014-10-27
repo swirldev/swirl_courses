@@ -176,3 +176,20 @@
     remainder was an argument for args(). Yes it's true: you can pass functions
     as arguments! This is a very powerful concept. Let's write a script to see
     how it works."
+
+- Class: script
+  Output: Make sure to save your script before you type submit().
+  AnswerTests: test_func4()
+  Hint: "Make sure that when you pass a function as an argument you pass the
+    name of the function without parentheses!"
+  Script: evaluate.R
+
+- Class: cmd_question
+  Output: "Let's take your new evaluate() function for a spin! Use evaluate to 
+    find the standard deviation of the vector c(1.4, 3.6, 7.9, 8.8)."
+  CorrectAnswer: args(remainder)
+  AnswerTests: omnitest(correctExpr='args(remainder)')
+  Hint: "The function for standard deviation is called sd(). Make sure that when
+    you pass a function as an argument you pass the
+    name of the function without parentheses!"
+
