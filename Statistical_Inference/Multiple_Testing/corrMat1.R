@@ -1,4 +1,4 @@
-fname <- paste(getwd(),"Statistical_Inference/Multiple_Testing/fwer2.jpeg",sep="/")
+fname <- paste(getwd(),"Statistical_Inference/Multiple_Testing/corrected1.jpeg",sep="/")
 temp <- readJPEG(fname)
 #img <- as.raster(temp)
 plot.new()
