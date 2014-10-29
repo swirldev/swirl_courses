@@ -10,7 +10,10 @@
   Output: "Multiple_Testing. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/12_MultipleTesting.)"
 
 - Class: text
-  Output: In this lesson, we'll talk about multiple testing. Given some data, we want to get the most out of it so we might test several hypotheses. If we have an alpha level of .05 and we test 20 hypotheses, then on average, we expect one error, just by chance.   
+  Output: In this lesson, we'll talk about multiple testing. You might ask, "What' that?"
+
+- Class: text
+  Output: Given that data is valuable, we'd like to get the most out of it. Why test only one hypothesis? Let's test several hypotheses against it. If we have an alpha level of .05 and we test 20 hypotheses, then on average, we expect one error, just by chance.   
 
 - Class: text
   Output: Luckily, we have clever ways of minimizing errors in this situation. That's what multiple testing addresses.    Two  of its key components are error measure and correction.
@@ -66,12 +69,19 @@
   Hint: Accepted (failed to be rejected) or rejected are the only real choices here. A low p-value is a low probability. This means your data is unusual and is closer to the alternative hypothesis than the null.
 
 - Class: figure
-  Output:  Now consider this chart copied from http://en.wikipedia.org/wiki/Familywise_error_rate. Suppose we've tested m null hypotheses, m_0 of which are actually true, and  m-m_0  are actually false. Out of the m tests R have been declared significant, that is, the associated p-values were less than alpha, and m-R were nonsignificant, or boring results. (Here m and R are obviously known, while m_0, S, T, U and V are unknown.)
+  Output:  Now consider this chart copied from http://en.wikipedia.org/wiki/Familywise_error_rate. Suppose we've tested m null hypotheses, m_0 of which are actually true, and  m-m_0  are actually false. Out of the m tests R have been declared significant, that is, the associated p-values were less than alpha, and m-R were nonsignificant, or boring results. 
   Figure: errorMat.R
   FigureType: new
 
 - Class: mult_question
-  Output: Of the m_0 true null hypotheses, V were declared significant. What type of error does this represent?  
+  Output: Looking at the chart, which variables are known?  
+  AnswerChoices: m and R; m_0, and m; S,T,U,V; A,B,C
+  CorrectAnswer:  m and R
+  AnswerTests: omnitest(correctVal=' m and R')
+  Hint: The number of hypotheses tested (m) and the number declared significant (R) are known. The variable m_0 represents the unknowable, the number of true hypotheses. S, T, U, and V are unobservable random variables.
+
+- Class: mult_question
+  Output: In testing the m_0 true null hypotheses, V results were declared significant, that is, these tests favored the alternative hypothesis. What type of error does this represent?  
   AnswerChoices: Type I; Type II; Type III; a serious one
   CorrectAnswer: Type I
   AnswerTests: omnitest(correctVal='Type I')
@@ -91,7 +101,10 @@
   Output:  Another name for a Type II error is False Negative, since it is falsely claiming a nonsignificant (negative) result.
 
 - Class: text
-  Output: A rose by any other name, right? How about the fraction V/R? From the chart, R represents the number of test results declared significant so it is observed and hence 'discovered'. V is the number of those falsely declared significant, so V/R is the ratio of FALSE discoveries. Since V is a random variable (i.e., unknown until we do an experiment) we call the expected value of the ratio, E(V/R), the False Discovery Rate (FDR).
+  Output: A rose by any other name, right? Consider the fraction V/R. 
+
+- Class: text
+  Output:  The observed R represents the number of test results declared significant. These are 'discoveries', something different from the status quo. V is the number of those falsely declared significant, so V/R is the ratio of FALSE discoveries. Since V is a random variable (i.e., unknown until we do an experiment) we call the expected value of the ratio, E(V/R), the False Discovery Rate (FDR).
 
 - Class: text
   Output: A rose by any other name, right? How about the fraction V/m_0? From the chart, m_0 represents the number of true H_0's and m_0 is unknown. V is the number of those falsely declared significant, so V/m_0 is the ratio of FALSE positives. Since V is a random variable (i.e., unknown until we do an experiment) we call the expected value of the ratio, E(V/m_0), the FALSE POSITIVE rate.   
@@ -130,10 +143,10 @@
   Output: You got it! 500 false positives seems like a lot. How do we avoid so many?
 
 - Class: text
-  Output:  We can try to control the family-wise error rate (FWER) with the Bonferroni correction, the oldest multiple testing correction.
+  Output:  We can try to control the family-wise error rate (FWER), the probability of at least one false positive, with the Bonferroni correction, the oldest multiple testing correction.
 
 - Class: text
-  Output: Here's the basic idea. We do m tests and control the FWER at level alpha so that Pr(V >= 1) < alpha. We'll calculate the p-values normally and set alpha_fwer to be alpha/m. We'll only call a test result significant if its p-value < alpha_fwer.
+  Output: It's very straightforward. We do m tests and want to control the FWER at level alpha so that Pr(V >= 1) < alpha. We simply set alpha_fwer to be alpha/m. We'll only call a test result significant if its p-value < alpha_fwer.
 
 - Class: mult_question
   Output: Sounds good, right? Easy to calculate. What would be a drawback with this method?
@@ -143,10 +156,10 @@
   Hint: Dividing alpha by m makes your cutoff value very small so you might not get any significant results, much less false ones. 
 
 - Class: text
-  Output: Another way to limit the false positive rate is to control the false discovery rate (FDR). This is the most popular correction when performing lots of tests. It's used in lots of areas such as genomics, imaging, astronomy, and other signal-processing disciplines.
+  Output: Another way to limit the false positive rate is to control the false discovery rate (FDR). Recall this is E(V/R). This is the most popular correction when performing lots of tests. It's used in lots of areas such as genomics, imaging, astronomy, and other signal-processing disciplines.
 
 - Class: text
-  Output:  Again, we'll do m tests but now we'll set the FDR, or E(V/R) at level alpha. We'll calculate the p-values as usual and order them from smallest to largest,  p_1, p_2,...p_m. We'll call significant any result with p_i <= (alpha*i)/m. This is the Benjamini-Hochberg method (BH).
+  Output:  Again, we'll do m tests but now we'll set the FDR, or E(V/R) at level alpha. We'll calculate the p-values as usual and order them from smallest to largest,  p_1, p_2,...p_m. We'll call significant any result with p_i <= (alpha*i)/m. This is the Benjamini-Hochberg method (BH). A p-value is compared to a value that depends on its ranking.
 
 - Class: text
   Output: This is equivalent to finding the largest k such that p_k <= (k * alpha)/m, (for a given alpha) and then rejecting all the null hypotheses for i=1,...,k.
@@ -239,7 +252,7 @@
   Hint: Type table(pValues2 < 0.05, trueStatus) at the command prompt.
 
 - Class: text
-  Output: "We see that all the nonrandom tests were correctly identified in the \"not zero\" column. In the zero column (the truly random tests), however, 24 results were flagged as significant. These are the false positives." 
+  Output: "We see that all 500 of the nonrandom tests were correctly identified in the \"not zero\" column. In the zero column (the truly random tests), however, 24 results were flagged as significant. These are the false positives." 
 
 - Class: cmd_question
   Output: "Now run the same table function, however, this time use the call to p.adjust with \"bonferroni\" method in the boolean expression."
