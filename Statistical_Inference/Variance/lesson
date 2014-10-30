@@ -27,10 +27,15 @@
 - Class: text
   Output: Finally, it's easy to show from the definition and the linearity of expectations that Var(aX)=a^2*Var(X). This will come in handy later.  
 
-- Class: video
-  Output: Would you like to see the equation proving this? You'll need an internet connection to see it.
-  VideoLink: "http://wilcrofter.github.io/slidex/markDown/varAX.html"
+#- Class: video
+#  Output: Would you like to see the equation proving this? You'll need an internet connection to see it.
+#  VideoLink: "http://wilcrofter.github.io/slidex/markDown/varAX.html"
 
+- Class: figure
+  Output: If you're interested, here's the proof. You might have to stretch out your plot window to make it clearer. 
+  Figure: plotVform.R
+  FigureType: new
+                                       
 - Class: text
   Output:  Let's practice computing the variance of a dice roll now. First we need to compute E(X^2). From the definition of expected values, this means we'll take a weighted sum over all possible values of X^2. The weight is the probability of X occurring.  
 
@@ -104,7 +109,7 @@
   AnswerChoices: Var(1/n * Sum(X_i)); E(1/n * Sum(X_i)); mu; sigma
   CorrectAnswer: Var(1/n * Sum(X_i))
   AnswerTests: omnitest(correctVal='Var(1/n * Sum(X_i))')
-  Hint: Which of the choices has both Var and the definistion of mean in it?
+  Hint: Which of the choices has both Var and the definition of mean in it?
 
 - Class: mult_question
   Output: Which of the following does Var(1/n * Sum(X_i)') equal?
@@ -212,7 +217,7 @@
   Output: Finally, here's something interesting. Chebyshev's inequality helps interpret variances. It states that the probability that a random variable X is at least k standard deviations from its mean is less than 1/(k^2). In other words, the probability that X is at least 2 standard deviations from the mean is less than 1/4, 3 standard deviations 1/9, 4 standard deviations 1/16, etc.
 
 - Class: text
-  Output: However this estimate is quite conservative for random variables that are normally distributed, that is, with bell-curve distributions. In these cases, the probability of being at least 2 standard deviations from the mean is about 5% (as compared to Chebyshev's 25%) and the probability of being at least 3 standard deviations from the mean is roughly .2%.
+  Output: However this estimate is quite conservative for random variables that are normally distributed, that is, with bell-curve distributions. In these cases, the probability of being at least 2 standard deviations from the mean is about 5% (as compared to Chebyshev's upper bound of 25%) and the probability of being at least 3 standard deviations from the mean is roughly .2%.
 
 - Class: mult_question
   Output: Suppose you had a measurement that was 4 standard deviations from the the distribution's mean. What would be the upper bound  of the probability of this happening using Chebyshev's inequality? 

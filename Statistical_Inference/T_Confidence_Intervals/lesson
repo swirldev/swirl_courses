@@ -95,7 +95,7 @@
   Hint: Type myplot2(20) at the command prompt.
 
 - Class: text
-  Output: The quantiles are much closer together with the higher degrees of freedom. At the 97.5 percentile though the t quantile is still greater than the normal. Student's Rule!
+  Output: The quantiles are much closer together with the higher degrees of freedom. At the 97.5 percentile, though, the t quantile is still greater than the normal. Student's Rule!
 
 - Class: text
   Output: So the t-interval is defined as X' +/- t_(n-1)*s/sqrt(n) where t_(n-1) is the relevant quantile. The t interval  assumes that the data are iid normal, though it is robust to this assumption and  works well whenever the distribution of the data is roughly symmetric and mound shaped.
@@ -149,7 +149,7 @@
   Hint: Type  range(g2) at the command prompt.
 
 - Class: cmd_question
-  Output:  Now let's look at the pairwise difference. We can take advantage of R's componentwise subtraction of vectors and create the vector difference by subtracting g1 from g2. Do this now.
+  Output:  Now let's look at the pairwise difference. We can take advantage of R's componentwise subtraction of vectors and create the vector of difference by subtracting g1 from g2. Do this now and put the result in the variable difference.
   CorrectAnswer: difference <- g2-g1
   AnswerTests: expr_creates_var("difference"); omnitest(correctExpr='difference <- g2-g1')
   Hint: Type  difference <- g2-g1 at the command prompt.
@@ -181,9 +181,15 @@
   AnswerTests:  omnitest(correctExpr='t.test(difference)$conf.int')
   Hint: Type t.test(difference)$conf.int at the command prompt.
 
-- Class: video
-  Output: As the slides showed,  R provides several ways of using t.test to find the confidence interval of this data. Would you like to see the R code to see 4 alternatives (including the two we just went through) and how to display them nicely? You'll need an internet connection to see it.
-  VideoLink: "http://wilcrofter.github.io/slidex/markDown/ttest.html"
+#- Class: video
+#  Output: As the slides showed,  R provides several ways of using t.test to find the confidence interval of this data. Would you like to see the R code to see 4 alternatives (including the two we just went through) and how to display them nicely? You'll need an internet connection to see it.
+#  VideoLink: "http://wilcrofter.github.io/slidex/markDown/ttest.html"
+
+- Class: figure
+  Output: Here's code from the slides which shows four different ways of using t.test (including the two we just went through) to find the confidence interval of this data. The code also shows how to display them nicely in a 4 x 2 array. If the image looks squished, just stretch out the plot window temporarily (while you look at the code).
+  Figure: plot4Ttests.R
+  FigureType: new
+
 
 - Class: text
   Output: We now present methods, using t confidence intervals, for comparing independent groups. 
@@ -300,9 +306,14 @@
 - Class: text
   Output: The formula for the degrees of freedom is a complicated fraction that no one remembers.  The numerator is the SQUARE of the sum of the squared standard errors of the two sample means. Each has the form s^2/n. The denominator is the sum of two terms, one for each group. Each term has the same form. It is the standard error of the mean raised to the fourth power divided by the sample size-1. More precisely, each term looks like (s^4/n^2)/(n-1). We use this df to find the t quantile.
 
-- Class: video
-  Output: Would you like to see this formula nicely displayed? You'll need an internet connection to do this.
-  VideoLink: "http://wilcrofter.github.io/slidex/markDown/diffVar.html"
+#- Class: video
+#  Output: Would you like to see this formula nicely displayed? You'll need an internet connection to do this.
+#  VideoLink: "http://wilcrofter.github.io/slidex/markDown/diffVar.html"
+
+- Class: figure
+  Output: Here's the formula. You might have to stretch the plot window to get it displayed more clearly.
+  Figure: plotdiffVar.R
+  FigureType: new
 
 - Class: text
   Output: Let's plug in the numbers from the blood pressure study to see how this works. Recall we have two groups, the first with size 8 and X'_{oc}=132.86 and s_{oc}=15.34 and the second with size 21 and X'_{c}=127.44 and s_{c}=18.23. 
@@ -326,7 +337,7 @@
   Hint: Type  mydf <- num/den at the command prompt.
 
 - Class: cmd_question
-  Output: Now with the R function qt(.975,mydf) to compute the 95% t interval. Recall the formula. X'_{oc}-X'_{c} +/- t_df * SE. Recall that SE is the square root of the sum of the squared standard errors of the two means, (s_1)^2/n_1 + (s_2)^2/n_2 . Again our numbers are the following. X'_{oc}=132.86  s_{oc}=15.34  and n_{oc}=8 .  X'_{c}=127.44  s_{c}=18.23  and n_{c}=21. 
+  Output: Now with the R function qt(.975,mydf) compute the 95% t interval. Recall the formula. X'_{oc}-X'_{c} +/- t_df * SE. Recall that SE is the square root of the sum of the squared standard errors of the two means, (s_1)^2/n_1 + (s_2)^2/n_2 . Again our numbers are the following. X'_{oc}=132.86  s_{oc}=15.34  and n_{oc}=8 .  X'_{c}=127.44  s_{c}=18.23  and n_{c}=21. 
   CorrectAnswer: 132.86-127.44 +c(-1,1)*qt(.975,mydf)*sqrt(15.34^2/8 + 18.23^2/21)
   AnswerTests:  omnitest(correctExpr='132.86-127.44 +c(-1,1)*qt(.975,mydf)*sqrt(15.34^2/8 + 18.23^2/21)')
   Hint: Type  132.86-127.44 +c(-1,1)*qt(.975,mydf)*sqrt(15.34^2/8 + 18.23^2/21) at the command prompt.
