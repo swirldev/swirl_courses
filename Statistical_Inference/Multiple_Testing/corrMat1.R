@@ -1,6 +1,4 @@
-fname <- paste(getwd(),"Statistical_Inference/Multiple_Testing/corrected1.jpeg",sep="/")
-temp <- readJPEG(fname)
-#img <- as.raster(temp)
+fname <- pathtofile("corrected1.jpeg")
 plot.new()
 plotArea=par('fig')
-rasterImage(temp,plotArea[1],plotArea[3],plotArea[2],plotArea[4])
+rasterImage(readJPEG(fname),plotArea[1],plotArea[3],plotArea[2],plotArea[4])

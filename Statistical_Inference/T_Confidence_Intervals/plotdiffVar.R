@@ -1,6 +1,4 @@
-fname <- paste(getwd(),"Statistical_Inference/T_Confidence_Intervals/diffVar.jpeg",sep="/")
-temp <- readJPEG(fname)
-#img <- as.raster(temp)
+fname <- pathtofile("diffVar.jpeg")
 plot.new()
 plotArea=par('fig')
-rasterImage(temp,plotArea[1],plotArea[3],plotArea[2],plotArea[4],interpolate=FALSE)
+rasterImage(readJPEG(fname),plotArea[1],plotArea[3],plotArea[2],plotArea[4],interpolate=FALSE)

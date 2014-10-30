@@ -10,7 +10,7 @@
   Output: "Multiple_Testing. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/12_MultipleTesting.)"
 
 - Class: text
-  Output: In this lesson, we'll talk about multiple testing. You might ask, "What' that?"
+  Output: In this lesson, we'll talk about multiple testing. You might ask, "What's that?"
 
 - Class: text
   Output: Given that data is valuable, we'd like to get the most out of it. Why test only one hypothesis? Let's test several hypotheses against it. If we have an alpha level of .05 and we test 20 hypotheses, then on average, we expect one error, just by chance.   
@@ -77,7 +77,7 @@
   Output: Looking at the chart, which variables are known?  
   AnswerChoices: m and R; m_0, and m; S,T,U,V; A,B,C
   CorrectAnswer:  m and R
-  AnswerTests: omnitest(correctVal=' m and R')
+  AnswerTests: omnitest(correctVal='m and R')
   Hint: The number of hypotheses tested (m) and the number declared significant (R) are known. The variable m_0 represents the unknowable, the number of true hypotheses. S, T, U, and V are unobservable random variables.
 
 - Class: mult_question

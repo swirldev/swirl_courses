@@ -186,7 +186,7 @@
 #  VideoLink: "http://wilcrofter.github.io/slidex/markDown/ttest.html"
 
 - Class: figure
-  Output: Here's code from the slides which shows four different ways of using t.test (including the two we just went through) to find the confidence interval of this data. The code also shows how to display them nicely in a 4 x 2 array. If the image looks squished, just stretch out the plot window temporarily (while you look at the code).
+  Output: Here's code from the slides which shows four different ways of using t.test (including the two we just went through) to find the confidence interval of this data. The code also shows how to display the intervals nicely in a 4 x 2 array. 
   Figure: plot4Ttests.R
   FigureType: new
 
