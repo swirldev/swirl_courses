@@ -89,7 +89,7 @@
   Hint: Type qt(.975,2) at the command prompt.
 
 - Class: cmd_question
-  Output: Now run myplot2 with an argument of 20.
+  Output: See? It matches the horizontal line of the plot. Now run myplot2 with an argument of 20.
   CorrectAnswer: myplot2(20)
   AnswerTests: omnitest(correctExpr='myplot2(20)')
   Hint: Type myplot2(20) at the command prompt.
@@ -343,7 +343,7 @@
   Hint: Type  132.86-127.44 +c(-1,1)*qt(.975,mydf)*sqrt(15.34^2/8 + 18.23^2/21) at the command prompt.
 
 - Class: text
-  Output: R makes things a lot easier. If you call t.test with var.equal set to FALSE, it will do the nasty degrees of freedom calculation for you.
+  Output: Don't worry about these nasty calculations. R makes things a lot easier. If you call t.test with var.equal set to FALSE, then R calculates the  degrees of freedom for you. You don't have to memorize the formula.
 
 
 - Class: text
