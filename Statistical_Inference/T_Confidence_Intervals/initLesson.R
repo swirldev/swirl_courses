@@ -16,4 +16,5 @@ pathtofile <- function(fileName){
 fxfer <- function(fileName){
   mypath <- pathtofile(fileName)
   file.copy(mypath,fileName)
+  fileName
 }

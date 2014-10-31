@@ -32,8 +32,15 @@
 - Class: text
   Output: As a result, for t distributions, the formula for computing a confidence interval is similar to what we did in the last lesson. However, instead of a quantile for a normal distribution we use a quantile for a t distribution. So the formula is  Est +/- t-quantile *std error(Est). Another distinction is that we'll use the sample standard deviation when we estimate the standard error of Est.
 
+- Class: mult_question
+  Output: In the formula for the t statistic t=(X'-mu)/(s/sqrt(n)) what expression represents the sample standard deviation?
+  AnswerChoices: X'; mu; s; n
+  CorrectAnswer: s
+  AnswerTests: omnitest(correctVal='s')
+  Hint: X' and mu represent means, and n usually represents an integer like sample size.
+
 - Class: text
-  Output: These t confidence intervals are very handy, and if you have a choice between these and normal, pick these. We'll see that as datasets get larger, t-intervals look normal. We'll cover the one and two group versions.
+  Output: These t confidence intervals are very handy, and if you have a choice between these and normal, pick these. We'll see that as datasets get larger, t-intervals look normal. We'll cover the one- and two-group versions which depend on the data you have.
 
 - Class: text
   Output: The t distribution, invented by William Gosset in 1908, has thicker tails than the normal. Also, instead of having two parameters, mean and variance, as the normal does, the t distribution has only one - the number of degrees of freedom (df). 
@@ -80,7 +87,7 @@
   Hint: Type myplot2(2) at the command prompt.
 
 - Class: text
-  Output: The distance between the two lines represents the difference in sizes between the two sets of intervals. Note the thin horizontal and vertical lines. These represent the .975 quantiles for the t and normal distributions respectively. Anyway, you probably recognized the placement of the vertical at 1.96 from the Asymptotics lesson. 
+  Output: The distance between the two thick lines represents the difference in sizes between the quantiles and hence the two sets of intervals. Note the thin horizontal and vertical lines. These represent the .975 quantiles for the t and normal distributions respectively. Anyway, you probably recognized the placement of the vertical at 1.96 from the Asymptotics lesson. 
 
 - Class: cmd_question
   Output: Check the placement of the horizontal now using the R function qt with the arguments .975 for the quantile and 2 for the degrees of freedom (df).
@@ -96,6 +103,9 @@
 
 - Class: text
   Output: The quantiles are much closer together with the higher degrees of freedom. At the 97.5 percentile, though, the t quantile is still greater than the normal. Student's Rule!
+
+- Class: text
+  Output: This means the the t interval is always wider than the normal. This is because estimating the standard deviation introduces more uncertainty so a wider interval results. 
 
 - Class: text
   Output: So the t-interval is defined as X' +/- t_(n-1)*s/sqrt(n) where t_(n-1) is the relevant quantile. The t interval  assumes that the data are iid normal, though it is robust to this assumption and  works well whenever the distribution of the data is roughly symmetric and mound shaped.
@@ -325,7 +335,7 @@
   Hint: Type  num <- (15.34^2/8 + 18.23^2/21)^2 at the command prompt.
 
 - Class: cmd_question
-  Output: Now the denominator. This is the sum of two terms. Each term has the form s^4/n^2/(n-1).  Put the result in the variable den. Our numbers were 15.34 with size 8 and 18.23 with size 21. 
+  Output: Now the denominator. This is the sum of two terms. Each term has the form s^4/n^2/(n-1). These look a little different than the form displayed but they're equivalent. Put the result in the variable den. Our numbers were 15.34 with size 8 and 18.23 with size 21. 
   CorrectAnswer: den <- 15.34^4/8^2/7 + 18.23^4/21^2/20
   AnswerTests:  omnitest(correctExpr='den <- 15.34^4/8^2/7 + 18.23^4/21^2/20')
   Hint: Type  den <- 15.34^4/8^2/7 + 18.23^4/21^2/20 at the command prompt.

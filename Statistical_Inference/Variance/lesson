@@ -19,13 +19,13 @@
   Output: Var(X) = E( (X-mu)^2 ) = E( (X-E(X))^2 ) =  E(X^2)-E(X)^2 
 
 - Class: text
-  Output: Recall that E(X), the expected value of a random variable from the population, is mu, the mean of that population. 
+  Output: So variance is the difference between two expected values. Recall that E(X), the expected value of a random variable from the population, is mu, the mean of that population. 
 
 - Class: text
   Output: Higher variance implies more spread around a mean than lower variance. 
 
 - Class: text
-  Output: Finally, it's easy to show from the definition and the linearity of expectations that Var(aX)=a^2*Var(X). This will come in handy later.  
+  Output: Finally, it's easy to show from the definition and the linearity of expectations that, if a is a constant, then Var(aX)=a^2*Var(X). This will come in handy later.  
 
 #- Class: video
 #  Output: Would you like to see the equation proving this? You'll need an internet connection to see it.
@@ -81,12 +81,12 @@
   Output: As with the sample mean, the sample variance is also a random variable with an associated population distribution. Its expected value or mean is the population variance and its distribution gets more concentrated around the population variance with more data. The sample standard deviation is the square root of the sample variance.
 
 - Class: figure
-  Output: To illustrate this point, consider this figure which plots the distribution of 10000 variances, Each variance was computed on sample of standard normals of size 10. The vertical line indicates the standard deviation 1.
+  Output: To illustrate this point, consider this figure which plots the distribution of 10000 variances, Each variance was computed on a sample of standard normals of size 10. The vertical line indicates the standard deviation 1.
   Figure: moreData1.R
   FigureType: new
 
 - Class: figure
-  Output: Here we do the same experiment but this time each of the 10000 variances is over 20 standard normal samples. We've plotted over the first plot and you can see that the distribution of the variances is getting tighter and shifting closer to the vertical line.
+  Output: Here we do the same experiment but this time (the taller lump) each of the 10000 variances is over 20 standard normal samples. We've plotted over the first plot (the shorter lump) and you can see that the distribution of the variances is getting tighter and shifting closer to the vertical line.
   Figure: moreData2.R
   FigureType: new
 

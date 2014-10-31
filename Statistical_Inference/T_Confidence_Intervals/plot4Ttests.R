@@ -5,5 +5,4 @@
 # plotArea=par('fig')
 # rasterImage(temp,plotArea[1],plotArea[3],plotArea[2],plotArea[4],interpolate=FALSE)
 fname <- fxfer("show4calls.R")
-print(fname)
 file.edit(fname)

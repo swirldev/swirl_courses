@@ -300,7 +300,7 @@
   Hint: Type dim(fs) at the command prompt.
 
 - Class: cmd_question
-  Output: So fs has 1078 rows and 2 columns. The columns, fheight and sheight, contain the heights of a father and his son. Obviously there are 1078 such pairs. We can run t.test on this data in one of two ways. First, we can run it with just one argument, the difference between the heights, say fs$sheights-fs$fheights. OR we can run it with three arguments, the two heights plus the paired argument set to TRUE. Run t.test now using whichever way you prefer.
+  Output: So fs has 1078 rows and 2 columns. The columns, fheight and sheight, contain the heights of a father and his son. Obviously there are 1078 such pairs. We can run t.test on this data in one of two ways. First, we can run it with just one argument, the difference between the heights, say fs$sheight-fs$fheight. OR we can run it with three arguments, the two heights plus the paired argument set to TRUE. Run t.test now using whichever way you prefer.
   CorrectAnswer: t.test(fs$sheight-fs$fheight)
   AnswerTests: ANY_of_exprs('t.test(fs$sheight-fs$fheight)','t.test(fs$fheight-fs$sheight)','t.test(fs$sheight,fs$fheight,paired=TRUE)','t.test(fs$fheight, fs$sheight,paired=TRUE)')
   Hint: Type t.test(fs$sheight-fs$fheight) at the command prompt.

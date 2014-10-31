@@ -8,3 +8,14 @@ edh <- expect_dice(dice_high)
 edl <- expect_dice(dice_low)
 nsim <- 1000
 samsz <- 10
+#get correct paths for plotting
+pathtofile <- function(fileName){
+  mypath <- file.path(find.package("swirl"),
+                      "Courses/Statistical_Inference/Variance",
+                      fileName)
+}
+fxfer <- function(fileName){
+  mypath <- pathtofile(fileName)
+  file.copy(mypath,fileName)
+  fileName
+}
