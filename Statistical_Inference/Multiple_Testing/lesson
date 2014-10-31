@@ -10,13 +10,16 @@
   Output: "Multiple_Testing. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/12_MultipleTesting.)"
 
 - Class: text
-  Output: In this lesson, we'll talk about multiple testing. You might ask, "What's that?"
+  Output: In this lesson, we'll discuss multiple testing. You might ask, "What's that?"
 
 - Class: text
-  Output: Given that data is valuable, we'd like to get the most out of it. Why test only one hypothesis? Let's test several hypotheses against it. If we have an alpha level of .05 and we test 20 hypotheses, then on average, we expect one error, just by chance.   
+  Output: Given that data is valuable and we'd like to get the most out of it, we might use it to test several hypotheses. If we have an alpha level of .05 and we test 20 hypotheses, then on average, we expect one error, just by chance.   
 
 - Class: text
-  Output: Luckily, we have clever ways of minimizing errors in this situation. That's what multiple testing addresses.    Two  of its key components are error measure and correction.
+  Output: Another potential problem is that after running several tests,  only the lowest p-value might be reported. OR all p-values under the threshold might be considered significant. Undoubtedly, some of these would be false.
+
+- Class: text
+  Output: Luckily, we have clever ways of minimizing errors in this situation. That's what we'll address.    We'll define specific error measures and then statistical ways of correcting or limiting them.
 
 
 - Class: text
@@ -146,7 +149,7 @@
   Output:  We can try to control the family-wise error rate (FWER), the probability of at least one false positive, with the Bonferroni correction, the oldest multiple testing correction.
 
 - Class: text
-  Output: It's very straightforward. We do m tests and want to control the FWER at level alpha so that Pr(V >= 1) < alpha. We simply set alpha_fwer to be alpha/m. We'll only call a test result significant if its p-value < alpha_fwer.
+  Output: It's very straightforward. We do m tests and want to control the FWER at level alpha so that Pr(V >= 1) < alpha. We simply reduce alpha drawmatically. Set alpha_fwer to be alpha/m. We'll only call a test result significant if its p-value < alpha_fwer.
 
 - Class: mult_question
   Output: Sounds good, right? Easy to calculate. What would be a drawback with this method?
@@ -170,12 +173,12 @@
   Output: Like the Bonferroni correction, this is easy to calculate and it's much less conservative. It might let more false positives through and it may behave strangely if the tests aren't independent.
 
 - Class: figure
-  Output:  Now consider this chart copied from the slides. It shows 10 tests performed at the alpha=.2 level and three cutoff lines. The red line is the threshold for No Corrections (p-values are compared to alpha=.2), the blue line is the Bonferroni threshold, alpha=.2/10 = .02, and the gray line shows the BH correction. Note that it is not horizontal but has a positive slope as we expect.
+  Output:  Now consider this chart copied from the slides. It shows the p-values for 10 tests performed at the alpha=.2 level and three cutoff lines. The p-values are shown in order from left to right along the x-axis. The red line is the threshold for No Corrections (p-values are compared to alpha=.2), the blue line is the Bonferroni threshold, alpha=.2/10 = .02, and the gray line shows the BH correction. Note that it is not horizontal but has a positive slope as we expect.
   Figure: corrMat1.R
   FigureType: new
 
 - Class: mult_question
-  Output: With no correction, how many tests are declared significant?
+  Output: With no correction, how many results are declared significant?
   AnswerChoices: 2; 4; 6 ;8
   CorrectAnswer: 4
   AnswerTests: omnitest(correctVal='4')
@@ -189,24 +192,24 @@
   Hint: How many points fall below the blue line?
 
 - Class: mult_question
-  Output: So the Bonferroni passed only half the results that the No Correction (comparing p-values to alpha) method. Now look at the BH correction. How many tests are significant with this scale?
+  Output: So the Bonferroni passed only half the results that the No Correction (comparing p-values to alpha) method passed. Now look at the BH correction. How many tests are significant with this scale?
   AnswerChoices: 1; 3; 5; 7
   CorrectAnswer: 3
   AnswerTests: omnitest(correctVal='3')
   Hint: How many points fall below the gray line?.
 
 - Class: text
-  Output: So the BH correction is between the No Correction and the Bonferroni. It's more conservative (fewer significant results) than the No Correction but less conservative (more significant results) than the Bonferroni.
+  Output: So the BH correction which limits the FWER is between the No Correction and the Bonferroni. It's more conservative (fewer significant results) than the No Correction but less conservative (more significant results) than the Bonferroni. Note that with this method the threshold is proportional to the ranking of the values so it slopes positively while the other two thresholds are flat.
 
 - Class: text
-  Output: Notice how both the Bonferroni and BH methods adjusted the threshold (alpha) level of rejecting the null hypotheses. Another equivalent corrective approach is to adjust the p-values, so they're not really p-values anymore, but they can be compared directly to the original alpha. 
+  Output: Notice how both the Bonferroni and BH methods adjusted the threshold (alpha) level of rejecting the null hypotheses. Another equivalent corrective approach is to adjust the p-values, so they're not classical p-values anymore, but they can be compared directly to the original alpha. 
 
 - Class: text
   Output:  Suppose the p-values are p_1, ... , p_m.  With the Bonferroni method you would adjust these by setting p'_i = max(m  * p_i, 1)  for each p-value. Then if you call all p'_i < alpha significant you will control the FWER.
 
 
 - Class: figure
-  Output: To demonstrate some of these concepts, we've created an array of p-values for you. It is 1000-long and it was generated using random data so there are no true significant results.
+  Output: To demonstrate some of these concepts, we've created an array of p-values for you. It is 1000-long and composed of random normal x,y data so there is no true significant relationship between any of the data points.
   Figure: genNoTrue.R
   FigureType: new
 
@@ -235,7 +238,7 @@
   Hint: Type sum(p.adjust(pValues,method="BH") < 0.05) at the command prompt.
 
 - Class: figure
-  Output: So the BH method also eliminated all the false positives. Now we've generated another 1000-long array of pValues, this one called pValues2. In this data, half of the data is significant (not random) and half isn't (random).
+  Output: So the BH method also eliminated all the false positives. Now we've generated another 1000-long array of pValues, this one called pValues2. In this data, the first half of 500 pairs contains x and y values that are random and the second half contain x and y pairs that are related, so running a linear regression model on it should indicate a significant  (not random) relationship.
   Figure: gen50True.R
   FigureType: new
 
@@ -252,28 +255,37 @@
   Hint: Type table(pValues2 < 0.05, trueStatus) at the command prompt.
 
 - Class: text
-  Output: "We see that all 500 of the nonrandom tests were correctly identified in the \"not zero\" column. In the zero column (the truly random tests), however, 24 results were flagged as significant. These are the false positives." 
+  Output: "We see that without any correction all 500 of the truly significant (nonrandom) tests were correctly identified in the \"not zero\" column. In the zero column (the truly random tests), however, 24 results were flagged as significant." 
 
 - Class: cmd_question
-  Output: "Now run the same table function, however, this time use the call to p.adjust with \"bonferroni\" method in the boolean expression."
+  Output: What is the percentage of false positives in this test?
+  CorrectAnswer: 24/500
+  AnswerTests: equiv_val(".048")
+  Hint: "Divide 24 by 500 to get the percentage."
+
+- Class: text
+  Output: "Just as we expected - around 5% or .05*1000."
+
+- Class: cmd_question
+  Output: "Now run the same table function, however, this time use the call to p.adjust with the \"bonferroni\" method in the boolean expression. This will control the FWER."
   CorrectAnswer: "table(p.adjust(pValues2,method=\"bonferroni\") < 0.05, trueStatus)"
   AnswerTests: omnitest(correctExpr='table(p.adjust(pValues2,method=\"bonferroni\") < 0.05, trueStatus)')
   Hint: "Type table(p.adjust(pValues2,method=\"bonferroni\") < 0.05, trueStatus) at the command prompt."
 
 - Class: text
-  Output: Since the Bonferroni correction method is more conservative than just comparing p-values to alpha all the truly random tests are correctly identified in the zero column. However, the threshold has been adjusted so much that 23 of the nonrandom (significant) results have been misidentified in the not zero column. 
+  Output: Since the Bonferroni correction method is more conservative than just comparing p-values to alpha all the truly random tests are correctly identified in the zero column. In other words, we have no false positives. However, the threshold has been adjusted so much that 23 of the truly significant results have been misidentified in the not zero column. 
 
 - Class: cmd_question
-  Output: "Now run the same table function one final time. Use the call to p.adjust with \"BH\" method in the boolean expression."
+  Output: "Now run the same table function one final time. Use the call to p.adjust with \"BH\" method in the boolean expression. This will control the false discovery rate."
   CorrectAnswer: "table(p.adjust(pValues2,method=\"BH\") < 0.05, trueStatus)"
   AnswerTests: omnitest(correctExpr='table(p.adjust(pValues2,method=\"BH\") < 0.05, trueStatus)')
   Hint: "Type table(p.adjust(pValues2,method=\"BH\") < 0.05, trueStatus) at the command prompt."
 
 - Class: text
-  Output: "Again, the results are a compromise between the No Corrections and the Bonferroni. All the nonrandom results were correctly identified in the \"not zero\" column but in the random (\"zero\") column 13 results were incorrectly identified. This is roughly half the number of errors in the other two runs."
+  Output: "Again, the results are a compromise between the No Corrections and the Bonferroni. All the significant results were correctly identified in the \"not zero\" column but in the random (\"zero\") column 13 results were incorrectly identified. These are the false positives. This is roughly half the number of errors in the other two runs."
 
 - Class: figure
-  Output: Here's a plot of the two p-adjusted test results.
+  Output: Here's a plot of the two sets of adjusted p-values, Bonferroni on the left and BH on the right. The x-axis indicates the original p-values. For the Bonferroni, (adjusting by multiplying by 1000, the number of tests), only a few of the adjusted values are below 1. For the BH, the adjusted values are slightly larger than the original values.
   Figure: plot2.R
   FigureType: new
 
