@@ -16,7 +16,7 @@
   Output: Given that data is valuable and we'd like to get the most out of it, we might use it to test several hypotheses. If we have an alpha level of .05 and we test 20 hypotheses, then on average, we expect one error, just by chance.   
 
 - Class: text
-  Output: Another potential problem is that after running several tests,  only the lowest p-value might be reported. OR all p-values under the threshold might be considered significant. Undoubtedly, some of these would be false.
+  Output: Another potential problem is that after running several tests,  only the lowest p-value might be reported OR all p-values under some threshold might be considered significant. Undoubtedly, some of these would be false.
 
 - Class: text
   Output: Luckily, we have clever ways of minimizing errors in this situation. That's what we'll address.    We'll define specific error measures and then statistical ways of correcting or limiting them.
@@ -209,7 +209,7 @@
 
 
 - Class: figure
-  Output: To demonstrate some of these concepts, we've created an array of p-values for you. It is 1000-long and composed of random normal x,y data so there is no true significant relationship between any of the data points.
+  Output: To demonstrate some of these concepts, we've created an array of p-values for you. It is 1000-long and the result of a linear regression performed on random normal x,y pairs so there is no true significant relationship between the x's and y's.
   Figure: genNoTrue.R
   FigureType: new
 
@@ -238,18 +238,18 @@
   Hint: Type sum(p.adjust(pValues,method="BH") < 0.05) at the command prompt.
 
 - Class: figure
-  Output: So the BH method also eliminated all the false positives. Now we've generated another 1000-long array of pValues, this one called pValues2. In this data, the first half of 500 pairs contains x and y values that are random and the second half contain x and y pairs that are related, so running a linear regression model on it should indicate a significant  (not random) relationship.
+  Output: So the BH method also eliminated all the false positives. Now we've generated another 1000-long array of p-values, this one called pValues2. In this data, the first half ( 500 x/y pairs) contains x and y values that are random and the second half contain x and y pairs that are related, so running a linear regression model on the 1000 pairs should find some significant  (not random) relationship.
   Figure: gen50True.R
   FigureType: new
 
 - Class: cmd_question
-  Output: Once again we can use R's greatness to count and tabulate for us. We created a 1000-long array of character strings, trueStatus. The first 500 entries are "zero" and the last are "not zero". Use the R function tail to look at the end of trueStatus.
+  Output:  We also created a 1000-long array of character strings, trueStatus. The first 500 entries are "zero" and the last are "not zero". Use the R function tail to look at the end of trueStatus.
   CorrectAnswer: tail(trueStatus)
   AnswerTests: omnitest(correctExpr='tail(trueStatus)')
   Hint: Type tail(trueStatus) at the command prompt.
 
 - Class: cmd_question
-  Output: We can call the R function table with two arguments, a boolean such as pValues2<.05, and the array trueStatus. The boolean obviously has two outcomes and each entry of trueStatus has one of two possible values. The function table aligns the two arguments and counts how many of each combination (TRUE,"zero"), (TRUE,"not zero"), (FALSE,"zero"), and (FALSE,"not zero") appear. Try it now.
+  Output: Once again we can use R's greatness to count and tabulate for us. We can call the R function table with two arguments, a boolean such as pValues2<.05, and the array trueStatus. The boolean obviously has two outcomes and each entry of trueStatus has one of two possible values. The function table aligns the two arguments and counts how many of each combination (TRUE,"zero"), (TRUE,"not zero"), (FALSE,"zero"), and (FALSE,"not zero") appear. Try it now.
   CorrectAnswer: table(pValues2 < 0.05, trueStatus)
   AnswerTests: omnitest(correctExpr='table(pValues2 < 0.05, trueStatus)')
   Hint: Type table(pValues2 < 0.05, trueStatus) at the command prompt.
@@ -260,7 +260,7 @@
 - Class: cmd_question
   Output: What is the percentage of false positives in this test?
   CorrectAnswer: 24/500
-  AnswerTests: equiv_val(".048")
+  AnswerTests: equiv_val(.048)
   Hint: "Divide 24 by 500 to get the percentage."
 
 - Class: text
