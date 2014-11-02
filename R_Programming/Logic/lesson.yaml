@@ -240,7 +240,7 @@
   Output: "The function identical() will return TRUE if the two R objects passed to it as arguments
     are identical. Try out the identical() function by typing: identical('twins', 'twins')"
   CorrectAnswer: "identical('twins', 'twins')"
-  AnswerTests: omnitest(correctExpr='identical('twins', 'twins')')
+  AnswerTests: omnitest(correctExpr="identical('twins', 'twins')")
   Hint: "If you want to see if two R objects are identical, type: identical('twins', 'twins')"
   
 - Class: mult_question
