@@ -97,7 +97,7 @@
   Hint: You can see a summary of populations for countries with and without the color red on their flag with tapply(flags$population, flags$red, summary).
 
 - Class: mult_question  
-  Output: What is the median population (in millions) for counties *without* the color red on their flag?
+  Output: What is the median population (in millions) for countries *without* the color red on their flag?
   AnswerChoices: 9.0; 4.0; 27.6; 3.0; 22.1; 0.0
   CorrectAnswer: 3.0
   AnswerTests: omnitest(correctVal= '3.0')
