@@ -11,4 +11,5 @@ dat <- data.frame(
   size = factor(rep(c(10, 20, 30), rep(nosim, 3))))
 g <- ggplot(dat, aes(x = x, fill = size)) + geom_histogram(alpha = .20, binwidth=.3, colour = "black", aes(y = ..density..)) 
 g <- g + stat_function(fun = dnorm, size = 2)
-g + facet_grid(. ~ size)
+g <- g + facet_grid(. ~ size)
+print(g)

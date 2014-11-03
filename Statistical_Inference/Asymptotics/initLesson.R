@@ -1,3 +1,4 @@
+library(ggplot2)
 # Put initialization code in this file.
 coinPlot <- function(n){
   means <- cumsum(sample(0 : 1, n , replace = TRUE)) / (1  : n)

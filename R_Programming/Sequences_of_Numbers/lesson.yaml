@@ -80,7 +80,7 @@
 - Class: cmd_question
   Output: Or maybe we don't care what the increment is and we just want a sequence
     of 30 numbers between 5 and 10. seq(5, 10, length=30) does the trick. Give it
-    shot now and store the result in a new variable called my_seq.
+    a shot now and store the result in a new variable called my_seq.
   CorrectAnswer: my_seq <- seq(5, 10, length=30)
   AnswerTests: omnitest(correctExpr='my_seq <- seq(5, 10, length=30)')
   Hint: 'You''re using the same function here, but changing its arguments for different
