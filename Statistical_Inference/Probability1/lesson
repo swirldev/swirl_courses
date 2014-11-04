@@ -74,7 +74,7 @@
   Hint: Since the highest possible dice roll is a '6', the only combinations which give '10' are 4+6 and 5+5. The first occurs in two ways - red dice gets '4' and green gets '6' OR red gets '6' and green gets '4'. 
 
 - Class: mult_question
-  Output: What is the most likely outcome rolling these two dice?
+  Output: What sum is the most likely when rolling these two dice?
   AnswerChoices: 7; 2; 12; 9; 1
   CorrectAnswer: 7
   AnswerTests: omnitest(correctVal='7')

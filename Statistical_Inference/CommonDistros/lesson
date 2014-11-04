@@ -26,10 +26,11 @@
   AnswerTests: omnitest(correctVal='Flipping a coin')
   Hint: Which of the choices has only two possible outcomes?
 
-- Class: cmd_question
-  Output: For simplicity, we usually say that Bernoulli random variables take only the values 1 and 0. Suppose we also specify that the probability that the Bernoulli outcome of 1 is p. Given what you know about probabilities, how would you specify the probability of a 0 outcome? Put your answer in quotation marks.
+- Class: mult_question
+  Output: For simplicity, we usually say that Bernoulli random variables take only the values 1 and 0. Suppose we also specify that the probability that the Bernoulli outcome of 1 is p. Which of the following represents the probability of a 0 outcome? 
+  AnswerChoices: p; 1-p; p^2; p(1-p)
   CorrectAnswer: 1-p
-  AnswerTests: equiv_val('1-p')
+  AnswerTests: omnitest(correctVal='1-p')
   Hint: Recall that the sum of the probabilities of all the outcomes is 1.
 
 - Class: mult_question
@@ -40,7 +41,8 @@
   Hint: When x=1, which of the given expressions yields p?
 
 - Class: cmd_question
-  Output: Recall the definition of the expectation of a random variable. Suppose we have a Bernoulli random variable and, as before, the probability it equals 1 (a success) is p and probability it equals 0 (a failure) is 1-p. What is its mean? Be sure to put your answer in quotation marks.
+  Output: Recall the definition of the expectation of a random variable. Suppose we have a Bernoulli random variable and, as before, the probability it equals 1 (a success) is p and probability it equals 0 (a failure) is 1-p. What is its mean?
+  AnswerChoices: p; 1-p; p^2; p(1-p)
   CorrectAnswer: p
   AnswerTests: omnitest(correctVal='p')
   Hint: Add the two terms x*p(x) where x equals 0 and 1 respectively.
@@ -63,17 +65,17 @@
   Output: Binomial random variables are obtained as the sum of iid Bernoulli trials.  Specifically, let X_1, ..., X_n be iid Bernoulli(p) random variables; then X = X_1 + X_2 + ... X_n is a binomial random variable. Binomial random variables represent the number of successes, k, out of n independent Bernoulli trials. Each of the trials has probability p.
 
 - Class: mult_question
-  Output: The PMF of a binomial random variable X is the function representing the probability that X=x. In other words, that there are x successes out of n independent trials. Which of the following represents the PMF of a binomial distribution? Here x, the number of successes, goes from 0 to n, the number of trials, and  C(n,x) represents the binomial coefficient 'n choose x'. This means we don't care about the order in which the successes occur.
-  AnswerChoices: C(n,x) * p^x * (1-p)^(n-x); C(n,x) * p^(n-x) * (1-p)^x; p^x; C(n,x) * p*x*(1-p)*(1-x)
-  CorrectAnswer: C(n,x) * p^x * (1-p)^(n-x)
-  AnswerTests: omnitest(correctVal='C(n,x) * p^x * (1-p)^(n-x)')
-  Hint: To take the value x, the random variable X must have x 'successes'. Each of these occurs with probability p. It also must have n-x 'failures', each of which occurs with probability (1-p). We don't care about the order in which the successes and failures occur.
+  Output: The PMF of a binomial random variable X is the function representing the probability that X=x. In other words, that there are x successes out of n independent trials. Which of the following represents the PMF of a binomial distribution? Here x, the number of successes, goes from 0 to n, the number of trials, and  choose(n,x) represents the binomial coefficient 'n choose x' which is the number of ways x successes out of n trials can occur regardless of order.
+  AnswerChoices: choose(n,x) * p^x * (1-p)^(n-x); choose(n,x) * p^(n-x) * (1-p)^x; p^x; choose(n,x) * p*x*(1-p)*(1-x)
+  CorrectAnswer: choose(n,x) * p^x * (1-p)^(n-x)
+  AnswerTests: omnitest(correctVal='choose(n,x) * p^x * (1-p)^(n-x)')
+  Hint: To take the value x, the random variable X must have x 'successes'. Each of these occurs with probability p. It also must have n-x 'failures', each of which occurs with probability (1-p). We don't care about the order in which the successes and failures occur so we have to multiply by choose(n,x).
 
 - Class: cmd_question
   Output: Suppose we were going to flip a biased coin 5 times. The probability of tossing a head is .8 and a tail .2. What is the probability that you'll toss at least 3 heads.
   CorrectAnswer: 0.94208
   AnswerTests: equiv_val(0.94208)
-  Hint: You'll have to add together 3 terms each of the form, C(5,x)*(.8)^x*(.2)(5-x) for x=3,4,5 . 
+  Hint: You'll have to add together 3 terms each of the form, choose(5,x)*(.8)^x*(.2)(5-x) for x=3,4,5 . 
 
 - Class: cmd_question
   Output: Now you can verify your answer with the R function pbinom. The quantile is 2, the size is 5, the prob is .8 and the lower.tail is FALSE. Try it now.
@@ -186,7 +188,7 @@
   Output: Now let's talk about our last common distribution, the Poisson. This is, as Wikipedia tells us, "a discrete probability distribution that expresses the probability of a given number of events occurring in a fixed interval of time and/or space if these events occur with a known average rate and independently of the time since the last event." 
 
 - Class: text
-  Output: In other words, the Poisson distribution models counts or event-times. From Wikipedia, "Any variable that is Poisson distributed only takes on integer values." 
+  Output: In other words, the Poisson distribution models counts or number of event in some interval of time. From Wikipedia, "Any variable that is Poisson distributed only takes on integer values." 
 
 - Class: text
   Output: The PMF of the Poisson distribution has one parameter, lambda. As with the other distributions the PMF calculates the probability that the Poisson distributed random variable X takes the value x. Specifically, P(X=x)=(lambda^x)e^(-lambda)/x!. Here x ranges from 0 to infinity.
@@ -195,7 +197,7 @@
   Output: The mean and variance of the Poisson distribution are both lambda.
 
 - Class: text
-  Output: Poisson random variables are used to model rates. We write X~Poisson(lambda*t) where lambda is the expected count per unit of time and t is the total monitoring time.
+  Output: Poisson random variables are used to model rates such as the rate of hard drive failures. We write X~Poisson(lambda*t) where lambda is the expected count per unit of time and t is the total monitoring time. 
 
 - Class: cmd_question
   Output: For example, suppose the number of people that show up at a bus stop is Poisson with a mean of 2.5 per hour, and we want to know the probability that at most 3 people show up in a 4 hour period. We use the R function ppois which returns a probability that the random variable is less than 3. We only need to specify the quantile (3) and the mean (2.5 * 4). We can use the default parameters, lower.tail=TRUE and log.p=FALSE. Try it now.

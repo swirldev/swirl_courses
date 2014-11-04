@@ -13,7 +13,7 @@
   Output: In this lesson, as you might expect, we'll discuss expected values. Expected values of what, exactly? 
 
 - Class: text
-  Output:  The expected value of a random variable X, E(X), is the center of its distribution. For a discrete random variable X with PMF p(x), E(X) is defined as a sum, over all possible values x, of the quantity x*p(x). E(X) represents the center of mass of a collection of locations and weights, {x, p(x)}.
+  Output:  The expected value of a random variable X, E(X), is a measure of its central tendency. For a discrete random variable X with PMF p(x), E(X) is defined as a sum, over all possible values x, of the quantity x*p(x). E(X) represents the center of mass of a collection of locations and weights, {x, p(x)}.
 
 - Class: text
   Output: Another term for expected value is mean. Recall your high school definition of arithmetic mean (or average) as the sum of a bunch of numbers divided by the number of numbers you added together. This is consistent with the formal definition of E(X) if all the numbers are equally weighted.
@@ -98,7 +98,7 @@
 
 
 - Class: text
-  Output: As all the examples have shown, expected values of distributions are useful in characterizing them. The mean characterizes the center of the distribution. However, often populations are too big to measure, so we have to sample them and then we have to use sample means. That's okay because sample expected values estimate the population versions. We'll show this first with a very simple toy and then with some simple equations.
+  Output: As all the examples have shown, expected values of distributions are useful in characterizing them. The mean characterizes the center tendency of the distribution. However, often populations are too big to measure, so we have to sample them and then we have to use sample means. That's okay because sample expected values estimate the population versions. We'll show this first with a very simple toy and then with some simple equations.
 
 - Class: cmd_question
   Output: We've defined a small population of 5 numbers for you, spop. Look at it now.
@@ -137,7 +137,7 @@
   Output: Look familiar? The result is the same as the mean of the original population spop. This is not because the example was specially cooked. It would work on any population. The expected value or mean of the sample mean is the population mean. What this means is that the sample mean is an unbiased estimator of the population mean.
 
 - Class: text
-  Output: Formlly, an estimator e of some parameter v is unbiased if its expected value equals v, i.e., E(e)=v. We can show that the expected value of a sample mean equals the population mean with some simple algebra.
+  Output: Formally, an estimator e of some parameter v is unbiased if its expected value equals v, i.e., E(e)=v. We can show that the expected value of a sample mean equals the population mean with some simple algebra.
 
 - Class: text
   Output: Let X_1, X_2, ... X_n be a collection of n samples from a population with mean mu. The  mean of these is (X_1 + X_2 + ... + X_n)/n. 

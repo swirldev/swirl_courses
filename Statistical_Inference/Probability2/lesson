@@ -36,7 +36,7 @@
   Output: A probability mass function (PMF) gives the probability that a discrete random variable is exactly equal to some value. 
 
 - Class: mult_question
-  Output: For instance, suppose we have a coin which may or may not be fair. Let x=0 represent a 'heads' outcome and x=1 represent a 'tails' outcome of a coin toss. If p is the probability of 'heads' which of the following represents the pmf of the coin toss?  The variable x is either 0 (heads) or 1 (tails).
+  Output: For instance, suppose we have a coin which may or may not be fair. Let x=0 represent a 'heads' outcome and x=1 represent a 'tails' outcome of a coin toss. If p is the probability of 'heads' which of the following represents the PMF of the coin toss?  The variable x is either 0 (heads) or 1 (tails).
   AnswerChoices: (p^x)*(1-p)^(1-x); (p^(1-x))*(1-p)^x
   CorrectAnswer: (p^(1-x))*(1-p)^x
   AnswerTests: omnitest(correctVal='(p^(1-x))*(1-p)^x')
@@ -54,11 +54,11 @@
   FigureType: new
 
 - Class: mult_question
-  Output: Could the diagonal line represent a probability density function? Assume the lower side of the rectangle is the x axis.
+  Output: Could the diagonal line represent a probability density function for a random vaiable with a range of values between 0 and 2? Assume the lower side of the rectangle is the x axis.
   AnswerChoices: Yes; No
   CorrectAnswer: Yes
   AnswerTests: omnitest(correctVal='Yes')
-  Hint: The diagonal falls about the x axis. Does the area under the diagonal have area equal to 1?
+  Hint: Is the line nonnegative? Is the area under the diagonal 1?
 
 - Class: figure
   Output: Now consider the shaded portion of the triangle - a smaller triangle with a base of length 1.6 and height determined by the diagonal. We'll answer the question, "What proportion of the big triangle is shaded?"
@@ -91,7 +91,7 @@
   Output: This artificial example was to meant to illustrate a simple probability density function (PDF). Most PDF's have underlying formulae more complicated than lines. We'll see more of these in future lessons.  
 
 - Class: text
-  Output: The cumulative distribution function (CDF) of a random variable X, either discrete or continuous, is the function F(x) equal to the probability that X is less than or equal to x. In the example above, the area of the blue triangle represents the probability that the random variable was less than the value 1.6. 
+  Output: The cumulative distribution function (CDF) of a random variable X, either discrete or continuous, is the function F(x) equal to the probability that X is less than or equal to x. In the example above, the area of the blue triangle represents the probability that the random variable was less than or equal to the value 1.6. 
 
 - Class: mult_question
   Output: In the triangle example from above, which of the following expressions represents F(x), the CDF? 
