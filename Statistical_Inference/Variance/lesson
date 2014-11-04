@@ -96,7 +96,7 @@
   FigureType: new
 
 - Class: text
-  Output: Now recall that unbiased estimators equal the values they're trying to estimate. We can infer  from the above that the sample variance is an unbiased estimator of population variance. 
+  Output: Now recall that the means of unbiased estimators equal the values they're trying to estimate. We can infer  from the above that the sample variance is an unbiased estimator of population variance. 
 
 - Class: text
   Output: Recall that the average of random samples from a population is itself a random variable with a distribution centered around the population mean. Specifically, E(X') = mu, where X' represents a sample mean and mu is the population mean.
@@ -105,7 +105,7 @@
   Output:  We can show that, if the population is infinite, the variance of the sample mean is the population variance divided by the sample size. Specifically,  Var(X') = sigma^2 / n. Let's work through this in four short steps.
 
 - Class: mult_question
-  Output: Which of the following does Var(X') equal? Here X' represents the sample mean and 'Sum(X_i)' represents the sum of the n samples X_1,...X_n.
+  Output: Which of the following does Var(X') equal? Here X' represents the sample mean and 'Sum(X_i)' represents the sum of the n samples X_1,...X_n. Assume these samples are independent.
   AnswerChoices: Var(1/n * Sum(X_i)); E(1/n * Sum(X_i)); mu; sigma
   CorrectAnswer: Var(1/n * Sum(X_i))
   AnswerTests: omnitest(correctVal='Var(1/n * Sum(X_i))')
@@ -119,7 +119,7 @@
   Hint: Remember that fact about Var that we said would be useful before? Now is the time to use it.
 
 - Class: mult_question
-  Output: Recall that Var is an expected value and expected values are linear. What does Var(Sum(X_i)) equal?
+  Output: Recall that Var is an expected value and expected values are linear. Also recall that our samples X_1, X_2,...,X_n are independent. What does Var(Sum(X_i)) equal?
   AnswerChoices: Sum(Var(X_i)); E(Sum(X_i)); E(mu); Var(sigma)
   CorrectAnswer: Sum(Var(X_i))
   AnswerTests: omnitest(correctVal='Sum(Var(X_i))')
@@ -133,7 +133,7 @@
   Hint: Var(X_i) is the constant value sigma^2 and we're summing over n of them.
 
 - Class: text
-  Output: So we've shown that Var(X')=Var(1/n*Sum(X_i))=(1/n^2)*Var(Sum(X_i))=(1/n^2)*Sum(sigm^2)=sigma^2/n for infinite populations. 
+  Output: So we've shown that Var(X')=Var(1/n*Sum(X_i))=(1/n^2)*Var(Sum(X_i))=(1/n^2)*Sum(sigm^2)=sigma^2/n for infinite populations when our samples are independent. 
 
 - Class: text
   Output: The standard deviation of a statistic is called its standard error, so the standard error of the sample mean is the square root of its variance.
@@ -145,7 +145,7 @@
   Output: The sample standard deviation, s, tells us how variable the population is, and s/sqrt(n), the standard error, tells us how much averages of random samples of size n from the population vary. Let's see this with some simulations.
 
 - Class: cmd_question
-  Output: The R function rnorm(n,mean,sd) generates n random normal numbers with the specified mean and standard deviation. The defaults for the latter are mean 0 and standard deviation 1. Type the expression sd(apply(matrix(rnorm(10000),1000),1,mean)) at the prompt. 
+  Output: The R function rnorm(n,mean,sd) generates n independent (hence uncorrelated) random normal samples with the specified mean and standard deviation. The defaults for the latter are mean 0 and standard deviation 1. Type the expression sd(apply(matrix(rnorm(10000),1000),1,mean)) at the prompt. 
   CorrectAnswer: sd(apply(matrix(rnorm(10000),1000),1,mean))
   AnswerTests: omnitest(correctExpr='sd(apply(matrix(rnorm(10000),1000),1,mean))')
   Hint: Type 'sd(apply(matrix(rnorm(10000),1000),1,mean))' at the command prompt.
@@ -157,7 +157,7 @@
   Hint: Type '1/sqrt(10)' at the command prompt.
 
 - Class: mult_question
-  Output: Pretty close, right? Let's try a few more. Standard uniform distributions have variance 1/12. The theory tells us the standard error of means of samples of size n would have which standard error?
+  Output: Pretty close, right? Let's try a few more. Standard uniform distributions have variance 1/12. The theory tells us the standard error of means of independent samples of size n would have which standard error?
   AnswerChoices: 1/(12*sqrt(n)); 12/sqrt(n); 1/sqrt(12*n); I haven't a clue 
   CorrectAnswer: 1/sqrt(12*n)
   AnswerTests: omnitest(correctVal='1/sqrt(12*n)')

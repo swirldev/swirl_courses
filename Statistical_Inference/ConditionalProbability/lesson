@@ -56,7 +56,7 @@
   Output: P(B|A) = P(B&A)/P(A) = P(A|B) * P(B)/P(A). This is a simple form of Bayes' Rule which relates the two conditional probabilities.
 
 - Class: text
-  Output: Suppose we don't know P(A) itself, but only know its conditional probabilities, that is, the probability that it occurs if B occurs and the probability that it occurs if B doesn't occur. These are  P(A|B) and P(A|~B), respectively. We use ~B to represent B complement. 
+  Output: Suppose we don't know P(A) itself, but only know its conditional probabilities, that is, the probability that it occurs if B occurs and the probability that it occurs if B doesn't occur. These are  P(A|B) and P(A|~B), respectively. We use ~B to represent not B or B complement. 
 
 - Class: text
   Output: We can then express P(A) = P(A|B) * P(B) + P(A|~B) * P(~B) and substitute this is into the denominator of Bayes' Formula. 
@@ -173,7 +173,7 @@
   Hint: Now the events aren't independent. You don't care what the first roll is so that's a probability 1 event. The second roll just has to match the first, so that's a 1/6 event.
 
 - Class: mult_question
-  Output: If the chance of developing a disease is p, is the chance of both you and your sibling developing that disease p*p? 
+  Output: If the chance of developing a disease with a genetic or environmental component is p, is the chance of both you and your sibling developing that disease p*p? 
   AnswerChoices: Yes; No
   CorrectAnswer: No
   AnswerTests: omnitest(correctVal='No')
