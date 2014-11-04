@@ -56,7 +56,7 @@
   Output: P(B|A) = P(B&A)/P(A) = P(A|B) * P(B)/P(A). This is a simple form of Bayes' Rule which relates the two conditional probabilities.
 
 - Class: text
-  Output: Suppose we don't know P(A) itself, but only know its conditional probabilities, that is, the probability that it occurs if B occurs and the probability that it occurs if B doesn't occur. These are  P(A|B) and P(A|~B), respectively. We use ~B to represent not B or B complement. 
+  Output: Suppose we don't know P(A) itself, but only know its conditional probabilities, that is, the probability that it occurs if B occurs and the probability that it occurs if B doesn't occur. These are  P(A|B) and P(A|~B), respectively. We use ~B to represent 'not B' or 'B complement'. 
 
 - Class: text
   Output: We can then express P(A) = P(A|B) * P(B) + P(A|~B) * P(~B) and substitute this is into the denominator of Bayes' Formula. 
@@ -71,7 +71,7 @@
   Output: Suppose we know the accuracy rates of the test for both the positive case (positive result when the patient has HIV) and negative (negative test result when the patient doesn't have HIV). These are referred to as test sensitivity and specificity, respectively.
 
 - Class: mult_question
-  Output: Let 'D' be the event that the patient has HIV, and let '+' indicate a positive test result and '-' a negative. What information do we know?
+  Output: Let 'D' be the event that the patient has HIV, and let '+' indicate a positive test result and '-' a negative. What information do we know? Recall that we know the accuracy rates of the HIV test.
   AnswerChoices: P(+|D) and P(-|~D); P(+|~D) and P(-|~D); P(+|~D) and P(-|D); P(+|D) and P(-|D)
   CorrectAnswer: P(+|D) and P(-|~D)
   AnswerTests: omnitest(correctVal='P(+|D) and P(-|~D)')
@@ -91,7 +91,7 @@
   Output: We can use the prevalence of HIV in the patient's population as the value for P(D). Note that since P(~D)=1-P(D) and  P(+|~D) = 1-P(-|~D) we can calculate P(D|+). In other words, we know values for all the terms on the right side of the equation. Let's do it!
 
 - Class: cmd_question
-  Output: Disease prevalence is .001. Test sensitivity is 99.7% and specificity is 98.5%. First compute the numerator, P(+|D)*P(D). (This is also part of the denominator.)
+  Output: Disease prevalence is .001. Test sensitivity (+ result with disease) is 99.7% and specificity (- result without disease) is 98.5%. First compute the numerator, P(+|D)*P(D). (This is also part of the denominator.)
   CorrectAnswer: .997*.001
   AnswerTests: ANY_of_exprs('.997*.001','.001*.997')
   Hint: Multiply the test sensitivity by the prevalence.
@@ -103,7 +103,7 @@
   Hint: Multiply the complement of test specificity by the complement of prevalence.
 
 - Class: cmd_question
-  Output: Now put the pieces together to compute the probability that the patient has the disease given his positive test result.
+  Output: Now put the pieces together to compute the probability that the patient has the disease given his positive test result, P(D|+). Plug your last two answers into the formula   P(+|D) * P(D) / ( P(+|D) * P(D) + P(+|~D) * P(~D) ) to compute P(D|+).
   CorrectAnswer: .000997/(.000997+.014985)
   AnswerTests: equiv_val(.06238268)
   Hint: Divide (.997*.001) by (.997*.001 + .015*.999)
@@ -140,7 +140,7 @@
   Output:  Now to likelihood ratios. Recall Bayes Formula. P(D|+) = P(+|D) * P(D) / ( P(+|D) * P(D) + P(+|~D) * P(~D) ) and notice that if we replace all occurrences of 'D' with '~D', the denominator doesn't change. This means that if we formed a ratio of P(D|+) to P(~D|+) we'd get a much simpler expression (since the complicated denominators would cancel each other out). Like this....
 
 - Class: text
-  Output:   P(D|+) / P(~D|+) = P(+|D) * P(D) / P(+|~D) * P(~D) = P(+|D)/P(+|~D) * P(D)/P(~D).
+  Output:   P(D|+) / P(~D|+) = P(+|D) * P(D) / (P(+|~D) * P(~D)) = P(+|D)/P(+|~D) * P(D)/P(~D).
 
 - Class: mult_question
   Output: The left side of the equation represents the post-test odds of disease given a positive test result. The equation says that the post-test odds of disease equals the pre-test odds of disease times
@@ -153,7 +153,10 @@
   Output: In other words, a DLR_+ value equal to N indicates that the hypothesis of disease is N times more supported by the data than the hypothesis of no disease.
 
 - Class: text
-  Output:  Taking the formula above and replacing the '+' signs with '-' yields a formula with the DLR_-. Specifically, P(D|-) / P(~D|-) = P(-|D) * P(D) / P(-|~D) * P(~D). This relates the decrease in the odds of the disease post negative test result to the odds of disease pre-test. Remember that we showed that DLR_- is small.
+  Output:  Taking the formula above and replacing the '+' signs with '-' yields a formula with the DLR_-. Specifically, P(D|-) / P(~D|-) = P(-|D) / P(-|~D) *  P(D)/P(~D). This relates the DECREASE in the odds of the disease post negative test result to the odds of disease pre-test. Remember that we showed that DLR_- is small (less than 1).
+
+- Class: text
+  Output: Let's wrap up now with some basics. 
 
 - Class: text
   Output: Two events, A and B, are independent if they have no effect on each other. Formally, P(A&B) = P(A)*P(B). It's easy to see that if A and B are independent, then P(A|B)=P(A). The definition is similar for random variables X and Y.

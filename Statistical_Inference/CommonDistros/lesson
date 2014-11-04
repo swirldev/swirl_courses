@@ -7,7 +7,7 @@
   Version: 2.2.0
 
 - Class: text
-  Output: "Common Distributions. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/06_Conditional_Probability.)"
+  Output: "Common Distributions. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/06_CommonDistros.)"
 
 - Class: mult_question
   Output: Given the title of this lesson, what do you think it will cover?
@@ -17,7 +17,7 @@
   Hint: Part of the title is an abbreviation for another word we've seen several times in earlier lessons.
 
 - Class: text
-  Output: The first distribution we'll examine is the Bernoulli and it's associated with experiments which have only 2 possible outcomes. These are also called (by people in the know) binary trials.
+  Output: The first distribution we'll examine is the Bernoulli which is associated with experiments which have only 2 possible outcomes. These are also called (by people in the know) binary trials.
 
 - Class: mult_question
   Output: It might surprise you to learn that you've probably had experience with Bernoulli trials. Which of the following would be a Bernoulli trial?
@@ -40,7 +40,7 @@
   AnswerTests: omnitest(correctVal='p^x * (1-p)^(1-x)')
   Hint: When x=1, which of the given expressions yields p?
 
-- Class: cmd_question
+- Class: mult_question
   Output: Recall the definition of the expectation of a random variable. Suppose we have a Bernoulli random variable and, as before, the probability it equals 1 (a success) is p and probability it equals 0 (a failure) is 1-p. What is its mean?
   AnswerChoices: p; 1-p; p^2; p(1-p)
   CorrectAnswer: p
@@ -140,7 +140,7 @@
   Output: The converse is also true. If Z is standard normal, i.e., Z ~ N(0,1), then  the random variable X defined as  X = mu + sigma*Z is normally distributed with mean mu and variance sigma^2, i.e., X ~ N(mu, sigma^2) 
 
 - Class: text
-  Output: These formulae allow you to easily compute quantiles (and thus percentiles) for ANY normally distributed variable if you know its mean and variance. We'll show how to find the 97.5th percentile of a normal distribution with mean 2 and variance 4.
+  Output: These formulae allow you to easily compute quantiles (and thus percentiles) for ANY normally distributed variable if you know its mean and variance. We'll show how to find the 97.5th percentile of a normal distribution with mean 3 and variance 4.
 
 - Class: cmd_question
   Output: Again, we can use R's qnorm function and simply specify the mean and standard deviation (the square root of the variance). Do this now. Find the 97.5th percentile of a normal distribution with mean 3 and standard deviation 2.
@@ -215,10 +215,13 @@
   Hint: Type  pbinom(5,1000,.01)  at the R prompt.
 
 - Class: cmd_question
-  Output: Now use the function ppois with lambda equal to n*p to see if you get a similar result.
+  Output: Now use the function ppois with quantile equal to 5 and lambda equal to n*p to see if you get a similar result.
   CorrectAnswer: ppois(5,1000*.01)
   AnswerTests: omnitest(correctExpr='ppois(5,1000*.01)')
   Hint: Type  ppois(5,1000*.01)  at the R prompt.
+
+- Class: text
+  Output: See how they're close? Pretty cool, right? This worked because n was large (1000) and p was small (.01).
 
 - Class: text
   Output: Congrats! You've concluded this uncommon lesson on common distributions. 
