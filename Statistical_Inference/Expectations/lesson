@@ -7,7 +7,7 @@
   Version: 2.2.0
 
 - Class: text
-  Output: "Expectations. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/Expectations.)"
+  Output: "Expectations. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/04_Expectations.)"
 
 - Class: text
   Output: In this lesson, as you might expect, we'll discuss expected values. Expected values of what, exactly? 
@@ -98,7 +98,7 @@
 
 
 - Class: text
-  Output: As all the examples have shown, expected values of distributions are useful in characterizing them. The mean characterizes the center tendency of the distribution. However, often populations are too big to measure, so we have to sample them and then we have to use sample means. That's okay because sample expected values estimate the population versions. We'll show this first with a very simple toy and then with some simple equations.
+  Output: As all the examples have shown, expected values of distributions are useful in characterizing them. The mean characterizes the central tendency of the distribution. However, often populations are too big to measure, so we have to sample them and then we have to use sample means. That's okay because sample expected values estimate the population versions. We'll show this first with a very simple toy and then with some simple equations.
 
 - Class: cmd_question
   Output: We've defined a small population of 5 numbers for you, spop. Look at it now.
