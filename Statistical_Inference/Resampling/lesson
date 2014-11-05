@@ -295,7 +295,7 @@
   Hint: Type sample(group) at the command prompt.
 
 - Class: text
-  Output: "The labels are all mixed up now. We'll do this permuting of labels and then we'll recalculate the difference of the means of the two "new" (really newly labelled) groups."
+  Output: "The labels are all mixed up now. We'll do this permuting of labels and then we'll recalculate the difference of the means of the two \"new\" (really newly labelled) groups."
 
 - Class: cmd_question
   Output:  "We'll relabel and calculate the difference of means 10000 times and store the differences (of means) in the array perms. Here's what the code looks like perms <- sapply(1 : 10000, function(i) testStat(BCcounts, sample(group))). Try it now."
