@@ -54,13 +54,13 @@
   Hint: Recall our simulations of sample variances and how, as we increased the sample size, they converged to the population variance. Sounds like consistency, right?
 
 - Class: text
-  Output: Now for something really important - the CENTRAL LIMIT THEOREM (CLT) - one of the most important in all of statistics. It states that the distribution of averages of iid variables (properly normalized) becomes that of a standard normal as the sample size increases. 
+  Output: Now for something really important - the CENTRAL LIMIT THEOREM (CLT) - one of the most important theorems in all of statistics. It states that the distribution of averages of iid variables (properly normalized) becomes that of a standard normal as the sample size increases. 
  
 - Class: text
   Output: Let's dissect this to see what it means. First, 'properly normalized' means that you transformed the sample mean X'. You subtracted the population mean mu from it and divided the difference by sigma/sqrt(n). Here sigma is the standard deviation of the population and n is the sample size. 
 
 - Class: text
-  Output: Second, this normalized variable, (X'-mu)/(sigma/sqrt(n)) is a random variable with a normal distribution with mean 0 and variance 1. Remember that n must be large for the CLT to apply.
+  Output: Second, the CLT says that for large n, this normalized variable, (X'-mu)/(sigma/sqrt(n)) is almost normally distributed with mean 0 and variance 1. Remember that n must be large for the CLT to apply.
 
 - Class: mult_question
   Output: Do you recognize sigma/sqrt(n) from our lesson on variance? Since the population std deviation sigma is unknown, sigma/sqrt(n) is often approximated by what? 
@@ -70,7 +70,7 @@
   Hint: Recall our many simulation experiments in the variance lesson where we calculated standard deviations of means using R's sd function, then we calculated an approximation using a formula involving the population variance and the square root of the sample size.
 
 - Class: text
-  Output: Let's rephrase the CLT. Suppose X_1, X_2, ... X_n are independent random variables from an infinite population with mean mu and variance sigma^2. Then if n is large, the mean of the X's, call it X', is approximately normal with mean mu and variance sigma^2/n. We denote this as X'~N(mu,sigma^2/n).
+  Output: Let's rephrase the CLT. Suppose X_1, X_2, ... X_n are independent, identically distributed random variables from an infinite population with mean mu and variance sigma^2. Then if n is large, the mean of the X's, call it X', is approximately normal with mean mu and variance sigma^2/n. We denote this as X'~N(mu,sigma^2/n).
 
 - Class: figure
   Output: To show the CLT in action consider this figure from the slides. It presents 3 histograms of 1000 averages of dice rolls with sample sizes of 10, 20 and 30 respectively. Each average of n dice rolls (n=10,20,30) has been normalized by subtracting off the mean (3.5) then dividing by the standard error, sqrt(2.92/n). The normalization has made each histogram look like a standard normal, i.e., mean 0 and standard deviation 1.
@@ -78,7 +78,7 @@
   FigureType: new
 
 - Class: text
-  Output: Notice that the CLT said nothing about the original population being normally distributed. That's precisely where its usefulness lies! We can assume normality of a population mean no matter what kind of population we have, as long as our sample size is large enough. Let's look at how it works with a binomial experiment like flipping a coin.
+  Output: Notice that the CLT said nothing about the original population being normally distributed. That's precisely where its usefulness lies! We can assume normality of a population mean no matter what kind of population we have, as long as our sample size is large enough and our samples are independent. Let's look at how it works with a binomial experiment like flipping a coin.
 
 - Class: text
   Output: Recall that if the probability of a head (call it 1) is p, then the probability of a tail (0) is 1-p. The expected value then is p and the variance is p-p^2 or p(1-p). Suppose we do n coin flips and let p' represent the average of these n flips. We normalize p' by subtracting the mean p and dividing by the std deviation sqrt(p(1-p)/n). Let's do this for 1000 trials and plot the resulting histogram. 
@@ -108,7 +108,7 @@
   Output: So the probability that the sample mean X' is bigger than mu + 2sigma/sqrt(n) OR smaller than mu-2sigma/sqrt(n) is 5%.  Equivalently, the probability of being between these limits is 95%. Of course we could have different sizes of intervals. If we wanted something other than 95, then we would use a quantile other than 2.
 
 - Class: text
-  Output: The quantity X' plus or minus 2 sigma/sqrt(n) is called a 95% interval for mu. The 95% says that if one were to repeatly get samples of size n, about 95% of the intervals obtained would contain mu, the quantity we're trying to estimate. 
+  Output: The quantity X' plus or minus 2 sigma/sqrt(n) is called a 95% interval for mu. The 95% says that if one were to repeatedly get samples of size n, about 95% of the intervals obtained would contain mu, the quantity we're trying to estimate. 
 
 - Class: mult_question
   Output: Note that for a 95% confidence interval we divide (100-95) by 2 (since we have both left and right tails) and add the result to 95 to compute the quantile we need. The 97.5 quantile is actually 1.96, but for simplicity it's often just rounded up to 2. If you wanted to find a 90% confidence interval what quantile would you want?
@@ -118,7 +118,7 @@
   Hint: Divide (100-90) by 2 and add this result to 90.
 
 - Class: cmd_question
-  Output: Use the R function qnorm to find the 95 quantile for a standard normal distribution. Remember that qnorm takes a probability as an input. You can use default values for all the other arguments.
+  Output: Use the R function qnorm to find the 95th quantile for a standard normal distribution. Remember that qnorm takes a probability as an input. You can use default values for all the other arguments.
   CorrectAnswer: qnorm(.95)
   AnswerTests: omnitest(correctExpr='qnorm(.95)')
   Hint: Type qnorm(.95) at the command prompt.
@@ -135,10 +135,10 @@
 
 - Class: mult_question
   Output: Using 1/2 for the value of p in the formula above yields what expression for the 95% confidence interval for p?
-  AnswerChoices: p'+/- 1/sqrt(n); p'+/- 1/2sqrt(n); p'+/ 2sqrt(n)
+  AnswerChoices: p'+/- 1/sqrt(n); p'+/- 1/(2*sqrt(n)); p'+/- 2*sqrt(n)
   CorrectAnswer: p'+/- 1/sqrt(n)
   AnswerTests: omnitest(correctVal='p\'+/- 1/sqrt(n)')
-  Hint: p(1-p)=1/4 when p=1/2 and the sqrt(1/4n)=1/(2sqrt(n)). What happens when you multiply this by 2?
+  Hint: p(1-p)=1/4 when p=1/2 and the sqrt(1/4n)=1/(2*sqrt(n)). What happens when you multiply this by 2?
 
 - Class: mult_question
   Output:  Here's another example of applying this formula from the slides. Suppose you were running for office and your pollster polled 100 people. Of these 60 claimed they were going to vote for you. You'd like to estimate the true proportion of people who will vote for you and you want to be 95% confident of your estimate. We need to find the limits that will contain the true proportion of your supporters with 95% confidence, so we'll use the formula p' +/- 1/sqrt(n) to answer this question. First, what value would you use for p', the sampled estimate?
@@ -251,7 +251,7 @@
 - Class: cmd_question
   Output: Set a variable lamb now with this value.
   CorrectAnswer: lamb <- 5/94.32
-  AnswerTests: omnitest(correctExpr='lamb <- 5/94.32')
+  AnswerTests: expr_creates_var('lamb'); omnitest(correctExpr='lamb <- 5/94.32')
   Hint: Type lamb <- 5/94.32 at the R prompt.
 
 - Class: cmd_question

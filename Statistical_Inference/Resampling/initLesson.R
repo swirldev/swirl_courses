@@ -18,4 +18,4 @@ fs <- read.csv(fname)
 sh <- fs$sheight
 fh <- fs$fheight
 nh <- length(sh)
-B <- 10000
+B <- 1000

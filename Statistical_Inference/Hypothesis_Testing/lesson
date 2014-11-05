@@ -58,7 +58,7 @@
   Output: Since there's  some element of uncertainty in questions concerning populations, we deal with probabilities. In our hypothesis testing we'll set the probability of making errors small. For now we'll focus on Type I errors, rejecting a correct hypothesis.
 
 - Class: text
-  Output: The probabilities of making these two kinds of errors is related. If you decrease the probability of making a Type I error (rejecting a true hypothesis), you increase the probability of making a Type II error (accepting a false one) and vice versa. 
+  Output: The probabilities of making these two kinds of errors are related. If you decrease the probability of making a Type I error (rejecting a true hypothesis), you increase the probability of making a Type II error (accepting a false one) and vice versa. 
 
 - Class: mult_question
   Output: As in the slides, we'll consider an American court of law. The null hypothesis is that the defendant is innocent. If an innocent man is convicted what type of error is this?
@@ -238,7 +238,7 @@
   Hint: Recall that the number of degrees of freedom is one less than the sample size. Here the sample size is 16.
 
 - Class: cmd_question
-  Output: Under H_0, the probability that the test statistic is larger that the 95th percentile of the t distribution is 5%. Use the R function qt with the arguments .95 and the correct number of degrees of freedom to find the quantile.
+  Output: Under H_0, the probability that the test statistic is larger than the 95th percentile of the t distribution is 5%. Use the R function qt with the arguments .95 and the correct number of degrees of freedom to find the quantile.
   CorrectAnswer: qt(.95,15)
   AnswerTests: omnitest(correctExpr='qt(.95,15)')
   Hint: Type qt(.95,15) at the command prompt.
@@ -291,7 +291,7 @@
   Hint: Again, the test statistic is close to the hypothesized mean so we fail to reject it. 
 
 - Class: text
-  Output: Now we usually don't have to do all this computation ourselves because R provides the function t.test which happily does all the work! To prove this, we've provided a csv file with the father_son height data from the UsingR package and read it into a data structure fs for you. We'll do a t test on this paired data to see if fathers and sons have similar heights (our null hypothesis).
+  Output: Now we usually don't have to do all this computation ourselves because R provides the function t.test which happily does all the work! To prove this, we've provided a csv file with the father_son height data from John Verzani's UsingR website (http://wiener.math.csi.cuny.edu/UsingR/) and read it into a data structure fs for you. We'll do a t test on this paired data to see if fathers and sons have similar heights (our null hypothesis).
 
 - Class: cmd_question
   Output: Look at the dimensions of fs now using the R function dim.
@@ -345,7 +345,7 @@
   Output: Similarly, if a (1-alpha)% interval contains mu_0, then we fail to reject H_0.
 
 - Class: text
-  Output: Let's see how hypothesis testing works with binomial distributions by considering the example from the slides. A family has 8 childran, 7 of whom are girls and none are twins. Let the null hypothesis be that either gender is equally likely, like an iid coin flip. 
+  Output: Let's see how hypothesis testing works with binomial distributions by considering the example from the slides. A family has 8 children, 7 of whom are girls and none are twins. Let the null hypothesis be that either gender is equally likely, like an iid coin flip. 
 
 - Class: text
   Output: So our H_0 is that p=.5, where p is the probability of a girl. We want to see if we should reject H_0 based on this sample of size 8. Our  H_a is that p>.5, so we'll do a one-sided test, i.e., look at only the right tail of the distribution.  

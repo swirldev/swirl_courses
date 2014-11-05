@@ -200,7 +200,7 @@
 - Class: cmd_question
   Output: First, define a variable z as qnorm(.95) 
   CorrectAnswer: z <- qnorm(.95)
-  AnswerTests: omnitest(correctExpr='z <- qnorm(.95)')
+  AnswerTests: expr_creates_var('z'); omnitest(correctExpr='z <- qnorm(.95)')
   Hint: Type z <- qnorm(.95) at the command prompt.
 
 - Class: cmd_question

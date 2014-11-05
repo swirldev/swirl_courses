@@ -36,7 +36,7 @@
   Hint: Sampling from a population would give us observations, right?
 
 - Class: text
-  Output:  In effect, the original observed sample  substitutes for the population. Our samplings become observations from which we estimate a statistic and get an idea about its distribution. This lets us better understand the underlying population (fromr which we didn't have enough data).
+  Output:  In effect, the original observed sample  substitutes for the population. Our samplings become observations from which we estimate a statistic and get an idea about its distribution. This lets us better understand the underlying population (from which we didn't have enough data).
 
 - Class: mult_question
   Output: Here's a critical point. In constructing the estimated distribution we sample the observed data WITH replacement. If the original sample is n long and we sampled n times without replacement what would we get?
@@ -55,7 +55,7 @@
   Hint: Type sum(1\:6)/6 at the command prompt.
 
 - Class: figure
-  Output: Theoretically, the average is 3.5. Here, we've run code and plotted a histogram after we took 1000 such averages, each of 50 dice rolls. Note the unusual y-axis scale. We're displaying this as a density function so the entire salmon-colored area is theoretically 1. With this scale, though, all the heights of the bins actually add up to 5. So  you have multiply each height  by .2 and add up all the results to get 1. 
+  Output: Theoretically, the average is 3.5. Here, we've run code and plotted a histogram after we took 1000 such averages, each of 50 dice rolls. Note the unusual y-axis scale. We're displaying this as a density function so the area of the salmon-colored region is theoretically 1. With this scale, though, all the heights of the bins actually add up to 5. So  you have multiply each height  by .2 and add up all the results to get 1. 
   Figure: plot1.R
   FigureType: new
 
@@ -77,7 +77,7 @@
   Hint: Type print(g2) at the command prompt.
 
 - Class: text
-  Output: Picture's a little different, right? Although this example is a bit contrived, it illustrates an important concept. We really want a distribution of  means and we  have only one sample of data. (In this case it was the single distribution associated with the unfair die - the big blue picture.) We used that one sample, to "create" many (1000) distributions by sampling with replacement from the given one. We sampled 50000 times so we created 1000 distributions of 50 rolls each.
+  Output: Picture's a little different, right? Although this example is a bit contrived, it illustrates an important concept. We really want a distribution of  means and we  have only one set of observations. (In this case it was the empirical distribution associated with the unfair die - the big blue picture.) We used that one distribution, to "create" many (1000) distributions by sampling with replacement from the given one. We sampled 50000 times so we created 1000 distributions of 50 rolls each.
 
 - Class: text
   Output:  We then calculated the mean of each of our created distributions and got a distribution of means. Sampling the one distribution many times gives us some variability in the resulting statistics we calculate. We can then calculate the  standard error  and confidence intervals associated with the statistic.
@@ -102,10 +102,10 @@
   Hint: Type nh at the command prompt.
 
 - Class: text
-  Output:  Now we'll create 10000 distributions of the same length as the original sh. We'll do this by sampling sh with replacement  10000*nh times and store the results in an array with 10000 rows, each with nh entries. Then we'll take the median of each row and plot the result. 
+  Output:  Now we'll create 1000 distributions of the same length as the original sh. We'll do this by sampling sh with replacement  1000*nh times and store the results in an array with 1000 rows, each with nh entries. Then we'll take the median of each row and plot the result. 
 
 - Class: text
-  Output: Note that every time we draw from the empirical distribution sh, each of its nh data points is equally likely to be pulled, therefore the probability of drawing any one is 1/nh. The 10000 samples we create will vary from the original.
+  Output: Note that every time we draw from the empirical distribution sh, each of its nh data points is equally likely to be pulled, therefore the probability of drawing any one is 1/nh. The 1000 samples we create will vary from the original.
 
 - Class: figure
   Output: Here's the resulting density curve. This estimates the distribution of  medians. The thick vertical line shows where the  median of the original, observed data sh lies.
@@ -113,7 +113,7 @@
   FigureType: new
 
 - Class: cmd_question
-  Output:  We stored the 10000  medians of the resampled sets in the vector resampledMedians. Use the R function median to compute the median of numbers in this vector.
+  Output:  We stored the 1000  medians of the resampled sets in the vector resampledMedians. Use the R function median to compute the median of numbers in this vector.
   CorrectAnswer: median(resampledMedians)
   AnswerTests: omnitest(correctExpr='median(resampledMedians)')
   Hint: Type median(resampledMedians) at the command prompt.
@@ -138,24 +138,24 @@
   Output: Notice that this process doesn't use any fancy math or asymptotics. The only assumption behind it is that the observed sample is representative of the underlying population.
 
 - Class: text
-  Output: We've created the vector fh for you which contains the fathers' heights from the father son data we've been working with. It's the same length as the sons' data (1078) which is stored in nh. B, the number of bootstraps we want has been set to 10000. We'll do an example now in small steps.
+  Output: We've created the vector fh for you which contains the fathers' heights from the father son data we've been working with. It's the same length as the sons' data (1078) which is stored in nh. B, the number of bootstraps we want has been set to 1000. We'll do an example now in small steps.
 
 - Class: cmd_question
   Output:  Our one sample of observed data is in the vector fh. Use the R function sample to sample fh nh*B times. Set the argument replace to TRUE. Put the result in the variable sam.
   CorrectAnswer: sam <- sample(fh,nh*B,replace=TRUE)
-  AnswerTests: omnitest(correctExpr='sam <- sample(fh,nh*B,replace=TRUE)')
+  AnswerTests: expr_creates_var('sam'); omnitest(correctExpr='sam <- sample(fh,nh*B,replace=TRUE)')
   Hint: Type sam <- sample(fh,nh*B,replace=TRUE) at the command prompt.
 
 - Class: cmd_question
   Output:  Now form sam into a matrix with B rows and nh columns. Use the R function matrix and put the result in resam
   CorrectAnswer: resam <- matrix(sam,B,nh)
-  AnswerTests: omnitest(correctExpr='resam <- matrix(sam,B,nh)')
+  AnswerTests: expr_creates_var('resam'); omnitest(correctExpr='resam <- matrix(sam,B,nh)')
   Hint: Type resam <- matrix(sam,B,nh) at the command prompt.
 
 - Class: cmd_question
   Output:  Now use the R function apply to take the median (third argument) of each row of resam (first argument). Put the result in meds. The second argument, the number 1, specifies that the application of the function is to the rows of the first argument.
   CorrectAnswer: meds <- apply(resam,1,median)
-  AnswerTests: omnitest(correctExpr='meds <- apply(resam,1,median)')
+  AnswerTests: expr_creates_var('meds'); omnitest(correctExpr='meds <- apply(resam,1,median)')
   Hint: Type meds <- apply(resam,1,median) at the command prompt.
 
 - Class: cmd_question
@@ -171,7 +171,7 @@
   Hint: Type sd(meds) at the command prompt.
 
 - Class: cmd_question
-  Output:  We previously did this same process for the sons' data and stored the resampled medians in the 10000-long vector resampledMedians. Find the standard error of resampledMedians. 
+  Output:  We previously did this same process for the sons' data and stored the resampled medians in the 1000-long vector resampledMedians. Find the standard error of resampledMedians. 
   CorrectAnswer: sd(resampledMedians)
   AnswerTests: omnitest(correctExpr='sd(resampledMedians)')
   Hint: Type sd(resampledMedians) at the command prompt.
@@ -189,7 +189,7 @@
   Hint: Type quantile(meds,c(.025,.975)) at the command prompt.
 
 - Class: text
-  Output: Bootstrapping is a very diverse and complicated topic and we just skimmed the surface here. The technique we showed you is nonparametric, that is, it's not based on any parameterized family of probability distributions. We only used one sample of data that we assumed to be representative of the population. 
+  Output: Bootstrapping is a very diverse and complicated topic and we just skimmed the surface here. The technique we showed you is nonparametric, that is, it's not based on any parameterized family of probability distributions. We  used only one set of observations that we assumed to be representative of the population. 
 
 - Class: text
   Output: Finally, the confidence intervals we calculated might not perform very well because of biases but the  R package bootstrap provides an easy fix for this problem.
@@ -259,7 +259,7 @@
 - Class: cmd_question
   Output:  Now set a variable obs by invoking testStat with the arguments BCcounts and group and assigning the result to obs.
   CorrectAnswer: obs <- testStat(BCcounts,group)
-  AnswerTests: omnitest(correctExpr='obs <- testStat(BCcounts,group)')
+  AnswerTests: expr_creates_var('obs'); omnitest(correctExpr='obs <- testStat(BCcounts,group)')
   Hint: Type obs <- testStat(BCcounts,group) at the command prompt.
 
 - Class: cmd_question
@@ -300,7 +300,7 @@
 - Class: cmd_question
   Output:  "We'll relabel and calculate the difference of means 10000 times and store the differences (of means) in the array perms. Here's what the code looks like perms <- sapply(1 : 10000, function(i) testStat(BCcounts, sample(group))). Try it now."
   CorrectAnswer: "perms <- sapply(1 : 10000, function(i) testStat(BCcounts, sample(group)))"
-  AnswerTests: "omnitest(correctExpr='perms <- sapply(1 : 10000, function(i) testStat(BCcounts, sample(group)))')"
+  AnswerTests: "expr_creates_var('perms'); omnitest(correctExpr='perms <- sapply(1 : 10000, function(i) testStat(BCcounts, sample(group)))')"
   Hint: "Type perms <- sapply(1 : 10000, function(i) testStat(BCcounts, sample(group))) at the command prompt."
 
 - Class: cmd_question
@@ -332,7 +332,7 @@
 - Class: cmd_question
   Output: "We've  stored off this value, 1.416667, in the variable obs for you. Now run the permutation command, with DEcounts. Here it is, perms <- sapply(1 : 10000, function(i) testStat(DEcounts, sample(group)))"
   CorrectAnswer: "perms <- sapply(1 : 10000, function(i) testStat(DEcounts, sample(group)))"
-  AnswerTests: "omnitest(correctExpr='perms <- sapply(1 : 10000, function(i) testStat(DEcounts, sample(group)))')"
+  AnswerTests: "expr_creates_var('perms'); omnitest(correctExpr='perms <- sapply(1 : 10000, function(i) testStat(DEcounts, sample(group)))')"
   Hint: "Type perms <- sapply(1 : 10000, function(i) testStat(DEcounts, sample(group))) at the command prompt."
 
 - Class: figure 

@@ -149,7 +149,7 @@
   Output:  We can try to control the family-wise error rate (FWER), the probability of at least one false positive, with the Bonferroni correction, the oldest multiple testing correction.
 
 - Class: text
-  Output: It's very straightforward. We do m tests and want to control the FWER at level alpha so that Pr(V >= 1) < alpha. We simply reduce alpha drawmatically. Set alpha_fwer to be alpha/m. We'll only call a test result significant if its p-value < alpha_fwer.
+  Output: It's very straightforward. We do m tests and want to control the FWER at level alpha so that Pr(V >= 1) < alpha. We simply reduce alpha dramatically. Set alpha_fwer to be alpha/m. We'll only call a test result significant if its p-value < alpha_fwer.
 
 - Class: mult_question
   Output: Sounds good, right? Easy to calculate. What would be a drawback with this method?
