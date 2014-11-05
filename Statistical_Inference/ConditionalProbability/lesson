@@ -137,7 +137,7 @@
 
 
 - Class: text
-  Output:  Now to likelihood ratios. Recall Bayes Formula. P(D|+) = P(+|D) * P(D) / ( P(+|D) * P(D) + P(+|~D) * P(~D) ) and notice that if we replace all occurrences of 'D' with '~D', the denominator doesn't change. This means that if we formed a ratio of P(D|+) to P(~D|+) we'd get a much simpler expression (since the complicated denominators would cancel each other out). Like this....
+  Output:  Now a little morea about likelihood ratios. Recall Bayes Formula. P(D|+) = P(+|D) * P(D) / ( P(+|D) * P(D) + P(+|~D) * P(~D) ) and notice that if we replace all occurrences of 'D' with '~D', the denominator doesn't change. This means that if we formed a ratio of P(D|+) to P(~D|+) we'd get a much simpler expression (since the complicated denominators would cancel each other out). Like this....
 
 - Class: text
   Output:   P(D|+) / P(~D|+) = P(+|D) * P(D) / (P(+|~D) * P(~D)) = P(+|D)/P(+|~D) * P(D)/P(~D).
@@ -153,10 +153,17 @@
   Output: In other words, a DLR_+ value equal to N indicates that the hypothesis of disease is N times more supported by the data than the hypothesis of no disease.
 
 - Class: text
-  Output:  Taking the formula above and replacing the '+' signs with '-' yields a formula with the DLR_-. Specifically, P(D|-) / P(~D|-) = P(-|D) / P(-|~D) *  P(D)/P(~D). This relates the DECREASE in the odds of the disease post negative test result to the odds of disease pre-test. Remember that we showed that DLR_- is small (less than 1).
+  Output:  Taking the formula above and replacing the '+' signs with '-' yields a formula with the DLR_-. Specifically, P(D|-) / P(~D|-) = P(-|D) / P(-|~D) *  P(D)/P(~D). As with the positive case, this relates the odds of disease post-test, P(D|-) / P(~D|-), to those of disease pre-test, P(D)/P(~D).
+
+- Class: mult_question
+  Output:  The equation P(D|-) / P(~D|-) = P(-|D) / P(-|~D) *  P(D)/P(~D) says what about the post-test odds of disease relative to the pre-test odds of disease given negative test results?
+  AnswerChoices: post-test odds are greater than pre-test odds; post-test odds are less than pre-test odds; I haven't a clue.
+  CorrectAnswer: the DLR_+
+  AnswerTests: omnitest(correctVal='post-test odds are less than pre-test odds')
+  Hint: Remember that we argued (hopefully convincingly) that DLR_- is small (less than 1). Post-test odds = Pre-test odds * DLR_- so post-test odds are a fraction of the pre-test odds.
 
 - Class: text
-  Output: Let's wrap up now with some basics. 
+  Output: Let's cover some basics now. 
 
 - Class: text
   Output: Two events, A and B, are independent if they have no effect on each other. Formally, P(A&B) = P(A)*P(B). It's easy to see that if A and B are independent, then P(A|B)=P(A). The definition is similar for random variables X and Y.

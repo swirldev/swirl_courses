@@ -250,19 +250,19 @@
 - Class: cmd_question
   Output: The first is a group of 8 oral contraceptive users and the second is a group of 21 controls. The two means are X'_{oc}=132.86 and X'_{c}=127.44, and the two sample standard deviations are s_{oc}= 15.34 and s_{c}= 18.23. Let's first compute the numerator of the pooled sample variance by weighting the sum of the two by their respective sample sizes. Recall the formula (n_x-1)(S_x)^2+(n_y-1)(S_y)^2 and fill in the values to create a variable sp.
   CorrectAnswer: sp <- 7*15.34^2 + 20*18.23^2
-  AnswerTests:  omnitest(correctExpr='sp <- 7*15.34^2 + 20*18.23^2',correctVal=8293.867)
+  AnswerTests:  expr_creates_var('sp'); omnitest(correctExpr='sp <- 7*15.34^2 + 20*18.23^2',correctVal=8293.867)
   Hint: Type sp <- 7*15.34^2 + 20*18.23^2 at the command prompt. Here 7 and 20 are each one less than the given sample sizes, and 15.34 and 18.23 are the respective standard deviations. We square these to convert them to variances.
 
 - Class: cmd_question
   Output: Now how many degrees of freedom are there? Put your answer in the variable ns.
   CorrectAnswer: ns <- 8+21-2
-  AnswerTests:  omnitest(correctExpr='ns <- 8+21-2',correctVal=27)
+  AnswerTests:  expr_creates_var('ns'); omnitest(correctExpr='ns <- 8+21-2',correctVal=27)
   Hint: Add the two sample sizes and subtract 2. Put the result in ns.
 
 - Class: cmd_question
   Output: Now divide sp by ns, take the square root and put the result back in sp.
   CorrectAnswer: sp <- sqrt(sp/ns)
-  AnswerTests:  omnitest(correctExpr='sp <- sqrt(sp/ns)')
+  AnswerTests:  expr_creates_var('sp'); omnitest(correctExpr='sp <- sqrt(sp/ns)')
   Hint: Type sp <- sqrt(sp/ns) at the command prompt.
 
 - Class: cmd_question
@@ -280,7 +280,7 @@
 - Class: cmd_question
   Output: Let's compute the sample pooled variance and store it in the variable sp. Recall that this is the sqrt(weighted sums of sample variances/deg of freedom). The weight of each is the sample size-1. Use the R function var to compute the variances of  g1 and g2. The degrees of freedom is 10+10-2 = 18.
   CorrectAnswer: sp <- sqrt((9*var(g1)+9*var(g2))/18)
-  AnswerTests:  omnitest(correctExpr='sp <- sqrt((9*var(g1)+9*var(g2))/18)')
+  AnswerTests:  expr_creates_var('sp'); omnitest(correctExpr='sp <- sqrt((9*var(g1)+9*var(g2))/18)')
   Hint: Type sp <- sqrt((9*var(g1)+9*var(g2))/18) at the command prompt.
 
 - Class: cmd_question
@@ -331,19 +331,19 @@
 - Class: cmd_question
   Output: Let's compute the degrees of freedom first. Start with the numerator. It's the square of the sum of two terms. Each term is of the form s^2/n. Do this now and put the result in num. Our numbers were 15.34 with size 8 and 18.23 with size 21. 
   CorrectAnswer: num <- (15.34^2/8 + 18.23^2/21)^2
-  AnswerTests:  omnitest(correctExpr='num <- (15.34^2/8 + 18.23^2/21)^2')
+  AnswerTests:  expr_creates_var('num')'; omnitest(correctExpr='num <- (15.34^2/8 + 18.23^2/21)^2')
   Hint: Type  num <- (15.34^2/8 + 18.23^2/21)^2 at the command prompt.
 
 - Class: cmd_question
   Output: Now the denominator. This is the sum of two terms. Each term has the form s^4/n^2/(n-1). These look a little different than the form displayed but they're equivalent. Put the result in the variable den. Our numbers were 15.34 with size 8 and 18.23 with size 21. 
   CorrectAnswer: den <- 15.34^4/8^2/7 + 18.23^4/21^2/20
-  AnswerTests:  omnitest(correctExpr='den <- 15.34^4/8^2/7 + 18.23^4/21^2/20',correctVal=136.1235)
+  AnswerTests:  expr_creates_var('den'); omnitest(correctExpr='den <- 15.34^4/8^2/7 + 18.23^4/21^2/20',correctVal=136.1235)
   Hint: Type  den <- 15.34^4/8^2/7 + 18.23^4/21^2/20 at the command prompt.
 
 - Class: cmd_question
   Output: Now divide num by den and put the result in mydf.
   CorrectAnswer: mydf <- num/den
-  AnswerTests:  omnitest(correctExpr='mydf <- num/den')
+  AnswerTests:  expr_creates_var('mydf'); omnitest(correctExpr='mydf <- num/den')
   Hint: Type  mydf <- num/den at the command prompt.
 
 - Class: cmd_question

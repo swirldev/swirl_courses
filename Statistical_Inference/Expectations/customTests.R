@@ -1,5 +1,5 @@
 # So swirl does not repeat execution of plot commands
-#AUTO_DETECT_NEWVAR <- FALSE
+AUTO_DETECT_NEWVAR <- FALSE
 
 # Returns TRUE if e$expr matches any of the expressions given
 # (as characters) in the argument.

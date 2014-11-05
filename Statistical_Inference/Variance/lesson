@@ -48,7 +48,7 @@
 - Class: cmd_question
   Output: Now we need weights. For these we can use any of the three PDF's, (dice_fair, dice_high, and dice_low) we defined in the previous lesson. Using R's ability to multiply vectors componentwise and its function 'sum' we can easily compute E(X^2) for any of these dice. Simply sum the product dice_sqr * PDF.  Try this now with dice_fair and put the result in a variable ex2_fair.
   CorrectAnswer: ex2_fair <- sum(dice_fair * dice_sqr)
-  AnswerTests: ANY_of_exprs('ex2_fair <- sum(dice_fair * dice_sqr)','ex2_fair <- sum(dice_sqr * dice_fair)')
+  AnswerTests: expr_creates_var('ex2_fair'); ANY_of_exprs('ex2_fair <- sum(dice_fair * dice_sqr)','ex2_fair <- sum(dice_sqr * dice_fair)')
   Hint: Type 'ex2_fair <- sum(dice_fair * dice_sqr)' at the command prompt.
 
 - Class: cmd_question
