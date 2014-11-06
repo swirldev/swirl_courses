@@ -331,13 +331,13 @@
 - Class: cmd_question
   Output: Let's compute the degrees of freedom first. Start with the numerator. It's the square of the sum of two terms. Each term is of the form s^2/n. Do this now and put the result in num. Our numbers were 15.34 with size 8 and 18.23 with size 21. 
   CorrectAnswer: num <- (15.34^2/8 + 18.23^2/21)^2
-  AnswerTests:  expr_creates_var('num')'; omnitest(correctExpr='num <- (15.34^2/8 + 18.23^2/21)^2')
+  AnswerTests:  expr_creates_var('num'); omnitest(correctExpr='num <- (15.34^2/8 + 18.23^2/21)^2',correctVal=2046.6418737445)
   Hint: Type  num <- (15.34^2/8 + 18.23^2/21)^2 at the command prompt.
 
 - Class: cmd_question
   Output: Now the denominator. This is the sum of two terms. Each term has the form s^4/n^2/(n-1). These look a little different than the form displayed but they're equivalent. Put the result in the variable den. Our numbers were 15.34 with size 8 and 18.23 with size 21. 
   CorrectAnswer: den <- 15.34^4/8^2/7 + 18.23^4/21^2/20
-  AnswerTests:  expr_creates_var('den'); omnitest(correctExpr='den <- 15.34^4/8^2/7 + 18.23^4/21^2/20',correctVal=136.1235)
+  AnswerTests:  expr_creates_var('den'); omnitest(correctExpr='den <- 15.34^4/8^2/7 + 18.23^4/21^2/20',correctVal=136.123536407433)
   Hint: Type  den <- 15.34^4/8^2/7 + 18.23^4/21^2/20 at the command prompt.
 
 - Class: cmd_question

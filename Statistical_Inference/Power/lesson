@@ -111,7 +111,7 @@
   FigureType: new
 
 - Class: cmd_question
-  Output:  We've shamelessly stolen code plotting code from the slides so you can see H_a in action. Let's look at pictures before we delve into numbers. We've fixed mu_0 at 30, sigma (standard deviation) at 4 and n (sample size) at 16. The function myplot just needs an alternative mean, mu_a, as argument. Run myplot now with an argument of 34 to see what it does.
+  Output:  We've shamelessly stolen plotting code from the slides so you can see H_a in action. Let's look at pictures before we delve into numbers. We've fixed mu_0 at 30, sigma (standard deviation) at 4 and n (sample size) at 16. The function myplot just needs an alternative mean, mu_a, as argument. Run myplot now with an argument of 34 to see what it does.
   CorrectAnswer: myplot(34)
   AnswerTests: omnitest(correctExpr='myplot(34)')
   Hint: Type myplot(34) at the command prompt.
