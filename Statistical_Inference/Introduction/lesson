@@ -20,7 +20,7 @@
   Hint: Which of the choices involves concrete data that doesn't require any inference or generalization?
 
 - Class: text
-  Output: So statistical inference involves formulating conclusions using data AND quantifying the uncertainty associated with those conclusions. The uncertainty could arises from incomplete or bad data.
+  Output: So statistical inference involves formulating conclusions using data AND quantifying the uncertainty associated with those conclusions. The uncertainty could arise from incomplete or bad data.
 
 - Class: mult_question  
   Output: Which of the following would NOT be a source of bad data? 

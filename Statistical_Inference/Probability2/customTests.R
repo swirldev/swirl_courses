@@ -11,7 +11,6 @@ ANY_of_exprs <- function(...){
 equiv_val <- function(correctVal){
   e <- get("e", parent.frame()) 
   #print(paste("User val is ",e$val,"Correct ans is ",correctVal))
-  isTRUE(all.equal(correctVal,e$val))
-  
+  isTRUE(all.equal(correctVal,e$val,tolerance=3.1e-07))
 }
 
