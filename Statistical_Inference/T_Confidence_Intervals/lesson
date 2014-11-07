@@ -27,10 +27,10 @@
   Hint: Recall the definition of standard normal. It's centered around 0 and it has a standard deviation of 1 so its mean and variance are what?.
 
 - Class: text
-  Output: So the mean and variance of the standardized normal are fixed and known. Now we'll define the t statistic which looks a lot like the Z. It's defined as t=(X'-mu)/(s/sqrt(n)). Like the Z statistic, the t is centered around 0. The only difference between the two is that the population std deviation, sigma, in Z is replaced by the sample standard deviation in the t. So the t distribution is independent of the population mean and variance. Instead it depends on the sample size n.
+  Output: So the mean and variance of the standardized normal are fixed and known. Now we'll define the t statistic which looks a lot like the Z. It's defined as t=(X'-mu)/(s/sqrt(n)). Like the Z statistic, the t is centered around 0. The only difference between the two is that the population std deviation, sigma, in Z is replaced by the sample standard deviation in the t. So the distribution of the t statistic is independent of the population mean and variance. Instead it depends on the sample size n.
 
 - Class: text
-  Output: As a result, for t distributions, the formula for computing a confidence interval is similar to what we did in the last lesson. However, instead of a quantile for a normal distribution we use a quantile for a t distribution. So the formula is  Est +/- t-quantile *std error(Est). Another distinction is that we'll use the sample standard deviation when we estimate the standard error of Est.
+  Output: As a result, for t distributions, the formula for computing a confidence interval is similar to what we did in the last lesson. However, instead of a quantile for a normal distribution we use a quantile for a t distribution. So the formula is  Est +/- t-quantile *std error(Est). The other distinction, which we mentioned before, is that we'll use the sample standard deviation when we estimate the standard error of Est.
 
 - Class: mult_question
   Output: In the formula for the t statistic t=(X'-mu)/(s/sqrt(n)) what expression represents the sample standard deviation?
@@ -102,7 +102,7 @@
   Hint: Type myplot2(20) at the command prompt.
 
 - Class: text
-  Output: The quantiles are much closer together with the higher degrees of freedom. At the 97.5 percentile, though, the t quantile is still greater than the normal. Student's Rule!
+  Output: The quantiles are much closer together with the higher degrees of freedom. At the 97.5 percentile, though, the t quantile is still greater than the normal. Student's Rules!
 
 - Class: text
   Output: This means the the t interval is always wider than the normal. This is because estimating the standard deviation introduces more uncertainty so a wider interval results. 
@@ -184,6 +184,9 @@
   CorrectAnswer: mn + c(-1,1)*qt(.975,9)*s/sqrt(10)
   AnswerTests:  omnitest(correctExpr='mn + c(-1,1)*qt(.975,9)*s/sqrt(10)')
   Hint: Type mn + c(-1,1)*qt(.975,9)*s/sqrt(10) at the command prompt.
+
+- Class: text
+  Output: This says that with probability .95 the average difference of effects (between the two drugs) for an individual patient is between .7 and 2.46 additional hours of sleep.
 
 - Class: cmd_question
   Output:  We could also just have used the R function t.test with the argument difference to get this result. (You can use the default values for all the other arguments.) As with the other R test functions, this returns a lot of information. Since all we're interested in at the moment is the confidence interval we can pick this off with the construct x$conf.int. Try this now.
@@ -296,13 +299,13 @@
   Hint: Type t.test(g2,g1,paired=FALSE,var.equal=TRUE)$conf at the command prompt.
 
 - Class: cmd_question
-  Output: Pretty cool that it matches, right? Note that 0 is again in this 95% interval so you can't reject the claim that the two groups are the same. Let's run t.test again, this time with paired=TRUE and see how different the result is. Don't specify var.equal and look only at the confidence interval.
+  Output: Pretty cool that it matches, right? Note that 0 is again in this 95% interval so you can't reject the claim that the two groups are the same. (Recall that this is the opposite of what we saw with paired data.) Let's run t.test again, this time with paired=TRUE and see how different the result is. Don't specify var.equal and look only at the confidence interval.
   CorrectAnswer: t.test(g2,g1,paired=TRUE)$conf
   AnswerTests:  omnitest(correctExpr='t.test(g2,g1,paired=TRUE)$conf')
   Hint: Type t.test(g2,g1,paired=TRUE)$conf at the command prompt.
 
 - Class: text
-  Output: See how the interval excludes 0? This means the groups when paired have much different averages.  
+  Output: Just as we saw when we ran t.test on our vector, difference! See how the interval excludes 0? This means the groups when paired have much different averages.  
 
 - Class: text
   Output: Now let's talk about calculating confidence intervals for two groups which have unequal variances. We won't be pooling them as we did before.

@@ -115,7 +115,7 @@
 - Class: cmd_question
   Output:  We stored the 1000  medians of the resampled sets in the vector resampledMedians. Use the R function median to compute the median of numbers in this vector.
   CorrectAnswer: median(resampledMedians)
-  AnswerTests: omnitest(correctExpr='median(resampledMedians)')
+  AnswerTests: obliterate("resamples"); omnitest(correctExpr='median(resampledMedians)')
   Hint: Type median(resampledMedians) at the command prompt.
 
 - Class: cmd_question
@@ -155,7 +155,7 @@
 - Class: cmd_question
   Output:  Now use the R function apply to take the median (third argument) of each row of resam (first argument). Put the result in meds. The second argument, the number 1, specifies that the application of the function is to the rows of the first argument.
   CorrectAnswer: meds <- apply(resam,1,median)
-  AnswerTests: expr_creates_var('meds'); omnitest(correctExpr='meds <- apply(resam,1,median)')
+  AnswerTests: obliterate("sam"); expr_creates_var('meds'); omnitest(correctExpr='meds <- apply(resam,1,median)')
   Hint: Type meds <- apply(resam,1,median) at the command prompt.
 
 - Class: cmd_question
@@ -167,7 +167,7 @@
 - Class: cmd_question
   Output:  Pretty close, right? Now use the R function sd to estimate the standard error of the vector meds.
   CorrectAnswer: sd(meds)
-  AnswerTests: omnitest(correctExpr='sd(meds)')
+  AnswerTests: obliterate("resam"); omnitest(correctExpr='sd(meds)')
   Hint: Type sd(meds) at the command prompt.
 
 - Class: cmd_question
@@ -187,6 +187,9 @@
   CorrectAnswer: quantile(meds,c(.025,.975))
   AnswerTests: omnitest(correctExpr='quantile(meds,c(.025,.975))')
   Hint: Type quantile(meds,c(.025,.975)) at the command prompt.
+
+- Class: text
+  Output: Another pair of close quantiles, but notice that these quantiles of the fathers' medians differ from those of the sons.
 
 - Class: text
   Output: Bootstrapping is a very diverse and complicated topic and we just skimmed the surface here. The technique we showed you is nonparametric, that is, it's not based on any parameterized family of probability distributions. We  used only one set of observations that we assumed to be representative of the population. 
@@ -236,7 +239,7 @@
   Hint: Type range(Cdata$count) at the R prompt.
 
 - Class: text
-  Output: From the ranges (as well as the picture), the sprays look a lot different. We'll test the null hypothesis that their means are the same. 
+  Output: From the ranges (as well as the picture), the sprays look a lot different. We'll test the (obviously false) null hypothesis that their means are the same. 
 
 - Class: cmd_question
   Output:  To make the analysis easier we've defined two arrays for you, one holding the counts for sprays B and C. It's call BCcounts. Look at it now.
@@ -245,7 +248,7 @@
   Hint: Type BCcounts at the command prompt.
 
 - Class: cmd_question
-  Output:  The second holds the spray identification and it's called group. These two arrays line up with each other, that is, the first 12 entries of counts are associated with spray B and the last 12 with spray C.   Look at group now.
+  Output:  The second array we've defined holds the spray identification and it's called group. These two arrays line up with each other, that is, the first 12 entries of counts are associated with spray B and the last 12 with spray C.   Look at group now.
   CorrectAnswer: group
   AnswerTests: omnitest(correctExpr='group')
   Hint: Type group at the command prompt.
