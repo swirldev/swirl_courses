@@ -40,7 +40,7 @@
   Output: If you're doing an experiment with n possible outcomes, say e1, e2, ..., en, then the sum of the probabilities of all the outcomes is 1. If all the outcomes are equally likely, as in the case of a fair die, then the probability of each is 1/n. 
 
 - Class: text
-  Output: The probability of both of two independent events, A and B, is the product of the probabilities. P(A&B) = P(A) * P(B)
+  Output: If A and B are two independent events then the probability of them both occurring is the product of the probabilities. P(A&B) = P(A) * P(B)
 
 - Class: mult_question
   Output: Suppose you rolled the fair die twice in succession. What is the probability of rolling two 4's?
