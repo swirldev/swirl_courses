@@ -98,8 +98,20 @@
     the length() function to find the size of the vector."
   Script: my_mean.R
 
+  ############################
+
+  FIX THIS
+
+  ############################
+  
+ - Class: cmd_question
+  Output: ""
+  CorrectAnswer: 
+  AnswerTests: omnitest(correctExpr='boring_function')
+  Hint: "" 
+
 - Class: text
-  Output: "Next, let's try writing a function with default argumets. You can set
+  Output: "Next, let's try writing a function with default arguments. You can set
     default values for a function's argumets, and this can be useful if you think
     someone who uses your funciton will set a certain argument to the same value
     most of the time."
