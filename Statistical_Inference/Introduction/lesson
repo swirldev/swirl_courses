@@ -1,0 +1,50 @@
+- Class: meta
+  Course: Statistical_Inference
+  Lesson: Introduction
+  Author: Swirl Coders
+  Type: Coursera
+  Organization: Johns Hopkins Bloomberg School of Public Health
+  Version: 2.2.0
+
+- Class: text
+  Output: "Introduction to Statistical_Inference. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Statistical_Inference/Introduction.)"
+
+- Class: text
+  Output: In this lesson, we'll briefly introduce basics of statistical inference, the process of drawing conclusions "about a population using noisy statistical data where uncertainty must be accounted for". In other words, statistical inference lets scientists formulate conclusions from data and quantify the uncertainty arising from using incomplete data.
+
+- Class: mult_question  
+  Output: Which of the following is NOT an example of statistical inference? 
+  AnswerChoices: Polling before an election to predict its outcome; Constructing a medical image from fMRI data; Testing the efficacy of a new drug; Recording the results of a statistics exam
+  CorrectAnswer: Recording the results of a statistics exam
+  AnswerTests: omnitest(correctVal='Recording the results of a statistics exam')
+  Hint: Which of the choices involves concrete data that doesn't require any inference or generalization?
+
+- Class: text
+  Output: So statistical inference involves formulating conclusions using data AND quantifying the uncertainty associated with those conclusions. The uncertainty could arise from incomplete or bad data.
+
+- Class: mult_question  
+  Output: Which of the following would NOT be a source of bad data? 
+  AnswerChoices: Small sample size; Selection bias; A randomly selected sample of population; A poorly designed study 
+  CorrectAnswer: A randomly selected sample of population
+  AnswerTests: omnitest(correctVal='A randomly selected sample of population')
+  Hint: Which of the choices would allow one to draw reasonable inferences?
+
+- Class: mult_question
+  Output: So with statistical inference we use data to draw general conclusions about a population. Which of the following would  a scientist using statistical inference techniques consider a problem?
+  AnswerChoices: Our data sample is representative of the population; Our study has no bias and is well-designed; Contaminated data 
+  CorrectAnswer: Contaminated data
+  AnswerTests: omnitest(correctVal='Contaminated data')
+  Hint: Which of the choices is obviously bad?
+
+- Class: mult_question
+  Output: Which of the following is NOT an example of statistical inference in action?
+  AnswerChoices: Estimating the proportion of people who will vote for a candidate; Testing the effectiveness of a medical treatment; Determining a causative mechanism underlying a disease; Counting sheep
+  CorrectAnswer: Counting sheep
+  AnswerTests: omnitest(correctVal='Counting sheep')
+  Hint: Which of the choices is exact?
+
+- Class: text
+  Output: There are two broad flavors of inference. The first is frequency, which uses "long run proportion of times an event occurs in independent, identically distributed repetitions." The second is Bayesian in which the probability estimate for a hypothesis is updated as additional evidence is acquired. Both flavors require an understanding of probability so that's what the next lessons will cover.
+
+- Class: text
+  Output: Congrats! You've concluded this brief introduction to statistical inference.

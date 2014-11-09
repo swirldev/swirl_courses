@@ -1,0 +1,5 @@
+temp <- readJPEG(system.file("img","Rlogo.jpg", package="jpeg"))
+try(dev.off(),silent=TRUE)
+plot.new()
+plotArea=par('fig')
+rasterImage(temp,plotArea[1],plotArea[3],plotArea[2],plotArea[4],interpolate=FALSE)

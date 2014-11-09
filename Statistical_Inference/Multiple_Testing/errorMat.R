@@ -1,0 +1,5 @@
+fname <- pathtofile("fwer2.jpeg")
+try(dev.off(),silent=TRUE)
+plot.new()
+plotArea=par('fig')
+rasterImage(readJPEG(fname),plotArea[1],plotArea[3],plotArea[2],plotArea[4])
