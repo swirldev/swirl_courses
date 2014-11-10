@@ -10,20 +10,27 @@ Here are our current offerings, organized by level of difficulty:
 #### Beginner
 
 - **R Programming**: The basics of programming in R
-- **R Programming Alt**: Same as the original, but modified slightly for in-class use (see below*)
+- **R Programming Alt**: Same as the original, but modified slightly for in-class use (see below ***)
 - **Data Analysis**: Basic ideas in statistics and data visualization
 - **Mathematical Biostatistics Boot Camp**: One- and two-sample t-tests, power, and sample size
 - **Open Intro**: A very basic introduction to statistics, data analysis, and data visualization
 
-\* *R Programming Alt is identical to R Programming, except we've eliminated the prompts for Coursera credentials at the end of each lesson and instead give students the option to send an email to their instructor notifying them of completion. Admittedly, it's sort of a hack until we come up with a more robust solution for in-class use (i.e. an instructor "dashboard").*
+\*\*\* *R Programming Alt is identical to R Programming, except we've eliminated the prompts for Coursera credentials at the end of each lesson and instead give students the option to send an email to their instructor notifying them of completion. Admittedly, it's sort of a hack until we come up with a more robust solution for in-class use (i.e. an instructor "dashboard").*
 
 #### Intermediate
 
 - **Regression Models**: The basics of regression modeling in R
+- **Getting and Cleaning Data**: dplyr, tidyr, lubridate, oh my!
 
 #### Advanced
 
-- **Getting and Cleaning Data**: dplyr, tidyr, lubridate, oh my!
+- **Statistical Inference**: This intermediate to advanced level course closely follows the
+Statistical Inference course of the Data Science Specialization track
+offered by the Johns Hopkins Bloomberg School of Public Health. It
+introduces the student to basic concepts of statistical inference
+including probability, hypothesis testing, confidence intervals and
+p-values. It concludes with an initiation to topics of particular
+relevance to big data, issues of multiple testing and resampling.
 
 Since our users come from a variety backgrounds, it's very hard to label material as **Beginner**, **Intermediate**, or **Advanced**. If you find something that is labelled **Beginner** to be challenging, please don't be discouraged. The first step of learning anything is to acknowledge that you are capable of understanding it. True understanding will come with time and practice.
 
