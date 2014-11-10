@@ -25,8 +25,8 @@ Here are our current offerings, organized by level of difficulty:
 #### Advanced
 
 - **Statistical Inference**: This intermediate to advanced level course closely follows the
-Statistical Inference course of the Data Science Specialization track
-offered by the Johns Hopkins Bloomberg School of Public Health. It
+[Statistical Inference course](https://www.coursera.org/course/statinference) of the Johns Hopkins 
+[Data Science Specialization](https://www.coursera.org/specialization/jhudatascience/1) on Coursera. It
 introduces the student to basic concepts of statistical inference
 including probability, hypothesis testing, confidence intervals and
 p-values. It concludes with an initiation to topics of particular
