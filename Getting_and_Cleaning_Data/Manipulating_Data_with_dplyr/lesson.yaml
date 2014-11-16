@@ -265,7 +265,7 @@
   Output: The size variable represents the download size in bytes, which are units of computer memory. These days, megabytes (MB) are a more common unit of measurement. One megabyte is equal to 2^20 bytes. That's 2 to the power of 20, which is approximately one million bytes!
 
 - Class: cmd_question
-  Output: "We want to add a column called size_mb that contains the download size in megabytes. Here''s the code to do it:\n\nmutate(cran3, size_mb = size / 2^20)"
+  Output: "We want to add a column called size_mb that contains the download size in megabytes. Here's the code to do it:\n\nmutate(cran3, size_mb = size / 2^20)"
   CorrectAnswer: mutate(cran3, size_mb = size / 2^20)
   AnswerTests: omnitest('mutate(cran3, size_mb = size / 2^20)')
   Hint: mutate(cran3, size_mb = size / 2^20) will add a new column called size_mb that contains the download size in megabytes.
