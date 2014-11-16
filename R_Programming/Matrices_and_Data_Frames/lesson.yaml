@@ -25,7 +25,7 @@
   Hint: Type my_vector to view its contents.
 
 - Class: cmd_question
-  Output: The dim() function tells us the 'dimensions' of an object. What happens if we do dim(my_vector)? Give it try.
+  Output: The dim() function tells us the 'dimensions' of an object. What happens if we do dim(my_vector)? Give it a try.
   CorrectAnswer: dim(my_vector)
   AnswerTests: omnitest(correctExpr='dim(my_vector)')
   Hint: Just type dim(my_vector) to see what happens.
