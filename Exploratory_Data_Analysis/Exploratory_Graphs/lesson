@@ -41,33 +41,99 @@
   AnswerTests: omnitest(correctExpr='head(pollution)')
   Hint: Type head(pollution) at the command prompt.
 
+- Class: cmd_question
+  Output: Now run the R command dim with pollution as an argument to see how long the table is.
+  CorrectAnswer: dim(pollution)
+  AnswerTests: omnitest(correctExpr='dim(pollution)')
+  Hint: Type dim(pollution) at the command prompt.
+
 - Class: text
-  Output: We'd like to investigate the question "Are there any counties in the U.S. that exceed that national standard for fine particle pollution?"
+  Output: We see that pollution contains 576 rows of data, with each row containing 5 columns. The columns are a measure of particle pollution, a fips code indicating the state and county with that measure, the associated region, either east or west, and the longitude and latitude of the area. 
+
+- Class: text
+  Output: We'd like to investigate the question "Are there any counties in the U.S. that exceed that national standard (12 micro grams per cubic meter) for fine particle pollution?" We'll look at several one dimensional summaries of the data to investigate this question.
 
 - Class: cmd_question
-  Output: Your output depends on R's random number generator, but your plot probably jumps around a bit and, by the 10th flip, your cumulative sum/10 is probably different from mine. If you did this several times, your plots would vary quite a bit. Now call coinPlot again, this time with 10000 as the argument.
-  CorrectAnswer: coinPlot(10000)
-  AnswerTests: omnitest(correctExpr='coinPlot(10000)')
-  Hint: Type coinPlot(10000) at the command prompt.
+  Output: The first technique uses the R command summary. Run it now with the pm25 column of pollution as its  argument. Recall that the construct for this is pollution$pm25.
+  CorrectAnswer: summary(pollution$pm25)
+  AnswerTests: omnitest(correctExpr='summary(pollution$pm25)')
+  Hint: Type summary(pollution$pm25) at the command prompt.
 
 - Class: text
-  Output: See the difference? Asymptotics in Action! The line approaches its asymptote of .5. This is the probability you expect since what we're plotting, the cumulative sum/number of flips, represents the probability of the coin landing on heads. As we know,  this is .5 .
-
-- Class: text
-  Output: We say that an estimator is CONSISTENT if it converges to what it's trying to estimate. The LLN says that the sample mean of iid samples is consistent for the population mean. This is good, right?
+  Output: This shows us some basic features of the pm25 data column, namely its minimum and maximum values, the average measure of particulate pollution across the 576 counties, and the quartiles of the column. These last indicate the pollution measures at which 25%, 50%, and 75% of the counties fall below.   
 
 - Class: mult_question
-  Output: Based on our previous lesson do you think the sample variance (and hence sample deviation) are consistent as well?
-  AnswerChoices: Yes; No
-  CorrectAnswer: Yes
-  AnswerTests: omnitest(correctVal='Yes')
-  Hint: Recall our simulations of sample variances and how, as we increased the sample size, they converged to the population variance. Sounds like consistency, right?
+  Output: Half the measured counties have a pollution level less than or equal to what number of micrograms per cubic meter? 
+  AnswerChoices: 8.549; 10.050; 9.836; 11.360 
+  CorrectAnswer: 10.050
+  AnswerTests: omnitest(correctVal='10.050')
+  Hint: The median indicates the 50% point.
+
+- Class: cmd_question
+  Output: Now run the R command quantile with the pm25 column of pollution as its  argument. Compare your results to the previous output of the summary command.
+  CorrectAnswer: summary(pollution$pm25)
+  AnswerTests: omnitest(correctExpr='summary(pollution$pm25)')
+  Hint: Type summary(pollution$pm25) at the command prompt.
+
+- Class: mult_question
+  Output: See how the two sets of results are related? What is the only value that summary returns missing from the quantile output?
+  AnswerChoices: the mean; the minimum value; the maximum value; the median 
+  CorrectAnswer: the mean
+  AnswerTests: omnitest(correctVal='the mean')
+  Hint: The minimum is the 0% quantile and the maximum is the 100% quantile. The median is the 50% quantile. That leaves only one choice.
+
+- Class: cmd_question
+  Output: Now we'll try a picture, specifically a boxplot. Run the R command boxplot with pollution$pm25 as an input. Also specify the color parameter col equal to "blue".
+  CorrectAnswer: boxplot(pollution$pm25,col="blue")
+  AnswerTests: omnitest(correctExpr='boxplot(pollution$pm25,col="blue"),strict=TRUE')
+  Hint: Type boxplot(pollution$pm25,col="blue") at the command prompt.
 
 - Class: text
-  Output: Now for something really important - the CENTRAL LIMIT THEOREM (CLT) - one of the most important theorems in all of statistics. It states that the distribution of averages of iid variables (properly normalized) becomes that of a standard normal as the sample size increases. 
- 
+  Output: The boxplot shows us the same quantile data that summary and quantile did. The lower and upper edges of the blue box respectively show the values of the 25% and 75% quantiles.  
+
+- Class: mult_question
+  Output: What do you think the line in the middle of the box represents?
+  AnswerChoices: the mean; the minimum value; the maximum value; the median 
+  CorrectAnswer: the median
+  AnswerTests: omnitest(correctVal='the median')
+  Hint: It looks like it's halfway between the top and bottom of the box, right?
+
 - Class: text
-  Output: Let's dissect this to see what it means. First, 'properly normalized' means that you transformed the sample mean X'. You subtracted the population mean mu from it and divided the difference by sigma/sqrt(n). Here sigma is the standard deviation of the population and n is the sample size. 
+  Output: The "whiskers" of the box (the vertical lines extending above and below the box) relate to the range parameter of boxplot, which we let default to 1.5. The height of the box is the interquantile range, the difference between the 75th and 25th quantile. In this case that is 2.8. The whiskers are drawn to be a length of 1.5*2.8. This shows us roughly how many, if any, data points are outside this range. 
+
+- Class: cmd_question
+  Output: Now use the R command hist with the argument pollution$pm25. Specify the color parameter col equal to "green". This will plot a histogram of the data.
+  CorrectAnswer: hist(pollution$pm25, col = "green")
+  AnswerTests: omnitest(correctExpr='hist(pollution$pm25, col = "green"),strict=TRUE')
+  Hint: Type hist(pollution$pm25, col = "green") at the command prompt.
+
+- Class: text
+  Output: You can see that the histogram gives us a little more detailed information about our data. It gives us an idea of how many counties fall into each bucket of measurements.
+
+- Class: mult_question
+  Output: What are the most frequent pollution counts?
+  AnswerChoices: between 6 and 8; between 9 and 12; between 12 and 14; under 5
+  CorrectAnswer: between 9 and 12
+  AnswerTests: omnitest(correctVal='between 9 and 12')
+  Hint: Where are the highest bars?
+
+- Class: cmd_question
+  Output: Now run the R command rug with the argument pollution$pm25.
+  CorrectAnswer: rug(pollution$pm25)
+  AnswerTests: omnitest(correctExpr='rug(pollution$pm25),strict=TRUE')
+  Hint: Type rug(pollution$pm25) at the command prompt.
+
+- Class: cmd_question
+  Output: This again gives you a little more detailed information about how many data points are in each bucket. The concentration is between 9 and 12. To illustrate this a little more, we've defined for you two vectors, high and low, containing pollution data of high (greater than 15) and low (less than 5) values respectively. Look at low now and see how it relates to the output of rug.
+  CorrectAnswer: low
+  AnswerTests: omnitest(correctExpr='low')
+  Hint: Type low at the command prompt.
+
+- Class: cmd_question
+  Output: Two data points between 3 and 4 and many between 4 and 5. Now look at high.
+  CorrectAnswer: high
+  AnswerTests: omnitest(correctExpr='high')
+  Hint: Type high at the command prompt.
 
 - Class: text
   Output: Second, the CLT says that for large n, this normalized variable, (X'-mu)/(sigma/sqrt(n)) is almost normally distributed with mean 0 and variance 1. Remember that n must be large for the CLT to apply.
