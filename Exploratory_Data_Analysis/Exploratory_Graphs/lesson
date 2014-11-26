@@ -13,18 +13,18 @@
   Output: In this lesson, we'll discuss why graphics are an important tool for data scientists and the special role that exploratory graphs play in the field. 
 
 - Class: mult_question
-  Output: Which of the following would not be a good reason to use graphics in data science?
+  Output: Which of the following would NOT be a good reason to use graphics in data science?
   AnswerChoices: To understand data properties; To find patterns in data; To suggest modeling strategies; To find a color that best matches the shirt you're wearing 
   CorrectAnswer: To find a color that best matches the shirt you're wearing
-  AnswerTests: omnitest(correctVal='To find a color that best matches the shirt you're wearing')
+  AnswerTests: omnitest(correctVal='To find a color that best matches the shirt you\'re wearing')
   Hint: Which choice  has more to do with fashion than data science?
 
 - Class: text
-  Output: So graphics give us some visual form of data, and since our brains are very good at seeing patterns graphs give us a compact way to present data and display any pattern that may be present. 
+  Output: So graphics give us some visual form of data, and since our brains are very good at seeing patterns graphs give us a compact way to present data and find or display any pattern that may be present. 
 
 - Class: mult_question
   Output: Which of the following cliches captures the essence of graphics?
-  AnswerChoices: A rose by any other name smells as sweet; To err is human; A picture is worth a 1000 words; The acorn doesn't fall far from the tree 
+  AnswerChoices: A rose by any other name smells as sweet; To err is human; A picture is worth a 1000 words; The apple doesn't fall far from the tree 
   CorrectAnswer: A picture is worth a 1000 words
   AnswerTests: omnitest(correctVal='A picture is worth a 1000 words')
   Hint: Graphics are like pictures, right?
@@ -33,22 +33,22 @@
   Output: Exploratory graphs serve the same functions as graphs. They help us find patterns in data and understand its properties. They suggest modeling strategies and help to debug analyses. They also communicate results.
 
 - Class: text
-  Output: Moreover, exploratory graphs are the initial step in an investigation. They are the "quick and dirty" tool used to lead the data scientist in the most fruitful direction. A scientist might need to make a lot of exploratory graphs in order to develop a personal understanding of the problem he/she is studying. Axes and legends are cleaned up later and characteristics like color and size are used to convey information.
+  Output: Moreover, exploratory graphs are the initial step in an investigation. They are the "quick and dirty" tool used to lead the data scientist in the most fruitful direction. A scientist might need to make a lot of exploratory graphs in order to develop a personal understanding of the problem he/she is studying. Details such as axes, legends, color and size are cleaned up later to convey more information in an aesthetically pleasing way.
  
 - Class: cmd_question
-  Output: To demonstrate this, we've copied some data for you from the U.S. Environmental Protection Agency (EPA) which sets national ambient air quality standards for outdoor air pollution. The U.S. National Ambient Air Quality Standards say that for fine particle pollution (PM2.5), the "annual mean, averaged over 3 years" cannot exceed 12 micro grams per cubic meter. We got this data from the U.S. EPA web site and stored it in the data frame pollution. Use the R function head to see the first few entries of   pollution.
+  Output: To demonstrate this, we've copied some data for you from the U.S. Environmental Protection Agency (EPA) which sets national ambient air quality standards for outdoor air pollution. The U.S. National Ambient Air Quality Standards say that for fine particle pollution (PM2.5), the "annual mean, averaged over 3 years" cannot exceed 12 micro grams per cubic meter. We stored this data from the U.S. EPA web site in the data frame pollution. Use the R function head to see the first few entries of   pollution.
   CorrectAnswer: head(pollution)
   AnswerTests: omnitest(correctExpr='head(pollution)')
   Hint: Type head(pollution) at the command prompt.
 
 - Class: cmd_question
-  Output: Now run the R command dim with pollution as an argument to see how long the table is.
+  Output: We see a pollution count in the column labeled pm25. We'll work mostly with that. Now run the R command dim with pollution as an argument to see how long the table is.
   CorrectAnswer: dim(pollution)
   AnswerTests: omnitest(correctExpr='dim(pollution)')
   Hint: Type dim(pollution) at the command prompt.
 
 - Class: text
-  Output: We see that pollution contains 576 rows of data, with each row containing 5 columns. The columns are a measure of particle pollution, a fips code indicating the state and county with that measure, the associated region, either east or west, and the longitude and latitude of the area. 
+  Output: We see that pollution contains 576 rows of data, with each row containing 5 columns. The columns are a measure of particle pollution (pm25), a fips code indicating the state (first 2 digits) and county (last 3 digits) with that measure, the associated region (east or west), and the longitude and latitude of the area. 
 
 - Class: text
   Output: We'd like to investigate the question "Are there any counties in the U.S. that exceed that national standard (12 micro grams per cubic meter) for fine particle pollution?" We'll look at several one dimensional summaries of the data to investigate this question.
@@ -71,9 +71,9 @@
 
 - Class: cmd_question
   Output: Now run the R command quantile with the pm25 column of pollution as its  argument. Compare your results to the previous output of the summary command.
-  CorrectAnswer: summary(pollution$pm25)
-  AnswerTests: omnitest(correctExpr='summary(pollution$pm25)')
-  Hint: Type summary(pollution$pm25) at the command prompt.
+  CorrectAnswer: quantile(pollution$pm25)
+  AnswerTests: omnitest(correctExpr='quantile(pollution$pm25)')
+  Hint: Type quantile(pollution$pm25) at the command prompt.
 
 - Class: mult_question
   Output: See how the two sets of results are related? What is the only value that summary returns missing from the quantile output?
