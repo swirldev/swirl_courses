@@ -322,8 +322,8 @@
   Hint: Type abline(h = 12, lwd = 2, lty = 2) at the command prompt.
 
 - Class: figure
-  Output: We see many counties are above the healthy standard set by the EPA, but it's hard to tell if east or west is worse. Let's plot two scatterplots distinguished by region.
-  Figure:clearPlot.R
+  Output: We see many counties are above the healthy standard set by the EPA, but it's hard to tell which region, east or west, is worse. Let's plot two scatterplots distinguished by region.
+  Figure: clearPlot.R
   FigureType: new
 
 - Class: cmd_question
