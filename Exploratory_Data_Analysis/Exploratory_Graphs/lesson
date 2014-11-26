@@ -212,7 +212,7 @@
 - Class: cmd_question
   Output: Longitude and latitude don't sound interesting, and each fips is unique since it identifies states (first 2 digits) and counties (last 3 digits). Let's look at the region column to see what's there. Run the R command table on this column. Use the construct pollution$region. Store the result in the variable reg. 
   CorrectAnswer: reg <- table(pollution$region)
-  AnswerTests: omnitest(correctExpr='reg <- table(pollution$region)')
+  AnswerTests: expr_creates_var(reg); omnitest(correctExpr='reg <- table(pollution$region)')
   Hint: Type reg <- table(pollution$region) at the command prompt.
 
 - Class: cmd_question
@@ -235,291 +235,144 @@
   Hint: The string specified by main is in bold at the top of the graph and it tells what information the graph is displaying.
 
 - Class: text
-  Output: Recall that if the probability of a head (call it 1) is p, then the probability of a tail (0) is 1-p. The expected value then is p and the variance is p-p^2 or p(1-p). Suppose we do n coin flips and let p' represent the average of these n flips. We normalize p' by subtracting the mean p and dividing by the std deviation sqrt(p(1-p)/n). Let's do this for 1000 trials and plot the resulting histogram. 
-
-- Class: figure
-  Output: Here's a figure from the slides showing the results of 3 such trials where each trial is for a different value of n (10, 20, and 30) and the coin is fair,so E(X)=.5 and the standard error is 1/(2sqrt(n)). Notice how with larger n (30) the histogram tightens up around the mean 0.
-  Figure: cltFairCoin.R
-  FigureType: new
-
-- Class: figure
-  Output: Here's another plot from the slides of the same experiment, this time using a biassed coin. We set the probability of a head to .9, so E(X)=.9 and the standard error is sqrt(.09/n) Again, the larger the sample size the more closely the distribution looks normal, although with this biassed coin the normal approximation isn't as good as it was with the fair coin.
-  Figure: cltUnfairCoin.R
-  FigureType: new
+  Output: So we've seen that graphs summarize data. Two dimensional graphs include multiple graphs which we'll see examples of and overlayed one-dimensional plots which the R packages lattice and ggplot2 provide. Also, scatterplots are two-dimensional. 
 
 - Class: text
-  Output: Now let's talk about confidence intervals.
-
-- Class: figure
-  Output:  We know from the CLT that for large n, the sample mean is normal with mean mu and standard deviation sigma/sqrt(n). We also know that 95% of the area under a normal curve is within two standard deviations of the mean. This figure, a standard normal with mu=0 and sigma=1, illustrates this point; the entire shaded portion depicts the area within 2 standard deviations of the mean and the darker portion shows the 68% of the area within 1 standard deviation. 
-  Figure: stddev1.R
-  FigureType: new
+  Output: Some graphs have more than two-dimensions. These include overlayed or multiple two-dimensional plots, coplots, spinning plots and three-dimensional plots which are tricky to understand so have limited usefulness. We'll see some examples now of more complicated graphs.
 
 - Class: text
-  Output: It follows that 5% of the area under the curve is not shaded. By symmetry of the curve, only 2.5% of the data is greater than the mean + 2 standard deviations (mu+2*sigma/sqrt(n)) and only 2.5% is less than the  mean - 2 standard deviations (mu-2*sigma/sqrt(n)). 
-
-- Class: text
-  Output: So the probability that the sample mean X' is bigger than mu + 2sigma/sqrt(n) OR smaller than mu-2sigma/sqrt(n) is 5%.  Equivalently, the probability of being between these limits is 95%. Of course we could have different sizes of intervals. If we wanted something other than 95, then we would use a quantile other than 2.
-
-- Class: text
-  Output: The quantity X' plus or minus 2 sigma/sqrt(n) is called a 95% interval for mu. The 95% says that if one were to repeatedly get samples of size n, about 95% of the intervals obtained would contain mu, the quantity we're trying to estimate. 
-
-- Class: mult_question
-  Output: Note that for a 95% confidence interval we divide (100-95) by 2 (since we have both left and right tails) and add the result to 95 to compute the quantile we need. The 97.5 quantile is actually 1.96, but for simplicity it's often just rounded up to 2. If you wanted to find a 90% confidence interval what quantile would you want?
-  AnswerChoices: 90; 95; 85; 100
-  CorrectAnswer: 95
-  AnswerTests: omnitest(correctVal='95')
-  Hint: Divide (100-90) by 2 and add this result to 90.
+  Output: Now we'll show how R, in one line and using base plotting, can display multiple boxplots. We simply specify that we want to see the pollution data as a function of region. We know that our pollution data characterized each of the 576 entries as belonging to one of two regions (east and west).
 
 - Class: cmd_question
-  Output: Use the R function qnorm to find the 95th quantile for a standard normal distribution. Remember that qnorm takes a probability as an input. You can use default values for all the other arguments.
-  CorrectAnswer: qnorm(.95)
-  AnswerTests: omnitest(correctExpr='qnorm(.95)')
-  Hint: Type qnorm(.95) at the command prompt.
-
-- Class: mult_question
-  Output: As we've seen before, in a binomial distribution in which p represents the probability or proportion of success, the variance sigma^2 is p(1-p), so the standard error of the sample mean p' is sqrt(p(1-p)/n) where n is the sample size. The 95% confidence interval of p is then p' +/- 2*sqrt(p(1-p)/n). The 2 in this formula represents what?
-  AnswerChoices: the mean of p'; the variance of p'; the standard error of p'; the approximate 95% normal quantile
-  CorrectAnswer: the approximate 95% normal quantile
-  AnswerTests: omnitest(correctVal='the approximate 95% normal quantile')
-  Hint: Recall the formula for the interval p' +/- qnorm*sigma/sqrt(n)
-
-- Class: text
-  Output:  A critical point here is that we don't know the true value of p; that's what we're trying to estimate. How can we compute a confidence interval if we don't know p(1-p)? We could be conservative and try to maximize it so we get the largest possible confidence interval. Calculus tells us that p(1-p) is maximized when p=1/2, so we get the biggest 95% confidence interval when we  set p=1/2 in the formula p'+/- 2*sqrt(p(1-p)/n). 
-
-- Class: mult_question
-  Output: Using 1/2 for the value of p in the formula above yields what expression for the 95% confidence interval for p?
-  AnswerChoices: p'+/- 1/sqrt(n); p'+/- 1/(2*sqrt(n)); p'+/- 2*sqrt(n)
-  CorrectAnswer: p'+/- 1/sqrt(n)
-  AnswerTests: omnitest(correctVal='p\'+/- 1/sqrt(n)')
-  Hint: p(1-p)=1/4 when p=1/2 and the sqrt(1/4n)=1/(2*sqrt(n)). What happens when you multiply this by 2?
-
-- Class: mult_question
-  Output:  Here's another example of applying this formula from the slides. Suppose you were running for office and your pollster polled 100 people. Of these 60 claimed they were going to vote for you. You'd like to estimate the true proportion of people who will vote for you and you want to be 95% confident of your estimate. We need to find the limits that will contain the true proportion of your supporters with 95% confidence, so we'll use the formula p' +/- 1/sqrt(n) to answer this question. First, what value would you use for p', the sampled estimate?
-  AnswerChoices: .60; .56; 1.00; .10
-  CorrectAnswer: .60
-  AnswerTests: omnitest(correctVal='.60')
-  Hint: The only sampled number here is the number of people who said they would vote for you. Make it a proportion by dividing it by the sample size.
-
-- Class: mult_question
-  Output: What would you use for 1/sqrt(n)?
-  AnswerChoices: 1/sqrt(60); 1/sqrt(56); 1/100; 1/10
-  CorrectAnswer: 1/10
-  AnswerTests: omnitest(correctVal='1/10')
-  Hint: The sample size is n, and in this case n=100. What is 1/sqrt(100)?
-
-- Class: mult_question
-  Output: The bounds of the interval then are what?
-  AnswerChoices: .5 and .7; .46 and .66; .55 and .65; I haven't a clue
-  CorrectAnswer: .5 and .7
-  AnswerTests: omnitest(correctVal='.5 and .7')
-  Hint: We know p'- 1/sqrt(n) is the lower bound and p'+ 1/sqrt(n) is the upper bound, so use the answers from the two previous answers to fill in values for these variables.
-
-- Class: mult_question
-  Output: How do you feel about the election?
-  AnswerChoices: confident; unsure; I'll pull out;  Perseverance, that's the answer; 
-  CorrectAnswer: confident
-  AnswerTests: omnitest(correctVal='confident')
-  Hint: With 95% confidence, between .5 and .7 of the voters support you. You look like a winner to me!
-
-- Class: text
-  Output: Another technique for calculating confidence intervals for binomial distributions is to replace p with p'. This is called the Wald confidence interval. We can also use the R function qnorm to get a more precise quantile value (closer to 1.96) instead of our ballpark estimate of 2. 
+  Output:  We use the R formula construct y ~ x to show that y (in this case pm25) depends on x (region). Since both come from the data frame pollution we can specify this with the data argument equal to pollution. By doing this, we don't have to type pollution$pm25 and pollution$region. We can just specify the formula pm25~region. Call boxplot now with this formula as its argument, data equal to pollution, and col equal to "red". 
+  CorrectAnswer: boxplot(pm25 ~ region, data = pollution, col = "red")
+  AnswerTests: omnitest(correctExpr='boxplot(pm25 ~ region, data = pollution, col = "red")')
+  Hint: Type boxplot(pm25 ~ region, data = pollution, col = "red") at the command prompt.
 
 - Class: cmd_question
-  Output: With the formula  p'+/- qnorm(.975)*sqrt(p'(1-p')/100), use the p' and n values from above and the R construct p'+c(-1,1)... to handle the plus/minus portion of the formula. You should see bounds similar to the ones you just estimated.
-  CorrectAnswer: .6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100)
-  AnswerTests: omnitest(correctExpr='.6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100)')
-  Hint: Type .6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100) at the command prompt. 
+  Output: Similarly we can plot multiple histograms in one plot, though to do this we have to use more than one R command. First we have to set up the plot window with the R command par which specifies how we want to lay out the plots, say one above the other. We also use par to specify margins, a 4-long vector which indicates the number of lines for the bottom, left, top and right. Type the R command par(mfrow=c(2,1),mar=c(4,4,2,1)) now. Don't expect to see any new result.
+  CorrectAnswer: par(mfrow = c(2, 1), mar = c(4, 4, 2, 1))
+  AnswerTests: omnitest(correctExpr='par(mfrow = c(2, 1), mar = c(4, 4, 2, 1))',strict=TRUE)
+  Hint: Type par(mfrow = c(2, 1), mar = c(4, 4, 2, 1)) at the command prompt.
 
 - Class: cmd_question
-  Output: As an alternative to this Wald interval, we can also use the R function binom.test with the parameters 60 and 100 and let all the others default. This function "performs an exact test of a simple null hypothesis about the probability of success in a Bernoulli experiment." (This means it guarantees the coverages, uses a lot of computation and doesn't rely on the CLT.) This function returns a lot of information but all we want  now are the values of the confidence interval that it returns. Use the R construct x$conf.int to find these now.
-  CorrectAnswer: binom.test(60,100)$conf.int
-  AnswerTests: omnitest(correctExpr='binom.test(60,100)$conf.int')
-  Hint: Type binom.test(60,100)$conf.int at the command prompt. 
+  Output: So we set up the plot window for two rows and one column with the mfrow argument. The mar argument set up the margins. Before we plot the histograms let's explore the R command subset which, not surprisingly, "return subsets of vectors, matrices or data frames which meet conditions". We'll use subset to pull off the data we want to plot. Call subset now with pollution as its first argument and a boolean expression testing region for equality with the string "east". Put the result in the variable east.
+  CorrectAnswer: east <- subset(pollution,region=="east")
+  AnswerTests: expr_creates_var(east); omnitest(correctExpr='east <- subset(pollution,region=="east")',strict=TRUE)
+  Hint: Type east <- subset(pollution,region=="east") at the command prompt.
+
+- Class: cmd_question
+  Output: Use head to look at the first few entries of east.
+  CorrectAnswer: head(east)
+  AnswerTests: omnitest(correctExpr='head(east)')
+  Hint: Type head(east) at the command prompt.
+
+- Class: cmd_question
+  Output: So east holds more information than we need. We just want to plot a histogram with the pm25 portion. Call hist now with the pm25 portion of east as its first argument and col equal to "green" as its second.
+  CorrectAnswer: hist(east$pm25, col = "green")
+  AnswerTests: omnitest(correctExpr='hist(east$pm25, col = "green")')
+  Hint: Type hist(east$pm25, col = "green") at the command prompt.
+
+- Class: cmd_question
+  Output: Now, here's a challenge for you. Plot the histogram of the counties from the west using just one R command. Let the appropriate subset command (with the pm25 portion specified) be the first argument and col (equal to "green") the second.  To cut down on your typing, use the up arrow key to get your last command and replace "east" with the subset command. Make sure the boolean argument checks for equality between region and "west".
+  CorrectAnswer: hist(subset(pollution,region=="west")$pm25, col = "green")
+  AnswerTests: omnitest(correctExpr='hist(subset(pollution,region=="west")$pm25, col = "green")')
+  Hint: Type hist(subset(pollution,region=="west")$pm25, col = "green") at the command prompt.
 
 - Class: text
-  Output: Close to what we've seen before, right? Now we're going to see that the Wald interval isn't very accurate when n is small. We'll use the example from the slides. 
+  Output: See how R does all the labeling for you? Notice that the titles are different since we used different commands for the two plots. Let's look at some scatter plots now. 
+
 
 - Class: figure
-  Output: Suppose we flip a coin a small number of times, say 20. Also suppose we have a function mywald which takes a probability p, and generates 30 sets of 20 coin flips using that probability p. It uses the sampled proportion of success, p', for those 20 coin flips to compute the upper and lower bounds of the 95% Wald interval, that is, it computes the two numbers p'+/- qnorm(.975) * sqrt(p' * (1-p') / n) for each of the 30 trials. For the given true probability p, we  count the number of times out of those 30 trials that the true probability p was in the Wald confidence interval. We'll call this the coverage.
-  Figure: WaldDemo.R
+  Output: Scatter plots are two-dimensional plots which show the relationship between two variables, usually x and y. Let's look at a scatterplot showing the relationshipe between latitude and the pm25 data. We'll use plot, a function from R's base plotting package.
+  Figure: clearPlot.R
   FigureType: new
 
 - Class: cmd_question
-  Output: To make sure you understand what's going on, trying running mywald now with the probability .2. It will print out 30 p' values (which you don't really need to see), followed by 30 lower bounds, 30 upper bounds and lastly the percentage of times that the input .2 was between the two bounds. See if you agree with the percentage you get. Usually it suffices to just count the number of times (out of the 30) that .2 is less than the upper bound.
-  CorrectAnswer: mywald(.2)
-  AnswerTests: omnitest(correctExpr='mywald(.2)')
-  Hint: Type mywald(.2) at the command prompt. 
+  Output: We've seen that we can use a function call as an argument when calling another function. We'll do this again when we call plot with the arguments latitude and pm25 which are both from our data frame pollution. We'll call plot from inside the R command with which evaluates "an R expression in an environment constructed from data". We'll use pollution as the first argument to with and the call to plot as the second. This tells R to evaluate our call to plot in the environment created by the data frame pollution. Do this now.
+  CorrectAnswer: with(pollution, plot(latitude, pm25))
+  AnswerTests: omnitest(correctExpr='with(pollution, plot(latitude, pm25))')
+  Hint: Type with(pollution, plot(latitude, pm25)) at the command prompt.
 
-- Class: text
-  Output: Now that you understand the underlying principle, suppose instead of 30 trials, we used 1000 trials. Also suppose we did this experiment for a series of probabilities, say from .1 to .9 taking steps of size .05. More specifically, we'll call our function using 17 different probabilities, namely .1, .15, .2, .25, ... .9 . We can then plot the percentages of coverage for each of the probabilities. 
-
-- Class: figure
-  Output: Here's the plot of our results. Each of the 17 vertices show the percentage of coverage for a particular true probability p passed to the function. Results will vary, but usually the only probability that hits close to or above the 95% line is the p=.5 . So this shows that when n, the number of flips, is small (20) the CLT doesn't hold for many values of p, so the Wald interval doesn't work very well.
-  Figure: WaldFail.R
-  FigureType: new
-
-- Class: figure
-  Output: Let's try the same experiment and increase n, the number of coin flips in each of our 1000 trials, from 20 to 100 to see if the plot improves. Again, results may vary, but all the probabilities are much closer to the 95% line, so the CLT works better with a bigger value of n.
-  Figure: WaldPass.R
-  FigureType: new
-
-- Class: text
-  Output: A quick fix to the problem of having a small n is to use the Agresti/Coull interval. This simply means we add 2 successes and 2 failures to the counts when calculating the proportion p'. Specifically, if X is the number of successes out of the 20 coin flips, then instead of  setting p'=X/20, let p'=(X+2)/24. We use 24 as the number of trials since we've added 2 successes and 2 failures to the counts. Note that we still use 20 in the calculation of the upper and lower bounds.
-
-- Class: figure
-  Output: Here's a plot using this Agresti/Coull interval, with 1000 trials of 20 coin flips each. It looks much better than both the original Wald with 20 coin flips and the improved Wald with 100 coin flips. However, this technique might make the confidence interval too wide. 
-  Figure: ACDemo.R
-  FigureType: new
-
-- Class: text
-  Output: Why does this work? Adding 2 successes and 2 failures pulls p' closer to .5 which, as we saw, is the value which maximizes the confidence interval.
-
-- Class: figure
-  Output:  To show this simply, we wrote a function ACCompar, which takes an integer input n. For each k from 1 to n  it computes two fractions, k/n and (k+2)/(n+4). It then prints out the boolean vector of whether the new (k+2)/(n+4) fraction is less than the old k/n. It also prints out the total number of k's for which the the condition is TRUE. 
-  Figure: ACComp.R
-  FigureType: new
-
-- Class: text
-  Output: For all k less than  n/2, you see FALSE indicating that the new fraction is greater than or equal to k/n. For all k greater than n/2 you see TRUE indicating that the new fraction is less than the old. If k=n/2 the old and new fractions are equal.
 
 - Class: cmd_question
-  Output: Try running ACCompar now with an input of 20.
-  CorrectAnswer: ACCompar(20)
-  AnswerTests: omnitest(correctExpr=' ACCompar(20)')
-  Hint: Type  ACCompar(20) at the command prompt.
+  Output: Note that the first argument is plotted along the x-axis and the second along the y. Now use abline to add a horizontal line at 12. Use two additional arguments, lwd equal to 2 and lty also equal to 2. See what happens.
+  CorrectAnswer: abline(h = 12, lwd = 2, lty = 2)
+  AnswerTests: omnitest(correctExpr='abline(h = 12, lwd = 2, lty = 2)')
+  Hint: Type abline(h = 12, lwd = 2, lty = 2) at the command prompt.
 
-- Class: text
-  Output: Let's move on to Poisson distributions and confidence intervals. Recall that Poisson distributions model counts or rates. For the latter, we write X~Poisson(lambda*t) where lambda is the expected count per unit of time and t is the total monitoring time.
-
-- Class: text
-  Output:  Here's another example from the slides. Suppose a nuclear pump failed 5 times out of 94.32 days and we want  a 95% confidence interval for the failure rate per day. The number of failures X is Poisson distributed with parameter (lambda*t). We estimate the failure rate, lambda', as x/t and the variance of our estimated mean is lambda/t, which we estimate as lambda'/t.
+- Class: cmd_question
+  Output: Now let's replot the scatterplot again within a call to with. (As before, use the up arrow key to recover the last call to with). This time, in the call to plot add the argument col set equal to region. See what happens? 
+  CorrectAnswer: with(pollution, plot(latitude, pm25, col = region))
+  AnswerTests: omnitest(correctExpr='with(pollution, plot(latitude, pm25, col = region))')
+  Hint: Type with(pollution, plot(latitude, pm25, col = region)) at the command prompt.
 
 - Class: mult_question
-  Output: In this example what would you use as the estimated mean x/t?
-  AnswerChoices: 5/94.32; 94.32/5; I haven't a clue
-  CorrectAnswer: 5/94.32
-  AnswerTests: omnitest(correctVal='5/94.32')
-  Hint: You need a number of failures divided by some measure of time.
+  Output: We've got two colors on the map to distiguish between counties in the east and those in the west. Can we figure out which color is east and which west? See that the high and low latitudes are both red. Latitudes of course indicate distance from the equator so are counties in the east or west of the U.S. at the extreme north and south?
+  AnswerChoices: east; west
+  CorrectAnswer: west
+  AnswerTests: omnitest(correctVal='west')
+  Hint: Alaska and Hawaii are at the extreme latitudes.
+
 
 - Class: cmd_question
-  Output: Set a variable lamb now with this value.
-  CorrectAnswer: lamb <- 5/94.32
-  AnswerTests: expr_creates_var('lamb'); omnitest(correctExpr='lamb <- 5/94.32')
-  Hint: Type lamb <- 5/94.32 at the R prompt.
-
-- Class: cmd_question
-  Output: So lamb is our estimated mean and lamb/t is our estimated variance. The formula we've used to calculate a 95% confidence interval is est mean + c(-1,1)*qnorm(.975)*sqrt(est var). Use this formula now making the appropriate substitutions. 
-  CorrectAnswer: lamb +c(-1,1)*qnorm(.975)*sqrt(lamb/94.32)
-  AnswerTests: omnitest(correctExpr='lamb +c(-1,1)*qnorm(.975)*sqrt(lamb/94.32)')
-  Hint: Type lamb +c(-1,1)*qnorm(.975)*sqrt(lamb/94.32) at the R prompt.
-
-- Class: cmd_question
-  Output: As a check we can use R's function poisson.test with the arguments 5 and 94.32 to check this result. This is an exact test so it guarantees coverage. As with the binomial exact test, we only need to look at the conf portion of the result using the x$conf construct. Do this now. 
-  CorrectAnswer: poisson.test(5,94.32)$conf
-  AnswerTests: omnitest(correctExpr='poisson.test(5,94.32)$conf')
-  Hint: Type 'poisson.test(5,94.32)$conf' at the command prompt.
-
-- Class: text
-  Output: Pretty close, right? Now to check the coverage of our estimate we'll run the same simulation experiment we ran before with binomial distributions. We'll vary our lambda values from .005 to .1 with steps of .01 (so we have 10 of them), and for each one we'll generate 1000 Poisson samples with mean lambda*t. We'll calculate  sample means and use them to compute  95% confidence intervals. We'll then count how often out of the 1000 simulations the true mean (our lambda) was contained in the computed interval.
- 
-- Class: figure
-  Output: Here's a plot of the results. We see that the coverage improves as lambda gets larger, and it's quite off for small lambda values.
-  Figure: PoisDemo.R
-  FigureType: new
+  Output: As before, use abline to add a horizontal line at 12. Use two additional arguments, lwd equal to 2 and lty also equal to 2. 
+  CorrectAnswer: abline(h = 12, lwd = 2, lty = 2)
+  AnswerTests: omnitest(correctExpr='abline(h = 12, lwd = 2, lty = 2)')
+  Hint: Type abline(h = 12, lwd = 2, lty = 2) at the command prompt.
 
 - Class: figure
-  Output: Now it's interesting to see how the coverage improves when we increase the unit of time. In the previous plot we used t=100 (rounding the 94.32 up). Here's a plot of the same experiment setting t=1000. We see that the coverage is much better for almost all the values of lambda, except for the smallest ones.
-  Figure: PoisDemoImpr.R
+  Output: We see many counties are above the healthy standard set by the EPA, but it's hard to tell if east or west is worse. Let's plot two scatterplots distinguished by region.
+  Figure:clearPlot.R
   FigureType: new
 
+- Class: cmd_question
+  Output: As we did with multiple histograms, we first have to set up the plot window with the R command par. This time, let's plot the scatterplots side by side (one row and two columns). We also need to use different margins. Type the R command par(mfrow = c(1, 2), mar = c(5, 4, 2, 1)) now. Don't expect to see any new result.
+  CorrectAnswer: par(mfrow = c(1, 2), mar = c(5, 4, 2, 1))
+  AnswerTests: omnitest(correctExpr='par(mfrow = c(1, 2), mar = c(5, 4, 2, 1))',strict=TRUE)
+  Hint: Type  par(mfrow = c(1, 2), mar = c(5, 4, 2, 1)) at the command prompt.
+
+- Class: cmd_question
+  Output: For the first scatterplot, on the left, we'll plot the latitudes and pm25 counts from the west. As before we'll use the command with (with two arguments). For the first argument we'll use subset (with arguments pollution and the boolean expression region=="west"). The second argument will be the call to plot with three arguments. These are latitude (x-axis), pm25 (y-axis), and the string "West" (title). Do this now. 
+  CorrectAnswer: with(subset(pollution, region == "west"), plot(latitude, pm25, main = "West"))
+  AnswerTests: omnitest(correctExpr='with(subset(pollution, region == "west"), plot(latitude, pm25, main = "West"))')
+  Hint: Type  with(subset(pollution, region == "west"), plot(latitude, pm25, main = "West")) at the command prompt.
+
+- Class: cmd_question
+  Output: For the second scatterplot, on the right, we'll plot the latitudes and pm25 counts from the east. As before, use the up arrow key and change the two "west" strings to "east". 
+  CorrectAnswer: with(subset(pollution, region == "east"), plot(latitude, pm25, main = "East"))
+  AnswerTests: omnitest(correctExpr='with(subset(pollution, region == "east"), plot(latitude, pm25, main = "East"))')
+  Hint: Type  with(subset(pollution, region == "east"), plot(latitude, pm25, main = "East")) at the command prompt.
+
 - Class: text
-  Output: Now for a quick review!
+  Output: See how R took care of all the details for you? Nice, right? It looks like there are more dirty counties in the east but the extreme dirt (greater than 15) is in the west. 
+
+- Class: figure
+  Output:  Let's summarize and review. 
+  Figure: clearPlot.R
+  FigureType: new
 
 - Class: mult_question
-  Output: What tells us that averages of iid samples converge to the population means that they are estimating?
-  AnswerChoices: the law of small numbers; the law of large numbers; the CLT; the BLT
-  CorrectAnswer: the law of large numbers
-  AnswerTests: omnitest(correctVal='the law of large numbers')
-  Hint: Think Big!
+  Output: Which of the following characterizes exploratory plots?
+  AnswerChoices: slow and clean; quick and dirty; quick and dead; slow and steady
+  CorrectAnswer: quick and dirty
+  AnswerTests: omnitest(correctVal='quick and dirty')
+  Hint: We did all these plots pretty fast, right? That leaves only two choices. Of these only one makes sense.
 
 - Class: mult_question
-  Output: What tells us that averages are approximately normal for large enough sample sizes
-  AnswerChoices: the law of small numbers; the law of large numbers; the CLT; the BLT
-  CorrectAnswer: the CLT
-  AnswerTests: omnitest(correctVal='the CLT')
-  Hint: Keep yourself centered!
-
-- Class: mult_question
-  Output: The Central Limit Theorem (CLT) tells us that averages have what kind of distributions?
-  AnswerChoices: normal; abnormal; binomial; Poisson
-  CorrectAnswer: normal
-  AnswerTests: omnitest(correctVal='normal')
-  Hint: Remember the previous question?
-
-- Class: mult_question
-  Output: The Central Limit Theorem (CLT) tells us that averages have normal distributions centered at what?
-  AnswerChoices: the population mean; the population variance; the standard error
-  CorrectAnswer: the population mean
-  AnswerTests: omnitest(correctVal='the population mean')
-  Hint: Remember the old E(X')=mu, where X' is the sample mean and mu is the population mean. Know what I mean?
-
-- Class: mult_question
-  Output: The Central Limit Theorem (CLT) tells us that averages have normal distributions with standard deviations equal to what?
-  AnswerChoices: the population mean; the population variance; the standard error
-  CorrectAnswer: the standard error
-  AnswerTests: omnitest(correctVal='the standard error')
-  Hint: Which choice has the word standard in it?
-
-- Class: mult_question
-  Output: True or False - The Central Limit Theorem (CLT) tells us that averages always have normal distributions no matter how big the sample size
+  Output: True or false? Plots let you summarize the data (usually graphically) and highlight any broad features
   AnswerChoices: True; False
-  CorrectAnswer: False
-  AnswerTests: omnitest(correctVal='False')
-  Hint:  Never trust statements with the words ALWAYS or NEVER in them. There are ALWAYS exceptions to rules. 
-
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal='True')
+  Hint: Really? 
+  
 - Class: mult_question
-  Output: To calculate a confidence interval for a mean you take the sample mean and add and subtract the relevant normal quantile times the what?
-  AnswerChoices: standard error; variance; variance/n; mean
-  CorrectAnswer: standard error
-  AnswerTests: omnitest(correctVal='standard error')
-  Hint: You want something like a standard deviation, right? Which choice has the word standard in it?
-
-- Class: mult_question
-  Output: For a 95% confidence interval approximately how many standard errors would you add and subtract from the sample mean? 
-  AnswerChoices: 2; 4; 6; 8
-  CorrectAnswer: 2
-  AnswerTests: omnitest(correctVal='2')
-  Hint: Anything above 3 is pretty far from the mean. Also, purists would prefer 1.96 for this.
-
-- Class: mult_question
-  Output: If you wanted increased coverage what would you do to your confidence interval?
-  AnswerChoices: increase it; decrease it; keep it the same
-  CorrectAnswer: increase it
-  AnswerTests: omnitest(correctVal='increase it')
-  Hint: The key word here is increase. Bigger interval means bigger coverage.
-
-- Class: mult_question
-  Output: If you had less variability in your data would your confidence interval get bigger or smaller?
-  AnswerChoices: bigger; smaller
-  CorrectAnswer: smaller
-  AnswerTests: omnitest(correctVal='smaller')
-  Hint: Recall the size of the confidence interval positively depends on standard error which is sqrt(var/n). If variance is smaller then so is variability and the interval.
-
-- Class: mult_question
-  Output: If you had larger sample size would your confidence interval get bigger or smaller?
-  AnswerChoices: bigger; smaller
-  CorrectAnswer: smaller
-  AnswerTests: omnitest(correctVal='smaller')
-  Hint: Recall the size of the confidence interval positively depends on standard error which is sqrt(var/n). If the sample size, n, gets bigger the standard error gets smaller and so does  the interval.
-
-- Class: mult_question
-  Output:  A quick fix for small sample size binomial calculations is what?
-  AnswerChoices: add 2 successes and 2 failures; add 2 successes and 4 failures; add 2 successes and subtract 2 failures; changing data seem dishonest
-  CorrectAnswer: add 2 successes and 2 failures
-  AnswerTests: omnitest(correctVal='add 2 successes and 2 failures')
-  Hint: Adding 2 successes and 2 failures brings the proportion of successes closer to 1/2 which maximizes the confidence interval.
+  Output: Which of the following do plots NOT do?
+  AnswerChoices: Summarize the data (usually graphically) and highlight any broad features; Explore basic questions and hypotheses (and perhaps rule them out); Suggest modeling strategies for the "next step"; Conclude that you are ALWAYS right
+  CorrectAnswer: Conclude that you are ALWAYS right
+  AnswerTests: omnitest(correctVal='Conclude that you are ALWAYS right')
+  Hint: Remember, NEVER trust  answers with ALWAYS and NEVER in them. ALWAYS be suspicious of them.
 
 - Class: text
-  Output: Congrats! You've concluded this lesson on asymptotics. We hope you feel confident and are asymptomatic after going through it.
+  Output: Congrats! You've concluded exploring this lesson on graphics. We hope you didn't find it too quick or dirty.  
 
