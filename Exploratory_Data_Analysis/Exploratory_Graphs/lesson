@@ -20,7 +20,7 @@
   Hint: Which choice  has more to do with fashion than data science?
 
 - Class: text
-  Output: So graphics give us some visual form of data, and since our brains are very good at seeing patterns graphs give us a compact way to present data and find or display any pattern that may be present. 
+  Output: So graphics give us some visual form of data, and since our brains are very good at seeing patterns, graphs give us a compact way to present data and find or display any pattern that may be present. 
 
 - Class: mult_question
   Output: Which of the following cliches captures the essence of graphics?
@@ -42,16 +42,14 @@
   Hint: Type head(pollution) at the command prompt.
 
 - Class: cmd_question
-  Output: We see a pollution count in the column labeled pm25. We'll work mostly with that. Now run the R command dim with pollution as an argument to see how long the table is.
+  Output: We see 5 columns of data. The  pollution count is in the first column labeled pm25. We'll work mostly with that. The other 4 columns are a fips code indicating the state (first 2 digits) and county (last 3 digits) with that count, the associated region (east or west), and the longitude and latitude of the area. Now run the R command dim with pollution as an argument to see how long the table is.
   CorrectAnswer: dim(pollution)
   AnswerTests: omnitest(correctExpr='dim(pollution)')
   Hint: Type dim(pollution) at the command prompt.
 
-- Class: text
-  Output: We see that pollution contains 576 rows of data, with each row containing 5 columns. The columns are a measure of particle pollution (pm25), a fips code indicating the state (first 2 digits) and county (last 3 digits) with that measure, the associated region (east or west), and the longitude and latitude of the area. 
 
 - Class: text
-  Output: We'd like to investigate the question "Are there any counties in the U.S. that exceed that national standard (12 micro grams per cubic meter) for fine particle pollution?" We'll look at several one dimensional summaries of the data to investigate this question.
+  Output: So there are 576 entries in pollution. We'd like to investigate the question "Are there any counties in the U.S. that exceed that national standard (12 micro grams per cubic meter) for fine particle pollution?" We'll look at several one dimensional summaries of the data to investigate this question.
 
 - Class: cmd_question
   Output: The first technique uses the R command summary. Run it now with the pm25 column of pollution as its  argument. Recall that the construct for this is pollution$pm25.
@@ -70,13 +68,13 @@
   Hint: The median indicates the 50% point.
 
 - Class: cmd_question
-  Output: Now run the R command quantile with the pm25 column of pollution as its  argument. Compare your results to the previous output of the summary command.
+  Output: Now run the R command quantile with the pm25 column of pollution as its  argument. See how the results look a lot like the results of the output of the summary command.
   CorrectAnswer: quantile(pollution$pm25)
   AnswerTests: omnitest(correctExpr='quantile(pollution$pm25)')
   Hint: Type quantile(pollution$pm25) at the command prompt.
 
 - Class: mult_question
-  Output: See how the two sets of results are related? What is the only value that summary returns missing from the quantile output?
+  Output: See how the two sets of results are related? Quantile gives the quartiles, right? What value is  missing from this quantile output that summary returned?
   AnswerChoices: the mean; the minimum value; the maximum value; the median 
   CorrectAnswer: the mean
   AnswerTests: omnitest(correctVal='the mean')
@@ -89,14 +87,14 @@
   Hint: Type boxplot(pollution$pm25,col="blue") at the command prompt.
 
 - Class: text
-  Output: The boxplot shows us the same quantile data that summary and quantile did. The lower and upper edges of the blue box respectively show the values of the 25% and 75% quantiles.  
+  Output: The boxplot shows us the same quartile data that summary and quantile did. The lower and upper edges of the blue box respectively show the values of the 25% and 75% quantiles.  
 
 - Class: mult_question
   Output: What do you think the line in the middle of the box represents?
   AnswerChoices: the mean; the minimum value; the maximum value; the median 
   CorrectAnswer: the median
   AnswerTests: omnitest(correctVal='the median')
-  Hint: It looks like it's halfway between the top and bottom of the box, right?
+  Hint: It looks like it's halfway between the top and bottom of the box, right? It must be at the 50% level.
 
 - Class: text
   Output: The "whiskers" of the box (the vertical lines extending above and below the box) relate to the range parameter of boxplot, which we let default to the value 1.5 used by R. The height of the box is the interquantile range, the difference between the 75th and 25th quantile. In this case that is 2.8. The whiskers are drawn to be a length of range*2.8 (1.5*2.8). This shows us roughly how many, if any, data points are outliers, that is beyond this range of values. 
@@ -142,13 +140,13 @@
   Output: Again, we see one data point greater than 18, one between 17 and 18, several between 16 and 17 and two between 15 and 16, verifying what rug indicated.
 
 - Class: cmd_question
-  Output: Now rerun hist with pollution$pm25 as its data, col equal to "green", and breaks equal to 100.
+  Output: Now rerun hist with 3 arguments, pollution$pm25 as its first, col equal to "green", and breaks equal to 100.
   CorrectAnswer: hist(pollution$pm25, col = "green", breaks = 100)
   AnswerTests: omnitest(correctExpr='hist(pollution$pm25, col = "green", breaks = 100)')
   Hint: Type hist(pollution$pm25, col = "green", breaks = 100) at the command prompt.
 
 - Class: mult_question
-  Output: What do you think the break argument specifies in this case?
+  Output: What do you think the breaks argument specifies in this case?
   AnswerChoices: the number of buckets to split the data into; the number of data points to graph; the number of stars in the sky; the number of counties exceeding the EPA standard
   CorrectAnswer: the number of buckets to split the data into
   AnswerTests: omnitest(correctVal='the number of buckets to split the data into')
@@ -188,7 +186,7 @@
 - Class: cmd_question
   Output: Now  rerun hist with pollution$pm25 as the data and col equal to "green".
   CorrectAnswer: hist(pollution$pm25, col = "green")
-  AnswerTests: omnitest(correctExpr=hist(pollution$pm25, col = "green")',strict=TRUE)
+  AnswerTests: omnitest(correctExpr='hist(pollution$pm25, col = "green")',strict=TRUE)
   Hint: Type hist(pollution$pm25, col = "green") at the command prompt.
 
 - Class: cmd_question
