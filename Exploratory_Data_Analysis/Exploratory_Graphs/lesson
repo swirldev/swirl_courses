@@ -85,7 +85,7 @@
 - Class: cmd_question
   Output: Now we'll try a picture, specifically a boxplot. Run the R command boxplot with pollution$pm25 as an input. Also specify the color parameter col equal to "blue".
   CorrectAnswer: boxplot(pollution$pm25,col="blue")
-  AnswerTests: omnitest(correctExpr='boxplot(pollution$pm25,col="blue"),strict=TRUE')
+  AnswerTests: omnitest(correctExpr='boxplot(pollution$pm25,col="blue")',strict=TRUE)
   Hint: Type boxplot(pollution$pm25,col="blue") at the command prompt.
 
 - Class: text
@@ -99,12 +99,12 @@
   Hint: It looks like it's halfway between the top and bottom of the box, right?
 
 - Class: text
-  Output: The "whiskers" of the box (the vertical lines extending above and below the box) relate to the range parameter of boxplot, which we let default to 1.5. The height of the box is the interquantile range, the difference between the 75th and 25th quantile. In this case that is 2.8. The whiskers are drawn to be a length of 1.5*2.8. This shows us roughly how many, if any, data points are outside this range. 
+  Output: The "whiskers" of the box (the vertical lines extending above and below the box) relate to the range parameter of boxplot, which we let default to the value 1.5 used by R. The height of the box is the interquantile range, the difference between the 75th and 25th quantile. In this case that is 2.8. The whiskers are drawn to be a length of range*2.8 (1.5*2.8). This shows us roughly how many, if any, data points are outliers, that is beyond this range of values. 
 
 - Class: cmd_question
   Output: Now use the R command hist with the argument pollution$pm25. Specify the color parameter col equal to "green". This will plot a histogram of the data.
   CorrectAnswer: hist(pollution$pm25, col = "green")
-  AnswerTests: omnitest(correctExpr='hist(pollution$pm25, col = "green"),strict=TRUE')
+  AnswerTests: omnitest(correctExpr='hist(pollution$pm25, col = "green")',strict=TRUE)
   Hint: Type hist(pollution$pm25, col = "green") at the command prompt.
 
 - Class: text
@@ -120,41 +120,119 @@
 - Class: cmd_question
   Output: Now run the R command rug with the argument pollution$pm25.
   CorrectAnswer: rug(pollution$pm25)
-  AnswerTests: omnitest(correctExpr='rug(pollution$pm25),strict=TRUE')
+  AnswerTests: omnitest(correctExpr='rug(pollution$pm25)',strict=TRUE)
   Hint: Type rug(pollution$pm25) at the command prompt.
 
+- Class: text
+  Output: This one-dimensional plot, with its grayscale representation, gives you a little more detailed information about how many data points are in each bucket. It shows (through color) that the greatest concentration of counties has between 9 and 12 micrograms per cubic meter. 
+
 - Class: cmd_question
-  Output: This again gives you a little more detailed information about how many data points are in each bucket. The concentration is between 9 and 12. To illustrate this a little more, we've defined for you two vectors, high and low, containing pollution data of high (greater than 15) and low (less than 5) values respectively. Look at low now and see how it relates to the output of rug.
+  Output: To illustrate this a little more, we've defined for you two vectors, high and low, containing pollution data of high (greater than 15) and low (less than 5) values respectively. Look at low now and see how it relates to the output of rug.
   CorrectAnswer: low
   AnswerTests: omnitest(correctExpr='low')
   Hint: Type low at the command prompt.
 
 - Class: cmd_question
-  Output: Two data points between 3 and 4 and many between 4 and 5. Now look at high.
+  Output: It confirms that there are two data points between 3 and 4 and many between 4 and 5. Now look at high.
   CorrectAnswer: high
   AnswerTests: omnitest(correctExpr='high')
   Hint: Type high at the command prompt.
 
 - Class: text
-  Output: Second, the CLT says that for large n, this normalized variable, (X'-mu)/(sigma/sqrt(n)) is almost normally distributed with mean 0 and variance 1. Remember that n must be large for the CLT to apply.
+  Output: Again, we see one data point greater than 18, one between 17 and 18, several between 16 and 17 and two between 15 and 16, verifying what rug indicated.
+
+- Class: cmd_question
+  Output: Now rerun hist with pollution$pm25 as its data, col equal to "green", and breaks equal to 100.
+  CorrectAnswer: hist(pollution$pm25, col = "green", breaks = 100)
+  AnswerTests: omnitest(correctExpr='hist(pollution$pm25, col = "green", breaks = 100)')
+  Hint: Type hist(pollution$pm25, col = "green", breaks = 100) at the command prompt.
 
 - Class: mult_question
-  Output: Do you recognize sigma/sqrt(n) from our lesson on variance? Since the population std deviation sigma is unknown, sigma/sqrt(n) is often approximated by what? 
-  AnswerChoices: the standard error of the sample mean; the variance of the population; the mean of the population; I give up
-  CorrectAnswer: the standard error of the sample mean
-  AnswerTests: omnitest(correctVal='the standard error of the sample mean')
-  Hint: Recall our many simulation experiments in the variance lesson where we calculated standard deviations of means using R's sd function, then we calculated an approximation using a formula involving the population variance and the square root of the sample size.
+  Output: What do you think the break argument specifies in this case?
+  AnswerChoices: the number of buckets to split the data into; the number of data points to graph; the number of stars in the sky; the number of counties exceeding the EPA standard
+  CorrectAnswer: the number of buckets to split the data into
+  AnswerTests: omnitest(correctVal='the number of buckets to split the data into')
+  Hint: There are a lot more bars in this graph, right? Maybe 100 or so, right?
+
+- Class: cmd_question
+  Output: Now rerun the R command rug with the argument pollution$pm25.
+  CorrectAnswer: rug(pollution$pm25)
+  AnswerTests: omnitest(correctExpr='rug(pollution$pm25)',strict=TRUE)
+  Hint: Type rug(pollution$pm25) at the command prompt.
 
 - Class: text
-  Output: Let's rephrase the CLT. Suppose X_1, X_2, ... X_n are independent, identically distributed random variables from an infinite population with mean mu and variance sigma^2. Then if n is large, the mean of the X's, call it X', is approximately normal with mean mu and variance sigma^2/n. We denote this as X'~N(mu,sigma^2/n).
+  Output: See how rug works with the existing plot? It automatically adjusted its pocket size to that of the last plot plotted.
 
-- Class: figure
-  Output: To show the CLT in action consider this figure from the slides. It presents 3 histograms of 1000 averages of dice rolls with sample sizes of 10, 20 and 30 respectively. Each average of n dice rolls (n=10,20,30) has been normalized by subtracting off the mean (3.5) then dividing by the standard error, sqrt(2.92/n). The normalization has made each histogram look like a standard normal, i.e., mean 0 and standard deviation 1.
-  Figure: cltDice.R
-  FigureType: new
+- Class: cmd_question
+  Output: Note that all the plots we've shown so far use R's base plotting package. A nice feature that this package provides is its ability to overlay features. To see this, rerun boxplot with pollution$pm25 as the data and col equal to "blue".
+  CorrectAnswer: boxplot(pollution$pm25, col="blue")
+  AnswerTests: omnitest(correctExpr='boxplot(pollution$pm25, col="blue")',strict=TRUE)
+  Hint: Type boxplot(pollution$pm25, col="blue") at the command prompt.
+
+- Class: cmd_question
+  Output: Now run the R command abline with the argument h equal to 12.
+  CorrectAnswer: abline(h = 12)
+  AnswerTests: omnitest(correctExpr='abline(h = 12)',strict=TRUE)
+  Hint: Type abline(h = 12) at the command prompt.
+
+- Class: mult_question
+  Output: What do you think this command did?
+  AnswerChoices: drew a vertical line at 12; drew a horizontal line at 12; nothing; hid 12 random data points
+  CorrectAnswer: drew a horizontal line at 12
+  AnswerTests: omnitest(correctVal='drew a horizontal line at 12')
+  Hint: The only scale is along the left side of the graph, so the line at 12 must be horizontal.
 
 - Class: text
-  Output: Notice that the CLT said nothing about the original population being normally distributed. That's precisely where its usefulness lies! We can assume normality of a population mean no matter what kind of population we have, as long as our sample size is large enough and our samples are independent. Let's look at how it works with a binomial experiment like flipping a coin.
+  Output: So abline "adds lines one or more straight lines through the current plot."
+
+- Class: cmd_question
+  Output: Now  rerun hist with pollution$pm25 as the data and col equal to "green".
+  CorrectAnswer: hist(pollution$pm25, col = "green")
+  AnswerTests: omnitest(correctExpr=hist(pollution$pm25, col = "green")',strict=TRUE)
+  Hint: Type hist(pollution$pm25, col = "green") at the command prompt.
+
+- Class: cmd_question
+  Output: Now run the command abline with the argument v equal to 12 and the argument lwd equal to 2.
+  CorrectAnswer: abline(v = 12, lwd=2)
+  AnswerTests: omnitest(correctExpr='abline(v = 12, lwd=2)',strict=TRUE)
+  Hint: Type abline(v = 12, lwd=2) at the command prompt.
+
+- Class: cmd_question
+  Output: See the vertical line at 12? Not very visible, is it? Run  abline with the argument v equal to median(pollution$pm25), the argument col equal to "magenta", and the argument lwd equal to 4.
+  CorrectAnswer: abline(v = median(pollution$pm25), col = "magenta", lwd = 4)
+  AnswerTests: omnitest(correctExpr='abline(v = median(pollution$pm25), col = "magenta", lwd = 4)',strict=TRUE)
+  Hint: Type abline(v = median(pollution$pm25), col = "magenta", lwd = 4) at the command prompt.
+
+- Class: cmd_question
+  Output: Better, right? Thicker and more of a contrast in color. Now recall that our pollution data had 5 columns of information. So far we've only looked at the pm25 column. We can also look at other information. To remind yourself what's there run the R command names with pollution as the argument.
+  CorrectAnswer: names(pollution)
+  AnswerTests: omnitest(correctExpr='names(pollution)')
+  Hint: Type names(pollution) at the command prompt.
+
+- Class: cmd_question
+  Output: Longitude and latitude don't sound interesting, and each fips is unique since it identifies states (first 2 digits) and counties (last 3 digits). Let's look at the region column to see what's there. Run the R command table on this column. Use the construct pollution$region. Store the result in the variable reg. 
+  CorrectAnswer: reg <- table(pollution$region)
+  AnswerTests: omnitest(correctExpr='reg <- table(pollution$region)')
+  Hint: Type reg <- table(pollution$region) at the command prompt.
+
+- Class: cmd_question
+  Output: Look at reg now. 
+  CorrectAnswer: reg
+  AnswerTests: omnitest(correctExpr='reg')
+  Hint: Type reg at the command prompt.
+
+- Class: cmd_question
+  Output: We'll use the R command barplot to plot this information. Call barplot with reg as its first argument, the argument col equal to "wheat", and the argument main equal to the string "Number of Counties in Each Region".
+  CorrectAnswer: barplot(table(pollution$region), col = "wheat", main = "Number of Counties in Each Region")
+  AnswerTests: omnitest(correctExpr='barplot(table(pollution$region), col = "wheat", main = "Number of Counties in Each Region")',strict=TRUE)
+  Hint: Type reg at the command prompt.
+
+- Class: mult_question
+  Output: What do you think the argument main specifies?
+  AnswerChoices: the title of the graph; the x axis label; the y axis label; I can't tell
+  CorrectAnswer: the title of the graph
+  AnswerTests: omnitest(correctVal='the title of the graph')
+  Hint: The string specified by main is in bold at the top of the graph and it tells what information the graph is displaying.
 
 - Class: text
   Output: Recall that if the probability of a head (call it 1) is p, then the probability of a tail (0) is 1-p. The expected value then is p and the variance is p-p^2 or p(1-p). Suppose we do n coin flips and let p' represent the average of these n flips. We normalize p' by subtracting the mean p and dividing by the std deviation sqrt(p(1-p)/n). Let's do this for 1000 trials and plot the resulting histogram. 
