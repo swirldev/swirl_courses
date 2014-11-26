@@ -4,4 +4,5 @@ path_to_course <- file.path(find.package("swirl"),"Courses/Exploratory_Data_Anal
 pollution <- read.csv(paste(path_to_course,"avgpm25.csv",sep="/"), colClasses = c("numeric", "character", "factor", "numeric", "numeric"))
 high <- pollution$pm25[pollution$pm25>15]
 low <- pollution$pm25[pollution$pm25<5]
+ppm <- pollution$pm25
 plot.new()

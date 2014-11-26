@@ -68,10 +68,10 @@
   Hint: The median indicates the 50% point.
 
 - Class: cmd_question
-  Output: Now run the R command quantile with the pm25 column of pollution as its  argument. See how the results look a lot like the results of the output of the summary command.
-  CorrectAnswer: quantile(pollution$pm25)
-  AnswerTests: omnitest(correctExpr='quantile(pollution$pm25)')
-  Hint: Type quantile(pollution$pm25) at the command prompt.
+  Output: To save you a lot of typing we've saved off pollution$pm25 for you in the variable ppm. You can use ppm now in place of the longer expression. Try it now as the argument of the R command quantile. See how the results look a lot like the results of the output of the summary command.
+  CorrectAnswer: quantile(ppm)
+  AnswerTests: omnitest(correctExpr='quantile(ppm)')
+  Hint: Type quantile(ppm) at the command prompt.
 
 - Class: mult_question
   Output: See how the two sets of results are related? Quantile gives the quartiles, right? What value is  missing from this quantile output that summary returned?
@@ -81,10 +81,10 @@
   Hint: The minimum is the 0% quantile and the maximum is the 100% quantile. The median is the 50% quantile. That leaves only one choice.
 
 - Class: cmd_question
-  Output: Now we'll try a picture, specifically a boxplot. Run the R command boxplot with pollution$pm25 as an input. Also specify the color parameter col equal to "blue".
-  CorrectAnswer: boxplot(pollution$pm25,col="blue")
-  AnswerTests: omnitest(correctExpr='boxplot(pollution$pm25,col="blue")',strict=TRUE)
-  Hint: Type boxplot(pollution$pm25,col="blue") at the command prompt.
+  Output: Now we'll try a picture, specifically a boxplot. Run the R command boxplot with ppm as an input. Also specify the color parameter col equal to "blue".
+  CorrectAnswer: boxplot(ppm,col="blue")
+  AnswerTests: omnitest(correctExpr='boxplot(ppm,col="blue")',strict=TRUE)
+  Hint: Type boxplot(ppm,col="blue") at the command prompt.
 
 - Class: text
   Output: The boxplot shows us the same quartile data that summary and quantile did. The lower and upper edges of the blue box respectively show the values of the 25% and 75% quantiles.  
@@ -100,10 +100,10 @@
   Output: The "whiskers" of the box (the vertical lines extending above and below the box) relate to the range parameter of boxplot, which we let default to the value 1.5 used by R. The height of the box is the interquantile range, the difference between the 75th and 25th quantile. In this case that is 2.8. The whiskers are drawn to be a length of range*2.8 (1.5*2.8). This shows us roughly how many, if any, data points are outliers, that is beyond this range of values. 
 
 - Class: cmd_question
-  Output: Now use the R command hist with the argument pollution$pm25. Specify the color parameter col equal to "green". This will plot a histogram of the data.
-  CorrectAnswer: hist(pollution$pm25, col = "green")
-  AnswerTests: omnitest(correctExpr='hist(pollution$pm25, col = "green")',strict=TRUE)
-  Hint: Type hist(pollution$pm25, col = "green") at the command prompt.
+  Output: Now use the R command hist with the argument ppm. Specify the color parameter col equal to "green". This will plot a histogram of the data.
+  CorrectAnswer: hist(ppm, col = "green")
+  AnswerTests: omnitest(correctExpr='hist(ppm, col = "green")',strict=TRUE)
+  Hint: Type hist(ppm, col = "green") at the command prompt.
 
 - Class: text
   Output: You can see that the histogram gives us a little more detailed information about our data. It gives us an idea of how many counties fall into each bucket of measurements.
@@ -116,13 +116,13 @@
   Hint: Where are the highest bars?
 
 - Class: cmd_question
-  Output: Now run the R command rug with the argument pollution$pm25.
-  CorrectAnswer: rug(pollution$pm25)
-  AnswerTests: omnitest(correctExpr='rug(pollution$pm25)',strict=TRUE)
-  Hint: Type rug(pollution$pm25) at the command prompt.
+  Output: Now run the R command rug with the argument ppm.
+  CorrectAnswer: rug(ppm)
+  AnswerTests: omnitest(correctExpr='rug(ppm)',strict=TRUE)
+  Hint: Type rug(ppm) at the command prompt.
 
 - Class: text
-  Output: This one-dimensional plot, with its grayscale representation, gives you a little more detailed information about how many data points are in each bucket. It shows (through color) that the greatest concentration of counties has between 9 and 12 micrograms per cubic meter. 
+  Output: This one-dimensional plot, with its grayscale representation, gives you a little more detailed information about how many data points are in each bucket. It shows (through density of tick marks) that the greatest concentration of counties has between 9 and 12 micrograms per cubic meter. 
 
 - Class: cmd_question
   Output: To illustrate this a little more, we've defined for you two vectors, high and low, containing pollution data of high (greater than 15) and low (less than 5) values respectively. Look at low now and see how it relates to the output of rug.
@@ -140,10 +140,10 @@
   Output: Again, we see one data point greater than 18, one between 17 and 18, several between 16 and 17 and two between 15 and 16, verifying what rug indicated.
 
 - Class: cmd_question
-  Output: Now rerun hist with 3 arguments, pollution$pm25 as its first, col equal to "green", and breaks equal to 100.
-  CorrectAnswer: hist(pollution$pm25, col = "green", breaks = 100)
-  AnswerTests: omnitest(correctExpr='hist(pollution$pm25, col = "green", breaks = 100)')
-  Hint: Type hist(pollution$pm25, col = "green", breaks = 100) at the command prompt.
+  Output: Now rerun hist with 3 arguments, ppm as its first, col equal to "green", and breaks equal to 100.
+  CorrectAnswer: hist(ppm, col = "green", breaks = 100)
+  AnswerTests: omnitest(correctExpr='hist(ppm, col = "green", breaks = 100)')
+  Hint: Type hist(ppm, col = "green", breaks = 100) at the command prompt.
 
 - Class: mult_question
   Output: What do you think the breaks argument specifies in this case?
@@ -153,19 +153,19 @@
   Hint: There are a lot more bars in this graph, right? Maybe 100 or so, right?
 
 - Class: cmd_question
-  Output: Now rerun the R command rug with the argument pollution$pm25.
-  CorrectAnswer: rug(pollution$pm25)
-  AnswerTests: omnitest(correctExpr='rug(pollution$pm25)',strict=TRUE)
-  Hint: Type rug(pollution$pm25) at the command prompt.
+  Output: Now rerun the R command rug with the argument ppm.
+  CorrectAnswer: rug(ppm)
+  AnswerTests: omnitest(correctExpr='rug(ppm)',strict=TRUE)
+  Hint: Type rug(ppm) at the command prompt.
 
 - Class: text
   Output: See how rug works with the existing plot? It automatically adjusted its pocket size to that of the last plot plotted.
 
 - Class: cmd_question
-  Output: Note that all the plots we've shown so far use R's base plotting package. A nice feature that this package provides is its ability to overlay features. To see this, rerun boxplot with pollution$pm25 as the data and col equal to "blue".
-  CorrectAnswer: boxplot(pollution$pm25, col="blue")
-  AnswerTests: omnitest(correctExpr='boxplot(pollution$pm25, col="blue")',strict=TRUE)
-  Hint: Type boxplot(pollution$pm25, col="blue") at the command prompt.
+  Output: Note that all the plots we've shown so far use R's base plotting package. A nice feature that this package provides is its ability to overlay features. To see this, rerun boxplot with ppm as the data and col equal to "blue".
+  CorrectAnswer: boxplot(ppm, col="blue")
+  AnswerTests: omnitest(correctExpr='boxplot(ppm, col="blue")',strict=TRUE)
+  Hint: Type boxplot(ppm, col="blue") at the command prompt.
 
 - Class: cmd_question
   Output: Now run the R command abline with the argument h equal to 12.
@@ -184,10 +184,10 @@
   Output: So abline "adds lines one or more straight lines through the current plot."
 
 - Class: cmd_question
-  Output: Now  rerun hist with pollution$pm25 as the data and col equal to "green".
-  CorrectAnswer: hist(pollution$pm25, col = "green")
-  AnswerTests: omnitest(correctExpr='hist(pollution$pm25, col = "green")',strict=TRUE)
-  Hint: Type hist(pollution$pm25, col = "green") at the command prompt.
+  Output: Now  rerun hist with ppm as the data and col equal to "green".
+  CorrectAnswer: hist(ppm, col = "green")
+  AnswerTests: omnitest(correctExpr='hist(ppm, col = "green")',strict=TRUE)
+  Hint: Type hist(ppm, col = "green") at the command prompt.
 
 - Class: cmd_question
   Output: Now run the command abline with the argument v equal to 12 and the argument lwd equal to 2.
@@ -196,10 +196,10 @@
   Hint: Type abline(v = 12, lwd=2) at the command prompt.
 
 - Class: cmd_question
-  Output: See the vertical line at 12? Not very visible, is it? Run  abline with the argument v equal to median(pollution$pm25), the argument col equal to "magenta", and the argument lwd equal to 4.
-  CorrectAnswer: abline(v = median(pollution$pm25), col = "magenta", lwd = 4)
-  AnswerTests: omnitest(correctExpr='abline(v = median(pollution$pm25), col = "magenta", lwd = 4)',strict=TRUE)
-  Hint: Type abline(v = median(pollution$pm25), col = "magenta", lwd = 4) at the command prompt.
+  Output: See the vertical line at 12? Not very visible, is it, even though you specified a line width of 2? Run  abline with the argument v equal to median(ppm), the argument col equal to "magenta", and the argument lwd equal to 4.
+  CorrectAnswer: abline(v = median(ppm), col = "magenta", lwd = 4)
+  AnswerTests: omnitest(correctExpr='abline(v = median(ppm), col = "magenta", lwd = 4)',strict=TRUE)
+  Hint: Type abline(v = median(ppm), col = "magenta", lwd = 4) at the command prompt.
 
 - Class: cmd_question
   Output: Better, right? Thicker and more of a contrast in color. Now recall that our pollution data had 5 columns of information. So far we've only looked at the pm25 column. We can also look at other information. To remind yourself what's there run the R command names with pollution as the argument.
@@ -210,7 +210,7 @@
 - Class: cmd_question
   Output: Longitude and latitude don't sound interesting, and each fips is unique since it identifies states (first 2 digits) and counties (last 3 digits). Let's look at the region column to see what's there. Run the R command table on this column. Use the construct pollution$region. Store the result in the variable reg. 
   CorrectAnswer: reg <- table(pollution$region)
-  AnswerTests: expr_creates_var(reg); omnitest(correctExpr='reg <- table(pollution$region)')
+  AnswerTests: expr_creates_var("reg"); omnitest(correctExpr='reg <- table(pollution$region)')
   Hint: Type reg <- table(pollution$region) at the command prompt.
 
 - Class: cmd_question
@@ -220,10 +220,10 @@
   Hint: Type reg at the command prompt.
 
 - Class: cmd_question
-  Output: We'll use the R command barplot to plot this information. Call barplot with reg as its first argument, the argument col equal to "wheat", and the argument main equal to the string "Number of Counties in Each Region".
-  CorrectAnswer: barplot(table(pollution$region), col = "wheat", main = "Number of Counties in Each Region")
-  AnswerTests: omnitest(correctExpr='barplot(table(pollution$region), col = "wheat", main = "Number of Counties in Each Region")',strict=TRUE)
-  Hint: Type reg at the command prompt.
+  Output: Lot more counties in the east than west. We'll use the R command barplot to plot this information. Call barplot with reg as its first argument, the argument col equal to "wheat", and the argument main equal to the string "Number of Counties in Each Region".
+  CorrectAnswer: barplot(reg, col = "wheat", main = "Number of Counties in Each Region")
+  AnswerTests: omnitest(correctExpr='barplot(reg, col = "wheat", main = "Number of Counties in Each Region")')
+  Hint: Type barplot(reg, col = "wheat", main = "Number of Counties in Each Region") at the command prompt.
 
 - Class: mult_question
   Output: What do you think the argument main specifies?
@@ -242,21 +242,21 @@
   Output: Now we'll show how R, in one line and using base plotting, can display multiple boxplots. We simply specify that we want to see the pollution data as a function of region. We know that our pollution data characterized each of the 576 entries as belonging to one of two regions (east and west).
 
 - Class: cmd_question
-  Output:  We use the R formula construct y ~ x to show that y (in this case pm25) depends on x (region). Since both come from the data frame pollution we can specify this with the data argument equal to pollution. By doing this, we don't have to type pollution$pm25 and pollution$region. We can just specify the formula pm25~region. Call boxplot now with this formula as its argument, data equal to pollution, and col equal to "red". 
+  Output:  We use the R formula construct y ~ x to show that y (in this case pm25) depends on x (region). Since both come from the same data frame (pollution) we can specify a data argument set equal to pollution. By doing this, we don't have to type pollution$pm25 (or ppm) and pollution$region. We can just specify the formula pm25~region. Call boxplot now with this formula as its argument, data equal to pollution, and col equal to "red". 
   CorrectAnswer: boxplot(pm25 ~ region, data = pollution, col = "red")
   AnswerTests: omnitest(correctExpr='boxplot(pm25 ~ region, data = pollution, col = "red")')
   Hint: Type boxplot(pm25 ~ region, data = pollution, col = "red") at the command prompt.
 
 - Class: cmd_question
-  Output: Similarly we can plot multiple histograms in one plot, though to do this we have to use more than one R command. First we have to set up the plot window with the R command par which specifies how we want to lay out the plots, say one above the other. We also use par to specify margins, a 4-long vector which indicates the number of lines for the bottom, left, top and right. Type the R command par(mfrow=c(2,1),mar=c(4,4,2,1)) now. Don't expect to see any new result.
+  Output: Two for the price of one! Similarly we can plot multiple histograms in one plot, though to do this we have to use more than one R command. First we have to set up the plot window with the R command par which specifies how we want to lay out the plots, say one above the other. We also use par to specify margins, a 4-long vector which indicates the number of lines for the bottom, left, top and right. Type the R command par(mfrow=c(2,1),mar=c(4,4,2,1)) now. Don't expect to see any new result.
   CorrectAnswer: par(mfrow = c(2, 1), mar = c(4, 4, 2, 1))
   AnswerTests: omnitest(correctExpr='par(mfrow = c(2, 1), mar = c(4, 4, 2, 1))',strict=TRUE)
   Hint: Type par(mfrow = c(2, 1), mar = c(4, 4, 2, 1)) at the command prompt.
 
 - Class: cmd_question
-  Output: So we set up the plot window for two rows and one column with the mfrow argument. The mar argument set up the margins. Before we plot the histograms let's explore the R command subset which, not surprisingly, "return subsets of vectors, matrices or data frames which meet conditions". We'll use subset to pull off the data we want to plot. Call subset now with pollution as its first argument and a boolean expression testing region for equality with the string "east". Put the result in the variable east.
+  Output: So we set up the plot window for two rows and one column with the mfrow argument. The mar argument set up the margins. Before we plot the histograms let's explore the R command subset which, not surprisingly, "returns subsets of vectors, matrices or data frames which meet conditions". We'll use subset to pull off the data we want to plot. Call subset now with pollution as its first argument and a boolean expression testing region for equality with the string "east". Put the result in the variable east.
   CorrectAnswer: east <- subset(pollution,region=="east")
-  AnswerTests: expr_creates_var(east); omnitest(correctExpr='east <- subset(pollution,region=="east")',strict=TRUE)
+  AnswerTests: expr_creates_var("east"); omnitest(correctExpr='east <- subset(pollution,region=="east")',strict=TRUE)
   Hint: Type east <- subset(pollution,region=="east") at the command prompt.
 
 - Class: cmd_question
@@ -300,13 +300,13 @@
   Hint: Type abline(h = 12, lwd = 2, lty = 2) at the command prompt.
 
 - Class: cmd_question
-  Output: Now let's replot the scatterplot again within a call to with. (As before, use the up arrow key to recover the last call to with). This time, in the call to plot add the argument col set equal to region. See what happens? 
+  Output: See how lty=2 made the line dashed? Now let's replot the scatterplot again within a call to with. (As before, use the up arrow key to recover the last call to with). This time, in the call to plot add the argument col set equal to region. See what happens? 
   CorrectAnswer: with(pollution, plot(latitude, pm25, col = region))
   AnswerTests: omnitest(correctExpr='with(pollution, plot(latitude, pm25, col = region))')
   Hint: Type with(pollution, plot(latitude, pm25, col = region)) at the command prompt.
 
 - Class: mult_question
-  Output: We've got two colors on the map to distiguish between counties in the east and those in the west. Can we figure out which color is east and which west? See that the high and low latitudes are both red. Latitudes of course indicate distance from the equator so are counties in the east or west of the U.S. at the extreme north and south?
+  Output: We've got two colors on the map to distiguish between counties in the east and those in the west. Can we figure out which color is east and which west? See that the high and low latitudes are both red. Latitudes indicate distance from the equator, so are counties in the east or west of the U.S. at the extreme north and south?
   AnswerChoices: east; west
   CorrectAnswer: west
   AnswerTests: omnitest(correctVal='west')
@@ -319,8 +319,11 @@
   AnswerTests: omnitest(correctExpr='abline(h = 12, lwd = 2, lty = 2)')
   Hint: Type abline(h = 12, lwd = 2, lty = 2) at the command prompt.
 
+- Class: text
+  Output: We see many counties are above the healthy standard set by the EPA, but it's hard to tell which region, east or west, is worse.
+
 - Class: figure
-  Output: We see many counties are above the healthy standard set by the EPA, but it's hard to tell which region, east or west, is worse. Let's plot two scatterplots distinguished by region.
+  Output:  Let's plot two scatterplots distinguished by region.
   Figure: clearPlot.R
   FigureType: new
 
@@ -331,7 +334,7 @@
   Hint: Type  par(mfrow = c(1, 2), mar = c(5, 4, 2, 1)) at the command prompt.
 
 - Class: cmd_question
-  Output: For the first scatterplot, on the left, we'll plot the latitudes and pm25 counts from the west. As before we'll use the command with (with two arguments). For the first argument we'll use subset (with arguments pollution and the boolean expression region=="west"). The second argument will be the call to plot with three arguments. These are latitude (x-axis), pm25 (y-axis), and the string "West" (title). Do this now. 
+  Output: For the first scatterplot, on the left, we'll plot the latitudes and pm25 counts from the west. As before we'll use the command with (with two arguments). For the first argument we'll use subset (with arguments pollution and the boolean expression region=="west"). The second argument will be the call to plot with three arguments. These are latitude (x-axis), pm25 (y-axis), and the argument main equal to the string "West" (title). Do this now. 
   CorrectAnswer: with(subset(pollution, region == "west"), plot(latitude, pm25, main = "West"))
   AnswerTests: omnitest(correctExpr='with(subset(pollution, region == "west"), plot(latitude, pm25, main = "West"))')
   Hint: Type  with(subset(pollution, region == "west"), plot(latitude, pm25, main = "West")) at the command prompt.
