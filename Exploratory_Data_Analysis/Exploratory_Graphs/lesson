@@ -74,7 +74,7 @@
   Hint: Type quantile(ppm) at the command prompt.
 
 - Class: mult_question
-  Output: See how the two sets of results are related? Quantile gives the quartiles, right? What value is  missing from this quantile output that summary returned?
+  Output: See how the two sets of results are related? Quantile gives the quartiles, right? What is the one value  missing from this quantile output that summary gave you?
   AnswerChoices: the mean; the minimum value; the maximum value; the median 
   CorrectAnswer: the mean
   AnswerTests: omnitest(correctVal='the mean')
@@ -233,13 +233,13 @@
   Hint: The string specified by main is in bold at the top of the graph and it tells what information the graph is displaying.
 
 - Class: text
-  Output: So we've seen that graphs summarize data. Two dimensional graphs include multiple graphs which we'll see examples of and overlayed one-dimensional plots which the R packages lattice and ggplot2 provide. Also, scatterplots are two-dimensional. 
+  Output: So we've seen that graphs summarize data. Two dimensional graphs include scatterplots, multiple graphs which we'll see more examples of, and overlayed one-dimensional plots which the R packages lattice and ggplot2 provide.
 
 - Class: text
-  Output: Some graphs have more than two-dimensions. These include overlayed or multiple two-dimensional plots, coplots, spinning plots and three-dimensional plots which are tricky to understand so have limited usefulness. We'll see some examples now of more complicated graphs.
+  Output: Some graphs have more than two-dimensions. These include overlayed or multiple two-dimensional plots, coplots,  and spinning plots. Some three-dimensional plots are tricky to understand so have limited applications. We'll see some examples now of more complicated graphs.
 
 - Class: text
-  Output: Now we'll show how R, in one line and using base plotting, can display multiple boxplots. We simply specify that we want to see the pollution data as a function of region. We know that our pollution data characterized each of the 576 entries as belonging to one of two regions (east and west).
+  Output: First we'll show how R, in one line and using base plotting, can display multiple boxplots. We simply specify that we want to see the pollution data as a function of region. We know that our pollution data characterized each of the 576 entries as belonging to one of two regions (east and west).
 
 - Class: cmd_question
   Output:  We use the R formula construct y ~ x to show that y (in this case pm25) depends on x (region). Since both come from the same data frame (pollution) we can specify a data argument set equal to pollution. By doing this, we don't have to type pollution$pm25 (or ppm) and pollution$region. We can just specify the formula pm25~region. Call boxplot now with this formula as its argument, data equal to pollution, and col equal to "red". 
@@ -271,6 +271,9 @@
   AnswerTests: omnitest(correctExpr='hist(east$pm25, col = "green")')
   Hint: Type hist(east$pm25, col = "green") at the command prompt.
 
+- Class: text
+  Output: See? The command par told R we were going to have one column with 2 rows, so it placed this histogram in the top position.
+
 - Class: cmd_question
   Output: Now, here's a challenge for you. Plot the histogram of the counties from the west using just one R command. Let the appropriate subset command (with the pm25 portion specified) be the first argument and col (equal to "green") the second.  To cut down on your typing, use the up arrow key to get your last command and replace "east" with the subset command. Make sure the boolean argument checks for equality between region and "west".
   CorrectAnswer: hist(subset(pollution,region=="west")$pm25, col = "green")
@@ -282,7 +285,7 @@
 
 
 - Class: figure
-  Output: Scatter plots are two-dimensional plots which show the relationship between two variables, usually x and y. Let's look at a scatterplot showing the relationshipe between latitude and the pm25 data. We'll use plot, a function from R's base plotting package.
+  Output: Scatter plots are two-dimensional plots which show the relationship between two variables, usually x and y. Let's look at a scatterplot showing the relationship between latitude and the pm25 data. We'll use plot, a function from R's base plotting package.
   Figure: clearPlot.R
   FigureType: new
 
