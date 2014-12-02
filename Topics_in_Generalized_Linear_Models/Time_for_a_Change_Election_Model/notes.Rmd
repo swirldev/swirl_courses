@@ -1,0 +1,39 @@
+---
+title: "Notes on Time for a Change"
+author: "Swirl Coders"
+date: "11/25/2014"
+output: html_document
+---
+
+```{r}
+tfc <- if(interactive()){
+  read.table("Topics_in_Generalized_Linear_Models/Time_for_a_Change_Election_Model/tfc.csv", as.is=TRUE, header=TRUE, sep=",")
+  } else {
+    read.table("tfc.csv", as.is=TRUE, header=TRUE, sep=",")
+  }
+```
+
+### Background
+
+In US presidential elections voters choose electors and electors choose the winner. In practice, electors are committed to candidates, but because electors are not strictly proportional to population, the winner of the popular vote may not win the election. This happened most recently in the 2000 election when Al Gore won the popular vote and George W. Bush won the Presidency.
+
+Interest in the outcome of a presidential election begins long before the vote. Polls are taken and pundits speculate. Statisticians had always been in the background, but in 2008 statistics came to the fore with Nate Silver and his website [fivethirtyeight.com](http://fivethirtyeight.com), (so named because there are 538 electors.) In 2012, statistician Drew Linzer forecast election results precisely, using publically available data, R, and a model which he explains on his website [votamatic.org](http://votamatic.org/how-it-works/). Visit?
+
+Drew Linzer's algorithm begins, six months before the vote, with the Time-for-Change (TFC) model proposed by Alan Abromowitz. As the election approaches, Linzer weights polls more heavily and the Time-for-Change model less. However, we'll consider only the TFC model here. In its simplest form, it is a linear regression predicting the incumbent party's share of the popular vote in terms of an intercept, the incumbent president's net approval rating in June, the rate of economic growth in the second quarter, and a dummy variable which is 1 if the incumbent party has held the Presidency for two or more terms.$$pv \sim 51.5 + 0.1 \times approval + 0.6 \times q2 - 4.3 \times tfc$$where $approval$ is the incumbent President's net approval rating,
+
+$q2$ is the rate of economic growth in the second quarter, and
+
+$tfc$ is 1 if the incumbent party has held the White House for two or more terms.
+
+As can be seen, the dummy variable has a large, negative coefficient, hence the model's name.
+
+## Objectives
+
+Our objective in this lesson is to compare the TFC model with various generalized linear alternatives. After all, an election has a binary outcome, a share of the popular vote is a percentage, as is a rate of growth, and an approval rating is the difference of two percentages. Transformations and link functions suggest themselves. Are any glm variations an improvement? How accurate are any of the variations? Should they be taken seriously?
+
+
+
+
+### Reference
+> http://votamatic.org/how-it-works
+
