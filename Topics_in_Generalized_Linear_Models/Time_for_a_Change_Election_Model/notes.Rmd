@@ -26,12 +26,18 @@ $q2$ is the rate of economic growth in the second quarter, and
 $tfc$ is 1 if the incumbent party has held the White House for two or more terms.
 
 As can be seen, the dummy variable has a large, negative coefficient, hence the model's name.
-
 ## Objectives
 
-Our objective in this lesson is to compare the TFC model with various generalized linear alternatives. After all, an election has a binary outcome, a share of the popular vote is a percentage, as is a rate of growth, and an approval rating is the difference of two percentages. Transformations and link functions suggest themselves. Are any glm variations an improvement? How accurate are any of the variations? Should they be taken seriously?
+Our objective in this lesson is to compare the TFC model with various generalized linear alternatives. After all, an election has a binary outcome, a share of the popular vote is a percentage, as is a rate of growth, and an approval rating is the difference of two percentages. Strictly speaking, none of these variables could be normally distributed.
 
+The TFC model does fit the available data fairly well, as the plot shows. The available data, however, cover only the 17 elections since presidential approval ratings and quarterly economic performance data have been available.
 
+```{r echo=FALSE, fig.show='hold'}
+fit <- 51.5 + 0.1*tfc$approval + 0.6*tfc$q2 - 1.4*tfc$tfc
+plot(tfc$year, tfc$pv, type='l', col=1, lwd=2, xlab="Year", ylab="Incumbent Party's Percent", main="The Time for Change Model")
+lines(tfc$year, fit, col=2, lwd=2, lty=2)
+legend('topright', c("Actual Vote", "TFC Estimate"), col=1:2, lwd=2, lty=1:2)
+```
 
 
 ### Reference

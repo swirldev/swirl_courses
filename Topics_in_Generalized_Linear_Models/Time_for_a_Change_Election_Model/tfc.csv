@@ -3,12 +3,12 @@
 # This is the data on which Linzer's "Time for Change" coefficients were based.,,,,,,
 # The model is explained at the above link and original reference given.,,,,,,
 # The "tfc" dummy is +1 if the incumbent party has held the presdency for 2,,,,,,
-# or more terms. ""approval"" is the incumbent president's net approval rating (approval,,,,,,
-# minus disapproval) in June of the election year. ""q2.growth"" is annualized,,,,,,
-# percent GDP growth in the second quarter. "incumbent.pct" is the incumbent,,,,,,
+# or more terms. "approval" is the incumbent president's net approval rating (approval,,,,,,
+# minus disapproval) in June of the election year. "q2" is annualized,,,,,,
+# percent GDP growth in the second quarter. "pv" is the incumbent,,,,,,
 # party's share of the presidential vote. "incumbent.win" is +1 if the incumbent,,,,,,
 # won the presidency, and 0 otherwise.,,,,,,
-year,q2.growth,approval,tfc,incumbent.pct,incumbent.win, winning.candicate
+year,q2,approval,tfc,pv,win, winning.candidate
 2012,1.3,-0.8,0,51.1,1,Obama
 2008,1.3,-37,1,46.3,0,Obama
 2004,2.6,-0.5,0,51.2,1,G. W. Bush
