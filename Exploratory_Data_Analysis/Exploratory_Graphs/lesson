@@ -97,7 +97,7 @@
   Hint: It looks like it's halfway between the top and bottom of the box, right? It must be at the 50% level.
 
 - Class: text
-  Output: The "whiskers" of the box (the vertical lines extending above and below the box) relate to the range parameter of boxplot, which we let default to the value 1.5 used by R. The height of the box is the interquantile range, the difference between the 75th and 25th quantile. In this case that is 2.8. The whiskers are drawn to be a length of range*2.8 (1.5*2.8). This shows us roughly how many, if any, data points are outliers, that is beyond this range of values. 
+  Output: The "whiskers" of the box (the vertical lines extending above and below the box) relate to the range parameter of boxplot, which we let default to the value 1.5 used by R. The height of the box is the interquartile range, the difference between the 75th and 25th quantiles. In this case that difference is 2.8. The whiskers are drawn to be a length of range*2.8 or 1.5*2.8. This shows us roughly how many, if any, data points are outliers, that is, beyond this range of values. 
 
 - Class: cmd_question
   Output: Now use the R command hist with the argument ppm. Specify the color parameter col equal to "green". This will plot a histogram of the data.
@@ -303,7 +303,7 @@
   Hint: Type abline(h = 12, lwd = 2, lty = 2) at the command prompt.
 
 - Class: cmd_question
-  Output: See how lty=2 made the line dashed? Now let's replot the scatterplot again within a call to with. (As before, use the up arrow key to recover the last call to with). This time, in the call to plot add the argument col set equal to region. See what happens? 
+  Output: See how lty=2 made the line dashed? Now let's replot the scatterplot, again within a call to with. (As before, use the up arrow key to recover the last call to with). This time, in the call to plot add the argument col set equal to region. See what happens? 
   CorrectAnswer: with(pollution, plot(latitude, pm25, col = region))
   AnswerTests: omnitest(correctExpr='with(pollution, plot(latitude, pm25, col = region))')
   Hint: Type with(pollution, plot(latitude, pm25, col = region)) at the command prompt.
