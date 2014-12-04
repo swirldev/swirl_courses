@@ -93,7 +93,7 @@
 - Class: cmd_question
   Output: Disease prevalence is .001. Test sensitivity (+ result with disease) is 99.7% and specificity (- result without disease) is 98.5%. First compute the numerator, P(+|D)*P(D). (This is also part of the denominator.)
   CorrectAnswer: .997*.001
-  AnswerTests: ANY_of_exprs('.997*.001','.001*.997')
+  AnswerTests: equiv_val(0.000997)
   Hint: Multiply the test sensitivity by the prevalence.
 
 - Class: cmd_question
