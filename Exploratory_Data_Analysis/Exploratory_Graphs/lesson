@@ -30,7 +30,7 @@
   Hint: Graphics are like pictures, right?
 
 - Class: text
-  Output: Exploratory graphs serve the same functions as graphs. They help us find patterns in data and understand its properties. They suggest modeling strategies and help to debug analyses. They also communicate results.
+  Output: Exploratory graphs serve the same functions as graphs. They help us find patterns in data and understand its properties. They suggest modeling strategies and help to debug analyses. We don't use exploratory graphs to communicate results.
 
 - Class: text
   Output: Moreover, exploratory graphs are the initial step in an investigation. They are the "quick and dirty" tool used to lead the data scientist in the most fruitful direction. A scientist might need to make a lot of exploratory graphs in order to develop a personal understanding of the problem he/she is studying. Details such as axes, legends, color and size are cleaned up later to convey more information in an aesthetically pleasing way.
@@ -41,8 +41,11 @@
   AnswerTests: omnitest(correctExpr='head(pollution)')
   Hint: Type head(pollution) at the command prompt.
 
+- Class: text
+  Output: We see right away that there's at least one county exceeding the EPA's standard of 12 micrograms per cubic meter. What else do we see?
+
 - Class: cmd_question
-  Output: We see 5 columns of data. The  pollution count is in the first column labeled pm25. We'll work mostly with that. The other 4 columns are a fips code indicating the state (first 2 digits) and county (last 3 digits) with that count, the associated region (east or west), and the longitude and latitude of the area. Now run the R command dim with pollution as an argument to see how long the table is.
+  Output:  We see 5 columns of data. The  pollution count is in the first column labeled pm25. We'll work mostly with that. The other 4 columns are a fips code indicating the state (first 2 digits) and county (last 3 digits) with that count, the associated region (east or west), and the longitude and latitude of the area. Now run the R command dim with pollution as an argument to see how long the table is.
   CorrectAnswer: dim(pollution)
   AnswerTests: omnitest(correctExpr='dim(pollution)')
   Hint: Type dim(pollution) at the command prompt.
@@ -106,7 +109,7 @@
   Hint: Type hist(ppm, col = "green") at the command prompt.
 
 - Class: text
-  Output: You can see that the histogram gives us a little more detailed information about our data. It gives us an idea of how many counties fall into each bucket of measurements.
+  Output: You can see that the histogram gives us a little more detailed information about our data. It gives us an idea of how many counties fall into each bucket of measurements. It also gives us an idea about the distribution of the pollution counts.
 
 - Class: mult_question
   Output: What are the most frequent pollution counts?
@@ -122,7 +125,7 @@
   Hint: Type rug(ppm) at the command prompt.
 
 - Class: text
-  Output: This one-dimensional plot, with its grayscale representation, gives you a little more detailed information about how many data points are in each bucket. It shows (through density of tick marks) that the greatest concentration of counties has between 9 and 12 micrograms per cubic meter. 
+  Output: This one-dimensional plot, with its grayscale representation, gives you a little more detailed information about how many data points are in each bucket and where they lie within the bucket. It shows (through density of tick marks) that the greatest concentration of counties has between 9 and 12 micrograms per cubic meter just as the histogram did.
 
 - Class: cmd_question
   Output: To illustrate this a little more, we've defined for you two vectors, high and low, containing pollution data of high (greater than 15) and low (less than 5) values respectively. Look at low now and see how it relates to the output of rug.
@@ -140,7 +143,7 @@
   Output: Again, we see one data point greater than 18, one between 17 and 18, several between 16 and 17 and two between 15 and 16, verifying what rug indicated.
 
 - Class: cmd_question
-  Output: Now rerun hist with 3 arguments, ppm as its first, col equal to "green", and breaks equal to 100.
+  Output: Now rerun hist with 3 arguments, ppm as its first, col equal to "green", and the argument breaks equal to 100.
   CorrectAnswer: hist(ppm, col = "green", breaks = 100)
   AnswerTests: omnitest(correctExpr='hist(ppm, col = "green", breaks = 100)')
   Hint: Type hist(ppm, col = "green", breaks = 100) at the command prompt.
@@ -153,7 +156,7 @@
   Hint: There are a lot more bars in this graph, right? Maybe 100 or so, right?
 
 - Class: cmd_question
-  Output: Now rerun the R command rug with the argument ppm.
+  Output: So this histogram with more buckets is not nearly as smooth as the preceding one. In fact, it's a little too noisy to see the distribution clearly. When you're plotting histograms you might have to experiment with the argument breaks to get a good idea of your data's distribution. For fun now, rerun the R command rug with the argument ppm.
   CorrectAnswer: rug(ppm)
   AnswerTests: omnitest(correctExpr='rug(ppm)',strict=TRUE)
   Hint: Type rug(ppm) at the command prompt.
@@ -168,7 +171,7 @@
   Hint: Type boxplot(ppm, col="blue") at the command prompt.
 
 - Class: cmd_question
-  Output: Now run the R command abline with the argument h equal to 12.
+  Output: Now run the R command abline with the argument h equal to 12. Recall that 12 is the EPA standard for air quality.
   CorrectAnswer: abline(h = 12)
   AnswerTests: omnitest(correctExpr='abline(h = 12)',strict=TRUE)
   Hint: Type abline(h = 12) at the command prompt.
@@ -181,7 +184,7 @@
   Hint: The only scale is along the left side of the graph, so the line at 12 must be horizontal.
 
 - Class: text
-  Output: So abline "adds lines one or more straight lines through the current plot."
+  Output: So abline "adds lines one or more straight lines through the current plot." We see from the plot that the bulk of the measured counties comply with the standard since they fall under the line marking that standard.
 
 - Class: cmd_question
   Output: Now  rerun hist with ppm as the data and col equal to "green".
@@ -201,8 +204,11 @@
   AnswerTests: omnitest(correctExpr='abline(v = median(ppm), col = "magenta", lwd = 4)',strict=TRUE)
   Hint: Type abline(v = median(ppm), col = "magenta", lwd = 4) at the command prompt.
 
+- Class: text
+  Output: Better, right? Thicker and more of a contrast in color. Again this shows that the median is below the standard. This plot shows that there are a fair number of counties in the U.S that have pollution levels higher than the standard.
+
 - Class: cmd_question
-  Output: Better, right? Thicker and more of a contrast in color. Now recall that our pollution data had 5 columns of information. So far we've only looked at the pm25 column. We can also look at other information. To remind yourself what's there run the R command names with pollution as the argument.
+  Output:  Now recall that our pollution data had 5 columns of information. So far we've only looked at the pm25 column. We can also look at other information. To remind yourself what's there run the R command names with pollution as the argument.
   CorrectAnswer: names(pollution)
   AnswerTests: omnitest(correctExpr='names(pollution)')
   Hint: Type names(pollution) at the command prompt.
@@ -220,7 +226,7 @@
   Hint: Type reg at the command prompt.
 
 - Class: cmd_question
-  Output: Lot more counties in the east than west. We'll use the R command barplot to plot this information. Call barplot with reg as its first argument, the argument col equal to "wheat", and the argument main equal to the string "Number of Counties in Each Region".
+  Output: Lot more counties in the east than west. We'll use the R command barplot (another type of one-dimensional summary) to plot this information. Call barplot with reg as its first argument, the argument col equal to "wheat", and the argument main equal to the string "Number of Counties in Each Region".
   CorrectAnswer: barplot(reg, col = "wheat", main = "Number of Counties in Each Region")
   AnswerTests: omnitest(correctExpr='barplot(reg, col = "wheat", main = "Number of Counties in Each Region")')
   Hint: Type barplot(reg, col = "wheat", main = "Number of Counties in Each Region") at the command prompt.
@@ -233,10 +239,10 @@
   Hint: The string specified by main is in bold at the top of the graph and it tells what information the graph is displaying.
 
 - Class: text
-  Output: So we've seen that graphs summarize data. Two dimensional graphs include scatterplots, multiple graphs which we'll see more examples of, and overlayed one-dimensional plots which the R packages lattice and ggplot2 provide.
+  Output: So we've seen several examples of one-dimensional graphs that summarize data. Two dimensional graphs include scatterplots, multiple graphs which we'll see more examples of, and overlayed one-dimensional plots which the R packages such as lattice and ggplot2 provide.
 
 - Class: text
-  Output: Some graphs have more than two-dimensions. These include overlayed or multiple two-dimensional plots, coplots,  and spinning plots. Some three-dimensional plots are tricky to understand so have limited applications. We'll see some examples now of more complicated graphs.
+  Output: Some graphs have more than two-dimensions. These include overlayed or multiple two-dimensional plots  and spinning plots. Some three-dimensional plots are tricky to understand so have limited applications. We'll see some examples now of more complicated graphs, in particular, we'll show two graphs together.
 
 - Class: text
   Output: First we'll show how R, in one line and using base plotting, can display multiple boxplots. We simply specify that we want to see the pollution data as a function of region. We know that our pollution data characterized each of the 576 entries as belonging to one of two regions (east and west).
@@ -303,7 +309,7 @@
   Hint: Type abline(h = 12, lwd = 2, lty = 2) at the command prompt.
 
 - Class: cmd_question
-  Output: See how lty=2 made the line dashed? Now let's replot the scatterplot, again within a call to with. (As before, use the up arrow key to recover the last call to with). This time, in the call to plot add the argument col set equal to region. See what happens? 
+  Output: See how lty=2 made the line dashed? Now let's replot the scatterplot, again within a call to with. (As before, use the up arrow key to recover the last call to with). This time, in the call to plot we'll use color to add more information to our plot. In this call to plot add the argument col set equal to region. See what happens? 
   CorrectAnswer: with(pollution, plot(latitude, pm25, col = region))
   AnswerTests: omnitest(correctExpr='with(pollution, plot(latitude, pm25, col = region))')
   Hint: Type with(pollution, plot(latitude, pm25, col = region)) at the command prompt.
@@ -323,7 +329,7 @@
   Hint: Type abline(h = 12, lwd = 2, lty = 2) at the command prompt.
 
 - Class: text
-  Output: We see many counties are above the healthy standard set by the EPA, but it's hard to tell which region, east or west, is worse.
+  Output: We see many counties are above the healthy standard set by the EPA, but it's hard to tell overall, which region, east or west, is worse. 
 
 - Class: figure
   Output:  Let's plot two scatterplots distinguished by region.
