@@ -184,7 +184,7 @@
   FigureType: new
 
 - Class: mult_question
-  Output: Study this picture. Calling pnorm with 30 + Z_95 * (sigma/sqrt(n)) + 30 as the quantile and mu_a, say 32, as the mean and lower.tail=FALSE does what?
+  Output: Study this picture. Calling pnorm with 30 + Z_95 * (sigma/sqrt(n)) as the quantile and mu_a, say 32, as the mean and lower.tail=FALSE does what?
   AnswerChoices: returns the area under the blue curve to the right of the line; returns the area under the blue curve to the left of the line; returns the area under the red curve to the right of the line; returns the area under the red curve to the left of the line
   CorrectAnswer: returns the area under the blue curve to the right of the line
   AnswerTests: omnitest(correctVal='returns the area under the blue curve to the right of the line')
