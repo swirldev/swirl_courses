@@ -72,7 +72,7 @@
   FigureType: new
 
 - Class: text
-  Output: Just as we distinguished between a population mean and a sample mean we have to distinguish between a population variance sigma^2 and a sample variance s^2. They are defined similarly but with a slight difference. The sample variance is defined as the sum of n squared distances from the sample mean divided by (n-1), where n is the number of samples. We divide by n-1 because this is the number of degrees of freedom in the system. The first n-1 samples are independent but the last isn't since it can be calculated from the sample mean we're using in the formula.
+  Output: Just as we distinguished between a population mean and a sample mean we have to distinguish between a population variance sigma^2 and a sample variance s^2. They are defined similarly but with a slight difference. The sample variance is defined as the sum of n squared distances from the sample mean divided by (n-1), where n is the number of samples or observations. We divide by n-1 because this is the number of degrees of freedom in the system. The first n-1 samples or observations are independent given the mean. The last one isn't independent since it can be calculated from the sample mean used in the formula.
 
 - Class: text
   Output:  In other words, the sample variance is ALMOST the average squared deviation from the sample mean.
