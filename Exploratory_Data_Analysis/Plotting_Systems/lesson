@@ -127,44 +127,44 @@
 
 - Class: mult_question
   Output: Which R plotting system is based on an artist's palette?
-  AnswerChoices:  base; ggplot2; lattice; Winsor-Newton
+  AnswerChoices:  base; ggplot2; lattice; Winsor\&Newton
   CorrectAnswer: base
   AnswerTests: omnitest(correctVal='base')
   Hint: The oldest and simplest system doesn't require an loading extra package.
 
 - Class: mult_question
   Output: Which R plotting system does NOT allow you to annotate plots with separate calls?
-  AnswerChoices:  base; ggplot2; lattice; Winsor-Newton
+  AnswerChoices:  base; ggplot2; lattice; Winsor\&Newton
   CorrectAnswer: lattice
   AnswerTests: omnitest(correctVal='lattice')
   Hint: Recall that with the lattice system the whole plot has to be drawn with just one call.
 
 - Class: mult_question
   Output: Which R plotting system combines the best features of the other two?
-  AnswerChoices:  base; ggplot2; lattice; Winsor-Newton
+  AnswerChoices:  base; ggplot2; lattice; Winsor\&Newton
   CorrectAnswer: ggplot2
   AnswerTests: omnitest(correctVal='ggplot2')
   Hint: Recall that ggplots allows you to annotate separately (as base does) and allows you to plot conditioning plots easily (as lattice does).
 
 - Class: mult_question
   Output: Which R plotting system uses a graphics grammar?
-  AnswerChoices:  base; ggplot2; lattice; Winsor-Newton
+  AnswerChoices:  base; ggplot2; lattice; Winsor\&Newton
   CorrectAnswer: ggplot2
   AnswerTests: omnitest(correctVal='ggplot2')
   Hint: Look carefully at the names!
 
 - Class: mult_question
   Output: Which R plotting system forces you to make your entire plot with one call?
-  AnswerChoices:  base; ggplot2; lattice; Winsor-Newton
+  AnswerChoices:  base; ggplot2; lattice; Winsor\&Newton
   CorrectAnswer: lattice
   AnswerTests: omnitest(correctVal='lattice')
   Hint: The base and ggplot2 allow you to build up your plots with several calls.
 
 - Class: mult_question
   Output: Which of the following sells high quality artists' brushes?
-  AnswerChoices:  base; ggplot2; lattice; Winsor-Newton
-  CorrectAnswer: Winsor-Newton
-  AnswerTests: omnitest(correctVal='Winsor-Newton')
+  AnswerChoices:  base; ggplot2; lattice; Winsor\&Newton
+  CorrectAnswer: Winsor\&Newton
+  AnswerTests: omnitest(correctVal='Winsor\&Newton')
   Hint: Which of the choices has nothing to do with plotting?
 
 - Class: text

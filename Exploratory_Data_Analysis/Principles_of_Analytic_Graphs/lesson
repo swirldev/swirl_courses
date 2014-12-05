@@ -93,7 +93,7 @@
   FigureType: new
 
 - Class: figure
-  Output: Consider this plot which shows the relationship between air pollution (x-axis) and mortality rates among the elderly (y-axis). The blue regression line shows a surprising result.
+  Output: Consider this plot which shows the relationship between air pollution (x-axis) and mortality rates among the elderly (y-axis). The blue regression line shows a surprising result. (You'll learn about regression lines when you take the fabulous Regression Models course.)
   Figure: MVD1.R
   FigureType: new
 
