@@ -181,7 +181,7 @@
   Output: We'd like to accomplish the same result as the last script, but avoid saving our intermediate results. This requires embedding function calls within one another.
 
 - Class: script
-  Output: That's exactly what we've done in this script. The result is equivilent, but the code is much less readable and some of the arguments are far away from the function to which they belong. Again, just try to understand what is going on here, then submit() when you are ready to see a better solution.
+  Output: That's exactly what we've done in this script. The result is equivalent, but the code is much less readable and some of the arguments are far away from the function to which they belong. Again, just try to understand what is going on here, then submit() when you are ready to see a better solution.
   AnswerTests: script_results_identical('result2'); multi_expr_creates_var('result2')
   Hint: If you accidentally changed something in the script, just type reset() to undo your changes, then submit() again.
   Script: summarize3.R
