@@ -19,18 +19,28 @@ In US presidential elections voters choose electors and electors choose the winn
 
 Interest in the outcome of a presidential election begins long before the vote. Polls are taken and pundits speculate. Statisticians had always been in the background, but in 2008 statistics came to the fore with Nate Silver and his website [fivethirtyeight.com](http://fivethirtyeight.com), (so named because there are 538 electors.) In 2012, statistician Drew Linzer forecast election results precisely, using publically available data, R, and a model which he explains on his website [votamatic.org](http://votamatic.org/how-it-works/). Visit?
 
-Drew Linzer's algorithm begins, about six months before the vote, with the Time-for-Change (TFC) model proposed by Alan Abromowitz. As the election approaches, Linzer weights polls more heavily and the Time-for-Change model less. However, we'll consider only the TFC model here. In its simplest form, it is a linear regression predicting the incumbent party's share of the popular vote in terms of an intercept, the incumbent president's net approval rating in June, the rate of economic growth in the second quarter, and a dummy variable which is 1 if the incumbent party has held the Presidency for two or more terms.$$pv \sim 51.5 + 0.1 \times approval + 0.6 \times q2 - 4.3 \times tfc$$where $approval$ is the incumbent President's net approval rating,
+Drew Linzer's algorithm begins, about six months before the vote, with the Time-for-Change (TFC) model proposed by Alan Abromowitz. As the election approaches, Linzer weights polls more heavily and the Time-for-Change model less. However, we'll consider only the TFC model here. In its simplest form, it is a linear regression predicting the incumbent party's share of the popular vote in terms of an intercept, the incumbent president's net approval rating in June, the rate of economic growth in the second quarter, and a dummy variable which is 1 if the incumbent party has held the Presidency for two or more terms.
 
-$q2$ is the rate of economic growth in the second quarter, and
+## The Time for Change Model
 
-$tfc$ is 1 if the incumbent party has held the White House for two or more terms.
+$pv \sim 51.3 + 0.1 \times approval + 0.6 \times q2 - 4.1 \times tfc$
+
+where 
+
+$pv$ is the incumbent party's percent of the popular vote
+
+$approval$  is the incumbent President's net approval rating,
+
+$q2$  is the rate of economic growth in the second quarter, and
+
+$tfc$  is 1 if the incumbent party has held the White House for two or more terms.
 
 As can be seen, the dummy variable has a large, negative coefficient, hence the model's name.
 
 The TFC model does fit the available data fairly well, as the plot shows. The available data, however, cover only the 17 elections since both presidential approval ratings and quarterly economic performance data have been available.
 
 ```{r echo=FALSE, fig.show='hold'}
-fit <- 51.5 + 0.1*tfc$approval + 0.6*tfc$q2 - 4.1*tfc$tfc
+fit <- 51.3 + 0.1*tfc$approval + 0.6*tfc$q2 - 4.1*tfc$tfc
 plot(tfc$year, tfc$pv, col=1, pch=19, xlab="Year", ylab="Incumbent Party's Percent", main="The Time for Change Model")
 points(tfc$year, fit, col=2, pch=17)
 legend('topright', c("Actual Vote", "TFC Estimate"), col=1:2, pch=c(19,17))
@@ -72,6 +82,11 @@ The assumptions embodied in the TFC model are that the continuous variables, pv,
 
 If the coefficients are statistics, so are other parameters of fit_tfc, such as standard errors. The significance of a coefficient is based on its distance from zero, measured in multiples of standard errors. Thus, a coefficient's significance is also based on the assumption that the data is generated in the way the model assumes. A different model, hence different assumptions, can change that. To illustrate, create a model called fit_win which predicts win in terms of an intercept, approval, and tfc. Use glm with family=binomial.
 
+```{r}
+fit_win <- glm(win ~ approval + q2 + tfc, tfc, family=binomial)
+```
+
+
 In this case, glm maximizes the likelihood of observing the data, assuming that approval, q2, and the log odds of a win are jointly normally distributed with means depending on the dummy variable. Note that these log odds are latent (not observed) but determine the probability of a win in any given election. Use summary(fit_win) to examine the parameters of this maximum likelihood model.
 
 In this case, none of the coefficients are significant; all are well within two standard errors of zero. But if the coefficients were all zero, an hypothesis which we can't reject, then wins would not depend on the predictors at all. Use logLik to find the log likelihood of the data given this model.
@@ -83,6 +98,7 @@ Although it is natural to use the binary win/loss outcome with a binomial glm mo
 Create a model named fit_pv using glm(pv/100 ~ approval + q2 + tfc, tfc, family=binomial). The command will result in a warning that non-integer, not binary, outcomes are being used. Since we have used probabilities on purpose, the warning may be safely ignored. Don't forget to divide pv by 100.
 
 ```{r fig.show='hold'}
+fit_pv <- glm(pv/100 ~ approval + q2 + tfc, tfc, family=binomial)
 plot(tfc$year, tfc$pv, col=1, pch=19, xlab="Year", ylab="Incumbent Party's Percent", main="Binomial GLM Model with Probabilities\nrather than Binary Outcomes")
 points(tfc$year, fit_pv$fitted.values*100, col=2, pch=17)
 legend('topright', c("Actual Vote", "Model Estimate"), col=1:2, pch=c(19,17))
