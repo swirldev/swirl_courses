@@ -5,4 +5,3 @@ local({
   points(tfc$year, fit, col=2, pch=17)
   legend('topright', c("Actual Vote", "TFC Estimate"), col=1:2, pch=c(19,17))
 })
-try(dev.off(),silent=TRUE)
