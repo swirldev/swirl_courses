@@ -53,7 +53,7 @@
   Hint: Type text(mean(cars$speed),max(cars$dist),"SWIRL rules!") at the command prompt.
  
 - Class: text
-  Output: Isn't it true?
+  Output: Ain't it the truth?
 
 - Class: text
   Output:  Now we'll move on to the second plotting system, the Lattice System which comes in the package of the same name. Unlike the Base System, lattice plots are created with a single function call such as xyplot or bwplot. Margins and spacing are set automatically because the entire plot is specified at once.  

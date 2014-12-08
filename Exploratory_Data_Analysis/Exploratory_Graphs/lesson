@@ -24,7 +24,7 @@
 
 - Class: mult_question
   Output: Which of the following cliches captures the essence of graphics?
-  AnswerChoices: A rose by any other name smells as sweet; To err is human; A picture is worth a 1000 words; The apple doesn't fall far from the tree 
+  AnswerChoices: A rose by any other name smells as sweet; To err is human, to forgive divine; A picture is worth a 1000 words; The apple doesn't fall far from the tree 
   CorrectAnswer: A picture is worth a 1000 words
   AnswerTests: omnitest(correctVal='A picture is worth a 1000 words')
   Hint: Graphics are like pictures, right?
@@ -55,13 +55,13 @@
   Output: So there are 576 entries in pollution. We'd like to investigate the question "Are there any counties in the U.S. that exceed that national standard (12 micro grams per cubic meter) for fine particle pollution?" We'll look at several one dimensional summaries of the data to investigate this question.
 
 - Class: cmd_question
-  Output: The first technique uses the R command summary. Run it now with the pm25 column of pollution as its  argument. Recall that the construct for this is pollution$pm25.
+  Output: The first technique uses the R command summary, a 5-number summary which returns 6 numbers. Run it now with the pm25 column of pollution as its  argument. Recall that the construct for this is pollution$pm25.
   CorrectAnswer: summary(pollution$pm25)
   AnswerTests: omnitest(correctExpr='summary(pollution$pm25)')
   Hint: Type summary(pollution$pm25) at the command prompt.
 
 - Class: text
-  Output: This shows us some basic features of the pm25 data column, namely its minimum and maximum values, the average measure of particulate pollution across the 576 counties, and the quartiles of the column. These last indicate the pollution measures at which 25%, 50%, and 75% of the counties fall below.   
+  Output: This shows us some basic features of the pm25 data column, namely its minimum (0 percentile) and maximum (100 percentile) values, the average measure of particulate pollution across the 576 counties, and the quartiles of the column. These last indicate the pollution measures at which 25%, 50%, and 75% of the counties fall below.   
 
 - Class: mult_question
   Output: Half the measured counties have a pollution level less than or equal to what number of micrograms per cubic meter? 
@@ -93,11 +93,11 @@
   Output: The boxplot shows us the same quartile data that summary and quantile did. The lower and upper edges of the blue box respectively show the values of the 25% and 75% quantiles.  
 
 - Class: mult_question
-  Output: What do you think the line in the middle of the box represents?
+  Output: What do you think the horizontal line inside the box represents?
   AnswerChoices: the mean; the minimum value; the maximum value; the median 
   CorrectAnswer: the median
   AnswerTests: omnitest(correctVal='the median')
-  Hint: It looks like it's halfway between the top and bottom of the box, right? It must be at the 50% level.
+  Hint: Obviously it's not the min or max, that leaves the mean (average) or median. The boxes in boxplots show you quartiles (25, 50, and 75), and the top and bottom edges respectively show the 25 and 75th percentiles. That means the inside line indicates the 50th percentile.
 
 - Class: text
   Output: The "whiskers" of the box (the vertical lines extending above and below the box) relate to the range parameter of boxplot, which we let default to the value 1.5 used by R. The height of the box is the interquartile range, the difference between the 75th and 25th quantiles. In this case that difference is 2.8. The whiskers are drawn to be a length of range*2.8 or 1.5*2.8. This shows us roughly how many, if any, data points are outliers, that is, beyond this range of values. 
@@ -315,7 +315,7 @@
   Hint: Type with(pollution, plot(latitude, pm25, col = region)) at the command prompt.
 
 - Class: mult_question
-  Output: We've got two colors on the map to distiguish between counties in the east and those in the west. Can we figure out which color is east and which west? See that the high and low latitudes are both red. Latitudes indicate distance from the equator, so are counties in the east or west of the U.S. at the extreme north and south?
+  Output: We've got two colors on the map to distiguish between counties in the east and those in the west. Can we figure out which color is east and which west? See that the high (greater than 50) and low (less than 25) latitudes are both red. Latitudes indicate distance from the equator, so which half of the U.S. (east or west) has counties at the extreme north and south?
   AnswerChoices: east; west
   CorrectAnswer: west
   AnswerTests: omnitest(correctVal='west')

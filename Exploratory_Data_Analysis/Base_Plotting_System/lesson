@@ -22,8 +22,7 @@
   Output: Base graphics are usually constructed piecemeal, with each aspect of the plot handled separately through a series of function calls; this is often conceptually simpler and allows plotting that mirrors your thought processes. Usually you start with a plot function (or something similar), then you use annotation functions to add to or modify your plot. 
 
 - Class: text
-  Output: Before making a plot you have to determine where the plot will appear and what it will be used for.  Is there a large amount of data going into the plot? Or is it just a few points?
-Do you need to be able to dynamically resize the graphic?
+  Output: Before making a plot you have to determine where the plot will appear and what it will be used for.  Is there a large amount of data going into the plot? Or is it just a few points? Do you need to be able to dynamically resize the graphic?
 
 - Class: mult_question
   Output: What do you think is a disadvantage of the Base Plotting System?
