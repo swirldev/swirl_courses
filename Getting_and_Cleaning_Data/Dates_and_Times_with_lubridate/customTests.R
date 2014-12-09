@@ -76,9 +76,8 @@ test_arrive_val <- function() {
   if ( class(depart)[1] != "POSIXct" || class(depart)[2] != "POSIXt"   ) {
     depart = update(now("America/New_York")+ days(2), hours= 17, minutes= 34)
     warning(sprintf("Try again, value for depart was not a date, its been updated to %s for you to try this step again.", depart))
-  } else {
-    correct_val <- depart + hours(15) + minutes(50)
   }
+  correct_val <- depart + hours(15) + minutes(50)
   # Compare
   identical(user_val, correct_val)
   
