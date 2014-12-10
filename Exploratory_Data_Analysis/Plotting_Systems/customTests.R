@@ -91,6 +91,8 @@ omnitest <- function(correctExpr=NULL, correctVal=NULL, strict=FALSE, eval_for_c
 is_robust_match <- function(expr1, expr2, eval_for_class, eval_env=NULL){
   expr1 <- rmatch_calls(expr1, eval_for_class, eval_env)
   expr2 <- rmatch_calls(expr2, eval_for_class, eval_env)
+#   print(paste("expr1 is ",deparse(expr1)))
+#   print(paste("expr2 is ",deparse(expr2)))
   isTRUE(all.equal(expr1, expr2))
 }
 
@@ -148,23 +150,66 @@ rmatch_calls <- function(expr, eval_for_class=FALSE, eval_env=NULL){
                                               dprs(expr[[2]]), ", of class, ", cls,".\n")))
     }
   }
-  # Form preliminary match. If match.call raises an error here, the remaining code is
-  # likely to give a misleading result. Catch the error merely to give a better diagnostic.
-  tryCatch(expr <- match.call(fct, expr),
-           error = function(e)stop(paste0("Illegal expression ", dprs(expr), ": ", 
-                                          dprs(expr[[1]]), " is not a function.\n")))
-  # Append named formals with default values which are not included
-  # in the preliminary match
-  fmls <- formals(fct)
-  for(n in names(fmls)){
-    if(!isTRUE(fmls[[n]] == quote(expr=)) && !(n %in% names(expr[-1]))){
-      expr[n] <- fmls[n]
-    }
-  }
-  # match call again, for order
-  expr <- match.call(fct, expr)
+  
+  expr <- enhancedMatch(fct,expr)
+#   # Form preliminary match. If match.call raises an error here, the remaining code is
+#   # likely to give a misleading result. Catch the error merely to give a better diagnostic.
+#   tryCatch(expr <- match.call(fct, expr),
+#            error = function(e)stop(paste0("Illegal expression ", dprs(expr), ": ", 
+#                                           dprs(expr[[1]]), " is not a function.\n")))
+#   expr <- fixInformals(fct,expr)
+#   # Append named formals with default values which are not included
+#   # in the preliminary match
+#   fmls <- formals(fct)
+#   for(n in names(fmls)){
+#     if(!isTRUE(fmls[[n]] == quote(expr=)) && !(n %in% names(expr[-1]))){
+#       expr[n] <- fmls[n]
+#     }
+#   }
+#   # match call again, for order
+#   expr <- match.call(fct, expr)
   return(expr)
 }
 
 isS3 <- function(fct)isTRUE(grep("UseMethod", body(fct)) > 0)
 dprs <- function(expr)deparse(expr, width.cutoff=500)
+
+enhancedMatch <- function(fct,expr){
+  #   # Form preliminary match. If match.call raises an error here, the remaining code is
+  #   # likely to give a misleading result. Catch the error merely to give a better diagnostic.
+  tryCatch(expr <- match.call(fct, expr),
+           error = function(e)stop(paste0("Illegal expression ", dprs(expr), ": ", 
+                                         dprs(expr[[1]]), " is not a function.\n")))  #define three lists, informals, formals, indices
+  mylist <- character()
+  myfmls <- character()
+  mynum <- numeric()
+  # find formal parameters of fct
+  fmls <- formals(fct)
+  # form list of nonformal parameter names
+  for(n in names(expr[-1])){
+    if(!(n %in% names(fmls))){
+      mylist <- c(mylist,n)
+    }
+  }
+  # myfmls is list of formal params only
+  myfmls <- setdiff(names(expr[-1]),mylist)
+  # append sorted nonformals to list of formals
+  myfmls <- c(myfmls,sort(mylist))
+  # now create list of indices in correct order
+  for (n  in 1:length(myfmls)){ 
+    mynum <- c(mynum,1+which(names(expr[-1])==myfmls[n]))
+  }
+  mynum <- c(1,mynum)
+  # permute expr
+  expr <- expr[mynum]
+  # Append named formals with default values which are not included
+  # in the preliminary match
+  for(n in names(fmls)){
+      if(!isTRUE(fmls[[n]] == quote(expr=)) && !(n %in% names(expr[-1]))){
+        expr[n] <- fmls[n]
+      }
+   }
+  # match call again, for order
+  expr <- match.call(fct, expr)
+  return(expr)
+}

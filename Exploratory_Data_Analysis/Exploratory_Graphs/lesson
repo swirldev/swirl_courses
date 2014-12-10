@@ -61,7 +61,7 @@
   Hint: Type summary(pollution$pm25) at the command prompt.
 
 - Class: text
-  Output: This shows us some basic features of the pm25 data column, namely its minimum (0 percentile) and maximum (100 percentile) values, the average measure of particulate pollution across the 576 counties, and the quartiles of the column. These last indicate the pollution measures at which 25%, 50%, and 75% of the counties fall below.   
+  Output: This shows us some basic features of the pm25 data column, namely its Minimum (0 percentile) and Maximum (100 percentile) values, the Mean or average measure of particulate pollution across the 576 counties, and three Quartiles of the data. These last indicate the pollution measures at which 25%, 50%, and 75% of the counties fall below.   
 
 - Class: mult_question
   Output: Half the measured counties have a pollution level less than or equal to what number of micrograms per cubic meter? 

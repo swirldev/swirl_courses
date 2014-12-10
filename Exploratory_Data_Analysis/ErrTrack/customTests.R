@@ -40,7 +40,7 @@ omnitest <- function(correctExpr=NULL, correctVal=NULL, strict=FALSE, eval_for_c
     err <- try({
       good_expr <- parse(text=correctExpr)[[1]]
       ans <- is_robust_match(good_expr, e$expr, eval_for_class, eval_env)
-    }, silent=FALSE)
+    }, silent=TRUE)
     if (is(err, "try-error")) {
       return(expr_identical_to(correctExpr))
     } else {
@@ -91,11 +91,12 @@ omnitest <- function(correctExpr=NULL, correctVal=NULL, strict=FALSE, eval_for_c
 is_robust_match <- function(expr1, expr2, eval_for_class, eval_env=NULL){
   expr1 <- rmatch_calls(expr1, eval_for_class, eval_env)
   expr2 <- rmatch_calls(expr2, eval_for_class, eval_env)
+#   print(paste("expr1 is ",deparse(expr1)))
+#   print(paste("expr2 is ",deparse(expr2)))
   isTRUE(all.equal(expr1, expr2))
 }
 
 rmatch_calls <- function(expr, eval_for_class=FALSE, eval_env=NULL){
-  print(paste("*** enter",deparse(expr)))
   # If expr is not a call, just return it.
   if(!is.call(expr))return(expr)
   # Replace expr's components with matched versions.
@@ -105,23 +106,19 @@ rmatch_calls <- function(expr, eval_for_class=FALSE, eval_env=NULL){
   # If match.fun(expr[[1]]) raises an exception here, the code which follows
   # would be likely to give a misleading result. Catch the error merely to
   # produce a better diagnostic.
-  print(paste("in rmatch_calls after first loop expr is ",deparse(expr)))
   tryCatch(fct <- match.fun(expr[[1]]),
            error=function(e)stop(paste0("Illegal expression ", dprs(expr), 
                                         ": ", dprs(expr[[1]]), " is not a function.\n")))
   # If fct is a special function such as `$`, or builtin such as `+`, return expr.
-  print(paste("before primitive check fct is "),is.primitive(fct))
   if(is.primitive(fct)){
     return(expr)
   }
-
   # If fct is an (S4) standardGeneric, match.call is likely to give a misleading result,
   # so raise an exception. (Note that builtins were handled earlier.)
   if(is(fct, "standardGeneric")){
     stop(paste0("Illegal expression, ", dprs(expr), ": ", dprs(expr[[1]]), " is a standardGeneric.\n"))
   }
   # At this point, fct should be an ordinary function or an S3 method.
-
   if(isS3(fct)){
     # If the S3 method's first argument, expr[[2]], is anything but atomic 
     # its class can't be determined here without evaluation.
@@ -153,53 +150,66 @@ rmatch_calls <- function(expr, eval_for_class=FALSE, eval_env=NULL){
                                               dprs(expr[[2]]), ", of class, ", cls,".\n")))
     }
   }
-  # Form preliminary match. If match.call raises an error here, the remaining code is
-  # likely to give a misleading result. Catch the error merely to give a better diagnostic.
-  tryCatch(expr <- match.call(fct, expr),
-           error = function(e)stop(paste0("Illegal expression ", dprs(expr), ": ", 
-                                          dprs(expr[[1]]), " is not a function.\n")))
-  fixInformals(fct,expr)
   
-  # Append named formals with default values which are not included
-  # in the preliminary match
-  fmls <- formals(fct)
-  for(n in names(fmls)){
-    if(!isTRUE(fmls[[n]] == quote(expr=)) && !(n %in% names(expr[-1]))){
-      expr[n] <- fmls[n]
-    }
-  }
-  # match call again, for order
-  expr <- match.call(fct, expr)
-print(paste("Leaving ",deparse(expr)))
+  expr <- enhancedMatch(fct,expr)
+#   # Form preliminary match. If match.call raises an error here, the remaining code is
+#   # likely to give a misleading result. Catch the error merely to give a better diagnostic.
+#   tryCatch(expr <- match.call(fct, expr),
+#            error = function(e)stop(paste0("Illegal expression ", dprs(expr), ": ", 
+#                                           dprs(expr[[1]]), " is not a function.\n")))
+#   expr <- fixInformals(fct,expr)
+#   # Append named formals with default values which are not included
+#   # in the preliminary match
+#   fmls <- formals(fct)
+#   for(n in names(fmls)){
+#     if(!isTRUE(fmls[[n]] == quote(expr=)) && !(n %in% names(expr[-1]))){
+#       expr[n] <- fmls[n]
+#     }
+#   }
+#   # match call again, for order
+#   expr <- match.call(fct, expr)
   return(expr)
 }
 
 isS3 <- function(fct)isTRUE(grep("UseMethod", body(fct)) > 0)
 dprs <- function(expr)deparse(expr, width.cutoff=500)
 
-fixInformals <- function(fct,expr){
-  #define three lists
+enhancedMatch <- function(fct,expr){
+  #   # Form preliminary match. If match.call raises an error here, the remaining code is
+  #   # likely to give a misleading result. Catch the error merely to give a better diagnostic.
+  tryCatch(expr <- match.call(fct, expr),
+           error = function(e)stop(paste0("Illegal expression ", dprs(expr), ": ", 
+                                         dprs(expr[[1]]), " is not a function.\n")))  #define three lists, informals, formals, indices
   mylist <- character()
   myfmls <- character()
   mynum <- numeric()
-  #find formal parameters of fct
+  # find formal parameters of fct
   fmls <- formals(fct)
-  #form list of nonformal parameter names
+  # form list of nonformal parameter names
   for(n in names(expr[-1])){
     if(!(n %in% names(fmls))){
       mylist <- c(mylist,n)
     }
   }
-  #myfmls is list of formal params only
+  # myfmls is list of formal params only
   myfmls <- setdiff(names(expr[-1]),mylist)
-  #sort nonformal params and append them to list of formal in sorted order
-  mylist <- sort(mylist)
-  myfmls <- c(myfmls,mylist)
-  #now do indices
+  # append sorted nonformals to list of formals
+  myfmls <- c(myfmls,sort(mylist))
+  # now create list of indices in correct order
   for (n  in 1:length(myfmls)){ 
-    mynum <- c(mynum,which(names(expr[-1])==myfmls[n]))
+    mynum <- c(mynum,1+which(names(expr[-1])==myfmls[n]))
   }
-  mynum <- c(1,mynum+1)
+  mynum <- c(1,mynum)
+  # permute expr
   expr <- expr[mynum]
+  # Append named formals with default values which are not included
+  # in the preliminary match
+  for(n in names(fmls)){
+      if(!isTRUE(fmls[[n]] == quote(expr=)) && !(n %in% names(expr[-1]))){
+        expr[n] <- fmls[n]
+      }
+   }
+  # match call again, for order
+  expr <- match.call(fct, expr)
   return(expr)
 }
