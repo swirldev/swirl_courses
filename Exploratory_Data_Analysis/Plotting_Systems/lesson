@@ -38,7 +38,7 @@
   Output: So the dataset collates the speeds and distances needed to stop for 50 cars. This data was recorded in the 1920's.
 
 - Class: cmd_question
-  Output: We'll use the R command with which takes two arguments. The first  specifies a dataset or environment in which to run the second argument, an R expression. Try running the command with now using cars as the first argument and a call to plot as the second. The call to plot will take two arguments, speed and dist. Please specify them in that order.    
+  Output: We'll use the R command with which takes two arguments. The first  specifies a dataset or environment in which to run the second argument, an R expression. This will save us a bit of typing. Try running the command with now using cars as the first argument and a call to plot as the second. The call to plot will take two arguments, speed and dist. Please specify them in that order.    
   CorrectAnswer: with(cars, plot(speed, dist))
   AnswerTests: omnitest(correctExpr='with(cars, plot(speed, dist))')
   Hint: Type with(cars, plot(speed, dist)) at the command prompt.

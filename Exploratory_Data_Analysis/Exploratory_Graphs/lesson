@@ -77,7 +77,7 @@
   Hint: Type quantile(ppm) at the command prompt.
 
 - Class: mult_question
-  Output: See how the two sets of results are related? Quantile gives the quartiles, right? What is the one value  missing from this quantile output that summary gave you?
+  Output: See how the results are similar to those returned by summary? Quantile gives the quartiles, right? What is the one value  missing from this quantile output that summary gave you?
   AnswerChoices: the mean; the minimum value; the maximum value; the median 
   CorrectAnswer: the mean
   AnswerTests: omnitest(correctVal='the mean')
@@ -296,7 +296,7 @@
   FigureType: new
 
 - Class: cmd_question
-  Output: We've seen that we can use a function call as an argument when calling another function. We'll do this again when we call plot with the arguments latitude and pm25 which are both from our data frame pollution. We'll call plot from inside the R command with which evaluates "an R expression in an environment constructed from data". We'll use pollution as the first argument to with and the call to plot as the second. This tells R to evaluate our call to plot in the environment created by the data frame pollution. Do this now.
+  Output: We've seen that we can use a function call as an argument when calling another function. We'll do this again when we call plot with the arguments latitude and pm25 which are both from our data frame pollution. We'll call plot from inside the R command with which evaluates "an R expression in an environment constructed from data". We'll use pollution as the first argument to with and the call to plot as the second. This allows us to avoid typing "pollution$" before the arguents to plot, so it saves us some typing and adds to your base of R knowledge. Try this now.
   CorrectAnswer: with(pollution, plot(latitude, pm25))
   AnswerTests: omnitest(correctExpr='with(pollution, plot(latitude, pm25))')
   Hint: Type with(pollution, plot(latitude, pm25)) at the command prompt.
@@ -309,10 +309,10 @@
   Hint: Type abline(h = 12, lwd = 2, lty = 2) at the command prompt.
 
 - Class: cmd_question
-  Output: See how lty=2 made the line dashed? Now let's replot the scatterplot, again within a call to with. (As before, use the up arrow key to recover the last call to with). This time, in the call to plot we'll use color to add more information to our plot. In this call to plot add the argument col set equal to region. See what happens? 
-  CorrectAnswer: with(pollution, plot(latitude, pm25, col = region))
-  AnswerTests: omnitest(correctExpr='with(pollution, plot(latitude, pm25, col = region))')
-  Hint: Type with(pollution, plot(latitude, pm25, col = region)) at the command prompt.
+  Output: See how lty=2 made the line dashed? Now let's replot the scatterplot. This time, instead of using with, call  plot directly with 3 arguments. The first 2 are pollution$latitude and ppm. The third argument, col, we'll use to add color and more information to our plot. Set this argument   (col) equal to pollution$region and see what happens. 
+  CorrectAnswer:  plot(pollution$latitude, ppm, col = pollution$region)
+  AnswerTests: omnitest(correctExpr='plot(pollution$latitude, ppm, col = pollution$region)')
+  Hint: Type plot(pollution$latitude, ppm, col = pollution$region) at the command prompt.
 
 - Class: mult_question
   Output: We've got two colors on the map to distiguish between counties in the east and those in the west. Can we figure out which color is east and which west? See that the high (greater than 50) and low (less than 25) latitudes are both red. Latitudes indicate distance from the equator, so which half of the U.S. (east or west) has counties at the extreme north and south?
@@ -343,16 +343,22 @@
   Hint: Type  par(mfrow = c(1, 2), mar = c(5, 4, 2, 1)) at the command prompt.
 
 - Class: cmd_question
-  Output: For the first scatterplot, on the left, we'll plot the latitudes and pm25 counts from the west. As before we'll use the command with (with two arguments). For the first argument we'll use subset (with arguments pollution and the boolean expression region=="west"). The second argument will be the call to plot with three arguments. These are latitude (x-axis), pm25 (y-axis), and the argument main equal to the string "West" (title). Do this now. 
-  CorrectAnswer: with(subset(pollution, region == "west"), plot(latitude, pm25, main = "West"))
-  AnswerTests: omnitest(correctExpr='with(subset(pollution, region == "west"), plot(latitude, pm25, main = "West"))')
-  Hint: Type  with(subset(pollution, region == "west"), plot(latitude, pm25, main = "West")) at the command prompt.
+  Output: For the first scatterplot, on the left, we'll plot the latitudes and pm25 counts from the west. We already pulled out the information for the counties in the east. Let's now get the information for the counties from the west. Create the variable west by using the subset command with pollution as the first argument and the appropriate boolean as the second.
+  CorrectAnswer: west <- subset(pollution,region=="west")
+  AnswerTests: expr_creates_var("west"); omnitest(correctExpr='west <- subset(pollution,region=="west")')
+  Hint: Type west <- subset(pollution,region=="west") at the command prompt.
 
 - Class: cmd_question
-  Output: For the second scatterplot, on the right, we'll plot the latitudes and pm25 counts from the east. As before, use the up arrow key and change the two "west" strings to "east". 
-  CorrectAnswer: with(subset(pollution, region == "east"), plot(latitude, pm25, main = "East"))
-  AnswerTests: omnitest(correctExpr='with(subset(pollution, region == "east"), plot(latitude, pm25, main = "East"))')
-  Hint: Type  with(subset(pollution, region == "east"), plot(latitude, pm25, main = "East")) at the command prompt.
+  Output: Now call plot with three arguments. These are west$latitude (x-axis), west$pm25 (y-axis), and the argument main equal to the string "West" (title). Do this now. 
+  CorrectAnswer: plot(west$latitude, west$pm25, main = "West")
+  AnswerTests: omnitest(correctExpr='plot(west$latitude, west$pm25, main = "West")')
+  Hint: Type  plot(west$latitude, west$pm25, main = "West") at the command prompt.
+
+- Class: cmd_question
+  Output: For the second scatterplot, on the right, we'll plot the latitudes and pm25 counts from the east. As before, use the up arrow key and change the 3 "west" strings to "east". 
+  CorrectAnswer: plot(east$latitude, east$pm25, main = "East")
+  AnswerTests: omnitest(correctExpr='plot(east$latitude, east$pm25, main = "East")')
+  Hint: Type  plot(east$latitude, east$pm25, main = "East") at the command prompt.
 
 - Class: text
   Output: See how R took care of all the details for you? Nice, right? It looks like there are more dirty counties in the east but the extreme dirt (greater than 15) is in the west. 

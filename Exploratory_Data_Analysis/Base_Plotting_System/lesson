@@ -16,10 +16,10 @@
   Output: We'll focus on using the base plotting system to create graphics on the screen device rather than another graphics device.
 
 - Class: text
-  Output:  The core plotting and graphics engine in R is encapsulated in the two packages. The    graphics package contains plotting functions for the "base" graphing systems, including plot, hist, boxplot and many others. The grDevices package contains all the code implementing the various graphics devices, including X11, PDF, PostScript, PNG, etc.
+  Output:  The core plotting and graphics engine in R is encapsulated in two packages. The first is the graphics package which contains plotting functions for the "base" system. The functions in this package include plot, hist, boxplot, barplot and many others. The second package is grDevices which  contains all the code implementing the various graphics devices, including X11, PDF, PostScript, PNG, etc.
 
 - Class: text
-  Output: Base graphics are usually constructed piecemeal, with each aspect of the plot handled separately through a series of function calls; this is often conceptually simpler and allows plotting that mirrors your thought processes. Usually you start with a plot function (or something similar), then you use annotation functions to add to or modify your plot. 
+  Output: Base graphics are often constructed piecemeal, with each aspect of the plot handled separately through a particular function call; this is often conceptually simpler. Usually you start with a plot function (such as plot, hist, or boxplot), then you use annotation functions (text, abline, points) to add to or modify your plot. 
 
 - Class: text
   Output: Before making a plot you have to determine where the plot will appear and what it will be used for.  Is there a large amount of data going into the plot? Or is it just a few points? Do you need to be able to dynamically resize the graphic?
@@ -32,110 +32,118 @@
   Hint: Which choice  has a negative contraction in it?
 
 - Class: text
-  Output: Yes! The base system is very intuitive and easy to use when you're starting to do exploratory graphing and looking for a research direction. You can't go backwards, though, say, if you need to readjust margins or misspell a caption. A finished plot will be a series of R commands, so it's difficult to translate a finished plot into a different system.
+  Output: Yes! The base system is very intuitive and easy to use. You can't go backwards, though, say, if you need to readjust margins or misspell a caption. A finished plot will be a series of R commands, so it's difficult to translate a finished plot into a different system.
+
+- Class: text
+  Output:  Base graphics are used most commonly and are a very powerful system for creating 2-D graphics. There are two phases to creating a base plot. You first have to initialize a new plot. Then you may annotate (add to) an existing plot if you need to.
+
+- Class: text
+  Output:  Calling a basic routine such as plot(x, y) or hist(x) will launch a graphics device (if one is not already open) and draw a new plot on the device. If the arguments to plot are not of some special class, then the default method for plot is called.
+
+- Class: text
+  Output: As you'll see, most of these plotting functions have many arguments, for example, setting the title, labels of axes, plot character, etc. Some of the parameters can be set when you call the function or they can be added later in a separate function call.
 
 - Class: cmd_question
-  Output: We've loaded the dataset cars for you to demonstrate how easy it is to plot. First, use the R command head with cars as an argument to see what the data looks like.
-  CorrectAnswer: head(cars)
-  AnswerTests: omnitest(correctExpr='head(cars)')
-  Hint: Type head(cars) at the command prompt.
+  Output:  The basic plotting parameters are documented in the R help page for the function par. You can use par to set parameters OR to find out what values are already set. To see just how much flexibility you have, run the R command length with the argument par() now. 
+  CorrectAnswer: length(par())
+  AnswerTests: omnitest(correctExpr='length(par())')
+  Hint: Type length(par()) at the command prompt.
  
-- Class: text
-  Output: So the dataset collates the speeds and distances needed to stop for 50 cars. This data was recorded in the 1920's.
+- Class: cmd_question
+  Output:  So there are a boatload (72) of parameters that par() gives you access to. Run the R function names with par() as its argument to see what these parameters are.
+  CorrectAnswer: names(par())
+  AnswerTests: omnitest(correctExpr='names(par())')
+  Hint: Type names(par()) at the command prompt.
+ 
+- Class: cmd_question
+  Output: Variety is the spice of life. You probably will not deal with a lot of these. You can always run ?par to see what they do. For now, run the command par()$pin and see what you get.
+  CorrectAnswer: par()$pin
+  AnswerTests: ANY_of_exprs('par()$pin','par(\"pin\")','par(\'pin\')')
+  Hint: Type par()$pin at the command prompt.
+ 
+- Class: mult_question
+  Output: Alternatively, you could have gotten the same result by running par("pin") or par('pin')).  What do you think these two numbers represent?
+  AnswerChoices: Plot dimensions; A confidence interval; Random numbers; Coordinates of the center of the plot window
+  CorrectAnswer: Plot dimensions
+  AnswerTests: omnitest(correctVal='Plot dimensions')
+  Hint: The function par specifies graphical parameters so the answer should deal with plots. That leaves two choices. The 'in' in 'pin' specifies inches.
 
 - Class: cmd_question
-  Output: We'll use the R command with which takes two arguments. The first  specifies a dataset or environment in which to run the second argument, an R expression. Try running the command with now using cars as the first argument and a call to plot as the second. The call to plot will take two arguments, speed and dist. Please specify them in that order.    
-  CorrectAnswer: with(cars, plot(speed, dist))
-  AnswerTests: omnitest(correctExpr='with(cars, plot(speed, dist))')
-  Hint: Type with(cars, plot(speed, dist)) at the command prompt.
+  Output: Now, run the command par("fg") or par()$fg and see what you get.
+  CorrectAnswer: par()$fg
+  AnswerTests: ANY_of_exprs('par(\"fg\")','par()$fg','par(\'fg\')')
+  Hint: Type par()$fg OR par('fg') OR par("fg") at the command prompt.
  
+- Class: mult_question
+  Output: It gave you a color, right? Since par()$fg specifies foreground color, what do you think par()$bg specifies?
+  AnswerChoices: Background color; Better color; blue-green; Beautiful color
+  CorrectAnswer: Background color
+  AnswerTests: omnitest(correctVal='Background color')
+  Hint: What's the opposite of foreground?
+
 - Class: text
-  Output: Simple, right? You can see the relationship between the two variables, speed and distance. The first variable is plotted along the x-axis and the second along the y-axis.
+  Output: Now we'll go through some quick examples of basic plotting before we delve into gory  details. We'll use the dataset airquality (part of the library datasets) which we've loaded for you . This shows ozone and other air measurements for New York City for 5 months in 1973.
 
 - Class: cmd_question
-  Output: Now we'll show you what the function text does. Run the command text with three arguments. The first two, x and y coordinates, specify the placement of the third argument, the text to be added to the plot. Let the first argument be mean(cars$speed), the second max(cars$dist), and the third the string "SWIRL rules!". Try it now.  
-  CorrectAnswer: text(mean(cars$speed),max(cars$dist),"SWIRL rules!")
-  AnswerTests: omnitest(correctExpr='text(mean(cars$speed),max(cars$dist),"SWIRL rules!")')
-  Hint: Type text(mean(cars$speed),max(cars$dist),"SWIRL rules!") at the command prompt.
+  Output:  Use the R command head with airquality as an argument to see what the data looks like.
+  CorrectAnswer: head(airquality)
+  AnswerTests: omnitest(correctExpr='head(airquality)')
+  Hint: Type head(airquality) at the command prompt.
+ 
+- Class: cmd_question
+  Output: We see the dataset contains 6 columns of data. Run the command range with two arguments. The first is the ozone column of airquality, specified by airquality$Ozone, and the second is the boolean na.rm set equal to TRUE. If you don't specify this second argument, you won't get a meaningful result.
+  CorrectAnswer: range(airquality$Ozone,na.rm=TRUE)
+  AnswerTests: omnitest(correctExpr='range(airquality$Ozone,na.rm=TRUE)')
+  Hint: Type range(airquality$Ozone,na.rm=TRUE) at the command prompt.
+ 
+- Class: cmd_question
+  Output: So the measurements range from 1 to 168. First we'll do a simple histogram of this ozone column to show the distribution of measurements. Use the R command hist with the argument airquality$Ozone.   
+  CorrectAnswer: hist(airquality$Ozone)
+  AnswerTests: omnitest(correctExpr='hist(airquality$Ozone)')
+  Hint: Type hist(airquality$Ozone) at the command prompt.
+ 
+- Class: mult_question
+  Output: Simple, right? R put a title on the histogram and labeled both axes for you. What is the most frequent count? 
+  AnswerChoices: Under 25; Between 60 and 75; Over 150; Over 100 
+  CorrectAnswer: Under 25
+  AnswerTests: omnitest(correctVal='Under 25')
+  Hint: Where is the highest bar?
+
+- Class: cmd_question
+  Output: Next we'll do a boxplot. First, though, run the R command table with the argument airquality$Month.
+  CorrectAnswer: table(airquality$Month)
+  AnswerTests: omnitest(correctExpr='table(airquality$Month)')
+  Hint: Type table(airquality$Month) at the command prompt.
+ 
+- Class: cmd_question
+  Output: We see that the data covers 5 months, May through September. We'll want a boxplot of ozone as a function of the month in which the measurements were taken so we'll use the R formula Ozone~Month as the first argument of boxplot. Our second argument will be airquality, the dataset from which the variables of the first argument are taken. We'll also specify labels for the 2 axes. Set xlab equal to "Month" and ylab equal to "Ozone (ppb)". This last indicates the measurements were in parts per billion. Try this now.
+  CorrectAnswer: boxplot(Ozone~Month, airquality, xlab="Month", ylab="Ozone (ppb)")
+  AnswerTests: omnitest(correctExpr='boxplot(Ozone~Month, airquality, xlab="Month", ylab="Ozone (ppb)")')
+  Hint: Type boxplot(Ozone~Month, airquality, xlab="Month", ylab="Ozone (ppb)") at the command prompt.
  
 - Class: text
-  Output: Isn't it true?
+  Output:  Note that boxplot, unlike hist, did NOT specify a title and axis labels for you automatically. 
 
+- Class: cmd_question
+  Output: Now we'll show you how to plot a simple two-dimensional scatterplot using the R function plot. This will show the relationship between Wind (x-axis) and Ozone (y-axis). We'll use the function plot with those two arguments (Wind and Ozone, in that order) as the second argument to the R command with. The first argument of with will be airquality, the dataset containing Wind and Ozone. Using  with allows us to avoid using the longer notation, e.g., airquality$Wind. Try running this now now. 
+  CorrectAnswer: with(airquality, plot(Wind, Ozone))
+  AnswerTests: omnitest(correctExpr='with(airquality, plot(Wind, Ozone))')
+  Hint: Type with(airquality, plot(Wind, Ozone)) at the command prompt.
+ 
 - Class: text
-  Output:  Now we'll move on to the second plotting system, the Lattice System which comes in the package of the same name. Unlike the Base System, lattice plots are created with a single function call such as xyplot or bwplot. Margins and spacing are set automatically because the entire plot is specified at once.  
+  Output:  Note that plot generated labels for the x and y axes but no title. 
 
-- Class: text
-  Output:  The lattice system is most useful for conditioning types of plots which display how y changes with x across levels of z. The variable z might be a categorical variable of your data. This system is also good for putting many plots on a screen at once.
+- Class: cmd_question
+  Output: Let's add one now with the R command title. Use the argument main set equal to the string "Ozone and Wind in New York City". 
+  CorrectAnswer: title(main="Ozone and Wind in New York City")
+  AnswerTests: omnitest(correctExpr='title(main=\"Ozone and Wind in New York City\")')
+  Hint: Type title(main="Ozone and Wind in New York City") at the command prompt.
+
+
 
 - Class: text
   Output: The lattice system has several disadvantages. First, it is sometimes awkward to specify an entire plot in a single function call. Annotating a plot may not be especially intuitive. Second, using panel functions and subscripts is somewhat difficult  and requires preparation. Finally, you cannot "add" to the plot once it is created as you can with the base system.
 
-- Class: cmd_question
-  Output: As before, we've loaded some data for you in the variable state. This data comes with the lattice package and it concerns various characteristics of the 50 states in the U.S. Use the R command head to see the first few entries of  state now. 
-  CorrectAnswer: head(state)
-  AnswerTests: omnitest(correctExpr='head(state)')
-  Hint: Type head(state) at the command prompt.
-
-- Class: cmd_question
-  Output: As you can see state holds 9 pieces of information for each of the 50 states. The last variable, region, specifies a category for each state. Run the R command table with the argument state$region to see how many categories there are and how many states are in each.
-  CorrectAnswer: table(state$region)
-  AnswerTests: omnitest(correctExpr='table(state$region)')
-  Hint: Type table(state$region) at the command prompt.
-
-- Class: text
-  Output: So there are 4 categories and the 50 states are sorted into them appropriately. Let's use the lattice command xyplot to see how life expectancy varies with income in each of the four regions. 
-
-- Class: cmd_question
-  Output: To do this we'll give xyplot 3 arguments. The first is the most complicated. It is this  R formula,  Life.Exp ~ Income | region, which indicates we're plotting life expectancy as it depends on income for each region. The second argument, data, is set equal to state. This allows us to use "Life.Exp" and "Income" in the formula instead of specifying the dataset state for each term (as in state$Income). The third argument, layout, is set equal to the two-long vector c(4,1). Run xyplot now with these three arguments.
-  CorrectAnswer: xyplot(Life.Exp ~ Income | region, data = state, layout = c(4, 1))
-  AnswerTests: omnitest(correctExpr='xyplot(Life.Exp ~ Income | region, data = state, layout = c(4, 1))')
-  Hint: Type xyplot(Life.Exp ~ Income | region, data = state, layout = c(4, 1)) at the command prompt.
-
-- Class: mult_question
-  Output: We see the data for each of the 4 regions plotted in one row. Based on this plot, which region of the U.S. seems to have the shortest life expectancy?
-  AnswerChoices:  Northeast; South; North Central; West
-  CorrectAnswer: South
-  AnswerTests: omnitest(correctVal='South')
-  Hint: Which region has no dots above 72?
-
-- Class: cmd_question
-  Output: Just for fun rerun the xyplot and this time set layout to the vector c(2,2). To save typing use the up arrow to recover the previous xyplot command.
-  CorrectAnswer: xyplot(Life.Exp ~ Income | region, data = state, layout = c(2,2))
-  AnswerTests: omnitest(correctExpr='xyplot(Life.Exp ~ Income | region, data = state, layout = c(2,2))')
-  Hint: Type xyplot(Life.Exp ~ Income | region, data = state, layout = c(2,2)) at the command prompt.
-
-- Class: text
-  Output: See how the plot changed? No need for you to worry about margins or labels. The package took care of all that for you.
-
-- Class: text
-  Output: Now, for the last plotting system, ggplot2, which is a hybrid of the base and lattice systems. It automatically deals with spacings, text, titles (as Lattice does) but also allows you to annotate by "adding" to a plot (as Base does), so it's the best of both worlds. 
-
-- Class: text
-  Output: Although ggplots bears a superficial similarity to lattice, it's generally easier and more intuitive to use. Its default mode makes many choices for you but you can still customize a lot. The package is based on a "grammar of graphics" (hence the gg in the name), so you can control the aesthetics of your plots. For instance, you can plot conditioning graphs and panel plots as we did in the lattice example.
-
-- Class: cmd_question
-  Output: We'll see an example now of ggplot2 with a simple (single) command. As before, we've loaded a dataset for you from the ggplot2 package. This mpg data holds fuel economy data between 1999 and 2008 for 38 different models of cars. Run head with mpg as an argument so you get an idea of what the data looks like.
-  CorrectAnswer: head(mpg)
-  AnswerTests: omnitest(correctExpr='head(mpg)')
-  Hint: Type head(mpg) at the command prompt.
-
-- Class: cmd_question
-  Output: Looks complicated. Run dim with the argument mpg to see how big the dataset is.
-  CorrectAnswer: dim(mpg)
-  AnswerTests: omnitest(correctExpr='dim(mpg)')
-  Hint: Type dim(mpg) at the command prompt.
-
-- Class: cmd_question
-  Output: Holy cow! That's a lot of information for just 38 models of cars. Run the R command table with the argument mpg$model. This will tell us how many models of cars we're dealing with. 
-  CorrectAnswer: table(mpg$model)
-  AnswerTests: omnitest(correctExpr='table(mpg$model)')
-  Hint: Type table(mpg$model) at the command prompt.
-
-- Class: cmd_question
-  Output: Oh, there are 38 models. We're interested in the effect engine displacement (displ) has on highway gas mileage (hwy), so we'll use the ggplot2 command qplot to display this relationship. Run qplot now with three arguments. The first two are the variables displ and hwy we want to plot, and the third is the argument data set equal to mpg. As before, this allows us to avoid using the mpg$variable notation for the first two arguments.
-  CorrectAnswer: qplot(displ, hwy, data = mpg)
-  AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg)')
-  Hint: Type qplot(displ, hwy, data = mpg) at the command prompt.
 
 - Class: text
   Output: Not surprisingly we see that the bigger the engine displacement the lower the gas mileage.

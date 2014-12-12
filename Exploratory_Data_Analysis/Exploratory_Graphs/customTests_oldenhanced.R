@@ -41,7 +41,6 @@ omnitest <- function(correctExpr=NULL, correctVal=NULL, strict=FALSE, eval_for_c
       good_expr <- parse(text=correctExpr)[[1]]
       ans <- is_robust_match(good_expr, e$expr, eval_for_class, eval_env)
     }, silent=TRUE)
-#     print(paste("In omnitest ans is ",ans))
     if (is(err, "try-error")) {
       return(expr_identical_to(correctExpr))
     } else {
@@ -178,54 +177,33 @@ dprs <- function(expr)deparse(expr, width.cutoff=500)
 enhancedMatch <- function(fct,expr){
   #   # Form preliminary match. If match.call raises an error here, the remaining code is
   #   # likely to give a misleading result. Catch the error merely to give a better diagnostic.
-  #   # Set expand.dots to FALSE so that we can detect ... args
-  tryCatch(expr <- match.call(fct, expr,expand.dots=FALSE),
+  tryCatch(expr <- match.call(fct, expr),
            error = function(e)stop(paste0("Illegal expression ", dprs(expr), ": ", 
                                          dprs(expr[[1]]), " is not a function.\n")))  #define three lists, informals, formals, indices
-  # Check to see if there are ... args
-    idx <- which(names(expr)=="...")
-  # If there are ... args, then if they are named sort them by name, else keep them as is 
-  if (length(idx)>0){
-  #    print(paste("Here ",expr$...))
-      if (!is.null(names(expr$...)))
-         expr$... <- expr$...[order(names(expr$...))]
+  mylist <- character()
+  myfmls <- character()
+  mynum <- numeric()
+  # find formal parameters of fct
+  fmls <- formals(fct)
+  # form list of nonformal parameter names
+  for(n in names(expr[-1])){
+    if(!(n %in% names(fmls))){
+      mylist <- c(mylist,n)
     }
-  
-#   mylist <- character()
-#   myfmls <- character()
-#   mydotn <- character()
-#   mynum <- numeric()
-#   # find formal parameters of fct
-#   fmls <- formals(fct)
-#   print(fmls)
-
-#   
-#   # form list of nonformal parameter names
-#   for(n in names(expr[-1])){
-#     print(n)
-#     if(!(n %in% names(fmls))){
-#       print(paste("Names ",n))
-#       mylist <- c(mylist,n)
-#     }
-#   }
-#   print(paste("mylist first ",mylist))
-#   # myfmls is list of formal params only
-#   myfmls <- setdiff(names(expr[-1]),mylist)
-#   print(paste("myfmls first ",myfmls))
-#   # append sorted nonformals to list of formals
-#   myfmls <- c(myfmls,sort(mylist))
-#   print(paste("myfmls next  ",myfmls))
-#   # now create list of indices in correct order
-#   for (n  in 1:length(myfmls)){ 
-#     mynum <- c(mynum,1+which(names(expr[-1])==myfmls[n]))
-#   }
-#   mynum <- c(1,mynum)
-#   # permute expr
-#   expr <- expr[mynum]
-
+  }
+  # myfmls is list of formal params only
+  myfmls <- setdiff(names(expr[-1]),mylist)
+  # append sorted nonformals to list of formals
+  myfmls <- c(myfmls,sort(mylist))
+  # now create list of indices in correct order
+  for (n  in 1:length(myfmls)){ 
+    mynum <- c(mynum,1+which(names(expr[-1])==myfmls[n]))
+  }
+  mynum <- c(1,mynum)
+  # permute expr
+  expr <- expr[mynum]
   # Append named formals with default values which are not included
   # in the preliminary match
-  fmls <- formals(fct)
   for(n in names(fmls)){
       if(!isTRUE(fmls[[n]] == quote(expr=)) && !(n %in% names(expr[-1]))){
         expr[n] <- fmls[n]

@@ -1,6 +1,4 @@
-library(ggplot2)
 library(jpeg)
-library(lattice)
 library(datasets)
 data(cars)
 data(mpg)
