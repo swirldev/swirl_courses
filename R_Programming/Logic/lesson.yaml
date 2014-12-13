@@ -139,7 +139,7 @@
 
 - Class: text
   Output: What happens in this case is that the left operand `TRUE` is recycled
-    across every element in the vector of the left operand. This is the equivalent
+    across every element in the vector of the right operand. This is the equivalent
     statement as c(TRUE, TRUE, TRUE) & c(TRUE, FALSE, FALSE). 
 
 - Class: cmd_question

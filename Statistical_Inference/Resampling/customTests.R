@@ -52,7 +52,7 @@ omnitest <- function(correctExpr=NULL, correctVal=NULL, strict=FALSE, eval_for_c
   if(!is.null(correctExpr) && is.null(correctVal)){
     err <- try({
       good_expr <- parse(text=correctExpr)[[1]]
-      ans <- is_robust_match(good_expr, e$expr, eval_for_class, eval_for_class)
+      ans <- is_robust_match(good_expr, e$expr, eval_for_class, eval_env)
     }, silent=TRUE)
     if (is(err, "try-error")) {
       return(expr_identical_to(correctExpr))
