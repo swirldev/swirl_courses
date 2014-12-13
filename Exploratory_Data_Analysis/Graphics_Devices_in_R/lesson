@@ -1,20 +1,35 @@
 - Class: meta
   Course: Exploratory_Data_Analysis
-  Lesson: Base_Plotting_System
+  Lesson: Graphics_Devices_in_R
   Author: Swirl Coders
   Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
 - Class: text
-  Output: "Base_Plotting_System. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 04_ExploratoryAnalysis/PlottingBase.)"
+  Output: "Graphics_Devices_in_R. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 04_ExploratoryAnalysis/Graphics_Devices_in_R.)"
 
 - Class: text
-  Output:  In another lesson, we gave you an overview of the three plotting systems in R. In this lesson we'll focus on the base plotting system and talk more about how you can exploit all its many parameters to get the plot you want.  We'll focus on using the base plotting system to create graphics on the screen device rather than another graphics device.
+  Output:  As the title suggests, this will be a short lesson introducing you to graphics devices in R. So, what IS a graphics device?
 
 - Class: text
-  Output:  The core plotting and graphics engine in R is encapsulated in two packages. The first is the graphics package which contains plotting functions for the "base" system. The functions in this package include plot, hist, boxplot, barplot, etc. The second package is grDevices which  contains all the code implementing the various graphics devices, including X11, PDF, PostScript, PNG, etc.
+  Output:  Would you believe that it is  something where you can make a plot appear, either a screen device, such as a window on your computer, OR a file device. 
 
+- Class: text
+  Output:   There are several different kinds of file devices with particular characteristics and hence uses. These include PDF, PNG, JPEG, SVG, and TIFF. We'll talk more about these later. 
+
+- Class: text
+  Output: To be clear,  when you make a plot in R, it has to be "sent" to a specific graphics device. Usually this is the screen, especially when you're doing exploratory work. You'll send your plots to files when you're ready to publish a report or send info to colleagues.
+
+- Class: text
+  Output: How you access your screen device depends on what computer system you're using. On a Mac the screen device is launched with the call quartz(), on Windows you use the call windows(), and on Unix/Linux  x11().  On a given platform (Mac, Windows, Unix/Linux) there is only one screen device, and obviously not all graphics devices are available on all platforms (i.e. you cannot launch  windows() on a Mac).
+
+- Class: cmd_question
+  Output:  Run the R command ?Devices to see what graphics devices are available on your system.
+  CorrectAnswer: ?Devices
+  AnswerTests: omnitest(correctExpr='?Devices')
+  Hint: Type ?Devices at the command prompt.
+ 
 - Class: text
   Output: Base graphics are often constructed piecemeal, with each aspect of the plot handled separately through a particular function call. Usually you start with a plot function (such as plot, hist, or boxplot), then you use annotation functions (text, abline, points) to add to or modify your plot. 
 
@@ -42,12 +57,7 @@
 - Class: text
   Output: Now we'll go through some quick examples of basic plotting before we delve into gory  details. We'll use the dataset airquality (part of the library datasets) which we've loaded for you . This shows ozone and other air measurements for New York City for 5 months in 1973.
 
-- Class: cmd_question
-  Output:  Use the R command head with airquality as an argument to see what the data looks like.
-  CorrectAnswer: head(airquality)
-  AnswerTests: omnitest(correctExpr='head(airquality)')
-  Hint: Type head(airquality) at the command prompt.
- 
+
 - Class: cmd_question
   Output: We see the dataset contains 6 columns of data. Run the command range with two arguments. The first is the ozone column of airquality, specified by airquality$Ozone, and the second is the boolean na.rm set equal to TRUE. If you don't specify this second argument, you won't get a meaningful result.
   CorrectAnswer: range(airquality$Ozone,na.rm=TRUE)

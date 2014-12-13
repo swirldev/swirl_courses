@@ -30,13 +30,13 @@
   Hint: Graphics are like pictures, right?
 
 - Class: text
-  Output: Exploratory graphs serve the same functions as graphs. They help us find patterns in data and understand its properties. They suggest modeling strategies and help to debug analyses. We don't use exploratory graphs to communicate results.
+  Output: Exploratory graphs serve the same functions as graphs. They help us find patterns in data and understand its properties. They suggest modeling strategies and help to debug analyses. We DON'T use exploratory graphs to communicate results.
 
 - Class: text
-  Output: Moreover, exploratory graphs are the initial step in an investigation. They are the "quick and dirty" tool used to lead the data scientist in the most fruitful direction. A scientist might need to make a lot of exploratory graphs in order to develop a personal understanding of the problem he/she is studying. Details such as axes, legends, color and size are cleaned up later to convey more information in an aesthetically pleasing way.
+  Output: Instead, exploratory graphs are the initial step in an investigation, the "quick and dirty" tool used to point the data scientist in a fruitful direction. A scientist might need to make a lot of exploratory graphs in order to develop a personal understanding of the problem being studied. Plot details such as axes, legends, color and size are cleaned up later to convey more information in an aesthetically pleasing way.
  
 - Class: cmd_question
-  Output: To demonstrate this, we've copied some data for you from the U.S. Environmental Protection Agency (EPA) which sets national ambient air quality standards for outdoor air pollution. The U.S. National Ambient Air Quality Standards say that for fine particle pollution (PM2.5), the "annual mean, averaged over 3 years" cannot exceed 12 micro grams per cubic meter. We stored this data from the U.S. EPA web site in the data frame pollution. Use the R function head to see the first few entries of   pollution.
+  Output: To demonstrate these ideas, we've copied some data for you from the U.S. Environmental Protection Agency (EPA) which sets national ambient air quality standards for outdoor air pollution. These Standards say that for fine particle pollution (PM2.5), the "annual mean, averaged over 3 years" cannot exceed 12 micro grams per cubic meter. We stored the data from the U.S. EPA web site in the data frame pollution. Use the R function head to see the first few entries of   pollution.
   CorrectAnswer: head(pollution)
   AnswerTests: omnitest(correctExpr='head(pollution)')
   Hint: Type head(pollution) at the command prompt.
@@ -61,7 +61,7 @@
   Hint: Type summary(pollution$pm25) at the command prompt.
 
 - Class: text
-  Output: This shows us some basic features of the pm25 data column, namely its Minimum (0 percentile) and Maximum (100 percentile) values, the Mean or average measure of particulate pollution across the 576 counties, and three Quartiles of the data. These last indicate the pollution measures at which 25%, 50%, and 75% of the counties fall below.   
+  Output: This shows us  basic info about the pm25 data, namely its Minimum (0 percentile) and Maximum (100 percentile) values, and three Quartiles of the data. These last indicate the pollution measures at which 25%, 50%, and 75% of the counties fall below. In addition to these 5 numbers we see the Mean or average measure of particulate pollution across the 576 counties.    
 
 - Class: mult_question
   Output: Half the measured counties have a pollution level less than or equal to what number of micrograms per cubic meter? 
@@ -84,7 +84,7 @@
   Hint: The minimum is the 0% quantile and the maximum is the 100% quantile. The median is the 50% quantile. That leaves only one choice.
 
 - Class: cmd_question
-  Output: Now we'll try a picture, specifically a boxplot. Run the R command boxplot with ppm as an input. Also specify the color parameter col equal to "blue".
+  Output: Now we'll plot a picture, specifically a boxplot. Run the R command boxplot with ppm as an input. Also specify the color parameter col equal to "blue".
   CorrectAnswer: boxplot(ppm,col="blue")
   AnswerTests: omnitest(correctExpr='boxplot(ppm,col="blue")',strict=TRUE)
   Hint: Type boxplot(ppm,col="blue") at the command prompt.
@@ -102,14 +102,33 @@
 - Class: text
   Output: The "whiskers" of the box (the vertical lines extending above and below the box) relate to the range parameter of boxplot, which we let default to the value 1.5 used by R. The height of the box is the interquartile range, the difference between the 75th and 25th quantiles. In this case that difference is 2.8. The whiskers are drawn to be a length of range*2.8 or 1.5*2.8. This shows us roughly how many, if any, data points are outliers, that is, beyond this range of values. 
 
+- Class: text
+  Output: Note that boxplot is part of R's base plotting package. A nice feature that this package provides is its ability to overlay features. That is, you can add to (annotate) an existing plot.
+
 - Class: cmd_question
-  Output: Now use the R command hist with the argument ppm. Specify the color parameter col equal to "green". This will plot a histogram of the data.
+  Output: To see this, run the R command abline with the argument h equal to 12. Recall that 12 is the EPA standard for air quality.
+  CorrectAnswer: abline(h = 12)
+  AnswerTests: omnitest(correctExpr='abline(h = 12)',strict=TRUE)
+  Hint: Type abline(h = 12) at the command prompt.
+
+- Class: mult_question
+  Output: What do you think this command did?
+  AnswerChoices: drew a vertical line at 12; drew a horizontal line at 12; nothing; hid 12 random data points
+  CorrectAnswer: drew a horizontal line at 12
+  AnswerTests: omnitest(correctVal='drew a horizontal line at 12')
+  Hint: The only scale is along the left side of the graph, so the line at 12 must be horizontal.
+
+- Class: text
+  Output: So abline "adds lines one or more straight lines through the current plot." We see from the plot that the bulk of the measured counties comply with the standard since they fall under the line marking that standard.
+
+- Class: cmd_question
+  Output: Now use the R command hist (another function from the base package) with the argument ppm. Specify the color parameter col equal to "green". This will plot a histogram of the data.
   CorrectAnswer: hist(ppm, col = "green")
   AnswerTests: omnitest(correctExpr='hist(ppm, col = "green")',strict=TRUE)
   Hint: Type hist(ppm, col = "green") at the command prompt.
 
 - Class: text
-  Output: You can see that the histogram gives us a little more detailed information about our data. It gives us an idea of how many counties fall into each bucket of measurements. It also gives us an idea about the distribution of the pollution counts.
+  Output: The histogram gives us a little more detailed information about our data, specifically the distribution of the pollution counts, or how many counties fall into each bucket of measurements. 
 
 - Class: mult_question
   Output: What are the most frequent pollution counts?
@@ -164,27 +183,6 @@
 - Class: text
   Output: See how rug works with the existing plot? It automatically adjusted its pocket size to that of the last plot plotted.
 
-- Class: cmd_question
-  Output: Note that all the plots we've shown so far use R's base plotting package. A nice feature that this package provides is its ability to overlay features. To see this, rerun boxplot with ppm as the data and col equal to "blue".
-  CorrectAnswer: boxplot(ppm, col="blue")
-  AnswerTests: omnitest(correctExpr='boxplot(ppm, col="blue")',strict=TRUE)
-  Hint: Type boxplot(ppm, col="blue") at the command prompt.
-
-- Class: cmd_question
-  Output: Now run the R command abline with the argument h equal to 12. Recall that 12 is the EPA standard for air quality.
-  CorrectAnswer: abline(h = 12)
-  AnswerTests: omnitest(correctExpr='abline(h = 12)',strict=TRUE)
-  Hint: Type abline(h = 12) at the command prompt.
-
-- Class: mult_question
-  Output: What do you think this command did?
-  AnswerChoices: drew a vertical line at 12; drew a horizontal line at 12; nothing; hid 12 random data points
-  CorrectAnswer: drew a horizontal line at 12
-  AnswerTests: omnitest(correctVal='drew a horizontal line at 12')
-  Hint: The only scale is along the left side of the graph, so the line at 12 must be horizontal.
-
-- Class: text
-  Output: So abline "adds lines one or more straight lines through the current plot." We see from the plot that the bulk of the measured counties comply with the standard since they fall under the line marking that standard.
 
 - Class: cmd_question
   Output: Now  rerun hist with ppm as the data and col equal to "green".
@@ -205,7 +203,7 @@
   Hint: Type abline(v = median(ppm), col = "magenta", lwd = 4) at the command prompt.
 
 - Class: text
-  Output: Better, right? Thicker and more of a contrast in color. Again this shows that the median is below the standard. This plot shows that there are a fair number of counties in the U.S that have pollution levels higher than the standard.
+  Output: Better, right? Thicker and more of a contrast in color. This shows that although the median (50%) is below the standard, there are a fair number of counties in the U.S that have pollution levels higher than the standard.
 
 - Class: cmd_question
   Output:  Now recall that our pollution data had 5 columns of information. So far we've only looked at the pm25 column. We can also look at other information. To remind yourself what's there run the R command names with pollution as the argument.
