@@ -89,7 +89,7 @@
   Hint: Type boxplot(Ozone~Month, airquality, xlab="Month", ylab="Ozone (ppb)",col.axis="blue",col.lab="red") at the command prompt.
 
 - Class: cmd_question
-  Output: Still no title. Let's add one with the R command title. Use the argument main set equal to the string "Ozone and Wind in New York City". 
+  Output: Nice colors, but still no title. Let's add one with the R command title. Use the argument main set equal to the string "Ozone and Wind in New York City". 
   CorrectAnswer: title(main="Ozone and Wind in New York City")
   AnswerTests: omnitest(correctExpr='title(main=\"Ozone and Wind in New York City\")')
   Hint: Type title(main="Ozone and Wind in New York City") at the command prompt.
@@ -159,7 +159,7 @@
   Hint: The p stands for plot.
 
 - Class: cmd_question
-  Output: The plot character default is the open circle, but it "can either be a single character or an integer code for one of a set of graphics symbols." Run the command par("pch") to see the integer value of the default. You can use R's documentation (?pch) to find what the other values mean.
+  Output: The plot character default is the open circle, but it "can either be a single character or an integer code for one of a set of graphics symbols." Run the command par("pch") to see the integer value of the default. When you need to, you can use R's Documentation (?pch) to find what the other values mean.
   CorrectAnswer: par("pch")
   AnswerTests: ANY_of_exprs('par(\"pch\")','par()$pch','par(\'pch\')')
   Hint: Type par()$pch OR par('pch') OR par("pch") at the command prompt.
@@ -178,7 +178,7 @@
   Hint: Type par()$lty OR par('lty') OR par("lty") at the command prompt.
 
 - Class: text
-  Output: So the default line type  is  solid ,  but it can be  dashed, dotted, etc. Once again, R's ?par documentation will tell you what other line types are available. The line width is a positive integer; the default value is 1. 
+  Output: So the default line type  is  solid,  but it can be  dashed, dotted, etc. Once again, R's ?par documentation will tell you what other line types are available. The line width is a positive integer; the default value is 1. 
 
 - Class: text
   Output: We've seen a lot of examples of col, the plotting color, specified as a number, string, or hex code; the colors() function gives you a vector of colors by name.
@@ -202,7 +202,7 @@
 
 - Class: mult_question
   Output: As we've seen, R provides several annotating functions. Which of the following is NOT one of them?
-  AnswerChoices: lines; text, title; hist; points
+  AnswerChoices: lines; text; title; hist; points
   CorrectAnswer: hist
   AnswerTests: omnitest(correctVal='hist')
   Hint: If you've just done a scatterplot, would you really want to annotate it with a histogram?
@@ -211,7 +211,7 @@
   Output: So you can add text, title, points, and lines to an existing plot. To add lines, you give a vector x values and a corresponding vector of y values (or a 2-column matrix); the function lines just connects the dots. The function text adds text labels to a plot using specified x, y coordinates.
 
 - Class: text
-  Output:   The function title adds annotations to x, y axis labels, title, subtitle, and outer margin. Two other annotating functions are mtext which adds arbitrary text to either the outer or inner margins of the plot and axis which adds axis ticks and labels. Another useful function is legend which explains to the reader what the symbols your plot uses mean.
+  Output:   The function title adds annotations. These include x- and y- axis labels, title, subtitle, and outer margin. Two other annotating functions are mtext which adds arbitrary text to either the outer or inner margins of the plot and axis which adds axis ticks and labels. Another useful function is legend which explains to the reader what the symbols your plot uses mean.
 
 - Class: cmd_question
   Output: Before we close, let's test your ability to make a somewhat complicated scatterplot. First run plot with 3 arguments. airquality$Wind, airquality$Ozone, and type set equal to "n". This tells R to set up the plot but not to put the data in it. 
@@ -232,7 +232,7 @@
   Hint: Type  may <- subset(airquality, Month==5) at the prompt.
 
 - Class: cmd_question
-  Output: Now use the R command points to plot May's wind and ozone (in that order) as solid blue triangles.
+  Output: Now use the R command points to plot May's wind and ozone (in that order) as solid blue triangles. You have to set the color and plot character with two separate arguments.
   CorrectAnswer: points(may$Wind,may$Ozone,col="blue",pch=17)
   AnswerTests: omnitest(correctExpr='points(may$Wind,may$Ozone,col="blue",pch=17)')
   Hint: The code for solid blue trianges is 17 so typing points(may$Wind,may$Ozone,col="blue",pch=17) at the prompt should work.
@@ -243,16 +243,11 @@
   AnswerTests: expr_creates_var("notmay"); omnitest(correctExpr='notmay <- subset(airquality, Month!=5)')
   Hint: Type  notmay <- subset(airquality, Month!=5) at the prompt.
 
-- Class: cmd_question
-  Output: Now use the R command points to plot these notMay's wind and ozone (in that order) as  red snowflakes.
-  CorrectAnswer: points(notmay$Wind,notmay$Ozone,col="red",pch=8)
-  AnswerTests: omnitest(correctExpr='points(may$Wind,may$Ozone,col="blue",pch=8)')
-  Hint: Type points(notmay$Wind,notmay$Ozone,col="red",pch=8) at the prompt.
 
 - Class: cmd_question
   Output: Now use the R command points to plot these notMay's wind and ozone (in that order) as  red snowflakes.
   CorrectAnswer: points(notmay$Wind,notmay$Ozone,col="red",pch=8)
-  AnswerTests: omnitest(correctExpr='points(may$Wind,may$Ozone,col="blue",pch=8)')
+  AnswerTests: omnitest(correctExpr='points(notmay$Wind,notmay$Ozone,col="red",pch=8)')
   Hint: The code for snowflakes is 8 so typing points(notmay$Wind,notmay$Ozone,col="red",pch=8) at the prompt should work.
 
 - Class: cmd_question

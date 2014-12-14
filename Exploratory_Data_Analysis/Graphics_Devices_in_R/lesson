@@ -19,7 +19,7 @@
   Output:   There are several different kinds of file devices with particular characteristics and hence uses. These include PDF, PNG, JPEG, SVG, and TIFF. We'll talk more about these later. 
 
 - Class: text
-  Output: To be clear,  when you make a plot in R, it has to be "sent" to a specific graphics device. Usually this is the screen, especially when you're doing exploratory work. You'll send your plots to files when you're ready to publish a report or send info to colleagues.
+  Output: To be clear,  when you make a plot in R, it has to be "sent" to a specific graphics device. Usually this is the screen (the default device), especially when you're doing exploratory work. You'll send your plots to files when you're ready to publish a report, make a presentation, or send info to colleagues.
 
 - Class: text
   Output: How you access your screen device depends on what computer system you're using. On a Mac the screen device is launched with the call quartz(), on Windows you use the call windows(), and on Unix/Linux  x11().  On a given platform (Mac, Windows, Unix/Linux) there is only one screen device, and obviously not all graphics devices are available on all platforms (i.e. you cannot launch  windows() on a Mac).
@@ -29,307 +29,120 @@
   CorrectAnswer: ?Devices
   AnswerTests: omnitest(correctExpr='?Devices')
   Hint: Type ?Devices at the command prompt.
- 
-- Class: text
-  Output: Base graphics are often constructed piecemeal, with each aspect of the plot handled separately through a particular function call. Usually you start with a plot function (such as plot, hist, or boxplot), then you use annotation functions (text, abline, points) to add to or modify your plot. 
 
 - Class: text
-  Output: Before making a plot you have to determine where the plot will appear and what it will be used for.  Is there a large amount of data going into the plot? Or is it just a few points? Do you need to be able to dynamically resize the graphic?
-
-- Class: mult_question
-  Output: What do you think is a disadvantage of the Base Plotting System?
-  AnswerChoices:  It's intuitive and exploratory; It mirrors how we think of building plots and analyzing data; You can't go back once a plot has started; A complicated plot is a series of simple R commands
-  CorrectAnswer: You can't go back once a plot has started
-  AnswerTests: omnitest(correctVal='You can\'t go back once a plot has started')
-  Hint: Which choice  has a negative contraction in it?
+  Output: R Documentation shows you what's available. 
 
 - Class: text
-  Output: Yes! The base system is very intuitive and easy to use. You can't go backwards, though, say, if you need to readjust margins or misspell a caption. A finished plot will be a series of R commands, so it's difficult to translate a finished plot into a different system.
-
-- Class: text
-  Output:  Calling a basic routine such as plot(x, y) or hist(x)  launches a graphics device (if one is not already open) and draws a new plot on the device. If the arguments to plot or hist are not of some special class, then the default method  is called.
-
-- Class: text
-  Output: As you'll see, most of the base plotting functions have many arguments, for example, setting the title, labels of axes, plot character, etc. Some of the parameters can be set when you call the function or they can be added later in a separate function call.
-
-
-
-- Class: text
-  Output: Now we'll go through some quick examples of basic plotting before we delve into gory  details. We'll use the dataset airquality (part of the library datasets) which we've loaded for you . This shows ozone and other air measurements for New York City for 5 months in 1973.
-
+  Output: There are two basic approaches to plotting. The first, plotting to the screen, is the most common. It's simple - you call a plotting function like plot, xyplot, or qplot (which you call depends on the plotting system you favor, but that's another lesson), so that the plot appears on the screen. Then you annotate (add  to) the plot if necessary. 
 
 - Class: cmd_question
-  Output: We see the dataset contains 6 columns of data. Run the command range with two arguments. The first is the ozone column of airquality, specified by airquality$Ozone, and the second is the boolean na.rm set equal to TRUE. If you don't specify this second argument, you won't get a meaningful result.
-  CorrectAnswer: range(airquality$Ozone,na.rm=TRUE)
-  AnswerTests: omnitest(correctExpr='range(airquality$Ozone,na.rm=TRUE)')
-  Hint: Type range(airquality$Ozone,na.rm=TRUE) at the command prompt.
+  Output:  As an example, run the R command with with 2 arguments. The first is a dataset, faithful, which comes with R, and the second is a call to the base plotting function plot. Your call to plot should have two arguments, eruptions and waiting. Try this now to see what happens. 
+  CorrectAnswer: with(faithful, plot(eruptions, waiting))
+  AnswerTests: omnitest(correctExpr='with(faithful, plot(eruptions, waiting))')
+  Hint: Type with(faithful, plot(eruptions, waiting)) at the command prompt.
  
 - Class: cmd_question
-  Output: So the measurements range from 1 to 168. First we'll do a simple histogram of this ozone column to show the distribution of measurements. Use the R command hist with the argument airquality$Ozone.   
-  CorrectAnswer: hist(airquality$Ozone)
-  AnswerTests: omnitest(correctExpr='hist(airquality$Ozone)')
-  Hint: Type hist(airquality$Ozone) at the command prompt.
- 
-- Class: mult_question
-  Output: Simple, right? R put a title on the histogram and labeled both axes for you. What is the most frequent count? 
-  AnswerChoices: Under 25; Between 60 and 75; Over 150; Over 100 
-  CorrectAnswer: Under 25
-  AnswerTests: omnitest(correctVal='Under 25')
-  Hint: Where is the highest bar?
-
-- Class: cmd_question
-  Output: Next we'll do a boxplot. First, though, run the R command table with the argument airquality$Month.
-  CorrectAnswer: table(airquality$Month)
-  AnswerTests: omnitest(correctExpr='table(airquality$Month)')
-  Hint: Type table(airquality$Month) at the command prompt.
+  Output: See how R created a scatterplot for you? This shows that relationship between eruptions of the geyser Old Faithful and waiting time. Now use the R function title with the argument main set equal to the string "Old Faithful Geyser data". This is an annotation to the plot.
+  CorrectAnswer: title(main = "Old Faithful Geyser data")
+  AnswerTests: omnitest(correctExpr='title(main = "Old Faithful Geyser data")')
+  Hint: Type title(main = "Old Faithful Geyser data") at the command prompt.
  
 - Class: cmd_question
-  Output: We see that the data covers 5 months, May through September. We'll want a boxplot of ozone as a function of the month in which the measurements were taken so we'll use the R formula Ozone~Month as the first argument of boxplot. Our second argument will be airquality, the dataset from which the variables of the first argument are taken.  Try this now.
-  CorrectAnswer: boxplot(Ozone~Month, airquality)
-  AnswerTests: omnitest(correctExpr='boxplot(Ozone~Month, airquality)')
-  Hint: Type boxplot(Ozone~Month, airquality) at the command prompt.
- 
-- Class: text
-  Output:  Note that boxplot, unlike hist, did NOT specify a title and axis labels for you automatically.
-
-- Class: cmd_question
-  Output:  Let's call boxplot again to specify labels. (Use the up arrow to recover the previous command and save yourself some typing.) We'll add more arguments to the call to specify labels for the 2 axes. Set xlab equal to "Month" and ylab equal to "Ozone (ppb)". Specify col.axis equal to "blue" and col.lab equal to "red". Try this now.
-  CorrectAnswer: boxplot(Ozone~Month, airquality, xlab="Month", ylab="Ozone (ppb)",col.axis="blue",col.lab="red")
-  AnswerTests: omnitest(correctExpr='boxplot(Ozone~Month, airquality, xlab="Month", ylab="Ozone (ppb)",col.axis="blue",col.lab="red")')
-  Hint: Type boxplot(Ozone~Month, airquality, xlab="Month", ylab="Ozone (ppb)",col.axis="blue",col.lab="red") at the command prompt.
-
-- Class: cmd_question
-  Output: Still no title. Let's add one with the R command title. Use the argument main set equal to the string "Ozone and Wind in New York City". 
-  CorrectAnswer: title(main="Ozone and Wind in New York City")
-  AnswerTests: omnitest(correctExpr='title(main=\"Ozone and Wind in New York City\")')
-  Hint: Type title(main="Ozone and Wind in New York City") at the command prompt.
-
-- Class: cmd_question
-  Output: Now we'll show you how to plot a simple two-dimensional scatterplot using the R function plot. We'll show the relationship between Wind (x-axis) and Ozone (y-axis). We'll use the function plot with those two arguments (Wind and Ozone, in that order). To save some typing, though, we'll call the R command with with 2 arguments. The first argument of with will be airquality, the dataset containing Wind and Ozone; the second argument  will be the call to plot. Doing this allows us to avoid using the longer notation, e.g., airquality$Wind. Try this now. 
-  CorrectAnswer: with(airquality, plot(Wind, Ozone))
-  AnswerTests: omnitest(correctExpr='with(airquality, plot(Wind, Ozone))')
-  Hint: Type with(airquality, plot(Wind, Ozone)) at the command prompt.
- 
-- Class: text
-  Output:  Note that plot generated labels for the x and y axes but no title. 
-
-- Class: cmd_question
-  Output: Add one now with the R command title. Use the argument main set equal to the string "Ozone and Wind in New York City". (You can use the up arrow to recover the command if you don't want to type it.)
-  CorrectAnswer: title(main="Ozone and Wind in New York City")
-  AnswerTests: omnitest(correctExpr='title(main=\"Ozone and Wind in New York City\")')
-  Hint: Type title(main="Ozone and Wind in New York City") at the command prompt.
-
-- Class: cmd_question
-  Output:  The basic plotting parameters are documented in the R help page for the function par. You can use par to set parameters OR to find out what values are already set. To see just how much flexibility you have, run the R command length with the argument par() now. 
-  CorrectAnswer: length(par())
-  AnswerTests: omnitest(correctExpr='length(par())')
-  Hint: Type length(par()) at the command prompt.
+  Output: Simple, right? The second way to create a plot is to send it to a file device. Depending on the type of plot you're making, you explicitly launch a graphics device, e.g., a pdf file. Type the command pdf(file=paste(path_to_course,"myplot.pdf",sep="/")) to launch the file device.
+  CorrectAnswer: pdf(file=paste(path_to_course,"myplot.pdf",sep="/"))
+  AnswerTests: omnitest(correctExpr='pdf(file=paste(path_to_course,"myplot.pdf",sep="/"))')
+  Hint: Type pdf(file=paste(path_to_course,"myplot.pdf",sep="/")) at the command prompt.
  
 - Class: cmd_question
-  Output:  So there are a boatload (72) of parameters that par() gives you access to. Run the R function names with par() as its argument to see what these parameters are.
-  CorrectAnswer: names(par())
-  AnswerTests: omnitest(correctExpr='names(par())')
-  Hint: Type names(par()) at the command prompt.
+  Output: You then call the plotting function (if you are using a file device, no plot will appear on the screen). Run the with command again to plot the Old Faithful data. Use the up arrow key to recover the command and save yourself some typing.
+  CorrectAnswer: with(faithful, plot(eruptions, waiting))
+  AnswerTests: omnitest(correctExpr='with(faithful, plot(eruptions, waiting))')
+  Hint: Type with(faithful, plot(eruptions, waiting)) at the command prompt.
  
 - Class: cmd_question
-  Output: Variety is the spice of life. You might recognize some of these such as col and lwd from previous swirl lessons. You can always run ?par to see what they do. For now, run the command par()$pin and see what you get.
-  CorrectAnswer: par()$pin
-  AnswerTests: ANY_of_exprs('par()$pin','par(\"pin\")','par(\'pin\')')
-  Hint: Type par()$pin at the command prompt.
+  Output: Now rerun the title command and annotate the plot. (Up arrow keys are great!)
+  CorrectAnswer: title(main = "Old Faithful Geyser data")
+  AnswerTests: omnitest(correctExpr='title(main = "Old Faithful Geyser data")')
+  Hint: Type title(main = "Old Faithful Geyser data") at the command prompt.
  
-- Class: mult_question
-  Output: Alternatively, you could have gotten the same result by running par("pin") or par('pin')).  What do you think these two numbers represent?
-  AnswerChoices: Plot dimensions; A confidence interval; Random numbers; Coordinates of the center of the plot window
-  CorrectAnswer: Plot dimensions
-  AnswerTests: omnitest(correctVal='Plot dimensions')
-  Hint: The function par specifies graphical parameters so the answer should deal with plots. That leaves two choices. The 'in' in 'pin' specifies inches.
-
-- Class: cmd_question
-  Output: Now, run the command par("fg") or or par('fg') or par()$fg and see what you get.
-  CorrectAnswer: par()$fg
-  AnswerTests: ANY_of_exprs('par(\"fg\")','par()$fg','par(\'fg\')')
-  Hint: Type par()$fg OR par('fg') OR par("fg") at the command prompt.
+- Class: text
+  Output: Finally, when plotting to a file device, you have to close the device with the command dev.off(). This is very important! Don't do it yet, though. After closing, you'll be able to view the pdf file on your computer.
  
-- Class: mult_question
-  Output: It gave you a color, right? Since par()$fg specifies foreground color, what do you think par()$bg specifies?
-  AnswerChoices: Background color; Better color; blue-green; Beautiful color
-  CorrectAnswer: Background color
-  AnswerTests: omnitest(correctVal='Background color')
-  Hint: What's the opposite of foreground?
 
 - Class: text
-  Output: Many base plotting functions share a set of parameters. We'll go through some of the more commonly used ones now. See if you can tell what they do from their names.
+  Output: There are two basic types of file devices, vector and bitmap devices. These use different formats and have different characteristics. Vector formats are good for line drawings and plots with solid colors using a modest number of points, while bitmap formats are good for plots with a large number of points, natural scenes or web-based plots.
 
 
-- Class: mult_question
-  Output: What do you think the graphical parameter pch controls?
-  AnswerChoices: plot character; pc help; picture characteristics; point control height
-  CorrectAnswer: plot character
-  AnswerTests: omnitest(correctVal='plot character')
-  Hint: The p stands for plot.
+- Class: text
+  Output:  We'll mention 4 specific vector formats. The first is pdf, which we've just used in our example. This is useful for line-type graphics and papers. It resizes well, is usually portable, but it is not efficient if a plot has many objects/points.
+
+- Class: text
+  Output: The second is svg which is  XML-based, scalable vector graphics. This supports animation and interactivity and is potentially useful for web-based plots. 
+
+- Class: text
+  Output: The last two vector formats are win.metafile, a  Windows-only metafile format, and postscript (ps), an older format which also resizes well, is usually portable, and can be used to create encapsulated postscript files. Unfortunately, Windows systems often don’t have a postscript viewer.
+
+- Class: text
+  Output:  We'll also mention 4 different bitmap formats. The first is png (Portable Network Graphics) which is  good for line drawings or images with solid colors. It uses lossless compression (like the old GIF format), and most web browsers can read this format natively. In addition, png is good for plots with many points, but it does not resize well. 
+
+- Class: text
+  Output: In contrast,  jpeg files are good for photographs or natural scenes. They use lossy compression, so they're good for plots with many points. Files in jpeg format  don't resize well, but they can be read by almost any computer and any web browser. They're not great for line drawings.
+
+- Class: text
+  Output: The last two bitmap formats are tiff, an older lossless compression meta-format and bmp which is a native Windows bitmapped format.
+
+- Class: text
+  Output: Although it is possible to open multiple graphics devices (screen, file, or both), when viewing multiple plots at once, plotting can only occur on one graphics device at a time.
 
 - Class: cmd_question
-  Output: The plot character default is the open circle, but it "can either be a single character or an integer code for one of a set of graphics symbols." Run the command par("pch") to see the integer value of the default. You can use R's documentation (?pch) to find what the other values mean.
-  CorrectAnswer: par("pch")
-  AnswerTests: ANY_of_exprs('par(\"pch\")','par()$pch','par(\'pch\')')
-  Hint: Type par()$pch OR par('pch') OR par("pch") at the command prompt.
+  Output: The currently active graphics device can be found by calling dev.cur(). Try it now to see what number is assigned to your pdf device.
+  CorrectAnswer: dev.cur()
+  AnswerTests: omnitest(correctExpr='dev.cur()')
+  Hint: Type dev.cur() at the command prompt.
+
+- Class: cmd_question
+  Output: Now use dev.off() to close the device.
+  CorrectAnswer: dev.off()
+  AnswerTests: omnitest(correctExpr='dev.off()')
+  Hint: Type dev.off() at the command prompt.
+
+- Class: cmd_question
+  Output: Now rerun dev.cur() to see what integer your plotting window is assigned.
+  CorrectAnswer: dev.cur()
+  AnswerTests: omnitest(correctExpr='dev.cur()')
+  Hint: Type dev.cur() at the command prompt.
+
+- Class: text
+  Output: As you might have guessed,  every open graphics device is assigned an integer greater than or equal to 2. You can change the active graphics device with dev.set(<integer>) where <integer> is the number associated with the graphics device you want to switch to.
+
+- Class: text
+  Output: You can also copy a plot from one device to another. This can save you some time but beware! Copying a plot is not an exact operation, so the result may not be identical to the original. R provides some functions to help you do this. The function dev.copy copies a plot from one device to another, and dev.copy2pdf specifically copies a plot to a PDF file.
+
+- Class: cmd_question
+  Output:  Just for fun, rerun the with command again, with(faithful, plot(eruptions, waiting)), to plot the Old Faithful data. Use the up arrow key to recover the command if you don't feel like typing.
+  CorrectAnswer: with(faithful, plot(eruptions, waiting))
+  AnswerTests: omnitest(correctExpr='with(faithful, plot(eruptions, waiting))')
+  Hint: Type with(faithful, plot(eruptions, waiting)) at the command prompt.
  
-- Class: mult_question
-  Output: What do you think the graphical parameters lty and lwd control respectively?
-  AnswerChoices: line type and width; line width and type; line length and width; line slope and intercept
-  CorrectAnswer: line type and width
-  AnswerTests: omnitest(correctVal='line type and width')
-  Hint: The l obviously stands for line. The ty and wd should be obvious.
-
 - Class: cmd_question
-  Output: Run the command par("lty") to see the  default line type. 
-  CorrectAnswer: par("lty")
-  AnswerTests: ANY_of_exprs('par(\"lty\")','par()$lty','par(\'lty\')')
-  Hint: Type par()$lty OR par('lty') OR par("lty") at the command prompt.
+  Output: Now rerun the title command, title(main = "Old Faithful Geyser data"),  to annotate the plot. (Up arrow keys are great!)
+  CorrectAnswer: title(main = "Old Faithful Geyser data")
+  AnswerTests: omnitest(correctExpr='title(main = "Old Faithful Geyser data")')
+  Hint: Type title(main = "Old Faithful Geyser data") at the command prompt.
+ 
+- Class: cmd_question
+  Output: Now run dev.copy with the arguments png and file set equal to "geyserplot.png". This will copy your screen plot to a png file.
+  CorrectAnswer: dev.copy(png, file = "geyserplot.png")
+  AnswerTests: omnitest(correctExpr='dev.copy(png, file = "geyserplot.png")')
+  Hint: Type dev.copy(png, file = "geyserplot.png") at the command prompt.
+ 
+- Class: cmd_question
+  Output: Don't forget to close the PNG device! Do it NOW!!!
+  CorrectAnswer: dev.off()
+  AnswerTests: omnitest(correctExpr='dev.off()')
+  Hint: Type dev.off() at the command prompt.
+ 
 
 - Class: text
-  Output: So the default line type  is  solid ,  but it can be  dashed, dotted, etc. Once again, R's ?par documentation will tell you what other line types are available. The line width is a positive integer; the default value is 1. 
-
-- Class: text
-  Output: We've seen a lot of examples of col, the plotting color, specified as a number, string, or hex code; the colors() function gives you a vector of colors by name.
-
-- Class: mult_question
-  Output: What do you think the graphical parameters xlab and ylab control respectively?
-  AnswerChoices: labels for the x- and y- axes; labels for the y- and x- axes; 
-  CorrectAnswer: labels for the x- and y- axes
-  AnswerTests: omnitest(correctVal='labels for the x- and y- axes')
-  Hint: The lab portion stands for label.
-
-- Class: text
-  Output: The par() function is used to specify global graphics parameters that affect all plots in an R session. (Use dev.off or plot.new to reset to the defaults.) These parameters can be overridden when specified as arguments to specific plotting functions. These include las (the orientation of the axis labels on the plot), bg (background color), mar (margin size), oma (outer margin size), mfrow and mfcol (number of plots per row, column).
-
-- Class: text
-  Output: The last two, mfrow and mfcol, both deal with multiple plots in that they specify the number of plots per row and column. The difference between them is the order in which they fill the plot matrix. The call mfrow will fill the rows first while mfcol fills the columns first.
-
-
-- Class: text
-  Output: So to reiterate, first call a basic plotting routine. For instance,  plot makes a scatterplot or other type of plot depending on the class of the object being plotted.
-
-- Class: mult_question
-  Output: As we've seen, R provides several annotating functions. Which of the following is NOT one of them?
-  AnswerChoices: lines; text, title; hist; points
-  CorrectAnswer: hist
-  AnswerTests: omnitest(correctVal='hist')
-  Hint: If you've just done a scatterplot, would you really want to annotate it with a histogram?
-
-- Class: text
-  Output: So you can add text, title, points, and lines to an existing plot. To add lines, you give a vector x values and a corresponding vector of y values (or a 2-column matrix); the function lines just connects the dots. The function text adds text labels to a plot using specified x, y coordinates.
-
-- Class: text
-  Output:   The function title adds annotations to x, y axis labels, title, subtitle, and outer margin. Two other annotating functions are mtext which adds arbitrary text to either the outer or inner margins of the plot and axis which adds axis ticks and labels. Another useful function is legend which explains to the reader what the symbols your plot uses mean.
-
-- Class: cmd_question
-  Output: Before we close, let's test your ability to make a somewhat complicated scatterplot. First run plot with 3 arguments. airquality$Wind, airquality$Ozone, and type set equal to "n". This tells R to set up the plot but not to put the data in it. 
-  CorrectAnswer:  plot(airquality$Wind, type="n",airquality$Ozone)
-  AnswerTests: omnitest(correctExpr='plot(airquality$Wind, type="n",airquality$Ozone)')
-  Hint: Type plot(airquality$Wind, type="n",airquality$Ozone) at the command prompt.
-
-- Class: cmd_question
-  Output: Now for the test. (You might need to check R's documentation for some of these.) Add a title with the argument main set equal to the string "Wind and Ozone in NYC"
-  CorrectAnswer:  title(main="Wind and Ozone in NYC")
-  AnswerTests: omnitest(correctExpr='title(main="Wind and Ozone in NYC")')
-  Hint: Type title(main="Wind and Ozone in NYC") at the command prompt.
-
-- Class: cmd_question
-  Output: Now create a variable may by subsetting airquality appropriately. (Recall that the data specifies months by number and May is the fifth month of the year.)
-  CorrectAnswer:  may <- subset(airquality, Month==5)
-  AnswerTests: expr_creates_var("may"); omnitest(correctExpr='may <- subset(airquality, Month==5)')
-  Hint: Type  may <- subset(airquality, Month==5) at the prompt.
-
-- Class: cmd_question
-  Output: Now use the R command points to plot May's wind and ozone (in that order) as solid blue triangles.
-  CorrectAnswer: points(may$Wind,may$Ozone,col="blue",pch=17)
-  AnswerTests: omnitest(correctExpr='points(may$Wind,may$Ozone,col="blue",pch=17)')
-  Hint: The code for solid blue trianges is 17 so typing points(may$Wind,may$Ozone,col="blue",pch=17) at the prompt should work.
-
-- Class: cmd_question
-  Output: Now create the variable notmay by subsetting airquality appropriately.
-  CorrectAnswer:  notmay <- subset(airquality, Month!=5)
-  AnswerTests: expr_creates_var("notmay"); omnitest(correctExpr='notmay <- subset(airquality, Month!=5)')
-  Hint: Type  notmay <- subset(airquality, Month!=5) at the prompt.
-
-- Class: cmd_question
-  Output: Now use the R command points to plot these notMay's wind and ozone (in that order) as  red snowflakes.
-  CorrectAnswer: points(notmay$Wind,notmay$Ozone,col="red",pch=8)
-  AnswerTests: omnitest(correctExpr='points(may$Wind,may$Ozone,col="blue",pch=8)')
-  Hint: Type points(notmay$Wind,notmay$Ozone,col="red",pch=8) at the prompt.
-
-- Class: cmd_question
-  Output: Now use the R command points to plot these notMay's wind and ozone (in that order) as  red snowflakes.
-  CorrectAnswer: points(notmay$Wind,notmay$Ozone,col="red",pch=8)
-  AnswerTests: omnitest(correctExpr='points(may$Wind,may$Ozone,col="blue",pch=8)')
-  Hint: The code for snowflakes is 8 so typing points(notmay$Wind,notmay$Ozone,col="red",pch=8) at the prompt should work.
-
-- Class: cmd_question
-  Output: Now we'll use the R command legend to clarify the plot and explain what it means. The function  has a lot of arguments, but we'll only use 4. The first will be the string "topright" to tell R where to put the legend. The remaining 3 arguments will each be 2-long vectors created by R's concatenate  function, e.g., c(). These arguments are pch, col, and legend. The first is the vector (17,8), the second ("blue","red"), and the third ("May","Other Months"). Try it now.
-  CorrectAnswer: legend("topright",pch=c(17,8),col=c("blue","red"),legend=c("May","Other Months"))
-  AnswerTests: omnitest(correctExpr='legend("topright",pch=c(17,8),col=c("blue","red"),legend=c("May","Other Months"))')
-  Hint: Type legend("topright",pch=c(17,8),col=c("blue","red"),legend=c("May","Other Months")).
-
-- Class: cmd_question
-  Output: Now add a horizontal line at the median of airquality$Wind. Make it dashed (lty=2) with a width of 2.
-  CorrectAnswer: abline(v=median(airquality$Wind),lty=2,lwd=2)
-  AnswerTests: omnitest(correctExpr='abline(v=median(airquality$Wind),lty=2,lwd=2)')
-  Hint: Type abline(v=median(airquality$Wind),lty=2,lwd=2).
-
-- Class: cmd_question
-  Output: Use par with the parameter mfrow set equal to the vector (1,2) to set up the plot window for two plots side by side. You won't see a result.
-  CorrectAnswer: par(mfrow=c(1,2))
-  AnswerTests: omnitest(correctExpr='par(mfrow=c(1,2))')
-  Hint: Type par(mfrow=c(1,2)).
-
-- Class: cmd_question
-  Output: Now plot airquality$Wind and airquality$Ozone and use main to specify the title "Ozone and Wind".
-  CorrectAnswer: plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind")
-  AnswerTests: omnitest(correctExpr='plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind")')
-  Hint: Type plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind").
-
-- Class: cmd_question
-  Output: Now plot airquality$Wind and airquality$Solar.R and use main to specify the title "Ozone and Solar Radiation".
-  CorrectAnswer: plot(airquality$Wind, airquality$Solar.R, main = "Ozone and Solar Radiation")
-  AnswerTests: omnitest(correctExpr='plot(airquality$Wind, airquality$Solar.R, main = "Ozone and Solar Radiation")')
-  Hint: Type plot(airquality$Wind, airquality$Solar.R, main = "Ozone and Solar Radiation").
-
-- Class: cmd_question
-  Output: One more, this one with 3 plots, to illustrate inner and outer margins. First, set up the plot window by typing  par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))
-  CorrectAnswer: par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))
-  AnswerTests: omnitest(correctExpr='par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))')
-  Hint: Type par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0)).
-
-- Class: text
-  Output: Margins are specified as 4-long vectors of integers. Each number tells how many lines of text to leave at each side. The numbers are assigned clockwise starting at the bottom. The default for the inner margin is c(5.1, 4.1, 4.1, 2.1)  so you can see we reduced each of these so we'll have room for some outer text.
-
-- Class: cmd_question
-  Output: The first plot should be familiar. Plot airquality$Wind and airquality$Ozone with the title (argument main) as "Wind and Ozone".
-  CorrectAnswer: plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind")
-  AnswerTests: omnitest(correctExpr='plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind")')
-  Hint: Type plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind").
-
-- Class: cmd_question
-  Output: The second plot is similar. Plot airquality$Solar.R and airquality$Ozone with the title (argument main) as "Ozone and Solar Radiation".
-  CorrectAnswer: plot(airquality$Solar.R, airquality$Ozone, main = "Ozone and Solar Radiation")
-  AnswerTests: omnitest(correctExpr='plot(airquality$Solar.R, airquality$Ozone, main = "Ozone and Solar Radiation")')
-  Hint: Type plot(airquality$Solar.R, airquality$Ozone, main = "Ozone and Solar Radiation").
-
-- Class: cmd_question
-  Output: Finally, plot airquality$Temp and airquality$Ozone with the title (argument main) as "Ozone and Temperature".
-  CorrectAnswer: plot(airquality$Temp, airquality$Ozone, main = "Ozone and Temperature")
-  AnswerTests: omnitest(correctExpr='plot(airquality$Temp, airquality$Ozone, main = "Ozone and Temperature")')
-  Hint: Type plot(airquality$Temp, airquality$Ozone, main = "Ozone and Temperature").
-
-- Class: cmd_question
-  Output: Now for the main title, specified by the R command mtext. Call it with the string "Ozone and Weather in NYC" and the argument outer set equal to TRUE.
-  CorrectAnswer:  mtext("Ozone and Weather in New York City", outer = TRUE)
-  AnswerTests: omnitest(correctExpr=' mtext("Ozone and Weather in New York City", outer = TRUE)')
-  Hint: Type mtext("Ozone and Weather in New York City", outer = TRUE).
-
-- Class: text
-  Output: Voila! Beautiful, right?
-
-- Class: text
-  Output: Congrats! You've weathered this lesson nicely and passed out of the No!zone.
+  Output: Congrats! We hope you found this lesson deviced well!
