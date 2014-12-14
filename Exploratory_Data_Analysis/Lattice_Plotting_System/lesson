@@ -1,19 +1,31 @@
 - Class: meta
   Course: Exploratory_Data_Analysis
-  Lesson: Base_Plotting_System
+  Lesson: Lattice_Plotting_System
   Author: Swirl Coders
   Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
 - Class: text
-  Output: "Base_Plotting_System. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 04_ExploratoryAnalysis/PlottingBase.)"
+  Output: "Lattice_Plotting_System. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 04_ExploratoryAnalysis/PlottingLattice.)"
 
 - Class: text
-  Output:  In another lesson, we gave you an overview of the three plotting systems in R. In this lesson we'll focus on the base plotting system and talk more about how you can exploit all its many parameters to get the plot you want.  We'll focus on using the base plotting system to create graphics on the screen device rather than another graphics device.
+  Output:  In another lesson, we gave you an overview of the three plotting systems in R. In this lesson we'll focus on the lattice plotting system.  As we did with the base plotting system, we'll focus on using lattice  to create graphics on the screen device rather than another graphics device.
 
 - Class: text
-  Output:  The core plotting and graphics engine in R is encapsulated in two packages. The first is the graphics package which contains plotting functions for the "base" system. The functions in this package include plot, hist, boxplot, barplot, etc. The second package is grDevices which  contains all the code implementing the various graphics devices, including X11, PDF, PostScript, PNG, etc.
+  Output:  The lattice plotting system is completely separate and independent of the base plotting system. It's an add-on package so it has to be explicitly loaded with a call to the R function library. We've done this for you. The R Documentation tells us that lattice "is an implementation of Trellis graphics for R. It is a powerful and elegant high-level data visualization system with an emphasis on multivariate data."
+
+- Class: text
+  Output: Lattice is implemented using two packages. The first is called, not surprisingly, lattice, and it contains code for producing Trellis graphics. Some of the functions in this package are the higher level functions which you, the user, would call. These include xyplot, bwplot, and levelplot.
+
+- Class: text
+  Output: The second package in the system is grid which contains the low-level  functions upon which the lattice package is built. You, the user, seldom call functions from the grid package directly.
+
+- Class: text
+  Output: Unlike base plotting,  the lattice system does not have a "two-phase" aspect with separate plotting and annotation. Instead all plotting and annotation is done at once with a single function call.
+
+
+
 
 - Class: text
   Output: Base graphics are often constructed piecemeal, with each aspect of the plot handled separately through a particular function call. Usually you start with a plot function (such as plot, hist, or boxplot), then you use annotation functions (text, abline, points) to add to or modify your plot. 
