@@ -192,7 +192,7 @@
   FigureType: new
 
 - Class: cmd_question
-  Output: To make sure you understand what's going on, trying running mywald now with the probability .2. It will print out 30 p' values (which you don't really need to see), followed by 30 lower bounds, 30 upper bounds and lastly the percentage of times that the input .2 was between the two bounds. See if you agree with the percentage you get. Usually it suffices to just count the number of times (out of the 30) that .2 is less than the upper bound.
+  Output: To make sure you understand what's going on, try running mywald now with the probability .2. It will print out 30 p' values (which you don't really need to see), followed by 30 lower bounds, 30 upper bounds and lastly the percentage of times that the input .2 was between the two bounds. See if you agree with the percentage you get. Usually it suffices to just count the number of times (out of the 30) that .2 is less than the upper bound.
   CorrectAnswer: mywald(.2)
   AnswerTests: omnitest(correctExpr='mywald(.2)')
   Hint: Type mywald(.2) at the command prompt. 
@@ -236,7 +236,7 @@
   Hint: Type  ACCompar(20) at the command prompt.
 
 - Class: text
-  Output: Let's move on to Poisson distributions and confidence intervals. Recall that Poisson distributions model counts or rates. For the latter, we write X~Poisson(lambda*t) where lambda is the expected count per unit of time and t is the total monitoring time.
+  Output: Let's move on to Poisson distributions and confidence intervals. Recall that Poisson distributions apply to counts or rates. For the latter, we write X~Poisson(lambda*t) where lambda is the expected count per unit of time and t is the total monitoring time.
 
 - Class: text
   Output:  Here's another example from the slides. Suppose a nuclear pump failed 5 times out of 94.32 days and we want  a 95% confidence interval for the failure rate per day. The number of failures X is Poisson distributed with parameter (lambda*t). We estimate the failure rate, lambda', as x/t and the variance of our estimated mean is lambda/t, which we estimate as lambda'/t.
