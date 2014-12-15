@@ -37,33 +37,33 @@
   Hint: Type list.files() to all the files in your working directory.
 
 - Class: text
-  Output: As we go through this lesson, you should be consider examining the help page for each new function. 
+  Output: As we go through this lesson, you should be examining the help page for each new function. 
 
 - Class: cmd_question
-  Output: Pull up the help for for list.files()?
+  Output: Pull up the help for list.files().
   CorrectAnswer: ?list.files
   AnswerTests: omnitest(correctExpr='?list.files')
   Hint: Type ?list.files to retrieve the help file for list.files.
 
 
 - Class: text
-  Output: One of the most helpful parts of any R help file is the See Also section. Read that section for list.files. These are some of the functions we will be using in later portions of this lesson.
+  Output: One of the most helpful parts of any R help file is the See Also section. Read that section for list.files. Some of these functions may be used in later portions of this lesson.
 
 - Class: cmd_question
-  Output: Show all the files in your working directory, including their full paths.
+  Output: Show all the files in your working directory, including their directory paths.
   CorrectAnswer: list.files(full.names = TRUE)
   AnswerTests: omnitest(correctExpr='list.files(full.names = TRUE)')
   Hint: Type list.files(full.names = TRUE) to show all the files in your working directory, including their full paths.
 
 - Class: text
-  Output: Using the arg() function on a function name is also a handy way to see what arguments a function can take. 
+  Output: Using the args() function on a function name is also a handy way to see what arguments a function can take. 
 
 
 - Class: cmd_question
-  Output: Use the arg() function to determine the arguments to list.files()?
-  CorrectAnswer: arg(list.files)
-  AnswerTests: omnitest(correctExpr='arg(list.files)')
-  Hint: Type arg(list.files) to see the arguments to list.files.
+  Output: Use the args() function to determine the arguments to list.files().
+  CorrectAnswer: args(list.files)
+  AnswerTests: omnitest(correctExpr='args(list.files)')
+  Hint: Type args(list.files) to see the arguments to list.files.
 
 
 - Class: cmd_question
@@ -73,7 +73,7 @@
   Hint: Type old.dir <- getwd() to sAssign the value of the current working directory to a variable called "old.dir".
 
 - Class: text
-  Output: We will use old.dir at the end of these questions to move back to the place that we started. A lot of query functions like getwd() have the useful property that they return the answer to the question as a result of the function.
+  Output: We will use old.dir at the end of this lesson to move back to the place that we started. A lot of query functions like getwd() have the useful property that they return the answer to the question as a result of the function.
 
 - Class: cmd_question
   Output: Create a directory in the current working directory called "testdir".
@@ -87,7 +87,7 @@
 - Class: cmd_question
   Output:  Change your working directory to "testdir".
   CorrectAnswer: setwd("testdir")
-  AnswerTests: omnitest(correctExpr='setwd("testdir")')
+  AnswerTests: any_of_exprs('setwd("testdir")', 'setwd("testdir/")')
   Hint: Use setwd("testdir") to change your working directory to "testdir".
 
 - Class: text
@@ -102,7 +102,7 @@
 - Class: cmd_question
   Output: This should be the only file in this newly created directory. What R command (that we have already covered) will conform this?
   CorrectAnswer: list.files()
-  AnswerTests: omnitest(correctExpr='list.files()')
+  AnswerTests: any_of_exprs('list.files()', 'list.files')
   Hint: list.files() shows that the directory only contains mytest.R.
 
 
@@ -113,13 +113,17 @@
   Hint: Use file.exists("mytest.R") to check that a file exists.
 
 - Class: text
-  Output: These sorts of functions are mostly useless for interactive use. But, if you are running a program that loops through a series of files and does some processing on each one, you will want to check to see that each exists.
+  Output: These sorts of functions are excessive for interactive use. But, if you are running a program that loops through a series of files and does some processing on each one, you will want to check to see that each exists before you try to process it.
 
 - Class: cmd_question
-  Output: Access information about "my.test.R". That is, what command, along with the appropriate argument, will return information about the file "my.test.R"?
+  Output: Access information about "my.test.R". That is, what command, along with the appropriate argument, will return information about the file "mytest.R"?
   CorrectAnswer: file.info("mytest.R")
   AnswerTests: omnitest(correctExpr='file.info("mytest.R")')
   Hint: file.info("mytest.R") will do the trick!
+
+# Might add some work with the object returned by file.info.
+# I need to think hard about how to allow answers that include
+# the argument names.
 
 - Class: text
   Output: You can use the $ operator --- e.g., file.info("mytest.R")$mode --- to grab specific items.
@@ -140,15 +144,13 @@
   Hint: file.copy("mytest2.R", "mytest3.R") works.
 
 - Class: text
-  Output: You now have two files in the current directory. That may not seem very interesting. But what if you were working with dozens, or millions, of individual files? In that case, being able to programatically act on many files would be absolutely necessary.
+  Output: You now have two files in the current directory. That may not seem very interesting. But what if you were working with dozens, or millions, of individual files? In that case, being able to programatically act on many files would be absolutely necessary. Don't forget that you can, temporarily leave the lesson by typing play() and then return by typing nxt().
 
 - Class: cmd_question
   Output: Provide the full path to "mytest3.R".
-  CorrectAnswer: file.copy("mytest2.R", "mytest3.R")
-  AnswerTests: omnitest(correctExpr='file.copy("mytest2.R", "mytest3.R")')
-  Hint: file.copy("mytest2.R", "mytest3.R") works.
-
-####
+  CorrectAnswer: file.path("mytest3.R")
+  AnswerTests: omnitest(correctExpr='file.path("mytest3.R")')
+  Hint: file.path("mytest3.R") works.
 
 - Class: cmd_question
   Output: Create a directory in the current working directory called "testdir2" and a subdirectory for it called "testdir3", all in one command.
@@ -169,14 +171,16 @@
 - Class: cmd_question
   Output: Go back to your original working directory. (Recall that we created the variable old.dir with the full path for the orginal working directory at the start of these questions.)
   CorrectAnswer: setwd(old.dir)
+  AnswerTests: omnitest(correctExpr='setwd(old.dir)')
   Hint: Use setwd(old.dir).
 
 - Class: text
-  Output: It is often help to save the settings that you had before you began an analysis and the go back to them at the end. This trick is often used within functions: you save, say, the par() settings that you started with, mess around a bunch, and then set them back to the original values at the end. This isn't the same as what we have done here, but it seems similar enough to mention.
+  Output: It is often help to save the settings that you had before you began an analysis and the go back to them at the end. This trick is often used within functions; you save, say, the par() settings that you started with, mess around a bunch, and then set them back to the original values at the end. This isn't the same as what we have done here, but it seems similar enough to mention.
 
 - Class: cmd_question
   Output: Delete the "testdir" directory that you just left (and everything in it)
   CorrectAnswer: unlink("testdir", recursive = TRUE)
+  AnswerTests: omnitest(correctExpr='unlink("testdir", recursive = TRUE)')
   Hint: Use unlink("testdir", recursive = TRUE).
 
 - Class: text
