@@ -54,7 +54,7 @@
   FigureType: new
 
 - Class: mult_question
-  Output: Could the diagonal line represent a probability density function for a random vaiable with a range of values between 0 and 2? Assume the lower side of the rectangle is the x axis.
+  Output: Could the diagonal line represent a probability density function for a random variable with a range of values between 0 and 2? Assume the lower side of the rectangle is the x axis.
   AnswerChoices: Yes; No
   CorrectAnswer: Yes
   AnswerTests: omnitest(correctVal='Yes')

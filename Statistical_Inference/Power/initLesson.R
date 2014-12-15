@@ -16,5 +16,6 @@ myplot <- function(mua) {
                         size = 2, col = "blue")
   xitc = mu0 + qnorm(1 - alpha) * sigma / sqrt(n)
   g = g + geom_vline(xintercept=xitc, size = 3)
-  g
+  print(g)
+  invisible()
 }

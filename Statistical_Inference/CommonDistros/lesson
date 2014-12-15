@@ -84,7 +84,7 @@
   Hint: Type pbinom(2,size=5,prob=.8,lower.tail=FALSE) at the R prompt.
 
 - Class: text
-  Output: Another very common distribution is the normal or Gaussian. It has a complicated density function involving its mean mu and variance sigma^2. The key fact of the density formula is that when plotted, it forms a bell shaped curve, symmetric about its mean mu. The variance sigma^2 corresponds the width of the bell, the higher the variance, the fatter the bell. We denote a normally distributed random variable X as X ~ N(mu, sigma^2).
+  Output: Another very common distribution is the normal or Gaussian. It has a complicated density function involving its mean mu and variance sigma^2. The key fact of the density formula is that when plotted, it forms a bell shaped curve, symmetric about its mean mu. The variance sigma^2 corresponds to the width of the bell, the higher the variance, the fatter the bell. We denote a normally distributed random variable X as X ~ N(mu, sigma^2).
 
 - Class: text
   Output:  When mu = 0 and sigma = 1 the resulting distribution is called the standard normal distribution and it is often labeled Z.
@@ -167,7 +167,7 @@
   Hint: Type pnorm((1200-1020)/50,lower.tail=FALSE) at the R prompt.
 
 - Class: cmd_question
-  Output: For practice, using the same distribution, find the  75% percentile. Use qnorm and specify the probability (.75), the mean (1020) and standard deviation (50). Since we're want to include the left part of the curve we can use the default lower.tail=TRUE.
+  Output: For practice, using the same distribution, find the  75% percentile. Use qnorm and specify the probability (.75), the mean (1020) and standard deviation (50). Since we want to include the left part of the curve we can use the default lower.tail=TRUE.
   CorrectAnswer: qnorm(.75,mean=1020,sd=50)
   AnswerTests: omnitest(correctExpr='qnorm(.75,mean=1020,sd=50)')
   Hint: Type qnorm(.75,mean=1020,sd=50) at the R prompt.

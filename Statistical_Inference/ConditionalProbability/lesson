@@ -93,7 +93,7 @@
 - Class: cmd_question
   Output: Disease prevalence is .001. Test sensitivity (+ result with disease) is 99.7% and specificity (- result without disease) is 98.5%. First compute the numerator, P(+|D)*P(D). (This is also part of the denominator.)
   CorrectAnswer: .997*.001
-  AnswerTests: ANY_of_exprs('.997*.001','.001*.997')
+  AnswerTests: equiv_val(0.000997)
   Hint: Multiply the test sensitivity by the prevalence.
 
 - Class: cmd_question
@@ -143,7 +143,7 @@
   Output:   P(D|+) / P(~D|+) = P(+|D) * P(D) / (P(+|~D) * P(~D)) = P(+|D)/P(+|~D) * P(D)/P(~D).
 
 - Class: mult_question
-  Output: The left side of the equation represents the post-test odds of disease given a positive test result. The equation says that the post-test odds of disease equals the pre-test odds  of disease (that is, P(D/P(~D) ) times
+  Output: The left side of the equation represents the post-test odds of disease given a positive test result. The equation says that the post-test odds of disease equals the pre-test odds  of disease (that is, P(D)/P(~D) ) times
   AnswerChoices: the DLR_+; the DLR_-; I haven't a clue.
   CorrectAnswer: the DLR_+
   AnswerTests: omnitest(correctVal='the DLR_+')
@@ -169,14 +169,14 @@
   Output: Two events, A and B, are independent if they have no effect on each other. Formally, P(A&B) = P(A)*P(B). It's easy to see that if A and B are independent, then P(A|B)=P(A). The definition is similar for random variables X and Y.
 
 - Class: mult_question
-  Output: We've seen examples of independence in our previous probability lessons. Let's review a little. What's the probability of rolling a '6' twice in a row using a fair dice?
+  Output: We've seen examples of independence in our previous probability lessons. Let's review a little. What's the probability of rolling a '6' twice in a row using a fair die?
   AnswerChoices: 1/6; 2/6; 1/36; 1/2
   CorrectAnswer: 1/36
   AnswerTests: omnitest(correctVal='1/36')
   Hint: Square the probability of rolling a single '6' since the two rolls are independent of one another.
 
 - Class: mult_question
-  Output: What's the probability of a second roll of the dice matching the first?
+  Output: You're given a fair die and asked to roll it twice. What's the probability that the second roll of the die matches the first?
   AnswerChoices: 1/6; 2/6; 1/36; 1/2
   CorrectAnswer: 1/6
   AnswerTests: omnitest(correctVal='1/6')
