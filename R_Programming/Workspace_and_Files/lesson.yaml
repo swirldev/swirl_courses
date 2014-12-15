@@ -180,4 +180,7 @@
   Hint: Use unlink("testdir", recursive = TRUE).
 
 - Class: text
+  Output: Take nothing but results. Leave nothing but assumptions. That sounds like "Take nothing but pictures. Leave nothing but footprints." But it makes no sense! Surely our readers can come up with a better motto . . .
+
+- Class: text
   Output: In this lesson, you learned how to examine your R workspace and work with the file system of your machine from within R.
