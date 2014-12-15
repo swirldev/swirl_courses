@@ -169,7 +169,6 @@
 - Class: cmd_question
   Output: Go back to your original working directory. (Recall that we created the variable old.dir with the full path for the orginal working directory at the start of these questions.)
   CorrectAnswer: setwd(old.dir)
-  AnswerTests: calculates_same_value('setwd(old.dir)')
   Hint: Use setwd(old.dir).
 
 - Class: text
@@ -178,7 +177,6 @@
 - Class: cmd_question
   Output: Delete the "testdir" directory that you just left (and everything in it)
   CorrectAnswer: unlink("testdir", recursive = TRUE)
-  AnswerTests: calculates_same_value('unlink("testdir", recursive = TRUE)')
   Hint: Use unlink("testdir", recursive = TRUE).
 
 - Class: text
