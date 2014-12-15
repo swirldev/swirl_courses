@@ -16,6 +16,7 @@ equiv_val <- function(correctVal){
 }
 
 omnitest <- function(correctExpr=NULL, correctVal=NULL, strict=FALSE, eval_for_class=as.logical(NA)){
+  print("entering omnitest")
   e <- get("e", parent.frame())
   # Trivial case
   if(is.null(correctExpr) && is.null(correctVal))return(TRUE)
@@ -37,19 +38,23 @@ omnitest <- function(correctExpr=NULL, correctVal=NULL, strict=FALSE, eval_for_c
   }
   # Testing for correct expression only
   if(!is.null(correctExpr) && is.null(correctVal)){
+    print("testing for correct expression only")
     err <- try({
       good_expr <- parse(text=correctExpr)[[1]]
       ans <- is_robust_match(good_expr, e$expr, eval_for_class, eval_env)
+      print(paste("Testing for correct expression only, ans is ",ans))
     }, silent=FALSE)
-   print(paste("In omnitest ans is ",ans))
     if (is(err, "try-error")) {
+      print("returning from correct expression only with try errro")
       return(expr_identical_to(correctExpr))
     } else {
+      print("returning normally from correct expression only")
       return(ans)
     }
   }
   # Testing for both correct expression and correct value
   # Value must be character or single number
+  print("Testing for correct expression & value, which shouldn't happen!")
   valGood <- as.logical(NA)
   if(!is.null(correctVal)){
     if(is.character(e$val)){
@@ -98,6 +103,7 @@ is_robust_match <- function(expr1, expr2, eval_for_class, eval_env=NULL){
 }
 
 rmatch_calls <- function(expr, eval_for_class=FALSE, eval_env=NULL){
+  print(paste("entering rmatch_calls with", deparse(expr)))
   # If expr is not a call, just return it.
   if(!is.call(expr))return(expr)
   # Replace expr's components with matched versions.
@@ -151,8 +157,9 @@ rmatch_calls <- function(expr, eval_for_class=FALSE, eval_env=NULL){
                                               dprs(expr[[2]]), ", of class, ", cls,".\n")))
     }
   }
-  
-  expr <- enhancedMatch(fct,expr)
+  expr <- match.call(fct, expr)
+  print(paste("leaving rmatch_calls with", deparse(expr) ))
+#  expr <- enhancedMatch(fct,expr)
 #   # Form preliminary match. If match.call raises an error here, the remaining code is
 #   # likely to give a misleading result. Catch the error merely to give a better diagnostic.
 #   tryCatch(expr <- match.call(fct, expr),

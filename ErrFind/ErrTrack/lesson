@@ -1,0 +1,17 @@
+- Class: meta
+  Course: ErrFind
+  Lesson: ErrTrack
+  Author: Swirl Coders
+  Type: Coursera
+  Organization: Johns Hopkins Bloomberg School of Public Health
+  Version: 2.2.0
+
+
+- Class: text
+  Output: The LLN forms the basis of frequency style thinking. 
+
+- Class: cmd_question
+  Output: To see this in action, we've copied some code from the slides and created the function coinPlot. It takes an integer n which is the number of coin tosses that will be simulated. As coinPlot does these coin flips it computes the cumulative sum (assuming heads are 1 and tails 0), but after each toss it divides the cumulative sum by the number of flips performed so far. It then plots this value for each of the k=1...n tosses. Try it now for n=10. 
+  CorrectAnswer: coinPlot(10)
+  AnswerTests: omnitest(correctExpr='coinPlot(10)')
+  Hint: Type coinPlot(10) at the command prompt.
