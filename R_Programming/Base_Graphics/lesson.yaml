@@ -13,7 +13,7 @@
   Output: We do not cover the more advanced portions of graphics in R in this lesson. These include lattice, ggplot2 and ggvis.
 
 - Class: text
-  Output: There is a school of thought that this approach is backwards, that we shoul teach ggplot2 first. See http://varianceexplained.org/r/teach_ggplot2_to_beginners/ for an outline of this view.
+  Output: There is a school of thought that this approach is backwards, that we should teach ggplot2 first. See http://varianceexplained.org/r/teach_ggplot2_to_beginners/ for an outline of this view.
 
 - Class: cmd_question
   Output: Load the included data frame cars with data(cars).
@@ -22,7 +22,7 @@
   Hint: Type data(cars) to load the data.
 
 - Class: text
-  Output: To fix ideas, we will work with simple data frames. Our main goal is to introduce various plotting functions and their arguments. All the output would look better with larger, more complex data sets.
+  Output: To fix ideas, we will work with simple data frames. Our main goal is to introduce various plotting functions and their arguments. All the output would look more interesting with larger, more complex data sets.
 
 - Class: cmd_question
   Output: Pull up the help page for cars.
@@ -31,7 +31,7 @@
   Hint: Type ?cars or help(cars) to view a help page with details on the car data frame.
 
 - Class: text
-  Output: As you can see in the help page, the cars data set has only two variables: speed and stopping distance. Note that the data is from the 1920s.
+  Output: "As you can see in the help page, the cars data set has only two variables: speed and stopping distance. Note that the data is from the 1920s."
 
 - Class: cmd_question
   Output: Run head() on the cars data.
@@ -49,10 +49,10 @@
   Hint: Type plot(cars) to create a plot of the cars data frame.
 
 - Class: text
-  Output: As always, R tries very hard to give you something sensible given the information that you have provided to it. First, it notes that the data frame you have given it has just two columns, so it assumes that you want to plot one column versus the other.
+  Output: As always, R tries very hard to give you something sensible given the information that you have provided to it. First, R notes that the data frame you have given it has just two columns, so it assumes that you want to plot one column versus the other.
 
 - Class: text
-  Output: Second, since we do not provide labels for either axis, R uses the names of the columns. Third, it creates axis tick marks and nice round numbers. Fourth, it uses the other defaults supplied in plot().
+  Output: Second, since we do not provide labels for either axis, R uses the names of the columns. Third, it creates axis tick marks at nice round numbers and labels them accordingly. Fourth, it uses the other defaults supplied in plot().
 
 - Class: text
   Output: We will now spend some time exploring plot, but many of the topics covered here will apply to most other R graphics functions. Note that 'plot' is short for scatterplot.
@@ -64,7 +64,7 @@
   Hint: Type ?plot or help(plot) to view a help page for plot().
 
 - Class: text
-  Output: The help page for plot() highlights the different arguments that the function can take. The two most important are x and y, the variables that will be plotted. For the rest of this lesson, always include the argument names in your answers. That is, do not type plot(cars$speed, cars$dist), although that will work. Instead, use plot(x = cars$speed, y = cars$dist).
+  Output: The help page for plot() highlights the different arguments that the function can take. The two most important are x and y, the variables that will be plotted. For the next set of questions, include the argument names in your answers. That is, do not type plot(cars$speed, cars$dist), although that will work. Instead, use plot(x = cars$speed, y = cars$dist).
 
 - Class: cmd_question
   Output: Use plot() command to show speed on the x-axis and dist on the y-axis from the cars data frame. 
@@ -106,13 +106,13 @@
   Hint: Type plot(x = cars$speed, y = cars$dist, xlab = "Speed", ylab = "Stopping Distance") to create the plot.
 
 - Class: text
-  Output: The reason that plots(cars) worked at the beginning of the lesson was that R was smart enough to know that the first element (i.e., he first column) in cars should be assigned to the x argument and the second element to the y argument. To save on typing, the next set of answers will all be of the form, plot(cars, ...) with various arguments added.
+  Output: The reason that plots(cars) worked at the beginning of the lesson was that R was smart enough to know that the first element (i.e., the first column) in cars should be assigned to the x argument and the second element to the y argument. To save on typing, the next set of answers will all be of the form, plot(cars, ...) with various arguments added.
 
 - Class: text
   Output: For each question, we will only want one additional argument at a time. Of course, you can pass in more than one argument when doing a real project.
 
 - Class: cmd_question
-  Output: Plot cars with a main title of "My Plot".
+  Output: Plot cars with a main title of "My Plot". Note that the argument for the main title is "main" not "title".
   CorrectAnswer: plot(cars, main = "My Plot")
   AnswerTests: omnitest(correctExpr='plot(cars, main = "My Plot")')
   Hint: Type plot(cars, main = "My Plot") to create the plot.
@@ -124,7 +124,7 @@
   Hint: Type plot(cars, sub = "My Plot Subtitle") to create the plot.
 
 - Class: text
-  Output: The plot help page (?plot) only covers a small number of the many arguments that can be passed in to plot() and other graphical functions. To begin to explore the many other options, look at ?par. Let's explore some of the more commonly used ones. Continue using plot(cars, ...) as the base answer to these questions.
+  Output: The plot help page (?plot) only covers a small number of the many arguments that can be passed in to plot() and to other graphical functions. To begin to explore the many other options, look at ?par. Let's look at some of the more commonly used ones. Continue using plot(cars, ...) as the base answer to these questions.
 
 - Class: cmd_question
   Output: Plot cars with a red color. (Use col = 2 to achieve this effect.)
@@ -148,10 +148,10 @@
   Hint: Type plot(cars, pch = 2) to create the plot.
 
 - Class: text
-  Output: Arguments like "col" and "pch" may not seem very intuitive. And that is because they aren't! So, many/most people use more modern packages, like ggplot2, for creating their graphics.
+  Output: Arguments like "col" and "pch" may not seem very intuitive. And that is because they aren't! So, many/most people use more modern packages, like ggplot2, for creating their graphics in R.
 
 - Class: text
-  Output: It is, however, useful to have an introduction to base graphics because many of the idioms in lattice and ggplot2 are based on them.
+  Output: It is, however, useful to have an introduction to base graphics because many of the idioms in lattice and ggplot2 are modeled on them.
 
 - Class: text
   Output: Let's now look at some other functions in base graphics that may be useful, starting with histograms.
@@ -163,7 +163,7 @@
   Hint: Type data(mtcars) to load the data.
 
 - Class: text
-  Output: Anytime that you load up a new data frame, you should explore it before using it. In the middle of a swirl lesson, you just type play(). This temporarily stops the lesson and allows you to issue commands like dim(mtcares) and head(mtcars). Once you are done examining the data, just type nxt() and the lesson will pick up where it left off.
+  Output: Anytime that you load up a new data frame, you should explore it before using it. In the middle of a swirl lesson, just type play(). This temporarily suspends the lesson (without losing the work you have already done) and allows you to issue commands like dim(mtcares) and head(mtcars). Once you are done examining the data, just type nxt() and the lesson will pick up where it left off.
 
 - Class: cmd_question
   Output: Look up the help page for boxplot(). 
@@ -175,7 +175,7 @@
   Output: Instead of adding data columns directly as input arguments, as we did with plot(), it is often handy to pass in the entire data frame. This is what the "data" argument in boxplot() allows.
 
 - Class: text
-  Output: boxplot(), like many R functions, also takes a "formula" argument, generally an expression with a tilde ("`") which indicates the relationship between the input variables. This allows you to enter something like mpg ~ cyl to plot the relationship between cyl (number of cylinders) on the x-axis and mpg (miles per gallon) on the y-axis.
+  Output: boxplot(), like many R functions, also takes a "formula" argument, generally an expression with a tilde ("~") which indicates the relationship between the input variables. This allows you to enter something like mpg ~ cyl to plot the relationship between cyl (number of cylinders) on the x-axis and mpg (miles per gallon) on the y-axis.
 
 - Class: cmd_question
   Output: Use boxplot() with formula = mpg ~ cyl and data = mtcars to create a box plot.
