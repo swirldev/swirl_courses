@@ -18,315 +18,298 @@
 - Class: text
   Output: Lattice is implemented using two packages. The first is called, not surprisingly, lattice, and it contains code for producing Trellis graphics. Some of the functions in this package are the higher level functions which you, the user, would call. These include xyplot, bwplot, and levelplot.
 
+
+- Class: mult_question
+  Output: If xyplot produces a scatterplot, what kind of plot does bwplot produce?
+  AnswerChoices:  black and white; big and widdle; box and whisker; bad and wonderful
+  CorrectAnswer: box and whisker
+  AnswerTests: omnitest(correctVal='box and whisker')
+  Hint: Which choice is the only one without opposites?
+
 - Class: text
-  Output: The second package in the system is grid which contains the low-level  functions upon which the lattice package is built. You, the user, seldom call functions from the grid package directly.
+  Output: The second package in the lattice system is grid which contains the low-level  functions upon which the lattice package is built. You, the user, seldom call functions from the grid package directly.
 
 - Class: text
   Output: Unlike base plotting,  the lattice system does not have a "two-phase" aspect with separate plotting and annotation. Instead all plotting and annotation is done at once with a single function call.
 
-
-
+- Class: text
+  Output: The lattice system, as the base does, provides several different plotting functions. These include    xyplotfor creating scatterplots, bwplot for box-and-whiskers plots or boxplots, and  histogram for  histograms. There are several others (stripplot, dotplot, splom and levelplot), which we won't cover here.
 
 - Class: text
-  Output: Base graphics are often constructed piecemeal, with each aspect of the plot handled separately through a particular function call. Usually you start with a plot function (such as plot, hist, or boxplot), then you use annotation functions (text, abline, points) to add to or modify your plot. 
+  Output: Lattice functions generally take a formula for their first argument, usually of the form
+y ~ x. This indicates that y depends on x, so in a scatterplot y would be plotted on the y-axis and x on the x-axis.
 
 - Class: text
-  Output: Before making a plot you have to determine where the plot will appear and what it will be used for.  Is there a large amount of data going into the plot? Or is it just a few points? Do you need to be able to dynamically resize the graphic?
-
-- Class: mult_question
-  Output: What do you think is a disadvantage of the Base Plotting System?
-  AnswerChoices:  It's intuitive and exploratory; It mirrors how we think of building plots and analyzing data; You can't go back once a plot has started; A complicated plot is a series of simple R commands
-  CorrectAnswer: You can't go back once a plot has started
-  AnswerTests: omnitest(correctVal='You can\'t go back once a plot has started')
-  Hint: Which choice  has a negative contraction in it?
+  Output: Here's an example of  typical lattice plot,  xyplot(y ~ x | f * g, data). The f and g represent the optional conditioning variables. The * represents interaction between them. Remember when we said that lattice is good for plotting multivariate data? That's where these conditioning variables come into play.
 
 - Class: text
-  Output: Yes! The base system is very intuitive and easy to use. You can't go backwards, though, say, if you need to readjust margins or misspell a caption. A finished plot will be a series of R commands, so it's difficult to translate a finished plot into a different system.
-
-- Class: text
-  Output:  Calling a basic routine such as plot(x, y) or hist(x)  launches a graphics device (if one is not already open) and draws a new plot on the device. If the arguments to plot or hist are not of some special class, then the default method  is called.
-
-- Class: text
-  Output: As you'll see, most of the base plotting functions have many arguments, for example, setting the title, labels of axes, plot character, etc. Some of the parameters can be set when you call the function or they can be added later in a separate function call.
-
-
-
-- Class: text
-  Output: Now we'll go through some quick examples of basic plotting before we delve into gory  details. We'll use the dataset airquality (part of the library datasets) which we've loaded for you . This shows ozone and other air measurements for New York City for 5 months in 1973.
+  Output: The second argument is the data frame or list from which the variables in the formula should be looked up.  If no data frame or list is passed, then the parent frame is used. If no other arguments are passed, there are defaults are used.
 
 - Class: cmd_question
-  Output:  Use the R command head with airquality as an argument to see what the data looks like.
+  Output:  Recall the airquality data we've used before. We've loaded it again for youTo remind yourself what it looks like run the R command head with airquality as an argument to see what the data looks like.
   CorrectAnswer: head(airquality)
   AnswerTests: omnitest(correctExpr='head(airquality)')
   Hint: Type head(airquality) at the command prompt.
  
 - Class: cmd_question
-  Output: We see the dataset contains 6 columns of data. Run the command range with two arguments. The first is the ozone column of airquality, specified by airquality$Ozone, and the second is the boolean na.rm set equal to TRUE. If you don't specify this second argument, you won't get a meaningful result.
-  CorrectAnswer: range(airquality$Ozone,na.rm=TRUE)
-  AnswerTests: omnitest(correctExpr='range(airquality$Ozone,na.rm=TRUE)')
-  Hint: Type range(airquality$Ozone,na.rm=TRUE) at the command prompt.
- 
-- Class: cmd_question
-  Output: So the measurements range from 1 to 168. First we'll do a simple histogram of this ozone column to show the distribution of measurements. Use the R command hist with the argument airquality$Ozone.   
-  CorrectAnswer: hist(airquality$Ozone)
-  AnswerTests: omnitest(correctExpr='hist(airquality$Ozone)')
-  Hint: Type hist(airquality$Ozone) at the command prompt.
- 
-- Class: mult_question
-  Output: Simple, right? R put a title on the histogram and labeled both axes for you. What is the most frequent count? 
-  AnswerChoices: Under 25; Between 60 and 75; Over 150; Over 100 
-  CorrectAnswer: Under 25
-  AnswerTests: omnitest(correctVal='Under 25')
-  Hint: Where is the highest bar?
-
-- Class: cmd_question
-  Output: Next we'll do a boxplot. First, though, run the R command table with the argument airquality$Month.
-  CorrectAnswer: table(airquality$Month)
-  AnswerTests: omnitest(correctExpr='table(airquality$Month)')
-  Hint: Type table(airquality$Month) at the command prompt.
- 
-- Class: cmd_question
-  Output: We see that the data covers 5 months, May through September. We'll want a boxplot of ozone as a function of the month in which the measurements were taken so we'll use the R formula Ozone~Month as the first argument of boxplot. Our second argument will be airquality, the dataset from which the variables of the first argument are taken.  Try this now.
-  CorrectAnswer: boxplot(Ozone~Month, airquality)
-  AnswerTests: omnitest(correctExpr='boxplot(Ozone~Month, airquality)')
-  Hint: Type boxplot(Ozone~Month, airquality) at the command prompt.
- 
-- Class: text
-  Output:  Note that boxplot, unlike hist, did NOT specify a title and axis labels for you automatically.
-
-- Class: cmd_question
-  Output:  Let's call boxplot again to specify labels. (Use the up arrow to recover the previous command and save yourself some typing.) We'll add more arguments to the call to specify labels for the 2 axes. Set xlab equal to "Month" and ylab equal to "Ozone (ppb)". Specify col.axis equal to "blue" and col.lab equal to "red". Try this now.
-  CorrectAnswer: boxplot(Ozone~Month, airquality, xlab="Month", ylab="Ozone (ppb)",col.axis="blue",col.lab="red")
-  AnswerTests: omnitest(correctExpr='boxplot(Ozone~Month, airquality, xlab="Month", ylab="Ozone (ppb)",col.axis="blue",col.lab="red")')
-  Hint: Type boxplot(Ozone~Month, airquality, xlab="Month", ylab="Ozone (ppb)",col.axis="blue",col.lab="red") at the command prompt.
-
-- Class: cmd_question
-  Output: Nice colors, but still no title. Let's add one with the R command title. Use the argument main set equal to the string "Ozone and Wind in New York City". 
-  CorrectAnswer: title(main="Ozone and Wind in New York City")
-  AnswerTests: omnitest(correctExpr='title(main=\"Ozone and Wind in New York City\")')
-  Hint: Type title(main="Ozone and Wind in New York City") at the command prompt.
-
-- Class: cmd_question
-  Output: Now we'll show you how to plot a simple two-dimensional scatterplot using the R function plot. We'll show the relationship between Wind (x-axis) and Ozone (y-axis). We'll use the function plot with those two arguments (Wind and Ozone, in that order). To save some typing, though, we'll call the R command with with 2 arguments. The first argument of with will be airquality, the dataset containing Wind and Ozone; the second argument  will be the call to plot. Doing this allows us to avoid using the longer notation, e.g., airquality$Wind. Try this now. 
-  CorrectAnswer: with(airquality, plot(Wind, Ozone))
-  AnswerTests: omnitest(correctExpr='with(airquality, plot(Wind, Ozone))')
-  Hint: Type with(airquality, plot(Wind, Ozone)) at the command prompt.
- 
-- Class: text
-  Output:  Note that plot generated labels for the x and y axes but no title. 
-
-- Class: cmd_question
-  Output: Add one now with the R command title. Use the argument main set equal to the string "Ozone and Wind in New York City". (You can use the up arrow to recover the command if you don't want to type it.)
-  CorrectAnswer: title(main="Ozone and Wind in New York City")
-  AnswerTests: omnitest(correctExpr='title(main=\"Ozone and Wind in New York City\")')
-  Hint: Type title(main="Ozone and Wind in New York City") at the command prompt.
-
-- Class: cmd_question
-  Output:  The basic plotting parameters are documented in the R help page for the function par. You can use par to set parameters OR to find out what values are already set. To see just how much flexibility you have, run the R command length with the argument par() now. 
-  CorrectAnswer: length(par())
-  AnswerTests: omnitest(correctExpr='length(par())')
-  Hint: Type length(par()) at the command prompt.
- 
-- Class: cmd_question
-  Output:  So there are a boatload (72) of parameters that par() gives you access to. Run the R function names with par() as its argument to see what these parameters are.
-  CorrectAnswer: names(par())
-  AnswerTests: omnitest(correctExpr='names(par())')
-  Hint: Type names(par()) at the command prompt.
- 
-- Class: cmd_question
-  Output: Variety is the spice of life. You might recognize some of these such as col and lwd from previous swirl lessons. You can always run ?par to see what they do. For now, run the command par()$pin and see what you get.
-  CorrectAnswer: par()$pin
-  AnswerTests: ANY_of_exprs('par()$pin','par(\"pin\")','par(\'pin\')')
-  Hint: Type par()$pin at the command prompt.
- 
-- Class: mult_question
-  Output: Alternatively, you could have gotten the same result by running par("pin") or par('pin')).  What do you think these two numbers represent?
-  AnswerChoices: Plot dimensions; A confidence interval; Random numbers; Coordinates of the center of the plot window
-  CorrectAnswer: Plot dimensions
-  AnswerTests: omnitest(correctVal='Plot dimensions')
-  Hint: The function par specifies graphical parameters so the answer should deal with plots. That leaves two choices. The 'in' in 'pin' specifies inches.
-
-- Class: cmd_question
-  Output: Now, run the command par("fg") or or par('fg') or par()$fg and see what you get.
-  CorrectAnswer: par()$fg
-  AnswerTests: ANY_of_exprs('par(\"fg\")','par()$fg','par(\'fg\')')
-  Hint: Type par()$fg OR par('fg') OR par("fg") at the command prompt.
- 
-- Class: mult_question
-  Output: It gave you a color, right? Since par()$fg specifies foreground color, what do you think par()$bg specifies?
-  AnswerChoices: Background color; Better color; blue-green; Beautiful color
-  CorrectAnswer: Background color
-  AnswerTests: omnitest(correctVal='Background color')
-  Hint: What's the opposite of foreground?
+  Output:  Now try running xyplot with the formula Ozone~Wind as the first argument and the second argument data set equal to airquality.
+  CorrectAnswer: xyplot(Ozone ~ Wind, data = airquality)
+  AnswerTests: omnitest(correctExpr='xyplot(Ozone ~ Wind, data = airquality)')
+  Hint: Type xyplot(Ozone ~ Wind, data = airquality) at the command prompt.
 
 - Class: text
-  Output: Many base plotting functions share a set of parameters. We'll go through some of the more commonly used ones now. See if you can tell what they do from their names.
+  Output: Look vaguely familiar? The dots are blue, instead of black, but lattice labeled the axes for you. You can use some of the same graphical parameters (e.g., pch and col) that you used in the base package in calls to lattice functions.
 
+- Class: cmd_question
+  Output:  Now rerun xyplot with the formula Ozone~Wind as the first argument and the second argument data set equal to airquality (use the up arrow to save typing). This time add the arguments col set equal to "red", pcy set equal to 8, and main set equal to "Big Apple Data".
+  CorrectAnswer: xyplot(Ozone ~ Wind, data = airquality, pch=8, col="red", main="Big Apple Data")
+  AnswerTests: omnitest(correctExpr='xyplot(Ozone ~ Wind, data = airquality, pch=8, col="red", main="Big Apple Data")')
+  Hint: Type xyplot(Ozone ~ Wind, data = airquality, pch=8, col="red", main="Big Apple Data") at the command prompt.
+
+- Class: text
+  Output: Red snowflakes are cool, right? Now you'll see how easy it is to generate a multipanel plot using a single lattice command. 
+
+- Class: cmd_question
+  Output:  Run xyplot with the formula Ozone~Wind | as.factor(Month) as the first argument and the second argument data set equal to airquality (use the up arrow to save typing). So far, not much is different, right? Add a third argument, layout, set equal to c(5,1). 
+  CorrectAnswer: xyplot(Ozone ~ Wind | as.factor(Month), data = airquality, layout=c(5,1))
+  AnswerTests: omnitest(correctExpr='xyplot(Ozone ~ Wind | as.factor(Month), data = airquality, layout=c(5,1))')
+  Hint: Type xyplot(Ozone ~ Wind | as.factor(Month), data = airquality, layout=c(5,1)) at the command prompt.
 
 - Class: mult_question
-  Output: What do you think the graphical parameter pch controls?
-  AnswerChoices: plot character; pc help; picture characteristics; point control height
-  CorrectAnswer: plot character
-  AnswerTests: omnitest(correctVal='plot character')
-  Hint: The p stands for plot.
+  Output: Note that the default color and plotting character are back. What did the as.factor(Month) do?
+  AnswerChoices:  Displayed and labeled each subplot with the month's integer; Displayed the data by individual months; Huh?; Randomly divided the data into 5 panels
+  CorrectAnswer:  Displayed and labeled each subplot with the month's integer
+  AnswerTests: omnitest(correctVal=' Displayed and labeled each subplot with the month's integer')
+  Hint: Obviously the data is broken up and displayed by month. The as.factor made sure each panel was labeled correctly.
 
 - Class: cmd_question
-  Output: The plot character default is the open circle, but it "can either be a single character or an integer code for one of a set of graphics symbols." Run the command par("pch") to see the integer value of the default. When you need to, you can use R's Documentation (?pch) to find what the other values mean.
-  CorrectAnswer: par("pch")
-  AnswerTests: ANY_of_exprs('par(\"pch\")','par()$pch','par(\'pch\')')
-  Hint: Type par()$pch OR par('pch') OR par("pch") at the command prompt.
+  Output:  Since Month is a named column of the airquality dataframe we had to tell R to treat it as a factor. To see how this affects the plot, rerun the xyplot command you just ran, but use Ozone ~ Wind | Month instead of Ozone ~ Wind | as.factor(Month) as the first argument.  
+  CorrectAnswer: xyplot(Ozone ~ Wind | Month, data = airquality, layout=c(5,1))
+  AnswerTests: omnitest(correctExpr='xyplot(Ozone ~ Wind | Month, data = airquality, layout=c(5,1))')
+  Hint: Type xyplot(Ozone ~ Wind | Month, data = airquality, layout=c(5,1)) at the command prompt.
+
+- Class: text
+  Output: Not as informative, right? The word Month in each panel really doesn't tell you much if it doesn't identify which month it's plotting. Notice that the actual data is the same between the two plots, though.
+
+- Class: text
+  Output: Lattice functions behave differently from base graphics functions in one critical way. Recall that base graphics functions plot data directly to the graphics device (e.g., screen, or file such as a PDF file). In contrast, lattice graphics functions return an object of class trellis.
+
+- Class: figure
+  Output: The print methods for lattice functions actually do the work of plotting the data on the graphics device. They return "plot objects" that can be stored (but it’s usually better to just save the code  and data). On the command line, trellis objects are auto-printed so that it appears the function is plotting the data
+  Figure: clearPlot.R
+  FigureType: new
+
+- Class: cmd_question
+  Output:  To see this, create a variable p which is assigned the output of this simple call to xyplot, xyplot(Ozone~Wind,data=airquality).
+  CorrectAnswer: p <- xyplot(Ozone~Wind,data=airquality)
+  AnswerTests: expr_creates_var("p"); omnitest(correctExpr='p <- xyplot(Ozone~Wind,data=airquality)')
+  Hint: Type p <- xyplot(Ozone~Wind,data=airquality) at the command prompt.
+
+- Class: text
+  Output: Nothing plotted, right? But the object p is around.
+
+- Class: cmd_question
+  Output:  Type p or print(p) now to see it.
+  CorrectAnswer: p
+  AnswerTests: ANY_of_exprs('p','print(p)')
+  Hint: Type p or print(p) at the command prompt.
+ 
+- Class: cmd_question
+  Output: Like magic, it appears. Now run the R command names with p as its argument.
+  CorrectAnswer: names(p)
+  AnswerTests: omnitest(correctExpr='names(p)')
+  Hint: Type names(p) at the command prompt.
+ 
+- Class: cmd_question
+  Output: We see that the trellis object p has 45 named attributes, the first of which is "formula" which isn't too surprising. A lot of these attributes are probably NULL in value. We've done some behind-the-scenes work for you and created two vectors. The first, mynames, is a character vector of the names in p. The second is a boolean vector, myfull,  which has TRUE values for nonnull entries of p. Run mynames[myfull] to see which entries of p are not NULL.
+  CorrectAnswer: mynames[myfull]
+  AnswerTests: omnitest(correctExpr='mynames[myfull]')
+  Hint: Type mynames[myfull] at the command prompt.
+ 
+- Class: cmd_question
+  Output: Wow! 29 nonNull values for one little plot. Note that a lot of them are like the ones we saw in the base plotting system. Let's look at the values of some of them. Type p[["formula"]] now.
+  CorrectAnswer: p[["formula"]]
+  AnswerTests: omnitest(correctExpr='p[["formula"]]')
+  Hint: Type p[["formula"]] at the command prompt.
+ 
+- Class: cmd_question
+  Output: Not surprising, is it? It's a familiar formula. Now look at p's x.limits. Remember the double square brackets and quotes. 
+  CorrectAnswer: p[["x.limits"]]
+  AnswerTests: omnitest(correctExpr='p[["x.limits"]]')
+  Hint: Type p[["x.limits"]] at the command prompt.
+ 
+- Class: cmd_question
+  Output: Finally, look at p's call. Remember the double square brackets and quotes. 
+  CorrectAnswer: p[["call"]]
+  AnswerTests: omnitest(correctExpr='p[["call"]]')
+  Hint: Type p[["call"]] at the command prompt.
+
+- Class: text
+  Output: Before we wrap up, let's talk about lattice's panel functions which control what happens inside each panel of the plot. The ease of making multi-panel plots makes lattice very appealing. 
+The lattice package comes with default panel functions, but you can customize what happens in each panel. 
+
+- Class: cmd_question
+  Output: Panel functions receive the x/y coordinates of the data points in their panel (along with any optional arguments). To see this, we've created some data for you - two 100-long vectors, x and y. For its first 50 values y is a function of x, for the last 50 values, y is random. We've also defined a 100-long factor vector f. Run the R command table with f as it argument.
+  CorrectAnswer: table(f)
+  AnswerTests: omnitest(correctExpr='table(f)')
+  Hint: Type table(f) at the command prompt.
+
+- Class: cmd_question
+  Output: The first 50 entries of f are "Group 1" and the last 50 are "Group 2". Run xyplot with two arguments. The first is the formula y~x|f, and the second is layout set equal to c(2,1).
+  CorrectAnswer: xyplot(y ~ x | f, layout = c(2, 1))
+  AnswerTests: omnitest(correctExpr='xyplot(y ~ x | f, layout = c(2, 1))')
+  Hint: Type xyplot(y ~ x | f, layout = c(2, 1)) at the command prompt.
+
+- Class: cmd_question
+  Output: To understand this a little better look at the variable v1 we've created for you.
+  CorrectAnswer: v1
+  AnswerTests: omnitest(correctExpr='v1')
+  Hint: Type v1 at the command prompt.
+
+- Class: cmd_question
+  Output: The first two numbers are the range of the x values of Group 1 and the last two numbers are the range of y values of Group 1. Now look at v2 which holds the comparable numbers for Group 2.
+  CorrectAnswer: v2
+  AnswerTests: omnitest(correctExpr='v2')
+  Hint: Type v2 at the command prompt.
+
+- Class: cmd_question
+  Output: We've copied some code from the slides for you. To see it, type myedit("plot1.R"). This will open your editor and display the R code in it.
+  CorrectAnswer: mmyedit("plot1.R")
+  AnswerTests: omnitest(correctExpr='myedit("plot1.R")')
+  Hint: Type myedit("plot1.R") at the command prompt.
+
+- Class: mult_question
+  Output: How many calls to basic lattice plotting functions are there in plot1.R?
+  AnswerChoices: 1;2;3
+  CorrectAnswer: 1
+  AnswerTests: omnitest(correctVal='1')
+  Hint: How many calls to xyplot are there?
+
+- Class: mult_question
+  Output: Note the panel function. How many formal arguments does it have?
+  AnswerChoices: 1;2;3
+  CorrectAnswer: 3
+  AnswerTests: omnitest(correctVal='3')
+  Hint: You have to count the ... as an argument?
+ 
+- Class: text
+  Output: The panel function has 3 arguments, x, y and ... . This last stands for all other arguments (such as graphical parameters) you might want to include. There are 2 lines in the panel function. Each invokes a panel method, the first to plot the data in each panel (panel.xyplot), the second to draw a horizontal line in each panel (panel.abline). Note the similarity of this last call to that of the base plotting function of the same name.
+
+- Class: cmd_question
+  Output: Now run the R command source with two arguments. The first is the string "plot1.R" and the second is the argument local set equal to TRUE. This will run the code in plot1.R for you so you can see how it works.
+  CorrectAnswer: source("plot1.R",local=TRUE)
+  AnswerTests: omnitest(correctExpr='source("plot1.R",local=TRUE)')
+  Hint: Type source("plot1.R",local=TRUE) at the command prompt.
+
+- Class: mult_question
+  Output: The plot shows two panels because...?
+  AnswerChoices: f contains 2 factors; there are 2 calls to panel methods; lattice can handle at most 2 panels; there are 2 variables
+  CorrectAnswer: f contains 2 factors
+  AnswerTests: omnitest(correctVal='f contains 2 factors')
+  Hint: The number of panels depends on the conditioning variable, and in this case it is f.
+ 
+- Class: cmd_question
+  Output: We've copied another piece of similar code, i.e., a call to xyplot with a custom panel function, from the slides. To see it, type myedit("plot2.R"). This will open your editor and display the R code in it.
+  CorrectAnswer: myedit("plot2.R")
+  AnswerTests: omnitest(correctExpr='myedit("plot2.R")')
+  Hint: Type myedit("plot2.R") at the command prompt.
+
+- Class: cmd_question
+  Output: Again, run the R command source with  the two arguments "plot2.R" and local=TRUE. This will run the code in plot2.R.
+  CorrectAnswer: source("plot2.R",local=TRUE)
+  AnswerTests: omnitest(correctExpr='source("plot2.R",local=TRUE)')
+  Hint: Type source("plot2.R",local=TRUE) at the command prompt.
+
+- Class: mult_question
+  Output: The regression lines are red because ...?
+  AnswerChoices: R always plots regression lines in red; R is the first letter of the word red; the custom panel function specified a col argument
+  CorrectAnswer: the custom panel function specified a col argument
+  AnswerTests: omnitest(correctVal='the custom panel function specified a col argument')
+  Hint: Look carefully at the arguments in the call to panel.lmline.
+
+- Class: text
+  Output: Before we close we'll look at how easily lattice can handle a plot with a great many panels. (The sky's the limit.) We've loaded data for you from the Mouse Allergen and Asthma Cohort Study (MAACS) which studied 150 children with asthma living in Baltimore City, many of whom were allergic to mouse allergen. This was an observational study, using a baseline home visit and a visit every 3 months for a year (so at most 5 visits). The study addressed the question, "How does indoor airborne mouse allergen vary over time and across subjects?" The reference is Ahluwalia et al., Journal of Allergy and Clinical Immunology, 2013.
+
+- Class: cmd_question
+  Output: We've loaded the data in the variable env for you. Use the R command dim to see how big env is.
+  CorrectAnswer: dim(env)
+  AnswerTests: omnitest(correctExpr='dim(env)')
+  Hint: Type dim(env) at the command prompt.
+
+- Class: cmd_question
+  Output: So it's 750 by 27. Since the study involved 150 children we can guess that each child has 5 rows of data, one for each visit. Run the R command length with the argument table(env$MxNum) to see if this is correct.
+  CorrectAnswer: length(table(env$MxNum))
+  AnswerTests: omnitest(correctExpr='length(table(env$MxNum))')
+  Hint: Type length(table(env$MxNum)) at the command prompt.
+
  
 - Class: mult_question
-  Output: So 1 is the code for the open circle. What do you think the graphical parameters lty and lwd control respectively?
-  AnswerChoices: line type and width; line width and type; line length and width; line slope and intercept
-  CorrectAnswer: line type and width
-  AnswerTests: omnitest(correctVal='line type and width')
-  Hint: The l obviously stands for line. The ty and wd should be obvious.
+  Output:  So indeed there are 150 distinct identifiers in the MxNum column of the data. There are 26 other columns of data, but we're only interested in the airmus column which is a measure of airborn mouse allergen. Can lattice handle 150 panels in a single plot?
+  AnswerChoices: Yes; No
+  CorrectAnswer: Yes
+  AnswerTests: omnitest(correctVal='Yes')
+  Hint: Would we be dealing with this data if it couldn't?
 
 - Class: cmd_question
-  Output: Run the command par("lty") to see the  default line type. 
-  CorrectAnswer: par("lty")
-  AnswerTests: ANY_of_exprs('par(\"lty\")','par()$lty','par(\'lty\')')
-  Hint: Type par()$lty OR par('lty') OR par("lty") at the command prompt.
+  Output:  To save you some trouble we've defined three character strings for you, labels for the x- and y-axes and a main title. They're in the file myLabels.R, so run myedit on this file to see  them. Remember to put the file name in quotes when you call myedit.
+  CorrectAnswer: myedit("myLabels.R")
+  AnswerTests: omnitest(correctExpr='myedit("myLabels.R")')
+  Hint: Type myedit("myLabels.R") at the command prompt.
+
+- Class: cmd_question
+  Output: Now call xyplot with the formula log2(airmus) ~ VisitNum | as.factor(MxNum) and data set equal to env. In addition, set the argument strip equal to  FALSE,  pch set equal to 20, xlab to myxlab, ylab to myylab, and main to mymain.
+  CorrectAnswer: xyplot(log2(airmus) ~ VisitNum | as.factor(MxNum),data=env,strip=FALSE,pch=20,xlab=myxlab,ylab=myylab,main=mymain)
+  AnswerTests: omnitest(correctExpr='xyplot(log2(airmus) ~ VisitNum | as.factor(MxNum),data=env,strip=FALSE,pch=20,xlab=myxlab,ylab=myylab,main=mymain)')
+  Hint: Type xyplot(log2(airmus) ~ VisitNum | as.factor(MxNum),data=env,strip=FALSE,pch=20,xlab=myxlab,ylab=myylab,main=mymain) at the command prompt.
 
 - Class: text
-  Output: So the default line type  is  solid,  but it can be  dashed, dotted, etc. Once again, R's ?par documentation will tell you what other line types are available. The line width is a positive integer; the default value is 1. 
+  Output: Pretty cool, right? 150 panels, one for each child in the study. The dots (pch=20) show the (log base 2) measure of airborne allergen for each of the visits for each child. You'll notice that not all children had 5 visits.
 
 - Class: text
-  Output: We've seen a lot of examples of col, the plotting color, specified as a number, string, or hex code; the colors() function gives you a vector of colors by name.
+  Output:  Review time!!!
 
 - Class: mult_question
-  Output: What do you think the graphical parameters xlab and ylab control respectively?
-  AnswerChoices: labels for the x- and y- axes; labels for the y- and x- axes; 
-  CorrectAnswer: labels for the x- and y- axes
-  AnswerTests: omnitest(correctVal='labels for the x- and y- axes')
-  Hint: The lab portion stands for label.
-
-- Class: text
-  Output: The par() function is used to specify global graphics parameters that affect all plots in an R session. (Use dev.off or plot.new to reset to the defaults.) These parameters can be overridden when specified as arguments to specific plotting functions. These include las (the orientation of the axis labels on the plot), bg (background color), mar (margin size), oma (outer margin size), mfrow and mfcol (number of plots per row, column).
-
-- Class: text
-  Output: The last two, mfrow and mfcol, both deal with multiple plots in that they specify the number of plots per row and column. The difference between them is the order in which they fill the plot matrix. The call mfrow will fill the rows first while mfcol fills the columns first.
-
-
-- Class: text
-  Output: So to reiterate, first call a basic plotting routine. For instance,  plot makes a scatterplot or other type of plot depending on the class of the object being plotted.
+  Output: True or False? Lattice plots are constructed by a series of calls to core functions.
+  AnswerChoices: True; False
+  CorrectAnswer: False
+  AnswerTests: omnitest(correctVal='False')
+  Hint: Recall the long call you just made to plot 150 panels in one picture. We would have broken it up if we could have, but we didn't, so we can't.
 
 - Class: mult_question
-  Output: As we've seen, R provides several annotating functions. Which of the following is NOT one of them?
-  AnswerChoices: lines; text; title; hist; points
-  CorrectAnswer: hist
-  AnswerTests: omnitest(correctVal='hist')
-  Hint: If you've just done a scatterplot, would you really want to annotate it with a histogram?
+  Output: True or False? Lattice plots are constructed with a single function call to a core lattice function (e.g. xyplot)
+  AnswerChoices: True; False
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal='True')
+  Hint: This is the opposite of the last question which was false.
+
+- Class: mult_question
+  Output: True or False? Aspects like margins and spacing are automatically handled and defaults are usually sufficient lattice function (e.g. xyplot).
+  AnswerChoices: True; False
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal='True')
+  Hint: In any of our examples, did we mention margins?
+
+- Class: mult_question
+  Output: True or False? The lattice system is ideal for creating conditioning plots where you examine the same kind of plot under many different conditions.
+  AnswerChoices: True; False
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal='True')
+  Hint: Think of the ease with which lattice handles multi-panel plots.
+   
+- Class: mult_question
+  Output: True or False? The lattice system, like the base plotting system, returns a trellis plot object.
+  AnswerChoices: True; False
+  CorrectAnswer: False
+  AnswerTests: omnitest(correctVal='False')
+  Hint: This is the key difference between the two systems. Lattice DOES return a plot object but base doesn't.
+   
+- Class: mult_question
+  Output: True or False?  Panel functions can NEVER be customized to modify what is plotted in each of the plot panels.
+  AnswerChoices: True; False
+  CorrectAnswer: False
+  AnswerTests: omnitest(correctVal='False')
+  Hint: Recall our advice to NEVER trust questions with NEVER and ALWAYS in them.   
+
 
 - Class: text
-  Output: So you can add text, title, points, and lines to an existing plot. To add lines, you give a vector x values and a corresponding vector of y values (or a 2-column matrix); the function lines just connects the dots. The function text adds text labels to a plot using specified x, y coordinates.
-
-- Class: text
-  Output:   The function title adds annotations. These include x- and y- axis labels, title, subtitle, and outer margin. Two other annotating functions are mtext which adds arbitrary text to either the outer or inner margins of the plot and axis which adds axis ticks and labels. Another useful function is legend which explains to the reader what the symbols your plot uses mean.
-
-- Class: cmd_question
-  Output: Before we close, let's test your ability to make a somewhat complicated scatterplot. First run plot with 3 arguments. airquality$Wind, airquality$Ozone, and type set equal to "n". This tells R to set up the plot but not to put the data in it. 
-  CorrectAnswer:  plot(airquality$Wind, type="n",airquality$Ozone)
-  AnswerTests: omnitest(correctExpr='plot(airquality$Wind, type="n",airquality$Ozone)')
-  Hint: Type plot(airquality$Wind, type="n",airquality$Ozone) at the command prompt.
-
-- Class: cmd_question
-  Output: Now for the test. (You might need to check R's documentation for some of these.) Add a title with the argument main set equal to the string "Wind and Ozone in NYC"
-  CorrectAnswer:  title(main="Wind and Ozone in NYC")
-  AnswerTests: omnitest(correctExpr='title(main="Wind and Ozone in NYC")')
-  Hint: Type title(main="Wind and Ozone in NYC") at the command prompt.
-
-- Class: cmd_question
-  Output: Now create a variable may by subsetting airquality appropriately. (Recall that the data specifies months by number and May is the fifth month of the year.)
-  CorrectAnswer:  may <- subset(airquality, Month==5)
-  AnswerTests: expr_creates_var("may"); omnitest(correctExpr='may <- subset(airquality, Month==5)')
-  Hint: Type  may <- subset(airquality, Month==5) at the prompt.
-
-- Class: cmd_question
-  Output: Now use the R command points to plot May's wind and ozone (in that order) as solid blue triangles. You have to set the color and plot character with two separate arguments. Note we use points because we're adding to an existing plot.
-  CorrectAnswer: points(may$Wind,may$Ozone,col="blue",pch=17)
-  AnswerTests: omnitest(correctExpr='points(may$Wind,may$Ozone,col="blue",pch=17)')
-  Hint: The code for solid blue trianges is 17 so typing points(may$Wind,may$Ozone,col="blue",pch=17) at the prompt should work.
-
-- Class: cmd_question
-  Output: Now create the variable notmay by subsetting airquality appropriately.
-  CorrectAnswer:  notmay <- subset(airquality, Month!=5)
-  AnswerTests: expr_creates_var("notmay"); omnitest(correctExpr='notmay <- subset(airquality, Month!=5)')
-  Hint: Type  notmay <- subset(airquality, Month!=5) at the prompt.
-
-
-- Class: cmd_question
-  Output: Now use the R command points to plot these notMay's wind and ozone (in that order) as  red snowflakes.
-  CorrectAnswer: points(notmay$Wind,notmay$Ozone,col="red",pch=8)
-  AnswerTests: omnitest(correctExpr='points(notmay$Wind,notmay$Ozone,col="red",pch=8)')
-  Hint: The code for snowflakes is 8 so typing points(notmay$Wind,notmay$Ozone,col="red",pch=8) at the prompt should work.
-
-- Class: cmd_question
-  Output: Now we'll use the R command legend to clarify the plot and explain what it means. The function  has a lot of arguments, but we'll only use 4. The first will be the string "topright" to tell R where to put the legend. The remaining 3 arguments will each be 2-long vectors created by R's concatenate  function, e.g., c(). These arguments are pch, col, and legend. The first is the vector (17,8), the second ("blue","red"), and the third ("May","Other Months"). Try it now.
-  CorrectAnswer: legend("topright",pch=c(17,8),col=c("blue","red"),legend=c("May","Other Months"))
-  AnswerTests: omnitest(correctExpr='legend("topright",pch=c(17,8),col=c("blue","red"),legend=c("May","Other Months"))')
-  Hint: Type legend("topright",pch=c(17,8),col=c("blue","red"),legend=c("May","Other Months")).
-
-- Class: cmd_question
-  Output: Now add a vertical line at the median of airquality$Wind. Make it dashed (lty=2) with a width of 2.
-  CorrectAnswer: abline(v=median(airquality$Wind),lty=2,lwd=2)
-  AnswerTests: omnitest(correctExpr='abline(v=median(airquality$Wind),lty=2,lwd=2)')
-  Hint: Type abline(v=median(airquality$Wind),lty=2,lwd=2).
-
-- Class: cmd_question
-  Output: Use par with the parameter mfrow set equal to the vector (1,2) to set up the plot window for two plots side by side. You won't see a result.
-  CorrectAnswer: par(mfrow=c(1,2))
-  AnswerTests: omnitest(correctExpr='par(mfrow=c(1,2))')
-  Hint: Type par(mfrow=c(1,2)).
-
-- Class: cmd_question
-  Output: Now plot airquality$Wind and airquality$Ozone and use main to specify the title "Ozone and Wind".
-  CorrectAnswer: plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind")
-  AnswerTests: omnitest(correctExpr='plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind")')
-  Hint: Type plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind").
-
-- Class: cmd_question
-  Output: Now plot airquality$Wind and airquality$Solar.R and use main to specify the title "Ozone and Solar Radiation".
-  CorrectAnswer: plot(airquality$Wind, airquality$Solar.R, main = "Ozone and Solar Radiation")
-  AnswerTests: omnitest(correctExpr='plot(airquality$Wind, airquality$Solar.R, main = "Ozone and Solar Radiation")')
-  Hint: Type plot(airquality$Wind, airquality$Solar.R, main = "Ozone and Solar Radiation").
-
-- Class: cmd_question
-  Output: One more, this one with 3 plots, to illustrate inner and outer margins. First, set up the plot window by typing  par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))
-  CorrectAnswer: par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))
-  AnswerTests: omnitest(correctExpr='par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))')
-  Hint: Type par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0)).
-
-- Class: text
-  Output: Margins are specified as 4-long vectors of integers. Each number tells how many lines of text to leave at each side. The numbers are assigned clockwise starting at the bottom. The default for the inner margin is c(5.1, 4.1, 4.1, 2.1)  so you can see we reduced each of these so we'll have room for some outer text.
-
-- Class: cmd_question
-  Output: The first plot should be familiar. Plot airquality$Wind and airquality$Ozone with the title (argument main) as "Wind and Ozone".
-  CorrectAnswer: plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind")
-  AnswerTests: omnitest(correctExpr='plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind")')
-  Hint: Type plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind").
-
-- Class: cmd_question
-  Output: The second plot is similar. Plot airquality$Solar.R and airquality$Ozone with the title (argument main) as "Ozone and Solar Radiation".
-  CorrectAnswer: plot(airquality$Solar.R, airquality$Ozone, main = "Ozone and Solar Radiation")
-  AnswerTests: omnitest(correctExpr='plot(airquality$Solar.R, airquality$Ozone, main = "Ozone and Solar Radiation")')
-  Hint: Type plot(airquality$Solar.R, airquality$Ozone, main = "Ozone and Solar Radiation").
-
-- Class: cmd_question
-  Output: Finally, plot airquality$Temp and airquality$Ozone with the title (argument main) as "Ozone and Temperature".
-  CorrectAnswer: plot(airquality$Temp, airquality$Ozone, main = "Ozone and Temperature")
-  AnswerTests: omnitest(correctExpr='plot(airquality$Temp, airquality$Ozone, main = "Ozone and Temperature")')
-  Hint: Type plot(airquality$Temp, airquality$Ozone, main = "Ozone and Temperature").
-
-- Class: cmd_question
-  Output: Now for the main title, specified by the R command mtext. Call it with the string "Ozone and Weather in New York City" and the argument outer set equal to TRUE.
-  CorrectAnswer:  mtext("Ozone and Weather in New York City", outer = TRUE)
-  AnswerTests: omnitest(correctExpr=' mtext("Ozone and Weather in New York City", outer = TRUE)')
-  Hint: Type mtext("Ozone and Weather in New York City", outer = TRUE).
-
-- Class: text
-  Output: Voila! Beautiful, right?
-
-- Class: text
-  Output: Congrats! You've weathered this lesson nicely and passed out of the No!zone.
+  Output: Congrats! We hope this lesson didn't leave you climbing the trellis.

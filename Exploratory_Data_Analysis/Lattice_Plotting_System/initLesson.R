@@ -4,4 +4,29 @@ library(datasets)
 # Put initialization code in this file.
 path_to_course <- file.path(find.package("swirl"),"Courses/Exploratory_Data_Analysis/Lattice_Plotting_System")
 dev.off()
-plot.new()
+
+mytrellis <- xyplot(Ozone ~ Wind, data=airquality)
+mynames <- names(mytrellis)
+myfull <- sapply(mynames, function(nn) !is.null(mytrellis[[nn]]))
+
+set.seed(10)
+x <- rnorm(100)
+f <- rep(0:1, each = 50)
+y <- x + f - f * x+ rnorm(100, sd = 0.5)
+f <- factor(f, labels = c("Group 1", "Group 2"))
+#xyplot(y ~ x | f, layout = c(2, 1))  ## Plot with 2 panels
+rx1 <- range(x[1:50])
+rx2 <- range(x[51:100])
+ry1 <- range(y[1:50])
+ry2 <- range(y[51:100])
+v1 <- c(rx1,ry1)
+v2 <- c(rx2,ry2)
+
+myedit <- function(fname){
+   efname <- paste(path_to_course,fname,sep="/")
+   file.copy(efname,myfile)
+   file.edit(myfile)
+}
+mouse <- paste(path_to_course,"maacs_env.rds",sep="/")
+file.copy(mouse,mymouse)
+env <- readRDS(mymouse)
