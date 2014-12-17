@@ -5,5 +5,6 @@ coinPlot <- function(n){
   g <- ggplot(data.frame(x = 1 : n, y = means), aes(x = x, y = y)) 
   g <- g + geom_hline(yintercept = 0.5) + geom_line(size = 2) 
   g <- g + labs(x = "Number of obs", y = "Cumulative mean")
-  g
+  print(g)
+  invisible()
 }
