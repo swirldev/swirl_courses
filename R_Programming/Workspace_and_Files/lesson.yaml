@@ -52,6 +52,9 @@
   AnswerTests: omnitest(correctExpr='rm(x)')
   Hint: Type rm(x) to remove x from the workspace.
 
+- Class: text
+  Output: Having removed x, you should no longer see it if you try ls() again. The same play() and then nxt() trick that you (should have) tried above will work.
+
 - Class: cmd_question
   Output: List all the files in your working directory.
   CorrectAnswer: list.files()
