@@ -16,22 +16,44 @@
   Output: Let's jump right in so you can get a feel for how these special functions work!
 
 - Class: cmd_question
-  Output: Determine which directory your R session is using as its current working directory.
+  Output: Determine which directory your R session is using as its current working directory using getwd().
   CorrectAnswer: getwd()
   AnswerTests: omnitest(correctExpr='getwd()')
   Hint: Type getwd() to determine the current working directory.
 
 - Class: cmd_question
-  Output: Show all the objects in your local workspace.
+  Output: List all the objects in your local workspace using ls().
   CorrectAnswer: ls()
   AnswerTests: omnitest(correctExpr='ls()')
   Hint: Type ls() to view all the objects in your local workspace.
 
 - Class: text
-  Output: Some R commands are the same as the Unix equivalents. Another reason why learning Unix is a good idea.
+  Output: Some R commands are the same as the Unix equivalents. This is another reason why learning Unix is a good idea.
+
+- Class: text
+  Output: In the first two  questions above, we told you the exact command to use. But isn't that too easy? Going forward we won't do that. 
+
+- Class: text
+  Output: Instead, we will word the questions in such a way that a web search should lead you to the appropriate R command. In this case, searching for "R list objects workspace" should work well.)
+
 
 - Class: cmd_question
-  Output: Show all the files in your working directory.
+  Output: Assign 9 to x using x <- 9.
+  CorrectAnswer: x <- 9
+  AnswerTests: omnitest(correctExpr='x <- 9')
+  Hint: Type x <- 9 to assign 9 to x.
+
+- Class: text
+  Output: Having created x, you should now see x when you try ls() again. You can do this by suspending this swirl lesson with play(). Once you have run the ls() command to confirm that x exists in the workspace, you can re-start the lesson from the same location with nxt(). Try it!
+
+- Class: cmd_question
+  Output: Remove x from the workspace.
+  CorrectAnswer: rm(x)
+  AnswerTests: omnitest(correctExpr='rm(x)')
+  Hint: Type rm(x) to remove x from the workspace.
+
+- Class: cmd_question
+  Output: List all the files in your working directory.
   CorrectAnswer: list.files()
   AnswerTests: omnitest(correctExpr='list.files()')
   Hint: Type list.files() to all the files in your working directory.
@@ -94,7 +116,7 @@
   Output: In general, you will want your working directory to be someplace sensible, perhaps created for the specific project that you are working on. In fact, organizing your work in R packages using R Studio is an excellent option. But those topics are beyond the scope of this lesson.
 
 - Class: cmd_question
-  Output: Create a file in your working directory called "mytest.R". (Note that we purposely word these questions in such a way that a web search should lead you to the appropriate R command. In this case, searching for "R create file" should work well.)
+  Output: Create a file in your working directory called "mytest.R".
   CorrectAnswer: file.create("mytest.R")
   AnswerTests: omnitest(correctExpr='file.create("mytest.R")')
   Hint: file.create("mytest.R") will get the job done!
