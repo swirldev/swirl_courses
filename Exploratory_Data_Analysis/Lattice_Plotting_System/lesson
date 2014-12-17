@@ -172,7 +172,7 @@
 
 - Class: cmd_question
   Output: Again, the values match the plot. That's reassuring. We've copied some code from the slides for you. To see it, type myedit("plot1.R"). This will open your editor and display the R code in it.
-  CorrectAnswer: mmyedit("plot1.R")
+  CorrectAnswer: myedit("plot1.R")
   AnswerTests: omnitest(correctExpr='myedit("plot1.R")')
   Hint: Type myedit("plot1.R") at the command prompt.
 
