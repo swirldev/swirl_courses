@@ -33,20 +33,19 @@
   Output: Unlike base plotting,  the lattice system does not have a "two-phase" aspect with separate plotting and annotation. Instead all plotting and annotation is done at once with a single function call.
 
 - Class: text
-  Output: The lattice system, as the base does, provides several different plotting functions. These include    xyplotfor creating scatterplots, bwplot for box-and-whiskers plots or boxplots, and  histogram for  histograms. There are several others (stripplot, dotplot, splom and levelplot), which we won't cover here.
+  Output: The lattice system, as the base does, provides several different plotting functions. These include xyplot for creating scatterplots, bwplot for box-and-whiskers plots or boxplots, and  histogram for  histograms. There are several others (stripplot, dotplot, splom and levelplot), which we won't cover here.
 
 - Class: text
-  Output: Lattice functions generally take a formula for their first argument, usually of the form
-y ~ x. This indicates that y depends on x, so in a scatterplot y would be plotted on the y-axis and x on the x-axis.
+  Output: Lattice functions generally take a formula for their first argument, usually of the form y ~ x. This indicates that y depends on x, so in a scatterplot y would be plotted on the y-axis and x on the x-axis.
 
 - Class: text
-  Output: Here's an example of  typical lattice plot,  xyplot(y ~ x | f * g, data). The f and g represent the optional conditioning variables. The * represents interaction between them. Remember when we said that lattice is good for plotting multivariate data? That's where these conditioning variables come into play.
+  Output: Here's an example of  typical lattice plot call,  xyplot(y ~ x | f * g, data). The f and g represent the optional conditioning variables. The * represents interaction between them. Remember when we said that lattice is good for plotting multivariate data? That's where these conditioning variables come into play.
 
 - Class: text
-  Output: The second argument is the data frame or list from which the variables in the formula should be looked up.  If no data frame or list is passed, then the parent frame is used. If no other arguments are passed, there are defaults are used.
+  Output: The second argument is the data frame or list from which the variables in the formula should be looked up.  If no data frame or list is passed, then the parent frame is used. If no other arguments are passed, the default values are used.
 
 - Class: cmd_question
-  Output:  Recall the airquality data we've used before. We've loaded it again for youTo remind yourself what it looks like run the R command head with airquality as an argument to see what the data looks like.
+  Output:  Recall the airquality data we've used before. We've loaded it again for you. To remind yourself what it looks like run the R command head with airquality as an argument to see what the data looks like.
   CorrectAnswer: head(airquality)
   AnswerTests: omnitest(correctExpr='head(airquality)')
   Hint: Type head(airquality) at the command prompt.
@@ -61,7 +60,7 @@ y ~ x. This indicates that y depends on x, so in a scatterplot y would be plotte
   Output: Look vaguely familiar? The dots are blue, instead of black, but lattice labeled the axes for you. You can use some of the same graphical parameters (e.g., pch and col) that you used in the base package in calls to lattice functions.
 
 - Class: cmd_question
-  Output:  Now rerun xyplot with the formula Ozone~Wind as the first argument and the second argument data set equal to airquality (use the up arrow to save typing). This time add the arguments col set equal to "red", pcy set equal to 8, and main set equal to "Big Apple Data".
+  Output:  Now rerun xyplot with the formula Ozone~Wind as the first argument and the second argument data set equal to airquality (use the up arrow to save typing). This time add the arguments col set equal to "red", pch set equal to 8, and main set equal to "Big Apple Data".
   CorrectAnswer: xyplot(Ozone ~ Wind, data = airquality, pch=8, col="red", main="Big Apple Data")
   AnswerTests: omnitest(correctExpr='xyplot(Ozone ~ Wind, data = airquality, pch=8, col="red", main="Big Apple Data")')
   Hint: Type xyplot(Ozone ~ Wind, data = airquality, pch=8, col="red", main="Big Apple Data") at the command prompt.
@@ -79,7 +78,7 @@ y ~ x. This indicates that y depends on x, so in a scatterplot y would be plotte
   Output: Note that the default color and plotting character are back. What did the as.factor(Month) do?
   AnswerChoices:  Displayed and labeled each subplot with the month's integer; Displayed the data by individual months; Huh?; Randomly divided the data into 5 panels
   CorrectAnswer:  Displayed and labeled each subplot with the month's integer
-  AnswerTests: omnitest(correctVal=' Displayed and labeled each subplot with the month's integer')
+  AnswerTests: omnitest(correctVal='Displayed and labeled each subplot with the month\'s integer')
   Hint: Obviously the data is broken up and displayed by month. The as.factor made sure each panel was labeled correctly.
 
 - Class: cmd_question
@@ -95,7 +94,7 @@ y ~ x. This indicates that y depends on x, so in a scatterplot y would be plotte
   Output: Lattice functions behave differently from base graphics functions in one critical way. Recall that base graphics functions plot data directly to the graphics device (e.g., screen, or file such as a PDF file). In contrast, lattice graphics functions return an object of class trellis.
 
 - Class: figure
-  Output: The print methods for lattice functions actually do the work of plotting the data on the graphics device. They return "plot objects" that can be stored (but it’s usually better to just save the code  and data). On the command line, trellis objects are auto-printed so that it appears the function is plotting the data
+  Output: The print methods for lattice functions actually do the work of plotting the data on the graphics device. They return "plot objects" that can be stored (but it’s usually better to just save the code  and data). On the command line, trellis objects are auto-printed so that it appears the function is plotting the data.
   Figure: clearPlot.R
   FigureType: new
 
@@ -139,17 +138,16 @@ y ~ x. This indicates that y depends on x, so in a scatterplot y would be plotte
   Hint: Type p[["x.limits"]] at the command prompt.
  
 - Class: cmd_question
-  Output: Finally, look at p's call. Remember the double square brackets and quotes. 
+  Output: They match the plot, right? The x values are indeed between .37 and 22.03. Finally, look at the value of the named element call of p. Remember the double square brackets and quotes. 
   CorrectAnswer: p[["call"]]
   AnswerTests: omnitest(correctExpr='p[["call"]]')
   Hint: Type p[["call"]] at the command prompt.
 
 - Class: text
-  Output: Before we wrap up, let's talk about lattice's panel functions which control what happens inside each panel of the plot. The ease of making multi-panel plots makes lattice very appealing. 
-The lattice package comes with default panel functions, but you can customize what happens in each panel. 
+  Output: Again, not surprising. Before we wrap up, let's talk about lattice's panel functions which control what happens inside each panel of the plot. The ease of making multi-panel plots makes lattice very appealing. The lattice package comes with default panel functions, but you can customize what happens in each panel. 
 
 - Class: cmd_question
-  Output: Panel functions receive the x/y coordinates of the data points in their panel (along with any optional arguments). To see this, we've created some data for you - two 100-long vectors, x and y. For its first 50 values y is a function of x, for the last 50 values, y is random. We've also defined a 100-long factor vector f. Run the R command table with f as it argument.
+  Output: Panel functions receive the x and y coordinates of the data points in their panel (along with any optional arguments). To see this, we've created some data for you - two 100-long vectors, x and y. For its first 50 values y is a function of x, for the last 50 values, y is random. We've also defined a 100-long factor vector f which distinguishes between the first and last 50 elements of the two vectors. Run the R command table with f as it argument.
   CorrectAnswer: table(f)
   AnswerTests: omnitest(correctExpr='table(f)')
   Hint: Type table(f) at the command prompt.
@@ -167,13 +165,13 @@ The lattice package comes with default panel functions, but you can customize wh
   Hint: Type v1 at the command prompt.
 
 - Class: cmd_question
-  Output: The first two numbers are the range of the x values of Group 1 and the last two numbers are the range of y values of Group 1. Now look at v2 which holds the comparable numbers for Group 2.
+  Output: The first two numbers are the range of the x values of Group 1 and the last two numbers are the range of y values of Group 1. See how they match the values of the left panel (Group 1) in the plot. Now look at v2 which holds the comparable numbers for Group 2.
   CorrectAnswer: v2
   AnswerTests: omnitest(correctExpr='v2')
   Hint: Type v2 at the command prompt.
 
 - Class: cmd_question
-  Output: We've copied some code from the slides for you. To see it, type myedit("plot1.R"). This will open your editor and display the R code in it.
+  Output: Again, the values match the plot. That's reassuring. We've copied some code from the slides for you. To see it, type myedit("plot1.R"). This will open your editor and display the R code in it.
   CorrectAnswer: mmyedit("plot1.R")
   AnswerTests: omnitest(correctExpr='myedit("plot1.R")')
   Hint: Type myedit("plot1.R") at the command prompt.
@@ -196,13 +194,13 @@ The lattice package comes with default panel functions, but you can customize wh
   Output: The panel function has 3 arguments, x, y and ... . This last stands for all other arguments (such as graphical parameters) you might want to include. There are 2 lines in the panel function. Each invokes a panel method, the first to plot the data in each panel (panel.xyplot), the second to draw a horizontal line in each panel (panel.abline). Note the similarity of this last call to that of the base plotting function of the same name.
 
 - Class: cmd_question
-  Output: Now run the R command source with two arguments. The first is the string "plot1.R" and the second is the argument local set equal to TRUE. This will run the code in plot1.R for you so you can see how it works.
-  CorrectAnswer: source("plot1.R",local=TRUE)
-  AnswerTests: omnitest(correctExpr='source("plot1.R",local=TRUE)')
-  Hint: Type source("plot1.R",local=TRUE) at the command prompt.
+  Output: We've defined a function for you, pathtofile, which takes a filename as its argument. This makes sure R can find the file on your computer. Now run the R command source with two arguments. The first is the call to pathtofile with the string "plot1.R" as its argument and the second is the argument local set equal to TRUE. This will run the code in plot1.R for you so you can see how it works.
+  CorrectAnswer: source(pathtofile("plot1.R"),local=TRUE)
+  AnswerTests: omnitest(correctExpr='source(pathtofile("plot1.R"),local=TRUE)')
+  Hint: Type source(pathtofile("plot1.R"),local=TRUE) at the command prompt.
 
 - Class: mult_question
-  Output: The plot shows two panels because...?
+  Output: See how the lines appear. The plot shows two panels because...?
   AnswerChoices: f contains 2 factors; there are 2 calls to panel methods; lattice can handle at most 2 panels; there are 2 variables
   CorrectAnswer: f contains 2 factors
   AnswerTests: omnitest(correctVal='f contains 2 factors')
@@ -215,10 +213,10 @@ The lattice package comes with default panel functions, but you can customize wh
   Hint: Type myedit("plot2.R") at the command prompt.
 
 - Class: cmd_question
-  Output: Again, run the R command source with  the two arguments "plot2.R" and local=TRUE. This will run the code in plot2.R.
-  CorrectAnswer: source("plot2.R",local=TRUE)
-  AnswerTests: omnitest(correctExpr='source("plot2.R",local=TRUE)')
-  Hint: Type source("plot2.R",local=TRUE) at the command prompt.
+  Output: Again, run the R command source with  the two arguments pathtofile("plot2.R") and local=TRUE. This will run the code in plot2.R.
+  CorrectAnswer: source(pathtofile("plot2.R"),local=TRUE)
+  AnswerTests: omnitest(correctExpr='source(pathtofile("plot2.R"),local=TRUE)')
+  Hint: Type source(pathtofile("plot2.R"),local=TRUE) at the command prompt.
 
 - Class: mult_question
   Output: The regression lines are red because ...?
@@ -227,8 +225,10 @@ The lattice package comes with default panel functions, but you can customize wh
   AnswerTests: omnitest(correctVal='the custom panel function specified a col argument')
   Hint: Look carefully at the arguments in the call to panel.lmline.
 
-- Class: text
+- Class: figure
   Output: Before we close we'll look at how easily lattice can handle a plot with a great many panels. (The sky's the limit.) We've loaded data for you from the Mouse Allergen and Asthma Cohort Study (MAACS) which studied 150 children with asthma living in Baltimore City, many of whom were allergic to mouse allergen. This was an observational study, using a baseline home visit and a visit every 3 months for a year (so at most 5 visits). The study addressed the question, "How does indoor airborne mouse allergen vary over time and across subjects?" The reference is Ahluwalia et al., Journal of Allergy and Clinical Immunology, 2013.
+  Figure: clearPlot.R
+  FigureType: new
 
 - Class: cmd_question
   Output: We've loaded the data in the variable env for you. Use the R command dim to see how big env is.
@@ -257,7 +257,13 @@ The lattice package comes with default panel functions, but you can customize wh
   Hint: Type myedit("myLabels.R") at the command prompt.
 
 - Class: cmd_question
-  Output: Now call xyplot with the formula log2(airmus) ~ VisitNum | as.factor(MxNum) and data set equal to env. In addition, set the argument strip equal to  FALSE,  pch set equal to 20, xlab to myxlab, ylab to myylab, and main to mymain.
+  Output:  Now run source with pathtofile("myLabels.R") and local set equal to TRUE.
+  CorrectAnswer: source(pathtofile("myLabels.R"),local=TRUE)
+  AnswerTests: omnitest(correctExpr='source(pathtofile("myLabels.R"),local=TRUE)')
+  Hint: Type source(pathtofile("myLabels.R"),local=TRUE) at the command prompt.
+
+- Class: cmd_question
+  Output: Now call xyplot with the formula log2(airmus) ~ VisitNum | as.factor(MxNum) and data set equal to env. In addition, set the argument strip equal to  FALSE,  pch set equal to 20, xlab to myxlab, ylab to myylab, and main to mymain. The plot may take awhile because it is so big.
   CorrectAnswer: xyplot(log2(airmus) ~ VisitNum | as.factor(MxNum),data=env,strip=FALSE,pch=20,xlab=myxlab,ylab=myylab,main=mymain)
   AnswerTests: omnitest(correctExpr='xyplot(log2(airmus) ~ VisitNum | as.factor(MxNum),data=env,strip=FALSE,pch=20,xlab=myxlab,ylab=myylab,main=mymain)')
   Hint: Type xyplot(log2(airmus) ~ VisitNum | as.factor(MxNum),data=env,strip=FALSE,pch=20,xlab=myxlab,ylab=myylab,main=mymain) at the command prompt.

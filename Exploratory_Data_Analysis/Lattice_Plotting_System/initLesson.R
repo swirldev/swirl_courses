@@ -3,7 +3,18 @@ library(datasets)
 
 # Put initialization code in this file.
 path_to_course <- file.path(find.package("swirl"),"Courses/Exploratory_Data_Analysis/Lattice_Plotting_System")
-dev.off()
+try(dev.off(),silent=TRUE)
+plot.new()
+
+pathtofile <- function(fileName){
+  mypath <- file.path(find.package("swirl"),
+                      "Courses/Exploratory_Data_Analysis/Lattice_Plotting_System/",
+                      fileName)
+}
+fxfer <- function(fileName){
+  mypath <- pathtofile(fileName)
+  file.copy(mypath,fileName)
+}
 
 mytrellis <- xyplot(Ozone ~ Wind, data=airquality)
 mynames <- names(mytrellis)
@@ -23,10 +34,10 @@ v1 <- c(rx1,ry1)
 v2 <- c(rx2,ry2)
 
 myedit <- function(fname){
-   efname <- paste(path_to_course,fname,sep="/")
-   file.copy(efname,myfile)
-   file.edit(myfile)
+   #fxfer(fname)
+   #file.edit(fname)
+   mypath <- pathtofile(fname)
+   file.edit(mypath)
 }
 mouse <- paste(path_to_course,"maacs_env.rds",sep="/")
-file.copy(mouse,mymouse)
-env <- readRDS(mymouse)
+env <- readRDS(mouse)
