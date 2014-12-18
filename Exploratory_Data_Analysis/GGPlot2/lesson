@@ -1,16 +1,33 @@
 - Class: meta
   Course: Exploratory_Data_Analysis
-  Lesson: Lattice_Plotting_System
+  Lesson: GGPlot2
   Author: Swirl Coders
   Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
 - Class: text
-  Output: "Lattice_Plotting_System. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 04_ExploratoryAnalysis/PlottingLattice.)"
+  Output: "GGPlot2. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 04_ExploratoryAnalysis/ggplot2.)"
+
 
 - Class: text
-  Output:  In another lesson, we gave you an overview of the three plotting systems in R. In this lesson we'll focus on the lattice plotting system.  As we did with the base plotting system, we'll focus on using lattice  to create graphics on the screen device rather than another graphics device.
+  Output:  In another lesson, we gave you an overview of the three plotting systems in R. In this lesson we'll focus on the third and newest plotting system in R, ggplot2.  As we did with the other two systems, we'll focus on creating graphics on the screen device rather than another graphics device.
+
+- Class: text
+  Output:  The ggplot2 package is an add-on package available from CRAN via install.packages(). (Don't worry, we've done it for you already.) It is an implementation of a Grammar of Graphics, an abstract concept invented by Leland Wilkinson and implemented by Hadley Wickham while he was a graduate student at Iowa State. The web site http://ggplot2.org provides complete documentation.
+
+
+    Grammar of graphics represents an abstraction of graphics ideas/objects
+    Think “verb”, “noun”, “adjective” for graphics
+    Allows for a “theory” of graphics on which to build new graphics and graphics objects
+    “Shorten the distance from mind to page”
+
+Grammer of Graphics
+“In brief, the grammar tells us that a statistical graphic is a mapping from data to aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars). The plot may also contain statistical transformations of the data and is drawn on a specific coordinate system”
+
+    from ggplot2 book
+
+
 
 - Class: text
   Output:  The lattice plotting system is completely separate and independent of the base plotting system. It's an add-on package so it has to be explicitly loaded with a call to the R function library. We've done this for you. The R Documentation tells us that lattice "is an implementation of Trellis graphics for R. It is a powerful and elegant high-level data visualization system with an emphasis on multivariate data."
