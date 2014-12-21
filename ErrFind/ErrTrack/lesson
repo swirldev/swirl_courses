@@ -15,3 +15,13 @@
   CorrectAnswer: coinPlot(10)
   AnswerTests: omnitest(correctExpr='coinPlot(10)')
   Hint: Type coinPlot(10) at the command prompt.
+
+
+- Class: text
+  Output: The LLN forms the basis of frequency style thinking. 
+
+- Class: cmd_question
+  Output: Now type source("swirl_courses/ErrFind/ErrTrack/plot1.R")
+  CorrectAnswer: source("swirl_courses/ErrFind/ErrTrack/plot1.R")
+  AnswerTests: omnitest(correctExpr='source("swirl_courses/ErrFind/ErrTrack/plot1.R")')
+  Hint: Type source("swirl_courses/ErrFind/ErrTrack/plot1.R") at the command prompt.
