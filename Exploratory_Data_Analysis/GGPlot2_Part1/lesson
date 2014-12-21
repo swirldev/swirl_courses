@@ -1,50 +1,126 @@
 - Class: meta
   Course: Exploratory_Data_Analysis
-  Lesson: GGPlot2
+  Lesson: GGPlot2_Part1
   Author: Swirl Coders
   Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
 - Class: text
-  Output: "GGPlot2. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 04_ExploratoryAnalysis/ggplot2.)"
+  Output: "GGPlot2_Part1. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 04_ExploratoryAnalysis/ggplot2.)"
 
 
 - Class: text
   Output:  In another lesson, we gave you an overview of the three plotting systems in R. In this lesson we'll focus on the third and newest plotting system in R, ggplot2.  As we did with the other two systems, we'll focus on creating graphics on the screen device rather than another graphics device.
 
 - Class: text
-  Output:  The ggplot2 package is an add-on package available from CRAN via install.packages(). (Don't worry, we've done it for you already.) It is an implementation of a Grammar of Graphics, an abstract concept invented by Leland Wilkinson and implemented by Hadley Wickham while he was a graduate student at Iowa State. The web site http://ggplot2.org provides complete documentation.
-
-
-    Grammar of graphics represents an abstraction of graphics ideas/objects
-    Think “verb”, “noun”, “adjective” for graphics
-    Allows for a “theory” of graphics on which to build new graphics and graphics objects
-    “Shorten the distance from mind to page”
-
-Grammer of Graphics
-“In brief, the grammar tells us that a statistical graphic is a mapping from data to aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars). The plot may also contain statistical transformations of the data and is drawn on a specific coordinate system”
-
-    from ggplot2 book
-
-
+  Output:  The ggplot2 package is an add-on package available from CRAN via install.packages(). (Don't worry, we've done it for you already.) It is an implementation of The Grammar of Graphics, an abstract concept (as well as book) authored and invented by Leland Wilkinson and implemented by Hadley Wickham while he was a graduate student at Iowa State. The web site http://ggplot2.org provides complete documentation.
 
 - Class: text
-  Output:  The lattice plotting system is completely separate and independent of the base plotting system. It's an add-on package so it has to be explicitly loaded with a call to the R function library. We've done this for you. The R Documentation tells us that lattice "is an implementation of Trellis graphics for R. It is a powerful and elegant high-level data visualization system with an emphasis on multivariate data."
+  Output: A grammar of graphics represents an abstraction of graphics, that is,  a “theory” of graphics which conceptualizes basic pieces from which you can build new graphics and graphical objects. The  goal of the grammar is to “Shorten the distance from mind to page”. Here's a quote from Hadley Wickham's ggplot2 book...
 
 - Class: text
-  Output: Lattice is implemented using two packages. The first is called, not surprisingly, lattice, and it contains code for producing Trellis graphics. Some of the functions in this package are the higher level functions which you, the user, would call. These include xyplot, bwplot, and levelplot.
+  Output:  “In brief, the grammar tells us that a statistical graphic is a mapping from data to aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars). The plot may also contain statistical transformations of the data and is drawn on a specific coordinate system”. The grammar "is composed of a set of independent components that can be composed in many different ways. ... you can create new graphics that are precisely tailored for your problem."
+
+- Class: text
+  Output: Before we delve into details, let's review the other 2 plotting systems.
+
+- Class: mult_question
+  Output: Recall what you know about R's base plotting system. Which of the following does NOT apply to it? 
+  AnswerChoices: Start with plot (or similar) function; Use annotation functions to add/modify (text, lines, points, axis); Convenient, mirrors how we think of building plots and analyzing data; Can easily go back once the plot has started (e.g., to adjust margins or correct a typo)
+  CorrectAnswer: Can easily go back once the plot has started (e.g., to adjust margins or correct a typo)
+  AnswerTests: omnitest(correctVal='Can easily go back once the plot has started (e.g., to adjust margins or correct a typo)')
+  Hint: Which choice is the only one which looks backward? 
 
 
 - Class: mult_question
-  Output: If xyplot produces a scatterplot, what kind of plot does bwplot produce?
-  AnswerChoices:  black and white; big and widdle; box and whisker; bad and wonderful
-  CorrectAnswer: box and whisker
-  AnswerTests: omnitest(correctVal='box and whisker')
-  Hint: Which choice is the only one without opposites?
+  Output: Recall what you know about R's lattice plotting system. Which of the following does NOT apply to it? 
+  AnswerChoices:  Plots are created with a single function call (xyplot, bwplot, etc.); Most useful for conditioning types of plots and putting many panels on one plot; Margins and spacing are set automatically because entire plot is specified at once; Can always add to the plot once it is created
+  CorrectAnswer: Can always add to the plot once it is created
+  AnswerTests: omnitest(correctVal='Can always add to the plot once it is created')
+  Hint: Which choice is the only one which is inconsistent with the other three? 
+
+- Class: mult_question
+  Output: If we told you that ggplot2 combines the best of base and lattice, that would mean it ...?  
+  AnswerChoices: Automatically deals with spacings, text, titles but also allows you to annotate; Like lattice it allows for multipanels but more easily and intuitively; Its default mode makes many choices for you (but you can customize!); All of the above  
+  CorrectAnswer: All of the above
+  AnswerTests: omnitest(correctVal='All of the above')
+  Hint: Which choice is the only one that encompasses the other three? 
 
 - Class: text
-  Output: The second package in the lattice system is grid which contains the low-level  functions upon which the lattice package is built. You, the user, seldom call functions from the grid package directly.
+  Output: Yes, ggplot2 combines the best of base and lattice. It allows for multipanel (conditioning) plots (as lattice does) but also annotation (as base does), so you can add titles and labels. It also uses the grid package (which comes with R) to draw the graphics. As part of its grammar philosophy, ggplot2 plots are composed of aesthetics (attributes such as size, shape, color) and geoms (points, lines), the geometric objects you see on the plot.
+
+- Class: text
+  Output: The basic workhorse function in ggplot2 is qplot, (think quick plot) which works like the plot function in the base graphics system. It hides many tedious details from the user. Similar to lattice, it looks for data in a data frame or parent environment. The more advanced workhorse function in the package is ggplot, which is  more flexible for doing things qplot() cannot do. In this lesson we'll focus on qplot.
+    
+
+- Class: cmd_question
+  Output: We'll start by showing how easy and versatile qplot is. First, let's look at some data which might be familiar to you. It comes with the ggplot2 package. The mpg data frame contains fuel economy data for 38 models of cars between 1999 and 2008. Run the R command str with the argument mpg. This will give you an idea of what mpg contains.
+  CorrectAnswer: str(mpg)
+  AnswerTests: omnitest(correctExpr='str(mpg)')
+  Hint: Type str(mpg) at the command prompt.
+
+- Class: cmd_question
+  Output: Suppose we want to see if there's a correlation betwwen engine displacement (disp) and highway miles per gallon (hwy). As we did with the plot function of the base system we could simply call  qplot with 3 arguments, the first two are the variables we want to examine and the third argument data is set equal to the name of the dataset which contains them (in this case, mpg). Try this now.
+  CorrectAnswer: qplot(displ, hwy, data = mpg)
+  AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg)')
+  Hint: Type qplot(displ, hwy, data = mpg) at the command prompt.
+
+- Class: cmd_question
+  Output: Simple, right? The first argument is shown along the x-axis and the second along the y-axis. The negative trend (increasing displacement and lower gas mileage) is pretty clear. Now suppose we want to do the same plot but this time use different colors to distinguish between the 3 factors (subsets) of different types of drive (drv) in  the data (that is, front-wheel, rear-wheel, or 4-wheel). Again, qplot makes this very easy. We'll just add what ggplot2 calls an aesthetic, a fourth argument, color, and set it equal to the factor drv. Try this now. (Use the up arrow key to save some typing.)
+  CorrectAnswer: qplot(displ, hwy, data = mpg, color = drv)
+  AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg, color = drv)')
+  Hint: Type qplot(displ, hwy, data = mpg, color = drv) at the command prompt.
+
+- Class: text
+  Output: Pretty cool, right? See the legend to the right which qplot helpfully supplied? The colors were automatically assigned by qplot so the legend decodes the colors for you. Notice that qplot automatically used dots or points to indicate the data. These points are geoms (geometric objects).
+
+- Class: cmd_question
+  Output: Now let's add a second geom. How about some trend lines, one for each color? Just add a fifth argument, geom, and using the R function c(), set it equal to the concatenation of the two strings "point" and "smooth". The first refers to the data points and second to the trend lines we want plotted. Try this now.
+  CorrectAnswer: qplot(displ, hwy, data = mpg, color=drv, geom = c("point", "smooth"))
+  AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg, color=drv, geom = c("point", "smooth"))')
+  Hint: Type qplot(displ, hwy, data = mpg, color=drv, geom = c("point", "smooth")) at the command prompt.
+
+_ Class: text
+  Output: Note the gray areas surrounding each trend lines. These indicate the 95% confidence intervals for the lines.
+
+
+- Class: cmd_question
+  Output: The function qplot can also do histograms which display frequency counts for a single variable. Let's do an easy one. Call qplot with 3 arguments. First specify the variable for which you want the frequency count, in this case hwy, then specify the data (set equal to mpg), and finally, the aesthetic, fill, set equal to drv. Instead of a plain old histogram, this will again use colors to distinguish the 3 different drive factors.
+  CorrectAnswer: qplot(hwy, data = mpg, fill = drv)
+  AnswerTests: omnitest(correctExpr='qplot(hwy, data = mpg, fill = drv)')
+  Hint: Type qplot(hwy, data = mpg, fill = drv) at the command prompt.
+
+- Class: text
+  Output: It's cool that qplot can do this  so easily, but some people may find this multi-color histogram hard to interpret. Instead of using colors to distinguish between the drive factors let's use facets or panels. (That's what lattice called them.) This just means we'll split the data into 3 subsets (according to drive) and make 3 smaller individual plots of each subset in one plot (and with one call to qplot).
+
+- Class: text
+  Output: Remember that with base plot we had to do each subplot individually. The lattice system made plotting  conditioning plots  easier. Let's see how easy it is with qplot.
+
+- Class: cmd_question
+  Output:  We'll do two plots, a scatterplot and then a histogram, each with 3 facets. For the scatterplot, call qplot with 4 arguments. The first two are displ and hwy and the third is the argument data set equal to mpg. The fourth is the argument facets which will be set equal to the expression . ~ drv which is ggplot2's shorthand for number of rows (to the left of the ~) and number of columns (to the right of the ~). Here the . indicates "whatever you need" for the number of rows and drv implies 3, since there are 3 distinct drive factors. Try this now.
+  CorrectAnswer: qplot(displ, hwy, data = mpg, facets = . ~ drv)
+  AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg, facets = . ~ drv)')
+  Hint: Type qplot(displ, hwy, data = mpg, facets = . ~ drv) at the command prompt.
+
+- Class: text
+  Output: The result is a 1 by 3 array of plots. Note how each is labeled at the top with the factor label (4,f, or r).
+
+- Class: cmd_question
+  Output:  Now we'll do a histogram, again calling qplot with 4 arguments. This time, since we need only one variable the first is hwy and the second is the argument data set equal to mpg. The third is the argument facets which we'll set equal to the expression drv ~ . which give us a different arrangement of the facets. The fourth argument is binwidth. Set this equal to 2. Try this now.
+  CorrectAnswer: qplot(hwy, data = mpg, facets = drv ~ ., binwidth = 2)
+  AnswerTests: omnitest(correctExpr='qplot(hwy, data = mpg, facets = drv ~ ., binwidth = 2)')
+  Hint: Type qplot(hwy, data = mpg, facets = drv ~ ., binwidth = 2) at the command prompt.
+
+- Class: mult_question
+  Output: The facets argument, drv ~ ., resulted in what arrangement of facets?
+  AnswerChoices:  1 by 3; 3 by 1; 2 by 2; huh?
+  CorrectAnswer:  3 by 1
+  AnswerTests: omnitest(correctVal='3 by 1')
+  Hint: How many row? How many columns?
+
+- Class: text
+  Output: Now we'll use qplot to analyze data that's a little more complicated. This was data used in a Johns Hopkins study to understand the effects of indoor environmental pollution, particularly mouse allergen, on children with asthma.
 
 - Class: text
   Output: Unlike base plotting,  the lattice system does not have a "two-phase" aspect with separate plotting and annotation. Instead all plotting and annotation is done at once with a single function call.
@@ -61,11 +137,6 @@ Grammer of Graphics
 - Class: text
   Output: The second argument is the data frame or list from which the variables in the formula should be looked up.  If no data frame or list is passed, then the parent frame is used. If no other arguments are passed, the default values are used.
 
-- Class: cmd_question
-  Output:  Recall the airquality data we've used before. We've loaded it again for you. To remind yourself what it looks like run the R command head with airquality as an argument to see what the data looks like.
-  CorrectAnswer: head(airquality)
-  AnswerTests: omnitest(correctExpr='head(airquality)')
-  Hint: Type head(airquality) at the command prompt.
  
 - Class: cmd_question
   Output:  Now try running xyplot with the formula Ozone~Wind as the first argument and the second argument data set equal to airquality.

@@ -21,7 +21,7 @@
 
 - Class: mult_question
   Output: If xyplot produces a scatterplot, what kind of plot does bwplot produce?
-  AnswerChoices:  black and white; big and widdle; box and whisker; bad and wonderful
+  AnswerChoices:  black and white; big and wittle; box and whisker; bad and wonderful
   CorrectAnswer: box and whisker
   AnswerTests: omnitest(correctVal='box and whisker')
   Hint: Which choice is the only one without opposites?
