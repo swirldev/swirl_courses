@@ -21,7 +21,7 @@
 
 - Class: mult_question
   Output: If xyplot produces a scatterplot, what kind of plot does bwplot produce?
-  AnswerChoices:  black and white; big and wittle; box and whisker; bad and wonderful
+  AnswerChoices:  black and white; big and whittle; box and whisker; bad and wonderful
   CorrectAnswer: box and whisker
   AnswerTests: omnitest(correctVal='box and whisker')
   Hint: Which choice is the only one without opposites?
@@ -66,7 +66,7 @@
   Hint: Type xyplot(Ozone ~ Wind, data = airquality, pch=8, col="red", main="Big Apple Data") at the command prompt.
 
 - Class: text
-  Output: Red snowflakes are cool, right? Now that you’ve learned the basics of xyplot() and some of it arguments, you can experimjent a little more by yourself to discover what other arguments and colours are available by invoking swirl's play() function to experiment and then calling nxt() when you’re done playing! 
+  Output: Red snowflakes are cool, right? Now that you’ve learned the basics of xyplot() and some of it arguments, you can experiment a little more by yourself to discover what other arguments and colours are available by invoking swirl's play() function to experiment and then calling nxt() when you’re done playing! 
 
 - Class: text
   Output: Now you'll see how easy it is to generate a multipanel plot using a single lattice command. 
