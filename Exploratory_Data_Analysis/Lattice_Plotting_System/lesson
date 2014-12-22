@@ -232,29 +232,35 @@
   Hint: Look carefully at the arguments in the call to panel.lmline.
 
 - Class: figure
-  Output: Before we close we'll look at how easily lattice can handle a plot with a great many panels. (The sky's the limit.) We've loaded data for you from the Mouse Allergen and Asthma Cohort Study (MAACS) which studied 150 children with asthma living in Baltimore City, many of whom were allergic to mouse allergen. This was an observational study, using a baseline home visit and a visit every 3 months for a year (so at most 5 visits). The study addressed the question, "How does indoor airborne mouse allergen vary over time and across subjects?" The reference is Ahluwalia et al., Journal of Allergy and Clinical Immunology, 2013.
+  Output: Before we close we'll look at how easily lattice can handle a plot with a great many panels. (The sky's the limit.) We've loaded some diamond data for you. It comes with the ggplot2 package. We'll use it just to show off lattice's panel plotting capability.
   Figure: clearPlot.R
   FigureType: new
 
 - Class: cmd_question
-  Output: We've loaded the data in the variable env for you. Use the R command dim to see how big env is.
-  CorrectAnswer: dim(env)
-  AnswerTests: omnitest(correctExpr='dim(env)')
-  Hint: Type dim(env) at the command prompt.
+  Output: The data is in the data frame diamonds. Use the R command str to see what it looks like.
+  CorrectAnswer: str(diamonds)
+  AnswerTests: omnitest(correctExpr='str(diamonds)')
+  Hint: Type str(diamonds) at the command prompt.
 
 - Class: cmd_question
-  Output: So it's 750 by 27. Since the study involved 150 children we can guess that each child has 5 rows of data, one for each visit. Run the R command length with the argument table(env$MxNum) to see if this is correct.
-  CorrectAnswer: length(table(env$MxNum))
-  AnswerTests: omnitest(correctExpr='length(table(env$MxNum))')
-  Hint: Type length(table(env$MxNum)) at the command prompt.
+  Output: So the data frame contains 10 pieces of information for each of 53940 diamonds. Run the R command table with diamonds$color as an argument.
+  CorrectAnswer: table(diamonds$color)
+  AnswerTests: omnitest(correctExpr='table(diamonds$color)')
+  Hint: Type table(diamonds$color) at the command prompt.
+
+- Class: cmd_question
+  Output: We see 7 colors each represented by a letter. Now  run the R command table with two arguments, diamonds$color and diamonds$cut.
+  CorrectAnswer: table(diamonds$color,diamonds$cut)
+  AnswerTests: omnitest(correctExpr='table(diamonds$color,diamonds$cut)')
+  Hint: Type table(diamonds$color,diamonds$cut) at the command prompt.
 
  
 - Class: mult_question
-  Output:  So indeed there are 150 distinct identifiers in the MxNum column of the data. There are 26 other columns of data, but we're only interested in the airmus column which is a measure of airborn mouse allergen. Can lattice handle 150 panels in a single plot?
-  AnswerChoices: Yes; No
-  CorrectAnswer: Yes
-  AnswerTests: omnitest(correctVal='Yes')
-  Hint: Would we be dealing with this data if it couldn't?
+  Output:  We see a 7 by 5 array with counts indicating how many diamonds in the data frame have a particular color and cut. From the table, which is the most frequent combination?
+  AnswerChoices: Premium cut of color G; Ideal color of cut G; Ideal cut of color G; Ideal cut of color F.
+  CorrectAnswer: Ideal cut of color G 
+  AnswerTests: omnitest(correctVal='Ideal cut of color G')
+  Hint: Colors are depicted by letters, so one choice is eliminated. Which letter appears in most of the choices? 
 
 - Class: cmd_question
   Output:  To save you some trouble we've defined three character strings for you, labels for the x- and y-axes and a main title. They're in the file myLabels.R, so run myedit on this file to see  them. Remember to put the file name in quotes when you call myedit.
@@ -269,13 +275,34 @@
   Hint: Type source(pathtofile("myLabels.R"),local=TRUE) at the command prompt.
 
 - Class: cmd_question
-  Output: Now call xyplot with the formula log2(airmus) ~ VisitNum | as.factor(MxNum) and data set equal to env. In addition, set the argument strip equal to  FALSE,  pch set equal to 20, xlab to myxlab, ylab to myylab, and main to mymain. The plot may take awhile because it is so big.
-  CorrectAnswer: xyplot(log2(airmus) ~ VisitNum | as.factor(MxNum),data=env,strip=FALSE,pch=20,xlab=myxlab,ylab=myylab,main=mymain)
-  AnswerTests: omnitest(correctExpr='xyplot(log2(airmus) ~ VisitNum | as.factor(MxNum),data=env,strip=FALSE,pch=20,xlab=myxlab,ylab=myylab,main=mymain)')
-  Hint: Type xyplot(log2(airmus) ~ VisitNum | as.factor(MxNum),data=env,strip=FALSE,pch=20,xlab=myxlab,ylab=myylab,main=mymain) at the command prompt.
+  Output: Now call xyplot with the formula price~carat | color*cut  and data set equal to diamonds. In addition, set the argument strip equal to  FALSE,  pch set equal to 20, xlab to myxlab, ylab to myylab, and main to mymain. The plot may take longer than previous plots because it is bigger.
+  CorrectAnswer: xyplot(price~carat|color*cut,data=diamonds,strip=FALSE,pch=20,xlab=myxlab,ylab=myylab,main=mymain)
+  AnswerTests: omnitest(correctExpr='xyplot(price~carat|color*cut,data=diamonds,strip=FALSE,pch=20,xlab=myxlab,ylab=myylab,main=mymain)')
+  Hint: Type xyplot(price~carat|color*cut,data=diamonds,strip=FALSE,pch=20,xlab=myxlab,ylab=myylab,main=mymain) at the command prompt.
 
 - Class: text
-  Output: Pretty cool, right? 150 panels, one for each child in the study. The dots (pch=20) show the (log base 2) measure of airborne allergen for each of the visits for each child. You'll notice that not all children had 5 visits.
+  Output: Pretty cool, right? 35 panels, one for each combination of color and cut. The dots (pch=20) show how prices for the diamonds in each category (panel) vary depending on carat.
+
+- Class: mult_question
+  Output: Are colors defining the rows or columns of the plot?
+  AnswerChoices: rows; columns
+  CorrectAnswer: columns
+  AnswerTests: omnitest(correctVal='columns')
+  Hint: Recall that there were 7 colors and 5 cuts in the data.
+
+- Class: cmd_question
+  Output: Were you curious about that argument strip? I know I was. Now  rerun the xyplot command you just ran (use the up arrow key to retrieve it), this time without the strip argument. 
+  CorrectAnswer: xyplot(price~carat|color*cut,data=diamonds,pch=20,xlab=myxlab,ylab=myylab,main=mymain)
+  AnswerTests: omnitest(correctExpr='xyplot(price~carat|color*cut,data=diamonds,pch=20,xlab=myxlab,ylab=myylab,main=mymain)')
+  Hint: Type xyplot(price~carat|color*cut,data=diamonds,pch=20,xlab=myxlab,ylab=myylab,main=mymain) at the command prompt.
+
+- Class: mult_question
+  Output: The plot shows that the strip argument ....
+  AnswerChoices: labels each panel; removes information from the plot; makes the plot less intelligible; has a default value of FALSE
+  CorrectAnswer: columns
+  AnswerTests: omnitest(correctVal='labels each panel')
+  Hint: Do the words in the colorful stripes convey useful information?
+
 
 - Class: text
   Output:  Review time!!!
@@ -285,7 +312,7 @@
   AnswerChoices: True; False
   CorrectAnswer: False
   AnswerTests: omnitest(correctVal='False')
-  Hint: Recall the long call you just made to plot 150 panels in one picture. We would have broken it up if we could have, but we didn't, so we can't.
+  Hint: Recall the long call you just made to plot 35 panels in one picture. We would have broken it up if we could have, but we didn't, so we can't.
 
 - Class: mult_question
   Output: True or False? Lattice plots are constructed with a single function call to a core lattice function (e.g. xyplot)
@@ -322,6 +349,12 @@
   AnswerTests: omnitest(correctVal='False')
   Hint: Recall our advice to NEVER trust questions with NEVER and ALWAYS in them.   
 
+- Class: mult_question
+  Output: True or False?  Lattice plots can display at most 20 panels in a single plot.
+  AnswerChoices: True; False
+  CorrectAnswer: False
+  AnswerTests: omnitest(correctVal='False')
+  Hint: Recall the sparkly diamonds.  
 
 - Class: text
   Output: Congrats! We hope this lesson didn't leave you climbing the trellis.
