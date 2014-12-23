@@ -247,7 +247,7 @@
 
 - Class: text
   Output: Up until this point, we've assumed a known population standard deviation
-    (sigma). Sometimes this is available if a subject has be studied extensively,
+    (sigma). Sometimes this is available if a subject has been studied extensively,
     but this may often not be the case. If you are required to compute sigma from
     the data, then using a t-test is more appropriate.
 
