@@ -49,8 +49,8 @@
 - Class: cmd_question
   Output: Remove x from the workspace.
   CorrectAnswer: rm(x)
-  AnswerTests: omnitest(correctExpr='rm(x)')
-  Hint: Type rm(x) to remove x from the workspace.
+  AnswerTests: any_of_exprs('rm("x")', 'rm(x)')
+  Hint: Type rm("x") to remove x from the workspace.
 
 - Class: text
   Output: Having removed x, you should no longer see it if you try ls() again. The same play() and then nxt() trick that you (should have) tried above will work.
