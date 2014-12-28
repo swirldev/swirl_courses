@@ -85,7 +85,7 @@
   Hint: Type pack_sum to view its contents.
 
 - Class: text
-  Output: The 'count' column, created with n(), contains the total number of rows (i.e. downloads) for each package. The 'unique' column, created with n_distinct(ip_id), gives the total number of unique downloads for each package, as measured by the number of distinct ip_id's. The 'countries' column, created with n_distinct(country), provides the number of countries in which the each package was downloaded. And finally, the 'avg_bytes' column, created with mean(size), contains the mean download size (in bytes) for each package.
+  Output: The 'count' column, created with n(), contains the total number of rows (i.e. downloads) for each package. The 'unique' column, created with n_distinct(ip_id), gives the total number of unique downloads for each package, as measured by the number of distinct ip_id's. The 'countries' column, created with n_distinct(country), provides the number of countries in which each package was downloaded. And finally, the 'avg_bytes' column, created with mean(size), contains the mean download size (in bytes) for each package.
 
 - Class: text
   Output: It's important that you understand how each column of pack_sum was created and what it means. Now that we've summarized the data by individual packages, let's play around with it some more to see what we can learn.
@@ -112,7 +112,7 @@
   Hint: Type top_counts to view its contents.
 
 - Class: text
-  Output: Hey, that's the first time we've seen more than the first 10 rows of our data! By default, if the dataset your working with has more than 100 rows, dplyr will only print the first 10. Otherwise, it will print all rows, since it's not as overwhelming.
+  Output: Hey, that's the first time we've seen more than the first 10 rows of our data! By default, if the dataset you're working with has more than 100 rows, dplyr will only print the first 10. Otherwise, it will print all rows, since it's not as overwhelming.
 
 - Class: cmd_question
   Output: "In this case, there are 61 packages in our top 1%, so dplyr has printed all of them. If we only want to see the first 20, we can use the head function like so: head(top_counts, 20)."

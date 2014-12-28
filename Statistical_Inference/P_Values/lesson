@@ -160,7 +160,7 @@
   AnswerChoices: Reject; Fail to reject
   CorrectAnswer: Fail to reject
   AnswerTests: omnitest(correctVal='Fail to reject')
-  Hint: The p-value is about 3.5 which is greater than alpha=.03.
+  Hint: The p-value is about .035 which is greater than alpha=.03.
 
 - Class: cmd_question
   Output: For the other side of the test we want the probability that X<=7, again out of a sample of size 8 with probability .5. Again, we use pbinom, this time with an argument of 7 and lower.tail=TRUE. Try this now.

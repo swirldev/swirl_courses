@@ -125,9 +125,9 @@
 
 - Class: mult_question
   Output: As we've seen before, in a binomial distribution in which p represents the probability or proportion of success, the variance sigma^2 is p(1-p), so the standard error of the sample mean p' is sqrt(p(1-p)/n) where n is the sample size. The 95% confidence interval of p is then p' +/- 2*sqrt(p(1-p)/n). The 2 in this formula represents what?
-  AnswerChoices: the mean of p'; the variance of p'; the standard error of p'; the approximate 95% normal quantile
-  CorrectAnswer: the approximate 95% normal quantile
-  AnswerTests: omnitest(correctVal='the approximate 95% normal quantile')
+  AnswerChoices: the mean of p'; the variance of p'; the standard error of p'; the approximate 975% normal quantile
+  CorrectAnswer: the approximate 975% normal quantile
+  AnswerTests: omnitest(correctVal='the approximate 975% normal quantile')
   Hint: Recall the formula for the interval p' +/- qnorm*sigma/sqrt(n)
 
 - Class: text
@@ -239,7 +239,7 @@
   Output: Let's move on to Poisson distributions and confidence intervals. Recall that Poisson distributions apply to counts or rates. For the latter, we write X~Poisson(lambda*t) where lambda is the expected count per unit of time and t is the total monitoring time.
 
 - Class: text
-  Output:  Here's another example from the slides. Suppose a nuclear pump failed 5 times out of 94.32 days and we want  a 95% confidence interval for the failure rate per day. The number of failures X is Poisson distributed with parameter (lambda*t). We estimate the failure rate, lambda', as x/t and the variance of our estimated mean is lambda/t, which we estimate as lambda'/t.
+  Output:  Here's another example from the slides. Suppose a nuclear pump failed 5 times out of 94.32 days and we want  a 95% confidence interval for the failure rate per day. The number of failures X is Poisson distributed with parameter (lambda*t). We don't observe the failure rate, but we estimate it as x/t. Call our estimate lambda_hat, so lambda_hat=x/t. According to theory, the variance of our estimated failure rate is lambda/t. Again, we don't observe lamdba, so we use our estimate of it instead. We thus approximate the variance of lambda_hat as lambda_hat/t.
 
 - Class: mult_question
   Output: In this example what would you use as the estimated mean x/t?

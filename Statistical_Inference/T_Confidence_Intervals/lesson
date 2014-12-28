@@ -46,7 +46,7 @@
   Output: The t distribution, invented by William Gosset in 1908, has thicker tails than the normal. Also, instead of having two parameters, mean and variance, as the normal does, the t distribution has only one - the number of degrees of freedom (df). 
 
 - Class: text
-  Output: As df increases, the t distribution gets more like a standard normal, so it's centered around 0. Also, the t assumes that the underlying data are iid Gaussian so the statistic (X' - mu}/(s/sqrt(n)) has n-1 degrees of freedom. 
+  Output: As df increases, the t distribution gets more like a standard normal, so it's centered around 0. Also, the t assumes that the underlying data are iid Gaussian so the statistic (X' - mu)/(s/sqrt(n)) has n-1 degrees of freedom. 
 
 - Class: mult_question
   Output: Quick check. In the formula t=(X' - mu}/(s/sqrt(n)), if we replaced s by sigma the statistic t would be what asymptotically?.
@@ -211,7 +211,7 @@
   Output: Suppose that we want to compare the mean blood pressure between two groups in a randomized trial. We'll compare those who received the treatment to those who received a placebo. Unlike the sleep study, we cannot use the paired t test because the groups are independent and may have different sample sizes.
 
 - Class: text
-  Output: So our goal is to find a 95% confidence interval of the diffence between two population means. Let's represent this difference as mu_y - mu_x. How do we do this? Recall our formula X' +/- t_(n-1)*s/sqrt(n).
+  Output: So our goal is to find a 95% confidence interval of the difference between two population means. Let's represent this difference as mu_y - mu_x. How do we do this? Recall our formula X' +/- t_(n-1)*s/sqrt(n).
 
 - Class: text
   Output: First we need a sample mean, but we have two, X' and Y', one from each group. It makes sense that we'd have to take their difference (Y'-X') as well, since we're looking for a confidence interval that contains the difference mu_y-mu_x. Now we need to specify a t quantile. Suppose the groups have different sizes n_x and n_y. 
