@@ -48,7 +48,7 @@
 
 - Class: cmd_question
   Output: Remove x from the workspace.
-  CorrectAnswer: rm(x)
+  CorrectAnswer: rm("x"")
   AnswerTests: any_of_exprs('rm("x")', 'rm(x)')
   Hint: Type rm("x") to remove x from the workspace.
 
