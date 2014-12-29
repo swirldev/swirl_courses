@@ -41,6 +41,7 @@ omnitest <- function(correctExpr=NULL, correctVal=NULL, strict=FALSE, eval_for_c
     print("testing for correct expression only")
     err <- try({
       good_expr <- parse(text=correctExpr)[[1]]
+      print(paste("in try clause good_expr is ",good_expr," e_expr is ", e$expr))
       ans <- is_robust_match(good_expr, e$expr, eval_for_class, eval_env)
       print(paste("Testing for correct expression only, ans is ",ans))
     }, silent=FALSE)

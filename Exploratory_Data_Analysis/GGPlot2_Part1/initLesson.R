@@ -39,5 +39,8 @@ myedit <- function(fname){
    mypath <- pathtofile(fname)
    file.edit(mypath)
 }
-mouse <- paste(path_to_course,"maacs_env.rds",sep="/")
-env <- readRDS(mouse)
+brk <- numeric()
+for (n in 0:31) brk[n+1] <- (n*617)
+myhist <- hist(diamonds$price,breaks=brk,plot=FALSE)
+counts <- myhist$counts
+myhigh <- mpg$hwy

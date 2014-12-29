@@ -6,9 +6,22 @@
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
+- Class: mult_question
+  Output: Which of the following is a basic workhorse function of ggplot2?
+  AnswerChoices:  hist; xyplot; scatterplot; gplot; qplot
+  CorrectAnswer:  qplot
+  AnswerTests: omnitest(correctVal='qplot')
+  Hint: Which function did we invoke the most in this lesson?
 
 - Class: text
   Output: The LLN forms the basis of frequency style thinking. 
+
+- Class: mult_question
+  Output:  Which types of plot does qplot plot?
+  AnswerChoices:  histograms; scatterplots; box and whisker plots; all of the others
+  CorrectAnswer: all of the others
+  AnswerTests: ANY_of_exprs('histograms','scatterplots','box and whisker plots','all of the others')
+  Hint: That qplot is amazing! It seems to do everything!
 
 - Class: cmd_question
   Output: To see this in action, we've copied some code from the slides and created the function coinPlot. It takes an integer n which is the number of coin tosses that will be simulated. As coinPlot does these coin flips it computes the cumulative sum (assuming heads are 1 and tails 0), but after each toss it divides the cumulative sum by the number of flips performed so far. It then plots this value for each of the k=1...n tosses. Try it now for n=10. 

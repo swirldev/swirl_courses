@@ -14,20 +14,20 @@
   Output:  In another lesson, we gave you an overview of the three plotting systems in R. In this lesson we'll focus on the third and newest plotting system in R, ggplot2.  As we did with the other two systems, we'll focus on creating graphics on the screen device rather than another graphics device.
 
 - Class: text
-  Output:  The ggplot2 package is an add-on package available from CRAN via install.packages(). (Don't worry, we've done it for you already.) It is an implementation of The Grammar of Graphics, an abstract concept (as well as book) authored and invented by Leland Wilkinson and implemented by Hadley Wickham while he was a graduate student at Iowa State. The web site http://ggplot2.org provides complete documentation.
+  Output:  The ggplot2 package is an add-on package available from CRAN via install.packages(). (Don't worry, we've installed it for you already.) It is an implementation of The Grammar of Graphics, an abstract concept (as well as book) authored and invented by Leland Wilkinson and implemented by Hadley Wickham while he was a graduate student at Iowa State. The web site http://ggplot2.org provides complete documentation.
 
 - Class: text
-  Output: A grammar of graphics represents an abstraction of graphics, that is,  a “theory” of graphics which conceptualizes basic pieces from which you can build new graphics and graphical objects. The  goal of the grammar is to “Shorten the distance from mind to page”. Here's a quote from Hadley Wickham's ggplot2 book...
+  Output: A grammar of graphics represents an abstraction of graphics, that is,  a theory of graphics which conceptualizes basic pieces from which you can build new graphics and graphical objects. The  goal of the grammar is to “Shorten the distance from mind to page”. From Hadley Wickham's book  we learn that 
 
 - Class: text
-  Output:  “In brief, the grammar tells us that a statistical graphic is a mapping from data to aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars). The plot may also contain statistical transformations of the data and is drawn on a specific coordinate system”. The grammar "is composed of a set of independent components that can be composed in many different ways. ... you can create new graphics that are precisely tailored for your problem."
+  Output:  The ggplot2 package "is composed of a set of independent components that can be composed in many different ways. ... you can create new graphics that are precisely tailored for your problem." These components include aesthetics which are attributes such as colour, shape, and  size, and geometric objects or geoms such as points, lines, and bars.  
 
 - Class: text
   Output: Before we delve into details, let's review the other 2 plotting systems.
 
 - Class: mult_question
   Output: Recall what you know about R's base plotting system. Which of the following does NOT apply to it? 
-  AnswerChoices: Start with plot (or similar) function; Use annotation functions to add/modify (text, lines, points, axis); Convenient, mirrors how we think of building plots and analyzing data; Can easily go back once the plot has started (e.g., to adjust margins or correct a typo)
+  AnswerChoices: Start with plot (or similar) function; Use annotation functions to add/modify (text, lines, points, axis); It is convenient and mirrors how we think of building plots and analyzing data; Can easily go back once the plot has started (e.g., to adjust margins or correct a typo)
   CorrectAnswer: Can easily go back once the plot has started (e.g., to adjust margins or correct a typo)
   AnswerTests: omnitest(correctVal='Can easily go back once the plot has started (e.g., to adjust margins or correct a typo)')
   Hint: Which choice is the only one which looks backward? 
@@ -42,51 +42,82 @@
 
 - Class: mult_question
   Output: If we told you that ggplot2 combines the best of base and lattice, that would mean it ...?  
-  AnswerChoices: Automatically deals with spacings, text, titles but also allows you to annotate; Like lattice it allows for multipanels but more easily and intuitively; Its default mode makes many choices for you (but you can customize!); All of the above  
-  CorrectAnswer: All of the above
-  AnswerTests: omnitest(correctVal='All of the above')
+  AnswerChoices: Automatically deals with spacings, text, titles but also allows you to annotate; Like lattice it allows for multipanels but more easily and intuitively; Its default mode makes many choices for you (but you can customize!); All of the others  
+  CorrectAnswer: All of the others
+  AnswerTests: omnitest(correctVal='All of the others')
   Hint: Which choice is the only one that encompasses the other three? 
 
 - Class: text
-  Output: Yes, ggplot2 combines the best of base and lattice. It allows for multipanel (conditioning) plots (as lattice does) but also annotation (as base does), so you can add titles and labels. It also uses the grid package (which comes with R) to draw the graphics. As part of its grammar philosophy, ggplot2 plots are composed of aesthetics (attributes such as size, shape, color) and geoms (points, lines), the geometric objects you see on the plot.
+  Output: Yes, ggplot2 combines the best of base and lattice. It allows for multipanel (conditioning) plots (as lattice does) but also annotation (as base does), so you can add titles and labels. It uses the low-level grid package (which comes with R) to draw the graphics. As part of its grammar philosophy, ggplot2 plots are composed of aesthetics (attributes such as size, shape, color) and geoms (points, lines, and bars), the geometric objects you see on the plot.
 
 - Class: text
-  Output: The basic workhorse function in ggplot2 is qplot, (think quick plot) which works like the plot function in the base graphics system. It hides many tedious details from the user. Similar to lattice, it looks for data in a data frame or parent environment. The more advanced workhorse function in the package is ggplot, which is  more flexible for doing things qplot() cannot do. In this lesson we'll focus on qplot.
-    
+  Output: The ggplot2 package has 2 workhorse functions. The more basic workhorse function is qplot, (think quick plot), which works like the plot function in the base graphics system. It can produce many types of plots (scatter, histograms, box and whisker) while hiding tedious details from the user. Similar to lattice functions, it looks for data in a data frame or parent environment. 
 
+- Class: text
+  Output: The more advanced workhorse function in the package is ggplot, which is  more flexible and easier to customize for doing things qplot cannot do. In this lesson we'll focus on qplot.
+    
 - Class: cmd_question
-  Output: We'll start by showing how easy and versatile qplot is. First, let's look at some data which might be familiar to you. It comes with the ggplot2 package. The mpg data frame contains fuel economy data for 38 models of cars between 1999 and 2008. Run the R command str with the argument mpg. This will give you an idea of what mpg contains.
+  Output: We'll start by showing how easy and versatile qplot is. First, let's look at some data which comes with the ggplot2 package. The mpg data frame contains fuel economy data for 38 models of cars between 1999 and 2008. Run the R command str with the argument mpg. This will give you an idea of what mpg contains.
   CorrectAnswer: str(mpg)
   AnswerTests: omnitest(correctExpr='str(mpg)')
   Hint: Type str(mpg) at the command prompt.
 
 - Class: cmd_question
-  Output: Suppose we want to see if there's a correlation betwwen engine displacement (disp) and highway miles per gallon (hwy). As we did with the plot function of the base system we could simply call  qplot with 3 arguments, the first two are the variables we want to examine and the third argument data is set equal to the name of the dataset which contains them (in this case, mpg). Try this now.
+  Output: We see that there are 234 points in the dataset concerning 11 different characteristics of the cars. Suppose we want to see if there's a correlation betwwen engine displacement (displ) and highway miles per gallon (hwy). As we did with the plot function of the base system we could simply call  qplot with 3 arguments, the first two are the variables we want to examine and the third argument data is set equal to the name of the dataset which contains them (in this case, mpg). Try this now.
   CorrectAnswer: qplot(displ, hwy, data = mpg)
   AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg)')
   Hint: Type qplot(displ, hwy, data = mpg) at the command prompt.
 
 - Class: cmd_question
-  Output: Simple, right? The first argument is shown along the x-axis and the second along the y-axis. The negative trend (increasing displacement and lower gas mileage) is pretty clear. Now suppose we want to do the same plot but this time use different colors to distinguish between the 3 factors (subsets) of different types of drive (drv) in  the data (that is, front-wheel, rear-wheel, or 4-wheel). Again, qplot makes this very easy. We'll just add what ggplot2 calls an aesthetic, a fourth argument, color, and set it equal to the factor drv. Try this now. (Use the up arrow key to save some typing.)
+  Output: A nice scatterplot done simply, right? All the labels are provided. The first argument is shown along the x-axis and the second along the y-axis. The negative trend (increasing displacement and lower gas mileage) is pretty clear. Now suppose we want to do the same plot but this time use different colors to distinguish between the 3 factors (subsets) of different types of drive (drv) in  the data (front-wheel, rear-wheel, and 4-wheel). Again, qplot makes this very easy. We'll just add what ggplot2 calls an aesthetic, a fourth argument, color, and set it equal to drv. Try this now. (Use the up arrow key to save some typing.)
   CorrectAnswer: qplot(displ, hwy, data = mpg, color = drv)
   AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg, color = drv)')
   Hint: Type qplot(displ, hwy, data = mpg, color = drv) at the command prompt.
 
 - Class: text
-  Output: Pretty cool, right? See the legend to the right which qplot helpfully supplied? The colors were automatically assigned by qplot so the legend decodes the colors for you. Notice that qplot automatically used dots or points to indicate the data. These points are geoms (geometric objects).
+  Output: Pretty cool, right? See the legend to the right which qplot helpfully supplied? The colors were automatically assigned by qplot so the legend decodes the colors for you. Notice that qplot automatically used dots or points to indicate the data. These points are geoms (geometric objects). We could have used a different aesthetic, for instance shape instead of color, to distinguish between the drive types.
 
 - Class: cmd_question
-  Output: Now let's add a second geom. How about some trend lines, one for each color? Just add a fifth argument, geom, and using the R function c(), set it equal to the concatenation of the two strings "point" and "smooth". The first refers to the data points and second to the trend lines we want plotted. Try this now.
+  Output: Now let's add a second geom to the default points. How about some trend lines, one for each color? Just add a fifth argument, geom, and using the R function c(), set it equal to the concatenation of the two strings "point" and "smooth". The first refers to the data points and second to the trend lines we want plotted. Try this now.
   CorrectAnswer: qplot(displ, hwy, data = mpg, color=drv, geom = c("point", "smooth"))
   AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg, color=drv, geom = c("point", "smooth"))')
   Hint: Type qplot(displ, hwy, data = mpg, color=drv, geom = c("point", "smooth")) at the command prompt.
 
-_ Class: text
-  Output: Note the gray areas surrounding each trend lines. These indicate the 95% confidence intervals for the lines.
-
+- Class: text
+  Output: Note the helpful message R returns in red telling you what function (loess) it used to create the trend lines. No need to worry - we'll see another example of method later in the lesson. Notice the gray areas surrounding each trend lines. These indicate the 95% confidence intervals for the lines.
 
 - Class: cmd_question
-  Output: The function qplot can also do histograms which display frequency counts for a single variable. Let's do an easy one. Call qplot with 3 arguments. First specify the variable for which you want the frequency count, in this case hwy, then specify the data (set equal to mpg), and finally, the aesthetic, fill, set equal to drv. Instead of a plain old histogram, this will again use colors to distinguish the 3 different drive factors.
+  Output: Before we leave qplot's scatterplotting ability, call qplot again, this time with 3 arguments. The first is y set equal to hwy, the second is data set equal to mpg, and the third is color set equal to drv. Try this now.
+  CorrectAnswer: qplot(y=hwy, data = mpg, color = drv)
+  AnswerTests: omnitest(correctExpr='qplot(y=hwy, data = mpg, color = drv)')
+  Hint: Type qplot(y=hwy, data = mpg, color = drv) at the command prompt.
+
+- Class: cmd_question
+  Output: What's this plot showing? We see the x-axis ranges from 0 to 250 and we remember that we had 234 data points in our set, so we can infer that each point in the plot represents one of the hwy values (indicated by the y-axis). We've created the vector myhigh for you which contains the hwy data from the mpg dataset. Look at myhigh now.
+  CorrectAnswer: myhigh
+  AnswerTests: omnitest(correctExpr='myhigh')
+  Hint: Type myhigh at the command prompt.
+
+- Class: text
+  Output: Comparing the values of myhigh with the plot, we see the first entries in the vector (29, 29, 31, 30,...) correspond to the leftmost points in the the plot (in order), and the last entries in myhigh (28, 29, 26, 26, 26) correspond to the rightmost plotted points. So, specifying the y parameter only, without an x argument, plots the values of the y argument in the order in which they occur in the data.
+
+- Class: cmd_question
+  Output: The all-purpose qplot can also create box and whisker plots.  Call qplot now with 4 arguments. First specify the variable by which you'll split the data, in this case drv, then specify the variable which you want to examine, in this case hwy. The third argument is data (set equal to mpg), and the fourth, the geom, set equal to the string "boxplot"
+  CorrectAnswer: qplot(drv,hwy,data=mpg,geom="boxplot")
+  AnswerTests: omnitest(correctExpr='qplot(drv,hwy,data=mpg,geom="boxplot")')
+  Hint: Type qplot(drv,hwy,data=mpg,geom="boxplot") at the command prompt.
+
+- Class: cmd_question
+  Output: We see 3 boxes, one for each drive. Now to impress you, call qplot with 5 arguments. The first 4 are just as you used previously, (drv, hwy, data set equal to mpg, and geom set equal to the string "boxplot"). Now add a fifth argument, color, equal to manufacturer. 
+  CorrectAnswer: qplot(drv,hwy,data=mpg,geom="boxplot",color=manufacturer)
+  AnswerTests: omnitest(correctExpr='qplot(drv,hwy,data=mpg,geom="boxplot",color=manufacturer)')
+  Hint: Type qplot(drv,hwy,data=mpg,geom="boxplot",color=manufacturer) at the command prompt.
+
+- Class: text
+  Output: It's a little squished but we just wanted to illustrate qplot's capabilities. Notice that there are still 3 regions of the plot (determined by the factor drv). Each is subdivided into several boxes depicting different manufacturers.
+
+- Class: cmd_question
+  Output: Now, on to histograms. These display frequency counts for a single variable. Let's start with an easy one. Call qplot with 3 arguments. First specify the variable for which you want the frequency count, in this case hwy, then specify the data (set equal to mpg), and finally, the aesthetic, fill, set equal to drv. Instead of a plain old histogram, this will again use colors to distinguish the 3 different drive factors.
   CorrectAnswer: qplot(hwy, data = mpg, fill = drv)
   AnswerTests: omnitest(correctExpr='qplot(hwy, data = mpg, fill = drv)')
   Hint: Type qplot(hwy, data = mpg, fill = drv) at the command prompt.
@@ -107,7 +138,7 @@ _ Class: text
   Output: The result is a 1 by 3 array of plots. Note how each is labeled at the top with the factor label (4,f, or r).
 
 - Class: cmd_question
-  Output:  Now we'll do a histogram, again calling qplot with 4 arguments. This time, since we need only one variable the first is hwy and the second is the argument data set equal to mpg. The third is the argument facets which we'll set equal to the expression drv ~ . which give us a different arrangement of the facets. The fourth argument is binwidth. Set this equal to 2. Try this now.
+  Output:  Now we'll do a histogram, again calling qplot with 4 arguments. This time, since we need only one variable for a histogram, the first is hwy and the second is the argument data set equal to mpg. The third is the argument facets which we'll set equal to the expression drv ~ . which give us a different arrangement of the facets. The fourth argument is binwidth. Set this equal to 2. Try this now.
   CorrectAnswer: qplot(hwy, data = mpg, facets = drv ~ ., binwidth = 2)
   AnswerTests: omnitest(correctExpr='qplot(hwy, data = mpg, facets = drv ~ ., binwidth = 2)')
   Hint: Type qplot(hwy, data = mpg, facets = drv ~ ., binwidth = 2) at the command prompt.
@@ -120,296 +151,188 @@ _ Class: text
   Hint: How many row? How many columns?
 
 - Class: text
-  Output: Now we'll use qplot to analyze data that's a little more complicated. This was data used in a Johns Hopkins study to understand the effects of indoor environmental pollution, particularly mouse allergen, on children with asthma.
-
-- Class: text
-  Output: Unlike base plotting,  the lattice system does not have a "two-phase" aspect with separate plotting and annotation. Instead all plotting and annotation is done at once with a single function call.
-
-- Class: text
-  Output: The lattice system, as the base does, provides several different plotting functions. These include xyplot for creating scatterplots, bwplot for box-and-whiskers plots or boxplots, and  histogram for  histograms. There are several others (stripplot, dotplot, splom and levelplot), which we won't cover here.
-
-- Class: text
-  Output: Lattice functions generally take a formula for their first argument, usually of the form y ~ x. This indicates that y depends on x, so in a scatterplot y would be plotted on the y-axis and x on the x-axis.
-
-- Class: text
-  Output: Here's an example of  typical lattice plot call,  xyplot(y ~ x | f * g, data). The f and g represent the optional conditioning variables. The * represents interaction between them. Remember when we said that lattice is good for plotting multivariate data? That's where these conditioning variables come into play.
-
-- Class: text
-  Output: The second argument is the data frame or list from which the variables in the formula should be looked up.  If no data frame or list is passed, then the parent frame is used. If no other arguments are passed, the default values are used.
-
- 
-- Class: cmd_question
-  Output:  Now try running xyplot with the formula Ozone~Wind as the first argument and the second argument data set equal to airquality.
-  CorrectAnswer: xyplot(Ozone ~ Wind, data = airquality)
-  AnswerTests: omnitest(correctExpr='xyplot(Ozone ~ Wind, data = airquality)')
-  Hint: Type xyplot(Ozone ~ Wind, data = airquality) at the command prompt.
-
-- Class: text
-  Output: Look vaguely familiar? The dots are blue, instead of black, but lattice labeled the axes for you. You can use some of the same graphical parameters (e.g., pch and col) that you used in the base package in calls to lattice functions.
+  Output: Now we'll use qplot to analyze data that's a little more complicated. This is data provided with the ggplot2 package. It contains information on various characteristics of diamonds.  
 
 - Class: cmd_question
-  Output:  Now rerun xyplot with the formula Ozone~Wind as the first argument and the second argument data set equal to airquality (use the up arrow to save typing). This time add the arguments col set equal to "red", pch set equal to 8, and main set equal to "Big Apple Data".
-  CorrectAnswer: xyplot(Ozone ~ Wind, data = airquality, pch=8, col="red", main="Big Apple Data")
-  AnswerTests: omnitest(correctExpr='xyplot(Ozone ~ Wind, data = airquality, pch=8, col="red", main="Big Apple Data")')
-  Hint: Type xyplot(Ozone ~ Wind, data = airquality, pch=8, col="red", main="Big Apple Data") at the command prompt.
-
-- Class: text
-  Output: Red snowflakes are cool, right? Now that you’ve learned the basics of xyplot() and some of it arguments, you can experimjent a little more by yourself to discover what other arguments and colours are available by invoking swirl's play() function to experiment and then calling nxt() when you’re done playing! 
-
-- Class: text
-  Output: Now you'll see how easy it is to generate a multipanel plot using a single lattice command. 
-
-- Class: cmd_question
-  Output:  Run xyplot with the formula Ozone~Wind | as.factor(Month) as the first argument and the second argument data set equal to airquality (use the up arrow to save typing). So far, not much is different, right? Add a third argument, layout, set equal to c(5,1). 
-  CorrectAnswer: xyplot(Ozone ~ Wind | as.factor(Month), data = airquality, layout=c(5,1))
-  AnswerTests: omnitest(correctExpr='xyplot(Ozone ~ Wind | as.factor(Month), data = airquality, layout=c(5,1))')
-  Hint: Type xyplot(Ozone ~ Wind | as.factor(Month), data = airquality, layout=c(5,1)) at the command prompt.
+  Output:  Run the R command str with the argument diamonds to see what the data looks like.
+  CorrectAnswer: str(diamonds)
+  AnswerTests: omnitest(correctExpr='str(diamonds)')
+  Hint: Type str(diamonds) at the command prompt.
 
 - Class: mult_question
-  Output: Note that the default color and plotting character are back. What did the as.factor(Month) do?
-  AnswerChoices:  Displayed and labeled each subplot with the month's integer; Displayed the data by individual months; Huh?; Randomly divided the data into 5 panels
-  CorrectAnswer:  Displayed and labeled each subplot with the month's integer
-  AnswerTests: omnitest(correctVal='Displayed and labeled each subplot with the month\'s integer')
-  Hint: Obviously the data is broken up and displayed by month. The as.factor made sure each panel was labeled correctly.
-
-- Class: cmd_question
-  Output:  Since Month is a named column of the airquality dataframe we had to tell R to treat it as a factor. To see how this affects the plot, rerun the xyplot command you just ran, but use Ozone ~ Wind | Month instead of Ozone ~ Wind | as.factor(Month) as the first argument.  
-  CorrectAnswer: xyplot(Ozone ~ Wind | Month, data = airquality, layout=c(5,1))
-  AnswerTests: omnitest(correctExpr='xyplot(Ozone ~ Wind | Month, data = airquality, layout=c(5,1))')
-  Hint: Type xyplot(Ozone ~ Wind | Month, data = airquality, layout=c(5,1)) at the command prompt.
-
-- Class: text
-  Output: Not as informative, right? The word Month in each panel really doesn't tell you much if it doesn't identify which month it's plotting. Notice that the actual data is the same between the two plots, though.
-
-- Class: text
-  Output: Lattice functions behave differently from base graphics functions in one critical way. Recall that base graphics functions plot data directly to the graphics device (e.g., screen, or file such as a PDF file). In contrast, lattice graphics functions return an object of class trellis.
-
-- Class: figure
-  Output: The print methods for lattice functions actually do the work of plotting the data on the graphics device. They return "plot objects" that can be stored (but it’s usually better to just save the code  and data). On the command line, trellis objects are auto-printed so that it appears the function is plotting the data.
-  Figure: clearPlot.R
-  FigureType: new
-
-- Class: cmd_question
-  Output:  To see this, create a variable p which is assigned the output of this simple call to xyplot, xyplot(Ozone~Wind,data=airquality).
-  CorrectAnswer: p <- xyplot(Ozone~Wind,data=airquality)
-  AnswerTests: expr_creates_var("p"); omnitest(correctExpr='p <- xyplot(Ozone~Wind,data=airquality)')
-  Hint: Type p <- xyplot(Ozone~Wind,data=airquality) at the command prompt.
-
-- Class: text
-  Output: Nothing plotted, right? But the object p is around.
-
-- Class: cmd_question
-  Output:  Type p or print(p) now to see it.
-  CorrectAnswer: p
-  AnswerTests: ANY_of_exprs('p','print(p)')
-  Hint: Type p or print(p) at the command prompt.
- 
-- Class: cmd_question
-  Output: Like magic, it appears. Now run the R command names with p as its argument.
-  CorrectAnswer: names(p)
-  AnswerTests: omnitest(correctExpr='names(p)')
-  Hint: Type names(p) at the command prompt.
- 
-- Class: cmd_question
-  Output: We see that the trellis object p has 45 named attributes, the first of which is "formula" which isn't too surprising. A lot of these attributes are probably NULL in value. We've done some behind-the-scenes work for you and created two vectors. The first, mynames, is a character vector of the names in p. The second is a boolean vector, myfull,  which has TRUE values for nonnull entries of p. Run mynames[myfull] to see which entries of p are not NULL.
-  CorrectAnswer: mynames[myfull]
-  AnswerTests: omnitest(correctExpr='mynames[myfull]')
-  Hint: Type mynames[myfull] at the command prompt.
- 
-- Class: cmd_question
-  Output: Wow! 29 nonNull values for one little plot. Note that a lot of them are like the ones we saw in the base plotting system. Let's look at the values of some of them. Type p[["formula"]] now.
-  CorrectAnswer: p[["formula"]]
-  AnswerTests: omnitest(correctExpr='p[["formula"]]')
-  Hint: Type p[["formula"]] at the command prompt.
- 
-- Class: cmd_question
-  Output: Not surprising, is it? It's a familiar formula. Now look at p's x.limits. Remember the double square brackets and quotes. 
-  CorrectAnswer: p[["x.limits"]]
-  AnswerTests: omnitest(correctExpr='p[["x.limits"]]')
-  Hint: Type p[["x.limits"]] at the command prompt.
- 
-- Class: cmd_question
-  Output: They match the plot, right? The x values are indeed between .37 and 22.03. Finally, look at the value of the named element call of p. Remember the double square brackets and quotes. 
-  CorrectAnswer: p[["call"]]
-  AnswerTests: omnitest(correctExpr='p[["call"]]')
-  Hint: Type p[["call"]] at the command prompt.
-
-- Class: text
-  Output: Again, not surprising. Before we wrap up, let's talk about lattice's panel functions which control what happens inside each panel of the plot. The ease of making multi-panel plots makes lattice very appealing. The lattice package comes with default panel functions, but you can customize what happens in each panel. 
-
-- Class: cmd_question
-  Output: Panel functions receive the x and y coordinates of the data points in their panel (along with any optional arguments). To see this, we've created some data for you - two 100-long vectors, x and y. For its first 50 values y is a function of x, for the last 50 values, y is random. We've also defined a 100-long factor vector f which distinguishes between the first and last 50 elements of the two vectors. Run the R command table with f as it argument.
-  CorrectAnswer: table(f)
-  AnswerTests: omnitest(correctExpr='table(f)')
-  Hint: Type table(f) at the command prompt.
-
-- Class: cmd_question
-  Output: The first 50 entries of f are "Group 1" and the last 50 are "Group 2". Run xyplot with two arguments. The first is the formula y~x|f, and the second is layout set equal to c(2,1). Note that we're not providing an explicit data argument, so xyplot will look in the environment and see the x and y that we've generated for you.
-  CorrectAnswer: xyplot(y ~ x | f, layout = c(2, 1))
-  AnswerTests: omnitest(correctExpr='xyplot(y ~ x | f, layout = c(2, 1))')
-  Hint: Type xyplot(y ~ x | f, layout = c(2, 1)) at the command prompt.
-
-- Class: cmd_question
-  Output: To understand this a little better look at the variable v1 we've created for you.
-  CorrectAnswer: v1
-  AnswerTests: omnitest(correctExpr='v1')
-  Hint: Type v1 at the command prompt.
-
-- Class: cmd_question
-  Output: The first two numbers are the range of the x values of Group 1 and the last two numbers are the range of y values of Group 1. See how they match the values of the left panel (Group 1) in the plot. Now look at v2 which holds the comparable numbers for Group 2.
-  CorrectAnswer: v2
-  AnswerTests: omnitest(correctExpr='v2')
-  Hint: Type v2 at the command prompt.
-
-- Class: cmd_question
-  Output: Again, the values match the plot. That's reassuring. We've copied some code from the slides for you. To see it, type myedit("plot1.R"). This will open your editor and display the R code in it.
-  CorrectAnswer: myedit("plot1.R")
-  AnswerTests: omnitest(correctExpr='myedit("plot1.R")')
-  Hint: Type myedit("plot1.R") at the command prompt.
+  Output: From the output, how many characteristics of diamonds do you think this data contains?
+  AnswerChoices:  10; 53940; 5394; 53950
+  CorrectAnswer:  10
+  AnswerTests: omnitest(correctVal='10')
+  Hint: The output says there are 53940 observations of 10 variables. This is followed by a 10-long list of characteristics (carat, cut, color, etc.) that can apply to diamonds.
 
 - Class: mult_question
-  Output: How many calls to basic lattice plotting functions are there in plot1.R?
-  AnswerChoices: 1;2;3
-  CorrectAnswer: 1
-  AnswerTests: omnitest(correctVal='1')
-  Hint: How many calls to xyplot are there?
-
-- Class: mult_question
-  Output: Note the panel function. How many formal arguments does it have?
-  AnswerChoices: 1;2;3
-  CorrectAnswer: 3
-  AnswerTests: omnitest(correctVal='3')
-  Hint: You have to count the ... as an argument?
- 
-- Class: text
-  Output: The panel function has 3 arguments, x, y and ... . This last stands for all other arguments (such as graphical parameters) you might want to include. There are 2 lines in the panel function. Each invokes a panel method, the first to plot the data in each panel (panel.xyplot), the second to draw a horizontal line in each panel (panel.abline). Note the similarity of this last call to that of the base plotting function of the same name.
+  Output: From the output of str, how many  diamonds are characterized in this dataset?
+  AnswerChoices:  10; 53940; 5394; 53950
+  CorrectAnswer:  53940
+  AnswerTests: omnitest(correctVal='53940')
+  Hint: The output says there are 53940 observations of 10 variables. This is followed by a 10-long list of characteristics (carat, cut, color, etc.) that can apply to diamonds.
 
 - Class: cmd_question
-  Output: We've defined a function for you, pathtofile, which takes a filename as its argument. This makes sure R can find the file on your computer. Now run the R command source with two arguments. The first is the call to pathtofile with the string "plot1.R" as its argument and the second is the argument local set equal to TRUE. This will run the code in plot1.R for you so you can see how it works.
-  CorrectAnswer: source(pathtofile("plot1.R"),local=TRUE)
-  AnswerTests: omnitest(correctExpr='source(pathtofile("plot1.R"),local=TRUE)')
-  Hint: Type source(pathtofile("plot1.R"),local=TRUE) at the command prompt.
+  Output:  Now let's plot a histogram of the price of the 53940 diamonds in this dataset. Recall that a histogram requires only one variable of the data, so run the R command qplot with the first argument price and the argument data set equal to diamonds. This will show the frequency of different diamond prices.
+  CorrectAnswer: qplot(price,data=diamonds)
+  AnswerTests: omnitest(correctExpr='qplot(price,data=diamonds)')
+  Hint: Type qplot(price,data=diamonds) at the command prompt.
 
-- Class: mult_question
-  Output: See how the lines appear. The plot shows two panels because...?
-  AnswerChoices: f contains 2 factors; there are 2 calls to panel methods; lattice can handle at most 2 panels; there are 2 variables
-  CorrectAnswer: f contains 2 factors
-  AnswerTests: omnitest(correctVal='f contains 2 factors')
-  Hint: The number of panels depends on the conditioning variable, and in this case it is f.
- 
 - Class: cmd_question
-  Output: We've copied another piece of similar code, i.e., a call to xyplot with a custom panel function, from the slides. To see it, type myedit("plot2.R"). This will open your editor and display the R code in it.
-  CorrectAnswer: myedit("plot2.R")
-  AnswerTests: omnitest(correctExpr='myedit("plot2.R")')
-  Hint: Type myedit("plot2.R") at the command prompt.
+  Output:  Not only do you get a histogram, but you also get a message about the binwidth defaulting to range/30. Recall that range refers to the spread or dispersion of the data, in this case price of diamonds. Run  the R command range now with diamonds$price as its argument.
+  CorrectAnswer: range(diamonds$price)
+  AnswerTests: omnitest(correctExpr='range(diamonds$price)')
+  Hint: Type range(diamonds$price) at the command prompt.
 
 - Class: text
-  Output: You can see how plot2.R differs from plot1.R, right? 
+  Output: We see that range returned the minimum and maximum prices, so the diamonds vary in price from $326 to $18823. We've done the arithmetic for you, the range (difference between these two numbers) is $18497.
 
 - Class: cmd_question
-  Output: Again, run the R command source with  the two arguments pathtofile("plot2.R") and local=TRUE. This will run the code in plot2.R.
-  CorrectAnswer: source(pathtofile("plot2.R"),local=TRUE)
-  AnswerTests: omnitest(correctExpr='source(pathtofile("plot2.R"),local=TRUE)')
-  Hint: Type source(pathtofile("plot2.R"),local=TRUE) at the command prompt.
-
-- Class: mult_question
-  Output: The regression lines are red because ...?
-  AnswerChoices: R always plots regression lines in red; R is the first letter of the word red; the custom panel function specified a col argument
-  CorrectAnswer: the custom panel function specified a col argument
-  AnswerTests: omnitest(correctVal='the custom panel function specified a col argument')
-  Hint: Look carefully at the arguments in the call to panel.lmline.
-
-- Class: figure
-  Output: Before we close we'll look at how easily lattice can handle a plot with a great many panels. (The sky's the limit.) We've loaded data for you from the Mouse Allergen and Asthma Cohort Study (MAACS) which studied 150 children with asthma living in Baltimore City, many of whom were allergic to mouse allergen. This was an observational study, using a baseline home visit and a visit every 3 months for a year (so at most 5 visits). The study addressed the question, "How does indoor airborne mouse allergen vary over time and across subjects?" The reference is Ahluwalia et al., Journal of Allergy and Clinical Immunology, 2013.
-  Figure: clearPlot.R
-  FigureType: new
-
-- Class: cmd_question
-  Output: We've loaded the data in the variable env for you. Use the R command dim to see how big env is.
-  CorrectAnswer: dim(env)
-  AnswerTests: omnitest(correctExpr='dim(env)')
-  Hint: Type dim(env) at the command prompt.
-
-- Class: cmd_question
-  Output: So it's 750 by 27. Since the study involved 150 children we can guess that each child has 5 rows of data, one for each visit. Run the R command length with the argument table(env$MxNum) to see if this is correct.
-  CorrectAnswer: length(table(env$MxNum))
-  AnswerTests: omnitest(correctExpr='length(table(env$MxNum))')
-  Hint: Type length(table(env$MxNum)) at the command prompt.
-
- 
-- Class: mult_question
-  Output:  So indeed there are 150 distinct identifiers in the MxNum column of the data. There are 26 other columns of data, but we're only interested in the airmus column which is a measure of airborn mouse allergen. Can lattice handle 150 panels in a single plot?
-  AnswerChoices: Yes; No
-  CorrectAnswer: Yes
-  AnswerTests: omnitest(correctVal='Yes')
-  Hint: Would we be dealing with this data if it couldn't?
-
-- Class: cmd_question
-  Output:  To save you some trouble we've defined three character strings for you, labels for the x- and y-axes and a main title. They're in the file myLabels.R, so run myedit on this file to see  them. Remember to put the file name in quotes when you call myedit.
-  CorrectAnswer: myedit("myLabels.R")
-  AnswerTests: omnitest(correctExpr='myedit("myLabels.R")')
-  Hint: Type myedit("myLabels.R") at the command prompt.
-
-- Class: cmd_question
-  Output:  Now run source with pathtofile("myLabels.R") and local set equal to TRUE.
-  CorrectAnswer: source(pathtofile("myLabels.R"),local=TRUE)
-  AnswerTests: omnitest(correctExpr='source(pathtofile("myLabels.R"),local=TRUE)')
-  Hint: Type source(pathtofile("myLabels.R"),local=TRUE) at the command prompt.
-
-- Class: cmd_question
-  Output: Now call xyplot with the formula log2(airmus) ~ VisitNum | as.factor(MxNum) and data set equal to env. In addition, set the argument strip equal to  FALSE,  pch set equal to 20, xlab to myxlab, ylab to myylab, and main to mymain. The plot may take awhile because it is so big.
-  CorrectAnswer: xyplot(log2(airmus) ~ VisitNum | as.factor(MxNum),data=env,strip=FALSE,pch=20,xlab=myxlab,ylab=myylab,main=mymain)
-  AnswerTests: omnitest(correctExpr='xyplot(log2(airmus) ~ VisitNum | as.factor(MxNum),data=env,strip=FALSE,pch=20,xlab=myxlab,ylab=myylab,main=mymain)')
-  Hint: Type xyplot(log2(airmus) ~ VisitNum | as.factor(MxNum),data=env,strip=FALSE,pch=20,xlab=myxlab,ylab=myylab,main=mymain) at the command prompt.
+  Output:  Rerun qplot now with 3 arguments. The first is price, the second is data set equal to diamonds, and the third is binwidth set equal to 18497/30). (Use the up arrow to save yourself some typing.) See if the plot looks familiar.
+  CorrectAnswer: qplot(price,data=diamonds,binwidth=18497/30)
+  AnswerTests: omnitest(correctExpr='qplot(price,data=diamonds,binwidth=18497/30)')
+  Hint: Type qplot(price,data=diamonds,binwidth=18497/30) at the command prompt.
 
 - Class: text
-  Output: Pretty cool, right? 150 panels, one for each child in the study. The dots (pch=20) show the (log base 2) measure of airborne allergen for each of the visits for each child. You'll notice that not all children had 5 visits.
+  Output: No more messages in red, but a histogram almost identical to the previous one! If you typed 18497/30 at the command line you would get the result 616.5667. This means that the height of each bin tells you how many diamonds have a price between x and x+617 where x is the left edge of the bin. 
+
+- Class: cmd_question
+  Output:  We've created a vector containing integers that are multiples of 617 for you. It's call brk. Look at it now.
+  CorrectAnswer: brk
+  AnswerTests: omnitest(correctExpr='brk')
+  Hint: Type brk at the command prompt.
+
+- Class: cmd_question
+  Output:  We've also created a vector containing the number of diamonds with  prices between each pair of adjacent entries of brk. For instance, the first count is the number of diamonds with prices between 0 and $617, and the second is the number of diamonds with prices between $617 and $1234. Look at this vector counts now. 
+  CorrectAnswer: counts
+  AnswerTests: omnitest(correctExpr='counts')
+  Hint: Type counts at the command prompt.
 
 - Class: text
-  Output:  Review time!!!
+  Output: See how it matches the histogram you just plotted? So, qplot really works!
+
+- Class: cmd_question
+  Output:  You're probably sick of it  but rerun qplot again, this time with 4 arguments. The first 3 are the same as the command you just ran  (price, data set equal to diamonds, and binwidth set equal to 18497/30). (Use the up arrow to save yourself some typing.) The fourth argument is fill set equal to cut. The shape of the histogram will be familiar, but it will be more colorful.
+  CorrectAnswer: qplot(price,data=diamonds,binwidth=18497/30,fill=cut)
+  AnswerTests: omnitest(correctExpr='qplot(price,data=diamonds,binwidth=18497/30,fill=cut)')
+  Hint: Type qplot(price,data=diamonds,binwidth=18497/30,fill=cut) at the command prompt.
+
+- Class: text
+  Output: This shows how the counts within each price grouping (bin) are distributed among the different cuts of diamonds. Notice how qplot displays these distributions relative to the cut legend on the right. The fair cut diamonds are at the bottom of each bin, the good cuts are above them, then the very good above them, until the ideal cuts are at the top of each bin. This display shows that there are very few fair cut diamonds priced above $5000.
+
+- Class: cmd_question
+  Output:  Now we'll replot the histogram as a density function. The shape will be similar but the scale on the y-axis will be different since, by definition, the density function is nonnegative everywhere, and the area under the curve is one. To do this, simply call qplot with 3 arguments. The first 2 are  price and data (set equal to diamonds). The third is geom which should be set equal to the string "density". Try this now. 
+  CorrectAnswer: qplot(price,data=diamonds,geom="density")
+  AnswerTests: omnitest(correctExpr='qplot(price,data=diamonds,geom="density")')
+  Hint: Type qplot(price,data=diamonds,geom="density") at the command prompt.
+
+- Class: text
+  Output:  Notice that the shape is similar to that of the histogram we saw previously. The highest peak is close to 0 on the x-axis meaning that most of the diamonds in the dataset were inexpensive. In general, as prices increase (move right along the x-axis) the number of diamonds (at those prices) decrease. The exception to this is when the price is around $4000; there's a slight increase in frequency. Let's see if cut is responsible for this increase. 
+
+- Class: cmd_question
+  Output: Rerun qplot, this time with 4 arguments. The first 2 are the usual, and the third is geom set equal to "density". The fourth is color set equal to cut. Try this now.
+  CorrectAnswer: qplot(price,data=diamonds,geom="density",color=cut)
+  AnswerTests: omnitest(correctExpr='qplot(price,data=diamonds,geom="density",color=cut)')
+  Hint: Type qplot(price,data=diamonds,geom="density",color=cut) at the command prompt.
+
+- Class: text
+  Output: See how easily qplot did this? Four of the five cuts have 2 peaks, one at price $1000 and the other between $4000 and $5000. The exception is the Fair cut which has a single peak at $2500. This gives us a little more understanding of the histogram we saw before.
+
+- Class: text
+  Output: Let's move on to scatterplots. For these we'll need to specify two variables from the diamond dataset.
+
+- Class: cmd_question
+  Output:  Let's start with carat and price. Use these as the first 2 arguments of qplot. The third should be data set equal to the dataset. Try this now.
+  CorrectAnswer: qplot(carat,price,data=diamonds)
+  AnswerTests: omnitest(correctExpr=' qplot(carat,price,data=diamonds)')
+  Hint: Type  qplot(carat,price,data=diamonds) at the command prompt.
+
+- Class: text
+  Output: We see the positive trend here, as the number of carats increases the price also goes up.
+
+- Class: cmd_question
+  Output:  Now rerun the same command, except add a fourth parameter, shape, set equal to cut.
+  CorrectAnswer: qplot(carat,price,data=diamonds, shape=cut)
+  AnswerTests: omnitest(correctExpr='qplot(carat,price,data=diamonds, shape=cut)')
+  Hint: Type qplot(carat,price,data=diamonds, shape=cut) at the command prompt.
+
+- Class: cmd_question
+  Output:  The same scatterplot appears, except the cuts of the diamonds are distinguished by different symbols. The legend at the right tells you which symbol is associated with each cut. These are small and hard to read, so rerun the same command, except this time instead of setting the argument shape equal to cut, set the argument color equal to cut.
+  CorrectAnswer: qplot(carat,price,data=diamonds, color=cut)
+  AnswerTests: omnitest(correctExpr='qplot(carat,price,data=diamonds, color=cut)')
+  Hint: Type qplot(carat,price,data=diamonds, color=cut) at the command prompt.
+
+- Class: text
+  Output: That's easier to see! Now we'll close with two, more complicated scatterplot examples.
+
+- Class: cmd_question
+  Output:  We'll rerun the plot you just did (carat,price,data=diamonds and color=cut) but add two more parameters. The first is the argument geom set equal to the concatenation of the 2 strings, "point" and "smooth". The second is the argument method set equal to the string "lm". Try this now.
+  CorrectAnswer: qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm")
+  AnswerTests: omnitest(correctExpr='qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm")')
+  Hint: Type qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm") at the command prompt.
+
+
+- Class: text
+  Output: Again, we see the same scatterplot, but slightly more compressed and showing 5 regression lines, one for each cut of diamonds. It might be hard to see, but around each line is a shadow showing the 95% confidence interval. We see, unsurprisingly, that the better the cut, the steeper (more positive) the slope of the lines.
+
+- Class: cmd_question
+  Output:  Finally, let's rerun that plot you just did (carat,price,data=diamonds, color=cut, geom =c("point","smooth"),method="lm") but add one (just one) more argument. The new argument is facets and it should be set equal to the formula .~cut. Recall that the facets argument indicates we want a multi-panel plot. The symbol to the left of the tilde indicates rows (in this case just one) and the symbol to the right of the tilde indicates columns (in this five, the number of cuts). Try this now.
+  CorrectAnswer: qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm",facets=.~cut)
+  AnswerTests: omnitest(correctExpr='qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm",facets=.~cut)')
+  Hint: Type qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm",facets=.~cut) at the command prompt.
+
+- Class: text
+  Output:  Pretty good, right? Not too difficult either. Let's review what we learned!
 
 - Class: mult_question
-  Output: True or False? Lattice plots are constructed by a series of calls to core functions.
-  AnswerChoices: True; False
-  CorrectAnswer: False
-  AnswerTests: omnitest(correctVal='False')
-  Hint: Recall the long call you just made to plot 150 panels in one picture. We would have broken it up if we could have, but we didn't, so we can't.
+  Output: Which of the following is a basic workhorse function of ggplot2?
+  AnswerChoices:  hist; xyplot; scatterplot; gplot; qplot
+  CorrectAnswer:  qplot
+  AnswerTests: omnitest(correctVal='qplot')
+  Hint: Which function did we invoke the most in this lesson?
 
 - Class: mult_question
-  Output: True or False? Lattice plots are constructed with a single function call to a core lattice function (e.g. xyplot)
-  AnswerChoices: True; False
+  Output:  Which types of plot does qplot plot?
+  AnswerChoices:  histograms; scatterplots; box and whisker plots; all of the others
+  CorrectAnswer: all of the others
+  AnswerTests: omnitest()
+  Hint: That qplot is amazing! It seems to do everything!
+
+- Class: mult_question
+  Output:  What does the gg in ggplot2 stand for?
+  AnswerChoices:  good grief; grammar of graphics; goto graphics; good graphics
+  CorrectAnswer: grammar of graphics
+  AnswerTests: omnitest(correctVal='grammar of graphics')
+  Hint: Think of building blocks and components.
+
+- Class: mult_question
+  Output:  True or False? The geom argument takes a string for a value.
+  AnswerChoices:  True; False
   CorrectAnswer: True
   AnswerTests: omnitest(correctVal='True')
-  Hint: This is the opposite of the last question which was false.
+  Hint: Recall our examples, for instance, geom="density".
 
 - Class: mult_question
-  Output: True or False? Aspects like margins and spacing are automatically handled and defaults are usually sufficient lattice function (e.g. xyplot).
-  AnswerChoices: True; False
+  Output:  True or False? The method argument takes a string for a value.
+  AnswerChoices:  True; False
   CorrectAnswer: True
   AnswerTests: omnitest(correctVal='True')
-  Hint: In any of our examples, did we mention margins?
+  Hint: Recall our examples, for instance, method="lm".
 
 - Class: mult_question
-  Output: True or False? The lattice system is ideal for creating conditioning plots where you examine the same kind of plot under many different conditions.
-  AnswerChoices: True; False
-  CorrectAnswer: True
-  AnswerTests: omnitest(correctVal='True')
-  Hint: Think of the ease with which lattice handles multi-panel plots.
-   
-- Class: mult_question
-  Output: True or False? The lattice system, like the base plotting system, returns a trellis plot object.
-  AnswerChoices: True; False
+  Output:  True or False? The binwidth argument takes a string for a value.
+  AnswerChoices:  True; False
   CorrectAnswer: False
   AnswerTests: omnitest(correctVal='False')
-  Hint: This is the key difference between the two systems. Lattice DOES return a plot object but base doesn't.
-   
-- Class: mult_question
-  Output: True or False?  Panel functions can NEVER be customized to modify what is plotted in each of the plot panels.
-  AnswerChoices: True; False
-  CorrectAnswer: False
-  AnswerTests: omnitest(correctVal='False')
-  Hint: Recall our advice to NEVER trust questions with NEVER and ALWAYS in them.   
+  Hint: Recall our examples, for instance, binwidth=18497/30.
 
+- Class: mult_question
+  Output:  True or False? The user must specify x- and y-axis labels when using qplot. 
+  AnswerChoices:  True; False
+  CorrectAnswer: False
+  AnswerTests: omnitest(correctVal='False')
+  Hint: Recall our examples when we saw labels that we didn't specify.
 
 - Class: text
-  Output: Congrats! We hope this lesson didn't leave you climbing the trellis.
+  Output: Congrats! You've finished plot 1 of  ggplot2. In the next lesson the plot thickens.
