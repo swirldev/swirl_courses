@@ -1,0 +1,199 @@
+- Class: meta
+  Course: Exploratory_Data_Analysis
+  Lesson: GGPlot2_Extras
+  Author: Swirl Coders
+  Type: Coursera
+  Organization: Johns Hopkins Bloomberg School of Public Health
+  Version: 2.2.0
+
+- Class: text
+  Output: "GGPlot2_Extras. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 04_ExploratoryAnalysis/ggplot2.)"
+
+
+- Class: text
+  Output:  In this lesson we'll go through a few more qplot examples using diamond data which comes with the ggplot2 package. This data is a little more complicated than the mpg data and it contains information on various characteristics of diamonds.
+
+
+- Class: cmd_question
+  Output:  Run the R command str with the argument diamonds to see what the data looks like.
+  CorrectAnswer: str(diamonds)
+  AnswerTests: omnitest(correctExpr='str(diamonds)')
+  Hint: Type str(diamonds) at the command prompt.
+
+- Class: mult_question
+  Output: From the output, how many characteristics of diamonds do you think this data contains?
+  AnswerChoices:  10; 53940; 5394; 53950
+  CorrectAnswer:  10
+  AnswerTests: omnitest(correctVal='10')
+  Hint: The output says there are 53940 observations of 10 variables. This is followed by a 10-long list of characteristics (carat, cut, color, etc.) that can apply to diamonds.
+
+- Class: mult_question
+  Output: From the output of str, how many  diamonds are characterized in this dataset?
+  AnswerChoices:  10; 53940; 5394; 53950
+  CorrectAnswer:  53940
+  AnswerTests: omnitest(correctVal='53940')
+  Hint: The output says there are 53940 observations of 10 variables. This is followed by a 10-long list of characteristics (carat, cut, color, etc.) that can apply to diamonds.
+
+- Class: cmd_question
+  Output:  Now let's plot a histogram of the price of the 53940 diamonds in this dataset. Recall that a histogram requires only one variable of the data, so run the R command qplot with the first argument price and the argument data set equal to diamonds. This will show the frequency of different diamond prices.
+  CorrectAnswer: qplot(price,data=diamonds)
+  AnswerTests: omnitest(correctExpr='qplot(price,data=diamonds)')
+  Hint: Type qplot(price,data=diamonds) at the command prompt.
+
+- Class: cmd_question
+  Output:  Not only do you get a histogram, but you also get a message about the binwidth defaulting to range/30. Recall that range refers to the spread or dispersion of the data, in this case price of diamonds. Run  the R command range now with diamonds$price as its argument.
+  CorrectAnswer: range(diamonds$price)
+  AnswerTests: omnitest(correctExpr='range(diamonds$price)')
+  Hint: Type range(diamonds$price) at the command prompt.
+
+- Class: text
+  Output: We see that range returned the minimum and maximum prices, so the diamonds vary in price from $326 to $18823. We've done the arithmetic for you, the range (difference between these two numbers) is $18497.
+
+- Class: cmd_question
+  Output:  Rerun qplot now with 3 arguments. The first is price, the second is data set equal to diamonds, and the third is binwidth set equal to 18497/30). (Use the up arrow to save yourself some typing.) See if the plot looks familiar.
+  CorrectAnswer: qplot(price,data=diamonds,binwidth=18497/30)
+  AnswerTests: omnitest(correctExpr='qplot(price,data=diamonds,binwidth=18497/30)')
+  Hint: Type qplot(price,data=diamonds,binwidth=18497/30) at the command prompt.
+
+- Class: text
+  Output: No more messages in red, but a histogram almost identical to the previous one! If you typed 18497/30 at the command line you would get the result 616.5667. This means that the height of each bin tells you how many diamonds have a price between x and x+617 where x is the left edge of the bin. 
+
+- Class: cmd_question
+  Output:  We've created a vector containing integers that are multiples of 617 for you. It's call brk. Look at it now.
+  CorrectAnswer: brk
+  AnswerTests: omnitest(correctExpr='brk')
+  Hint: Type brk at the command prompt.
+
+- Class: cmd_question
+  Output:  We've also created a vector containing the number of diamonds with  prices between each pair of adjacent entries of brk. For instance, the first count is the number of diamonds with prices between 0 and $617, and the second is the number of diamonds with prices between $617 and $1234. Look at this vector counts now. 
+  CorrectAnswer: counts
+  AnswerTests: omnitest(correctExpr='counts')
+  Hint: Type counts at the command prompt.
+
+- Class: text
+  Output: See how it matches the histogram you just plotted? So, qplot really works!
+
+- Class: cmd_question
+  Output:  You're probably sick of it  but rerun qplot again, this time with 4 arguments. The first 3 are the same as the command you just ran  (price, data set equal to diamonds, and binwidth set equal to 18497/30). (Use the up arrow to save yourself some typing.) The fourth argument is fill set equal to cut. The shape of the histogram will be familiar, but it will be more colorful.
+  CorrectAnswer: qplot(price,data=diamonds,binwidth=18497/30,fill=cut)
+  AnswerTests: omnitest(correctExpr='qplot(price,data=diamonds,binwidth=18497/30,fill=cut)')
+  Hint: Type qplot(price,data=diamonds,binwidth=18497/30,fill=cut) at the command prompt.
+
+- Class: text
+  Output: This shows how the counts within each price grouping (bin) are distributed among the different cuts of diamonds. Notice how qplot displays these distributions relative to the cut legend on the right. The fair cut diamonds are at the bottom of each bin, the good cuts are above them, then the very good above them, until the ideal cuts are at the top of each bin. This display shows that there are very few fair cut diamonds priced above $5000.
+
+- Class: cmd_question
+  Output:  Now we'll replot the histogram as a density function. The shape will be similar but the scale on the y-axis will be different since, by definition, the density function is nonnegative everywhere, and the area under the curve is one. To do this, simply call qplot with 3 arguments. The first 2 are  price and data (set equal to diamonds). The third is geom which should be set equal to the string "density". Try this now. 
+  CorrectAnswer: qplot(price,data=diamonds,geom="density")
+  AnswerTests: omnitest(correctExpr='qplot(price,data=diamonds,geom="density")')
+  Hint: Type qplot(price,data=diamonds,geom="density") at the command prompt.
+
+- Class: text
+  Output:  Notice that the shape is similar to that of the histogram we saw previously. The highest peak is close to 0 on the x-axis meaning that most of the diamonds in the dataset were inexpensive. In general, as prices increase (move right along the x-axis) the number of diamonds (at those prices) decrease. The exception to this is when the price is around $4000; there's a slight increase in frequency. Let's see if cut is responsible for this increase. 
+
+- Class: cmd_question
+  Output: Rerun qplot, this time with 4 arguments. The first 2 are the usual, and the third is geom set equal to "density". The fourth is color set equal to cut. Try this now.
+  CorrectAnswer: qplot(price,data=diamonds,geom="density",color=cut)
+  AnswerTests: omnitest(correctExpr='qplot(price,data=diamonds,geom="density",color=cut)')
+  Hint: Type qplot(price,data=diamonds,geom="density",color=cut) at the command prompt.
+
+- Class: text
+  Output: See how easily qplot did this? Four of the five cuts have 2 peaks, one at price $1000 and the other between $4000 and $5000. The exception is the Fair cut which has a single peak at $2500. This gives us a little more understanding of the histogram we saw before.
+
+- Class: text
+  Output: Let's move on to scatterplots. For these we'll need to specify two variables from the diamond dataset.
+
+- Class: cmd_question
+  Output:  Let's start with carat and price. Use these as the first 2 arguments of qplot. The third should be data set equal to the dataset. Try this now.
+  CorrectAnswer: qplot(carat,price,data=diamonds)
+  AnswerTests: omnitest(correctExpr=' qplot(carat,price,data=diamonds)')
+  Hint: Type  qplot(carat,price,data=diamonds) at the command prompt.
+
+- Class: text
+  Output: We see the positive trend here, as the number of carats increases the price also goes up.
+
+- Class: cmd_question
+  Output:  Now rerun the same command, except add a fourth parameter, shape, set equal to cut.
+  CorrectAnswer: qplot(carat,price,data=diamonds, shape=cut)
+  AnswerTests: omnitest(correctExpr='qplot(carat,price,data=diamonds, shape=cut)')
+  Hint: Type qplot(carat,price,data=diamonds, shape=cut) at the command prompt.
+
+- Class: cmd_question
+  Output:  The same scatterplot appears, except the cuts of the diamonds are distinguished by different symbols. The legend at the right tells you which symbol is associated with each cut. These are small and hard to read, so rerun the same command, except this time instead of setting the argument shape equal to cut, set the argument color equal to cut.
+  CorrectAnswer: qplot(carat,price,data=diamonds, color=cut)
+  AnswerTests: omnitest(correctExpr='qplot(carat,price,data=diamonds, color=cut)')
+  Hint: Type qplot(carat,price,data=diamonds, color=cut) at the command prompt.
+
+- Class: text
+  Output: That's easier to see! Now we'll close with two, more complicated scatterplot examples.
+
+- Class: cmd_question
+  Output:  We'll rerun the plot you just did (carat,price,data=diamonds and color=cut) but add two more parameters. The first is the argument geom set equal to the concatenation of the 2 strings, "point" and "smooth". The second is the argument method set equal to the string "lm". Try this now.
+  CorrectAnswer: qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm")
+  AnswerTests: omnitest(correctExpr='qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm")')
+  Hint: Type qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm") at the command prompt.
+
+
+- Class: text
+  Output: Again, we see the same scatterplot, but slightly more compressed and showing 5 regression lines, one for each cut of diamonds. It might be hard to see, but around each line is a shadow showing the 95% confidence interval. We see, unsurprisingly, that the better the cut, the steeper (more positive) the slope of the lines.
+
+- Class: cmd_question
+  Output:  Finally, let's rerun that plot you just did (carat,price,data=diamonds, color=cut, geom =c("point","smooth"),method="lm") but add one (just one) more argument. The new argument is facets and it should be set equal to the formula .~cut. Recall that the facets argument indicates we want a multi-panel plot. The symbol to the left of the tilde indicates rows (in this case just one) and the symbol to the right of the tilde indicates columns (in this five, the number of cuts). Try this now.
+  CorrectAnswer: qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm",facets=.~cut)
+  AnswerTests: omnitest(correctExpr='qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm",facets=.~cut)')
+  Hint: Type qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm",facets=.~cut) at the command prompt.
+
+- Class: text
+  Output:  Pretty good, right? Not too difficult either. Let's review what we learned!
+
+- Class: mult_question
+  Output: Which of the following is a basic workhorse function of ggplot2?
+  AnswerChoices:  hist; xyplot; scatterplot; gplot; qplot
+  CorrectAnswer:  qplot
+  AnswerTests: omnitest(correctVal='qplot')
+  Hint: Which function did we invoke the most in this lesson?
+
+- Class: mult_question
+  Output:  Which types of plot does qplot plot?
+  AnswerChoices:  histograms; scatterplots; box and whisker plots; all of the others
+  CorrectAnswer: all of the others
+  AnswerTests: omnitest()
+  Hint: That qplot is amazing! It seems to do everything!
+
+- Class: mult_question
+  Output:  What does the gg in ggplot2 stand for?
+  AnswerChoices:  good grief; grammar of graphics; goto graphics; good graphics
+  CorrectAnswer: grammar of graphics
+  AnswerTests: omnitest(correctVal='grammar of graphics')
+  Hint: Think of building blocks and components.
+
+- Class: mult_question
+  Output:  True or False? The geom argument takes a string for a value.
+  AnswerChoices:  True; False
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal='True')
+  Hint: Recall our examples, for instance, geom="density".
+
+- Class: mult_question
+  Output:  True or False? The method argument takes a string for a value.
+  AnswerChoices:  True; False
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal='True')
+  Hint: Recall our examples, for instance, method="lm".
+
+- Class: mult_question
+  Output:  True or False? The binwidth argument takes a string for a value.
+  AnswerChoices:  True; False
+  CorrectAnswer: False
+  AnswerTests: omnitest(correctVal='False')
+  Hint: Recall our examples, for instance, binwidth=18497/30.
+
+- Class: mult_question
+  Output:  True or False? The user must specify x- and y-axis labels when using qplot. 
+  AnswerChoices:  True; False
+  CorrectAnswer: False
+  AnswerTests: omnitest(correctVal='False')
+  Hint: Recall our examples when we saw labels that we didn't specify.
+
+- Class: text
+  Output: Congrats! You've finished this jewel of a lesson. Hope it payed off!
