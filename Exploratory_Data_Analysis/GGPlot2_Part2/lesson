@@ -128,7 +128,46 @@
   Hint: Type g + geom_point(aes(color = drv)) + theme_bw(base_family="Times") at the command prompt.
 
 - Class: text
-  Output: No more gray background! Also, the font in the labels changed.
+  Output: No more gray background! Also, if you have good eyesight, you'll notice that the font in the labels changed.
+
+- Class: text
+  Output: One final note before we go through a more complicated, layered ggplot example, and this concerns the limits of the axes. We're pointing this out to emphasize a subtle difference between ggplot and the base plotting function plot.
+
+- Class: cmd_question
+  Output: We've created some random x and y data, called myx and myy, components of a dataframe called testdat. These represent 100 random normal points, except halfway through, we made one of the points be an outlier. That is, we set its y-value to be out of range of the other points. Use the base plotting function plot to create a line plot of this data. Call it with 4 arguments - myx, myy, type="l", and ylim=c(-3,3). The type="l" tells plot you want to display the data as a line instead of a scatterplot.
+  CorrectAnswer: plot(myx, myy, type = "l", ylim = c(-3,3))
+  AnswerTests: omnitest(correctExpr='plot(myx, myy, type = "l", ylim = c(-3,3))')
+  Hint: Type plot(myx, myy, type = "l", ylim = c(-3,3)) at the command prompt.
+
+- Class: cmd_question
+  Output: Notice how plot plotted the points in the (-3,3) range for y-values. The outlier at (50,100) is NOT shown on the line plot. Now we'll plot the same data with ggplot. Recall that the name of the dataframe is testdat. Create the graphical object g with a call to ggplot with 2 arguments, testdat (the data) and a call to aes with 2 arguments, x set equal to myx, and y set equal o myy.
+  CorrectAnswer: g <- ggplot(testdat, aes(x = myx, y = myy)) 
+  AnswerTests: expr_creates_var("g"); omnitest(correctExpr='g <- ggplot(testdat, aes(x = myx, y = myy))')
+  Hint: Type g <- ggplot(testdat, aes(x = myx, y = myy)) + geom_line() at the command prompt.
+
+- Class: cmd_question
+  Output: Now add a call to geom_line with 0 arguments to g.
+  CorrectAnswer: g + geom_line()
+  AnswerTests: omnitest(correctExpr='g + geom_line()')
+  Hint: Type g + geom_line() at the command prompt.
+
+- Class: text
+  Output: Notice how ggplot DID display the outlier point at (50,100). As a result the rest of the data is smashed down so you don't get to see what it, the bulk of the data, looks like closely. The single outlier probably isn't important enough to dominate the graph. How do we get ggplot to behave more like plot in a situation like this?
+
+- Class: cmd_question
+  Output: Let's take a guess that in addition to adding geom_line() to g we also just have to add ylim(-3,3) to it as we did with the call to plot. Try this now to see what happens.
+  CorrectAnswer: g + geom_line() + ylim(-3,3)
+  AnswerTests: omnitest(correctExpr='g + geom_line() + ylim(-3,3)')
+  Hint: Type g + geom_line() + ylim(-3,3) at the command prompt.
+
+- Class: cmd_question
+  Output: Notice that by doing this, ggplot simply ignored the outlier point at (50,100). There's a gap in the line which isn't very noticeable. Now recall that at the beginning of the lesson we mentioned 7 components of a ggplot plot, one of which was a coordinate system. This is a situation where we need to use a coordinate system. Instead of adding ylim(-3,3) to the expression g+geom_line(), add a call to the function coord_cartesian with the argument ylim set equal to c(-3,3).
+  CorrectAnswer: g + geom_line() + coord_cartesian(ylim=c(-3,3))
+  AnswerTests: omnitest(correctExpr='g + geom_line() + coord_cartesian(ylim=c(-3,3))')
+  Hint: Type g + geom_line() + coord_cartesian(ylim=c(-3,3)) at the command prompt.
+
+- Class: cmd_question
+  Output: See the difference? This looks more like the plot produced by the base plot function. The outlier y value at x=50 is not shown, but the plot indicates that it is larger than 3.
 
 - Class: mult_question
   Output: Recall what you know about R's base plotting system. Which of the following does NOT apply to it? 

@@ -26,4 +26,8 @@ myedit <- function(fname){
    file.edit(mypath)
 }
 
-myhigh <- mpg$hwy
+
+testdat <- data.frame(x = 1:100, y = rnorm(100))
+testdat[50,2] <- 100  ## Outlier!
+myx <- testdat$x
+myy <- testdat$y
