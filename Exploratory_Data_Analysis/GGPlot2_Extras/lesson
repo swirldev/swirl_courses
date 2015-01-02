@@ -259,7 +259,7 @@
   Hint: Type g+geom_point(alpha=1/3)+facet_grid(cut~car2)+geom_smooth(method="lm",size=3,color="pink")  at the command prompt.
 
 - Class: text
-  Output: You could add labels if you want but we'll let you experiment on your own.
+  Output: Nice thick regression lines which are somewhat interesting. You can add labels to the plot if you want but we'll let you experiment on your own.
 
 - Class: cmd_question
   Output: Lastly, ggplot2 can, of course, produce boxplots. This final exercise is the sum of 3 function calls. The first is to ggplot with 2 arguments, diamonds and a call to aes with carat and price as arguments. The second is to geom_boxplot with no arguments. The third is to facet grid with one argument, the formula . ~ cut. Try this now.
