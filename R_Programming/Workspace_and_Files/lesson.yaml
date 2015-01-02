@@ -66,10 +66,10 @@
   Output: One of the most helpful parts of any R help file is the See Also section. Read that section for list.files. Some of these functions may be used in later portions of this lesson.
 
 - Class: cmd_question
-  Output: Show all the files in your working directory, including their directory paths.
-  CorrectAnswer: list.files(full.names = TRUE)
-  AnswerTests: omnitest(correctExpr='list.files(full.names = TRUE)')
-  Hint: Type list.files(full.names = TRUE) to show all the files in your working directory, including their full paths.
+  Output: List all the files in your working directory recursively --- that is, including the files in any subdirectories. 
+  CorrectAnswer: list.files(recursive = TRUE)
+  AnswerTests: omnitest(correctExpr='list.files(recursive = TRUE)')
+  Hint: Type list.files(recursive = TRUE) to list all the files in your working directory recursively.
 
 - Class: text
   Output: Using the args() function on a function name is also a handy way to see what arguments a function can take. 
