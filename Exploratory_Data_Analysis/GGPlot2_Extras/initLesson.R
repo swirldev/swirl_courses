@@ -29,3 +29,6 @@ for (n in 0:31) brk[n+1] <- (n*617)
 myhist <- hist(diamonds$price,breaks=brk,plot=FALSE)
 counts <- myhist$counts
 
+mycuts <- quantile(diamonds$carat,seq(0,1,length=4),na.rm=TRUE)
+dc2 <- cut(diamonds$carat,mycuts)
+myd <- which(is.na(dc2))

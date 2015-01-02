@@ -11,33 +11,33 @@
 
 
 - Class: text
-  Output:  In a previous lesson we showed you the vast capabilities of qplot, the basic workhorse function of the ggplot2 package. In this lesson we'll focus on more of the details underlying ggplot2 to show you how you can customize your plots. In particular, we'll look at the second workhorse function in the package, ggplot. 
+  Output:  In a previous lesson we showed you the vast capabilities of qplot, the basic workhorse function of the ggplot2 package. In this lesson we'll focus on some fundamental components of the package. These  underlie qplot (which uses default values when it calls them) and if you understand these building blocks, you will be able to customize your plots. We'll use the second workhorse function in the package, ggplot, and other graphing functions. 
 
 - Class: text
-  Output:  Recall that ggplot2 is based on a "grammar" of graphics which means that the package contains building blocks with which you can create your own graphical objects. What are these components of ggplot2 plots? There are 7 of them. 
+  Output:  Recall that ggplot2 is based on a "grammar" of graphics which means that the package contains building blocks with which you can create your own graphical objects. What are these basic components of ggplot2 plots? There are 7 of them. 
 
 - Class: text
-  Output: Obviously, there's a DATA FRAME which contains the data you're trying to plot. Then the AESTHETIC MAPPINGS determine how data are mapped to color, size, etc. The GEOMS (geometric objects) are what you see in the plot (points, lines, shapes) and FACETS are the panels used in conditional plots. You've used these in the qplot lesson.
+  Output: Obviously, there's a DATA FRAME which contains the data you're trying to plot. Then the AESTHETIC MAPPINGS determine how data are mapped to color, size, etc. The GEOMS (geometric objects) are what you see in the plot (points, lines, shapes) and FACETS are the panels used in conditional plots. You've used these or seen them used in the qplot lesson.
 
 - Class: text
-  Output: There are 3 more. STATS are statistical transformations such as binning, quantiles, and smoothing. SCALES show what coding an aesthetic map uses (example: male = red, female = blue). Finally, the plots are depicted on a COORDINATE SYSTEM. In the qplot plots these were taken care of for you.
+  Output: There are 3 more. STATS are statistical transformations such as binning, quantiles, and smoothing which ggplot2 applies to the data. SCALES show what coding an aesthetic map uses (for example, male = red, female = blue). Finally, the plots are depicted on a COORDINATE SYSTEM. When you use qplot these were taken care of for you.
 
 - Class: text
-  Output: As in the base plotting system (and in contrast to the lattice system), when building plots with ggplot (NOT qplot),  the “artist’s palette” model is used. This means that plots are built up in layers. First you plot the data, then you can overlay a summary (for instance, a regression line or smoother) and add any metadata and annotations you need.
+  Output: As in the base plotting system (and in contrast to the lattice system), when building plots with ggplot,  the “artist’s palette” model is used. This means that plots are built up in layers, maybe in several steps. You can plot the data, then overlay a summary (for instance, a regression line or smoother) and then add any metadata and annotations you need.
 
 - Class: cmd_question
-  Output: Recall the versatility of qplot. Just as a refresher, call qplot now with 6 arguments. The first 3 deal with data - displ, hwy, and data=mpg. The fourth is geom set equal to the concatenation of the two strings, "point" and "smooth". The fifth is facets set equal to the formula .~drv, and the final argument is method set equal to the string "loess". Try this now. 
+  Output: We'll keep using the mpg data that comes with the ggplot2 package. Recall the versatility of qplot. Just as a refresher, call qplot now with 6 arguments. The first 3 deal with data - displ, hwy, and data=mpg. The fourth is geom set equal to the concatenation of the two strings, "point" and "smooth". The fifth is facets set equal to the formula .~drv, and the final argument is method set equal to the string "loess". Try this now. 
   CorrectAnswer: qplot(displ, hwy, data = mpg, geom=c("point", "smooth"),facets=.~drv,method="loess")
   AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg, geom=c("point", "smooth"),facets=.~drv,method="loess")')
   Hint: Type qplot(displ, hwy, data = mpg, geom=c("point", "smooth"),facets=.~drv,method="loess") at the command prompt.
 
 - Class: text
-  Output:  We see a 3 facet plot, one for each drive type (4, f, and r). The last argument specified th smoothing function we wanted to use to draw trend lines through the data. Now we'll see how ggplot works. We'll build up the plot in pieces. 
+  Output:  We see a 3 facet plot, one for each drive type (4, f, and r). The last argument specified the smoothing function (loess) we wanted to use to draw trend lines through the data. (We did this to avoid getting a warning message from R.) Now we'll see how ggplot works. We'll build up a similar plot using the basic components of the package. We'll do this in a series of steps. 
 
 - Class: cmd_question
-  Output: First we'll assign a variable g to the output of a call to ggplot with 2 arguments. The first is mpg (our dataset) and the second will tell ggplot what we want to plot, in this case, displ and hwy. These are what we want our aesthetics to represent so we enclose these as two arguments to the function aes. Try this now. 
+  Output: First we'll create a variable g by assigning to it the output of a call to ggplot with 2 arguments. The first is mpg (our dataset) and the second will tell ggplot what we want to plot, in this case, displ and hwy. These are what we want our aesthetics to represent so we enclose these as two arguments to the function aes. Try this now. 
   CorrectAnswer: g <- ggplot(mpg,aes(displ,hwy))
-  AnswerTests: omnitest(correctExpr='g <- ggplot(mpg,aes(displ,hwy))')
+  AnswerTests: expr_creates_var("g"); omnitest(correctExpr='g <- ggplot(mpg,aes(displ,hwy))')
   Hint: Type g <- ggplot(mpg, aes(displ,hwy) ) at the command prompt.
 
 - Class: text
@@ -49,14 +49,14 @@
   AnswerTests: omnitest(correctExpr='summary(g)')
   Hint: Type summary(g) at the command prompt.
 
-- Class: cmd_question
-  Output: So g contains data - a 234 by 11 matrix, a mapping, and no faceting. Now try to use the R command print with g as its argument. Don't be alarmed when you get an error!
+- Class: text
+  Output: So g contains the mpg data with all its named components in a 234 by 11 matrix. It also contains a mapping, x (displ) and y (hwy) which you specified, and no faceting. 
   CorrectAnswer: print(g)
   AnswerTests: omnitest(correctExpr='print(g)')
   Hint: Typeprint(g) at the command prompt.
 
 - Class: cmd_question
-  Output: So ggplot didn't know how to display the data! Type g+geom_point() and see what happens.
+  Output: Note that if you tried to print g with the expressions g or print(g) you'd get an error! Even though it's a great package, ggplot doesn't know how to display the data yet since you didn't specify how you wanted to see it. Now type g+geom_point() and see what happens.
   CorrectAnswer: g+geom_point()
   AnswerTests: omnitest(correctExpr='g+geom_point()')
   Hint: Type g+geom_point() at the command prompt.
@@ -76,11 +76,11 @@
 - Class: cmd_question
   Output: By changing the smoothing function to "lm" (linear model) ggplot2 generated a regression line through the data. Now recall the expression you just used and add to it another call, this time to the function facet_grid. Use the formula . ~ drv as it argument. Note that this is the same type of formula used in the calls to qplot. 
   CorrectAnswer: g+geom_point()+geom_smooth(method="lm") + facet_grid(.~drv)
-  AnswerTests: omnitest(correctExpr='g+geom_point()+geom_smooth(method="lm") + facet_grid(.~drv')
-  Hint: Type g+geom_point()+geom_smooth(method="lm") + facet_grid(.~drv at the command prompt.
+  AnswerTests: omnitest(correctExpr='g+geom_point()+geom_smooth(method="lm") + facet_grid(.~drv)')
+  Hint: Type g+geom_point()+geom_smooth(method="lm") + facet_grid(.~drv) at the command prompt.
 
 - Class: text
-  Output: Notice how each panel is labeled with the appropriate factor label. All the data associated with 4-wheel drive cars is in the leftmost panel, front-wheel drive data is shown in the middle panel, and rear-wheel drive data in the rightmost. Notice that this is the same plot you created at the start of the lesson using qplot.
+  Output: Notice how each panel is labeled with the appropriate factor label. All the data associated with 4-wheel drive cars is in the leftmost panel, front-wheel drive data is shown in the middle panel, and rear-wheel drive data in the rightmost. Notice that this is similar to the plot you created at the start of the lesson using qplot. (We used a different smoothing function than previously.)
 
 - Class: cmd_question
   Output: So far you've just used the default labels that ggplot provides. You can add your own annotation using functions such as xlab(), ylab(), and ggtitle(). In addition, the function labs() is more general and can be used to label either or both axes as well as provide a title. Now recall the expression you just typed and add a call to the function ggtitle with the argument "Swirl Rules!".
@@ -89,7 +89,7 @@
   Hint: Type g+geom_point()+geom_smooth(method="lm") + facet_grid(.~drv)+ ggtitle("Swirl Rules!") at the command prompt.
 
 - Class: text
-  Output: Each of the “geom” functions (e.g., _point and _smooth) has options to modify it. In addition the function theme() can be used to modify aspects of the entire plot, e.g. the position of the legend. Two standard appearance themes are included in ggplot. These are theme_gray() which is the default theme (gray background with white grid lines) and theme_bw() which is a plainer (black and white) color scheme.
+  Output: Now that you've seen the basics we'll talk about customizing. Each of the “geom” functions (e.g., _point and _smooth) has options to modify it. Also, the function theme() can be used to modify aspects of the entire plot, e.g. the position of the legend. Two standard appearance themes are included in ggplot. These are theme_gray() which is the default theme (gray background with white grid lines) and theme_bw() which is a plainer (black and white) color scheme.
 
 - Class: cmd_question
   Output: Let's practice modifying aesthetics now. We'll use the graphic object g that we already filled with mpg data and add a call to the function geom_point, but this time we'll give geom_point 3 arguments. Set the argument color equal to "pink", the argument size to 4, and the argument alpha to 1/2. Notice that all the arguments are set equal to constants.
@@ -101,10 +101,13 @@
   Output: Notice the different shades of pink? That's the result of the alpha aesthetic which you set to 1/2. This aesthetic tells ggplot how transparent the points should be. Darker circles indicate values hit by multiple data points.
 
 - Class: cmd_question
-  Output: Now we'll modify the aesthetics so that color indicates which drv type each point represents. Again, use g and add to it a call to the function geom_point with 3 arguments. The first is size set equal to 4, the second is alpha equal to 1/2. The third is a call to the function aes with the argument color set equal to drv. Note that you MUST do this since the color of the points is data dependent and not a constant as it was in the previous example. 
+  Output: Now we'll modify the aesthetics so that color indicates which drv type each point represents. Again, use g and add to it a call to the function geom_point with 3 arguments. The first is size set equal to 4, the second is alpha equal to 1/2. The third is a call to the function aes with the argument color set equal to drv. Note that you MUST use the function aes since the color of the points is data dependent and not a constant as it was in the previous example. 
   CorrectAnswer: g + geom_point(aes(color = drv), size = 4, alpha = 1/2)
   AnswerTests: omnitest(correctExpr='g + geom_point(aes(color = drv), size = 4, alpha = 1/2)')
   Hint: Type g + geom_point(aes(color = drv), size = 4, alpha = 1/2) at the command prompt.
+
+- Class: text
+  Output: Notice the helpful legend on the right decoding the relationship between color and drv.
 
 - Class: cmd_question
   Output: Now we'll practice modifying labels. Again, we'll use g and add to it calls to 3 functions. First, add a call to geom_point with an argument making the color dependent on the drv type (as we did in the previous example). Second, add a call to the function labs with the argument title set equal to "Swirl Rules!". Finally, add a call to labs with 2 arguments, one setting x equal to "Displacement" and the other setting y equal to "Hwy Mileage".  
@@ -113,13 +116,13 @@
   Hint: Type g + geom_point(aes(color = drv)) + labs(title="Swirl Rules!") + labs(x="Displacement", y="Hwy Mileage") at the command prompt.
 
 - Class: cmd_question
-  Output: Note that you could have combined the two calls to the function labs in the previous example. Now we'll practice customize the geom_smooth calls. Use g and add to it a call to geom_point setting the color to drv type (remember to use the call to the aes function), size set to 2 and alpha to 1/2. Then add a call to geom_smooth with 4 arguments. Set size equal to 4, linetype to 3, method to "lm", and se to FALSE.
+  Output: Note that you could have combined the two calls to the function labs in the previous example. Now we'll practice customizing the geom_smooth calls. Use g and add to it a call to geom_point setting the color to drv type (remember to use the call to the aes function), size set to 2 and alpha to 1/2. Then add a call to geom_smooth with 4 arguments. Set size equal to 4, linetype to 3, method to "lm", and se to FALSE.
   CorrectAnswer: g + geom_point(aes(color = drv),size=2,alpha=1/2) + geom_smooth(size=4,linetype=3,method="lm",se=FALSE)
   AnswerTests: omnitest(correctExpr='g + geom_point(aes(color = drv),size=2,alpha=1/2) + geom_smooth(size=4,linetype=3,method="lm",se=FALSE)')
   Hint: Type g + geom_point(aes(color = drv),size=2,alpha=1/2) + geom_smooth(size=4,linetype=3,method="lm",se=FALSE) at the command prompt.
 
 - Class: text
-  Output: What did these arguments do? The method specified a linear regression (note the negative slope indicating that the bigger the displacement the lower the gas mileage), the linetype specified that it should be dashed (not continuous), the size made the dashes big, and the se flag told ggplot to turn off the confidence intervals.
+  Output: What did these arguments do? The method specified a linear regression (note the negative slope indicating that the bigger the displacement the lower the gas mileage), the linetype specified that it should be dashed (not continuous), the size made the dashes big, and the se flag told ggplot to turn off the gray shadows indicating standard errors (confidence intervals).
 
 - Class: cmd_question
   Output: Finally, let's do a simple plot using the black and white theme, theme_bw. Specify g and add a call to the function geom_point with the argument setting the color to the drv type. Then add a call to the function theme_bw with the argument base_family set equal to "Times". See if you notice the difference. 
@@ -134,13 +137,13 @@
   Output: One final note before we go through a more complicated, layered ggplot example, and this concerns the limits of the axes. We're pointing this out to emphasize a subtle difference between ggplot and the base plotting function plot.
 
 - Class: cmd_question
-  Output: We've created some random x and y data, called myx and myy, components of a dataframe called testdat. These represent 100 random normal points, except halfway through, we made one of the points be an outlier. That is, we set its y-value to be out of range of the other points. Use the base plotting function plot to create a line plot of this data. Call it with 4 arguments - myx, myy, type="l", and ylim=c(-3,3). The type="l" tells plot you want to display the data as a line instead of a scatterplot.
+  Output: We've created some random x and y data, called myx and myy, components of a dataframe called testdat. These represent 100 random normal points, except halfway through, we made one of the points be an outlier. That is, we set its y-value to be out of range of the other points. Use the base plotting function plot to create a line plot of this data. Call it with 4 arguments - myx, myy, type="l", and ylim=c(-3,3). The type="l" tells plot you want to display the data as a line instead of as a scatterplot.
   CorrectAnswer: plot(myx, myy, type = "l", ylim = c(-3,3))
   AnswerTests: omnitest(correctExpr='plot(myx, myy, type = "l", ylim = c(-3,3))')
   Hint: Type plot(myx, myy, type = "l", ylim = c(-3,3)) at the command prompt.
 
 - Class: cmd_question
-  Output: Notice how plot plotted the points in the (-3,3) range for y-values. The outlier at (50,100) is NOT shown on the line plot. Now we'll plot the same data with ggplot. Recall that the name of the dataframe is testdat. Create the graphical object g with a call to ggplot with 2 arguments, testdat (the data) and a call to aes with 2 arguments, x set equal to myx, and y set equal o myy.
+  Output: Notice how plot plotted the points in the (-3,3) range for y-values. The outlier at (50,100) is NOT shown on the line plot. Now we'll plot the same data with ggplot. Recall that the name of the dataframe is testdat. Create the graphical object g with a call to ggplot with 2 arguments, testdat (the data) and a call to aes with 2 arguments, x set equal to myx, and y set equal to myy.
   CorrectAnswer: g <- ggplot(testdat, aes(x = myx, y = myy)) 
   AnswerTests: expr_creates_var("g"); omnitest(correctExpr='g <- ggplot(testdat, aes(x = myx, y = myy))')
   Hint: Type g <- ggplot(testdat, aes(x = myx, y = myy)) + geom_line() at the command prompt.
@@ -152,7 +155,7 @@
   Hint: Type g + geom_line() at the command prompt.
 
 - Class: text
-  Output: Notice how ggplot DID display the outlier point at (50,100). As a result the rest of the data is smashed down so you don't get to see what it, the bulk of the data, looks like closely. The single outlier probably isn't important enough to dominate the graph. How do we get ggplot to behave more like plot in a situation like this?
+  Output: Notice how ggplot DID display the outlier point at (50,100). As a result the rest of the data is smashed down so you don't get to see what the bulk of the data looks like. The single outlier probably isn't important enough to dominate the graph. How do we get ggplot to behave more like plot in a situation like this?
 
 - Class: cmd_question
   Output: Let's take a guess that in addition to adding geom_line() to g we also just have to add ylim(-3,3) to it as we did with the call to plot. Try this now to see what happens.
@@ -161,191 +164,60 @@
   Hint: Type g + geom_line() + ylim(-3,3) at the command prompt.
 
 - Class: cmd_question
-  Output: Notice that by doing this, ggplot simply ignored the outlier point at (50,100). There's a gap in the line which isn't very noticeable. Now recall that at the beginning of the lesson we mentioned 7 components of a ggplot plot, one of which was a coordinate system. This is a situation where we need to use a coordinate system. Instead of adding ylim(-3,3) to the expression g+geom_line(), add a call to the function coord_cartesian with the argument ylim set equal to c(-3,3).
+  Output: Notice that by doing this, ggplot simply ignored the outlier point at (50,100). There's a break in the line which isn't very noticeable. Now recall that at the beginning of the lesson we mentioned 7 components of a ggplot plot, one of which was a coordinate system. This is a situation where using a coordinate system would be helpful. Instead of adding ylim(-3,3) to the expression g+geom_line(), add a call to the function coord_cartesian with the argument ylim set equal to c(-3,3).
   CorrectAnswer: g + geom_line() + coord_cartesian(ylim=c(-3,3))
   AnswerTests: omnitest(correctExpr='g + geom_line() + coord_cartesian(ylim=c(-3,3))')
   Hint: Type g + geom_line() + coord_cartesian(ylim=c(-3,3)) at the command prompt.
 
-- Class: cmd_question
+- Class: text
   Output: See the difference? This looks more like the plot produced by the base plot function. The outlier y value at x=50 is not shown, but the plot indicates that it is larger than 3.
 
-- Class: mult_question
-  Output: Recall what you know about R's base plotting system. Which of the following does NOT apply to it? 
-  AnswerChoices: Start with plot (or similar) function; Use annotation functions to add/modify (text, lines, points, axis); It is convenient and mirrors how we think of building plots and analyzing data; Can easily go back once the plot has started (e.g., to adjust margins or correct a typo)
-  CorrectAnswer: Can easily go back once the plot has started (e.g., to adjust margins or correct a typo)
-  AnswerTests: omnitest(correctVal='Can easily go back once the plot has started (e.g., to adjust margins or correct a typo)')
-  Hint: Which choice is the only one which looks backward? 
-
-
-- Class: mult_question
-  Output: Recall what you know about R's lattice plotting system. Which of the following does NOT apply to it? 
-  AnswerChoices:  Plots are created with a single function call (xyplot, bwplot, etc.); Most useful for conditioning types of plots and putting many panels on one plot; Margins and spacing are set automatically because entire plot is specified at once; Can always add to the plot once it is created
-  CorrectAnswer: Can always add to the plot once it is created
-  AnswerTests: omnitest(correctVal='Can always add to the plot once it is created')
-  Hint: Which choice is the only one which is inconsistent with the other three? 
-
-- Class: mult_question
-  Output: If we told you that ggplot2 combines the best of base and lattice, that would mean it ...?  
-  AnswerChoices: Automatically deals with spacings, text, titles but also allows you to annotate; Like lattice it allows for multipanels but more easily and intuitively; Its default mode makes many choices for you (but you can customize!); All of the others  
-  CorrectAnswer: All of the others
-  AnswerTests: omnitest(correctVal='All of the others')
-  Hint: Which choice is the only one that encompasses the other three? 
-
 - Class: text
-  Output: Yes, ggplot2 combines the best of base and lattice. It allows for multipanel (conditioning) plots (as lattice does) but also annotation (as base does), so you can add titles and labels. It uses the low-level grid package (which comes with R) to draw the graphics. As part of its grammar philosophy, ggplot2 plots are composed of aesthetics (attributes such as size, shape, color) and geoms (points, lines, and bars), the geometric objects you see on the plot.
-
-- Class: text
-  Output: The ggplot2 package has 2 workhorse functions. The more basic workhorse function is qplot, (think quick plot), which works like the plot function in the base graphics system. It can produce many types of plots (scatter, histograms, box and whisker) while hiding tedious details from the user. Similar to lattice functions, it looks for data in a data frame or parent environment. 
-
-- Class: text
-  Output: The more advanced workhorse function in the package is ggplot, which is  more flexible and easier to customize for doing things qplot cannot do. In this lesson we'll focus on qplot.
-    
-- Class: cmd_question
-  Output: We'll start by showing how easy and versatile qplot is. First, let's look at some data which comes with the ggplot2 package. The mpg data frame contains fuel economy data for 38 models of cars between 1999 and 2008. Run the R command str with the argument mpg. This will give you an idea of what mpg contains.
-  CorrectAnswer: str(mpg)
-  AnswerTests: omnitest(correctExpr='str(mpg)')
-  Hint: Type str(mpg) at the command prompt.
+  Output: We'll close with a more complicated example to show you the full power of ggplot and the entire ggplot2 package. We'll continue to work with the mpg dataset.
 
 - Class: cmd_question
-  Output: We see that there are 234 points in the dataset concerning 11 different characteristics of the cars. Suppose we want to see if there's a correlation betwwen engine displacement (displ) and highway miles per gallon (hwy). As we did with the plot function of the base system we could simply call  qplot with 3 arguments, the first two are the variables we want to examine and the third argument data is set equal to the name of the dataset which contains them (in this case, mpg). Try this now.
-  CorrectAnswer: qplot(displ, hwy, data = mpg)
-  AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg)')
-  Hint: Type qplot(displ, hwy, data = mpg) at the command prompt.
-
-- Class: cmd_question
-  Output: A nice scatterplot done simply, right? All the labels are provided. The first argument is shown along the x-axis and the second along the y-axis. The negative trend (increasing displacement and lower gas mileage) is pretty clear. Now suppose we want to do the same plot but this time use different colors to distinguish between the 3 factors (subsets) of different types of drive (drv) in  the data (front-wheel, rear-wheel, and 4-wheel). Again, qplot makes this very easy. We'll just add what ggplot2 calls an aesthetic, a fourth argument, color, and set it equal to drv. Try this now. (Use the up arrow key to save some typing.)
-  CorrectAnswer: qplot(displ, hwy, data = mpg, color = drv)
-  AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg, color = drv)')
-  Hint: Type qplot(displ, hwy, data = mpg, color = drv) at the command prompt.
+  Output: Start by creating the graphical object g by assigning to it a call to ggplot with 2 arguments. The first is the dataset and the second is a call to the function aes. This call will have 3 arguments, x set equal to displ, y set equal to hwy, and color set equal to factor(year). This last will allow us to distinguish between the two manufacturing years (1999 and 2008) in our data.
+  CorrectAnswer: g <- ggplot(mpg,aes(x=displ,y=hwy,color=factor(year)))
+  AnswerTests: expr_creates_var("g"); omnitest(correctExpr='g <- ggplot(mpg,aes(x=displ,y=hwy,color=factor(year)))')
+  Hint: Type g <- ggplot(mpg,aes(x=displ,y=hwy,color=factor(year))) at the command prompt.
 
 - Class: text
-  Output: Pretty cool, right? See the legend to the right which qplot helpfully supplied? The colors were automatically assigned by qplot so the legend decodes the colors for you. Notice that qplot automatically used dots or points to indicate the data. These points are geoms (geometric objects). We could have used a different aesthetic, for instance shape instead of color, to distinguish between the drive types.
-
-- Class: cmd_question
-  Output: Now let's add a second geom to the default points. How about some trend lines, one for each color? Just add a fifth argument, geom, and using the R function c(), set it equal to the concatenation of the two strings "point" and "smooth". The first refers to the data points and second to the trend lines we want plotted. Try this now.
-  CorrectAnswer: qplot(displ, hwy, data = mpg, color=drv, geom = c("point", "smooth"))
-  AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg, color=drv, geom = c("point", "smooth"))')
-  Hint: Type qplot(displ, hwy, data = mpg, color=drv, geom = c("point", "smooth")) at the command prompt.
-
-- Class: text
-  Output: Note the helpful message R returns in red telling you what function (loess) it used to create the trend lines. No need to worry - we'll see another example of method later in the lesson. Notice the gray areas surrounding each trend lines. These indicate the 95% confidence intervals for the lines.
-
-- Class: cmd_question
-  Output: Before we leave qplot's scatterplotting ability, call qplot again, this time with 3 arguments. The first is y set equal to hwy, the second is data set equal to mpg, and the third is color set equal to drv. Try this now.
-  CorrectAnswer: qplot(y=hwy, data = mpg, color = drv)
-  AnswerTests: omnitest(correctExpr='qplot(y=hwy, data = mpg, color = drv)')
-  Hint: Type qplot(y=hwy, data = mpg, color = drv) at the command prompt.
-
-- Class: cmd_question
-  Output: What's this plot showing? We see the x-axis ranges from 0 to 250 and we remember that we had 234 data points in our set, so we can infer that each point in the plot represents one of the hwy values (indicated by the y-axis). We've created the vector myhigh for you which contains the hwy data from the mpg dataset. Look at myhigh now.
-  CorrectAnswer: myhigh
-  AnswerTests: omnitest(correctExpr='myhigh')
-  Hint: Type myhigh at the command prompt.
-
-- Class: text
-  Output: Comparing the values of myhigh with the plot, we see the first entries in the vector (29, 29, 31, 30,...) correspond to the leftmost points in the the plot (in order), and the last entries in myhigh (28, 29, 26, 26, 26) correspond to the rightmost plotted points. So, specifying the y parameter only, without an x argument, plots the values of the y argument in the order in which they occur in the data.
-
-- Class: cmd_question
-  Output: The all-purpose qplot can also create box and whisker plots.  Call qplot now with 4 arguments. First specify the variable by which you'll split the data, in this case drv, then specify the variable which you want to examine, in this case hwy. The third argument is data (set equal to mpg), and the fourth, the geom, set equal to the string "boxplot"
-  CorrectAnswer: qplot(drv,hwy,data=mpg,geom="boxplot")
-  AnswerTests: omnitest(correctExpr='qplot(drv,hwy,data=mpg,geom="boxplot")')
-  Hint: Type qplot(drv,hwy,data=mpg,geom="boxplot") at the command prompt.
-
-- Class: cmd_question
-  Output: We see 3 boxes, one for each drive. Now to impress you, call qplot with 5 arguments. The first 4 are just as you used previously, (drv, hwy, data set equal to mpg, and geom set equal to the string "boxplot"). Now add a fifth argument, color, equal to manufacturer. 
-  CorrectAnswer: qplot(drv,hwy,data=mpg,geom="boxplot",color=manufacturer)
-  AnswerTests: omnitest(correctExpr='qplot(drv,hwy,data=mpg,geom="boxplot",color=manufacturer)')
-  Hint: Type qplot(drv,hwy,data=mpg,geom="boxplot",color=manufacturer) at the command prompt.
-
-- Class: text
-  Output: It's a little squished but we just wanted to illustrate qplot's capabilities. Notice that there are still 3 regions of the plot (determined by the factor drv). Each is subdivided into several boxes depicting different manufacturers.
-
-- Class: cmd_question
-  Output: Now, on to histograms. These display frequency counts for a single variable. Let's start with an easy one. Call qplot with 3 arguments. First specify the variable for which you want the frequency count, in this case hwy, then specify the data (set equal to mpg), and finally, the aesthetic, fill, set equal to drv. Instead of a plain old histogram, this will again use colors to distinguish the 3 different drive factors.
-  CorrectAnswer: qplot(hwy, data = mpg, fill = drv)
-  AnswerTests: omnitest(correctExpr='qplot(hwy, data = mpg, fill = drv)')
-  Hint: Type qplot(hwy, data = mpg, fill = drv) at the command prompt.
-
-- Class: text
-  Output: It's cool that qplot can do this  so easily, but some people may find this multi-color histogram hard to interpret. Instead of using colors to distinguish between the drive factors let's use facets or panels. (That's what lattice called them.) This just means we'll split the data into 3 subsets (according to drive) and make 3 smaller individual plots of each subset in one plot (and with one call to qplot).
-
-- Class: text
-  Output: Remember that with base plot we had to do each subplot individually. The lattice system made plotting  conditioning plots  easier. Let's see how easy it is with qplot.
-
-- Class: cmd_question
-  Output:  We'll do two plots, a scatterplot and then a histogram, each with 3 facets. For the scatterplot, call qplot with 4 arguments. The first two are displ and hwy and the third is the argument data set equal to mpg. The fourth is the argument facets which will be set equal to the expression . ~ drv which is ggplot2's shorthand for number of rows (to the left of the ~) and number of columns (to the right of the ~). Here the . indicates "whatever you need" for the number of rows and drv implies 3, since there are 3 distinct drive factors. Try this now.
-  CorrectAnswer: qplot(displ, hwy, data = mpg, facets = . ~ drv)
-  AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg, facets = . ~ drv)')
-  Hint: Type qplot(displ, hwy, data = mpg, facets = . ~ drv) at the command prompt.
-
-- Class: text
-  Output: The result is a 1 by 3 array of plots. Note how each is labeled at the top with the factor label (4,f, or r).
-
-- Class: cmd_question
-  Output:  Now we'll do a histogram, again calling qplot with 4 arguments. This time, since we need only one variable for a histogram, the first is hwy and the second is the argument data set equal to mpg. The third is the argument facets which we'll set equal to the expression drv ~ . which give us a different arrangement of the facets. The fourth argument is binwidth. Set this equal to 2. Try this now.
-  CorrectAnswer: qplot(hwy, data = mpg, facets = drv ~ ., binwidth = 2)
-  AnswerTests: omnitest(correctExpr='qplot(hwy, data = mpg, facets = drv ~ ., binwidth = 2)')
-  Hint: Type qplot(hwy, data = mpg, facets = drv ~ ., binwidth = 2) at the command prompt.
+  Output: Uh oh! Nothing happened. Does g exist? Of course, it just isn't visible yet since you didn't add a layer.
 
 - Class: mult_question
-  Output: The facets argument, drv ~ ., resulted in what arrangement of facets?
-  AnswerChoices:  1 by 3; 3 by 1; 2 by 2; huh?
-  CorrectAnswer:  3 by 1
-  AnswerTests: omnitest(correctVal='3 by 1')
-  Hint: How many row? How many columns?
+  Output:  If you typed g at the command line, what would happen?
+  AnswerChoices: a scatterplot would appear with 2 colors of points; R would return an error in red; I would have to try this to answer the question
+  CorrectAnswer: R would return an error in red
+  AnswerTests: omnitest(correctVal='R would return an error in red')
+  Hint: You've told ggplot about the data, but have you told it how to display it? 
 
+- Class: cmd_question
+  Output: We'll build the plot up step by step. First add to g a call to the function geom_point with 0 arguments.
+  CorrectAnswer: g + geom_point()
+  AnswerTests:  omnitest(correctExpr='g + geom_point()')
+  Hint: Type g + geom_point() at the command prompt.
 
-- Class: text
-  Output:  Pretty easy, right? Not too difficult either. Let's review what we learned!
-
-- Class: mult_question
-  Output: Which of the following is a basic workhorse function of ggplot2?
-  AnswerChoices:  hist; xyplot; scatterplot; gplot; qplot
-  CorrectAnswer:  qplot
-  AnswerTests: omnitest(correctVal='qplot')
-  Hint: Which function did we invoke the most in this lesson?
-
-- Class: mult_question
-  Output:  Which types of plot does qplot plot?
-  AnswerChoices:  histograms; scatterplots; box and whisker plots; all of the others
-  CorrectAnswer: all of the others
-  AnswerTests: omnitest()
-  Hint: That qplot is amazing! It seems to do everything!
-
-- Class: mult_question
-  Output:  What does the gg in ggplot2 stand for?
-  AnswerChoices:  good grief; grammar of graphics; goto graphics; good graphics
-  CorrectAnswer: grammar of graphics
-  AnswerTests: omnitest(correctVal='grammar of graphics')
-  Hint: Think of building blocks and components.
-
-- Class: mult_question
-  Output:  True or False? The geom argument takes a string for a value.
-  AnswerChoices:  True; False
-  CorrectAnswer: True
-  AnswerTests: omnitest(correctVal='True')
-  Hint: Recall our examples, for instance, geom="density".
-
-- Class: mult_question
-  Output:  True or False? The method argument takes a string for a value.
-  AnswerChoices:  True; False
-  CorrectAnswer: True
-  AnswerTests: omnitest(correctVal='True')
-  Hint: Recall our examples, for instance, method="lm".
-
-- Class: mult_question
-  Output:  True or False? The binwidth argument takes a string for a value.
-  AnswerChoices:  True; False
-  CorrectAnswer: False
-  AnswerTests: omnitest(correctVal='False')
-  Hint: Recall our examples, for instance, binwidth=18497/30.
-
-- Class: mult_question
-  Output:  True or False? The user must specify x- and y-axis labels when using qplot. 
-  AnswerChoices:  True; False
-  CorrectAnswer: False
-  AnswerTests: omnitest(correctVal='False')
-  Hint: Recall our examples when we saw labels that we didn't specify.
+- Class: cmd_question
+  Output: A simple, yet comfortingly familiar scatterplot appears. Let's make our display a 2 dimensional multi-panel plot. Recall your last command (with the up arrow) and add to it a call the function facet_grid. Give it 2 arguments. The first is the formula drv~cyl, and the second is the argument margins set equal to TRUE. Try this now.
+  CorrectAnswer: g + geom_point() + facet_grid(drv~cyl,margins=TRUE)
+  AnswerTests:  omnitest(correctExpr='g + geom_point() + facet_grid(drv~cyl,margins=TRUE)')
+  Hint: Type g + geom_point() + facet_grid(drv~cyl,margins=TRUE) at the command prompt.
 
 - Class: text
-  Output: Congrats! You've finished plot 1 of  ggplot2. In the next lesson the plot thickens.
+  Output: A 4 by 5 plot, huh? The margins argument tells ggplot to display the marginal totals over each row and column, so instead of seeing 3 rows (the number of drv factors) and 4 columns (the number of cyl factors) we see a 4 by 5 display. Note that the panel in position (4,5) is a tiny version of the scatterplot of the entire dataset.
+
+- Class: cmd_question
+  Output: Now add to your last command (or retype it if you like to type) a call to geom_smooth with 4 arguments. These are method set to "lm", se set to FALSE, size set to 2, and col set to "black".
+  CorrectAnswer: g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,col="black")
+  AnswerTests:  omnitest(correctExpr='g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,col="black")')
+  Hint: Typeg + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,col="black") at the command prompt.
+
+- Class: cmd_question
+  Output: Finally, add to your last command (or retype it if you like to type) a call to the function labs with 3 arguments. These are x set to "Displacement", y set to "Highway Mileage", and title set to "Swirl Rules!".
+  CorrectAnswer: g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,col="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!")
+  AnswerTests:  omnitest(correctExpr='g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,col="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!")')
+  Hint: Typeg + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,col="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!") at the command prompt.
+
+- Class: text
+  Output: You could have done these labels with separate calls to labs but we thought you'd be sick of this by now. Anyway, congrats! You've concluded part 2 of ggplot2. We hope you got enough mileage out of the lesson. If you like ggplot2 you can do some extras with the extra lesson.
+

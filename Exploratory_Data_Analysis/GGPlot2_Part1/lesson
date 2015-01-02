@@ -48,16 +48,16 @@
   Hint: Which choice is the only one that encompasses the other three? 
 
 - Class: text
-  Output: Yes, ggplot2 combines the best of base and lattice. It allows for multipanel (conditioning) plots (as lattice does) but also annotation (as base does), so you can add titles and labels. It uses the low-level grid package (which comes with R) to draw the graphics. As part of its grammar philosophy, ggplot2 plots are composed of aesthetics (attributes such as size, shape, color) and geoms (points, lines, and bars), the geometric objects you see on the plot.
+  Output: Yes, ggplot2 combines the best of base and lattice. It allows for multipanel (conditioning) plots (as lattice does) but also post facto annotation (as base does), so you can add titles and labels. It uses the low-level grid package (which comes with R) to draw the graphics. As part of its grammar philosophy, ggplot2 plots are composed of aesthetics (attributes such as size, shape, color) and geoms (points, lines, and bars), the geometric objects you see on the plot.
 
 - Class: text
   Output: The ggplot2 package has 2 workhorse functions. The more basic workhorse function is qplot, (think quick plot), which works like the plot function in the base graphics system. It can produce many types of plots (scatter, histograms, box and whisker) while hiding tedious details from the user. Similar to lattice functions, it looks for data in a data frame or parent environment. 
 
 - Class: text
-  Output: The more advanced workhorse function in the package is ggplot, which is  more flexible and easier to customize for doing things qplot cannot do. In this lesson we'll focus on qplot.
+  Output: The more advanced workhorse function in the package is ggplot, which is  more flexible and can be customized for doing things qplot cannot do. In this lesson we'll focus on qplot.
     
 - Class: cmd_question
-  Output: We'll start by showing how easy and versatile qplot is. First, let's look at some data which comes with the ggplot2 package. The mpg data frame contains fuel economy data for 38 models of cars between 1999 and 2008. Run the R command str with the argument mpg. This will give you an idea of what mpg contains.
+  Output: We'll start by showing how easy and versatile qplot is. First, let's look at some data which comes with the ggplot2 package. The mpg data frame contains fuel economy data for 38 models of cars manufactured in 1999 and 2008. Run the R command str with the argument mpg. This will give you an idea of what mpg contains.
   CorrectAnswer: str(mpg)
   AnswerTests: omnitest(correctExpr='str(mpg)')
   Hint: Type str(mpg) at the command prompt.
@@ -129,7 +129,7 @@
   Output: Remember that with base plot we had to do each subplot individually. The lattice system made plotting  conditioning plots  easier. Let's see how easy it is with qplot.
 
 - Class: cmd_question
-  Output:  We'll do two plots, a scatterplot and then a histogram, each with 3 facets. For the scatterplot, call qplot with 4 arguments. The first two are displ and hwy and the third is the argument data set equal to mpg. The fourth is the argument facets which will be set equal to the expression . ~ drv which is ggplot2's shorthand for number of rows (to the left of the ~) and number of columns (to the right of the ~). Here the . indicates "whatever you need" for the number of rows and drv implies 3, since there are 3 distinct drive factors. Try this now.
+  Output:  We'll do two plots, a scatterplot and then a histogram, each with 3 facets. For the scatterplot, call qplot with 4 arguments. The first two are displ and hwy and the third is the argument data set equal to mpg. The fourth is the argument facets which will be set equal to the expression . ~ drv which is ggplot2's shorthand for number of rows (to the left of the ~) and number of columns (to the right of the ~). Here the . indicates a single row and drv implies 3, since there are 3 distinct drive factors. Try this now.
   CorrectAnswer: qplot(displ, hwy, data = mpg, facets = . ~ drv)
   AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg, facets = . ~ drv)')
   Hint: Type qplot(displ, hwy, data = mpg, facets = . ~ drv) at the command prompt.
@@ -152,7 +152,7 @@
 
 
 - Class: text
-  Output:  Pretty easy, right? Not too difficult either. Let's review what we learned!
+  Output:  Pretty good, right? Not too difficult either. Let's review what we learned!
 
 - Class: mult_question
   Output: Which of the following is a basic workhorse function of ggplot2?

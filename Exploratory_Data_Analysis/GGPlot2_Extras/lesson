@@ -74,16 +74,16 @@
   Output: See how it matches the histogram you just plotted? So, qplot really works!
 
 - Class: cmd_question
-  Output:  You're probably sick of it  but rerun qplot again, this time with 4 arguments. The first 3 are the same as the command you just ran  (price, data set equal to diamonds, and binwidth set equal to 18497/30). (Use the up arrow to save yourself some typing.) The fourth argument is fill set equal to cut. The shape of the histogram will be familiar, but it will be more colorful.
+  Output:  You're probably sick of it  but rerun qplot again, this time with 4 arguments. The first 3 are the same as the last qplot command you just ran  (price, data set equal to diamonds, and binwidth set equal to 18497/30). (Use the up arrow to save yourself some typing.) The fourth argument is fill set equal to cut. The shape of the histogram will be familiar, but it will be more colorful.
   CorrectAnswer: qplot(price,data=diamonds,binwidth=18497/30,fill=cut)
   AnswerTests: omnitest(correctExpr='qplot(price,data=diamonds,binwidth=18497/30,fill=cut)')
   Hint: Type qplot(price,data=diamonds,binwidth=18497/30,fill=cut) at the command prompt.
 
 - Class: text
-  Output: This shows how the counts within each price grouping (bin) are distributed among the different cuts of diamonds. Notice how qplot displays these distributions relative to the cut legend on the right. The fair cut diamonds are at the bottom of each bin, the good cuts are above them, then the very good above them, until the ideal cuts are at the top of each bin. This display shows that there are very few fair cut diamonds priced above $5000.
+  Output: This shows how the counts within each price grouping (bin) are distributed among the different cuts of diamonds. Notice how qplot displays these distributions relative to the cut legend on the right. The fair cut diamonds are at the bottom of each bin, the good cuts are above them, then the very good above them, until the ideal cuts are at the top of each bin. You can quickly see from this display that there are very few fair cut diamonds priced above $5000.
 
 - Class: cmd_question
-  Output:  Now we'll replot the histogram as a density function. The shape will be similar but the scale on the y-axis will be different since, by definition, the density function is nonnegative everywhere, and the area under the curve is one. To do this, simply call qplot with 3 arguments. The first 2 are  price and data (set equal to diamonds). The third is geom which should be set equal to the string "density". Try this now. 
+  Output:  Now we'll replot the histogram as a density function which will show the proportion of diamonds in each bin. This means that the shape will be similar but the scale on the y-axis will be different since, by definition, the density function is nonnegative everywhere, and the area under the curve is one. To do this, simply call qplot with 3 arguments. The first 2 are  price and data (set equal to diamonds). The third is geom which should be set equal to the string "density". Try this now. 
   CorrectAnswer: qplot(price,data=diamonds,geom="density")
   AnswerTests: omnitest(correctExpr='qplot(price,data=diamonds,geom="density")')
   Hint: Type qplot(price,data=diamonds,geom="density") at the command prompt.
@@ -146,26 +146,20 @@
 - Class: text
   Output:  Pretty good, right? Not too difficult either. Let's review what we learned!
 
-- Class: mult_question
-  Output: Which of the following is a basic workhorse function of ggplot2?
-  AnswerChoices:  hist; xyplot; scatterplot; gplot; qplot
-  CorrectAnswer:  qplot
-  AnswerTests: omnitest(correctVal='qplot')
-  Hint: Which function did we invoke the most in this lesson?
 
 - Class: mult_question
   Output:  Which types of plot does qplot plot?
   AnswerChoices:  histograms; scatterplots; box and whisker plots; all of the others
   CorrectAnswer: all of the others
-  AnswerTests: omnitest()
+  AnswerTests: omnitest(correctVal='all of the others')
   Hint: That qplot is amazing! It seems to do everything!
 
 - Class: mult_question
-  Output:  What does the gg in ggplot2 stand for?
+  Output:  Any and all of the above choices work; qplot is just that good. What does the gg in ggplot2 stand for?
   AnswerChoices:  good grief; grammar of graphics; goto graphics; good graphics
   CorrectAnswer: grammar of graphics
   AnswerTests: omnitest(correctVal='grammar of graphics')
-  Hint: Think of building blocks and components.
+  Hint: Think of building blocks and components, also nouns, verbs, and diagramming sentences.
 
 - Class: mult_question
   Output:  True or False? The geom argument takes a string for a value.
@@ -194,6 +188,84 @@
   CorrectAnswer: False
   AnswerTests: omnitest(correctVal='False')
   Hint: Recall our examples when we saw labels that we didn't specify.
+
+- Class: text
+  Output: Now for some ggplots.
+
+- Class: cmd_question
+  Output:  First create a graphical object g by assigning to it the output of a call to the function ggplot with 2 arguments. The first is the dataset diamonds and the second is a call to the function aes with 2 arguments, depth and price. Remember you won't see any result.
+  CorrectAnswer: g <- ggplot(diamonds,aes(depth,price))
+  AnswerTests: omnitest(correctExpr='g <- ggplot(diamonds,aes(depth,price))')
+  Hint: Type g <- ggplot(diamonds,aes(depth,price)) at the command prompt.
+
+- Class: cmd_question
+  Output:  Does g exist? Yes! Type summary with g as an argument to see what it holds.
+  CorrectAnswer: summary(g)
+  AnswerTests: omnitest(correctExpr='summary(g)')
+  Hint: Type summary(g) at the command prompt.
+
+- Class: cmd_question
+  Output:  Now suppose we want to see a scatterplot of the relationship. Add to g a call to the function geom_point with 1 argument, alph set equal to 1/3.
+  CorrectAnswer: g+geom_point(alpha=1/3)
+  AnswerTests: omnitest(correctExpr='g+geom_point(alpha=1/3)')
+  Hint: Type g+geom_point(alpha=1/3) at the command prompt.
+
+- Class: text
+  Output:  That's somewhat interesting. We see that depth ranges from 43 to 79, but the densest distribution is around 60 to 65. Suppose we want to see if this relationship (between depth and price) is affected by cut or carat. We know cut is a factor with 5 levels (Fair, Good, Very Good, Premium, and Ideal). But carat is  numeric and not a discrete factor. Can we do this?
+
+- Class: text
+  Output: Of course! That's why we asked. R has a handy command, cut, which allows you to divide your data. First, we'll have to decide where to cut the data. 
+
+- Class: cmd_question
+  Output: Let's divide the data into 3 pockets, so 1/3 of the data falls into each. We'll use the R command quantile to do this. Create the variable cutpoints and assign to it the output of a call to the function quantile with 3 arguments. The first is the data to cut, namely diamonds$carat; the second is a call to the R function seq. This is also called with 3 arguments, (0, 1, and length set equal to 4). The third argument to the call to quantile is the boolean na.rm set equal to TRUE.
+  CorrectAnswer: cutpoints <- quantile(diamonds$carat,seq(0,1,length=4),na.rm=TRUE)
+  AnswerTests: expr_creates_var("cutpoints"); omnitest(correctExpr='cutpoints <- quantile(diamonds$carat,seq(0,1,length=4),na.rm=TRUE)')
+  Hint: Type cutpoints <- quantile(diamonds$carat,seq(0,1,length=4),na.rm=TRUE) at the command prompt.
+
+- Class: cmd_question
+  Output: Look at cutpoints now to understand what it is.
+  CorrectAnswer: cutpoints 
+  AnswerTests:  omnitest(correctExpr='cutpoints')
+  Hint: Type cutpoints  at the command prompt.
+
+- Class: cmd_question
+  Output: We see .2 is the smallest carat size in the dataset and 5.01 is the largest. One third of the diamonds are between .2 and .5 carats and another third are between .5 and 1 carat in size. The remaining third are between 1 and 5.01 carats. Now we can use the R command cut to label each of the 53940 diamonds in the dataset as belonging to one of these 3 factors. Create a new name in diamonds, diamonds$car2 by assigning it the output of the call to cut. This command takes 2 arguments, diamonds$carat, which is what we want to cut, and cutpoints, the places where we'll cut.
+  CorrectAnswer: diamonds$car2 <- cut(diamonds$carat,cutpoints)
+  AnswerTests:  expr_creates_var("diamonds$car2"); omnitest(correctExpr='diamonds$car2 <- cut(diamonds$carat,cutpoints)')
+  Hint: Type diamonds$car2 <- cut(diamonds$carat,cutpoints)  at the command prompt.
+
+- Class: cmd_question
+  Output: Now we can continue with our multi-facet plot. Recall the last plotting expression you typed was g+geom_point(alpha=1/3). Recall this expression (or retype it) and add a call to the function facet_grid using the formula cut ~ car2 as its argument.
+  CorrectAnswer: g+geom_point(alpha=1/3)+facet_grid(cut~car2)
+  AnswerTests:  omnitest(correctExpr='g+geom_point(alpha=1/3)+facet_grid(cut~car2)')
+  Hint: Type g+geom_point(alpha=1/3)+facet_grid(cut~car2)  at the command prompt.
+
+- Class: text
+  Output: We see a multi-facet plot with 5 rows, each corresponding to a cut factor. Not surprising. What is surprising is the number of columns. We were expecting 3 and got 4. Why?
+
+- Class: cmd_question
+  Output: The first 3 columns are labeled with the cutpoint boundaries. The fourth is labeleld NA and shows us where the data points with missing data (NA or Not Available) occurred. We see that there were only a handful (12 in fact) and they occurred in Very Good, Premium, and Ideal cuts. We created a vector, myd,  containing the indices of these datapoints. Look at these entries in diamonds by typing the expression diamonds[myd,]. The myd tells R what rows to show and the empty column entry says to print all the columns. 
+  CorrectAnswer: diamonds[myd,]
+  AnswerTests:  omnitest(correctExpr='diamonds[myd,]')
+  Hint: Type diamonds[myd,]  at the command prompt.
+
+- Class: text
+  Output: We see these entries match the plots. Whew - that's a relief. 
+
+- Class: cmd_question
+  Output: Finally, recall the last plotting command (g+geom_point(alpha=1/3)+facet_grid(cut~car2)) or retype it if you like and add another call. This one to the function geom_smooth. Pass it 3 arguments, method set equal to the string "lm", size set equal to 3, and color equal to pink.
+  CorrectAnswer: g+geom_point(alpha=1/3)+facet_grid(cut~car2)+geom_smooth(method="lm",size=3,color="pink")
+  AnswerTests:  omnitest(correctExpr='g+geom_point(alpha=1/3)+facet_grid(cut~car2)+geom_smooth(method="lm",size=3,color="pink")')
+  Hint: Type g+geom_point(alpha=1/3)+facet_grid(cut~car2)+geom_smooth(method="lm",size=3,color="pink")  at the command prompt.
+
+- Class: text
+  Output: You could add labels if you want but we'll let you experiment on your own.
+
+- Class: cmd_question
+  Output: Lastly, ggplot2 can, of course, produce boxplots. This final exercise is the sum of 3 function calls. The first is to ggplot with 2 arguments, diamonds and a call to aes with carat and price as arguments. The second is to geom_boxplot with no arguments. The third is to facet grid with one argument, the formula . ~ cut. Try this now.
+  CorrectAnswer: ggplot(diamonds,aes(carat,price))+geom_boxplot()+facet_grid(.~cut)
+  AnswerTests:  omnitest(correctExpr='ggplot(diamonds,aes(carat,price))+geom_boxplot()+facet_grid(.~cut)')
+  Hint: Type ggplot(diamonds,aes(carat,price))+geom_boxplot()+facet_grid(.~cut) at the command prompt.
 
 - Class: text
   Output: Congrats! You've finished this jewel of a lesson. Hope it payed off!
