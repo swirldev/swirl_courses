@@ -147,7 +147,7 @@
 - Class: cmd_question
   Output: Change the name of the file "mytest.R" to "mytest2.R".
   CorrectAnswer: file.rename("mytest.R", "mytest2.R")
-  AnswerTests: omnitest(correctExpr='file.rename("mytest.R", "mytest2.R")')
+  AnswerTests: any_of_exprs('file.rename("mytest.R", "mytest2.R")', 'file.rename(from = "mytest.R", to = "mytest2.R")')
   Hint: file.rename("mytest.R", "mytest2.R") is the answer. Again, Googling using key words from the question, along with the letter R, will often give you a good hint.
 
 - Class: text
@@ -156,7 +156,7 @@
 - Class: cmd_question
   Output: Make a copy of "mytest2.R" called "mytest3.R".
   CorrectAnswer: file.copy("mytest2.R", "mytest3.R")
-  AnswerTests: omnitest(correctExpr='file.copy("mytest2.R", "mytest3.R")')
+  AnswerTests: any_of_exprs('file.copy("mytest2.R", "mytest3.R")', 'file.copy(from = "mytest2.R", to = "mytest3.R")')
   Hint: file.copy("mytest2.R", "mytest3.R") works.
 
 - Class: text
