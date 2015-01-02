@@ -2,9 +2,9 @@
   Course: R Programming
   Lesson: Base Graphics
   Author: David Kane
-  Type: Standard
+  Type: Coursera
   Organization: Williams College
-  Version: 0.1.0
+  Version: 0.1.1
 
 - Class: text
   Output: One of the greatest strengths of R, relative to other programming languages, is the ease with which we can create publication-quality graphics. In this lesson, you'll learn about base graphics in R. 

@@ -2,9 +2,9 @@
   Course: R Programming
   Lesson: Workspace and Files
   Author: David Kane
-  Type: Standard
+  Type: Coursera
   Organization: Williams College
-  Version: 0.1.1
+  Version: 0.1.2
 
 - Class: text
   Output: In this lesson, you'll learn how to examine your local workspace in R and begin to explore the relationship between your workspace and the file system of your machine.
@@ -47,18 +47,9 @@
   Output: Having created x, you should now see x when you try ls() again. You can do this by suspending this swirl lesson with play(). Once you have run the ls() command to confirm that x exists in the workspace, you can re-start the lesson from the same location with nxt(). Try it!
 
 - Class: cmd_question
-  Output: Remove x from the workspace.
-  CorrectAnswer: rm("x"")
-  AnswerTests: any_of_exprs('rm("x")', 'rm(x)')
-  Hint: Type rm("x") to remove x from the workspace.
-
-- Class: text
-  Output: Having removed x, you should no longer see it if you try ls() again. The same play() and then nxt() trick that you (should have) tried above will work.
-
-- Class: cmd_question
   Output: List all the files in your working directory.
   CorrectAnswer: list.files()
-  AnswerTests: omnitest(correctExpr='list.files()')
+  AnswerTests: any_of_exprs('list.files()', 'dir()')
   Hint: Type list.files() to all the files in your working directory.
 
 - Class: text
@@ -67,7 +58,7 @@
 - Class: cmd_question
   Output: Pull up the help for list.files().
   CorrectAnswer: ?list.files
-  AnswerTests: omnitest(correctExpr='?list.files')
+  AnswerTests: any_of_exprs('?list.files', 'help("list.files")')
   Hint: Type ?list.files to retrieve the help file for list.files.
 
 
@@ -141,7 +132,7 @@
   Output: These sorts of functions are excessive for interactive use. But, if you are running a program that loops through a series of files and does some processing on each one, you will want to check to see that each exists before you try to process it.
 
 - Class: cmd_question
-  Output: Access information about "my.test.R". That is, what command, along with the appropriate argument, will return information about the file "mytest.R"?
+  Output: Access information about "mytest.R". That is, what command, along with the appropriate argument, will return information about the file "mytest.R"?
   CorrectAnswer: file.info("mytest.R")
   AnswerTests: omnitest(correctExpr='file.info("mytest.R")')
   Hint: file.info("mytest.R") will do the trick!
