@@ -67,7 +67,7 @@
   Output: The help page for plot() highlights the different arguments that the function can take. The two most important are x and y, the variables that will be plotted. For the next set of questions, include the argument names in your answers. That is, do not type plot(cars$speed, cars$dist), although that will work. Instead, use plot(x = cars$speed, y = cars$dist).
 
 - Class: cmd_question
-  Output: Use plot() command to show speed on the x-axis and dist on the y-axis from the cars data frame. 
+  Output: Use plot() command to show speed on the x-axis and dist on the y-axis from the cars data frame. Use the form of the plot command in which vectors are explicitly passed in as arguments for x and y.
   CorrectAnswer: plot(x = cars$speed, y = cars$dist)
   AnswerTests: omnitest(correctExpr='plot(x = cars$speed, y = cars$dist)')
   Hint: Type plot(x = cars$speed, y = cars$dist) to create the plot.
@@ -75,6 +75,9 @@
 - Class: text
   Output: Note that this produces a slightly different answer than plot(cars). In this case, R is not sure what you want to use as the labels on the axes, so it just uses the arguments which you pass in, data frame name and dollar signs included.
 
+- Class: text
+  Output: Note that there are other ways to call the plot command, i.e., using the "formula" interface. For example, we get a similar plot to the above with plot(dist ~ speed, cars). However, in this lesson, we will not use that approach.
+  
 - Class: cmd_question
   Output: Use plot() command to show dist on the x-axis and speed on the y-axis from the cars data frame. This is the opposite of what we did above.
   CorrectAnswer: plot(x = cars$dist, y = cars$speed)
