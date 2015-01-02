@@ -44,7 +44,7 @@
   Hint: Type x <- 9 to assign 9 to x.
 
 - Class: text
-  Output: Having created x, you should now see x when you try ls() again. You can do this by suspending this swirl lesson with play(). Once you have run the ls() command to confirm that x exists in the workspace, you can re-start the lesson from the same location with nxt(). Try it!
+  Output: Having created x, you should now see x when you try ls() again. You can do this by suspending this swirl lesson with play() at the command prompt. Once you have run the ls() command to confirm that x exists in the workspace, you can re-start the lesson from the same location with nxt(). Try it (after hitting return to get to a command prompt)!
 
 - Class: cmd_question
   Output: List all the files in your working directory.
@@ -132,7 +132,7 @@
   Output: These sorts of functions are excessive for interactive use. But, if you are running a program that loops through a series of files and does some processing on each one, you will want to check to see that each exists before you try to process it.
 
 - Class: cmd_question
-  Output: Access information about "mytest.R". That is, what command, along with the appropriate argument, will return information about the file "mytest.R"?
+  Output: Access information about the file "mytest.R". That is, what command, along with the appropriate argument, will return information about the file "mytest.R"?
   CorrectAnswer: file.info("mytest.R")
   AnswerTests: omnitest(correctExpr='file.info("mytest.R")')
   Hint: file.info("mytest.R") will do the trick!
@@ -163,7 +163,7 @@
   Output: You now have two files in the current directory. That may not seem very interesting. But what if you were working with dozens, or millions, of individual files? In that case, being able to programatically act on many files would be absolutely necessary. Don't forget that you can, temporarily, leave the lesson by typing play() and then return by typing nxt().
 
 - Class: cmd_question
-  Output: Provide the full path to "mytest3.R".
+  Output: Provide the full path to the file "mytest3.R".
   CorrectAnswer: file.path("mytest3.R")
   AnswerTests: omnitest(correctExpr='file.path("mytest3.R")')
   Hint: file.path("mytest3.R") works.
