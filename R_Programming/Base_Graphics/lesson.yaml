@@ -27,7 +27,7 @@
 - Class: cmd_question
   Output: Pull up the help page for cars.
   CorrectAnswer: ?cars
-  AnswerTests: any_of_exprs('?cars', 'help(cars)')
+  AnswerTests: any_of_exprs('?cars', 'help(cars)', 'help("plot")')
   Hint: Type ?cars or help(cars) to view a help page with details on the car data frame.
 
 - Class: text
@@ -76,7 +76,7 @@
   Output: Note that this produces a slightly different answer than plot(cars). In this case, R is not sure what you want to use as the labels on the axes, so it just uses the arguments which you pass in, data frame name and dollar signs included.
 
 - Class: text
-  Output: Note that there are other ways to call the plot command, i.e., using the "formula" interface. For example, we get a similar plot to the above with plot(dist ~ speed, cars). However, in this lesson, we will not use that approach.
+  Output: Note that there are other ways to call the plot command, i.e., using the "formula" interface. For example, we get a similar plot to the above with plot(dist ~ speed, cars). However, we will wait till later in the lesson before using the formula interface.
   
 - Class: cmd_question
   Output: Use plot() command to show dist on the x-axis and speed on the y-axis from the cars data frame. This is the opposite of what we did above.
@@ -157,7 +157,7 @@
   Output: It is, however, useful to have an introduction to base graphics because many of the idioms in lattice and ggplot2 are modeled on them.
 
 - Class: text
-  Output: Let's now look at some other functions in base graphics that may be useful, starting with histograms.
+  Output: Let's now look at some other functions in base graphics that may be useful, starting with boxplots.
 
 - Class: cmd_question
   Output: Load the mtcars data frame. 
