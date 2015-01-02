@@ -101,10 +101,10 @@
   Output: We will do all our work in this new directory and then delete it after we are done. This is the R analog to "Take only pictures, leave only footprints."
 
 - Class: cmd_question
-  Output:  Change your working directory to "testdir".
+  Output: Set your working directory to "testdir".
   CorrectAnswer: setwd("testdir")
   AnswerTests: any_of_exprs('setwd("testdir")', 'setwd("testdir/")')
-  Hint: Use setwd("testdir") to change your working directory to "testdir".
+  Hint: Use setwd("testdir") to set your working directory to "testdir".
 
 - Class: text
   Output: In general, you will want your working directory to be someplace sensible, perhaps created for the specific project that you are working on. In fact, organizing your work in R packages using R Studio is an excellent option. But those topics are beyond the scope of this lesson.
