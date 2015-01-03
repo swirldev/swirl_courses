@@ -13,8 +13,15 @@
 - Class: text
   Output:  In a previous lesson we showed you the vast capabilities of qplot, the basic workhorse function of the ggplot2 package. In this lesson we'll focus on some fundamental components of the package. These  underlie qplot (which uses default values when it calls them) and if you understand these building blocks, you will be able to customize your plots. We'll use the second workhorse function in the package, ggplot, and other graphing functions. 
 
+- Class: mult_question
+  Output:  Do you remember what the gg of ggplot2 stands for?
+  AnswerChoices: goto graphics; grammar of graphics; great graphics; good grief
+  CorrectAnswer: grammar of graphics
+  AnswerTests: omnitest(correctVal='grammar of graphics')
+  Hint: Think about nouns, verbs, and adjectives.
+
 - Class: text
-  Output:  Recall that ggplot2 is based on a "grammar" of graphics which means that the package contains building blocks with which you can create your own graphical objects. What are these basic components of ggplot2 plots? There are 7 of them. 
+  Output:  A "grammar" of graphics which means that ggplot2 contains building blocks with which you can create your own graphical objects. What are these basic components of ggplot2 plots? There are 7 of them. 
 
 - Class: text
   Output: Obviously, there's a DATA FRAME which contains the data you're trying to plot. Then the AESTHETIC MAPPINGS determine how data are mapped to color, size, etc. The GEOMS (geometric objects) are what you see in the plot (points, lines, shapes) and FACETS are the panels used in conditional plots. You've used these or seen them used in the qplot lesson.
@@ -22,8 +29,15 @@
 - Class: text
   Output: There are 3 more. STATS are statistical transformations such as binning, quantiles, and smoothing which ggplot2 applies to the data. SCALES show what coding an aesthetic map uses (for example, male = red, female = blue). Finally, the plots are depicted on a COORDINATE SYSTEM. When you use qplot these were taken care of for you.
 
+- Class: mult_question
+  Output:  Do you remember what the "artist's palette" model means in the context of plotting?
+  AnswerChoices: we draw pictures; we mix paints; plots are built up in layers; things get messy
+  CorrectAnswer: plots are built up in layers
+  AnswerTests: omnitest(correctVal='plots are built up in layers')
+  Hint: Think about layers and creating a picture in several steps.
+
 - Class: text
-  Output: As in the base plotting system (and in contrast to the lattice system), when building plots with ggplot,  the “artist’s palette” model is used. This means that plots are built up in layers, maybe in several steps. You can plot the data, then overlay a summary (for instance, a regression line or smoother) and then add any metadata and annotations you need.
+  Output: As in the base plotting system (and in contrast to the lattice system), when building plots with ggplot2,  the plots are built up in layers, maybe in several steps. You can plot the data, then overlay a summary (for instance, a regression line or smoother) and then add any metadata and annotations you need.
 
 - Class: cmd_question
   Output: We'll keep using the mpg data that comes with the ggplot2 package. Recall the versatility of qplot. Just as a refresher, call qplot now with 6 arguments. The first 3 deal with data - displ, hwy, and data=mpg. The fourth is geom set equal to the concatenation of the two strings, "point" and "smooth". The fifth is facets set equal to the formula .~drv, and the final argument is method set equal to the string "loess". Try this now. 
@@ -62,7 +76,7 @@
   Hint: Type g+geom_point() at the command prompt.
 
 - Class: cmd_question
-  Output: By adding the layer (and not assigning the expression to a variable) you created and displayed a plot. Notice that you didn't have to pass any arguments to the function geom_point. That's because the object g has all the data stored in it. (Remember you saw that when you ran summary on g before.) Now use the expression you just typed (g + geom_point()) and add to it another layer, a call to geom_smooth(). Notice the red message R gives you.
+  Output: By calling the function geom_point you added a layer. By not assigning the expression to a variable you displayed a plot. Notice that you didn't have to pass any arguments to the function geom_point. That's because the object g has all the data stored in it. (Remember you saw that when you ran summary on g before.) Now use the expression you just typed (g + geom_point()) and add to it another layer, a call to geom_smooth(). Notice the red message R gives you.
   CorrectAnswer: g+geom_point()+geom_smooth()
   AnswerTests: omnitest(correctExpr='g+geom_point()+geom_smooth()')
   Hint: Type g+geom_point()+geom_smooth() at the command prompt.
@@ -80,7 +94,7 @@
   Hint: Type g+geom_point()+geom_smooth(method="lm") + facet_grid(.~drv) at the command prompt.
 
 - Class: text
-  Output: Notice how each panel is labeled with the appropriate factor label. All the data associated with 4-wheel drive cars is in the leftmost panel, front-wheel drive data is shown in the middle panel, and rear-wheel drive data in the rightmost. Notice that this is similar to the plot you created at the start of the lesson using qplot. (We used a different smoothing function than previously.)
+  Output: Notice how each panel is labeled with the appropriate factor. All the data associated with 4-wheel drive cars is in the leftmost panel, front-wheel drive data is shown in the middle panel, and rear-wheel drive data in the rightmost. Notice that this is similar to the plot you created at the start of the lesson using qplot. (We used a different smoothing function than previously.)
 
 - Class: cmd_question
   Output: So far you've just used the default labels that ggplot provides. You can add your own annotation using functions such as xlab(), ylab(), and ggtitle(). In addition, the function labs() is more general and can be used to label either or both axes as well as provide a title. Now recall the expression you just typed and add a call to the function ggtitle with the argument "Swirl Rules!".
@@ -155,7 +169,7 @@
   Hint: Type g + geom_line() at the command prompt.
 
 - Class: text
-  Output: Notice how ggplot DID display the outlier point at (50,100). As a result the rest of the data is smashed down so you don't get to see what the bulk of the data looks like. The single outlier probably isn't important enough to dominate the graph. How do we get ggplot to behave more like plot in a situation like this?
+  Output: Notice how ggplot DID display the outlier point at (50,100). As a result the rest of the data is smashed down so you don't get to see what the bulk of it looks like. The single outlier probably isn't important enough to dominate the graph. How do we get ggplot to behave more like plot in a situation like this?
 
 - Class: cmd_question
   Output: Let's take a guess that in addition to adding geom_line() to g we also just have to add ylim(-3,3) to it as we did with the call to plot. Try this now to see what happens.
@@ -213,7 +227,7 @@
   Hint: Typeg + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,col="black") at the command prompt.
 
 - Class: cmd_question
-  Output: Finally, add to your last command (or retype it if you like to type) a call to the function labs with 3 arguments. These are x set to "Displacement", y set to "Highway Mileage", and title set to "Swirl Rules!".
+  Output: Angry Birds? Finally, add to your last command (or retype it if you like to type) a call to the function labs with 3 arguments. These are x set to "Displacement", y set to "Highway Mileage", and title set to "Swirl Rules!".
   CorrectAnswer: g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,col="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!")
   AnswerTests:  omnitest(correctExpr='g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,col="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!")')
   Hint: Typeg + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,col="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!") at the command prompt.

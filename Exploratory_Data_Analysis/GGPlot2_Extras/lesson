@@ -205,7 +205,7 @@
   Hint: Type summary(g) at the command prompt.
 
 - Class: cmd_question
-  Output:  Now suppose we want to see a scatterplot of the relationship. Add to g a call to the function geom_point with 1 argument, alph set equal to 1/3.
+  Output:  We see that g holds the entire dataset. Now suppose we want to see a scatterplot of the relationship. Add to g a call to the function geom_point with 1 argument, alpha set equal to 1/3.
   CorrectAnswer: g+geom_point(alpha=1/3)
   AnswerTests: omnitest(correctExpr='g+geom_point(alpha=1/3)')
   Hint: Type g+geom_point(alpha=1/3) at the command prompt.
@@ -214,7 +214,7 @@
   Output:  That's somewhat interesting. We see that depth ranges from 43 to 79, but the densest distribution is around 60 to 65. Suppose we want to see if this relationship (between depth and price) is affected by cut or carat. We know cut is a factor with 5 levels (Fair, Good, Very Good, Premium, and Ideal). But carat is  numeric and not a discrete factor. Can we do this?
 
 - Class: text
-  Output: Of course! That's why we asked. R has a handy command, cut, which allows you to divide your data. First, we'll have to decide where to cut the data. 
+  Output: Of course! That's why we asked. R has a handy command, cut, which allows you to divide your data into sets and label each entry as belonging to one of the sets, in effect creating a new factor. First, we'll have to decide where to cut the data. 
 
 - Class: cmd_question
   Output: Let's divide the data into 3 pockets, so 1/3 of the data falls into each. We'll use the R command quantile to do this. Create the variable cutpoints and assign to it the output of a call to the function quantile with 3 arguments. The first is the data to cut, namely diamonds$carat; the second is a call to the R function seq. This is also called with 3 arguments, (0, 1, and length set equal to 4). The third argument to the call to quantile is the boolean na.rm set equal to TRUE.
@@ -229,9 +229,9 @@
   Hint: Type cutpoints  at the command prompt.
 
 - Class: cmd_question
-  Output: We see .2 is the smallest carat size in the dataset and 5.01 is the largest. One third of the diamonds are between .2 and .5 carats and another third are between .5 and 1 carat in size. The remaining third are between 1 and 5.01 carats. Now we can use the R command cut to label each of the 53940 diamonds in the dataset as belonging to one of these 3 factors. Create a new name in diamonds, diamonds$car2 by assigning it the output of the call to cut. This command takes 2 arguments, diamonds$carat, which is what we want to cut, and cutpoints, the places where we'll cut.
+  Output: We see a 4-long vector (explaining why length was set equal to 4). We also see that .2 is the smallest carat size in the dataset and 5.01 is the largest. One third of the diamonds are between .2 and .5 carats and another third are between .5 and 1 carat in size. The remaining third are between 1 and 5.01 carats. Now we can use the R command cut to label each of the 53940 diamonds in the dataset as belonging to one of these 3 factors. Create a new name in diamonds, diamonds$car2 by assigning it the output of the call to cut. This command takes 2 arguments, diamonds$carat, which is what we want to cut, and cutpoints, the places where we'll cut.
   CorrectAnswer: diamonds$car2 <- cut(diamonds$carat,cutpoints)
-  AnswerTests:  expr_creates_var("diamonds$car2"); omnitest(correctExpr='diamonds$car2 <- cut(diamonds$carat,cutpoints)')
+  AnswerTests:  omnitest(correctExpr='diamonds$car2 <- cut(diamonds$carat,cutpoints)')
   Hint: Type diamonds$car2 <- cut(diamonds$carat,cutpoints)  at the command prompt.
 
 - Class: cmd_question
@@ -244,16 +244,19 @@
   Output: We see a multi-facet plot with 5 rows, each corresponding to a cut factor. Not surprising. What is surprising is the number of columns. We were expecting 3 and got 4. Why?
 
 - Class: cmd_question
-  Output: The first 3 columns are labeled with the cutpoint boundaries. The fourth is labeleld NA and shows us where the data points with missing data (NA or Not Available) occurred. We see that there were only a handful (12 in fact) and they occurred in Very Good, Premium, and Ideal cuts. We created a vector, myd,  containing the indices of these datapoints. Look at these entries in diamonds by typing the expression diamonds[myd,]. The myd tells R what rows to show and the empty column entry says to print all the columns. 
+  Output: The first 3 columns are labeled with the cutpoint boundaries. The fourth is labeled NA and shows us where the data points with missing data (NA or Not Available) occurred. We see that there were only a handful (12 in fact) and they occurred in Very Good, Premium, and Ideal cuts. We created a vector, myd,  containing the indices of these datapoints. Look at these entries in diamonds by typing the expression diamonds[myd,]. The myd tells R what rows to show and the empty column entry says to print all the columns. 
   CorrectAnswer: diamonds[myd,]
   AnswerTests:  omnitest(correctExpr='diamonds[myd,]')
   Hint: Type diamonds[myd,]  at the command prompt.
 
 - Class: text
-  Output: We see these entries match the plots. Whew - that's a relief. 
+  Output: We see these entries match the plots. Whew - that's a relief. The car2 field is, in fact, NA for these entries, but the carat field shows they each had a carat size of .2. What's going on here?
+
+- Class: text
+  Output: Actually our plot answers this question. The boundaries for each column appear in the gray labels at the top of each column, and we see that the first column is labeled (0.2,0.5]. This indicates that this column contains data greater than .2 and less than or equal to .5. So diamonds with carat size .2 were excluded from the car2 field. 
 
 - Class: cmd_question
-  Output: Finally, recall the last plotting command (g+geom_point(alpha=1/3)+facet_grid(cut~car2)) or retype it if you like and add another call. This one to the function geom_smooth. Pass it 3 arguments, method set equal to the string "lm", size set equal to 3, and color equal to pink.
+  Output: Finally, recall the last plotting command (g+geom_point(alpha=1/3)+facet_grid(cut~car2)) or retype it if you like and add another call. This one to the function geom_smooth. Pass it 3 arguments, method set equal to the string "lm", size set equal to 3, and color equal to the string "pink".
   CorrectAnswer: g+geom_point(alpha=1/3)+facet_grid(cut~car2)+geom_smooth(method="lm",size=3,color="pink")
   AnswerTests:  omnitest(correctExpr='g+geom_point(alpha=1/3)+facet_grid(cut~car2)+geom_smooth(method="lm",size=3,color="pink")')
   Hint: Type g+geom_point(alpha=1/3)+facet_grid(cut~car2)+geom_smooth(method="lm",size=3,color="pink")  at the command prompt.
@@ -262,10 +265,11 @@
   Output: Nice thick regression lines which are somewhat interesting. You can add labels to the plot if you want but we'll let you experiment on your own.
 
 - Class: cmd_question
-  Output: Lastly, ggplot2 can, of course, produce boxplots. This final exercise is the sum of 3 function calls. The first is to ggplot with 2 arguments, diamonds and a call to aes with carat and price as arguments. The second is to geom_boxplot with no arguments. The third is to facet grid with one argument, the formula . ~ cut. Try this now.
+  Output: Lastly, ggplot2 can, of course, produce boxplots. This final exercise is the sum of 3 function calls. The first call is to ggplot with 2 arguments, diamonds and a call to aes with carat and price as arguments. The second call is to geom_boxplot with no arguments. The third is to facet_grid with one argument, the formula . ~ cut. Try this now.
   CorrectAnswer: ggplot(diamonds,aes(carat,price))+geom_boxplot()+facet_grid(.~cut)
   AnswerTests:  omnitest(correctExpr='ggplot(diamonds,aes(carat,price))+geom_boxplot()+facet_grid(.~cut)')
   Hint: Type ggplot(diamonds,aes(carat,price))+geom_boxplot()+facet_grid(.~cut) at the command prompt.
 
 - Class: text
-  Output: Congrats! You've finished this jewel of a lesson. Hope it payed off!
+  Output: Yes! A boxplot looking like marshmallows about to be roasted. Well done and  congratulations! You've finished this jewel of a lesson. Hope it payed off!
+

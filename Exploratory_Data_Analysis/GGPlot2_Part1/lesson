@@ -123,6 +123,9 @@
   Hint: Type qplot(hwy, data = mpg, fill = drv) at the command prompt.
 
 - Class: text
+  Output: See how qplot consistently uses the colors. Red (if 4-wheel drv is in the bin) is at the bottom of the bin, then green on top of it (if present), followed by blue (rear wheel drv). The color lets us see right away that 4-wheel drive vehicles in this dataset don't have gas mileages exceeding 30 miles per gallon.
+
+- Class: text
   Output: It's cool that qplot can do this  so easily, but some people may find this multi-color histogram hard to interpret. Instead of using colors to distinguish between the drive factors let's use facets or panels. (That's what lattice called them.) This just means we'll split the data into 3 subsets (according to drive) and make 3 smaller individual plots of each subset in one plot (and with one call to qplot).
 
 - Class: text
@@ -135,10 +138,10 @@
   Hint: Type qplot(displ, hwy, data = mpg, facets = . ~ drv) at the command prompt.
 
 - Class: text
-  Output: The result is a 1 by 3 array of plots. Note how each is labeled at the top with the factor label (4,f, or r).
+  Output: The result is a 1 by 3 array of plots. Note how each is labeled at the top with the factor label (4,f, or r). This shows us more detailed information than the histogram. We see the relationship between displacement and highway mileage for each of the 3 drive factors.
 
 - Class: cmd_question
-  Output:  Now we'll do a histogram, again calling qplot with 4 arguments. This time, since we need only one variable for a histogram, the first is hwy and the second is the argument data set equal to mpg. The third is the argument facets which we'll set equal to the expression drv ~ . which give us a different arrangement of the facets. The fourth argument is binwidth. Set this equal to 2. Try this now.
+  Output:  Now we'll do a histogram, again calling qplot with 4 arguments. This time, since we need only one variable for a histogram, the first is hwy and the second is the argument data set equal to mpg. The third is the argument facets which we'll set equal to the expression drv ~ . . This will give us a different arrangement of the facets. The fourth argument is binwidth. Set this equal to 2. Try this now.
   CorrectAnswer: qplot(hwy, data = mpg, facets = drv ~ ., binwidth = 2)
   AnswerTests: omnitest(correctExpr='qplot(hwy, data = mpg, facets = drv ~ ., binwidth = 2)')
   Hint: Type qplot(hwy, data = mpg, facets = drv ~ ., binwidth = 2) at the command prompt.
@@ -165,7 +168,7 @@
   Output:  Which types of plot does qplot plot?
   AnswerChoices:  histograms; scatterplots; box and whisker plots; all of the others
   CorrectAnswer: all of the others
-  AnswerTests: omnitest()
+  AnswerTests: omnitest(correctVal='all of the others')
   Hint: That qplot is amazing! It seems to do everything!
 
 - Class: mult_question
