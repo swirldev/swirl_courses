@@ -1,4 +1,4 @@
-fname <- pathtofile("euclid2.jpeg")
+fname <- pathtofile("taxi.jpeg")
 try(dev.off(),silent=TRUE)
 plot.new()
 plotArea=par('fig')
