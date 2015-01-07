@@ -1,0 +1,1 @@
+plot(as.dendrogram(hc))

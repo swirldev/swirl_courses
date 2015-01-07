@@ -60,7 +60,7 @@
   Output: You want to travel from the point at the lower left to the one on the top right. The shortest distance is the Euclidean (the green line), but you're limited to the grid, so you have to follow a path similar to those shown in red, blue, or yellow. These all have the same length (12) which is the number of small gray segments covered by their paths.
 
 - Class: text
-  Output: More formally, Manhattan distance is the sum of the absolute value of the distances between each coordinate, so the distance between the points (x1,y1) and (x2,y2) is |x1-x2|+|y1-y2|. As with Euclidean distance, this too generalizes to more than 2 dimensions.
+  Output: More formally, Manhattan distance is the sum of the absolute values of the distances between each coordinate, so the distance between the points (x1,y1) and (x2,y2) is |x1-x2|+|y1-y2|. As with Euclidean distance, this too generalizes to more than 2 dimensions.
 
 - Class: figure
   Output:  Now we'll go back to our random points. You might have noticed that these points don't really look randomly positioned, and in fact, they're not. They were actually generated as 3 distinct clusters. We've put the coordinates of these points in a data frame for you, called dataFrame. 
@@ -104,16 +104,112 @@
   FigureType: new 
 
 - Class: cmd_question
-  Output:  Now let's plot a histogram of the price of the 53940 diamonds in this dataset. Recall that a histogram requires only one variable of the data, so run the R command qplot with the first argument price and the argument data set equal to diamonds. This will show the frequency of different diamond prices.
-  CorrectAnswer: qplot(price,data=diamonds)
-  AnswerTests: omnitest(correctExpr='qplot(price,data=diamonds)')
-  Hint: Type qplot(price,data=diamonds) at the command prompt.
+  Output:  We can keep going like this in the obvious way and pair up individual points, but as luck would have it, R provides a simple function which you can call which creates a dendrogram for you. It's called hclust() and takes as an argument the pairwise distance matrix which we looked at before. We've created this matrix for you in a variable called distxy. Run hclust now with distxy as its argument and put the result in the variable hc.
+  CorrectAnswer: hc <- hclust(distxy)
+  AnswerTests: expr_creates_var("hc"); omnitest(correctExpr='hc <- hclust(distxy)')
+  Hint: Type hc <- hclust(distxy) at the command prompt.
 
 - Class: cmd_question
-  Output:  Not only do you get a histogram, but you also get a message about the binwidth defaulting to range/30. Recall that range refers to the spread or dispersion of the data, in this case price of diamonds. Run  the R command range now with diamonds$price as its argument.
-  CorrectAnswer: range(diamonds$price)
-  AnswerTests: omnitest(correctExpr='range(diamonds$price)')
-  Hint: Type range(diamonds$price) at the command prompt.
+  Output:  You're probably curious and want to see hc. Call the R function plot with one argument, hc.
+  CorrectAnswer: plot(hc)
+  AnswerTests: omnitest(correctExpr='plot(hc)')
+  Hint: Type plot(hc) at the command prompt.
+
+- Class: cmd_question
+  Output:  Nice plot, right? R's plot conveniently labeled everything for you. The points we saw are the leaves at the bottom of the graph, 5 and 6 are connected, as are 10 and 11. Moreover, we see that the original 3 groupings of points are closest together as leaves on the picture. That's reassuring.  Now call plot again, this time with the argument as.dendrogram(hc). 
+  CorrectAnswer: plot(as.dendrogram(hc))
+  AnswerTests: omnitest(correctExpr='plot(as.dendrogram(hc))')
+  Hint: Type plot(as.dendrogram(hc)) at the command prompt.
+
+- Class: cmd_question
+  Output: The essentials are the same, but the labels are missing and the leaves (original points) are all printed at the same level. Notice that the vertical heights of the lines and labeling of the scale on the left edge give some indication of distance. Use the R command abline to draw a horizontal blue line at 1.5 on this plot. Recall that this requires 2 arguments, h=1.5 and col="blue".  
+  CorrectAnswer: abline(h=1.5,col="blue")
+  AnswerTests: omnitest(correctExpr='abline(h=1.5,col="blue")')
+  Hint: Type abline(h=1.5,col="blue") at the command prompt.
+
+- Class: cmd_question
+  Output: We see that this blue line intersects 3 vertical lines and this tells us that using the distance 1.5 (unspecified units) gives us 3 clusters (1 through 4), (9 through 12), and (5 through 8). Now draw a red horizontal line at .4. 
+  CorrectAnswer: abline(h=.4,col="red")
+  AnswerTests: omnitest(correctExpr='abline(h=.4,col="red")')
+  Hint: Type abline(h=.4,col="red") at the command prompt.
+
+- Class: cmd_question
+  Output: How many clusters are there at this distance?
+  CorrectAnswer: 5
+  AnswerTests: equiv_val(5)
+  Hint: How many vertical lines does this red line cross?
+
+- Class: cmd_question
+  Output: We see that at the distance .4 we have 5 clusters, indicating that this distance is small enough to break up our original grouping of points. If we drew a horizontal line at .05, how many clusters would we get
+  CorrectAnswer: 12
+  AnswerTests: equiv_val(12)
+  Hint: Recall that our shortest distance was around .08, so a distance smaller than that would make all the points their own private clusters.
+
+- Class: cmd_question
+  Output: Try it now (draw a horizontal line at .05) and make the line green.
+  CorrectAnswer: abline(h=.05,col="green")
+  AnswerTests: abline(h=.05,col="green")
+  Hint: Type abline(h=.05,col="green") at the command prompt.
+
+- Class: text
+  Output: So the number of clusters in your data depends on where you draw the line! (We said there's a lot of flexibility here.) Now that we've seen the practice, let's go back to some "theory". Notice that the two original groupings, 5 through 8, and 9 through 12, are connected with a horizontal line near the top of the display. You're probably wondering how distances between clusters of points are measured. 
+
+- Class: text
+  Output: There are several ways to do this. We'll just mention two. The first is called complete linkage and it says that if you're trying to measure a distance between two clusters, take the greatest distance between the pairs of points in those two clusters. Obviously such pairs contain one point from each cluster.
+
+- Class: figure
+  Output: So if we were measuring the distance between the two clusters of points (1 through 4) and (5 through 8), using complete linkage as the metric we would use the distance between points 4 and 8 as the measure since this is the largest distance between the pairs of those groups. 
+  Figure: complete.R
+  FigureType: new 
+
+- Class: figure
+  Output: The distance between the two clusters of points (9 through 12) and (5 through 8), using complete linkage as the metric is the distance between points 11 and 8 since this is the largest distance between the pairs of those groups. 
+  Figure: complete2.R
+  FigureType: new 
+
+- Class: figure
+  Output: As luck would have it, the distance between the two clusters of points (9 through 12) and (1 through 4), using complete linkage as the metric is the distance between points 11 and 4. 
+  Figure: complete3.R
+  FigureType: new 
+
+- Class: cmd_question
+  Output:  We've created the dataframe dFsm for you containing these 3 points, 4, 8, and 11. Run dist on dFsm to see what the smallest distance between these 3 points is.
+  CorrectAnswer: dist(dFsm)
+  AnswerTests: omnitest(correctExpr='dist(dFsm)')
+  Hint: Type dist(dFsm) at the command prompt.
+
+- Class: figure
+  Output: We see that the smallest distance is between points 2 and 3 in this reduced set, actually points 8 and 11 in the original set, indicated that the two clusters these points represents (5 through 8) and (9 through 12) respectively would be joined (at a distance of 1.869) before being connected with the third cluster (1 through 4). This is consistent with the dendrogram we plotted.
+  Figure: dendro.R
+  FigureType: new 
+
+
+- Class: figure
+  Output: The second way to measure a distance between two clusters that we'll just mention is called average linkage. First you compute an "average" point in each cluster (think of it as a center of gravity). You do this by computing the mean x and y coordinates. 
+  Figure: average.R
+  FigureType: new 
+
+- Class: figure
+  Output: Then you compute the distances between each cluster average to compute the intercluster distance.
+  Figure: average2.R
+  FigureType: new 
+
+- Class: cmd_question
+  Output:  Now look at the hierarchical cluster we created before, hc.
+  CorrectAnswer: hc
+  AnswerTests: omnitest(correctExpr='hc')
+  Hint: Type hc at the command prompt.
+
+- Class: mult_question
+  Output: Which type of linkage did hclust() use to agglomerate clusters?
+  AnswerChoices:  average; complete
+  CorrectAnswer:  complete
+  AnswerTests: omnitest(correctVal='complete')
+  Hint: Look at the output when you looked at hc. What was the cluster method?
+
+
+
+
 
 - Class: text
   Output: We see that range returned the minimum and maximum prices, so the diamonds vary in price from $326 to $18823. We've done the arithmetic for you, the range (difference between these two numbers) is $18497.
