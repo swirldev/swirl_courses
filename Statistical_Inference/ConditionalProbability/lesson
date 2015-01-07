@@ -33,7 +33,7 @@
   Output: We represent the conditional probability of an event A given that B has occurred with the notation P(A|B). More specifically, we define the conditional probability of event A, given that B has occurred with the following.
 
 - Class: text
-  Output:   P(A|B) = P(A & B)/ P(B) . P(A|B) is the probability that BOTH A and B occur divided by the probability that B occurs.
+  Output:   P(A|B) = P(A & B)/ P(B) . P(A & B) is the probability that BOTH A and B occur divided by the probability that B occurs.
 
 - Class: mult_question
   Output: Back to our dice example. Which of the following expressions represents P(A&B), where A is the event of rolling a 3 and B is the event of the roll being odd?
