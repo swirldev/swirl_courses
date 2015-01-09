@@ -1,44 +1,149 @@
 - Class: meta
   Course: Exploratory_Data_Analysis
-  Lesson: Hierarchical_Clustering
+  Lesson: K_Means_Clustering
   Author: Swirl Coders
   Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
 - Class: text
-  Output: "Hierarchical_Clustering. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 04_ExploratoryAnalysis/hierarchicalClustering.)"
+  Output: "K_Means_Clustering. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 04_ExploratoryAnalysis/kmeansClustering.)"
 
 
 - Class: text
-  Output:  In this lesson we'll learn about hierarchical clustering, a simple way of quickly examining and displaying multi-dimensional data. This technique is usually most useful in the early stages of analysis when you're trying to get an understanding of the data, e.g., finding some pattern or relationship between different factors or variables. As the name suggests hierarchical clustering creates a hierarchy of clusters.
+  Output:  In this lesson we'll learn about K Means clustering, another simple way of examining and organizing multi-dimensional data. As with hierarchical clustering, this technique is  most useful in the early stages of analysis when you're trying to get an understanding of the data, e.g., finding some pattern or relationship between different factors or variables. 
 
 - Class: text
-  Output:  Clustering organizes data points that are close into groups. So obvious questions are "How do we define close?", "How do we group things?", and "How do we interpret the grouping?" Cluster analysis is a very important topic in data analysis.
+  Output:  Since clustering organizes data points that are close into groups we can ask obvious questions such as "How do we define close?", "How do we group things?", and "How do we interpret the grouping?" 
 
 - Class: figure
-  Output: To give you an idea of what we're talking about, consider these random points we generated. We'll use them to demonstrate a clustering technique in this lesson. We'll do this in several steps, but first we have to clarify our terms and concepts.
+  Output: To give you an idea of what we're talking about, consider these random points we generated, familiar to you if you've already gone through the hierarchical clustering lesson. We'll use them to demonstrate K means clustering. We'll do this in several steps, but first we'll explain the general idea.
   Figure: ranPoints.R
   FigureType: new
 
 - Class: text
-  Output: We'll use an agglomerative, or bottom-up, approach. From Wikipedia  (http://en.wikipedia.org/wiki/Hierarchical_clustering), we learn that in this method, "each observation starts in its own cluster, and pairs of clusters are merged as one moves up the hierarchy." This means that we'll find the closest two points and put them together in one cluster, then find the next closest pair in the updated picture, and so forth. We'll repeat this process until we reach a reasonable stopping place.
+  Output: This is a partioning approach which requires that you first guess how many clusters you have (or want). Once you fix this number, you randomly create a "centroid" (a phantom point) for each cluster and assign each point or observation in your dataset to the one centroid to which it is closest. Once each point is assigned a centroid, readjust the centroid's position by making it the average of the points assigned to it. 
 
 - Class: text
-  Output: Note the word "reasonable". There's a lot of flexibility in this field and how you perform your analysis depends on your problem. Again, Wikipedia tells us, "one can decide to stop clustering either when the clusters are too far apart to be merged (distance criterion) or when there is a sufficiently small number of clusters (number criterion)."
+  Output: Now you recalculate the distance of the observations to the centroids and reassign any, if necessary, to the centroid closest to them. Again, once the reassignments are done, readjust the positions of the centroids based on the new cluster membership. The process stops once you reach an iteration in which no adjustments are made. 
 
-- Class: text
-  Output: First, how do we define close? This is the most important step and there are several possibilities depending on the questions you're trying to answer and the data you have. Distance or similarity are usually the metrics used. 
-     
 - Class: mult_question
-  Output: In the given plot which pair points would you first cluster? Use distance as the metric.
-  AnswerChoices:  7 and 8; 1 and 4; 5 and 6; 10 and 12
-  CorrectAnswer:  5 and 6
-  AnswerTests: omnitest(correctVal='5 and 6')
-  Hint: The choices aren't very close. Look at the picture for the answer.
+  Output: As described, what does this process require?
+  AnswerChoices:  A defined distance metric; A number of clusters; An initial guess as to cluster centroids; All of the others
+  CorrectAnswer:  All of the others
+  AnswerTests: omnitest(correctVal='All of the others')
+  Hint: Which choice includes all the others.
+
+- Class: mult_question
+  Output: So K-Means Clustering requires some distance metric (say Euclidean), a hypothesized fixed number of clusters, and an initial guess as to cluster centroids. As described, what does this process produce?
+  AnswerChoices:  A final estimate of cluster centroids; An assignment of each point to a cluster; All of the others
+  CorrectAnswer:  All of the others
+  AnswerTests: omnitest(correctVal='All of the others')
+  Hint: Which choice includes all the others.
 
 - Class: text
-  Output: It's pretty obvious that out of the 4 choices, the pair 5 and 6 were the closest together. However, there are several ways to measure distance or similarity. Euclidean distance and correlation similarity are continuous measures, while Manhattan distance is a binary measure. In this lesson we'll just briefly discuss the first and last of these. It's important that you use a measure of distance that fits your problem.
+  Output: When it's finished K Means clustering returns a final position of each cluster's centroid as well as the assignment of each data point or observation to a cluster.
+     
+- Class: text
+  Output: Now we'll step through this process using our random points as our data. The coordinates of these are stored in 2 vectors, x and y. We eyeball the display and guess that there are 3 clusters. We'll pick 3 positions of centroids, one for each cluster.
+    
+- Class: cmd_question
+  Output:  We've created two 3-long vectors for you, cx and cy. These respectively hold the x- and y- coordinates for 3 proposed centroids. For convenience, we've also stored them in a 2 by 3 matrix cmat. The x coordinates are in the first row and the y coordinates in the second. Look at cmat now.
+  CorrectAnswer: cmat
+  AnswerTests: omnitest(correctExpr='cmat')
+  Hint: Type cmat at the command prompt.
+
+- Class: cmd_question
+  Output:  The coordinates of these points are (1,2), (1.8,1) and (2.5,1.5). We'll add these centroids to the plot of our points. Do this by calling the R command points with 6 arguments. The first 2 are cx and cy, and the third is col set equal to the concatenation of 3 colors, "red", "orange", and "purple". The fourth argument is pch set equal to 3, the fifth is cex set equal to 2, and the final is lwd also set equal to 2.
+  CorrectAnswer: points(cx,cy,col=c("red","orange","purple"),pch=3,cex=2,lwd=2)
+  AnswerTests: omnitest(correctExpr='points(cx,cy,col=c("red","orange","purple"),pch=3,cex=2,lwd=2)')
+  Hint: Type points(cx,cy,col=c("red","orange","purple"),pch=3,cex=2,lwd=2) at the command prompt.
+
+- Class: text
+  Output: We see the first centroid (1,2) is in red. The second (1.8,1), to the right and below the first, is orange, and the final centroid (2.5,1.5), the furthest to the right, is purple.
+
+- Class: mult_question
+  Output: Now we have to calculate distances between each point and every centroid. There are 12 data points and 3 centroids. How many distances do we have to calculate?
+  AnswerChoices:  15; 36; 9; 108
+  CorrectAnswer: 36
+  AnswerTests: omnitest(correctVal='36')
+  Hint: The distance between each point and one centroid means 12 distances have to be calculated for each centroid. This has to be done for all 3 centroids.
+
+- Class: cmd_question
+  Output:  We've written a function for you called mdist which takes 4 arguments. The vectors of data points (x and y) are the first two and the two vectors of centroid coordinates (cx and cy) are the last two. Call mdist now with these arguments. 
+  CorrectAnswer: mdist(x,y,cx,cy)
+  AnswerTests: omnitest(correctExpr='mdist(x,y,cx,cy)')
+  Hint: Type mdist(x,y,cx,cy) at the command prompt.
+
+- Class: cmd_question
+  Output:  We've stored the resulting matrix of distances for you in the matrix distTmp. Look at it now.
+  CorrectAnswer: distTmp
+  AnswerTests: omnitest(correctExpr='distTmp')
+  Hint: Type distTmp at the command prompt.
+
+- Class: mult_question
+  Output: Now that we have the distances we have to assign a cluster to each point. To do that we'll look at each column and ?
+  AnswerChoices:  pick the minimum entry; pick the maximum entry; add up the 3 entries.
+  CorrectAnswer:  pick the minimum entry
+  AnswerTests: omnitest(correctVal='pick the minimum entry')
+  Hint: We assign each point to the centroid closest to it.
+
+- Class: mult_question
+  Output: From the distTmp entries, which cluster would point 6 be assigned to?
+  AnswerChoices:  1; 2; 3; none of the above
+  CorrectAnswer:  3
+  AnswerTests: omnitest(correctVal='3')
+  Hint: Which row in column 6 has the lowest value?
+
+
+- Class: cmd_question
+  Output:  R has a handy function which.min which you can apply to ALL the columns of distTmp with one call. Simply call the R function apply with 3 arguments. The first is distTmp, the second is 2 meaning the columns of distTmp, and the third is which.min, the function you want to apply to the columns of distTmp. Try this now.
+  CorrectAnswer: apply(distTmp,2,which.min)
+  AnswerTests: omnitest(correctExpr='apply(distTmp,2,which.min)')
+  Hint: Type apply(distTmp,2,which.min) at the command prompt.
+
+- Class: text
+  Output: You can see that you were right and the 6th entry is indeed 3 as you answered before. We see the first 3 entries were assigned to the second (orange) cluster and only 2 points (4 and 8) were assigned to the first (red) cluster.
+
+- Class: cmd_question
+  Output:  We've stored the vector of cluster colors ("red","orange","purple") in the array cols1 for you and we've also stored the cluster assignments in the array newClust. Let's color the 12 data points  according to their assignments. Again, use the command points with 5 arguments. The first 2 are x and y. The third is pch set to 19, the fourth is cex set to 2, and the last, col is set to cols1[newClust].
+  CorrectAnswer: points(x,y,pch=19,cex=2,col=cols1[newClust])
+  AnswerTests: omnitest(correctExpr='points(x,y,pch=19,cex=2,col=cols1[newClust])')
+  Hint: Type points(x,y,pch=19,cex=2,col=cols1[newClust]) at the command prompt.
+
+- Class: text
+  Output: Now we have to recalculate our centroids so they are the average (center of gravity) of the cluster of points assigned to them. We have to do the x and y coordinates separately. We'll do the x coordinate first. Recall that the vectors x and y hold the respective coordinates of our 12 data points.
+
+- Class: cmd_question
+  Output: We can use the R function tapply which applies "a function over a ragged array". This means that every element of the array is assigned a factor and the function is applied to  subsets of the array (identified by the factor vector). This allows us to take advantage of the factor vector newClust we calculated. Call tapply now with 3 arguments, x (the data), newClust (the factor array), and mean (the function to apply). 
+  CorrectAnswer: tapply(x,newClust,mean)
+  AnswerTests: omnitest(correctExpr='tapply(x,newClust,mean)')
+  Hint: Type tapply(x,newClust,mean) at the command prompt.
+
+- Class: cmd_question
+  Output: Repeat the call, except now apply it to the vector y instead of x.
+  CorrectAnswer: tapply(y,newClust,mean)
+  AnswerTests: omnitest(correctExpr='tapply(y,newClust,mean)')
+  Hint: Type tapply(y,newClust,mean) at the command prompt.
+
+
+- Class: cmd_question
+  Output: Now that we have  new x and new y coordinates for the 3 centroids we can plot them. We've stored off the coordinates for you in variables newCx and newCy. Use the R command points with these as the first 2 arguments. In addition, use the arguments col set equal to cols1, pch equal to 8, cex equal to 2 and lwd also equal to 2.
+  CorrectAnswer:points(newCx,newCy,col=cols1,pch=8,cex=2,lwd=2)
+  AnswerTests: omnitest(correctExpr='points(newCx,newCy,col=cols1,pch=8,cex=2,lwd=2)')
+  Hint: Type points(newCx,newCy,col=cols1,pch=8,cex=2,lwd=2) at the command prompt.
+
+- Class: cmd_question
+  Output: We see how the centroids have moved closer to their respective clusters. This is especially true of the orange cluster. Now call the distance function mdist with the 4 arguments x, y, newCx, and newCy. This will allow us to reassign the data points to new clusters if necessary.
+  CorrectAnswer: mdist(x,y,newCx,newCy)
+  AnswerTests: omnitest(correctExpr='mdist(x,y,newCx,newCy)')
+  Hint: Type mdist(x,y,newCx,newCy) at the command prompt.
+
+- Class: cmd_question
+  Output: We've stored off the new matrix of distances in the matrix distTmp2. Look at it now.
+  CorrectAnswer: distTmp2
+  AnswerTests: omnitest(correctExpr='distTmp2')
+  Hint: Type distTmp2 at the command prompt.
 
 - Class: figure
   Output: Euclidean distance is what you learned about in high school algebra. Given two points on a plane, (x1,y1) and (x2,y2), the Euclidean distance is the square root of the sums of the squares of the distances between the two x-coordinates (x1-x2) and the two y-coordinates (y1-y2). You probably recognize this as an application of the Pythagorean theorem which yields the length of the hypotenuse of a right triangle.
