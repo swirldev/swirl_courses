@@ -17,12 +17,12 @@
   Output:  Clustering organizes data points that are close into groups. So obvious questions are "How do we define close?", "How do we group things?", and "How do we interpret the grouping?" Cluster analysis is a very important topic in data analysis.
 
 - Class: figure
-  Output: To give you an idea of what we're talking about, consider these random points we generated. We'll use them to demonstrate a clustering technique in this lesson. We'll do this in several steps, but first we have to clarify our terms and concepts.
+  Output: To give you an idea of what we're talking about, consider these random points we generated. We'll use them to demonstrate hierarchical clustering in this lesson. We'll do this in several steps, but first we have to clarify our terms and concepts.
   Figure: ranPoints.R
   FigureType: new
 
 - Class: text
-  Output: We'll use an agglomerative, or bottom-up, approach. From Wikipedia  (http://en.wikipedia.org/wiki/Hierarchical_clustering), we learn that in this method, "each observation starts in its own cluster, and pairs of clusters are merged as one moves up the hierarchy." This means that we'll find the closest two points and put them together in one cluster, then find the next closest pair in the updated picture, and so forth. We'll repeat this process until we reach a reasonable stopping place.
+  Output: Hierarchical clustering is an agglomerative, or bottom-up, approach. From Wikipedia  (http://en.wikipedia.org/wiki/Hierarchical_clustering), we learn that in this method, "each observation starts in its own cluster, and pairs of clusters are merged as one moves up the hierarchy." This means that we'll find the closest two points and put them together in one cluster, then find the next closest pair in the updated picture, and so forth. We'll repeat this process until we reach a reasonable stopping place.
 
 - Class: text
   Output: Note the word "reasonable". There's a lot of flexibility in this field and how you perform your analysis depends on your problem. Again, Wikipedia tells us, "one can decide to stop clustering either when the clusters are too far apart to be merged (distance criterion) or when there is a sufficiently small number of clusters (number criterion)."
@@ -104,13 +104,18 @@
   FigureType: new 
 
 - Class: cmd_question
-  Output:  We can keep going like this in the obvious way and pair up individual points, but as luck would have it, R provides a simple function which you can call which creates a dendrogram for you. It's called hclust() and takes as an argument the pairwise distance matrix which we looked at before. We've created this matrix for you in a variable called distxy. Run hclust now with distxy as its argument and put the result in the variable hc.
+  Output:  We can keep going like this in the obvious way and pair up individual points, but as luck would have it, R provides a simple function which you can call which creates a dendrogram for you. It's called hclust() and takes as an argument the pairwise distance matrix which we looked at before. We've stored this matrix for you in a variable called distxy. Run hclust now with distxy as its argument and put the result in the variable hc.
   CorrectAnswer: hc <- hclust(distxy)
   AnswerTests: expr_creates_var("hc"); omnitest(correctExpr='hc <- hclust(distxy)')
   Hint: Type hc <- hclust(distxy) at the command prompt.
 
+- Class: figure
+  Output: You're probably curious and want to see hc.
+  Figure: clearPlot.R
+  FigureType: new 
+
 - Class: cmd_question
-  Output:  You're probably curious and want to see hc. Call the R function plot with one argument, hc.
+  Output: Call the R function plot with one argument, hc.
   CorrectAnswer: plot(hc)
   AnswerTests: omnitest(correctExpr='plot(hc)')
   Hint: Type plot(hc) at the command prompt.
@@ -163,12 +168,12 @@
   FigureType: new 
 
 - Class: figure
-  Output: The distance between the two clusters of points (9 through 12) and (5 through 8), using complete linkage as the metric is the distance between points 11 and 8 since this is the largest distance between the pairs of those groups. 
+  Output: The distance between the two clusters of points (9 through 12) and (5 through 8), using complete linkage as the metric, is the distance between points 11 and 8 since this is the largest distance between the pairs of those groups. 
   Figure: complete2.R
   FigureType: new 
 
 - Class: figure
-  Output: As luck would have it, the distance between the two clusters of points (9 through 12) and (1 through 4), using complete linkage as the metric is the distance between points 11 and 4. 
+  Output: As luck would have it, the distance between the two clusters of points (9 through 12) and (1 through 4), using complete linkage as the metric, is the distance between points 11 and 4. 
   Figure: complete3.R
   FigureType: new 
 
@@ -216,7 +221,7 @@
   Output:  You've probably seen many examples of heat maps, for instance weather radar and displays of ocean salinity. From Wikipedia (http://en.wikipedia.org/wiki/Heat_map) we learn that heat maps are often used in molecular biology "to represent the level of expression of many genes across a number of comparable samples  (e.g. cells in different states, samples from different patients) as they are obtained from DNA microarrays."
 
 - Class: figure
-  Output: We won't say too much on this topic, but a very nice concise tutorial on creating heatmaps in R exists at  http://sebastianraschka.com/Articles/heatmaps_in_r.html#clustering. Here's an image from the tutorial to start you thinking about the underlying details.
+  Output: We won't say too much on this topic, but a very nice concise tutorial on creating heatmaps in R exists at  http://sebastianraschka.com/Articles/heatmaps_in_r.html#clustering. Here's an image from the tutorial to start you thinking about the topic. It shows a sample heat map with a dendrogram on the left edge mapping the relationship between the rows. The legend at the top shows how colors relate to values. 
   Figure: showheat.R
   FigureType: new 
 
@@ -231,19 +236,25 @@
   Output: We see an interesting display of sorts. This is a very simple heat map - simple because the data isn't very complex. The rows and columns are grouped together as shown by colors. The top rows (labeled 5, 6, and 7) seem to be in the same group (same colors) while 8 is next to them but colored differently. This matches the dendrogram shown on the left edge. Similarly, 9, 12, 11, and 10 are grouped together (row-wise) along with 3 and 2. These are followed by 1 and 4 which are in a separate group. Column data is treated independently of rows but is also grouped.
 
 - Class: cmd_question
-  Output:  We've subsetted some vehicle data from mtcars, the Motor Trend Car Road Tests which is part of the package datasets. The data is in the matrix mt and contains 6 factors of 11 cars. Run heatmap now with mt as its argument.
+  Output:  We've subsetted some vehicle data from mtcars, the Motor Trend Car Road Tests which is part of the package datasets. The data is in the matrix mt and contains 6 factors of 11 cars. Run heatmap now with mt as its only argument.
   CorrectAnswer: heatmap(mt)
   AnswerTests: omnitest(correctExpr='heatmap(mt)')
   Hint: Type heatmap(mt) at the command prompt.
 
 - Class: cmd_question
-  Output:  This looks slightly more interesting than the heatmap for the point data. It shows a little better how the rows and columns are treated (clustered and colored) independently of one another. To understand this better, call plot with one argument, the dendrogram object denmt we've created for you.
+  Output:  This looks slightly more interesting than the heatmap for the point data. It shows a little better how the rows and columns are treated (clustered and colored) independently of one another. To understand the disparity in color (between the left 4 columns and the right 2) look at mt now.
+  CorrectAnswer: mt
+  AnswerTests: omnitest(correctExpr='mt')
+  Hint: Type mt at the command prompt.
+
+- Class: cmd_question
+  Output: See how four of the columns are all relatively small numbers and only two (disp and hp) are large? That explains the big difference in color columns. Now to understand the grouping of the rows call plot with one argument, the dendrogram object denmt we've created for you.
   CorrectAnswer: plot(denmt)
   AnswerTests: omnitest(correctExpr='plot(denmt)')
   Hint: Type plot(denmt) at the command prompt.
 
 - Class: cmd_question
-  Output:  To make more sense of this, recall that we generalized the distance formula for more than 2 dimensions. We've created a distance matrix for you, distmt. Look at it now.
+  Output:  We see that this dendrogram is the one displayed at the side of the heat map. How was this created? Recall that we generalized the distance formula for more than 2 dimensions. We've created a distance matrix for you, distmt. Look at it now.
   CorrectAnswer: distmt
   AnswerTests: omnitest(correctExpr='distmt')
   Hint: Type distmt at the command prompt.
@@ -301,5 +312,5 @@
   Hint: Once you pick your algorithm, all you have to do is apply it.
 
 - Class: text
-  Output: Congratulations! We hope this lesson didn't fluster you!
+  Output: Congratulations! We hope this lesson didn't fluster you or get you too heated!
 

@@ -1,20 +1,20 @@
 - Class: meta
   Course: Exploratory_Data_Analysis
-  Lesson: K_Means_Clustering
+  Lesson: Dimension_Reduction
   Author: Swirl Coders
   Type: Coursera
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
 - Class: text
-  Output: "K_Means_Clustering. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 04_ExploratoryAnalysis/kmeansClustering.)"
+  Output: "Dimension_Reduction. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 04_ExploratoryAnalysis/dimensionReduction.)"
 
 
 - Class: text
-  Output:  In this lesson we'll learn about k-means clustering, another simple way of examining and organizing multi-dimensional data. As with hierarchical clustering, this technique is  most useful in the early stages of analysis when you're trying to get an understanding of the data, e.g., finding some pattern or relationship between different factors or variables. 
+  Output:  In this lesson we'll discuss principal components analysis and singular value decomposition, two related techniques of dimension reduction. These are both used in the exploratory phase of analysis as well as later on, when you're trying to model your data more formally.
 
 - Class: text
-  Output:  R documentation tells us that the k-means method "aims to partition the points into k groups such that the sum of squares from points to the assigned cluster centres is minimized." 
+  Output:  We'll begin with a motivating example - random data.
 
 - Class: text
   Output: Since clustering organizes data points that are close into groups we'll assume we've decided on a measure of distance, e.g., Euclidean. 
