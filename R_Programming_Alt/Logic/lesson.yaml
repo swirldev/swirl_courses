@@ -93,7 +93,7 @@
     !TRUE (say: not true) to evaluate to FALSE and !FALSE (say: not false) to evaluate to TRUE. Try using the NOT
     operator and the equals operator to find the opposite of whether 5 is equal to 7."
   CorrectAnswer: '!5 == 7'
-  AnswerTests: omnitest(correctExpr='!5 == 7')
+  AnswerTests: any_of_exprs('!5 == 7', '!(5 == 7)')
   Hint: This expression may be a little tricky, so think about negating the expression 5 == 7 (all you need is an exclamation
     point in front).
 
