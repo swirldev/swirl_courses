@@ -13,19 +13,61 @@
 - Class: text
   Output:  In this lesson we'll discuss principal components analysis and singular value decomposition, two related techniques of dimension reduction. These are both used in the exploratory phase of analysis as well as later on, when you're trying to model your data more formally.
 
-- Class: text
+- Class: figure
   Output:  We'll begin with a motivating example - random data.
+  Figure: showRanMat.R
+  FigureType: new
 
-- Class: text
-  Output: Since clustering organizes data points that are close into groups we'll assume we've decided on a measure of distance, e.g., Euclidean. 
+- Class: cmd_question
+  Output:  This is the transpose of dataMatrix, a matrix of 400 random normal numbers.  We're displaying it with the R coommand image. Run dim with dataMatrix as its argument to see the dimensions of dataMatrix.
+  CorrectAnswer: dim(dataMatrix)
+  AnswerTests: omnitest(correctExpr='dim(dataMatrix)')
+  Hint: Type dim(dataMatrix) at the command prompt.
+
+- Class: cmd_question
+  Output:  So dataMatrix has 40 rows and 10 columns.  The image looks pretty random. Let's see how the data clusters. Run the R command heatmap with dataMatrix as its only argument.
+  CorrectAnswer: heatmap(dataMatrix)
+  AnswerTests: omnitest(correctExpr='heatmap(dataMatrix)')
+  Hint: Type heatmap(dataMatrix) at the command prompt.
+
+- Class: cmd_dquestion
+  Output: We can see that even with the clustering that heatmap provides, permuting the rows and columns independently, the data still looks random. Let's add a pattern to the data. We've put some R code in the file addPatt.R for you. Run the command myedit with the single argument "addPatt.R" (make sure to use the quotation marks) to see the code. You might have to click your cursor in the console after you do this.
+  CorrectAnswer: myedit("addPatt.R")
+  AnswerTests: omnitest(correctExpr='myedit("addPatt.R")')
+  Hint: Type myedit("addPatt.R") at the command prompt.
+
+- Class: mult_question
+  Output: Look at the code. Will every row of the matrix have a pattern added to it?
+  AnswerChoices:  Yes; No
+  CorrectAnswer:  No
+  AnswerTests: omnitest(correctVal='No')
+  Hint: What  does the coinflip do?
+
+- Class: mult_question
+  Output: So whether or not a row gets modified by a pattern is determined by a coin flip. Will the added pattern affect every column in the affected row?
+  AnswerChoices:  Yes; No
+  CorrectAnswer:  No
+  AnswerTests: omnitest(correctVal='No')
+  Hint: The expression rep(c(0,3),each=5) creates the 10-long vector (0,0,0,0,0,3,3,3,3,3) which is added to the rows chosen by the coin flip.
 
 - Class: figure
-  Output: To illustrate the method, we'll use these random points we generated, familiar to you if you've already gone through the hierarchical clustering lesson. We'll  demonstrate k-means clustering in several steps, but first we'll explain the general idea.
-  Figure: ranPoints.R
+  Output: Let's look at the image of the transposed new dataMatrix now.
+  Figure: showRanMat.R
+  FigureType: new
+
+- Class: cmd_question
+  Output:  Now run the R command heatmap again with dataMatrix as its only argument.
+  CorrectAnswer: heatmap(dataMatrix)
+  AnswerTests: omnitest(correctExpr='heatmap(dataMatrix)')
+  Hint: Type heatmap(dataMatrix) at the command prompt.
+
+- Class: figure
+  Output: Now consider this picture. On the left is a skinnier version of the same heatmap you just plotted. It shows how the rows (observations) and columns (variables) cluster. The middle display shows the mean of each of the 40 rows, and the rightmost shows the mean of each of the 40 columns. 
+  Figure: showPatt.R
   FigureType: new
 
 - Class: text
-  Output: As we said, k-means is a partioning approach which requires that you first guess how many clusters you have (or want). Once you fix this number, you randomly create a "centroid" (a phantom point) for each cluster and assign each point or observation in your dataset to the centroid to which it is closest. Once each point is assigned a centroid, you readjust the centroid's position by making it the average of the points assigned to it. 
+  Output: Now we see a pattern, at least for some of the rows. There's a distinct difference between the lower numbered columns (1 through 5) and the higher numbered ones (6 through 10). Recall from the code in addPatt.R that for rows selected by the coinflip the last 5 columns had 3 added to them.
 
 - Class: text
   Output: Once you have repositioned the centroids, you must recalculate the distance of the observations to the centroids and reassign any, if necessary, to the centroid closest to them. Again, once the reassignments are done, readjust the positions of the centroids based on the new cluster membership. The process stops once you reach an iteration in which no adjustments are made or when you've reached some predetermined maximum number of iterations. 
