@@ -33,4 +33,17 @@ mdist <- function(x,y,cx,cy){
 }
 set.seed(12345); 
 dataMatrix <- matrix(rnorm(400),nrow=40)
+hh <- hclust(dist(dataMatrix))
+dataMatrixOrdered <- dataMatrix[hh$order,]
 
+mat <- matrix(c(1,2,2,5,3,7),nrow=2)
+msvd <- svd(mat)
+smsvd <- svd(scale(mat))
+diag <- matrix(c(0,0,0,0),nrow=2)
+sdiag <- diag
+for (i in 1:2) diag[i,i] <- msvd$d[i]
+for (i in 1:2) sdiag[i,i] <- smsvd$d[i]
+matu <- msvd$u
+matv <- msvd$v
+smatu <- smsvd$u
+smatv <- smsvd$v

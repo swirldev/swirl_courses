@@ -1,0 +1,5 @@
+svd2 <- svd(scale(dataMatrixOrdered))
+par(mfrow=c(1,3))
+image(t(dataMatrixOrdered)[,nrow(dataMatrixOrdered):1])
+plot(svd2$v[,1],pch=19,xlab="Column",ylab="First right singular vector")
+plot(svd2$v[,2],pch=19,xlab="Column",ylab="Second right singular vector")

@@ -11,7 +11,7 @@
 
 
 - Class: text
-  Output:  In this lesson we'll discuss principal components analysis and singular value decomposition, two related techniques of dimension reduction. These are both used in the exploratory phase of analysis as well as later on, when you're trying to model your data more formally.
+  Output:  In this lesson we'll discuss principal components analysis and singular value decomposition, two important and related techniques of dimension reduction. These are used in both the exploratory phase and the more formal modelling stage of analysis. We'll focus on the exploratory phase and briefly touch on some of the underlying theory.
 
 - Class: figure
   Output:  We'll begin with a motivating example - random data.
@@ -19,7 +19,7 @@
   FigureType: new
 
 - Class: cmd_question
-  Output:  This is the transpose of dataMatrix, a matrix of 400 random normal numbers.  We're displaying it with the R coommand image. Run dim with dataMatrix as its argument to see the dimensions of dataMatrix.
+  Output:  This is the transpose of dataMatrix, a matrix of 400 random normal numbers (mean 0 and standard deviation 1).  We're displaying it with the R command image. Run dim with dataMatrix as its argument to see the dimensions of dataMatrix.
   CorrectAnswer: dim(dataMatrix)
   AnswerTests: omnitest(correctExpr='dim(dataMatrix)')
   Hint: Type dim(dataMatrix) at the command prompt.
@@ -30,8 +30,8 @@
   AnswerTests: omnitest(correctExpr='heatmap(dataMatrix)')
   Hint: Type heatmap(dataMatrix) at the command prompt.
 
-- Class: cmd_dquestion
-  Output: We can see that even with the clustering that heatmap provides, permuting the rows and columns independently, the data still looks random. Let's add a pattern to the data. We've put some R code in the file addPatt.R for you. Run the command myedit with the single argument "addPatt.R" (make sure to use the quotation marks) to see the code. You might have to click your cursor in the console after you do this.
+- Class: cmd_question
+  Output: We can see that even with the clustering that heatmap provides, permuting the rows (observations) and columns (variables) independently, the data still looks random. Let's add a pattern to the data. We've put some R code in the file addPatt.R for you. Run the command myedit with the single argument "addPatt.R" (make sure to use the quotation marks) to see the code. You might have to click your cursor in the console after you do this to keep from accidentally "editing" the file.
   CorrectAnswer: myedit("addPatt.R")
   AnswerTests: omnitest(correctExpr='myedit("addPatt.R")')
   Hint: Type myedit("addPatt.R") at the command prompt.
@@ -51,52 +51,187 @@
   Hint: The expression rep(c(0,3),each=5) creates the 10-long vector (0,0,0,0,0,3,3,3,3,3) which is added to the rows chosen by the coin flip.
 
 - Class: figure
-  Output: Let's look at the image of the transposed new dataMatrix now.
+  Output: So in rows affected by the coin flip, the 5 left columns will still have a mean of 0 but the right 5 columns will have a mean closer to 3. Let's look at the image of the transposed dataMatrix after the pattern has been added.
   Figure: showRanMat.R
   FigureType: new
 
+- Class: text
+  Output:  The pattern is clearly visible in the columns of the matrix. The right half is yellower or hotter, indicating higher values in the matrix.
+
 - Class: cmd_question
-  Output:  Now run the R command heatmap again with dataMatrix as its only argument.
+  Output:  Now run the R command heatmap again with dataMatrix as its only argument. This will perform    hierarchical cluster analysis on the matrix.
   CorrectAnswer: heatmap(dataMatrix)
   AnswerTests: omnitest(correctExpr='heatmap(dataMatrix)')
   Hint: Type heatmap(dataMatrix) at the command prompt.
 
+- Class: text
+  Output: Again the pattern is visible, especially in the columns of the matrix. As shown in the dendrogram at the top of the display, these split into 2 clusters. We see a distinct difference between the lower numbered columns (1 through 5) and the higher numbered ones (6 through 10). Recall from the code in addPatt.R that for rows selected by the coinflip the last 5 columns had 3 added to them. The rows still look random.
+
 - Class: figure
-  Output: Now consider this picture. On the left is a skinnier version of the same heatmap you just plotted. It shows how the rows (observations) and columns (variables) cluster. The middle display shows the mean of each of the 40 rows, and the rightmost shows the mean of each of the 40 columns. 
+  Output: Now consider this picture. On the left is an image similar to the heatmap of dataMatix you just plotted. It is an image plot of the output of hclust(), a hierarchical clustering function applied to dataMatrix, and it displays how the rows (observations) and columns (variables) of the data cluster. Yellow indicates "hotter" or higher values than red which is consistent with the pattern we applied to the data (increasing the values for the rightmost columns. 
   Figure: showPatt.R
   FigureType: new
 
 - Class: text
-  Output: Now we see a pattern, at least for some of the rows. There's a distinct difference between the lower numbered columns (1 through 5) and the higher numbered ones (6 through 10). Recall from the code in addPatt.R that for rows selected by the coinflip the last 5 columns had 3 added to them.
+  Output: The middle display shows the mean of each of the 40 rows. Note that the  row means are shown along the x axis while the rows are shown along the y. Also, the rows are shown bottom to top, so the last row (40) is at the top and the first row at the bottom. This is the same order in which the rows of the clustered matrix is displayed. The rightmost display shows the mean of each of the 40 columns. Here the columns are along the x-axis and their means along the y. 
 
 - Class: text
-  Output: Once you have repositioned the centroids, you must recalculate the distance of the observations to the centroids and reassign any, if necessary, to the centroid closest to them. Again, once the reassignments are done, readjust the positions of the centroids based on the new cluster membership. The process stops once you reach an iteration in which no adjustments are made or when you've reached some predetermined maximum number of iterations. 
-
-- Class: mult_question
-  Output: As described, what does this process require?
-  AnswerChoices:  A defined distance metric; A number of clusters; An initial guess as to cluster centroids; All of the others
-  CorrectAnswer:  All of the others
-  AnswerTests: omnitest(correctVal='All of the others')
-  Hint: Which choice includes all the others.
-
-- Class: mult_question
-  Output: So k-means clustering requires some distance metric (say Euclidean), a hypothesized fixed number of clusters, and an initial guess as to cluster centroids. As described, what does this process produce?
-  AnswerChoices:  A final estimate of cluster centroids; An assignment of each point to a cluster; All of the others
-  CorrectAnswer:  All of the others
-  AnswerTests: omnitest(correctVal='All of the others')
-  Hint: Which choice includes all the others.
+  Output: We see immediately the connection between the yellow (hotter) portion of the cluster image and the higher row means, both in the upper right portion of the displays. Similarly, the higher valued column means are in the right half of that display and lower colummn means are in the left half.
 
 - Class: text
-  Output: When it's finished k-means clustering returns a final position of each cluster's centroid as well as the assignment of each data point or observation to a cluster.
+  Output: Now we'll talk a little theory. Suppose you have 1000's of multivariate variables X_1, ... ,X_n. By multivariate we mean that each X_i contains many components, i.e., X_i = (X_{i1}, ... , X_{im}. However, these variables (observations) and their components might not be independent of one another. 
+
+- Class: mult_question
+  Output: Which of the following would be an example of variables correlated to one another?
+  AnswerChoices:  Height and weight of members of a family; Today's weather and a butterfly's wing position; The depth of the Atlantic and what you eat for breakfast
+  CorrectAnswer:  Height and weight of members of a family
+  AnswerTests: omnitest(correctVal=' Height and weight of members of a family')
+  Hint: Which choice is the only one that makes sense?
+
+- Class: text
+  Output: As data scientists, we'd like to find a smaller set of multivariate variables that are uncorrelated AND explain as much variance (or variability) of the data as possible. This is a statistical approach. 
+
+- Class: text
+  Output: A second goal is to find the best matrix created with fewer variables (that is, a lower rank matrix) that explains the original data. This is data compression. Think of it as not losing the sight of the forest through the trees.
+
+- Class: text
+  Output: Two related solutions to these problems are PCA which stands for Principal Component Analysis and SVD, Singular Value Decomposition. This latter simply means that we express a matrix X of observations (rows) and variables (columns) as the product of 3 other matrices, i.e., X=UDV^t. 
+
+- Class: text
+  Output: Here U and V each have orthogonal (uncorrelated) columns. U's columns are the left singular vectors of X and V's columns are the right singular vectors of X. Critically, D is a diagonal matrix, by which we mean that all of its entries not on the diagonal are 0. The diagonal entries of D are  the singular values of X.
+
+- Class: cmd_question
+  Output:  Here's a simple example using a matrix  called  mat. Look at it now.
+  CorrectAnswer: mat
+  AnswerTests: omnitest(correctExpr='mat')
+  Hint: Type mat at the command prompt.
+
+- Class: cmd_question
+  Output:  So mat is a 2 by 3 matrix. Lucky for us R provides a function to perform singular value decomposition. It's called, unsurprisingly, svd. Call it now with a single argument, mat.
+  CorrectAnswer: svd(mat)
+  AnswerTests: omnitest(correctExpr='svd(mat)')
+  Hint: Type svd(mat) at the command prompt.
+
+- Class: cmd_question
+  Output:  We see that the function returns 3 components, d which holds 2 diagonal elements, u, a 2 by 2 matrix, and v, a 3 by 2 matrix. We stored the diagonal entries in a diagonal matrix for you, diag, and we also stored u and v in the variables matu and matv respectively. Multiply matu by diag by      t(matv) to see what you get. (This last expression represents the transpose of v). Recall that in R   matrix multiplication requires you to use the operator %*%. 
+  CorrectAnswer: matu %*% diag %*% matv
+  AnswerTests: omnitest(correctExpr='matu %*% diag %*% matv')
+  Hint: Type matu %*% diag %*% matv at the command prompt.
+
+- Class: text
+  Output: So we did in fact get mat back. That's a relief! Note that this type of decomposition is NOT unique. 
+
+- Class: text
+  Output: Now we'll talk a little about PCA, Principal Component Analysis, "a simple, non-parametric method for extracting relevant information from confusing data sets." We're quoting here from a very nice concise paper on this subject which can be found at http://arxiv.org/pdf/1404.1100.pdf. The paper by Jonathon Shlens of Google Research is called, A Tutorial on Principal Component Analysis. 
+
+- Class: text
+  Output: Basically, PCA is a method to reduce a high-dimensional data set to its essential elements (not lose information) and explain the variability in the data. We won't go into the mathematical details here, (R has a function to perform PCA), but you should know that SVD and PCA are closely related. 
+
+- Class: cmd_question
+  Output:  We'll demonstrate this now. First we have to scale mat, our matrix of data.  This means that we subtract the column mean from every element and divide the result by the column standard deviation. Of course R has a command, scale, that does this for you. Run svd on scale of mat.
+  CorrectAnswer: svd(scale(mat))
+  AnswerTests: omnitest(correctExpr='svd(scale(mat))')
+  Hint: Type svd(scale(mat)) at the command prompt.
+
+- Class: cmd_question
+  Output: Now run the R program prcomp on scale(mat). This will give you the principle components of mat. See if they look familiar.
+  CorrectAnswer: prcomp(scale(mat))
+  AnswerTests: omnitest(correctExpr='prcomp(scale(mat))')
+  Hint: Type prcomp(scale(mat)) at the command prompt.
+
+- Class: text
+  Output: Notice that the principal components of the scaled matrix ARE the columns of V, the right singular values. Thus, PCA of a scaled matrix yields the V matrix (right singular vectors) of the same scaled matrix.
+
+- Class: text
+  Output: Now that we covered the theory let's return to our bigger matrix of random data into which we had added a fixed pattern for some rows selected by coinflips. The pattern effectively shifted the means of the rows and columns.
+
+ Class: figure
+  Output: Here's a picture showing the relationship between PCA and SVD for that matrix. Recall we just showed with our small matrix example that the principal components are the columns of V, the right singular vectors of a scaled data matrix. This picture shows the equivalence between the first column of V and the first principal component of our bigger data matrix. We've plotted 10 points (5 are squished together in the bottom left corner). The x-coordinates are the elements of the first principal component, and the y-coordinates are the elements of the first column of V (the right singular vector). We see that the points all lie on the 45 degree line given by the equation y=x.  
+  Figure: showRel.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: To prove we're not making this up, look at the first column of V now. Recall that it's stored in svd1$v, and the first column can be viewed by using the x[,1] notation.
+  CorrectAnswer: svd1$v[,1]
+  AnswerTests: omnitest(correctExpr='svd1$v[,1]')
+  Hint: Type svd1$v[,1] at the command prompt.
+
+- Class: text
+  Output: See how these values correspond to those plotted? Five of the entries are around -0.4.
+
+- Class: figure
+  Output: Here the data matrix is clustered and shown in heat order on the left. Next to it we've plotted the first column of the U matrix associated with this clustered data matrix. This is the first left singular vector and it's associated with the ROW means of the clustered data. You can see the clear separation between the top 24 (around -0.2) row means and the bottom 16 (around 0.2). Note that the other columns of U don't show this pattern as clearly.
+  Figure: showUV.R
+  FigureType: new
+
+- Class: text
+  Output: The rightmost display shows the first column of the V matrix associated with the scaled and clustered data matrix. This is the first right singular vector and it's associated with the COLUMN means of the clustered data. You can see the clear separation between the left 5 column means (between -0.1 and 0.1) and the right 5 column means (all below -0.4). As with the left singular vectors, the other columns of V don't show this patttern as clearly as this first one does.
+
+- Class: cmd_question
+  Output: Why were the first columns of both the U and V matrices so special?  Well as it happens, the D matrix of the SVD explains this phenomenon. Recall that D is the diagonal matrix sandwiched in between U and V^t in the SVD representation of the data matrix. The diagonal entries of D are like weights for the U and V columns and they account for the variance. Look at these diagonal entries now. They're stored in svd1$d.
+  CorrectAnswer: svd1$d
+  AnswerTests: omnitest(correctExpr='svd1$d')
+  Hint: Type svd1$d at the command prompt.
+
+- Class: figure
+  Output: Here's a display of these values (on the left). The first one (12.46) is significantly bigger than the others. Since we don't have any units specified, to the right we've plotted the proportion of the variance each entry represents. We see that the first entry accounts for about 40% of the variance in the data. This explains why the first columns of the U and V matrices respectively showed the distinctive patterns in the row and column means so clearly.
+  Figure: showVar.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: Now we'll show you another simple example of how SVD explains variance. We've created a 40 by 10 matrix, constantMatrix. Use the R command head with constantMatrix as its argument to see the top rows.
+  CorrectAnswer: head(constantMatrix)
+  AnswerTests: omnitest(correctExpr='head(constantMatrix)')
+  Hint: Type head(constantMatrix) at the command prompt.
+
+- Class: cmd_question
+  Output: The rest of the rows look just like these. You can see that the left 5 columns are all 0's and the right 5 columns are all 1's. We've run svd with constantMatrix as its argument for you and stored the result in svd2. Look at the diagonal component, called d, of svd2 now. 
+  CorrectAnswer: svd2$d
+  AnswerTests: omnitest(correctExpr='svd2$d')
+  Hint: Type svd2$d at the command prompt.
+
+- Class: mult_question
+  Output: Which is the largest entry of the svd2$d?
+  AnswerChoices:  9; 1; 10; 5
+  CorrectAnswer:  1
+  AnswerTests: omnitest(correctVal='1')
+  Hint: Which choice has a positive exponent? Notice that the entries are given in scientific notation, where xey means x * 10^y.
+
+- Class: figure
+  Output: So the first entry by far dominates the others. Here the picture on the left shows the heat map of  constantMatrix. You can see how the left columns differ from the right ones. The middle plot shows the values of the singular values of the matrix, i.e., the entries of svd2$d or the diagonal elements. Nine of these are 0 and the first is a little above 14. The third plot shows the proportion of the total each diagonal represents. The first entry, 14, accounts for practically 100% of the variance of the data. 
+  Figure: showSimple.R
+  FigureType: new
      
 - Class: text
-  Output: Now we'll step through this process using our random points as our data. The coordinates of these are stored in 2 vectors, x and y. We eyeball the display and guess that there are 3 clusters. We'll pick 3 positions of centroids, one for each cluster.
+  Output: So what does this mean? Basically that the data is one-dimensional. Only 1 factor, which column an entry is in, determines its value.
+
+- Class: figure
+  Output: Now let's consider a slightly more complicated example in which we add 2 patterns to our random 40 by 10 data matrix. Again we'll choose which rows to tweak using coinflips. Specifically, for each of the 40 rows we'll flip 2 coins. If the first coinflip is heads, we'll add 5 to each entry in the right 5 columns of that row, and if the second coinflip is heads, we'll add a fixed pattern to the even columns of that row. 
+  Figure: twoPatts.R
+  FigureType: new
     
+- Class: figure
+  Output: So here's the image of the data matrix on the left. We can see both patterns, the clear difference between the left 5 and right 5 columns, but also, slightly less visible, the alternating pattern of the columns. The other plots show the true patterns that were added into the affected rows.
+The middle plot shows 0's added into the left 5 columns and 1's added to the right 5. The rightmost plot shows 0's added to odd numbered columns while 1's were added to even-numbered ones.
+  Figure: showTrue.R
+  FigureType: new
+
+- Class: text
+  Output: The question is, "Can our analysis uncover these patterns using the data?" Let's see what SVD shows. Since we're interested in patterns on columns we'll look at the first two right singular vectors (columns of V) to see if they show any patterns.
+
+- Class: figure
+  Output: Here we see the 2 right singular vectors plotted next to the image of the data matrix. The middle plot shows the first column of V and the rightmost plot the second. The middle plot does show that the last 5 columns have higher entries than the first 5. This picks up, or at least alludes to, the first pattern added in. The rightmost plot, showing the second column of V, looks more random. However, closer inspection shows that the entries alternate or bounce up and down as you move from left to right.  
+  Figure: showTrue.R
+  FigureType: new
+
 - Class: cmd_question
-  Output:  We've created two 3-long vectors for you, cx and cy. These respectively hold the x- and y- coordinates for 3 proposed centroids. For convenience, we've also stored them in a 2 by 3 matrix cmat. The x coordinates are in the first row and the y coordinates in the second. Look at cmat now.
-  CorrectAnswer: cmat
-  AnswerTests: omnitest(correctExpr='cmat')
-  Hint: Type cmat at the command prompt.
+  Output:  To see this more closely, we put the SVD output in svd2. Look at the first 2 columns of the v component.
+  CorrectAnswer: svd2$v[,1:2]
+  AnswerTests: omnitest(correctExpr='svd2$v[,1:2]')
+  Hint: Type svd2$v[,1:2] at the command prompt.
+
+- Class: text
+  Output: Seeing the 2 columns side by side, we see that they both increase and decrease alternately. However, we knew what to look for. This example is meant to show you that it's hard to see patterns, even the straightforward ones.
 
 - Class: cmd_question
   Output:  The coordinates of these points are (1,2), (1.8,1) and (2.5,1.5). We'll add these centroids to the plot of our points. Do this by calling the R command points with 6 arguments. The first 2 are cx and cy, and the third is col set equal to the concatenation of 3 colors, "red", "orange", and "purple". The fourth argument is pch set equal to 3 (a plus sign), the fifth is cex set equal to 2 (expansion of character), and the final is lwd (line width) also set equal to 2.
