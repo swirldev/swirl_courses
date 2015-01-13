@@ -7,7 +7,7 @@ plot.new()
 
 pathtofile <- function(fileName){
   mypath <- file.path(find.package("swirl"),
-                      "Courses/Exploratory_Data_Analysis/Hierarchical_Clustering/",
+                      "Courses/Exploratory_Data_Analysis/Dimension_Reduction/",
                       fileName)
 }
 fxfer <- function(fileName){
@@ -15,8 +15,11 @@ fxfer <- function(fileName){
   file.copy(mypath,fileName)
 }
 
-
-
+myImage <- function(iname){
+  par(mfrow=c(1,1))
+  par(mar=c(8,10,8,10))
+  image(t(iname)[,nrow(iname):1])
+}
 myedit <- function(fname){
    #fxfer(fname)
    #file.edit(fname)
