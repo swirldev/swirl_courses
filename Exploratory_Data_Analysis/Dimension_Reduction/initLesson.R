@@ -50,3 +50,4 @@ matu <- msvd$u
 matv <- msvd$v
 smatu <- smsvd$u
 smatv <- smsvd$v
+fxfer("addPatt.R")
