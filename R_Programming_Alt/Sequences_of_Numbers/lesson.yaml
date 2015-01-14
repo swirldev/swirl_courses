@@ -36,7 +36,7 @@
   Hint: Type 15:1 and press Enter.
 
 - Class: text
-  Output: It counted backwards in increments of 1! It's unlikely we'd want this behavior,
+  Output: It counted backwards in decrements of 1! It's unlikely we'd want this behavior,
     but nonetheless it's good to know how it could happen.
 
 - Class: text
