@@ -1,13 +1,14 @@
-library(fields)
+library(RColorBrewer)
+library(datasets)
 
 # Put initialization code in this file.
-path_to_course <- file.path(find.package("swirl"),"Courses/Exploratory_Data_Analysis/Dimension_Reduction")
+path_to_course <- file.path(find.package("swirl"),"Courses/Exploratory_Data_Analysis/Working_with_Colors")
 try(dev.off(),silent=TRUE)
 plot.new()
 
 pathtofile <- function(fileName){
   mypath <- file.path(find.package("swirl"),
-                      "Courses/Exploratory_Data_Analysis/Dimension_Reduction/",
+                      "Courses/Exploratory_Data_Analysis/Working_with_Colors/",
                       fileName)
 }
 fxfer <- function(fileName){
@@ -34,20 +35,13 @@ mdist <- function(x,y,cx,cy){
   distTmp[3,] <- (x-cx[3])^2 + (y-cy[3])^2  
   return(distTmp)
 }
-set.seed(12345); 
-dataMatrix <- matrix(rnorm(400),nrow=40)
-hh <- hclust(dist(dataMatrix))
-dataMatrixOrdered <- dataMatrix[hh$order,]
 
-mat <- matrix(c(1,2,2,5,3,7),nrow=2)
-msvd <- svd(mat)
-smsvd <- svd(scale(mat))
-diag <- matrix(c(0,0,0,0),nrow=2)
-sdiag <- diag
-for (i in 1:2) diag[i,i] <- msvd$d[i]
-for (i in 1:2) sdiag[i,i] <- smsvd$d[i]
-matu <- msvd$u
-matv <- msvd$v
-smatu <- smsvd$u
-smatv <- smsvd$v
-fxfer("addPatt.R")
+showMe <- function(cv){
+  myarg <- deparse(substitute(cv))
+  z<- outer( 1:20,1:20, "+")
+  obj<- list( x=1:20,y=1:20,z=z )
+  image(obj, col=cv, main=myarg  )
+}
+
+x <- rnorm(1000)
+y <- rnorm(1000)

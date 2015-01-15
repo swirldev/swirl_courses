@@ -350,9 +350,9 @@
 
 - Class: mult_question
   Output: Which of the following cliches LEAST captures the essence of dimension reduction?
-  AnswerChoices:  find the needle in the haystack; see the forest through the trees; separate the wheat from the chaff; a picture is worth a thousand words
-  CorrectAnswer: a picture is worth a thousand words
-  AnswerTests: omnitest(correctVal='a picture is worth a thousand words')
+  AnswerChoices:  find the needle in the haystack; see the forest through the trees; separate the wheat from the chaff; a face that could launch a 1000 ships
+  CorrectAnswer: a face that could launch a 1000 ships
+  AnswerTests: omnitest(correctVal='a face that could launch a 1000 ships')
   Hint: Which choice fails to deal with discerning differences between the valuable and the invaluable.
 
 - Class: mult_question
