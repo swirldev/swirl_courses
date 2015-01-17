@@ -164,9 +164,9 @@
 
 - Class: cmd_question
   Output: Provide the full path to the file "mytest3.R".
-  CorrectAnswer: file.path("mytest3.R")
-  AnswerTests: omnitest(correctExpr='file.path("mytest3.R")')
-  Hint: file.path("mytest3.R") works.
+  CorrectAnswer: normalizePath("mytest3.R")
+  AnswerTests: omnitest(correctExpr='normalizePath("mytest3.R")')
+  Hint: normalizePath("mytest3.R") works.
 
 - Class: cmd_question
   Output: Create a directory in the current working directory called "testdir2" and a subdirectory for it called "testdir3", all in one command.
