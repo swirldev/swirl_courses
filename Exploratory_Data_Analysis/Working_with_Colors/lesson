@@ -340,6 +340,13 @@
   AnswerTests: omnitest(correctVal='False')
   Hint: We only looked at 10 but there were many, many more.
 
+- Class: mult_question
+  Output:  Transparency is determined by which parameter of the rgb function?
+  AnswerChoices:  alpha; beta; gamma; delta; it's all Greek to me
+  CorrectAnswer: alpha
+  AnswerTests: omnitest(correctVal='alpha')
+  Hint: We only mentioned one Greek letter in this lesson.
+
 - Class: text
   Output: Congratulations! We hope this lesson didn't make you see red. We're green with envy that you blue through it.  
 

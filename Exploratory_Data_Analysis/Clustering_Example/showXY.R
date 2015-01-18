@@ -1,0 +1,6 @@
+par(mfrow=c(1, 2), mar = c(5, 4, 1, 1))
+subs <- transform(subs, activity=factor(activity))
+plot(subs[, 1], col = subs$activity, ylab = names(subs)[1])
+plot(subs[, 2], col = subs$activity, ylab = names(subs)[2])
+legend("bottomright",legend=unique(subs$activity),col=unique(subs$activity), pch = 1)
+par(mfrow=c(1,1))
