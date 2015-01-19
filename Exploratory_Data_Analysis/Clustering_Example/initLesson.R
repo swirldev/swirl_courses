@@ -41,8 +41,8 @@ showMe <- function(cv){
   obj<- list( x=1:20,y=1:20,z=z )
   image(obj, col=cv, main=myarg  )
 }
-load(path_to_course("samsungData.rda"))
-
+load(pathtofile("samsungData.rda"))
+set.seed(1234);
 par(mfrow=c(1, 2), mar = c(5, 4, 1, 1))
 ssd <- transform(samsungData, activity = factor(activity))
-source(path_to_course("myplclust.R"),local=TRUE)
+source(pathtofile("myplclust.R"),local=TRUE)
