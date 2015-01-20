@@ -1,0 +1,6 @@
+par(mfrow=c(1,2),mar=c(4,4,2,1))
+plot(dates0, x0sub, pch = 20, ylim = rng)
+abline(h = median(x0sub, na.rm = TRUE), lwd=2)
+plot(dates1, x1sub, pch = 20, ylim = rng)
+abline(h = median(x1sub, na.rm = TRUE), lwd=2)
+par(mfrow=c(1,1))
