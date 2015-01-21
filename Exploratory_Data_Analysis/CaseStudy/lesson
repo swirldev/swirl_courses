@@ -9,15 +9,14 @@
 - Class: text
   Output: "CaseStudy. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 04_ExploratoryAnalysis/CaseStudy.)"
 
+- Class: text
+  Output:  In this lesson we'll apply some of the techniques we learned in this course to study air pollution data, specifically particulate matter (we'll call it pm25 sometimes), collected by the U.S. Environmental Protection Agency. This website https://www.health.ny.gov/environmental/indoors/air/pmq_a.htm from New York State offers some basic information on this topic if you're interested. 
 
 - Class: text
-  Output:  In this lesson we'll apply some of the analytic techniques we learned in this course to study air pollution data, specifically particulate matter, collected by the U.S. Environmental Protection Agency.
-
-- Class: text
-  Output: Particulate matter is a fancy name for dust, and breathing in dust might pose health hazards to the population. We'll study data from two years, 1999 (when monitoring of particulate matter started) and 2012. Our goal is to see if there's been a noticeable decline in air pollution (particulate matter) from 1999 in 2012.
+  Output: Particulate matter (less than 2.5 microns in diameter) is a fancy name for dust, and breathing in dust might pose health hazards to the population. We'll study data from two years, 1999 (when monitoring of particulate matter started) and 2012. Our goal is to see if there's been a noticeable decline in this type of air pollution between these two years.
 
 - Class: cmd_question
-  Output:  We've read in 2 large zipped files for you using the R command read.table (which is smart enough to unzip the files).  We stored the 1999 data in the array pm0 for you.Run the R command dim now to see its dimensions.
+  Output:  We've read in 2 large zipped files for you using the R command read.table (which is smart enough to unzip the files).  We stored the 1999 data in the array pm0 for you. Run the R command dim now to see its dimensions.
   CorrectAnswer: dim(pm0)
   AnswerTests: omnitest(correctExpr='dim(pm0)')
   Hint: Type dim(pm0) at the command prompt.
@@ -29,28 +28,28 @@
   Hint: Type head(pm0) at the command prompt.
 
 - Class: text
-  Output: We see there's a lot of missing data, but we won't worry about that now. We also see that the column names are not informative. 
+  Output: We see there's a lot of missing data, but we won't worry about that now. We also see that the column names, V1, V2, etc., are not informative. 
 
 - Class: cmd_question
-  Output:  However, we know from previous viewing of the data files that the first line of the file (which was a comment) explained what information the columns contained. Create the variable cnames by assigning to it the output of the R command readLines called with 2 arguments. The first is the variable holding the name of the file, my1999, and the second is 1, which tells R how many lines to read. We only need to read the first line to get the column names.
+  Output:  However, we know that the first line of the file (a comment) explained what information the columns contained. Create the variable cnames by assigning to it the output of the R command readLines called with 2 arguments. The first is the variable my1999 which holds the filename, and the second is 1, which tells R how many lines to read. We need to read only the first line to get the column names.
   CorrectAnswer: cnames <- readLines(my1999, 1)
   AnswerTests: expr_creates_var("cnames"); omnitest(correctExpr='cnames <- readLines(my1999, 1)')
   Hint: Type cnames <- readLines(my1999, 1) at the command prompt.
 
 - Class: cmd_question
-  Output:  Let's look at the column names now. 
+  Output:  Take a look at the column names now. 
   CorrectAnswer: cnames 
   AnswerTests: ANY_of_exprs('cnames','print(cnames)')
-  Hint: Type cnames at the command prompt.
+  Hint: Type cnames or print(cnames) at the command prompt.
 
 - Class: cmd_question
-  Output:  Let's replace cnames now by reassigning to it the output of a call to strsplit (string split) with 3 arguments. The first is cnames, the pipe symbol '|' is the second, and the argument fixed set to TRUE. Try this now. 
+  Output:  It looks jumbled, so let's replace cnames now by reassigning to it the output of a call to strsplit (string split) with 3 arguments. The first is cnames, the pipe symbol '|' is the second (use the quotation marks), and the third is the argument fixed set to TRUE. Try this now. 
   CorrectAnswer:  cnames <- strsplit(cnames, "|", fixed = TRUE)
   AnswerTests: expr_creates_var("cnames"); omnitest(correctExpr='cnames <- strsplit(cnames, "|", fixed = TRUE)')
   Hint: Type cnames <- strsplit(cnames, "|", fixed = TRUE) at the command prompt.
 
 - Class: cmd_question
-  Output:  The variable cnames now holds a list of the column headings. Use cnames[[1]] as the argument to a call to the R function make.names (which "makes syntactically valid names") and assign the result to names(pm0).
+  Output:  The variable cnames now holds a list of the column headings. Assign to names(pm0) the output of a call to the function make.names with cnames[[1]] as the argument.  (As the name suggests, make.names "makes syntactically valid names".) 
   CorrectAnswer:  names(pm0) <- make.names(cnames[[1]])
   AnswerTests: omnitest(correctExpr='names(pm0) <- make.names(cnames[[1]])')
   Hint: Type names(pm0) <- make.names(cnames[[1]]) at the command prompt.
@@ -62,19 +61,19 @@
   Hint: Type head(pm0) at the command prompt.
 
 - Class: cmd_question
-  Output:  The measurements of particulate matter are in the column named Sample.Value. Assign this component of pm0 to the variable x0.
+  Output:  Now it's clearer what information each column of pm0 holds. The measurements of particulate matter (pm25) are in the column named Sample.Value. Assign this component of pm0 to the variable x0. Use the m$n notation.
   CorrectAnswer: x0 <- pm0$Sample.Value
   AnswerTests: expr_creates_var("x0"); omnitest(correctExpr='x0 <- pm0$Sample.Value')
   Hint: Type x0 <- pm0$Sample.Value at the command prompt.
 
 - Class: cmd_question
-  Output:  Call the R command str with x0 as its argument to display the x0's structure. 
+  Output:  Call the R command str with x0 as its argument to see x0's structure. 
   CorrectAnswer: str(x0)
   AnswerTests:  omnitest(correctExpr='str(x0)')
   Hint: Type str(x0) at the command prompt.
 
 - Class: cmd_question
-  Output:  We see that x0 is a numeric with at least the first 3 values missing. Will that be a problem for our analysis? Exactly what percentage of values are missing in this vector? Use the R function mean with is.na(x0) as an argument to see what percentage of values are missing (NA) in x0.
+  Output:  We see that x0 is a numeric vector (of length 117000+) with at least the first 3 values missing.  Exactly what percentage of values are missing in this vector? Use the R function mean with is.na(x0) as an argument to see what percentage of values are missing (NA) in x0.
   CorrectAnswer: mean(is.na(x0))
   AnswerTests:  omnitest(correctExpr='mean(is.na(x0))')
   Hint: Type mean(is.na(x0)) at the command prompt.
@@ -94,14 +93,11 @@
   AnswerTests:  omnitest(correctExpr='dim(pm1)')
   Hint: Type dim(pm1) at the command prompt.
 
-- Class: cmd_question
-  Output:  Wow! Over 1.3 million entries. Particulate matter was first collected in 1999 so there weren't as many sensors set up collecting data as there were in 2012 when the program was more mature. Look at the first few entries of pm1 with the head function.
-  CorrectAnswer: head(pm1) 
-  AnswerTests:  omnitest(correctExpr='head(pm1)')
-  Hint: Type head(pm1) at the command prompt.
+- Class: text
+  Output: Wow! Over 1.3 million entries. Particulate matter was first collected in 1999 so  perhaps there weren't as many sensors  collecting data then as in 2012 when the program was more mature. If you ran head on pm1 you'd see that it looks just like pm0. We'll move on though.
 
 - Class: cmd_question
-  Output:  Now create the variable x1 by assigning to it the Sample.Value component of pm1.
+  Output:   Create the variable x1 by assigning to it the Sample.Value component of pm1.
   CorrectAnswer:  x1 <- pm1$Sample.Value
   AnswerTests:  expr_creates_var("x1"); omnitest(correctExpr='x1 <- pm1$Sample.Value')
   Hint: Type x1 <- pm1$Sample.Value at the command prompt.
@@ -113,22 +109,22 @@
   Hint: Type mean(is.na(x1)) at the command prompt.
 
 - Class: text
-  Output: So only 5.6% of the particulate matter measurements are missing. That's about half the percentage as for 1999. Now let's look at summaries (using the summary command) for both datasets. The numbers in the vectors x0 and x1 represent measurements taken in micrograms per cubic millimeter.
+  Output: So only 5.6% of the particulate matter measurements are missing. That's about half the percentage as in 1999.  
 
 - Class: cmd_question
-  Output:  First, x0.
+  Output:  Now let's look at summaries (using the summary command) for both datasets. First, x0.
   CorrectAnswer: summary(x0)
   AnswerTests:  omnitest(correctExpr='summary(x0)')
   Hint: Type summary(x0) at the command prompt.
 
 - Class: cmd_question
-  Output:  Now x1.
+  Output:  The numbers in the vectors x0 and x1 represent measurements taken in micrograms per cubic meter. Now look at the summary of x1.
   CorrectAnswer: summary(x1)
   AnswerTests:  omnitest(correctExpr='summary(x1)')
   Hint: Type summary(x1) at the command prompt.
 
 - Class: text
-  Output: We see that both the median and the mean of measured particulate matter have declined from 1999 to 2012. In fact, all of the measurements, except for the Max and the NA's, have decreased. Even the Min has gone down from 0 to -10.00! We'll address what a negative measurment might mean a little later. Note that the Max has increased from 157 in 1999 to 909 in 2012. This is quite high and might reflect an error in the table or a malfunction in the sensor. 
+  Output: We see that both the median and the mean of measured particulate matter have declined from 1999 to 2012. In fact, all of the measurements, except for the maximum and missing values (Max and  NA's), have decreased. Even the Min has gone down from 0 to -10.00! We'll address what a negative measurment might mean a little later. Note that the Max has increased from 157 in 1999 to 909 in 2012. This is quite high and might reflect an error in the table or malfunctions in some monitors. 
 
 - Class: cmd_question
   Output:  Call the boxplot function with 2 arguments, x0 and x1.
@@ -137,7 +133,7 @@
   Hint: Type boxplot(x0, x1) at the command prompt.
 
 - Class: cmd_question
-  Output:  It's hard to see what's going on here, there are so many values outside the box and covering such a big range that the boxes are squished down. It might be more informative to call the boxplot on the log base 10 of x0 and x1. Do this now using log10(x0) and log10(x1) as the 2 arguments.
+  Output:  Huh? Did somebody step on the boxes? It's hard to see what's going on here. There are so many values outside the boxes and the range of x1 is so big that the boxes are flattened. It might be more informative to call boxplot on the logs (base 10) of x0 and x1. Do this now using log10(x0) and log10(x1) as the 2 arguments.
   CorrectAnswer: boxplot(log10(x0), log10(x1))
   AnswerTests:  omnitest(correctExpr='boxplot(log10(x0), log10(x1))')
   Hint: Type boxplot(log10(x0), log10(x1)) at the command prompt.
@@ -149,10 +145,10 @@
   Output: From the boxplot (x0 on the left and x1 on the right), what can you say about the data?
   AnswerChoices:  The median of x1 is less than the median of x0; The mean of x1 is less than the mean of x0; The range of x0 is greater than the range of x1; The boxes are too small to interpret
   CorrectAnswer:  The median of x1 is less than the median of x0
-  AnswerTests: omnitest(correctVal=' The median of x1 is less than the median of x0')
+  AnswerTests: omnitest(correctVal='The median of x1 is less than the median of x0')
   Hint: Recall that the horizontal lines inside the boxes represent the medians of the two datasets.
 
- Class: text
+- Class: text
   Output: Let's return to the question of the negative values in x1. Let's count how many negative values there are. We'll do this in a few steps.
 
 - Class: cmd_question
@@ -168,7 +164,7 @@
   Hint: Type sum(negative, na.rm = TRUE)  at the command prompt.
 
 - Class: cmd_question
-  Output:  Now run the R command mean with same 2 arguments you just used with the call to sum. 
+  Output:  So there are over 26000 negative values. Sounds like a lot. Is it? Run the R command mean with same 2 arguments you just used with the call to sum. This will tell us a percentage.
   CorrectAnswer: mean(negative, na.rm = TRUE)
   AnswerTests:  omnitest(correctExpr='mean(negative, na.rm = TRUE)')
   Hint: Type mean(negative, na.rm = TRUE)  at the command prompt.
@@ -189,7 +185,7 @@
   Hint: Type str(dates)  at the command prompt.
 
 - Class: cmd_question
-  Output:  This format is a little hard to read since there's no separation between the year, month, and day. Reassign to dates the output of a call to as.Date with the 2 arguments as.character(dates) as the first argument and the string "%Y%m%d" as the second.
+  Output:  We see dates is a very long vector of integers. However, the format of the entries is hard to read. There's no separation between the year, month, and day. Reassign to dates the output of a call to as.Date with the 2 arguments as.character(dates) as the first argument and the string "%Y%m%d" as the second.
   CorrectAnswer: dates <- as.Date(as.character(dates), "%Y%m%d")
   AnswerTests:   expr_creates_var("dates"); omnitest(correctExpr='dates <- as.Date(as.character(dates), "%Y%m%d")')
   Hint: Type dates <- as.Date(as.character(dates), "%Y%m%d") at the command prompt.
@@ -207,10 +203,12 @@
   Hint: Type hist(dates[negative],"month") at the command prompt.
 
 - Class: text
-  Output: We see the bulk of the negative measurements were taken in the winter months, with a spike in May. Not many of these negative measurements occurred in summer months. We can take a guess that because particulate measures tend to be low in winter and high in summer, coupled with the fact that higher densities are easier to measure, that measurement errors occurred when the values were low. For now we'll attribute these negative measurements to errors. Also, since they account for only 2% of the 2012 data, we'll ignore them for now.
+  Output: We see the bulk of the negative measurements were taken in the winter months, with a spike in May. Not many of these negative measurements occurred in summer months. We can take a guess that because particulate measures tend to be low in winter and high in summer, coupled with the fact that higher densities are easier to measure, that measurement errors occurred when the values were low. For now we'll attribute these negative measurements to errors. Also, since they account for only 2% of the 2012 data, we'll ignore them.
 
-- Class: text
-  Output: Now we'll change focus a bit and instead of looking at all the monitors throughout the country and the data they recorded, we'll try to find one monitor that was taking measurements in both 1999 and 2012. This will allow us to control for different geographical or environmental variables that might have affected air quality for different monitors. We'll narrow our search and look just at monitors in New York State. 
+- Class: figure
+  Output: Now we'll change focus a bit and instead of looking at all the monitors throughout the country and the data they recorded, we'll try to find one monitor that was taking measurements in both 1999 and 2012. This will allow us to control for different geographical and environmental variables that might have affected air quality in different areas. We'll narrow our search and look just at monitors in New York State. 
+  Figure: runSites.R
+  FigureType: new
 
 - Class: cmd_question
   Output: We subsetted off the New York State monitor identification data for 1999 and 2012  into 2 vectors, site0 and site1. Look at the structure of site0 now with the R command str.
@@ -219,7 +217,7 @@
   Hint: Type str(site0) at the command prompt.
 
 - Class: text
-  Output: We see that site0 (the IDs for 1999) is a  vector of strings, each of which has the form "x.y". We've created these from the county codes (the x portion of the string) and the site IDs (the y portion). If you ran str on site1 you'd see similar values.
+  Output: We see that site0 (the IDs of monitors in New York State in 1999) is a  vector of strings, each of which has the form "x.y". We've created these from the county codes (the x portion of the string) and the site IDs (the y portion). If you ran str on site1 you'd see similar values.
 
 - Class: cmd_question
   Output: Use the intersect command with site0 and site1 as arguments and put the result in the variable both.
@@ -239,22 +237,22 @@
   FigureType: new
 
 - Class: cmd_question
-  Output: To save you some time and typing, we modified the data frames pm0 and pm1 slightly  by adding to each of them a new component, county.site. This is just a concatenation of two original components County.Code and Site.ID. We did this to facilitate the next step which is to find out how many measurements were taken by these 10 monitors in each of the two years of interest. Run dim on pm0 to see how many columns there are now.
+  Output: To save you some time and typing, we modified the data frames pm0 and pm1 slightly  by adding to each of them a new component, county.site. This is just a concatenation of two original components County.Code and Site.ID. We did this to facilitate the next step which is to find out how many measurements were taken by the 10 New York monitors working in both of the years of interest. Run dim on pm0 to see how many columns there are now.
   CorrectAnswer: dim(pm0)
   AnswerTests:  omnitest(correctExpr='dim(pm0)')
   Hint: Type dim(pm0) at the command prompt.
 
 - Class: text
-  Output: See that now pm0 (and pm1 as well) have 29 columns instead of 28 as they did before. 
+  Output: Now pm0 and pm1 have 29 columns instead of 28 as they did before. 
 
 - Class: text
-  Output: Now let's see how many measurements each of the 10 New York monitors that were both active in 1999 and 2012 took in those years. We'll create 2 subsets (one for each year), one of pm0 and the other of pm1.
+  Output: Now let's see how many measurements each of the 10 New York monitors that were active in both 1999 and 2012 took in those years. We'll create 2 subsets (one for each year), one of pm0 and the other of pm1.
 
 - Class: text
-  Output: The subsets will filter for 2 characteristics. The first is State.Code equal to 36 (the code for New York), and the second is that the county.site (the component we created and added) is in the vector both. 
+  Output: The subsets will filter for 2 characteristics. The first is State.Code equal to 36 (the code for New York), and the second is that the county.site (the component we  added) is in the vector both. 
 
 - Class: cmd_question
-  Output:  Firste create the variable cnt0 by assigning to it the output of the R command subset, called with 2 arguments. The first is pm0, and the second is a boolean with the 2 conditions we just mentioned. Recall that the intersection of 2 booleans is denoted by  & and membership by %in%.
+  Output:  Firste create the variable cnt0 by assigning to it the output of the R command subset, called with 2 arguments. The first is pm0, and the second is a boolean with the 2 conditions we just mentioned. Recall that the testing for equality in a boolean requires ==, intersection of 2 boolean conditions s is denoted by  & and membership by %in%.
   CorrectAnswer: cnt0 <- subset(pm0, State.Code == 36 & county.site %in% both)
   AnswerTests:  expr_creates_var("cnt0"); omnitest(correctExpr='cnt0 <- subset(pm0, State.Code == 36 & county.site %in% both)')
   Hint: Type cnt0 <- subset(pm0, State.Code == 36 & county.site %in% both) at the command prompt.
@@ -298,13 +296,13 @@
 
 - Class: mult_question
   Output: From the output of the 2 calls to sapply, how many rows will pm0sub have?
-  AnswerChoices: 122; 30; 29 183
+  AnswerChoices: 122; 30; 29; 183
   CorrectAnswer:  122
   AnswerTests: omnitest(correctVal='122')
-  Hint: Recall monitor63.2008 had 122 measurements in 1999 and 30 in 2012.
+  Hint: Recall monitor 63.2008 had 122 measurements in 1999 and 30 in 2012.
 
 - Class: cmd_question
-  Output:  Now we'd like to compare the pm25 measurements of this particular monitor for the 2 years. First, create the vector x0sub by assigning to in the Sample.Value component of pm0sub.
+  Output:  Now we'd like to compare the pm25 measurements of this particular monitor (63.2008) for the 2 years. First, create the vector x0sub by assigning to in the Sample.Value component of pm0sub.
   CorrectAnswer: x0sub <- pm0sub$Sample.Value
   AnswerTests:   expr_creates_var("x0sub"); omnitest(correctExpr='x0sub <- pm0sub$Sample.Value')
   Hint: Type x0sub <- pm0sub$Sample.Value at the command prompt.
@@ -316,7 +314,7 @@
   Hint: Type x1sub <- pm1sub$Sample.Value at the command prompt.
 
 - Class: cmd_question
-  Output:  We'd like to make our compare visually so we'll have to create a time series of these pm25 measurements. First, create a dates0 variable by assigning to it the output of a call to as.Date. This will take 2 arguments. The first is a call to as.character with pm0sub$Date as the argument. The second is the format string "%Y%m%d".
+  Output:  We'd like to make our comparison visually so we'll have to create a time series of these pm25 measurements. First, create a dates0 variable by assigning to it the output of a call to as.Date. This will take 2 arguments. The first is a call to as.character with pm0sub$Date as the argument. The second is the format string "%Y%m%d".
   CorrectAnswer: dates0 <- as.Date(as.character(pm0sub$Date),"%Y%m%d")
   AnswerTests:   expr_creates_var("dates0"); omnitest(correctExpr='dates0 <- as.Date(as.character(pm0sub$Date),"%Y%m%d")')
   Hint: Type dates0 <- as.Date(as.character(pm0sub$Date),"%Y%m%d") at the command prompt.
@@ -358,6 +356,13 @@
   Hint: Type abline(h = median(x1sub, na.rm = TRUE),lwd=2) at the command prompt.
 
 - Class: mult_question
+  Output: Which median is larger - the one for 1999 or the one for 2012?
+  AnswerChoices: 1999; 2012
+  CorrectAnswer:  1999
+  AnswerTests: omnitest(correctVal='1999')
+  Hint: Look carefully at the numbers on the y-axis.
+
+- Class: mult_question
   Output: The picture makes it look like the median is higher for 2012 than 1999. Closer inspection shows that this isn't true. The median for 1999 is a little over 10 micrograms per cubic meter and for 2012 its a little over 8. The plots appear this way because the 1999 plot ....
   AnswerChoices: shows a bigger range of y values than the 2012 plot; displays more points than the 2012 plot; shows different months than those in the 2012 plot
   CorrectAnswer:  shows a bigger range of y values than the 2012 plot
@@ -369,12 +374,6 @@
   CorrectAnswer: rng <- range(x0sub,x1sub,na.rm=TRUE)
   AnswerTests:   expr_creates_var("rng"); omnitest(correctExpr='rng <- range(x0sub,x1sub,na.rm=TRUE)')
   Hint: Type rng <- range(x0sub,x1sub,na.rm=TRUE) at the command prompt.
-
-- Class: cmd_question
-  Output:  Look at rng to see the values it spans.
-  CorrectAnswer: rng
-  AnswerTests:    ANY_of_exprs("rng","print(rng)")
-  Hint: Type rng or print(rng) at the command prompt.
 
 - Class: cmd_question
   Output:  Look at rng to see the values it spans.
@@ -463,7 +462,10 @@
   Hint: Type  head(mrg) at the command prompt.
 
 - Class: text
-  Output: Now we'll plot the data to see if how the state means changed between the 2 years. First we'll plot the 1999 data in a single column at x=1. The state means will be the y values for the points. Again, we'll use the R command with so we don't have to keep typing mrg as the data environment in which to evaluate the second argument, an expression, in this case a call to plot.
+  Output: Each row of mrg has 3 entries - a state identified by number, a state mean for 1999 (mean.x), and a state mean for 2012 (mean.y). 
+
+- Class: text
+  Output: Now we'll plot the data to see how the state means changed between the 2 years. First we'll plot the 1999 data in a single column at x=1. The y values for the points will be the state means. Again, we'll use the R command with so we don't have to keep typing mrg as the data environment in which to evaluate the second argument, the call to plot.
 
 - Class: cmd_question
   Output: For the first column of points, call with with 2 arguments. The first is mrg, and the second is the call to plot with 3 arguments. The first of these is rep(1,52). This tells the plot routine that all of the x coordinates for 52 points is 1. The second argument is the second column of mrg or mrg[,2] which holds the 1999 data. The third argument is the range of x values we want, namely xlim set to c(.5,2.5). This works since we'll be plotting 2 columns of points, one at x=1 and the other at x=2.
@@ -478,7 +480,7 @@
   Hint: Type  with(mrg, points(rep(2, 52), mrg[, 3])) at the command prompt.
 
 - Class: cmd_question
-  Output: Now, let's connect the dots. Use the R function segment with 4 arguments. The first 2 are the x and y coordinates of the 1999 endpoints of the segments and the last 2 are the x and y coordinates of the 2012 endpoints. As in the previous calls specify the x coordinates with calls to rep and the y coordinates with references to the appropriate columns of mrg.
+  Output: Now let's connect the dots. Use the R function segments with 4 arguments. The first 2 are the x and y coordinates of the 1999 endpoints of the segments and the last 2 are the x and y coordinates of the 2012 endpoints. As in the previous calls specify the x coordinates with calls to rep and the y coordinates with references to the appropriate columns of mrg.
   CorrectAnswer: segments(rep(1, 52), mrg[, 2], rep(2, 52), mrg[, 3])
   AnswerTests:    omnitest(correctExpr='segments(rep(1, 52), mrg[, 2], rep(2, 52), mrg[, 3])')
   Hint: Type  segments(rep(1, 52), mrg[, 2], rep(2, 52), mrg[, 3]) at the command prompt.
@@ -486,8 +488,17 @@
 - Class: text
   Output: We see from the plot that the vast majority of states have indeed improved their particulate matter counts with a few exceptions. The general trend seems to be downward. (The topmost point in the 1999 column is actually two points that had very close measurements.)
 
+- Class: cmd_question
+  Output: For fun, let's see which states had higher means in 2012 than in 1999. Just  use the mrg[mrg$mean.x < mrg$mean.y, ] notation to find the rows of mrg with this particulate property. 
+  CorrectAnswer: mrg[mrg$mean.x < mrg$mean.y,]
+  AnswerTests:    omnitest(correctExpr='mrg[mrg$mean.x < mrg$mean.y,]')
+  Hint: Type  mrg[mrg$mean.x < mrg$mean.y,] at the command prompt.
+
 - Class: text
-  Output: This concludes the lesson, exploring air pollution data from 2 years in different ways. First overall measures of the entire set of monitors, then looking at a particular monitor, and finally, at the individual states. 
+  Output: Only 4 states had worse pollution averages, and 2 of these had means that were very close. If you want to see which states (15, 31, 35, and 40) these are, you can check out this website http://www.epa.gov/envirofw/html/codes/state.html.
+
+- Class: text
+  Output: This concludes the lesson, comparing air pollution data from two years in different ways. First, we looked at measures of the entire set of monitors, then we compared the two measures from a particular monitor, and finally, we looked at the mean measures of the individual states. 
 
 - Class: text
   Output: Congratulations! We hope you enjoyed this particulate lesson.
