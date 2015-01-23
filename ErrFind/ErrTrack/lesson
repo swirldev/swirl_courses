@@ -7,6 +7,18 @@
   Version: 2.2.0
 
 - Class: cmd_question
+  Output: Start by creating the graphical object g by assigning to it a call to ggplot with 2 arguments. The first is the dataset and the second is a call to the function aes. This call will have 3 arguments, x set equal to displ, y set equal to hwy, and color set equal to factor(year). This last will allow us to distinguish between the two manufacturing years (1999 and 2008) in our data.
+  CorrectAnswer: g <- ggplot(mpg,aes(x=displ,y=hwy,color=factor(year)))
+  AnswerTests: expr_creates_var("g"); omnitest(correctExpr='g <- ggplot(mpg,aes(x=displ,y=hwy,color=factor(year)))')
+  Hint: Type g <- ggplot(mpg,aes(x=displ,y=hwy,color=factor(year))) at the command prompt.
+
+- Class: cmd_question
+  Output: Now add to your last command (or retype it if you like to type) a call to geom_smooth with 4 arguments. These are method set to "lm", se set to FALSE, size set to 2, and color set to "black".
+  CorrectAnswer: g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,color="black")
+  AnswerTests:  omnitest(correctExpr='g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,color="black")')
+  Hint: Type g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,color="black") at the command prompt.
+
+- Class: cmd_question
   Output: Before we leave qplot's scatterplotting ability, call qplot again, this time with 3 arguments. The first is y set equal to hwy, the second is data set equal to mpg, and the third is color set equal to drv. Try this now.
   CorrectAnswer: qplot(y=hwy, data = mpg, color = drv)
   AnswerTests: omnitest(correctExpr='qplot(y=hwy, data = mpg, color = drv)')

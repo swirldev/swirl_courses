@@ -11,7 +11,7 @@
 
 
 - Class: text
-  Output:  In a previous lesson we showed you the vast capabilities of qplot, the basic workhorse function of the ggplot2 package. In this lesson we'll focus on some fundamental components of the package. These  underlie qplot (which uses default values when it calls them) and if you understand these building blocks, you will be able to customize your plots. We'll use the second workhorse function in the package, ggplot, and other graphing functions. 
+  Output:  In a previous lesson we showed you the vast capabilities of qplot, the basic workhorse function of the ggplot2 package. In this lesson we'll focus on some fundamental components of the package. These  underlie qplot which uses default values when it calls them. If you understand these building blocks, you will be better able to customize your plots. We'll use the second workhorse function in the package, ggplot, as well as other graphing functions. 
 
 - Class: mult_question
   Output:  Do you remember what the gg of ggplot2 stands for?
@@ -21,10 +21,10 @@
   Hint: Think about nouns, verbs, and adjectives.
 
 - Class: text
-  Output:  A "grammar" of graphics which means that ggplot2 contains building blocks with which you can create your own graphical objects. What are these basic components of ggplot2 plots? There are 7 of them. 
+  Output:  A "grammar" of graphics means that ggplot2 contains building blocks with which you can create your own graphical objects. What are these basic components of ggplot2 plots? There are 7 of them. 
 
 - Class: text
-  Output: Obviously, there's a DATA FRAME which contains the data you're trying to plot. Then the AESTHETIC MAPPINGS determine how data are mapped to color, size, etc. The GEOMS (geometric objects) are what you see in the plot (points, lines, shapes) and FACETS are the panels used in conditional plots. You've used these or seen them used in the qplot lesson.
+  Output: Obviously, there's a DATA FRAME which contains the data you're trying to plot. Then the AESTHETIC MAPPINGS determine how data are mapped to color, size, etc. The GEOMS (geometric objects) are what you see in the plot (points, lines, shapes) and FACETS are the panels used in conditional plots. You've used these or seen them used in the first ggplot2 (qplot) lesson.
 
 - Class: text
   Output: There are 3 more. STATS are statistical transformations such as binning, quantiles, and smoothing which ggplot2 applies to the data. SCALES show what coding an aesthetic map uses (for example, male = red, female = blue). Finally, the plots are depicted on a COORDINATE SYSTEM. When you use qplot these were taken care of for you.
@@ -46,7 +46,7 @@
   Hint: Type qplot(displ, hwy, data = mpg, geom=c("point", "smooth"),facets=.~drv,method="loess") at the command prompt.
 
 - Class: text
-  Output:  We see a 3 facet plot, one for each drive type (4, f, and r). The last argument specified the smoothing function (loess) we wanted to use to draw trend lines through the data. (We did this to avoid getting a warning message from R.) Now we'll see how ggplot works. We'll build up a similar plot using the basic components of the package. We'll do this in a series of steps. 
+  Output:  We see a 3 facet plot, one for each drive type (4, f, and r). The method argument specified the smoothing function (loess) we wanted to use to draw trend lines through the data. (We did this to avoid getting a warning message from R.) Now we'll see how ggplot works. We'll build up a similar plot using the basic components of the package. We'll do this in a series of steps. 
 
 - Class: cmd_question
   Output: First we'll create a variable g by assigning to it the output of a call to ggplot with 2 arguments. The first is mpg (our dataset) and the second will tell ggplot what we want to plot, in this case, displ and hwy. These are what we want our aesthetics to represent so we enclose these as two arguments to the function aes. Try this now. 
@@ -108,7 +108,7 @@
 - Class: cmd_question
   Output: Let's practice modifying aesthetics now. We'll use the graphic object g that we already filled with mpg data and add a call to the function geom_point, but this time we'll give geom_point 3 arguments. Set the argument color equal to "pink", the argument size to 4, and the argument alpha to 1/2. Notice that all the arguments are set equal to constants.
   CorrectAnswer: g+geom_point(color="pink",size=4,alpha=1/2)
-  AnswerTests: omnitest(correctExpr='g+geom_point(color="pink",size=4,alpha=1/2)')
+  AnswerTests: ANY_of_exprs('g+geom_point(color="pink",size=4,alpha=1/2)','g+geom_point(color="pink",size=4,alpha=.5)')
   Hint: Type g+geom_point(color="pink",size=4,alpha=1/2) at the command prompt.
 
 - Class: text
@@ -117,7 +117,7 @@
 - Class: cmd_question
   Output: Now we'll modify the aesthetics so that color indicates which drv type each point represents. Again, use g and add to it a call to the function geom_point with 3 arguments. The first is size set equal to 4, the second is alpha equal to 1/2. The third is a call to the function aes with the argument color set equal to drv. Note that you MUST use the function aes since the color of the points is data dependent and not a constant as it was in the previous example. 
   CorrectAnswer: g + geom_point(aes(color = drv), size = 4, alpha = 1/2)
-  AnswerTests: omnitest(correctExpr='g + geom_point(aes(color = drv), size = 4, alpha = 1/2)')
+  AnswerTests: ANY_of_exprs('g + geom_point(aes(color = drv), size = 4, alpha = 1/2)','g + geom_point(aes(color = drv), size = 4, alpha = .5)')
   Hint: Type g + geom_point(aes(color = drv), size = 4, alpha = 1/2) at the command prompt.
 
 - Class: text
@@ -132,7 +132,7 @@
 - Class: cmd_question
   Output: Note that you could have combined the two calls to the function labs in the previous example. Now we'll practice customizing the geom_smooth calls. Use g and add to it a call to geom_point setting the color to drv type (remember to use the call to the aes function), size set to 2 and alpha to 1/2. Then add a call to geom_smooth with 4 arguments. Set size equal to 4, linetype to 3, method to "lm", and se to FALSE.
   CorrectAnswer: g + geom_point(aes(color = drv),size=2,alpha=1/2) + geom_smooth(size=4,linetype=3,method="lm",se=FALSE)
-  AnswerTests: omnitest(correctExpr='g + geom_point(aes(color = drv),size=2,alpha=1/2) + geom_smooth(size=4,linetype=3,method="lm",se=FALSE)')
+  AnswerTests: ANY_of_exprs('g + geom_point(aes(color = drv),size=2,alpha=1/2) + geom_smooth(size=4,linetype=3,method="lm",se=FALSE)','g + geom_point(aes(color = drv),size=2,alpha=.5) + geom_smooth(size=4,linetype=3,method="lm",se=FALSE)')
   Hint: Type g + geom_point(aes(color = drv),size=2,alpha=1/2) + geom_smooth(size=4,linetype=3,method="lm",se=FALSE) at the command prompt.
 
 - Class: text
@@ -221,16 +221,16 @@
   Output: A 4 by 5 plot, huh? The margins argument tells ggplot to display the marginal totals over each row and column, so instead of seeing 3 rows (the number of drv factors) and 4 columns (the number of cyl factors) we see a 4 by 5 display. Note that the panel in position (4,5) is a tiny version of the scatterplot of the entire dataset.
 
 - Class: cmd_question
-  Output: Now add to your last command (or retype it if you like to type) a call to geom_smooth with 4 arguments. These are method set to "lm", se set to FALSE, size set to 2, and col set to "black".
-  CorrectAnswer: g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,col="black")
-  AnswerTests:  omnitest(correctExpr='g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,col="black")')
-  Hint: Typeg + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,col="black") at the command prompt.
+  Output: Now add to your last command (or retype it if you like to type) a call to geom_smooth with 4 arguments. These are method set to "lm", se set to FALSE, size set to 2, and color set to "black".
+  CorrectAnswer: g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,color="black")
+  AnswerTests:  omnitest(correctExpr='g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,color="black")')
+  Hint: Type g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,color="black") at the command prompt.
 
 - Class: cmd_question
   Output: Angry Birds? Finally, add to your last command (or retype it if you like to type) a call to the function labs with 3 arguments. These are x set to "Displacement", y set to "Highway Mileage", and title set to "Swirl Rules!".
-  CorrectAnswer: g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,col="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!")
-  AnswerTests:  omnitest(correctExpr='g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,col="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!")')
-  Hint: Typeg + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,col="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!") at the command prompt.
+  CorrectAnswer: g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,color="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!")
+  AnswerTests:  omnitest(correctExpr='g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,color="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!")')
+  Hint: Typeg + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,color="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!") at the command prompt.
 
 - Class: text
   Output: You could have done these labels with separate calls to labs but we thought you'd be sick of this by now. Anyway, congrats! You've concluded part 2 of ggplot2. We hope you got enough mileage out of the lesson. If you like ggplot2 you can do some extras with the extra lesson.
