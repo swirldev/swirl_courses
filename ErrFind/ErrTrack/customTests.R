@@ -158,7 +158,8 @@ rmatch_calls <- function(expr, eval_for_class=FALSE, eval_env=NULL){
                                               dprs(expr[[2]]), ", of class, ", cls,".\n")))
     }
   }
-  expr <- match.call(fct, expr)
+  #expr <- match.call(fct, expr)
+  expr <- enhancedMatch(fct,expr)
   print(paste("leaving rmatch_calls with", deparse(expr) ))
 #  expr <- enhancedMatch(fct,expr)
 #   # Form preliminary match. If match.call raises an error here, the remaining code is

@@ -40,7 +40,7 @@
 
 
 - Class: text
-  Output: Now we'll go through some quick examples of basic plotting before we delve into gory  details. We'll use the dataset airquality (part of the library datasets) which we've loaded for you . This shows ozone and other air measurements for New York City for 5 months in 1973.
+  Output: Now we'll go through some quick examples of basic plotting before we delve into gory  details. We'll use the dataset airquality (part of the library datasets) which we've loaded for you. This shows ozone and other air measurements for New York City for 5 months in 1973.
 
 - Class: cmd_question
   Output:  Use the R command head with airquality as an argument to see what the data looks like.
@@ -208,7 +208,7 @@
   Hint: If you've just done a scatterplot, would you really want to annotate it with a histogram?
 
 - Class: text
-  Output: So you can add text, title, points, and lines to an existing plot. To add lines, you give a vector x values and a corresponding vector of y values (or a 2-column matrix); the function lines just connects the dots. The function text adds text labels to a plot using specified x, y coordinates.
+  Output: So you can add text, title, points, and lines to an existing plot. To add lines, you give a vector of x values and a corresponding vector of y values (or a 2-column matrix); the function lines just connects the dots. The function text adds text labels to a plot using specified x, y coordinates.
 
 - Class: text
   Output:   The function title adds annotations. These include x- and y- axis labels, title, subtitle, and outer margin. Two other annotating functions are mtext which adds arbitrary text to either the outer or inner margins of the plot and axis which adds axis ticks and labels. Another useful function is legend which explains to the reader what the symbols your plot uses mean.
@@ -245,7 +245,7 @@
 
 
 - Class: cmd_question
-  Output: Now use the R command points to plot these notMay's wind and ozone (in that order) as  red snowflakes.
+  Output: Now use the R command points to plot these notmay's wind and ozone (in that order) as  red snowflakes.
   CorrectAnswer: points(notmay$Wind,notmay$Ozone,col="red",pch=8)
   AnswerTests: omnitest(correctExpr='points(notmay$Wind,notmay$Ozone,col="red",pch=8)')
   Hint: The code for snowflakes is 8 so typing points(notmay$Wind,notmay$Ozone,col="red",pch=8) at the prompt should work.
@@ -290,7 +290,7 @@
   Output: Margins are specified as 4-long vectors of integers. Each number tells how many lines of text to leave at each side. The numbers are assigned clockwise starting at the bottom. The default for the inner margin is c(5.1, 4.1, 4.1, 2.1)  so you can see we reduced each of these so we'll have room for some outer text.
 
 - Class: cmd_question
-  Output: The first plot should be familiar. Plot airquality$Wind and airquality$Ozone with the title (argument main) as "Wind and Ozone".
+  Output: The first plot should be familiar. Plot airquality$Wind and airquality$Ozone with the title (argument main) as "Ozone and Wind".
   CorrectAnswer: plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind")
   AnswerTests: omnitest(correctExpr='plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind")')
   Hint: Type plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind").

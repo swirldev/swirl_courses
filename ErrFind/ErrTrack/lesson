@@ -6,6 +6,12 @@
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
+- Class: cmd_question
+  Output: Before we leave qplot's scatterplotting ability, call qplot again, this time with 3 arguments. The first is y set equal to hwy, the second is data set equal to mpg, and the third is color set equal to drv. Try this now.
+  CorrectAnswer: qplot(y=hwy, data = mpg, color = drv)
+  AnswerTests: omnitest(correctExpr='qplot(y=hwy, data = mpg, color = drv)')
+  Hint: Type qplot(y=hwy, data = mpg, color = drv) at the command prompt.
+
 - Class: mult_question
   Output: Which of the following is a basic workhorse function of ggplot2?
   AnswerChoices:  hist; xyplot; scatterplot; gplot; qplot
