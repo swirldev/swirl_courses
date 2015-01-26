@@ -17,15 +17,16 @@ equiv_val <- function(correctVal){
 
 obliterate <- function(vName){
   e <- get("e", parent.frame())
-  #   print(paste("Hello from obliterate",vName,sep=" "))
-  #   if(exists(vName,envir=globalenv()))print(paste(vName," exists"))
-  #   else print(paste(vName," doesn't exist"))
-  try(rm(list=c(vName),envir=globalenv()),silent=TRUE)
-  #   if(exists(vName,envir=globalenv()))print(paste(vName," exists"))
-  #   else print(paste(vName," doesn't exist"))
+#     print(paste("Hello from obliterate",vName,sep=" "))
+#     if(exists(vName,envir=globalenv()))print(paste(vName," exists"))
+#     else print(paste(vName," doesn't exist"))
+  suppressWarnings(try(rm(list=c(vName),envir=globalenv()),silent=TRUE))
+#     if(exists(vName,envir=globalenv()))print(paste(vName," exists"))
+#     else print(paste(vName," doesn't exist"))
   idx <- which(names(e$snapshot)==vName)
-  #   print(paste("Hello from obliterate idx of ",vName," is ",idx,sep=" "))
-  try(e$snapshot <- e$snapshot[-idx],silent=TRUE)
+#      print(paste("Hello from obliterate idx of ",vName," is ",idx,sep=" "))
+  suppressWarnings(try(e$snapshot <- e$snapshot[-idx],silent=TRUE))
+  return(TRUE)
 }
 
 omnitest <- function(correctExpr=NULL, correctVal=NULL, strict=FALSE, eval_for_class=as.logical(NA)){

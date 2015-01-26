@@ -49,7 +49,7 @@
   Hint: Type cnames or print(cnames) at the command prompt.
 
 - Class: cmd_question
-  Output:   Assign to names(pm0) the output of a call to the function make.names with cnames[[1]][wcol] as the argument. The variable wcol holds the indices of the 5 columns we selected (from the 28) to use in this lesson, so those are the column names we'll need. As the name suggests, the function "makes syntactically valid names".
+  Output:   Nice, but we don't need all these. Assign to names(pm0) the output of a call to the function make.names with cnames[[1]][wcol] as the argument. The variable wcol holds the indices of the 5 columns we selected (from the 28) to use in this lesson, so those are the column names we'll need. As the name suggests, the function "makes syntactically valid names".
   CorrectAnswer:  names(pm0) <- make.names(cnames[[1]][wcol])
   AnswerTests: omnitest(correctExpr='names(pm0) <- make.names(cnames[[1]][wcol])')
   Hint: Type names(pm0) <- make.names(cnames[[1]][wcol]) at the command prompt.
@@ -214,7 +214,7 @@
 - Class: cmd_question
   Output: We subsetted off the New York State monitor identification data for 1999 and 2012  into 2 vectors, site0 and site1. Look at the structure of site0 now with the R command str.
   CorrectAnswer: str(site0)
-  AnswerTests:    omnitest(correctExpr='str(site0)')
+  AnswerTests:    obliterate("dates"); omnitest(correctExpr='str(site0)')
   Hint: Type str(site0) at the command prompt.
 
 - Class: text
@@ -223,13 +223,13 @@
 - Class: cmd_question
   Output: Use the intersect command with site0 and site1 as arguments and put the result in the variable both.
   CorrectAnswer: both <- intersect(site0, site1)
-  AnswerTests:    expr_creates_var("both"); omnitest(correctExpr='both <- intersect(site0, site1)')
+  AnswerTests:    obliterate("x0"); expr_creates_var("both"); omnitest(correctExpr='both <- intersect(site0, site1)')
   Hint: Type both <- intersect(site0, site1) at the command prompt.
 
 - Class: cmd_question
   Output: Take a look at both now.
   CorrectAnswer: both
-  AnswerTests:  ANY_of_exprs('both','print(both)')
+  AnswerTests:  obliterate("x1"); ANY_of_exprs('both','print(both)')
   Hint: Type both or print(both) at the command prompt.
 
 - Class: figure
@@ -240,7 +240,7 @@
 - Class: cmd_question
   Output: To save you some time and typing, we modified the data frames pm0 and pm1 slightly  by adding to each of them a new component, county.site. This is just a concatenation of two original components County.Code and Site.ID. We did this to facilitate the next step which is to find out how many measurements were taken by the 10 New York monitors working in both of the years of interest. Run head on pm0 to see the first few entries now.
   CorrectAnswer: head(pm0)
-  AnswerTests:  omnitest(correctExpr='head(pm0)')
+  AnswerTests:  obliterate("negative"); omnitest(correctExpr='head(pm0)')
   Hint: Type head(pm0) at the command prompt.
 
 - Class: text
@@ -487,7 +487,7 @@
   Hint: Type  segments(rep(1, 52), mrg[, 2], rep(2, 52), mrg[, 3]) at the command prompt.
 
 - Class: text
-  Output: We see from the plot that the vast majority of states have indeed improved their particulate matter counts with a few exceptions. The general trend seems to be downward. (The topmost point in the 1999 column is actually two points that had very close measurements.)
+  Output: We see from the plot that the vast majority of states have indeed improved their particulate matter counts so the general trend is downward. There are a few exceptions. (The topmost point in the 1999 column is actually two points that had very close measurements.)
 
 - Class: cmd_question
   Output: For fun, let's see which states had higher means in 2012 than in 1999. Just  use the mrg[mrg$mean.x < mrg$mean.y, ] notation to find the rows of mrg with this particulate property. 
