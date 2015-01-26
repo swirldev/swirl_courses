@@ -43,9 +43,11 @@ showMe <- function(cv){
 }
 #my1999 <- pathtofile("RD_501_88101_1999-0.txt.gz")
 my1999 <- pathtofile("airData1999.txt.gz")
-my2012 <- pathtofile("RD_501_88101_2012-0.txt.gz")
+#my2012 <- pathtofile("RD_501_88101_2012-0.txt.gz")
+my2012 <- pathtofile("airData2012.txt.gz")
+cnames <- "# RD|Action Code|State Code|County Code|Site ID|Parameter|POC|Sample Duration|Unit|Method|Date|Start Time|Sample Value|Null Data Code|Sampling Frequency|Monitor Protocol (MP) ID|Qualifier - 1|Qualifier - 2|Qualifier - 3|Qualifier - 4|Qualifier - 5|Qualifier - 6|Qualifier - 7|Qualifier - 8|Qualifier - 9|Qualifier - 10|Alternate Method Detectable Limit|Uncertainty"
 pm0 <- read.table(my1999, comment.char = "#", header = FALSE, sep = "|", na.strings = "")
 pm1 <- read.table(my2012, comment.char = "#", header = FALSE, sep = "|", na.strings = "")
 wcol <- c(3,4,5,11,13)
-pm0 <- pm0[,wcol]
-pm1 <- pm1[,wcol]
+#pm0 <- pm0[,wcol]
+#pm1 <- pm1[,wcol]

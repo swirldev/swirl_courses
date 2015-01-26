@@ -22,34 +22,34 @@
   Hint: Type dim(pm0) at the command prompt.
 
 - Class: cmd_question
-  Output:  We see that pm0 has over 117000 lines, each containing 14 columns. In the file, each row had 28 columns, but we'll be using only the first 14 of these. Run head on pm0 now to see what the first few lines look like.
+  Output:  We see that pm0 has over 117000 lines, each containing 5 columns. In the original file, at the EPA website, each row had 28 columns, but since we'll be using only a few of these, we've created and read in a somewhat smaller file. Run head on pm0 now to see what the first few lines look like.
   CorrectAnswer: head(pm0)
   AnswerTests: omnitest(correctExpr='head(pm0)')
   Hint: Type head(pm0) at the command prompt.
 
 - Class: text
-  Output: We see there's some missing data, but we won't worry about that now. We also see that the column names, V1, V2, etc., are not informative. 
+  Output: We see there's some missing data, but we won't worry about that now. We also see that the column names, V1, V2, etc., are not informative. However, we know that the first line of the original file (a comment) explained what information the columns contained. 
 
 - Class: cmd_question
-  Output:  However, we know that the first line of the file (a comment) explained what information the columns contained. Create the variable cnames by assigning to it the output of the R command readLines called with 2 arguments. The first is the variable my1999 which holds the filename, and the second is 1, which tells R how many lines to read. We need to read only the first line to get the column names.
-  CorrectAnswer: cnames <- readLines(my1999, 1)
-  AnswerTests: expr_creates_var("cnames"); omnitest(correctExpr='cnames <- readLines(my1999, 1)')
-  Hint: Type cnames <- readLines(my1999, 1) at the command prompt.
-
-- Class: cmd_question
-  Output:  Take a look at the column names now. 
+  Output:  We created the variable cnames containing the 28 column names of the original file. Take a look at the column names now. 
   CorrectAnswer: cnames 
   AnswerTests: ANY_of_exprs('cnames','print(cnames)')
   Hint: Type cnames or print(cnames) at the command prompt.
 
 - Class: cmd_question
-  Output:  We see that the 28 column names look all jumbled (separated by "|" characters), so let's fix this. Reassign to cnames the output of a call to strsplit (string split) with 3 arguments. The first is cnames, the pipe symbol '|' is the second (use the quotation marks), and the third is the argument fixed set to TRUE. Try this now. 
+  Output:  We see that the 28 column names look all jumbled together even though they're separated by "|" characters, so let's fix this. Reassign to cnames the output of a call to strsplit (string split) with 3 arguments. The first is cnames, the pipe symbol '|' is the second (use the quotation marks), and the third is the argument fixed set to TRUE. Try this now. 
   CorrectAnswer:  cnames <- strsplit(cnames, "|", fixed = TRUE)
-  AnswerTests: expr_creates_var("cnames"); omnitest(correctExpr='cnames <- strsplit(cnames, "|", fixed = TRUE)')
+  AnswerTests:  omnitest(correctExpr='cnames <- strsplit(cnames, "|", fixed = TRUE)')
   Hint: Type cnames <- strsplit(cnames, "|", fixed = TRUE) at the command prompt.
 
 - Class: cmd_question
-  Output:  The variable cnames now holds a list of the column headings. Assign to names(pm0) the output of a call to the function make.names with cnames[[1]][wcol] as the argument. This will take the first 14 names. As the name suggests, the function "makes syntactically valid names".
+  Output: The variable cnames now holds a list of the column headings. Take another look at the column names. 
+  CorrectAnswer: cnames 
+  AnswerTests: ANY_of_exprs('cnames','print(cnames)')
+  Hint: Type cnames or print(cnames) at the command prompt.
+
+- Class: cmd_question
+  Output:   Assign to names(pm0) the output of a call to the function make.names with cnames[[1]][wcol] as the argument. The variable wcol holds the indices of the 5 columns we selected (from the 28) to use in this lesson, so those are the column names we'll need. As the name suggests, the function "makes syntactically valid names".
   CorrectAnswer:  names(pm0) <- make.names(cnames[[1]][wcol])
   AnswerTests: omnitest(correctExpr='names(pm0) <- make.names(cnames[[1]][wcol])')
   Hint: Type names(pm0) <- make.names(cnames[[1]][wcol]) at the command prompt.
@@ -238,13 +238,13 @@
   FigureType: new
 
 - Class: cmd_question
-  Output: To save you some time and typing, we modified the data frames pm0 and pm1 slightly  by adding to each of them a new component, county.site. This is just a concatenation of two original components County.Code and Site.ID. We did this to facilitate the next step which is to find out how many measurements were taken by the 10 New York monitors working in both of the years of interest. Run dim on pm0 to see how many columns there are now.
-  CorrectAnswer: dim(pm0)
-  AnswerTests:  omnitest(correctExpr='dim(pm0)')
-  Hint: Type dim(pm0) at the command prompt.
+  Output: To save you some time and typing, we modified the data frames pm0 and pm1 slightly  by adding to each of them a new component, county.site. This is just a concatenation of two original components County.Code and Site.ID. We did this to facilitate the next step which is to find out how many measurements were taken by the 10 New York monitors working in both of the years of interest. Run head on pm0 to see the first few entries now.
+  CorrectAnswer: head(pm0)
+  AnswerTests:  omnitest(correctExpr='head(pm0)')
+  Hint: Type head(pm0) at the command prompt.
 
 - Class: text
-  Output: Now pm0 and pm1 have 15 columns instead of 14 as they did before. 
+  Output: Now pm0 and pm1 have 6 columns instead of 5, and the last column is a concatenation of two other columns, County and Site.
 
 - Class: text
   Output: Now let's see how many measurements each of the 10 New York monitors that were active in both 1999 and 2012 took in those years. We'll create 2 subsets (one for each year), one of pm0 and the other of pm1.
@@ -457,7 +457,7 @@
   Hint: Type  dim(mrg) at the command prompt.
 
 - Class: cmd_question
-  Output: We see merge has only 52 rows (since the Virgin Island data was missing from d1, it is excluded from mrg) and 3 columns. Look at the first few entries using the head command.
+  Output: We see merge has 52 rows and 3 columns. Since the Virgin Island data was missing from d1, it is excluded from mrg. Look at the first few entries of mrg using the head command.
   CorrectAnswer: head(mrg)
   AnswerTests:    omnitest(correctExpr='head(mrg)')
   Hint: Type  head(mrg) at the command prompt.
@@ -466,22 +466,22 @@
   Output: Each row of mrg has 3 entries - a state identified by number, a state mean for 1999 (mean.x), and a state mean for 2012 (mean.y). 
 
 - Class: text
-  Output: Now we'll plot the data to see how the state means changed between the 2 years. First we'll plot the 1999 data in a single column at x=1. The y values for the points will be the state means. Again, we'll use the R command with so we don't have to keep typing mrg as the data environment in which to evaluate the second argument, the call to plot. We've also reset the graphical parameters for you.
+  Output: Now we'll plot the data to see how the state means changed between the 2 years. First we'll plot the 1999 data in a single column at x=1. The y values for the points will be the state means. Again, we'll use the R command with so we don't have to keep typing mrg as the data environment in which to evaluate the second argument, the call to plot. We've already reset the graphical parameters for you.
 
 - Class: cmd_question
-  Output: For the first column of points, call with with 2 arguments. The first is mrg, and the second is the call to plot with 3 arguments. The first of these is rep(1,52). This tells the plot routine that all of the x coordinates for 52 points is 1. The second argument is the second column of mrg or mrg[,2] which holds the 1999 data. The third argument is the range of x values we want, namely xlim set to c(.5,2.5). This works since we'll be plotting 2 columns of points, one at x=1 and the other at x=2.
+  Output: For the first column of points, call with with 2 arguments. The first is mrg, and the second is the call to plot with 3 arguments. The first of these is rep(1,52). This tells the plot routine that the x coordinates for all 52 points is 1. The second argument is the second column of mrg or mrg[,2] which holds the 1999 data. The third argument is the range of x values we want, namely xlim set to c(.5,2.5). This works since we'll be plotting 2 columns of points, one at x=1 and the other at x=2.
   CorrectAnswer: with(mrg, plot(rep(1, 52), mrg[, 2], xlim = c(.5, 2.5)))
   AnswerTests:    omnitest(correctExpr='with(mrg, plot(rep(1, 52), mrg[, 2], xlim = c(.5, 2.5)))')
   Hint: Type  with(mrg, plot(rep(1, 52), mrg[, 2], xlim = c(.5, 2.5))) at the command prompt.
 
 - Class: cmd_question
-  Output: For the second column of points, again call with with 2 arguments. As before, the first is mrg. The second is different from before. We're adding points to an already existing plot, so the second expression is a call to the function points with 2 arguments. The first is rep(2,52). (These are the x values of the second set of points.) The second argument is the set of y values, the third column of mrg, mrg[,3]. (We've already set the range of x values so we don't need to specify this again.)
+  Output: We see a column of points at x=1 which represent the 1999 state means. For the second column of points, again call with with 2 arguments. As before, the first is mrg. The second, however,  is a call to the function points with 2 arguments. We need to do this since we're adding points to an already existing plot. The first argument to points is the set of x values, rep(2,52). The second argument is the set of y values, mrg[,3]. Of course, this is the third column of mrg. (We don't need to specify the range of x values again.)
   CorrectAnswer: with(mrg, points(rep(2, 52), mrg[, 3]))
   AnswerTests:    omnitest(correctExpr='with(mrg, points(rep(2, 52), mrg[, 3]))')
   Hint: Type  with(mrg, points(rep(2, 52), mrg[, 3])) at the command prompt.
 
 - Class: cmd_question
-  Output: Now let's connect the dots. Use the R function segments with 4 arguments. The first 2 are the x and y coordinates of the 1999 endpoints of the segments and the last 2 are the x and y coordinates of the 2012 endpoints. As in the previous calls specify the x coordinates with calls to rep and the y coordinates with references to the appropriate columns of mrg.
+  Output: We see a shorter column of points at x=2. Now let's connect the dots. Use the R function segments with 4 arguments. The first 2 are the x and y coordinates of the 1999 points and the last 2 are the x and y coordinates of the 2012 points. As in the previous calls specify the x coordinates with calls to rep and the y coordinates with references to the appropriate columns of mrg.
   CorrectAnswer: segments(rep(1, 52), mrg[, 2], rep(2, 52), mrg[, 3])
   AnswerTests:    omnitest(correctExpr='segments(rep(1, 52), mrg[, 2], rep(2, 52), mrg[, 3])')
   Hint: Type  segments(rep(1, 52), mrg[, 2], rep(2, 52), mrg[, 3]) at the command prompt.
