@@ -22,13 +22,13 @@
   Hint: Type dim(pm0) at the command prompt.
 
 - Class: cmd_question
-  Output:  We see that pm0 has over 117000 lines, each containing 28 columns. Run head on pm0 now to see what the first few lines look like.
+  Output:  We see that pm0 has over 117000 lines, each containing 14 columns. In the file, each row had 28 columns, but we'll be using only the first 14 of these. Run head on pm0 now to see what the first few lines look like.
   CorrectAnswer: head(pm0)
   AnswerTests: omnitest(correctExpr='head(pm0)')
   Hint: Type head(pm0) at the command prompt.
 
 - Class: text
-  Output: We see there's a lot of missing data, but we won't worry about that now. We also see that the column names, V1, V2, etc., are not informative. 
+  Output: We see there's some missing data, but we won't worry about that now. We also see that the column names, V1, V2, etc., are not informative. 
 
 - Class: cmd_question
   Output:  However, we know that the first line of the file (a comment) explained what information the columns contained. Create the variable cnames by assigning to it the output of the R command readLines called with 2 arguments. The first is the variable my1999 which holds the filename, and the second is 1, which tells R how many lines to read. We need to read only the first line to get the column names.
@@ -43,16 +43,16 @@
   Hint: Type cnames or print(cnames) at the command prompt.
 
 - Class: cmd_question
-  Output:  It looks jumbled, so let's replace cnames now by reassigning to it the output of a call to strsplit (string split) with 3 arguments. The first is cnames, the pipe symbol '|' is the second (use the quotation marks), and the third is the argument fixed set to TRUE. Try this now. 
+  Output:  We see that the 28 column names look all jumbled (separated by "|" characters), so let's fix this. Reassign to cnames the output of a call to strsplit (string split) with 3 arguments. The first is cnames, the pipe symbol '|' is the second (use the quotation marks), and the third is the argument fixed set to TRUE. Try this now. 
   CorrectAnswer:  cnames <- strsplit(cnames, "|", fixed = TRUE)
   AnswerTests: expr_creates_var("cnames"); omnitest(correctExpr='cnames <- strsplit(cnames, "|", fixed = TRUE)')
   Hint: Type cnames <- strsplit(cnames, "|", fixed = TRUE) at the command prompt.
 
 - Class: cmd_question
-  Output:  The variable cnames now holds a list of the column headings. Assign to names(pm0) the output of a call to the function make.names with cnames[[1]] as the argument.  (As the name suggests, make.names "makes syntactically valid names".) 
-  CorrectAnswer:  names(pm0) <- make.names(cnames[[1]])
-  AnswerTests: omnitest(correctExpr='names(pm0) <- make.names(cnames[[1]])')
-  Hint: Type names(pm0) <- make.names(cnames[[1]]) at the command prompt.
+  Output:  The variable cnames now holds a list of the column headings. Assign to names(pm0) the output of a call to the function make.names with cnames[[1]][wcol] as the argument. This will take the first 14 names. As the name suggests, the function "makes syntactically valid names".
+  CorrectAnswer:  names(pm0) <- make.names(cnames[[1]][wcol])
+  AnswerTests: omnitest(correctExpr='names(pm0) <- make.names(cnames[[1]][wcol])')
+  Hint: Type names(pm0) <- make.names(cnames[[1]][wcol]) at the command prompt.
 
 - Class: cmd_question
   Output:  Now re-run head on pm0 now to see if the column names have been put in place.
@@ -82,10 +82,10 @@
   Output: So a little over 11% of the 117000+ are missing. We'll keep that in mind. Now let's start processing the 2012 data which we stored for you in the array pm1.
 
 - Class: cmd_question
-  Output:  We'll repeat what we did for pm0, except a little more efficiently. First assign the output of make.names(cnames[[1]]) to names(pm1).
-  CorrectAnswer: names(pm1) <- make.names(cnames[[1]])
-  AnswerTests:  omnitest(correctExpr='names(pm1) <- make.names(cnames[[1]])')
-  Hint: Type names(pm1) <- make.names(cnames[[1]]) at the command prompt.
+  Output:  We'll repeat what we did for pm0, except a little more efficiently. First assign the output of make.names(cnames[[1]][wcol]) to names(pm1).
+  CorrectAnswer: names(pm1) <- make.names(cnames[[1]][wcol])
+  AnswerTests:  omnitest(correctExpr='names(pm1) <- make.names(cnames[[1]][wcol])')
+  Hint: Type names(pm1) <- make.names(cnames[[1]][wcol]) at the command prompt.
 
 - Class: cmd_question
   Output:  Find the dimensions of pm1 with the command dim.
@@ -160,7 +160,7 @@
 - Class: cmd_question
   Output:  Now run the R command sum with 2 arguments. The first is negative, and the second is na.rm set equal to TRUE. This tells sum to ignore the missing values in negative.
   CorrectAnswer: sum(negative, na.rm = TRUE)
-  AnswerTests:  omnitest(correctExpr='sum(negative, na.rm = TRUE)')
+  AnswerTests:   omnitest(correctExpr='sum(negative, na.rm = TRUE)')
   Hint: Type sum(negative, na.rm = TRUE)  at the command prompt.
 
 - Class: cmd_question
@@ -199,11 +199,12 @@
 - Class: cmd_question
   Output: Let's plot a histogram of the months when the particulate matter measurements are negative. Run hist with 2 arguments. The first is dates[negative] and the second is the string "month".
   CorrectAnswer: hist(dates[negative],"month")
-  AnswerTests:    omnitest(correctExpr='hist(dates[negative],"month")')
+  AnswerTests:  omnitest(correctExpr='hist(dates[negative],"month")')
   Hint: Type hist(dates[negative],"month") at the command prompt.
 
 - Class: text
   Output: We see the bulk of the negative measurements were taken in the winter months, with a spike in May. Not many of these negative measurements occurred in summer months. We can take a guess that because particulate measures tend to be low in winter and high in summer, coupled with the fact that higher densities are easier to measure, that measurement errors occurred when the values were low. For now we'll attribute these negative measurements to errors. Also, since they account for only 2% of the 2012 data, we'll ignore them.
+
 
 - Class: figure
   Output: Now we'll change focus a bit and instead of looking at all the monitors throughout the country and the data they recorded, we'll try to find one monitor that was taking measurements in both 1999 and 2012. This will allow us to control for different geographical and environmental variables that might have affected air quality in different areas. We'll narrow our search and look just at monitors in New York State. 
@@ -217,7 +218,7 @@
   Hint: Type str(site0) at the command prompt.
 
 - Class: text
-  Output: We see that site0 (the IDs of monitors in New York State in 1999) is a  vector of strings, each of which has the form "x.y". We've created these from the county codes (the x portion of the string) and the site IDs (the y portion). If you ran str on site1 you'd see similar values.
+  Output: We see that site0 (the IDs of monitors in New York State in 1999) is a  vector of 33 strings, each of which has the form "x.y". We've created these from the county codes (the x portion of the string) and the monitor IDs (the y portion). If you ran str on site1 you'd see 18 similar values.
 
 - Class: cmd_question
   Output: Use the intersect command with site0 and site1 as arguments and put the result in the variable both.
@@ -243,7 +244,7 @@
   Hint: Type dim(pm0) at the command prompt.
 
 - Class: text
-  Output: Now pm0 and pm1 have 29 columns instead of 28 as they did before. 
+  Output: Now pm0 and pm1 have 15 columns instead of 14 as they did before. 
 
 - Class: text
   Output: Now let's see how many measurements each of the 10 New York monitors that were active in both 1999 and 2012 took in those years. We'll create 2 subsets (one for each year), one of pm0 and the other of pm1.
@@ -252,7 +253,7 @@
   Output: The subsets will filter for 2 characteristics. The first is State.Code equal to 36 (the code for New York), and the second is that the county.site (the component we  added) is in the vector both. 
 
 - Class: cmd_question
-  Output:  Firste create the variable cnt0 by assigning to it the output of the R command subset, called with 2 arguments. The first is pm0, and the second is a boolean with the 2 conditions we just mentioned. Recall that the testing for equality in a boolean requires ==, intersection of 2 boolean conditions s is denoted by  & and membership by %in%.
+  Output:  Firste create the variable cnt0 by assigning to it the output of the R command subset, called with 2 arguments. The first is pm0, and the second is a boolean with the 2 conditions we just mentioned. Recall that the testing for equality in a boolean requires ==, intersection of 2 boolean conditions is denoted by  & and membership by %in%.
   CorrectAnswer: cnt0 <- subset(pm0, State.Code == 36 & county.site %in% both)
   AnswerTests:  expr_creates_var("cnt0"); omnitest(correctExpr='cnt0 <- subset(pm0, State.Code == 36 & county.site %in% both)')
   Hint: Type cnt0 <- subset(pm0, State.Code == 36 & county.site %in% both) at the command prompt.
@@ -320,7 +321,7 @@
   Hint: Type dates0 <- as.Date(as.character(pm0sub$Date),"%Y%m%d") at the command prompt.
 
 - Class: cmd_question
-  Output:  Do the same for the 2012 data. Specifically create dates1 using pm1sub$Date as your input.
+  Output:  Do the same for the 2012 data. Specifically, create dates1 using pm1sub$Date as your input.
   CorrectAnswer: dates1 <- as.Date(as.character(pm1sub$Date),"%Y%m%d")
   AnswerTests:   expr_creates_var("dates1"); omnitest(correctExpr='dates1 <- as.Date(as.character(pm1sub$Date),"%Y%m%d")')
   Hint: Type dates1 <- as.Date(as.character(pm1sub$Date),"%Y%m%d") at the command prompt.
@@ -382,7 +383,7 @@
   Hint: Type rng or print(rng) at the command prompt.
 
 - Class: figure
-  Output:  Here a new panel showing the two plots side by side with the same range of values on the y axis. We used the argument ylim set equal to rng in our call to plot. The improvement in the medians between 1999 and 2012 is now clear. Also notice that in 2012 there are no big values (above 15). This shows that not only is there a chronic improvement in air quality, but also there are fewer days with severe pollution.
+  Output:  Here a new panel showing the two plots side by side with the same range of values on the y axis. We used the argument ylim set equal to rng in our 2 calls to plot. The improvement in the medians between 1999 and 2012 is now clear. Also notice that in 2012 there are no big values (above 15). This shows that not only is there a chronic improvement in air quality, but also there are fewer days with severe pollution.
   Figure: showBoth.R
   FigureType: new
 
@@ -432,13 +433,13 @@
   Hint: Type  summary(mn1) at the command prompt.
 
 - Class: cmd_question
-  Output:  We see that in all 6 categories, the 2012 numbers are less than those in 1999. Now we'll create 2 new dataframes containing just the state names and their mean measurements for each year. First, we'll do this for 1999. Create the data frame d0 by calling the function data.frame with 2 arguments. The first is state set equal to names(mn0), and the second is mean set equal to mn0.
+  Output:  We see that in all 6 entries, the 2012 numbers are less than those in 1999. Now we'll create 2 new dataframes containing just the state names and their mean measurements for each year. First, we'll do this for 1999. Create the data frame d0 by calling the function data.frame with 2 arguments. The first is state set equal to names(mn0), and the second is mean set equal to mn0.
   CorrectAnswer: d0 <- data.frame(state = names(mn0), mean = mn0)
   AnswerTests:   expr_creates_var("d0");  omnitest(correctExpr='d0 <- data.frame(state = names(mn0), mean = mn0)')
   Hint: Type  d0 <- data.frame(state = names(mn0), mean = mn0) at the command prompt.
 
 - Class: cmd_question
-  Output: Recall the last command and create d1 instead of d0 using the 2012 data.
+  Output: Recall the last command and create d1 instead of d0 using the 2012 data. (There'll be 3 changes of 0 to 1.)
   CorrectAnswer: d1 <- data.frame(state = names(mn1), mean = mn1)
   AnswerTests:   expr_creates_var("d1");  omnitest(correctExpr='d1 <- data.frame(state = names(mn1), mean = mn1)')
   Hint: Type  d1 <- data.frame(state = names(mn1), mean = mn1) at the command prompt.
@@ -465,7 +466,7 @@
   Output: Each row of mrg has 3 entries - a state identified by number, a state mean for 1999 (mean.x), and a state mean for 2012 (mean.y). 
 
 - Class: text
-  Output: Now we'll plot the data to see how the state means changed between the 2 years. First we'll plot the 1999 data in a single column at x=1. The y values for the points will be the state means. Again, we'll use the R command with so we don't have to keep typing mrg as the data environment in which to evaluate the second argument, the call to plot.
+  Output: Now we'll plot the data to see how the state means changed between the 2 years. First we'll plot the 1999 data in a single column at x=1. The y values for the points will be the state means. Again, we'll use the R command with so we don't have to keep typing mrg as the data environment in which to evaluate the second argument, the call to plot. We've also reset the graphical parameters for you.
 
 - Class: cmd_question
   Output: For the first column of points, call with with 2 arguments. The first is mrg, and the second is the call to plot with 3 arguments. The first of these is rep(1,52). This tells the plot routine that all of the x coordinates for 52 points is 1. The second argument is the second column of mrg or mrg[,2] which holds the 1999 data. The third argument is the range of x values we want, namely xlim set to c(.5,2.5). This works since we'll be plotting 2 columns of points, one at x=1 and the other at x=2.
@@ -495,7 +496,7 @@
   Hint: Type  mrg[mrg$mean.x < mrg$mean.y,] at the command prompt.
 
 - Class: text
-  Output: Only 4 states had worse pollution averages, and 2 of these had means that were very close. If you want to see which states (15, 31, 35, and 40) these are, you can check out this website http://www.epa.gov/envirofw/html/codes/state.html.
+  Output: Only 4 states had worse pollution averages, and 2 of these had means that were very close. If you want to see which states (15, 31, 35, and 40) these are, you can check out this website http://www.epa.gov/envirofw/html/codes/state.html to decode the state codes.
 
 - Class: text
   Output: This concludes the lesson, comparing air pollution data from two years in different ways. First, we looked at measures of the entire set of monitors, then we compared the two measures from a particular monitor, and finally, we looked at the mean measures of the individual states. 

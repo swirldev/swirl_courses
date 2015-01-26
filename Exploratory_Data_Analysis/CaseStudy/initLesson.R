@@ -41,8 +41,11 @@ showMe <- function(cv){
   obj<- list( x=1:20,y=1:20,z=z )
   image(obj, col=cv, main=myarg  )
 }
-my1999 <- pathtofile("RD_501_88101_1999-0.txt.gz")
+#my1999 <- pathtofile("RD_501_88101_1999-0.txt.gz")
+my1999 <- pathtofile("airData1999.txt.gz")
 my2012 <- pathtofile("RD_501_88101_2012-0.txt.gz")
 pm0 <- read.table(my1999, comment.char = "#", header = FALSE, sep = "|", na.strings = "")
 pm1 <- read.table(my2012, comment.char = "#", header = FALSE, sep = "|", na.strings = "")
-
+wcol <- c(3,4,5,11,13)
+pm0 <- pm0[,wcol]
+pm1 <- pm1[,wcol]
