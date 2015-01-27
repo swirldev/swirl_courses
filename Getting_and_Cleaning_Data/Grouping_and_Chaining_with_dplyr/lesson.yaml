@@ -112,19 +112,25 @@
   Hint: Type top_counts to view its contents.
 
 - Class: text
-  Output: Hey, that's the first time we've seen more than the first 10 rows of our data! By default, if the dataset you're working with has more than 100 rows, dplyr will only print the first 10. Otherwise, it will print all rows, since it's not as overwhelming.
+  Output: "There are only 61 packages in our top 1%, so we'd like to see all of them. Since dplyr only shows us the first 10 rows, we can use the View() function to see more.\n\nWarning: The View() function may not work properly in every programming environment. We highly recommend the use of RStudio for the remainder of this lesson."
 
 - Class: cmd_question
-  Output: "In this case, there are 61 packages in our top 1%, so dplyr has printed all of them. If we only want to see the first 20, we can use the head function like so: head(top_counts, 20)."
-  CorrectAnswer: head(top_counts, 20)
-  AnswerTests: omnitest('head(top_counts, 20)')
-  Hint: head(top_counts, 20) will display the first 20 rows of top_counts.
+  Output: View all 61 rows with View(top_counts). Note that the 'V' in View() is capitalized.
+  CorrectAnswer: View(top_counts)
+  AnswerTests: omnitest('View(top_counts)')
+  Hint: Use View(top_counts) to view all 61 rows. This may not work properly in every programming environment. If you are having trouble, we recommend using RStudio.
 
 - Class: cmd_question
-  Output: Okay, back to the task at hand. arrange() the rows of top_counts based on the 'count' column. We want the packages with the highest number of downloads at the top, which means we want 'count' to be in descending order. If you need help, check out ?arrange and/or ?desc.
-  CorrectAnswer: arrange(top_counts, desc(count))
-  AnswerTests: omnitest('arrange(top_counts, desc(count))')
-  Hint: arrange(top_counts, desc(count)) will arrange the rows of top_counts based on the values of the 'count' variable, in descending order.
+  Output: arrange() the rows of top_counts based on the 'count' column and assign the result to a new variable called top_counts_sorted. We want the packages with the highest number of downloads at the top, which means we want 'count' to be in descending order. If you need help, check out ?arrange and/or ?desc.
+  CorrectAnswer: top_counts_sorted <- arrange(top_counts, desc(count))
+  AnswerTests: omnitest('top_counts_sorted <- arrange(top_counts, desc(count))')
+  Hint: arrange(top_counts, desc(count)) will arrange the rows of top_counts based on the values of the 'count' variable, in descending order. Don't forget to assign the result to top_counts_sorted.
+
+- Class: cmd_question
+  Output: Now use View() again to see all 61 rows of top_counts_sorted.
+  CorrectAnswer: View(top_counts_sorted)
+  AnswerTests: omnitest('View(top_counts_sorted)')
+  Hint: Use View(top_counts_sorted) to view all 61 rows of the sorted data.
 
 - Class: text
   Output: If we use total number of downloads as our metric for popularity, then the above output shows us the most popular packages downloaded from the RStudio CRAN mirror on July 8, 2014. Not surprisingly, ggplot2 leads the pack with 4602 downloads, followed by Rcpp, plyr, rJava, ....
@@ -148,16 +154,22 @@
   Hint: filter(pack_sum, unique > 465) will select all rows corresponding to values of 'unique' that are strictly greater than 465. Assign the result to top_unique.
 
 - Class: cmd_question
-  Output: Let's see our top contenders! Print top_unique to the console.
-  CorrectAnswer: top_unique
-  AnswerTests: any_of_exprs('top_unique', 'print(top_unique)')
-  Hint: Type top_unique to view its contents.
+  Output: Let's View() our top contenders!
+  CorrectAnswer: View(top_unique)
+  AnswerTests: omnitest('View(top_unique)')
+  Hint: Type View(top_unique) to see the result.
 
 - Class: cmd_question
-  Output: Now arrange() top_unique by the 'unique' column, in descending order, to see which packages were downloaded from the greatest number of unique IP addresses.
-  CorrectAnswer: arrange(top_unique, desc(unique))
-  AnswerTests: omnitest('arrange(top_unique, desc(unique))')
-  Hint: arrange(top_unique, desc(unique)) will arrange the rows of top_unique based on the values of the 'unique' variable, in descending order.
+  Output: Now arrange() top_unique by the 'unique' column, in descending order, to see which packages were downloaded from the greatest number of unique IP addresses. Assign the result to top_unique_sorted.
+  CorrectAnswer: top_unique_sorted <- arrange(top_unique, desc(unique))
+  AnswerTests: omnitest('top_unique_sorted <- arrange(top_unique, desc(unique))')
+  Hint: arrange(top_unique, desc(unique)) will arrange the rows of top_unique based on the values of the 'unique' variable, in descending order. Assign the result to top_unique_sorted.
+
+- Class: cmd_question
+  Output: View() the sorted data.
+  CorrectAnswer: View(top_unique_sorted)
+  AnswerTests: omnitest('View(top_unique_sorted)')
+  Hint: View(top_unique_sorted) will display the sorted data.
 
 - Class: text
   Output: Now Rcpp is in the lead, followed by stringr, digest, plyr, and ggplot2. swirl moved up a few spaces to number 40, with 698 unique downloads. Nice!
@@ -187,13 +199,19 @@
   Script: summarize3.R
 
 - Class: script
-  Output: "In this script, we've used a special chaining operator, %>%, which is part of the dplyr package. You can pull up the related documentation with ?chain. The benefit of %>% is that it allows us to chain the function calls in a linear fashion. The code to the right of %>% operates on the result from the code to the left of %>%.\n\nOnce again, just try to understand the code, then type submit() to continue."
+  Output: "In this script, we've used a special chaining operator, %>%, which was originally introduced in the magrittr R package and has now become a key component of dplyr. You can pull up the related documentation with ?chain. The benefit of %>% is that it allows us to chain the function calls in a linear fashion. The code to the right of %>% operates on the result from the code to the left of %>%.\n\nOnce again, just try to understand the code, then type submit() to continue."
   AnswerTests: script_results_identical('result3'); multi_expr_creates_var('result3')
   Hint: If you accidentally changed something in the script, just type reset() to undo your changes, then submit() again.
   Script: summarize4.R
 
 - Class: text
   Output: So, the results of the last three scripts are all identical. But, the third script provides a convenient and concise alternative to the more traditional method that we've taken previously, which involves saving results as we go along.
+
+- Class: cmd_question
+  Output: Once again, let's View() the full data, which has been stored in result3.
+  CorrectAnswer: View(result3)
+  AnswerTests: omnitest('View(result3)')
+  Hint: View(result3) will display the full data, instead of just the first 10 rows.
 
 - Class: text
   Output: It looks like Rcpp is on top with downloads from 84 different countries, followed by digest, stringr, plyr, and ggplot2. swirl jumped up the rankings again, this time to 27th.
