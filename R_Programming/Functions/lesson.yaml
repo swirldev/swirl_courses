@@ -248,13 +248,9 @@
     be named `x`. Using the length() function in your anonymous function may 
     help you."
 
-- Class: text
-  Output: "For the rest of the course we're going to use the paste() function
-  frequently. If you're not familiar with paste"
-
 - Class: cmd_question
   Output: "For the rest of the course we're going to use the paste() function
-    frequently. Type ?paste to we can take a look at the documentation for the 
+    frequently. Type ?paste so we can take a look at the documentation for the 
     paste function."
   CorrectAnswer: ?paste
   AnswerTests: omnitest(correctExpr='?paste')
@@ -276,10 +272,51 @@
 - Class: text
   Output: "Time to write our own modified version of paste()."
 
-- Class: script
+- Class: script 
   Output: Make sure to save your script before you type submit().
   AnswerTests: test_func5()
+  Hint: "Remember that arguments can come after ..."
+  Script: telegram.R
+
+- Class: cmd_question
+  Output: "Now let's test out your telegram function. Use your new telegram 
+    function passing in whatever arguments you wish!"
+  CorrectAnswer: telegram()
+  AnswerTests: expr_uses_func('telegram')
+  Hint: 'Use the telegram function with whatever arguments you want to use.'
+
+- Class: script
+  Output: Make sure to save your script before you type submit().
+  AnswerTests: test_func6()
   Hint: "Your function should have three sections: capture the ellipsis in a 
     list(), unpack the arguments from the ellipsis and assign them to variables,
     then pass those variables to paste()."
   Script: mad_libs.R
+
+- Class: cmd_question
+  Output: "Time to use your mad_libs function. Make sure to name the place, 
+    adjective, and noun arguments in order for your function to work."
+  CorrectAnswer: mad_libs(adjective = "", place = "", noun = "")
+  AnswerTests: expr_uses_func('mad_libs')
+  Hint: 'Use the mad_libs function and be sure to name place, adjective, and 
+  noun arguments.'
+
+- Class: text
+  Output: "We're coming to the end of this lesson, but there's still one more
+    idea you should be made aware of."
+
+- Class: text
+  Output: "You're familiar with adding, subtracting, multiplying, and dividing
+    numbers in R. To do this you use the +, -, *, and / symbols. These symbols
+    are called binary operators because they take two inputs, an input from the
+    left and an input from the right."  
+
+- Class: text
+  Output: "In R you can define your own binary operators. In the next script
+    I'll show you how."
+
+- Class: script
+  Output: Make sure to save your script before you type submit().
+  AnswerTests: test_func7()
+  Hint: "Remember: 'Hello' %p% 'student!' is how you use the binary operator."
+  Script: bin_op.R

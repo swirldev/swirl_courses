@@ -41,3 +41,24 @@ test_func4 <- function() {
   }, silent = TRUE)
   exists('ok') && isTRUE(ok)
 }
+
+test_func5 <- function() {
+  try({
+    func <- get('telegram', globalenv())
+    t1 <- identical(func("Good", "morning"), "START Good morning STOP")
+    t2 <- identical(func("hello", "there", "sir"), "START hello there sir STOP")
+    t3 <- identical(func(), "START STOP")
+    ok <- all(t1, t2, t3)
+  }, silent = TRUE)
+  exists('ok') && isTRUE(ok)
+}
+
+test_func6 <- function() {
+  try({
+    func <- get('mad_libs', globalenv())
+    t1 <- identical(func(place = "Baltimore", adjective = "smelly", noun = "Roger Peng statue"), "News from Baltimore today where smelly students took to the streets in protest of the new Roger Peng statue being installed on campus.")
+    t2 <- identical(func(place = "Washington", adjective = "angry", noun = "Shake Shack"), "News from Washington today where angry students took to the streets in protest of the new Shake Shack being installed on campus.")
+    ok <- all(t1, t2)
+  }, silent = TRUE)
+  exists('ok') && isTRUE(ok)
+}
