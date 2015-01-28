@@ -320,3 +320,14 @@
   AnswerTests: test_func7()
   Hint: "Remember: 'Hello' %p% 'student!' is how you use the binary operator."
   Script: bin_op.R
+
+- Class: cmd_question
+  Output: "You made your own binary operator! Let's test it out. Paste together
+    the strings: 'I', 'love', 'R!' using your new binary operator."
+  CorrectAnswer: "'I' %p% 'love' %p% 'R!'"
+  AnswerTests: omnitest(correctExpr="'I' %p% 'love' %p% 'R!'")
+  Hint: 'Use %p% in between each string.'
+
+- Class: text
+  Output: "We've come to the end of our lesson! Go out there and write some
+    great functions!"

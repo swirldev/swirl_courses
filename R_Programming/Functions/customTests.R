@@ -62,3 +62,13 @@ test_func6 <- function() {
   }, silent = TRUE)
   exists('ok') && isTRUE(ok)
 }
+
+test_func7 <- function() {
+  try({
+    func <- get('%p%', globalenv())
+    t1 <- identical(func("Good", "job!"), "Good job!")
+    t2 <- identical(func("one", func("two", "three")), "one two three")
+    ok <- all(t1, t2)
+  }, silent = TRUE)
+  exists('ok') && isTRUE(ok)
+}

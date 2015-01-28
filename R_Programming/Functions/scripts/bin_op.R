@@ -9,9 +9,23 @@
 # Let's say I wanted to define a binary operator that multiplied two numbers and
 # then added one to the product. An implementation of that operator is below:
 #
-# "%mult_add_one%" <- function(left, right){
+# "%mult_add_one%" <- function(left, right){ # Notice the quotation marks!
 #   left * right + 1
 # }
 #
 # I could then use this binary operator like `4 %mult_add_one% 5` which would
 # evaluate to 21.
+#
+# Write your own binary operator below from absolute scratch! Your binary
+# operator must be called %p% so that the expression:
+#
+#       "Good" %p% "job!"
+#
+# will evaluate to: "Good job!"
+
+"%p%" <- function(){ # Remember to add arguments!
+  
+}
+
+
+
