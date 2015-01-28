@@ -1,0 +1,162 @@
+- Class: meta
+  Course: Statistical_Inference
+  Lesson: Probability1
+  Author: Swirl Coders
+  Type: Coursera
+  Organization: Johns Hopkins Bloomberg School of Public Health
+  Version: 2.2.0
+
+- Class: text
+  Output: "Probability. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Statistical_Inference/Probability.)"
+
+- Class: text
+  Output: In this lesson, we'll review basic ideas of probability, the study of quantifying the likelihood of particular events occurring. Note the similarity between the words probability and probably. Every time you use the latter word you're implying that an event is more likely than not to occur.
+
+- Class: mult_question
+  Output: The first step in understanding probability is to see if you understand what outcomes of an experiment are possible. For instance, if you were rolling a single, fair die once, how many outcomes are possible?
+  AnswerChoices: 6; 1; 4; Too many
+  CorrectAnswer: 6
+  AnswerTests: omnitest(correctVal='6')
+  Hint: How many sides or faces does a die (or any cube or box) have?
+
+- Class: mult_question
+  Output: The probability of a particular outcome of an experiment is the ratio of the number of ways that outcome can occur to all possible outcomes of the experiment. Since there are 6 possible outcomes to the experiment of rolling a die, and we assume the die is fair, each outcome is equally likely. So what is the probability of rolling a 2?
+  AnswerChoices: 1/6; 2/6; 1/3; 0
+  CorrectAnswer: 1/6
+  AnswerTests: omnitest(correctVal='1/6')
+  Hint: The '2' is one of six possibilities.
+
+- Class: mult_question
+  Output: What is the probability of rolling an even number?
+  AnswerChoices: 1/2; 1/3; 0; 1
+  CorrectAnswer: 1/2
+  AnswerTests: omnitest(correctVal='1/2')
+  Hint: Half of the outcomes are even and half are odd. There are three even outcomes (2,4, and 6) and three odd (1,3, and 5)
+
+- Class: text
+  Output: Since the probability of a particular outcome or event E is the ratio of ways that E could occur to the number of all possible outcomes or events, the probability of E, denoted P(E), is always between 0 and 1. Impossible events have a probability of 0 (since they can't occur) and events that are certain to occur have a probability of 1. 
+
+- Class: text
+  Output: If you're doing an experiment with n possible outcomes, say e1, e2, ..., en, then the sum of the probabilities of all the outcomes is 1. If all the outcomes are equally likely, as in the case of a fair die, then the probability of each is 1/n. 
+
+- Class: text
+  Output: If A and B are two independent events then the probability of them both occurring is the product of the probabilities. P(A&B) = P(A) * P(B)
+
+- Class: mult_question
+  Output: Suppose you rolled the fair die twice in succession. What is the probability of rolling two 4's?
+  AnswerChoices: 1/36; 2/6; 0; 1/6
+  CorrectAnswer: 1/36
+  AnswerTests: omnitest(correctVal='1/36')
+  Hint: The probability of rolling the first 4 is 1/6. The second roll of the dice doesn't depend on the outcome of the first, so that also has a probability of 1/6. The probability of both events occurring is 1/6 * 1/6. This makes intuitive sense since the probability of 2 such events occurring has to be smaller than the probability of only 1 event.
+
+- Class: mult_question
+  Output: Suppose you rolled the fair die twice. What is the probability of rolling the same number two times in a row?
+  AnswerChoices: 1/6; 2/6; 0; 1/36
+  CorrectAnswer: 1/6
+  AnswerTests: omnitest(correctVal='1/6')
+  Hint: Since we don't care what the outcome of the first roll is, its probability is 1. The second roll of the dice has to match the outcome of the first, so that  has a probability of 1/6. The probability of both events occurring is 1 * 1/6.
+
+- Class: mult_question
+  Output: Now consider the experiment of rolling 2 dice, one red and one green. Assume the dice are fair and not loaded. How many distinct outcomes are possible?
+  AnswerChoices: 36; 12; 11; 1
+  CorrectAnswer: 36
+  AnswerTests: omnitest(correctVal='36')
+  Hint: Each of the dice has 6 ways to land, and their outcomes are independent of each other. Each way the red die lands can be paired with each way the green die lands. For instance, a "1" on the red dice can occur independently of any of the 6 outcomes of the green dice. 
+
+- Class: text
+  Output: If an event E can occur in more than one way and these ways are disjoint (mutually exclusive) then P(E) is the sum of the probabilities of each of the ways in which it can occur. 
+
+- Class: mult_question
+  Output: Rolling these two dice, what's the probability of rolling a 10?
+  AnswerChoices: 3/36; 2/36; 1/6; 0
+  CorrectAnswer: 3/36
+  AnswerTests: omnitest(correctVal='3/36')
+  Hint: Since the highest possible dice roll is a '6', the only combinations which give '10' are 4+6 and 5+5. The first occurs in two ways - red dice gets '4' and green gets '6' OR red gets '6' and green gets '4'. 
+
+- Class: mult_question
+  Output: What sum is the most likely when rolling these two dice?
+  AnswerChoices: 7; 2; 12; 9; 1
+  CorrectAnswer: 7
+  AnswerTests: omnitest(correctVal='7')
+  Hint: The choice of '1' is impossible rolling two dice, and '2' and '12' each occur in only one possible way (snake-eyes and double 6's, respectively), so '7' and '9' are the only reasonable choices. To roll '7' you can use any number from '1' to '6', while '9' can only use outcomes of '3' and above.  
+
+- Class: text
+  Output: The probability of at least one of two events, A and B, occurring is the sum of their individual probabilities minus the probability of their intersection. P(A U B) = P(A) + P(B) - P(A&B). 
+
+- Class: text
+  Output: It's easy to see why this is. Calculating P(A) and P(B) counts outcomes that are in both A and B twice, so they're overcounted. The probability of the intersection of the two events, denoted as A&B, must be subtracted from the sum.
+
+- Class: mult_question
+  Output: Back to rolling two dice. Which expression represents the probability of rolling an even number or a number greater than 8?
+  AnswerChoices: (18+10-4)/36; (18+10)/36; (18+4-2)/36; (18+10-2)/36
+  CorrectAnswer: (18+10-4)/36
+  AnswerTests: omnitest(correctVal='(18+10-4)/36')
+  Hint: The probability of rolling an even number is 1/2 or 18/36. There are 10 ways of rolling a number greater than '8' - 4 ways for rolling '9', 3 for '10', 2 for '11' and 1 for '12'. How big is the intersection between rolling an even number and those greater than '8'?  
+
+- Class: text
+  Output: It follows that if A and B are disjoint or mutually exclusive, i.e. only one of them can occur, then  P(A U B) = P(A)+P(B) .
+
+- Class: mult_question
+  Output: Which of the following expressions represents the probability of rolling a number greater than 10?
+  AnswerChoices: (2+1)/36; (1+1)/36; (3+1)/36; (3+1-1)/36
+  CorrectAnswer: (2+1)/36
+  AnswerTests: omnitest(correctVal='(2+1)/36')
+  Hint: The only outcomes greater than 10 are 11 and 12 which are mutually exclusive. The first, 11, can occur in two ways, and the second, 12, can occur only with a roll of double 6's.   
+
+- Class: cmd_question
+  Output: Use the answer to the previous question and the fact that the sum of all outcomes must sum to 1 to determine the probability of rolling a number less than or equal to 10.
+  CorrectAnswer: 11/12
+  AnswerTests: equiv_val(correctVal=11/12)
+  Hint: Subtract the previous answer from 1.
+
+- Class: figure
+  Output: Now we'll apply the concepts of probability to playing cards.
+  Figure: runCards.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: A deck of cards is a set of 52 cards, 4 suits of 13 cards each. There are two red suits, diamonds and hearts, and two black suits, spades and clubs. Each of the 13 cards in a suit has a value -  an ace which is sometimes thought of as 1, a number from 2 to 10, and 3 face cards, king, queen, and jack. We've created a deck in R for you. Type 'deck' to see it now.
+  CorrectAnswer: 'deck'
+  AnswerTests: omnitest(correctExpr='deck')
+  Hint: Type deck at the R prompt.
+
+- Class: exact_question
+  Output: When drawing a single card, how many outcomes are possible?
+  CorrectAnswer: 52
+  AnswerTests: omnitest(correctVal=52)
+  Hint: How many cards are in the deck?
+
+- Class: cmd_question
+  Output: What is the probability of drawing a jack?
+  CorrectAnswer: 4/52
+  AnswerTests: equiv_val(1/13)
+  Hint: How many jacks are in the deck? Divide this number by the number of cards in the deck.
+
+- Class: cmd_question
+  Output: If you're dealt a hand of 5 cards, what is the probability of getting all 5 of the same value?
+  CorrectAnswer: 0
+  AnswerTests: equiv_val(0)
+  Hint: There are only 4 different suits in a deck.
+
+- Class: cmd_question
+  Output: What is the probability of drawing a face card?
+  CorrectAnswer: 3/13
+  AnswerTests: equiv_val(3/13)
+  Hint: There are 3 face cards in each of the 4 suits in the deck.
+
+- Class: mult_question
+  Output: Suppose you draw a face card and don't replace it in the deck. What is the probability that when you draw a second card it also will be a face card?
+  AnswerChoices: 11/51; 0; 12/51; 11/52
+  CorrectAnswer: 11/51
+  AnswerTests: omnitest(correctVal='11/51')
+  Hint: There are only 51 cards remaining in the deck, and of those, only 11 are face cards. 
+
+- Class: cmd_question
+  Output: Suppose you draw a face card and don't replace it in the deck. What is the probability that when you draw a second card it also will be a face card of the same suit?
+  CorrectAnswer: 2/51
+  AnswerTests: equiv_val(2/51)
+  Hint: There are 2 face cards of the same suit left in the deck.
+
+
+- Class: text
+  Output: Congrats! With probability 1, you've aced this first lesson on basic probability. 

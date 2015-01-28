@@ -40,13 +40,13 @@
   Hint: Use library(dplyr) to load the dplyr package.
 
 - Class: cmd_question
-  Output: It's important that you have dplyr version 0.3 or later. To confirm this, type packageVersion("dplyr").
+  Output: It's important that you have dplyr version 0.4.0 or later. To confirm this, type packageVersion("dplyr").
   CorrectAnswer: packageVersion("dplyr")
   AnswerTests: omnitest(correctExpr='packageVersion("dplyr")')
   Hint: Check what version of dplyr you have with packageVersion("dplyr").
 
 - Class: text
-  Output: If your dplyr version is not at least 0.3, then you should hit the Esc key now, reinstall dplyr, then resume this lesson where you left off.
+  Output: If your dplyr version is not at least 0.4.0, then you should hit the Esc key now, reinstall dplyr, then resume this lesson where you left off.
 
 - Class: cmd_question
   Output: "The first step of working with data in dplyr is to load the data into what the package authors call a 'data frame tbl' or 'tbl_df'. Use the following code to create a new tbl_df called cran: \n\ncran <- tbl_df(mydf)."
@@ -55,10 +55,10 @@
   Hint: Type cran <- tbl_df(mydf) to create a new tbl_df called cran.
 
 - Class: cmd_question
-  Output: To avoid confusion and keep things running smoothly, let's remove the original dataframe from your workspace with rm("mydf").
+  Output: To avoid confusion and keep things running smoothly, let's remove the original data frame from your workspace with rm("mydf").
   CorrectAnswer: rm("mydf")
   AnswerTests: omnitest(correctExpr='rm("mydf")')
-  Hint: Use rm("mydf") to remove the original dataframe from your workspace.
+  Hint: Use rm("mydf") to remove the original data frame from your workspace.
 
 - Class: cmd_question
   Output: From ?tbl_df, "The main advantage to using a tbl_df over a regular data frame is the printing." Let's see what is meant by this. Type cran to print our tbl_df to the console.
@@ -73,7 +73,7 @@
   Output: First, we are shown the class and dimensions of the dataset. Just below that, we get a preview of the data. Instead of attempting to print the entire dataset, dplyr just shows us the first 10 rows of data and only as many columns as fit neatly in our console. At the bottom, we see the names and classes for any variables that didn't fit on our screen.
 
 - Class: text
-  Output: 'According to the "Introduction to dplyr" vignette written by the package authors, "The dplyr philosophy is to have small functions that each do one thing well." Specifically, dplyr supplies five ''verbs'' that cover all fundamental data manipulation tasks: select(), filter(), arrange(), mutate(), and summarize().'
+  Output: 'According to the "Introduction to dplyr" vignette written by the package authors, "The dplyr philosophy is to have small functions that each do one thing well." Specifically, dplyr supplies five ''verbs'' that cover most fundamental data manipulation tasks: select(), filter(), arrange(), mutate(), and summarize().'
 
 - Class: cmd_question
   Output: Use ?select to pull up the documentation for the first these core functions.
@@ -265,7 +265,7 @@
   Output: The size variable represents the download size in bytes, which are units of computer memory. These days, megabytes (MB) are a more common unit of measurement. One megabyte is equal to 2^20 bytes. That's 2 to the power of 20, which is approximately one million bytes!
 
 - Class: cmd_question
-  Output: "We want to add a column called size_mb that contains the download size in megabytes. Here''s the code to do it:\n\nmutate(cran3, size_mb = size / 2^20)"
+  Output: "We want to add a column called size_mb that contains the download size in megabytes. Here's the code to do it:\n\nmutate(cran3, size_mb = size / 2^20)"
   CorrectAnswer: mutate(cran3, size_mb = size / 2^20)
   AnswerTests: omnitest('mutate(cran3, size_mb = size / 2^20)')
   Hint: mutate(cran3, size_mb = size / 2^20) will add a new column called size_mb that contains the download size in megabytes.

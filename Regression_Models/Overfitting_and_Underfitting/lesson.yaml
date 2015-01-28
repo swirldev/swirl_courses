@@ -36,7 +36,7 @@
   Hint: Just enter x1c <- simbias() at the R prompt.
 
 - Class: cmd_question
-  Output: "The actual coefficient of x1 is 1. Having been warned that omitting a correlated regressor would bias estimates of x1's coefficient, we would expect the mean estimate of x1c's second row to be farther from 1 than the mean of x1c's second row. Using apply(x1c, 1, mean), find the means of each row."
+  Output: "The actual coefficient of x1 is 1. Having been warned that omitting a correlated regressor would bias estimates of x1's coefficient, we would expect the mean estimate of x1c's second row to be farther from 1 than the mean of x1c's first row. Using apply(x1c, 1, mean), find the means of each row."
   CorrectAnswer: apply(x1c, 1, mean)
   AnswerTests: omnitest(correctExpr='apply(x1c, 1, mean)')
   Hint: Enter apply(x1c, 1, mean) at the R prompt.

@@ -25,7 +25,7 @@
   Hint: Type my_vector to view its contents.
 
 - Class: cmd_question
-  Output: The dim() function tells us the 'dimensions' of an object. What happens if we do dim(my_vector)? Give it try.
+  Output: The dim() function tells us the 'dimensions' of an object. What happens if we do dim(my_vector)? Give it a try.
   CorrectAnswer: dim(my_vector)
   AnswerTests: omnitest(correctExpr='dim(my_vector)')
   Hint: Just type dim(my_vector) to see what happens.
@@ -100,7 +100,7 @@
   Hint: If you're not sure about this one, then checkout the documentation for identical() using the `?` function.
 
 - Class: text
-  Output: Now, imagine that the numbers in our table represent some measurements from a clinical experiment, where each row represents one patient and each column represents one variable for which measurements where taken.
+  Output: Now, imagine that the numbers in our table represent some measurements from a clinical experiment, where each row represents one patient and each column represents one variable for which measurements were taken.
 
 - Class: text
   Output: We may want to label the rows, so that we know which numbers belong to each patient in the experiment. One way to do this is to add a column to the matrix, which contains the names of all four people.

@@ -221,10 +221,10 @@
   Hint: failed <- failed %>% mutate(status = "failed") is what you're looking for.
 
 - Class: cmd_question
-  Output: Now, pass as arguments the passed and failed tables (in order) to the dplyr function rbind_list() (for 'row bind'), which will join them together into a single unit. Check ?rbind_list if you need help.
-  CorrectAnswer: rbind_list(passed, failed)
-  AnswerTests: match_call('rbind_list(passed, failed)')
-  Hint: Call rbind_list() with two arguments, passed and failed (in that order), to join the two tables.
+  Output: "Now, pass as arguments the passed and failed tables (in order) to the dplyr function bind_rows(), which will join them together into a single unit. Check ?bind_rows if you need help.\n\nNote: bind_rows() is only available in dplyr 0.4.0 or later. If you have an older version of dplyr, please quit the lesson, update dplyr, then restart the lesson where you left off. If you're not sure what version of dplyr you have, type packageVersion('dplyr')."
+  CorrectAnswer: bind_rows(passed, failed)
+  AnswerTests: match_call('bind_rows(passed, failed)')
+  Hint: Call bind_rows() with two arguments, passed and failed (in that order), to join the two tables.
 
 - Class: text
   Output: Of course, we could arrange the rows however we wish at this point, but the important thing is that each row is an observation, each column is a variable, and the table contains a single observational unit. Thus, the data are tidy.
