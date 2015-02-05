@@ -75,7 +75,7 @@
   Output: Suppose we were going to flip a biased coin 5 times. The probability of tossing a head is .8 and a tail .2. What is the probability that you'll toss at least 3 heads.
   CorrectAnswer: 0.94208
   AnswerTests: equiv_val(0.94208)
-  Hint: You'll have to add together 3 terms each of the form, choose(5,x)*(.8)^x*(.2)(5-x) for x=3,4,5 . 
+  Hint: You'll have to add together 3 terms each of the form, choose(5,x)*(.8)^x*(.2)^(5-x) for x=3,4,5 . 
 
 - Class: cmd_question
   Output: Now you can verify your answer with the R function pbinom. The quantile is 2, the size is 5, the prob is .8 and the lower.tail is FALSE. Try it now.
