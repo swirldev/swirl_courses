@@ -162,7 +162,7 @@
   Output:  Now look at the difference between the median of fh and the median of meds.
   CorrectAnswer: median(meds)-median(fh)
   AnswerTests: ANY_of_exprs("median(meds)-median(fh)","median(fh)-median(meds)")
-  Hint: Type median(meds)-median(fh) or median(meds)-median(fh) at the command prompt.
+  Hint: Type median(meds)-median(fh) or median(fh)-median(meds) at the command prompt.
 
 - Class: cmd_question
   Output:  Pretty close, right? Now use the R function sd to estimate the standard error of the vector meds.
