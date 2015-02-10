@@ -1,0 +1,147 @@
+- Class: meta
+  Course: Writing swirl Courses
+  Lesson: Supporting Files
+  Author: swirl coders
+  Type: Standard
+  Organization: swirl coders
+  Version: 2.2.20
+
+- Class: text
+  Output: "The previous lesson briefly described the primary file in a swirl lesson, 
+  lesson.yaml. This lesson will deal with the swirl course directory structure and 
+  supporting files. With luck, a tree diagram of swirl's R Programming course has 
+  appeared in a convenient editor or viewer. If not, a copy of tree.txt should 
+  have been placed in subdirectory swirl_temp of your working directory, and you 
+  should open it with a convenient application."
+
+- Class: mult_question  
+  Output: "We'll call attention to salient features of the tree with a series 
+  of trivial questions. First, what is the name of the top level directory in the tree?"
+  AnswerChoices: R_Programming;Base_Graphics;MANIFEST
+  CorrectAnswer: R_Programming
+  AnswerTests: omnitest(correctVal= 'R_Programming')
+  Hint: "Base_Graphics is a subdirectory, and MANIFEST is a file."
+
+- Class: mult_question  
+  Output: "The top level directory of a course is the name of the course with 
+  underscores replacing spaces. What do the names of the subdirectories represent?"
+  AnswerChoices: The names of lessons;Supporting files
+  CorrectAnswer: The names of lessons
+  AnswerTests: omnitest(correctVal= 'The names of lessons')
+  Hint: "The names of subdirectories are the names of lessons with underscores 
+  replacing spaces."
+
+- Class: mult_question  
+  Output: "The subdirectories, Base_Graphics and so on, correspond to individual 
+  lessons. Note that all the lesson subdirectories contain a lesson.yaml file. 
+  Most contain an initLesson.R file, and some contain a customTests.R file. 
+  The Dates_and_Times subdirectory contains a file with a csv (comma separated 
+  variable) extension. Based on the name of that file, what would you suppose 
+  it contains?"
+  AnswerChoices: Data;A NYC E train schedule;Emoticons 
+  CorrectAnswer: Data
+  AnswerTests: omnitest(correctVal= 'Data')
+  Hint: "Are you kidding?"
+
+- Class: text
+  Output: "Lesson subdirectories may contain any kind of file, text files, data files, 
+  images, and so on. They *must* contain a lesson file. For historical reasons, a 
+  lesson file may be in one of several formats. In practice, only yaml is used now, 
+  and the file is called either lesson.yaml or lesson (with no extension.)"
+
+- Class: mult_question  
+  Output: "Please hazard a guess as to what controls the order in which lessons 
+  are presented in swirl's lesson menu."
+  AnswerChoices: The order in which they appear in the MANIFEST;The order in which they appear in the tree;A random number generator
+  CorrectAnswer: The order in which they appear in the MANIFEST
+  AnswerTests: omnitest(correctVal= 'The order in which they appear in the MANIFEST')
+  Hint: "The tree may be ordered differently, by name, by date, and so on, 
+  depending on system settings."
+
+- Class: figure
+  Output: "Hopefully, the MANIFEST for the *present* course (i.e., not R Programming) has appeared. 
+  If not, find it in subdirectory swirl_temp of your working directory and view it in a 
+  separate application. (From now on we will severely abbreviate this caveat.) Only items 
+  which appear in the MANIFEST will appear in swirl's lesson menu."
+  Figure: showManifest.R
+  FigureType: new
+
+- Class: mult_question  
+  Output: "Where is the MANIFEST file found?"
+  AnswerChoices: "In the course directory at top level;In the subdirectory of the first lesson; In the R subdirectory."
+  CorrectAnswer: In the course directory at top level
+  AnswerTests: omnitest(correctVal= 'In the course directory at top level')
+  Hint: "Without a MANIFEST, it wouldn't know which lesson came first. Not all courses 
+  have an R subdirectory."
+
+# This is the first question in the course which uses a test other than omnitest.
+# The test, any_of_exprs(arg1, arg2, ...), will allow any of its arguments as correct answers.
+# It uses omnitest for each of its arguments. Note that quotation marks, single and double,
+# become somewhat confusing here. This is an occupational hazard and it is generally a good 
+# idea to use yaml.load_file() to check your lesson file's syntax as you compose the lesson. 
+# By the way, omnitest is smart enough equate single and double quotes when appropriate, so 
+# if a user enters, e.g., dir(find_course("Writing swirl Courses")) with double quotes, rather than 
+# dir(find_course('Writing swirl Courses')) with single quotes, the answer will still be correct.
+- Class: cmd_question
+  Output: "The initLesson.R function for this lesson defined a function called find_course(course). 
+  It will determine the location of any swirl course which is presently installed. 
+  Use find_course('Writing swirl Courses'), with either dir or list.files to view the contents of 
+  the installed Writing_swirl_Courses directory."
+  CorrectAnswer: dir(find_course('Writing swirl Courses'))
+  AnswerTests: any_of_exprs("dir(find_course('Writing swirl Courses'))", "list.files(find_course('Writing swirl Courses'))", "dir(find_course('Writing_swirl_Courses'))", "list.files(find_course('Writing_swirl_Courses'))")
+  Hint: Enter dir(find_course('Writing swirl Courses'))
+
+- Class: text
+  Output: "Note that the directory for this course contains a number of things which don't 
+  show up as lessons in swirl's lesson menu. These include the MANIFEST file itself, of course, 
+  but also a subdirectory named R which contains R scripts shared by several lessons. There could also 
+  be, e.g., a directory for common data, images and so on. As long a MANIFEST file exists, only 
+  its contents will appear in swirl's lesson menu."
+
+- Class: figure
+  Output: "Look at this lesson's initLesson.R file, opening it manually if necessary. It just 
+  sources utility.R and uses one of the utility functions to display a tree diagram of the 
+  R Programming course directory. This file is what caused the tree diagram to appear at the 
+  outset. The tree diagram itself is in a text file included in the 
+  lesson directory."
+  Figure: showInit.R
+  FigureType: new
+
+- Class: figure
+  Output: "Look next at this lesson's customTests.R file, opening it manually if necessary. 
+  It contains only comments which tell you how to turn off a feature which may affect 
+  performance, and what to do instead. Custom tests are an advanced topic and will be 
+  covered in a later lesson. They are used to test answers for which the tests included 
+  with swirl are not adequate. For instance, a course author might want to test that 
+  a student gives a plot some title, but does not care what the title is. A custom test 
+  would be needed for that."
+  Figure: showCustom.R
+  FigureType: new
+
+- Class: text
+  Output: "A lesson's dependson.txt file lists extra packages which are needed to 
+  complete the lesson. Package names are listed one per line. Since this lesson does 
+  not need extra packages, its dependson.txt file is blank and we will not display it."
+  
+- Class: mult_question  
+  Output: "A MANIFEST file is loaded when a course is chosen. When are the three 
+  supporting files, initLesson.R, customTests.R, and dependson.txt, loaded?"
+  AnswerChoices: At the beginning of a lesson.;At the end of the last lesson.;At the course author's discretion.
+  CorrectAnswer: At the beginning of a lesson.
+  AnswerTests: omnitest(correctVal= 'At the beginning of a lesson.')
+  Hint: Not at the author's discretion. And what about the first lesson?
+  
+- Class: mult_question  
+  Output: "Which two of these three supporting files prepare the user's workspace?"
+  AnswerChoices: "initLesson.R and dependson.txt;initLesson.R and customTests.R;customTests.R and dependson.txt"
+  CorrectAnswer: initLesson.R and dependson.txt
+  AnswerTests: omnitest(correctVal= 'initLesson.R and dependson.txt')
+  Hint: "The customTests.R file is for the author's use in scoring answers. The other two 
+  cause packages and data to be prepared for the user."
+
+- Class: text
+  Output: "This completes our overview of course directory and supporting file structure. 
+  This lesson contains a number of R scripts, showInit.R, showManifest.R, and showCustom.R, 
+  which are used by 'figure' items to display file and copy them to subdirectory swirl_temp
+  of your working directory. (You may want to remove them now.) Items of Class figure were 
+  covered in the previous lesson, hence were not discussed here."

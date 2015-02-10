@@ -1,0 +1,21 @@
+Text -- just information, no user response necessary
+
+Figure -- like text, except a file is sourced to produce a  plot or image.
+
+Text Question -- the user must type an answer such as "The Mystery Machine". It can be tested with a regexp using the val_matches(regular_expression) test. (Infrequent.)
+
+Text Many Question -- like a text question but requires several comma-separated answers. Order doesn't matter. (Infrequent.)
+
+Text Order Question -- like text many question but order does matter. (Infrequent.)
+
+Video -- the user is asked if he or she would like to visit a web page or watch a browser-based video such as a lecture. If so, swirl attempts to open the system web browser to a given location.
+
+Mult Question -- multiple choice question.
+
+Exact Question -- the user is asked for an exact number, e.g., "How many Stooges are there?"
+
+Range Question -- the user is asked (if I remember correctly) for an estimated number which should be within a certain range.
+
+Command Question -- the user is asked to enter a line of valid R code such as x <- lm(speed ~ dist, cars).
+
+Script -- the user is asked to write some code in the editor and type submit() in the console when finished. (Experimental.)
