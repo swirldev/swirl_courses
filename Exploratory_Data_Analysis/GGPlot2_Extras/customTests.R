@@ -15,6 +15,14 @@ equiv_val <- function(correctVal){
   
 }
 
+# Stage a variable for inclusion is swirl's protected list. Staged variables
+# will be included if and only if a user's answer passes all the current tests.
+stageVariable <- function(name_of_variable, value){
+  name_of_variable <- as.character(name_of_variable)
+  e <- getState()
+  e$delta[[name_of_variable]] <- value
+}
+
 omnitest <- function(correctExpr=NULL, correctVal=NULL, strict=FALSE, eval_for_class=as.logical(NA)){
   e <- get("e", parent.frame())
   # Trivial case

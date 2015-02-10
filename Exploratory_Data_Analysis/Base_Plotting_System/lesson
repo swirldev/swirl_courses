@@ -29,7 +29,7 @@
   Hint: Which choice  has a negative contraction in it?
 
 - Class: text
-  Output: Yes! The base system is very intuitive and easy to use. You can't go backwards, though, say, if you need to readjust margins or misspell a caption. A finished plot will be a series of R commands, so it's difficult to translate a finished plot into a different system.
+  Output: Yes! The base system is very intuitive and easy to use. You can't go backwards, though, say, if you need to readjust margins or misspelled a caption. A finished plot will be a series of R commands, so it's difficult to translate a finished plot into a different system.
 
 - Class: text
   Output:  Calling a basic routine such as plot(x, y) or hist(x)  launches a graphics device (if one is not already open) and draws a new plot on the device. If the arguments to plot or hist are not of some special class, then the default method  is called.

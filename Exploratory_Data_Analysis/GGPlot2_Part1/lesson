@@ -63,7 +63,7 @@
   Hint: Type str(mpg) at the command prompt.
 
 - Class: cmd_question
-  Output: We see that there are 234 points in the dataset concerning 11 different characteristics of the cars. Suppose we want to see if there's a correlation betwwen engine displacement (displ) and highway miles per gallon (hwy). As we did with the plot function of the base system we could simply call  qplot with 3 arguments, the first two are the variables we want to examine and the third argument data is set equal to the name of the dataset which contains them (in this case, mpg). Try this now.
+  Output: We see that there are 234 points in the dataset concerning 11 different characteristics of the cars. Suppose we want to see if there's a correlation between engine displacement (displ) and highway miles per gallon (hwy). As we did with the plot function of the base system we could simply call  qplot with 3 arguments, the first two are the variables we want to examine and the third argument data is set equal to the name of the dataset which contains them (in this case, mpg). Try this now.
   CorrectAnswer: qplot(displ, hwy, data = mpg)
   AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg)')
   Hint: Type qplot(displ, hwy, data = mpg) at the command prompt.

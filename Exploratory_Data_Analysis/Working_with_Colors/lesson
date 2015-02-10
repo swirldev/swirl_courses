@@ -93,7 +93,7 @@
   Hint: The correct answer should be halfway between (255,0,0) and (0,0,255). Which is the only choice that is the average (mean) of these two?
 
 - Class: cmd_question
-  Output:  The function pal can take more than one argument. It returns one 3-long (or 4-long, but more about this later) vector for each argument. To see this is action, call pal with the argument seq(0,1,len=6).
+  Output:  The function pal can take more than one argument. It returns one 3-long (or 4-long, but more about this later) vector for each argument. To see this in action, call pal with the argument seq(0,1,len=6).
   CorrectAnswer: pal(seq(0,1,len=6))
   AnswerTests: omnitest(correctExpr='pal(seq(0,1,len=6))')
   Hint: Type pal(seq(0,1,len=6)) at the command prompt.

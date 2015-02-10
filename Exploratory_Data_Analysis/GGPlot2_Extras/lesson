@@ -195,7 +195,7 @@
 - Class: cmd_question
   Output:  First create a graphical object g by assigning to it the output of a call to the function ggplot with 2 arguments. The first is the dataset diamonds and the second is a call to the function aes with 2 arguments, depth and price. Remember you won't see any result.
   CorrectAnswer: g <- ggplot(diamonds,aes(depth,price))
-  AnswerTests: omnitest(correctExpr='g <- ggplot(diamonds,aes(depth,price))')
+  AnswerTests: expr_creates_var("g"); omnitest(correctExpr='g <- ggplot(diamonds,aes(depth,price))')
   Hint: Type g <- ggplot(diamonds,aes(depth,price)) at the command prompt.
 
 - Class: cmd_question
@@ -230,12 +230,18 @@
 
 - Class: cmd_question
   Output: We see a 4-long vector (explaining why length was set equal to 4). We also see that .2 is the smallest carat size in the dataset and 5.01 is the largest. One third of the diamonds are between .2 and .5 carats and another third are between .5 and 1 carat in size. The remaining third are between 1 and 5.01 carats. Now we can use the R command cut to label each of the 53940 diamonds in the dataset as belonging to one of these 3 factors. Create a new name in diamonds, diamonds$car2 by assigning it the output of the call to cut. This command takes 2 arguments, diamonds$carat, which is what we want to cut, and cutpoints, the places where we'll cut.
-  CorrectAnswer: diamonds$car2 <- cut(diamonds$carat,cutpoints)
-  AnswerTests:  omnitest(correctExpr='diamonds$car2 <- cut(diamonds$carat,cutpoints)')
+  CorrectAnswer: diamonds$car2 <- cut(diamonds$carat,cutpoints); stageVariable("diamonds$car2",diamonds$car2)
+  AnswerTests:   omnitest(correctExpr='diamonds$car2 <- cut(diamonds$carat,cutpoints)')
   Hint: Type diamonds$car2 <- cut(diamonds$carat,cutpoints)  at the command prompt.
 
 - Class: cmd_question
-  Output: Now we can continue with our multi-facet plot. Recall the last plotting expression you typed was g+geom_point(alpha=1/3). Recall this expression (or retype it) and add a call to the function facet_grid using the formula cut ~ car2 as its argument.
+  Output: Now we can continue with our multi-facet plot. First we have to reset g since we changed the dataset (diamonds) it contained (by adding a new column). Assign to g the output of a call to ggplot with 2 arguments. The dataset diamonds is the first, and a call to the function aes with 2 arguments (depth,price) is the second.
+  CorrectAnswer: g <- ggplot(diamonds,aes(depth,price))
+  AnswerTests: expr_creates_var("g"); omnitest(correctExpr='g <- ggplot(diamonds,aes(depth,price))')
+  Hint: Type g <- ggplot(diamonds,aes(depth,price)) at the command prompt.
+
+- Class: cmd_question
+  Output: Now add to g  calls to 2 functions. This first is a call to geom_point with the argument alpha set equal to 1/3. The second is a call to the function facet_grid using the formula cut ~ car2 as its argument.
   CorrectAnswer: g+geom_point(alpha=1/3)+facet_grid(cut~car2)
   AnswerTests:  omnitest(correctExpr='g+geom_point(alpha=1/3)+facet_grid(cut~car2)')
   Hint: Type g+geom_point(alpha=1/3)+facet_grid(cut~car2)  at the command prompt.

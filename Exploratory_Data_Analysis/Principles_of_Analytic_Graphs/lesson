@@ -145,21 +145,21 @@
   Output: Review time!!!
 
 - Class: mult_question
-  Output: Which of the following is NOT be a good principle of graphing?
+  Output: Which of the following is NOT a good principle of graphing?
   AnswerChoices: To integrate multiple modes of evidence; To describe and document evidence; Content is king; Having unreadable labels
   CorrectAnswer: Having unreadable labels
   AnswerTests: omnitest(correctVal='Having unreadable labels')
   Hint: Which choice  is obviously bad?
 
 - Class: mult_question
-  Output: Which of the following is NOT be a good principle of graphing?
+  Output: Which of the following is NOT a good principle of graphing?
   AnswerChoices: To prove you're always right; To show two competing hypotheses; To demonstrate a causative mechanism underlying a correlation; Content is king
   CorrectAnswer: To prove you're always right
   AnswerTests: omnitest(correctVal='To prove you\'re always right')
   Hint: Which choice  is obviously bad?
 
 - Class: mult_question
-  Output: Which of the following is NOT be a good principle of graphing?
+  Output: Which of the following is NOT a good principle of graphing?
   AnswerChoices: To integrate different types of evidence; To show that some fonts are better than others; To show good labels and scales; Content is king
   CorrectAnswer: To show that some fonts are better than others
   AnswerTests: omnitest(correctVal='To show that some fonts are better than others')
