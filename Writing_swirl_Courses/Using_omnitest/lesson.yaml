@@ -136,5 +136,5 @@
 - Class: text
   Output: "This completes the lesson on using omnitest. It is quite possible to write  
   decent swirl lessons using just the material from this and the previous two lessons. 
-  The subsequent two lessons cover other question types and introduce custom tests 
+  The subsequent two lessons which cover other question types and introduce custom tests 
   round out the basics of writing swirl courses."

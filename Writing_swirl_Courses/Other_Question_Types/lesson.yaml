@@ -46,7 +46,7 @@
 # This is the first appearance of a video question in the course.
 - Class: video
   Output: "In the case of a text or fill-in-the-blanks question, a feature which could 
-  could automatically deal with common misspellings and typographical errors would be nice. 
+  automatically deal with common misspellings and typographical errors would be nice. 
   R provides some functionality for spell checking, i.e., function aspell() in the standard 
   utils package. More pertinent to the topic of this lesson is a recent R-Bloggers article 
   entitled \"Peter Norvig's Spell Checker in Two Lines of Base R\". The reason for its pertinence 
@@ -60,7 +60,7 @@
   for several character strings as answers. As with range questions, there is no reasonable 
   way to check them with built-in tests, hence they would require custom tests. Since they 
   also involve complications of spelling and typographical errors, we'll introduce custom 
-  tests with a range question instead. It will based on a Box Plot of the Galton data and 
+  tests with a range question instead. It will be based on a Box Plot of the Galton data and 
   specified in customTests.R. Please open customTests.R now if necessary, and look at 
   the source code for the range_test function."
   Figure: showCustom.R
@@ -71,9 +71,9 @@
   Output: "The figure shows a Box Plot of the Galton data. The user will be asked to 
   enter a number, but could actually enter an expression such as (68+69)/2, or even 
   mean(galton$parent). The range_test function will only check the value calculated. Now for the 
-  question. The mean parental height is indicated by the bold horizontal line in the 
+  question. The median parental height is indicated by the bold horizontal line in the 
   center of Box Plot labeled 'parent'. What value in inches would you assign to this 
-  mean?"
+  median?"
   CorrectAnswer: 68.5
   AnswerTests: range_test(68, 69)
   Hint: Pick a height in inches between the two red, dashed lines.
