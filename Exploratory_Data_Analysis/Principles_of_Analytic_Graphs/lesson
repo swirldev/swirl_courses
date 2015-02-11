@@ -20,7 +20,7 @@
   Hint: Which choice  has nothing to do with data science?
 
 - Class: text
-  Output: You're ready to start. Graphs give us a visual form of data, and the first principle of analytic graphs is to show some comparison. You'll hear more about this when you study statististical inference (another great course BTW), but evidence for a hypothesis is always relative to another competing or alternative hypothesis.  
+  Output: You're ready to start. Graphs give us a visual form of data, and the first principle of analytic graphs is to show some comparison. You'll hear more about this when you study statistical inference (another great course BTW), but evidence for a hypothesis is always relative to another competing or alternative hypothesis.  
 
 - Class: figure
   Output: When presented with a claim that something is good, you should always ask "Compared to What?" This is why in commercials you often hear the phrase "other leading brands". An implicit comparison, right?
@@ -126,7 +126,7 @@
   Output: The fourth principle of analytic graphing involves integrating evidence. This means not limiting yourself to one form of expression. You can use  words, numbers, images as well as diagrams. Graphics should make use of many modes of data presentation. Remember, "Don't let the tool drive the analysis!"
 
 - Class: figure
-  Output: To show you what we mean, here's an example of a figure taken from a paper published in the Journal of the AMA. It shows the relationship between pollution and hospitalization of people with heart disease. As you can see, it's a lot different from our previous plots. The solid circles in the center portion indicate point estimates of percentage changes in hospitalization rates for different levels of pollution. The lines through the circles indicate confidence intervals associated with these estimates. (You'll learn more about confidence intervals in that great course on statistical inference I mentioned earlier.) 
+  Output: To show you what we mean, here's an example of a figure taken from a paper published in the Journal of the AMA. It shows the relationship between pollution and hospitalization of people with heart disease. As you can see, it's a lot different from our previous plots. The solid circles in the center portion indicate point estimates of percentage changes in hospitalization rates for different levels of pollution. The lines through the circles indicate confidence intervals associated with these estimates. (You'll learn more about confidence intervals in another great course, this one on statistical inference.) 
   Figure: ITG.R
   FigureType: new
 
