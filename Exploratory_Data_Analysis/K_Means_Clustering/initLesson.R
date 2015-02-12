@@ -50,6 +50,7 @@ cols1 <- c("red","orange","purple")
 newCx <- tapply(x,newClust,mean)
 newCy <- tapply(y,newClust,mean)
 distTmp2 <- mdist(x,y,newCx,newCy)
+newClust2 <- apply(distTmp2,2,which.min)
 finalCx <- tapply(x,newClust2,mean)
 finalCy <- tapply(y,newClust2,mean)
 kmObj <- kmeans(dataFrame,3)
@@ -57,5 +58,4 @@ kmObj <- kmeans(dataFrame,3)
 # distTmp2[1,] <- (x-newCx[1])^2 + (y-newCy[1])^2
 # distTmp2[2,] <- (x-newCx[2])^2 + (y-newCy[2])^2
 # distTmp2[3,] <- (x-newCx[3])^2 + (y-newCy[3])^2
-newClust2 <- apply(distTmp2,2,which.min)
 
