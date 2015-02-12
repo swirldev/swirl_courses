@@ -193,7 +193,7 @@
   Hint: Use setwd(old.dir).
 
 - Class: text
-  Output: It is often help to save the settings that you had before you began an analysis and then go back to them at the end. This trick is often used within functions; you save, say, the par() settings that you started with, mess around a bunch, and then set them back to the original values at the end. This isn't the same as what we have done here, but it seems similar enough to mention.
+  Output: It is often helpful to save the settings that you had before you began an analysis and then go back to them at the end. This trick is often used within functions; you save, say, the par() settings that you started with, mess around a bunch, and then set them back to the original values at the end. This isn't the same as what we have done here, but it seems similar enough to mention.
 
 - Class: cmd_question
   Output: Delete the "testdir" directory that you just left (and everything in it)
