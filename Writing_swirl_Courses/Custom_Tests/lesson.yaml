@@ -98,7 +98,7 @@
 - Class: mult_question  
   Output: "To review, suppose you turn off autodection of new variables by setting 
   AUTO_DETECT_NEWVAR to FALSE. Then, on questions in which the user is expected to 
-  create varibles, what should you do to compensate?"
+  create variables, what should you do to compensate?"
   AnswerChoices: Use AnswerTest expr_creates_var.;Nothing since omnitest will compensate;Write a custom test which detects and stores the created variable.
   CorrectAnswer: Use AnswerTest expr_creates_var.
   AnswerTests: omnitest(correctVal= 'Use AnswerTest expr_creates_var.')||omnitest(correctVal='Write a custom test which detects and stores the created variable.')
@@ -129,9 +129,9 @@
 - Class: mult_question  
   Output: "The function, test_assignment, uses three functions from testAPI.R, a script which 
   we'll display towards the end of this lesson. Which three are they?"
-  AnswerChoices: getExpr, getVar, and stageVariable;getExpr, getVar, and all.equal;stageVariable, is, and all.equal
-  CorrectAnswer: getExpr, getVar, and stageVariable
-  AnswerTests: omnitest(correctVal= 'getExpr, getVar, and stageVariable')
+  AnswerChoices: getExpr, getVal, and stageVariable;getExpr, getVal, and all.equal;stageVariable, is, and all.equal
+  CorrectAnswer: getExpr, getVal, and stageVariable
+  AnswerTests: omnitest(correctVal= 'getExpr, getVal, and stageVariable')
   Hint: "Read the comments and try again."
 
 - Class: mult_question  

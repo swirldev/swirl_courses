@@ -45,18 +45,18 @@
   Output: So you have to be careful if you're copying and pasting the correct answer, from the list of choices to the CorrectAnswer key  and to the correctVal argument of omnitest. Make sure you don't pick up extra white space.
 
 - Class: mult_question
-  Output:  Which of the following choices might pose a problem if you're just copying and pasting the correct answer from the list of choices to the correctVal of omnitest?
+  Output:  Which of the following choices might pose a problem if you're just copying and pasting the correct answer from the list of choices to the correctVal of omnitest and enclosing it in single quotation marks?
   AnswerChoices:  Yes; No; I wouldn't know
   CorrectAnswer: I wouldn't know
-  AnswerTests: omnitest(correctVal="I wouldn\'t know")
-  Hint: The choice with the punctuation mark might pose a problem inside quotation marks.
+  AnswerTests: omnitest(correctVal="I wouldn't know")
+  Hint: The choice with the punctuation mark might pose a problem inside single quotation marks.
 
 - Class: mult_question
-  Output: If your correct choice has an apostrophe in it you must escape it (precede it with a \) when you pass it to omnitest as a correctVal argument. Which of the following would be the correct AnswerTests value for the previous question? 
-  AnswerChoices:  omnitest(correctVal="I wouldn\'t know"); omnitest(correctVal="I wouldn't know"); omnitest(correctExpr="I wouldn\'t know"); omnitest(correctExpr="I wouldn't know")
-  CorrectAnswer: omnitest(correctVal="I wouldn\'t know")
-  AnswerTests: omnitest(correctVal='omnitest(correctVal=\"I wouldn\\\'t know\")')
-  Hint: Recall the emphasis on VALUES (not expressions) and the need to escape punctuation marks.
+  Output: If your correct choice has an apostrophe in it, and if you're using enclosing your correctVal argument in single quotation marks when you call omnitest, you must escape it (precede it with a \). Which of the following would be the correct AnswerTests value for the previous question? 
+  AnswerChoices:  omnitest(correctVal='I wouldn\'t know'); omnitest(correctVal="I would not know"); omnitest(correctExpr="I wouldn\'t know"); omnitest(correctExpr="I wouldn't know")
+  CorrectAnswer: omnitest(correctVal='I wouldn\'t know')
+  AnswerTests: omnitest(correctVal='omnitest(correctVal=\'I wouldn\\\'t know\')')
+  Hint: One of the choices rewords the answer from the last question, so it should be eliminated immediately. Recall the emphasis on VALUES (not expressions) and the need to escape punctuation marks.
 
 - Class: text
   Output: So omnitest expects a correctVal, a constant, and since you have to put the correct value in quotation marks (either kind) you have to escape any quotation marks (or apostrophes) in your correctVal argument.
