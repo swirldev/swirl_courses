@@ -34,6 +34,12 @@ relevance to big data, issues of multiple testing and resampling.
 
 Since our users come from a variety backgrounds, it's very hard to label material as **Beginner**, **Intermediate**, or **Advanced**. If you find something that is labelled **Beginner** to be challenging, please don't be discouraged. The first step of learning anything is to acknowledge that you are capable of understanding it. True understanding will come with time and practice.
 
+#### Course Authors
+
+- **Writing swirl Courses**: An interactive guides and example 
+  for swirl course authors. The first group of lesson cover basics. The rest cover 
+  special topics useful primarily as samples--points of departure for one's own material.
+
 ## Install and run a course automatically from swirl
 
 **This is the preferred method of installing courses.** It automates the process by allowing you to do everything right from the R console.

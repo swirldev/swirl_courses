@@ -1,0 +1,82 @@
+- Class: meta
+  Course: Writing_swirl_Courses
+  Lesson: InterMed_MultipleChoice
+  Author: Swirl Coders
+  Type: Standard
+  Organization: swirl coders
+  Version: 2.2.0
+
+- Class: text
+  Output: This short lesson will demonstrate a subtlety of multiple choice questions that can potentially cause some confusion if you're using them in a lesson you're writing. 
+
+- Class: text
+  Output: A multiple choice question contains 6 key:value pairs. These are Class, Output, AnswerChoices, CorrectAnswer, AnswerTests, and Hint. The value for the Class key is mult_question, and, of course, the values for all the other keys depend on the question. Usually the AnswerTests value is a single call to omnitest with a single argument. This is the correctVal argument and it's set equal to some string.
+
+- Class: mult_question
+  Output: Writing multiple choice questions is easy, right? Would you believe that a bad multiple choice question can cause swirl to choke?
+  AnswerChoices:  Obviously yes, otherwise you wouldn't have asked; No, swirl can handle multiple choice questions easily; Maybe, if I had an example; Huh?
+  CorrectAnswer:  Obviously yes, otherwise you wouldn't have asked
+  AnswerTests: omnitest(correctVal='Obviously yes, otherwise you wouldn\'t have asked')
+  Hint: Which choice is obvious?
+
+- Class: text
+  Output: It's actually not the questions, but the testing that causes swirl to choke.
+
+- Class: text
+  Output: Suppose you've written a lesson and are testing it. You reach a multiple choice question, but no matter which choice you give, swirl won't let you proceed.
+
+- Class: mult_question
+  Output:  Why would this happen?
+  AnswerChoices:  swirl is stubborn; a value mismatch between the correct choice and the correctVal; an expression mismatch between the correct choice and the correctVal; it depends on the question
+  CorrectAnswer: a value mismatch between the correct choice and the CorrectVal
+  AnswerTests: omnitest(correctVal='a value mismatch between the correct choice and the correctVal')
+  Hint: Only 2 of the choices make sense here, and they are very similar. Pick the one with the best value.
+
+- Class: text
+  Output: A VALUE mismatch between the correct choice given in the question and the correctVal passed to omnitest will cause swirl to not recognize the desired response.
+
+- Class: text
+  Output: Swirl expects the choices of multiple choice questions to be STRINGs which are constants. Note that you DO NOT have to put your choices in quotation marks (of either kind) in the AnswerChoices list. 
+
+- Class: text
+  Output: However, the correct choice (in the list presented) must match the correctVal given to omnitest EXACTLY. This includes white space and punctuation.
+
+- Class: text
+  Output: So you have to be careful if you're copying and pasting the correct answer, from the list of choices to the CorrectAnswer key  and to the correctVal argument of omnitest. Make sure you don't pick up extra white space.
+
+- Class: mult_question
+  Output:  Which of the following choices might pose a problem if you're just copying and pasting the correct answer from the list of choices to the correctVal of omnitest and enclosing it in single quotation marks?
+  AnswerChoices:  Yes; No; I wouldn't know
+  CorrectAnswer: I wouldn't know
+  AnswerTests: omnitest(correctVal="I wouldn't know")
+  Hint: The choice with the punctuation mark might pose a problem inside single quotation marks.
+
+- Class: mult_question
+  Output: If your correct choice has an apostrophe in it, and if you're using enclosing your correctVal argument in single quotation marks when you call omnitest, you must escape it (precede it with a \). Which of the following would be the correct AnswerTests value for the previous question? 
+  AnswerChoices:  omnitest(correctVal='I wouldn\'t know'); omnitest(correctVal="I would not know"); omnitest(correctExpr="I wouldn\'t know"); omnitest(correctExpr="I wouldn't know")
+  CorrectAnswer: omnitest(correctVal='I wouldn\'t know')
+  AnswerTests: omnitest(correctVal='omnitest(correctVal=\'I wouldn\\\'t know\')')
+  Hint: One of the choices rewords the answer from the last question, so it should be eliminated immediately. Recall the emphasis on VALUES (not expressions) and the need to escape punctuation marks.
+
+- Class: text
+  Output: So omnitest expects a correctVal, a constant, and since you have to put the correct value in quotation marks (either kind) you have to escape any quotation marks (or apostrophes) in your correctVal argument.
+
+- Class: text
+  Output: Now suppose you ask a multiple choice question for which ANY of the choices would be correct? Let's say the question is, "Which of the following is a letter of the alphabet?" and the choices are a, b, c, and d. Any of these is correct, right?
+
+- Class: mult_question
+  Output:  Which of the following would be an obviously BAD AnswerTests value?
+  AnswerChoices: omnitest(correctVal='a'); omnitest(correctVal='b'); omnitest(correctVal='c'); any_of_exprs('a','b','c','d') 
+  CorrectAnswer: any_of_exprs('a','b','c','d')
+  AnswerTests: omnitest(correctVal="any_of_exprs(\'a\',\'b\',\'c\',\'d\')")
+  Hint: Which of the choices includes an answer involving expresssions rather than values?
+
+- Class: text
+  Output: So how do you handle a question in which ANY answer is correct? The trick is to call omnitest with NO arguments. If both correctVal and correctExpr arguments are null, omnitest will return TRUE, which tells swirl that the test passed and allows the student to proceed.
+
+- Class: mult_question
+  Output:  In order to finish this lesson you must answer this question correctly. Was this lesson helpful?
+  AnswerChoices: Yes; No; Huh
+  CorrectAnswer: Yes
+  AnswerTests: omnitest(correctVal="Yes")
+  Hint: There's only one correct answer here which will allow you to proceed.

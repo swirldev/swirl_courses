@@ -1,0 +1,53 @@
+R_Programming
+├── Base_Graphics
+│   └── lesson.yaml
+├── Basic_Building_Blocks
+│   └── lesson.yaml
+├── Dates_and_Times
+│   ├── customTests.R
+│   ├── eedata.csv
+│   ├── initLesson.R
+│   └── lesson.yaml
+├── lapply_and_sapply
+│   ├── customTests.R
+│   ├── flag.data.txt
+│   ├── flag.names.txt
+│   ├── initLesson.R
+│   └── lesson.yaml
+├── Logic
+│   └── lesson.yaml
+├── Looking_at_Data
+│   ├── customTests.R
+│   ├── initLesson.R
+│   ├── lesson.yaml
+│   └── plant-data.txt
+├── MANIFEST
+├── Matrices_and_Data_Frames
+│   ├── customTests.R
+│   ├── initLesson.R
+│   └── lesson.yaml
+├── Missing_Values
+│   ├── customTests.R
+│   ├── initLesson.R
+│   └── lesson.yaml
+├── Sequences_of_Numbers
+│   ├── customTests.R
+│   └── lesson.yaml
+├── Simulation
+│   ├── customTests.R
+│   ├── initLesson.R
+│   └── lesson.yaml
+├── Subsetting_Vectors
+│   ├── customTests.R
+│   ├── initLesson.R
+│   └── lesson.yaml
+├── vapply_and_tapply
+│   ├── customTests.R
+│   ├── initLesson.R
+│   └── lesson.yaml
+├── Vectors
+│   ├── customTests.R
+│   └── lesson.yaml
+└── Workspace_and_Files
+    └── lesson.yaml
+
