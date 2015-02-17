@@ -282,7 +282,7 @@
   Hint: Type 'pVal <- pVal1*2' without quotes and press Enter.
 
 - Class: cmd_question
-  Output: Let's look at the the value of our p-value. Type 'pVal' and press Enter.
+  Output: Let's look at the value of our p-value. Type 'pVal' and press Enter.
   CorrectAnswer: pVal
   AnswerTests: swirl1cmd=pVal
   Hint: Type 'pVal' and press Enter.

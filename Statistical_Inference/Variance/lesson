@@ -220,7 +220,7 @@
   Output: However this estimate is quite conservative for random variables that are normally distributed, that is, with bell-curve distributions. In these cases, the probability of being at least 2 standard deviations from the mean is about 5% (as compared to Chebyshev's upper bound of 25%) and the probability of being at least 3 standard deviations from the mean is roughly .2%.
 
 - Class: mult_question
-  Output: Suppose you had a measurement that was 4 standard deviations from the the distribution's mean. What would be the upper bound  of the probability of this happening using Chebyshev's inequality? 
+  Output: Suppose you had a measurement that was 4 standard deviations from the distribution's mean. What would be the upper bound  of the probability of this happening using Chebyshev's inequality? 
   AnswerChoices: 6%; 0%; 11%; 25%; 96% 
   CorrectAnswer: 6%
   AnswerTests: omnitest(correctVal='6%')
