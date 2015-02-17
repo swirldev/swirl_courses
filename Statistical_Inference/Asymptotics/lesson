@@ -222,7 +222,7 @@
   Output: Why does this work? Adding 2 successes and 2 failures pulls p' closer to .5 which, as we saw, is the value which maximizes the confidence interval.
 
 - Class: figure
-  Output:  To show this simply, we wrote a function ACCompar, which takes an integer input n. For each k from 1 to n  it computes two fractions, k/n and (k+2)/(n+4). It then prints out the boolean vector of whether the new (k+2)/(n+4) fraction is less than the old k/n. It also prints out the total number of k's for which the the condition is TRUE. 
+  Output:  To show this simply, we wrote a function ACCompar, which takes an integer input n. For each k from 1 to n  it computes two fractions, k/n and (k+2)/(n+4). It then prints out the boolean vector of whether the new (k+2)/(n+4) fraction is less than the old k/n. It also prints out the total number of k's for which the condition is TRUE. 
   Figure: ACComp.R
   FigureType: new
 
