@@ -165,13 +165,13 @@
 - Class: cmd_question
   Output: Provide the full path to the file "mytest3.R".
   CorrectAnswer: file.path("mytest3.R")
-  AnswerTests: omnitest(correctExpr='file.path("mytest3.R")')
+  AnswerTests: any_of_exprs('file.path("mytest3.R")','normalizePath("mytest3.R")')
   Hint: file.path("mytest3.R") works.
 
 - Class: cmd_question
   Output: Create a directory in the current working directory called "testdir2" and a subdirectory for it called "testdir3", all in one command.
   CorrectAnswer: dir.create("testdir2/testdir3", recursive = TRUE)
-  AnswerTests: omnitest(correctExpr='dir.create("testdir2/testdir3", recursive = TRUE)')
+  AnswerTests: any_of_exprs('dir.create("testdir2/testdir3", recursive = TRUE)', 'dir.create(file.path("testdir2","testdir3"), recursive = TRUE)')
   Hint: dir.create("testdir2/testdir3", recursive = TRUE) works. If you forgot the recursive argument, the command may have appeared to work. Why?
 
 - Class: cmd_question
