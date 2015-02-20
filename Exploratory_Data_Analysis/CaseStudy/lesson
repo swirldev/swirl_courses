@@ -338,6 +338,10 @@
   AnswerTests:   omnitest(correctExpr='plot(dates0, x0sub, pch = 20)')
   Hint: Type plot(dates0, x0sub, pch = 20) at the command prompt.
 
+- Class: figure
+  Output: Now we'll mark the median.
+  Figure: goodPlot1.R
+
 - Class: cmd_question
   Output:  Use abline to add a horizontal line at the median of the pm25 values. Make the line width 2 (lwd is the argument), and when you call median with x0sub, specify the argument na.rm to be TRUE.
   CorrectAnswer: abline(h = median(x0sub, na.rm = TRUE),lwd=2)
@@ -350,8 +354,12 @@
   AnswerTests:   omnitest(correctExpr='plot(dates1, x1sub, pch = 20)')
   Hint: Type plot(dates1, x1sub, pch = 20) at the command prompt.
 
+- Class: figure
+  Output: As before,  we'll mark the median of this 2012 data.
+  Figure: goodPlot2.R
+
 - Class: cmd_question
-  Output:  Again, use abline to add a horizontal line at the median of the pm25 values. Make the line width 2 (lwd is the argument). Remember to  specify the argument na.rm to be TRUE when you call median on x1sub.
+  Output:  Use abline to add a horizontal line at the median of the pm25 values. Make the line width 2 (lwd is the argument). Remember to  specify the argument na.rm to be TRUE when you call median on x1sub.
   CorrectAnswer: abline(h = median(x1sub, na.rm = TRUE),lwd=2)
   AnswerTests:   omnitest(correctExpr='abline(h = median(x1sub, na.rm = TRUE),lwd=2)')
   Hint: Type abline(h = median(x1sub, na.rm = TRUE),lwd=2) at the command prompt.
@@ -383,7 +391,7 @@
   Hint: Type rng or print(rng) at the command prompt.
 
 - Class: figure
-  Output:  Here a new panel showing the two plots side by side with the same range of values on the y axis. We used the argument ylim set equal to rng in our 2 calls to plot. The improvement in the medians between 1999 and 2012 is now clear. Also notice that in 2012 there are no big values (above 15). This shows that not only is there a chronic improvement in air quality, but also there are fewer days with severe pollution.
+  Output:  Here a new figure we've created showing the two plots side by side with the same range of values on the y axis. We used the argument ylim set equal to rng in our 2 calls to plot. The improvement in the medians between 1999 and 2012 is now clear. Also notice that in 2012 there are no big values (above 15). This shows that not only is there a chronic improvement in air quality, but also there are fewer days with severe pollution.
   Figure: showBoth.R
   FigureType: new
 
@@ -469,7 +477,7 @@
   Output: Now we'll plot the data to see how the state means changed between the 2 years. First we'll plot the 1999 data in a single column at x=1. The y values for the points will be the state means. Again, we'll use the R command with so we don't have to keep typing mrg as the data environment in which to evaluate the second argument, the call to plot. We've already reset the graphical parameters for you.
 
 - Class: cmd_question
-  Output: For the first column of points, call with with 2 arguments. The first is mrg, and the second is the call to plot with 3 arguments. The first of these is rep(1,52). This tells the plot routine that the x coordinates for all 52 points is 1. The second argument is the second column of mrg or mrg[,2] which holds the 1999 data. The third argument is the range of x values we want, namely xlim set to c(.5,2.5). This works since we'll be plotting 2 columns of points, one at x=1 and the other at x=2.
+  Output: For the first column of points, call with with 2 arguments. The first is mrg, and the second is the call to plot with 3 arguments. The first of these is rep(1,52). This tells the plot routine that the x coordinates for all 52 points are 1. The second argument is the second column of mrg or mrg[,2] which holds the 1999 data. The third argument is the range of x values we want, namely xlim set to c(.5,2.5). This works since we'll be plotting 2 columns of points, one at x=1 and the other at x=2.
   CorrectAnswer: with(mrg, plot(rep(1, 52), mrg[, 2], xlim = c(.5, 2.5)))
   AnswerTests:    omnitest(correctExpr='with(mrg, plot(rep(1, 52), mrg[, 2], xlim = c(.5, 2.5)))')
   Hint: Type  with(mrg, plot(rep(1, 52), mrg[, 2], xlim = c(.5, 2.5))) at the command prompt.

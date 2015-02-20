@@ -43,16 +43,22 @@
   Hint: Type with(faithful, plot(eruptions, waiting)) at the command prompt.
  
 - Class: cmd_question
-  Output: See how R created a scatterplot for you? This shows that relationship between eruptions of the geyser Old Faithful and waiting time. Now use the R function title with the argument main set equal to the string "Old Faithful Geyser data". This is an annotation to the plot.
+  Output: See how R created a scatterplot on the screen for you? This shows that relationship between eruptions of the geyser Old Faithful and waiting time. Now use the R function title with the argument main set equal to the string "Old Faithful Geyser data". This is an annotation to the plot.
   CorrectAnswer: title(main = "Old Faithful Geyser data")
   AnswerTests: omnitest(correctExpr='title(main = "Old Faithful Geyser data")')
   Hint: Type title(main = "Old Faithful Geyser data") at the command prompt.
  
 - Class: cmd_question
-  Output: Simple, right? The second way to create a plot is to send it to a file device. Depending on the type of plot you're making, you explicitly launch a graphics device, e.g., a pdf file. Type the command pdf(file=paste(path_to_course,"myplot.pdf",sep="/")) to launch the file device.
-  CorrectAnswer: pdf(file=paste(path_to_course,"myplot.pdf",sep="/"))
-  AnswerTests: omnitest(correctExpr='pdf(file=paste(path_to_course,"myplot.pdf",sep="/"))')
-  Hint: Type pdf(file=paste(path_to_course,"myplot.pdf",sep="/")) at the command prompt.
+  Output: Simple, right?  Now run the command dev.cur(). This will show you the current plotting device, the screen.
+  CorrectAnswer: dev.cur()
+  AnswerTests: omnitest(correctExpr='dev.cur()')
+  Hint: Type dev.cur() at the command prompt.
+ 
+- Class: cmd_question
+  Output: The second way to create a plot is to send it to a file device. Depending on the type of plot you're making, you explicitly launch a graphics device, e.g., a pdf file. Type the command pdf(file="myplot.pdf") to launch the file device. This will create the pdf file myplot.pdf in your working directory.
+  CorrectAnswer: pdf(file="myplot.pdf")
+  AnswerTests: omnitest(correctExpr='pdf(file="myplot.pdf)')
+  Hint: Type pdf(file="myplot.pdf") at the command prompt.
  
 - Class: cmd_question
   Output: You then call the plotting function (if you are using a file device, no plot will appear on the screen). Run the with command again to plot the Old Faithful data. Use the up arrow key to recover the command and save yourself some typing.
@@ -114,7 +120,7 @@
   Hint: Type dev.cur() at the command prompt.
 
 - Class: text
-  Output: As you might have guessed,  every open graphics device is assigned an integer greater than or equal to 2. You can change the active graphics device with dev.set(<integer>) where <integer> is the number associated with the graphics device you want to switch to.
+  Output: The device is back to what it was when you started. As you might have guessed,  every open graphics device is assigned an integer greater than or equal to 2. You can change the active graphics device with dev.set(<integer>) where <integer> is the number associated with the graphics device you want to switch to.
 
 - Class: text
   Output: You can also copy a plot from one device to another. This can save you some time but beware! Copying a plot is not an exact operation, so the result may not be identical to the original. R provides some functions to help you do this. The function dev.copy copies a plot from one device to another, and dev.copy2pdf specifically copies a plot to a PDF file.
@@ -132,13 +138,13 @@
   Hint: Type title(main = "Old Faithful Geyser data") at the command prompt.
  
 - Class: cmd_question
-  Output: Now run dev.copy with the arguments png and file set equal to "geyserplot.png". This will copy your screen plot to a png file.
+  Output: Now run dev.copy with the 2 arguments. The first is png, and the second is file set equal to "geyserplot.png". This will copy your screen plot to a png file in your working directory which you can view AFTER you close the device.
   CorrectAnswer: dev.copy(png, file = "geyserplot.png")
   AnswerTests: omnitest(correctExpr='dev.copy(png, file = "geyserplot.png")')
   Hint: Type dev.copy(png, file = "geyserplot.png") at the command prompt.
  
 - Class: cmd_question
-  Output: Don't forget to close the PNG device! Do it NOW!!!
+  Output: Don't forget to close the PNG device! Do it NOW!!! Then you'll be able to view the file.
   CorrectAnswer: dev.off()
   AnswerTests: omnitest(correctExpr='dev.off()')
   Hint: Type dev.off() at the command prompt.

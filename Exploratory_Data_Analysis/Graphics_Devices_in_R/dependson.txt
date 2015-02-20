@@ -1,3 +1,0 @@
-ggplot2
-lattice
-jpeg

@@ -29,7 +29,7 @@
   Hint: Which choice  has a negative contraction in it?
 
 - Class: text
-  Output: Yes! The base system is very intuitive and easy to use. You can't go backwards, though, say, if you need to readjust margins or misspelled a caption. A finished plot will be a series of R commands, so it's difficult to translate a finished plot into a different system.
+  Output: Yes! The base system is very intuitive and easy to use. You can't go backwards, though, say, if you need to readjust margins or have misspelled a caption. A finished plot will be a series of R commands, so it's difficult to translate a finished plot into a different system.
 
 - Class: text
   Output:  Calling a basic routine such as plot(x, y) or hist(x)  launches a graphics device (if one is not already open) and draws a new plot on the device. If the arguments to plot or hist are not of some special class, then the default method  is called.
@@ -95,7 +95,7 @@
   Hint: Type title(main="Ozone and Wind in New York City") at the command prompt.
 
 - Class: cmd_question
-  Output: Now we'll show you how to plot a simple two-dimensional scatterplot using the R function plot. We'll show the relationship between Wind (x-axis) and Ozone (y-axis). We'll use the function plot with those two arguments (Wind and Ozone, in that order). To save some typing, though, we'll call the R command with with 2 arguments. The first argument of with will be airquality, the dataset containing Wind and Ozone; the second argument  will be the call to plot. Doing this allows us to avoid using the longer notation, e.g., airquality$Wind. Try this now. 
+  Output: Now we'll show you how to plot a simple two-dimensional scatterplot using the R function plot. We'll show the relationship between Wind (x-axis) and Ozone (y-axis). We'll use the function plot with those two arguments (Wind and Ozone, in that order). To save some typing, though, we'll call the R command with using 2 arguments. The first argument of with will be airquality, the dataset containing Wind and Ozone; the second argument  will be the call to plot. Doing this allows us to avoid using the longer notation, e.g., airquality$Wind. Try this now. 
   CorrectAnswer: with(airquality, plot(Wind, Ozone))
   AnswerTests: omnitest(correctExpr='with(airquality, plot(Wind, Ozone))')
   Hint: Type with(airquality, plot(Wind, Ozone)) at the command prompt.
@@ -129,9 +129,9 @@
  
 - Class: mult_question
   Output: Alternatively, you could have gotten the same result by running par("pin") or par('pin')).  What do you think these two numbers represent?
-  AnswerChoices: Plot dimensions; A confidence interval; Random numbers; Coordinates of the center of the plot window
-  CorrectAnswer: Plot dimensions
-  AnswerTests: omnitest(correctVal='Plot dimensions')
+  AnswerChoices: Plot dimensions in inches; A confidence interval; Random numbers; Coordinates of the center of the plot window
+  CorrectAnswer: Plot dimensions in inches
+  AnswerTests: omnitest(correctVal='Plot dimensions in inches')
   Hint: The function par specifies graphical parameters so the answer should deal with plots. That leaves two choices. The 'in' in 'pin' specifies inches.
 
 - Class: cmd_question
@@ -226,7 +226,7 @@
   Hint: Type title(main="Wind and Ozone in NYC") at the command prompt.
 
 - Class: cmd_question
-  Output: Now create a variable may by subsetting airquality appropriately. (Recall that the data specifies months by number and May is the fifth month of the year.)
+  Output: Now create a variable called may by subsetting airquality appropriately. (Recall that the data specifies months by number and May is the fifth month of the year.)
   CorrectAnswer:  may <- subset(airquality, Month==5)
   AnswerTests: expr_creates_var("may"); omnitest(correctExpr='may <- subset(airquality, Month==5)')
   Hint: Type  may <- subset(airquality, Month==5) at the prompt.
@@ -274,14 +274,22 @@
   AnswerTests: omnitest(correctExpr='plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind")')
   Hint: Type plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind").
 
+- Class: figure
+  Output: Now for the second plot.
+  Figure: goodPlot1.R
+
 - Class: cmd_question
-  Output: Now plot airquality$Wind and airquality$Solar.R and use main to specify the title "Ozone and Solar Radiation".
+  Output: Plot airquality$Wind and airquality$Solar.R and use main to specify the title "Ozone and Solar Radiation".
   CorrectAnswer: plot(airquality$Wind, airquality$Solar.R, main = "Ozone and Solar Radiation")
   AnswerTests: omnitest(correctExpr='plot(airquality$Wind, airquality$Solar.R, main = "Ozone and Solar Radiation")')
   Hint: Type plot(airquality$Wind, airquality$Solar.R, main = "Ozone and Solar Radiation").
 
+- Class: figure
+  Output: Now for something more challenging.
+  Figure: goodPlot2.R
+
 - Class: cmd_question
-  Output: One more, this one with 3 plots, to illustrate inner and outer margins. First, set up the plot window by typing  par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))
+  Output: This one with 3 plots, to illustrate inner and outer margins. First, set up the plot window by typing  par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))
   CorrectAnswer: par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))
   AnswerTests: omnitest(correctExpr='par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))')
   Hint: Type par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0)).
@@ -295,26 +303,39 @@
   AnswerTests: omnitest(correctExpr='plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind")')
   Hint: Type plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind").
 
+- Class: figure
+  Output: The second plot is similar.
+  Figure: goodPlot3.R
+
 - Class: cmd_question
-  Output: The second plot is similar. Plot airquality$Solar.R and airquality$Ozone with the title (argument main) as "Ozone and Solar Radiation".
+  Output:  Plot airquality$Solar.R and airquality$Ozone with the title (argument main) as "Ozone and Solar Radiation".
   CorrectAnswer: plot(airquality$Solar.R, airquality$Ozone, main = "Ozone and Solar Radiation")
   AnswerTests: omnitest(correctExpr='plot(airquality$Solar.R, airquality$Ozone, main = "Ozone and Solar Radiation")')
   Hint: Type plot(airquality$Solar.R, airquality$Ozone, main = "Ozone and Solar Radiation").
 
+- Class: figure
+  Output: Now for the final panel.
+  Figure: goodPlot4.R
+
 - Class: cmd_question
-  Output: Finally, plot airquality$Temp and airquality$Ozone with the title (argument main) as "Ozone and Temperature".
+  Output: Plot airquality$Temp and airquality$Ozone with the title (argument main) as "Ozone and Temperature".
   CorrectAnswer: plot(airquality$Temp, airquality$Ozone, main = "Ozone and Temperature")
   AnswerTests: omnitest(correctExpr='plot(airquality$Temp, airquality$Ozone, main = "Ozone and Temperature")')
   Hint: Type plot(airquality$Temp, airquality$Ozone, main = "Ozone and Temperature").
 
+- Class: figure
+  Output: Now we'll put in a title.
+  Figure: goodPlot5.R
+
 - Class: cmd_question
-  Output: Now for the main title, specified by the R command mtext. Call it with the string "Ozone and Weather in New York City" and the argument outer set equal to TRUE.
+  Output: Since this is the main title, we specify it with the R command mtext. Call mtext with the string "Ozone and Weather in New York City" and the argument outer set equal to TRUE.
   CorrectAnswer:  mtext("Ozone and Weather in New York City", outer = TRUE)
   AnswerTests: omnitest(correctExpr=' mtext("Ozone and Weather in New York City", outer = TRUE)')
   Hint: Type mtext("Ozone and Weather in New York City", outer = TRUE).
 
-- Class: text
+- Class: figure
   Output: Voila! Beautiful, right?
+  Figure: goodPlot6.R
 
 - Class: text
   Output: Congrats! You've weathered this lesson nicely and passed out of the No!zone.
