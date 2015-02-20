@@ -105,7 +105,7 @@
   Output: Now, for the last plotting system, ggplot2, which is a hybrid of the base and lattice systems. It automatically deals with spacings, text, titles (as Lattice does) but also allows you to annotate by "adding" to a plot (as Base does), so it's the best of both worlds. 
 
 - Class: text
-  Output: Although ggplots bears a superficial similarity to lattice, it's generally easier and more intuitive to use. Its default mode makes many choices for you but you can still customize a lot. The package is based on a "grammar of graphics" (hence the gg in the name), so you can control the aesthetics of your plots. For instance, you can plot conditioning graphs and panel plots as we did in the lattice example.
+  Output: Although ggplot2 bears a superficial similarity to lattice, it's generally easier and more intuitive to use. Its default mode makes many choices for you but you can still customize a lot. The package is based on a "grammar of graphics" (hence the gg in the name), so you can control the aesthetics of your plots. For instance, you can plot conditioning graphs and panel plots as we did in the lattice example.
 
 - Class: cmd_question
   Output: We'll see an example now of ggplot2 with a simple (single) command. As before, we've loaded a dataset for you from the ggplot2 package. This mpg data holds fuel economy data between 1999 and 2008 for 38 different models of cars. Run head with mpg as an argument so you get an idea of what the data looks like.
