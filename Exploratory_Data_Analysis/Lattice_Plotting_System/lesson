@@ -66,7 +66,7 @@
   Hint: Type xyplot(Ozone ~ Wind, data = airquality, pch=8, col="red", main="Big Apple Data") at the command prompt.
 
 - Class: text
-  Output: Red snowflakes are cool, right? Now that you’ve seen the basic xyplot() and some of its arguments, you might want to experiment more by yourself to discover what other arguments and colors are available. (Recall  swirl's play() and nxt() functions. At the command prompt, typing play() allows you to leave swirl temporarily so  you can try different R commands at the console. Typing nxt() when you’re done playing brings you back to swirl and you can resume your lesson.) If you don't want to experiment, just hit return or enter. 
+  Output: Red snowflakes are cool, right? Now that you’ve seen the basic xyplot() and some of its arguments, you might want to experiment more by yourself when you're done with the lesson to discover what other arguments and colors are available. (If you can't wait to experiment, recall that swirl has play() and nxt() functions. At a command prompt, typing play() allows you to leave swirl temporarily so  you can try different R commands at the console. Typing nxt() when you’re done playing brings you back to swirl and you can resume your lesson.) 
 
 - Class: text
   Output: Now you'll see how easy it is to generate a multipanel plot using a single lattice command. 

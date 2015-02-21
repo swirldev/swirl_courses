@@ -108,7 +108,7 @@
   Output: We'll turn now to colorRampPalette, a function similar to colorRamp. It also takes a palette of colors and returns a function. This function, however,  takes integer arguments (instead of numbers between 0 and 1) and returns a vector of colors each of which is a blend of colors of the original palette. 
 
 - Class: text
-  Output: The argument you pass the returned function specifies the number of colors you want returned. Each element of the returned vector is a 24 bit number, represented as 6 hexadecimal characters, which range from 0 to F. This set of 6 hex characters represents the intensities of red, green, and blue, 2 characters for each color. 
+  Output: The argument you pass to the returned function specifies the number of colors you want returned. Each element of the returned vector is a 24 bit number, represented as 6 hexadecimal characters, which range from 0 to F. This set of 6 hex characters represents the intensities of red, green, and blue, 2 characters for each color. 
 
 - Class: cmd_question
   Output:  To see this better, assign to the variable p1 the output of a call to colorRampPalette with the single argument, c("red","blue"). We'll compare it to our experiments using colorRamp.
@@ -123,7 +123,7 @@
   Hint: Type p1(2) at the command prompt.
 
 - Class: text
-  Output: We see a 2-long vector is returned. The first entry FF0000 represents red. tthe FF is hexadecimal for 255, the same value returned by our call pal(0). The second entry 0000FF represents blue, also with intensity 255.
+  Output: We see a 2-long vector is returned. The first entry FF0000 represents red. The FF is hexadecimal for 255, the same value returned by our call pal(0). The second entry 0000FF represents blue, also with intensity 255.
 
 - Class: cmd_question
   Output:  Now call p1 with the argument 6. Let's see if we get the same result as we did when we called pal with the argument seq(0,1,len=6).

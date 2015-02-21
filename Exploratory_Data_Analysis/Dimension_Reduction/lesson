@@ -122,7 +122,7 @@
   Hint: Type svd(mat) at the command prompt.
 
 - Class: cmd_question
-  Output:  We see that the function returns 3 components, d which holds 2 diagonal elements, u, a 2 by 2 matrix, and v, a 3 by 2 matrix. We stored the diagonal entries in a diagonal matrix for you, diag, and we also stored u and v in the variables matu and matv respectively. Multiply matu by diag by      t(matv) to see what you get. (This last expression represents the transpose of v in R). Recall that in R   matrix multiplication requires you to use the operator %*%. 
+  Output:  We see that the function returns 3 components, d which holds 2 diagonal elements, u, a 2 by 2 matrix, and v, a 3 by 2 matrix. We stored the diagonal entries in a diagonal matrix for you, diag, and we also stored u and v in the variables matu and matv respectively. Multiply matu by diag by      t(matv) to see what you get. (This last expression represents the transpose of matv in R). Recall that in R   matrix multiplication requires you to use the operator %*%. 
   CorrectAnswer: matu %*% diag %*% t(matv)
   AnswerTests: omnitest(correctExpr='matu %*% diag %*% t(matv)')
   Hint: Type matu %*% diag %*% t(matv) at the command prompt.
@@ -174,7 +174,7 @@
   FigureType: new
 
 - Class: text
-  Output: The rightmost display shows the first column of the V matrix associated with the scaled and clustered data matrix. This is the first RIGHT singular vector and it's associated with the COLUMN means of the clustered data. You can see the clear separation between the left 5 column means (between -0.1 and 0.1) and the right 5 column means (all below -0.4). As with the left singular vectors, the other columns of V don't show this patttern as clearly as this first one does.
+  Output: The rightmost display shows the first column of the V matrix associated with the scaled and clustered data matrix. This is the first RIGHT singular vector and it's associated with the COLUMN means of the clustered data. You can see the clear separation between the left 5 column means (between -0.1 and 0.1) and the right 5 column means (all below -0.4). As with the left singular vectors, the other columns of V don't show this pattern as clearly as this first one does.
 
 - Class: text
   Output: So the singular value decomposition automatically picked up these patterns, the differences in the row and column means.
@@ -191,7 +191,7 @@
   FigureType: new
 
 - Class: cmd_question
-  Output: Now we'll show you another simple example of how SVD explains variance. We've created a 40 by 10 matrix, constantMatrix. Use the R command head with constantMatrix as its argument to see the top rows.
+  Output:  Now we'll show you another simple example of how SVD explains variance. We've created a 40 by 10 matrix, constantMatrix. Use the R command head with constantMatrix as its argument to see the top rows.
   CorrectAnswer: head(constantMatrix)
   AnswerTests: omnitest(correctExpr='head(constantMatrix)')
   Hint: Type head(constantMatrix) at the command prompt.
@@ -210,12 +210,19 @@
   Hint: Which choice has a positive exponent? Notice that the entries are given in scientific notation, where xey means x * 10^y.
 
 - Class: figure
-  Output: So the first entry by far dominates the others. Here the picture on the left shows the heat map of  constantMatrix. You can see how the left columns differ from the right ones. The middle plot shows the values of the singular values of the matrix, i.e., the diagonal elements which are the entries of svd2$d. Nine of these are 0 and the first is a little above 14. The third plot shows the proportion of the total each diagonal represents. The first entry, 14, accounts for 100% of the variance of the data. 
+  Output: So the first entry by far dominates the others. Here the picture on the left shows the heat map of  constantMatrix. You can see how the left columns differ from the right ones. The middle plot shows the values of the singular values of the matrix, i.e., the diagonal elements which are the entries of svd2$d. Nine of these are 0 and the first is a little above 14. The third plot shows the proportion of the total each diagonal element represents. 
   Figure: showSimple.R
   FigureType: new
      
+- Class: mult_question
+  Output: According to the plot, what percentage of the total variation does the first diagonal element account for?
+  AnswerChoices:  100%; 90%; 50%; 0%
+  CorrectAnswer:  100%
+  AnswerTests: omnitest(correctVal='100%')
+  Hint: The first element is at 1.0. Which percent does the number 1.0 represent?
+
 - Class: text
-  Output: So what does this mean? Basically that the data is one-dimensional. Only 1 factor, which column an entry is in, determines its value.
+  Output: So what does this mean? Basically that the data is one-dimensional. Only 1 piece of information, namely which column an entry is in, determines its value.
 
 - Class: figure
   Output: Now let's return to our random 40 by 10 dataMatrix and consider a slightly more complicated example in which we add 2 patterns to it. Again we'll choose which rows to tweak using coinflips. Specifically, for each of the 40 rows we'll flip 2 coins. If the first coinflip is heads, we'll add 5 to each entry in the right 5 columns of that row, and if the second coinflip is heads, we'll add  5 to just the even columns of that row. 
@@ -241,8 +248,9 @@
   AnswerTests: omnitest(correctExpr='svd2$v[,1:2]')
   Hint: Type svd2$v[,1:2] at the command prompt.
 
-- Class: text
+- Class: figure
   Output: Seeing the 2 columns side by side, we see that the values in both columns alternately increase and decrease. However, we knew to look for this pattern, so chances are, you might not have noticed this pattern if you hadn't known if was there. This example is meant to show you that it's hard to see patterns, even straightforward ones.
+  Figure: clearPlot.R
 
 - Class: cmd_question
   Output:  Now look at the entries of the diagonal matrix d resulting from the svd. Recall that we stored this output for you in the svd object svd2.
@@ -309,8 +317,8 @@
 - Class: cmd_question
   Output:  Alas, that is how we do it in theory, but in R using only one element of d means it's a constant. So we have to do the matrix multiplication with the %*% operator and the multiplication by   the constant (svd1$d[1]) with the regular multiplication operator *. Try this now and put the result in the variable a1. Recall that svd1$u, svd1$d, and svd1$v contain all the information you need.  
   CorrectAnswer: a1 <- svd1$u[,1] %*% t(svd1$v[,1]) * svd1$d[1]
-  AnswerTests: expr_creates_var("a1"); ANY_of_exprs('a1 <- svd1$u[,1] %*% t(svd1$v[,1]) * svd1$d[1]','a1 <- svd1$d[1] * svd1$u[,1] %*% t(svd1$v[,1])')
-  Hint: Type a1 <- svd1$u[,1] %*% t(svd1$v[,1]) * svd1$d[1] at the command prompt.
+  AnswerTests: expr_creates_var("a1"); ANY_of_exprs('a1 <- svd1$u[,1] %*% t(svd1$v[,1]) * svd1$d[1]','a1 <- svd1$d[1] * svd1$u[,1] %*% t(svd1$v[,1])','a1 <- svd1$u[,1] * svd1$d[1] %*% t(svd1$v[,1])')
+  Hint: Type a1 <- svd1$u[,1] * svd1$d[1] %*% t(svd1$v[,1]) at the command prompt.
 
 - Class: cmd_question
   Output:  Now to look at it as an image. We wrote a function for you called myImage which takes a single argument, a matrix of data to display using the R function image. Run it now with a1 as its argument.

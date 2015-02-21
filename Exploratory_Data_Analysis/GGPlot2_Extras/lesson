@@ -59,13 +59,13 @@
   Output: No more messages in red, but a histogram almost identical to the previous one! If you typed 18497/30 at the command line you would get the result 616.5667. This means that the height of each bin tells you how many diamonds have a price between x and x+617 where x is the left edge of the bin. 
 
 - Class: cmd_question
-  Output:  We've created a vector containing integers that are multiples of 617 for you. It's call brk. Look at it now.
+  Output:  We've created a vector containing integers that are multiples of 617 for you. It's called brk. Look at it now.
   CorrectAnswer: brk
   AnswerTests: omnitest(correctExpr='brk')
   Hint: Type brk at the command prompt.
 
 - Class: cmd_question
-  Output:  We've also created a vector containing the number of diamonds with  prices between each pair of adjacent entries of brk. For instance, the first count is the number of diamonds with prices between 0 and $617, and the second is the number of diamonds with prices between $617 and $1234. Look at this vector counts now. 
+  Output:  We've also created a vector containing the number of diamonds with  prices between each pair of adjacent entries of brk. For instance, the first count is the number of diamonds with prices between 0 and $617, and the second is the number of diamonds with prices between $617 and $1234. Look at the vector named counts now. 
   CorrectAnswer: counts
   AnswerTests: omnitest(correctExpr='counts')
   Hint: Type counts at the command prompt.

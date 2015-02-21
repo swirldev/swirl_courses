@@ -296,7 +296,7 @@
 - Class: cmd_question
   Output: We see the first 3 columns dominate this cluster center. Run names with the first 3 columns of sub1 as the argument to remind yourself of what these columns contain.
   CorrectAnswer: names(sub1[,1:3])
-  AnswerTests:  ANY_of_exprs('names(sub1[,1:3])','names(sub1[1:3])','names(sub1[c(1,2,3)]','names(sub1[,c(1,2,3))')
+  AnswerTests:  ANY_of_exprs('names(sub1[,1:3])','names(sub1[,c(1:3)])','names(sub1[,c(1,2,3)])')
   Hint: Type names(sub1[,1:3]) the command prompt.
 
 - Class: text

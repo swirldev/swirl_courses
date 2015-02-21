@@ -17,7 +17,7 @@ fxfer <- function(fileName){
 
 myImage <- function(iname){
   par(mfrow=c(1,1))
-  par(mar=c(8,10,8,10))
+  par(mar=c(4,5,4,5))
   image(t(iname)[,nrow(iname):1])
 }
 myedit <- function(fname){
@@ -51,3 +51,6 @@ matv <- msvd$v
 smatu <- smsvd$u
 smatv <- smsvd$v
 fxfer("addPatt.R")
+constantMatrix <- dataMatrixOrdered*0
+for(i in 1:dim(dataMatrixOrdered)[1]){constantMatrix[i,] <- rep(c(0,1),each=5)}
+svd2 <- svd(constantMatrix)
