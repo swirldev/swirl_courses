@@ -66,7 +66,7 @@
   Hint: Type xyplot(Ozone ~ Wind, data = airquality, pch=8, col="red", main="Big Apple Data") at the command prompt.
 
 - Class: text
-  Output: Red snowflakes are cool, right? Now that you’ve learned the basics of xyplot() and some of its arguments, you can experiment a little more by yourself to discover what other arguments and colors are available by invoking swirl's play() function (to temporarily leave swirl and try different R commands) and then calling nxt() when you’re done playing and want to resume swirling! 
+  Output: Red snowflakes are cool, right? Now that you’ve seen the basic xyplot() and some of its arguments, you might want to experiment more by yourself to discover what other arguments and colors are available. (Recall  swirl's play() and nxt() functions. At the command prompt, typing play() allows you to leave swirl temporarily so  you can try different R commands at the console. Typing nxt() when you’re done playing brings you back to swirl and you can resume your lesson.) If you don't want to experiment, just hit return or enter. 
 
 - Class: text
   Output: Now you'll see how easy it is to generate a multipanel plot using a single lattice command. 
@@ -123,7 +123,7 @@
   Hint: Type names(p) at the command prompt.
  
 - Class: cmd_question
-  Output: We see that the trellis object p has 45 named attributes, the first of which is "formula" which isn't too surprising. A lot of these attributes are probably NULL in value. We've done some behind-the-scenes work for you and created two vectors. The first, mynames, is a character vector of the names in p. The second is a boolean vector, myfull,  which has TRUE values for nonnull entries of p. Run mynames[myfull] to see which entries of p are not NULL.
+  Output: We see that the trellis object p has 45 named properties, the first of which is "formula" which isn't too surprising. A lot of these properties are probably NULL in value. We've done some behind-the-scenes work for you and created two vectors. The first, mynames, is a character vector of the names in p. The second is a boolean vector, myfull,  which has TRUE values for nonnull entries of p. Run mynames[myfull] to see which entries of p are not NULL.
   CorrectAnswer: mynames[myfull]
   AnswerTests: omnitest(correctExpr='mynames[myfull]')
   Hint: Type mynames[myfull] at the command prompt.
@@ -193,11 +193,12 @@
   AnswerTests: omnitest(correctVal='3')
   Hint: You have to count the ... as an argument?
  
-- Class: text
+- Class: figure
   Output: The panel function has 3 arguments, x, y and ... . This last stands for all other arguments (such as graphical parameters) you might want to include. There are 2 lines in the panel function. Each invokes a panel method, the first to plot the data in each panel (panel.xyplot), the second to draw a horizontal line in each panel (panel.abline). Note the similarity of this last call to that of the base plotting function of the same name.
+  Figure: clearPlot.R
 
 - Class: cmd_question
-  Output: We've defined a function for you, pathtofile, which takes a filename as its argument. This makes sure R can find the file on your computer. Now run the R command source with two arguments. The first is the call to pathtofile with the string "plot1.R" as its argument and the second is the argument local set equal to TRUE. This will run the code in plot1.R for you so you can see how it works.
+  Output: We've defined a function for you, pathtofile, which takes a filename as its argument. This makes sure R can find the file on your computer. Now run the R command source with two arguments. The first is the call to pathtofile with the string "plot1.R" as its argument and the second is the argument local set equal to TRUE. This command will run the code contained in plot1.R within the swirl environment so you can see what it does.
   CorrectAnswer: source(pathtofile("plot1.R"),local=TRUE)
   AnswerTests: omnitest(correctExpr='source(pathtofile("plot1.R"),local=TRUE)')
   Hint: Type source(pathtofile("plot1.R"),local=TRUE) at the command prompt.
@@ -322,7 +323,7 @@
   Hint: This is the opposite of the last question which was false.
 
 - Class: mult_question
-  Output: True or False? Aspects like margins and spacing are automatically handled and defaults are usually sufficient lattice function (e.g. xyplot).
+  Output: True or False? Aspects like margins and spacing are automatically handled and defaults are usually sufficient.
   AnswerChoices: True; False
   CorrectAnswer: True
   AnswerTests: omnitest(correctVal='True')

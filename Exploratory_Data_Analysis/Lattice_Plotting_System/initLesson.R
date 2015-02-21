@@ -1,10 +1,10 @@
 library(lattice)
 library(datasets)
-library(ggplot2)
 
 # Put initialization code in this file.
 path_to_course <- file.path(find.package("swirl"),"Courses/Exploratory_Data_Analysis/Lattice_Plotting_System")
 try(dev.off(),silent=TRUE)
+dev.set(2)
 plot.new()
 
 pathtofile <- function(fileName){
