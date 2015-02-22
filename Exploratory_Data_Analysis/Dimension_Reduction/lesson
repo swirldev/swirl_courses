@@ -101,10 +101,10 @@
   Output: As data scientists, we'd like to find a smaller set of multivariate variables that are uncorrelated AND explain as much variance (or variability) of the data as possible. This is a statistical approach. 
 
 - Class: text
-  Output: In other words, we'd like to find the best matrix created with fewer variables (that is, a lower rank matrix) that explains the original data. This is data compression. 
+  Output: In other words, we'd like to find the best matrix created with fewer variables (that is, a lower rank matrix) that explains the original data. This is related to data compression. 
 
 - Class: text
-  Output: Two related solutions to these problems are PCA which stands for Principal Component Analysis and SVD, Singular Value Decomposition. This latter simply means that we express a matrix X of observations (rows) and variables (columns) as the product of 3 other matrices, i.e., X=UDV^t. This last term represents the transpose of the matrix V.
+  Output: Two related solutions to these problems are PCA which stands for Principal Component Analysis and SVD, Singular Value Decomposition. This latter simply means that we express a matrix X of observations (rows) and variables (columns) as the product of 3 other matrices, i.e., X=UDV^t. This last term (V^t) represents the transpose of the matrix V.
 
 - Class: text
   Output: Here U and V each have orthogonal (uncorrelated) columns. U's columns are the left singular vectors of X and V's columns are the right singular vectors of X.  D is a diagonal matrix, by which we mean that all of its entries not on the diagonal are 0. The diagonal entries of D are  the singular values of X.
@@ -155,7 +155,7 @@
   Output: Now that we covered the theory let's return to our bigger matrix of random data into which we had added a fixed pattern for some rows selected by coinflips. The pattern effectively shifted the means of the rows and columns.
 
 - Class: figure
-  Output: Here's a picture showing the relationship between PCA and SVD for that bigger matrix.  We've plotted 10 points (5 are squished together in the bottom left corner). The x-coordinates are the elements of the first principal component (gotten from running prcomp), and the y-coordinates are the elements of the first column of V, the first right singular vector (gotten from running svd). We see that the points all lie on the 45 degree line given by the equation y=x.   So the first column of V IS the first principal component of our bigger data matrix.
+  Output: Here's a picture showing the relationship between PCA and SVD for that bigger matrix.  We've plotted 10 points (5 are squished together in the bottom left corner). The x-coordinates are the elements of the first principal component (output from prcomp), and the y-coordinates are the elements of the first column of V, the first right singular vector (gotten from running svd). We see that the points all lie on the 45 degree line represented by the equation y=x.   So the first column of V IS the first principal component of our bigger data matrix.
   Figure: showRel.R
   FigureType: new
 
@@ -166,7 +166,7 @@
   Hint: Type svd1$v[,1] at the command prompt.
 
 - Class: text
-  Output: See how these values correspond to those plotted? Five of the entries are around -0.4, two more are negative (one of these close to 0), and three are positive.
+  Output: See how these values correspond to those plotted? Five of the entries are around the point (-0.4,-0.4), two more are negative (to the left of (0,0)), and three are positive (to the right of (0,0)).
 
 - Class: figure
   Output: Here we again show the clustered data matrix on the left. Next to it we've plotted the first column of the U matrix associated with the scaled data matrix. This is the first LEFT singular vector and it's associated with the ROW means of the clustered data. You can see the clear separation between the top 24 (around -0.2) row means and the bottom 16 (around 0.2). We don't show them but note that the other columns of U don't show this pattern so clearly.
