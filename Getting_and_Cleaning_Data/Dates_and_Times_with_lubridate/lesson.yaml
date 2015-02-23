@@ -16,7 +16,7 @@
   Hint: Type Sys.getlocale("LC_TIME") to view your time locale.
 
 - Class: text
-  Output: If the output above is not "en_US.UTF-8", this lesson is not guaranteed to work correctly. Of course, you are welcome to try it anyways. We apologize for this inconvenience.
+  Output: If the output above is not "en_US.UTF-8", this lesson is not guaranteed to work correctly. Of course, you are welcome to try it anyway. We apologize for this inconvenience.
 
 - Class: cmd_question
   Output: lubridate was automatically installed (if necessary) and loaded upon starting this lesson. To build the habit, we'll go ahead and (re)load the package now. Type library(lubridate) to do so.
