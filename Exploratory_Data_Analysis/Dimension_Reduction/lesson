@@ -166,7 +166,7 @@
   Hint: Type svd1$v[,1] at the command prompt.
 
 - Class: text
-  Output: See how these values correspond to those plotted? Five of the entries are around the point (-0.4,-0.4), two more are negative (to the left of (0,0)), and three are positive (to the right of (0,0)).
+  Output: See how these values correspond to those plotted? Five of the entries are slightly to the left of the point (-0.4,-0.4), two more are negative (to the left of (0,0)), and three are positive (to the right of (0,0)).
 
 - Class: figure
   Output: Here we again show the clustered data matrix on the left. Next to it we've plotted the first column of the U matrix associated with the scaled data matrix. This is the first LEFT singular vector and it's associated with the ROW means of the clustered data. You can see the clear separation between the top 24 (around -0.2) row means and the bottom 16 (around 0.2). We don't show them but note that the other columns of U don't show this pattern so clearly.
@@ -245,7 +245,7 @@
 - Class: cmd_question
   Output:  To see this more closely, look at the first 2 columns of the v component. We stored the SVD output in the svd object svd2. 
   CorrectAnswer: svd2$v[,1:2]
-  AnswerTests: omnitest(correctExpr='svd2$v[,1:2]')
+  AnswerTests: ANY_of_exprs('svd2$v[,1:2]','svd2$v[,c(1,2)]','svd2$v[,c(1:2)]')
   Hint: Type svd2$v[,1:2] at the command prompt.
 
 - Class: figure
@@ -314,11 +314,14 @@
 - Class: text
   Output: Suppose we create the product of pieces of these, say the first columns of U and V and the first element of D. The first column of U can be interpreted as a 32 by 1 matrix  (recall that faceData was a 32 by 32 matrix), so we can multiply it by the first element of D, a 1 by 1 matrix, and get a 32 by 1 matrix result. We can multiply that by the transpose of the first column of V, which is the first principal component. (We have to use the transpose of V's column to make it a 1 by 32 matrix in order to do the matrix multiplication properly.)
 
+- Class: text
+  Output: Alas, that is how we do it in theory, but in R using only one element of d means it's a constant. So we have to do the matrix multiplication with the %*% operator and the multiplication by the constant (svd1$d[1]) with the regular multiplication operator *.
+
 - Class: cmd_question
-  Output:  Alas, that is how we do it in theory, but in R using only one element of d means it's a constant. So we have to do the matrix multiplication with the %*% operator and the multiplication by   the constant (svd1$d[1]) with the regular multiplication operator *. Try this now and put the result in the variable a1. Recall that svd1$u, svd1$d, and svd1$v contain all the information you need.  
+  Output: Try this now and put the result in the variable a1. Recall that svd1$u, svd1$d, and svd1$v contain all the information you need. NOTE that because of the peculiarities of R's casting, if you do the scalar multiplication with the * operator first (before the matrix multiplication with the %*% operator) you MUST enclose the 2 arguments (svd1$u[,1] and svd1$d[1]) in parentheses. 
   CorrectAnswer: a1 <- svd1$u[,1] %*% t(svd1$v[,1]) * svd1$d[1]
-  AnswerTests: expr_creates_var("a1"); ANY_of_exprs('a1 <- svd1$u[,1] %*% t(svd1$v[,1]) * svd1$d[1]','a1 <- svd1$d[1] * svd1$u[,1] %*% t(svd1$v[,1])','a1 <- svd1$u[,1] * svd1$d[1] %*% t(svd1$v[,1])')
-  Hint: Type a1 <- svd1$u[,1] * svd1$d[1] %*% t(svd1$v[,1]) at the command prompt.
+  AnswerTests: expr_creates_var("a1"); ANY_of_exprs('a1 <- svd1$u[,1] %*% t(svd1$v[,1]) * svd1$d[1]','a1 <- (svd1$d[1] * svd1$u[,1]) %*% t(svd1$v[,1])','a1 <- (svd1$u[,1] * svd1$d[1]) %*% t(svd1$v[,1])')
+  Hint: Type a1 <- (svd1$u[,1] * svd1$d[1]) %*% t(svd1$v[,1]) OR a1 <- svd1$u[,1] %*% t(svd1$v[,1]) * svd1$d[1] at the command prompt.
 
 - Class: cmd_question
   Output:  Now to look at it as an image. We wrote a function for you called myImage which takes a single argument, a matrix of data to display using the R function image. Run it now with a1 as its argument.
@@ -326,8 +329,11 @@
   AnswerTests: omnitest(correctExpr='myImage(a1)')
   Hint: Type myImage(a1) at the command prompt.
 
+- Class: text
+  Output: It might not look like much but it's a good start. Now we'll try the same experiment but this time we'll use 2 elements from each of the 3 SVD terms.
+
 - Class: cmd_question
-  Output: It might not look like much but it's a good start. See what happens when you create the matrix a2, the product of the first 2 columns of svd1$u, a diagonal matrix using the first 2 elements of svd1$d, and the transpose of the first 2 columns of svd1$v. This time all of your multiplicands are matrices so you have to use only the operator %*%. Also, use the R function diag with svd1$d[1:2] as its sole argument to create the proper diagonal matrix. Remember also, that matrix multiplication is NOT commutative so you have to put the multiplicands in the correct order.
+  Output:  Create the matrix a2 as the product of the first 2 columns of svd1$u, a diagonal matrix using the first 2 elements of svd1$d, and the transpose of the first 2 columns of svd1$v. Since all of your multiplicands are matrices you have to use only the operator %*% AND you DON'T need parentheses. Also, you must use the R function diag with svd1$d[1:2] as its sole argument to create the proper diagonal matrix. Remember, matrix multiplication is NOT commutative so you have to put the multiplicands in the correct order. Please use the 1:2 notation and not the c(m:n), i.e., the concatenate function, when specifying the columns.
   CorrectAnswer: a2 <- svd1$u[,1:2] %*%  diag(svd1$d[1:2])  %*% t(svd1$v[,1:2]) 
   AnswerTests: expr_creates_var("a2"); omnitest(correctExpr='a2 <- svd1$u[,1:2] %*%  diag(svd1$d[1:2])  %*% t(svd1$v[,1:2])')
   Hint: Type a2 <- svd1$u[,1:2] %*%  diag(svd1$d[1:2])  %*% t(svd1$v[,1:2]) at the command prompt.
@@ -339,7 +345,7 @@
   Hint: Type myImage(a2) at the command prompt.
 
 - Class: cmd_question
-  Output: We're starting to see slightly more detail, and maybe if you squint you see a grimacing mouth. Now let's see what image results using 5 components. From our plot of the variance explained 5 components covered a sizeable percentage of the variation. To save typing, use the up arrow to recall the command which created a2 and replace the a2 and assignment arrow with the call to myImage, and change the 2's to 5's.
+  Output: We're starting to see slightly more detail, and maybe if you squint you see a grimacing mouth. Now let's see what image results using 5 components. From our plot of the variance explained 5 components covered a sizeable percentage of the variation. To save typing, use the up arrow to recall the command which created a2 and replace the a2 and assignment arrow with the call to myImage, and change the three occurrences of 2 to 5.
   CorrectAnswer: myImage(svd1$u[,1:5] %*%  diag(svd1$d[1:5])  %*% t(svd1$v[,1:5]))
   AnswerTests:  omnitest(correctExpr='myImage(svd1$u[,1:5] %*%  diag(svd1$d[1:5])  %*% t(svd1$v[,1:5]))')
   Hint: Type myImage(svd1$u[,1:5] %*%  diag(svd1$d[1:5])  %*% t(svd1$v[,1:5])) at the command prompt.

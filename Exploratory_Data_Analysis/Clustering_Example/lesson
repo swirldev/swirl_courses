@@ -34,7 +34,7 @@
 - Class: cmd_question
   Output:  Use the R command names with just the last two columns (562 and 563) of ssd to see what data they contain.
   CorrectAnswer: names(ssd[562:563])
-  AnswerTests: ANY_of_exprs('names(ssd[562:563])','names(ssd[,562:563])','names(ssd[,c(562,563)])','names(ssd[c(562,563)])')
+  AnswerTests: ANY_of_exprs('names(ssd[562:563])','names(ssd[,562:563])','names(ssd[,c(562,563)])','names(ssd[c(562,563)])','names(ssd[c(562:563)])','names(ssd[,c(562:563)])')
   Hint: Type names(ssd[562:563]) at the command prompt.
 
 - Class: cmd_question
@@ -94,7 +94,7 @@
 - Class: cmd_question
   Output: So sub1 has fewer than 400 rows now, but still a lot of columns which contain measurements. Use names on the first 12 columns of sub1 to see what kind of data we have.
   CorrectAnswer: names(sub1[1:12])
-  AnswerTests: ANY_of_exprs('names(sub1[1:12])','names(sub1[,1:12])')
+  AnswerTests: ANY_of_exprs('names(sub1[1:12])','names(sub1[,1:12])','names(sub1)[1:12]','names(sub1[c(1:12)])','names(sub1[,c(1:12)])')
   Hint: Type names(sub1[1:12]) at the command prompt.
 
 - Class: cmd_question
@@ -120,7 +120,7 @@
 - Class: cmd_question
   Output: We'll still focus on the 3 dimensions of mean acceleration. (The plot we just saw looked at the first 2 dimensions.) Create a distance matrix, mdist, of the first 3 columns of sub1, by using the R command dist. Use the x[,1:3] notation to specify the columns.
   CorrectAnswer: mdist <- dist(sub1[,1:3])
-  AnswerTests: expr_creates_var("mdist"); omnitest(correctExpr='mdist <- dist(sub1[,1:3])')
+  AnswerTests: expr_creates_var("mdist"); ANY_of_exprs('mdist <- dist(sub1[,1:3])','mdist <- dist(sub1[,c(1:3)])')
   Hint: Type mdist <- dist(sub1[,1:3]) the command prompt.
 
 - Class: cmd_question
@@ -153,7 +153,7 @@
 - Class: cmd_question
   Output: Finally we're seeing something vaguely interesting! Let's focus then on the 3 dimensions of maximum acceleration, stored in columns 10 through 12 of sub1. Create a new distance matrix, mdist, of these 3 columns of sub1, by using the R command dist. Again, use the x[,10:12] notation to catch the columns.
   CorrectAnswer: mdist <- dist(sub1[,10:12])
-  AnswerTests: expr_creates_var("mdist"); omnitest(correctExpr='mdist <- dist(sub1[,10:12])')
+  AnswerTests: expr_creates_var("mdist"); ANY_of_exprs('mdist <- dist(sub1[,10:12])','mdist <- dist(sub1[,c(10:12)])')
   Hint: Type mdist <- dist(sub1[,10:12]) the command prompt.
 
 - Class: cmd_question
@@ -174,7 +174,7 @@
 - Class: cmd_question
   Output: Let's try some SVD now. Create the variable svd1 by assigning to it the output of a call to the R command svd. The argument to svd should be scale(sub1[,-c(562,563)]). This will remove the last 2 columns from sub1 and scale the data. Recall that the last 2 columns  contain activity and subject information which we won't need. 
   CorrectAnswer: svd1 <- svd(scale(sub1[,-c(562,563)]))
-  AnswerTests: expr_creates_var("svd1"); omnitest(correctExpr='svd1 <- svd(scale(sub1[,-c(562,563)]))')
+  AnswerTests: expr_creates_var("svd1"); ANY_of_exprs('svd1 <- svd(scale(sub1[,-c(562,563)]))','svd1 <- svd(scale(sub1[,-c(562:563)]))')
   Hint: Type svd1 <- svd(scale(sub1[,-c(562,563)])) the command prompt.
 
 - Class: mult_question
@@ -228,7 +228,7 @@
   Output: Call the  myplclust with 2 arguments, hclustering, and  lab.col set equal to unclass(sub1$activity).
   CorrectAnswer: myplclust(hclustering, lab.col = unclass(sub1$activity))
   AnswerTests: omnitest(correctExpr='myplclust(hclustering, lab.col = unclass(sub1$activity))')
-  Hint: Type myplclust(hclustering, lab.col = unclass(sub1$activity)) the command prompt.
+  Hint: Type myplclust(hclustering, lab.col = unclass(sub1$activity)) at the command prompt.
 
 - Class: text
   Output: Now we see some real separation. Magenta (walking up) is on the far left, and the two other walking activities, the two blues, are on the far right, but in separate clusters from one another. The nonmoving activities still are jumbled together.
@@ -236,8 +236,8 @@
 - Class: cmd_question
   Output: Run the R command names with the argument sub1[maxCon] to see what measurement is associated with this maximum contributor.
   CorrectAnswer: names(sub1[maxCon])
-  AnswerTests: omnitest(correctExpr='names(sub1[maxCon])')
-  Hint: Type names(sub1[maxCon]) the command prompt.
+  AnswerTests: ANY_of_exprs('names(sub1[maxCon])','names(sub1)[maxCon]')
+  Hint: Type names(sub1[maxCon]) or names(sub1)[maxCon] at the command prompt.
 
 - Class: text
   Output: So the mean body acceleration in the frequency domain in the Z direction is the main contributor to this clustering phenomenon we're seeing. Let's move on to k-means clustering to see if this technique can distinguish between the activities. 
@@ -245,7 +245,7 @@
 - Class: cmd_question
   Output: Create the variable kClust by assigning to it the output of the R command kmeans with 2 arguments. The first is sub1 with the last 2 columns removed. (Recall these don't have pertinent information for clustering analysis.) The second argument to kmeans is centers set equal to 6, the number of activities we know we have. 
   CorrectAnswer: kClust <- kmeans(sub1[, -c(562, 563)], centers = 6)
-  AnswerTests: expr_creates_var("kClust"); omnitest(correctExpr='kClust <- kmeans(sub1[, -c(562, 563)], centers = 6)')
+  AnswerTests: expr_creates_var("kClust"); ANY_of_exprs('kClust <- kmeans(sub1[, -c(562, 563)], centers = 6)','kClust <- kmeans(sub1[, -c(562:563)], centers = 6)')
   Hint: Type kClust <- kmeans(sub1[, -c(562, 563)], centers = 6) the command prompt.
 
 - Class: cmd_question
@@ -260,7 +260,7 @@
 - Class: cmd_question
   Output: ... instead call  kmeans with 3 arguments, the last of which will tell it to try more random starts and return the best one. The first 2 arguments should be the same as before (sub1 with the last 2 columns removed and centers set equal to 6). The third is nstart set equal to 100. Put the result in kClust again.
   CorrectAnswer: kClust <- kmeans(sub1[, -c(562, 563)], centers = 6, nstart=100)
-  AnswerTests: expr_creates_var("kClust"); omnitest(correctExpr='kClust <- kmeans(sub1[, -c(562, 563)], centers = 6, nstart=100)')
+  AnswerTests: expr_creates_var("kClust"); ANY_of_exprs('kClust <- kmeans(sub1[, -c(562, 563)], centers = 6, nstart=100)','kClust <- kmeans(sub1[, -c(562:563)], centers = 6, nstart=100)')
   Hint: Type kClust <- kmeans(sub1[, -c(562, 563)], centers = 6, nstart=100) the command prompt.
 
 - Class: cmd_question
@@ -270,7 +270,7 @@
   Hint: Type table(kClust$cluster, sub1$activity) the command prompt.
 
 - Class: text
-  Output: We see that even with 100 random starts, the passive activities tend to cluster together. One of the clusters contains only laying, but in another cluster, laying and sitting group together. 
+  Output: We see that even with 100 random starts, the passive activities tend to cluster together. One of the clusters contains only laying, but in another cluster, standing and sitting group together. 
 
 - Class: cmd_question
   Output:  Use dim to find the dimensions of kClust's centers. Use the x$y notation to access them.
@@ -296,7 +296,7 @@
 - Class: cmd_question
   Output: We see the first 3 columns dominate this cluster center. Run names with the first 3 columns of sub1 as the argument to remind yourself of what these columns contain.
   CorrectAnswer: names(sub1[,1:3])
-  AnswerTests:  ANY_of_exprs('names(sub1[,1:3])','names(sub1[,c(1:3)])','names(sub1[,c(1,2,3)])')
+  AnswerTests:  ANY_of_exprs('names(sub1[,1:3])','names(sub1[,c(1:3)])','names(sub1[,c(1,2,3)])','names(sub1[c(1,2,3)])','names(sub1[1:3])','names(sub1[c(1:3)])','names(sub1)[c(1:3)]','names(sub1)[c(1,2,3)]','names(sub1)[1:3]')
   Hint: Type names(sub1[,1:3]) the command prompt.
 
 - Class: text
