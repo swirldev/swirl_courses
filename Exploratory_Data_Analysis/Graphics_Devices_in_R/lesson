@@ -57,7 +57,7 @@
 - Class: cmd_question
   Output: The second way to create a plot is to send it to a file device. Depending on the type of plot you're making, you explicitly launch a graphics device, e.g., a pdf file. Type the command pdf(file="myplot.pdf") to launch the file device. This will create the pdf file myplot.pdf in your working directory.
   CorrectAnswer: pdf(file="myplot.pdf")
-  AnswerTests: omnitest(correctExpr='pdf(file="myplot.pdf)')
+  AnswerTests: omnitest(correctExpr='pdf(file="myplot.pdf")')
   Hint: Type pdf(file="myplot.pdf") at the command prompt.
  
 - Class: cmd_question
