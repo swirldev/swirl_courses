@@ -140,11 +140,8 @@
   AnswerTests: omnitest(correctExpr='p[["x.limits"]]')
   Hint: Type p[["x.limits"]] at the command prompt.
  
-- Class: cmd_question
-  Output: They match the plot, right? The x values are indeed between .37 and 22.03. Finally, look at the value of the named element call of p. Remember the double square brackets and quotes. 
-  CorrectAnswer: p[["call"]]
-  AnswerTests: omnitest(correctExpr='p[["call"]]')
-  Hint: Type p[["call"]] at the command prompt.
+- Class: text
+  Output: They match the plot, right? The x values are indeed between .37 and 22.03. 
 
 - Class: text
   Output: Again, not surprising. Before we wrap up, let's talk about lattice's panel functions which control what happens inside each panel of the plot. The ease of making multi-panel plots makes lattice very appealing. The lattice package comes with default panel functions, but you can customize what happens in each panel. 
