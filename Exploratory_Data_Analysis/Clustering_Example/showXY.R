@@ -1,0 +1,5 @@
+par(mfrow=c(1, 2), mar = c(5, 4, 1, 1))
+plot(sub1[, 1], col = sub1$activity, ylab = names(sub1)[1])
+plot(sub1[, 2], col = sub1$activity, ylab = names(sub1)[2])
+legend("bottomright",legend=unique(sub1$activity),col=unique(sub1$activity), pch = 1)
+par(mfrow=c(1,1))

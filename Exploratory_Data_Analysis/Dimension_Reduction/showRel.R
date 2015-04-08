@@ -1,0 +1,5 @@
+svd1 <- svd(scale(dataMatrixOrdered))
+pca1 <- prcomp(dataMatrixOrdered,scale=TRUE)
+par(mfrow=c(1,1))
+plot(pca1$rotation[,1],svd1$v[,1],pch=19,xlab="Principal Component 1",ylab="Right Singular Vector 1")
+abline(c(0,1))

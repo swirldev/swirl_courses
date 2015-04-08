@@ -28,7 +28,7 @@
   Hint: "Enter lm(child ~ ones + parent - 1, galton) at the R prompt. Don't assign the result to a variable."
 
 - Class: cmd_question
-  Output: "The coefficient of ones is 23.9415. Now use the default, lm(child ~ parent, galton), to show the intercept has the same value. This time, DO NOT suppress the the intercept with -1."
+  Output: "The coefficient of ones is 23.9415. Now use the default, lm(child ~ parent, galton), to show the intercept has the same value. This time, DO NOT suppress the intercept with -1."
   CorrectAnswer: lm(child ~ parent, galton)
   AnswerTests: creates_lm_model('lm(child ~ parent, galton)');!expr_is_a("<-")
   Hint: "Entering lm(child ~ parent, galton) at the R prompt is the easiest thing to do. Don't assign the result to a variable."

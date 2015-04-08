@@ -1,0 +1,6 @@
+svd2 <- svd(scale(dataMatrixOrdered))
+par(mfrow=c(1,3))
+par(mar=c(5,4,2,2))
+image(t(dataMatrixOrdered)[,nrow(dataMatrixOrdered):1])
+plot(rep(c(0,1),each=5),pch=19,xlab="Column",ylab="Pattern 1")
+plot(rep(c(0,1),5),pch=19,xlab="Column",ylab="Pattern 2")

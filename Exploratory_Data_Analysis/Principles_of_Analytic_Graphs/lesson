@@ -1,0 +1,178 @@
+- Class: meta
+  Course: Exploratory_Data_Analysis
+  Lesson: Principles_of_Analytic_Graphs
+  Author: Swirl Coders
+  Type: Coursera
+  Organization: Johns Hopkins Bloomberg School of Public Health
+  Version: 2.2.0
+
+- Class: text
+  Output: "Principles_of_Analytic_Graphs. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 04_ExploratoryAnalysis/Principles_of_Analytic_Graphics.)"
+
+- Class: text
+  Output:  In this lesson, we'll discuss  some basic principles of  presenting data effectively. These will illustrate some fundamental concepts of displaying results in order to make them more meaningful and convincing. These principles are cribbed from Edward Tufte's great 2006 book, Beautiful Evidence. You can read more about them at the www.edwardtufte.com website.
+
+- Class: mult_question
+  Output: As a  warm-up, which of the following would NOT be a good use of analytic graphing?
+  AnswerChoices:  To show comparisons; To show causality, mechanism, explanation; To show multivariate data; To decide which horse to bet on at the track
+  CorrectAnswer: To decide which horse to bet on at the track
+  AnswerTests: omnitest(correctVal='To decide which horse to bet on at the track')
+  Hint: Which choice  has nothing to do with data science?
+
+- Class: text
+  Output: You're ready to start. Graphs give us a visual form of data, and the first principle of analytic graphs is to show some comparison. You'll hear more about this when you study statistical inference (another great course BTW), but evidence for a hypothesis is always relative to another competing or alternative hypothesis.  
+
+- Class: figure
+  Output: When presented with a claim that something is good, you should always ask "Compared to What?" This is why in commercials you often hear the phrase "other leading brands". An implicit comparison, right?
+  Figure: clearPlot.R
+  FigureType: new
+
+- Class: figure
+  Output: Consider this boxplot which shows the relationship between the use of an air cleaner and the number of symptom-free days of asthmatic children. (The top and bottom lines of the box indicate the 25% and 75% quartiles of the data, and the horizontal line in the box shows the 50%.) Since the box is above 0, the number of symptom-free days for children with asthma is bigger using the air cleaner. This is good, right?
+  Figure: AC1.R
+  FigureType: new
+
+- Class: mult_question
+  Output: How many days of improvement does the median correspond to?
+  AnswerChoices:  4; -2; 1; 12
+  CorrectAnswer: 1
+  AnswerTests: omnitest(correctVal='1')
+  Hint: The results for the median (50%) number of children is shown by the dark horizontal line which is around +1, so the improvement is about 1 day.
+
+- Class: text
+  Output: While it's somewhat informative, it's also somewhat cryptic, since the y-axis is claiming to show a change in number of symptom-free days. Wouldn't it be better to show a comparison?
+ 
+
+- Class: figure
+  Output: Like this? Here's a graphic which shows two boxplots, the one on the left showing the results for a control group that doesn't use an air cleaner alongside the previously shown boxplot.
+  Figure: AC2.R
+  FigureType: new
+
+- Class: text
+  Output: By showing the two boxplots side by side, you can clearly see that using the air cleaner increases the number of symptom-free days for most asthmatic children. The plot on the right (using the air cleaner) is generally higher than the one on the left (the control group).
+
+- Class: mult_question
+  Output: What does this graph NOT show you?
+  AnswerChoices:  Children in the control group had at most 3 symptom-free days; 75% of the children using the air cleaner had at most 3 symptom-free days; Half the chidren in the control group had no improvement; Using the air cleaner makes asthmatic children sicker
+  CorrectAnswer: Using the air cleaner makes asthmatic children sicker
+  AnswerTests: omnitest(correctVal='Using the air cleaner makes asthmatic children sicker')
+  Hint: Since the boxplot on the right shows that the number of symptom-free days increases with air cleaner use, the graph does NOT show that use makes the children sicker.
+
+- Class: figure
+  Output: So the first principle was to show a comparison. The second principle is to show causality or a mechanism of how your theory of the data works. This  explanation or systematic structure shows your causal framework for thinking about the question you're trying to answer.
+  Figure: clearPlot.R
+  FigureType: new
+
+- Class: figure
+  Output: Consider this plot which shows the dual boxplot we just showed, but next to it we have a corresponding plot of changes in measures of particulate matter. 
+  Figure: AC3.R
+  FigureType: new
+
+- Class: mult_question
+  Output: This picture tries to explain how the air cleaner  increases the number of symptom-free days for asthmatic children. What mechanism does the graph imply?
+  AnswerChoices: That the air cleaner reduces pollution; That the air cleaner increases pollution; That the children in the control group are healthier; That the air in the control group is cleaner than the air in the other group 
+  CorrectAnswer: That the air cleaner reduces pollution
+  AnswerTests: omnitest(correctVal='That the air cleaner reduces pollution')
+  Hint: The picture on the right shows an air cleaner that cleans.
+
+- Class: text
+  Output: By showing the two sets of boxplots side by side you're explaining your theory of why the air cleaner increases the number of symptom-free days. Onward!
+
+- Class: text
+  Output: So the first principle was to show some comparison, the second was to show a mechanism, so what will the third principle say to show? 
+
+- Class: text
+  Output: Multivariate data! 
+
+- Class: text
+  Output: What is multivariate data you might ask? In technical (scientific) literature this term means more than 2 variables. Two-variable plots are what you saw in high school algebra.  Remember those x,y plots when you were learning about slopes and intercepts and equations of lines? They're valuable, but usually questions are more complicated and require more variables.  
+
+- Class: figure
+  Output: Sometimes, if you restrict yourself to two variables you'll be misled and draw an incorrect conclusion.
+  Figure: clearPlot.R
+  FigureType: new
+
+- Class: figure
+  Output: Consider this plot which shows the relationship between air pollution (x-axis) and mortality rates among the elderly (y-axis). The blue regression line shows a surprising result. (You'll learn about regression lines when you take the fabulous Regression Models course.)
+  Figure: MVD1.R
+  FigureType: new
+
+- Class: mult_question
+  Output: What does the blue regression line indicate?
+  AnswerChoices: As pollution increases more people die; As pollution increases fewer people die; As pollution increases the number of deaths doesn't change; Pollution doesn't really increase, it just gets reported more 
+  CorrectAnswer: As pollution increases fewer people die
+  AnswerTests: omnitest(correctVal='As pollution increases fewer people die')
+  Hint: As you move to the right along the x-axis pollution increases, but the blue line moves downward, indicating fewer deaths.
+
+- Class: text
+  Output: Fewer deaths with more pollution? That's a surprise! Something's gotta be wrong, right? In fact, this is an example of Simpson's paradox, or the Yule–Simpson effect. Wikipedia (http://en.wikipedia.org/wiki/Simpson%27s_paradox) tells us that this "is a paradox in probability and statistics, in which a trend that appears in different groups of data disappears when these groups are combined." 
+
+- Class: text
+  Output: Suppose we divided this mortality/pollution data into the four seasons. Would we see different trends?
+
+- Class: figure
+  Output: Yes, we do! Plotting the same data for the 4 seasons individually we see a different result. 
+  Figure: MVD2.R
+  FigureType: new
+
+- Class: mult_question
+  Output: What does the new plot indicate?
+  AnswerChoices: As pollution increases more people die in all seasons; As pollution increases fewer people die in all seasons; As pollution increases the seasons change; Pollution doesn't really increase, it just gets reported more 
+  CorrectAnswer: As pollution increases more people die in all seasons
+  AnswerTests: omnitest(correctVal='As pollution increases more people die in all seasons')
+  Hint: In all the seasons, as you move to the right along the x-axis pollution increases and all four  blue regression lines move upward, indicating more deaths.
+
+- Class: text
+  Output: The fourth principle of analytic graphing involves integrating evidence. This means not limiting yourself to one form of expression. You can use  words, numbers, images as well as diagrams. Graphics should make use of many modes of data presentation. Remember, "Don't let the tool drive the analysis!"
+
+- Class: figure
+  Output: To show you what we mean, here's an example of a figure taken from a paper published in the Journal of the AMA. It shows the relationship between pollution and hospitalization of people with heart disease. As you can see, it's a lot different from our previous plots. The solid circles in the center portion indicate point estimates of percentage changes in hospitalization rates for different levels of pollution. The lines through the circles indicate confidence intervals associated with these estimates. (You'll learn more about confidence intervals in another great course, this one on statistical inference.) 
+  Figure: ITG.R
+  FigureType: new
+
+- Class: text
+  Output: Note that on the right side of the figure is another column of numbers, one for each of the point estimates given. This column shows posterior probabilities that relative risk is greater than 0. This, in effect, is a measure of the strength of the evidence showing the correlation between pollution and hospitalization.  The point here is that all of this information is located in one picture so that the reader can see the strength of not only the correlations but the evidence as well.
+
+
+
+- Class: text
+  Output: The fifth principle of graphing involves describing and documenting the evidence with sources and appropriate labels and scales. Credibility is important so the data graphics should tell a complete story. Also, using R, you want to preserve any code you use to generate your data and graphics so that the research can be replicated if necessary. This allows for easy verification or finding bugs in your analysis.
+
+- Class: text
+  Output: The sixth and final principle of analytic graphing is maybe the most important. Content is King! If you don't have something interesting to report, your graphs won't save you. Analytical presentations ultimately stand or fall depending on the quality, relevance, and integrity of their content.
+
+- Class: text
+  Output: Review time!!!
+
+- Class: mult_question
+  Output: Which of the following is NOT a good principle of graphing?
+  AnswerChoices: To integrate multiple modes of evidence; To describe and document evidence; Content is king; Having unreadable labels
+  CorrectAnswer: Having unreadable labels
+  AnswerTests: omnitest(correctVal='Having unreadable labels')
+  Hint: Which choice  is obviously bad?
+
+- Class: mult_question
+  Output: Which of the following is NOT a good principle of graphing?
+  AnswerChoices: To prove you're always right; To show two competing hypotheses; To demonstrate a causative mechanism underlying a correlation; Content is king
+  CorrectAnswer: To prove you're always right
+  AnswerTests: omnitest(correctVal='To prove you\'re always right')
+  Hint: Which choice  is obviously bad?
+
+- Class: mult_question
+  Output: Which of the following is NOT a good principle of graphing?
+  AnswerChoices: To integrate different types of evidence; To show that some fonts are better than others; To show good labels and scales; Content is king
+  CorrectAnswer: To show that some fonts are better than others
+  AnswerTests: omnitest(correctVal='To show that some fonts are better than others')
+  Hint: Which choice  is obviously bad?
+
+- Class: mult_question
+  Output: True or False? Color is king.
+  AnswerChoices: True; False
+  CorrectAnswer: False
+  AnswerTests: omnitest(correctVal='False')
+  Hint: Think of the sixth principle
+
+
+- Class: text
+  Output: Congrats! You've concluded exploring this lesson on principles of graphing. We hope you found it principally principled.  
+

@@ -1,0 +1,184 @@
+- Class: meta
+  Course: Exploratory_Data_Analysis
+  Lesson: Plotting_Systems
+  Author: Swirl Coders
+  Type: Coursera
+  Organization: Johns Hopkins Bloomberg School of Public Health
+  Version: 2.2.0
+
+- Class: text
+  Output: "Plotting_Systems. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 04_ExploratoryAnalysis/PlottingSystems.)"
+
+- Class: text
+  Output:  In this lesson, we'll give you a brief overview of the three plotting systems in R, their differences, strengths, and weaknesses. We'll only cover the basics here to give you a general idea of the systems and in later lessons we'll cover each system in more depth.
+
+- Class: text
+  Output:  The first plotting system is the Base Plotting System which comes with R. It's the oldest system which uses a simple "Artist's palette" model. What this means is that you start with a blank canvas and build your plot up from there, maybe step by step. 
+
+- Class: text
+  Output: Usually you start with a plot function (or something similar), then you use annotation functions to add to or modify your plot. R provides many annotating functions such as text, lines, points, and axis. R provides documentation for each of these. They all add to an already existing plot. 
+
+- Class: mult_question
+  Output: What do you think is a disadvantage of the Base Plotting System?
+  AnswerChoices:  It's intuitive and exploratory; It mirrors how we think of building plots and analyzing data; You can't go back once a plot has started; A complicated plot is a series of simple R commands
+  CorrectAnswer: You can't go back once a plot has started
+  AnswerTests: omnitest(correctVal='You can\'t go back once a plot has started')
+  Hint: Which choice  has a negative contraction in it?
+
+- Class: text
+  Output: Yes! The base system is very intuitive and easy to use when you're starting to do exploratory graphing and looking for a research direction. You can't go backwards, though, say, if you need to readjust margins or misspell a caption. A finished plot will be a series of R commands, so it's difficult to translate a finished plot into a different system.
+
+- Class: cmd_question
+  Output: We've loaded the dataset cars for you to demonstrate how easy it is to plot. First, use the R command head with cars as an argument to see what the data looks like.
+  CorrectAnswer: head(cars)
+  AnswerTests: omnitest(correctExpr='head(cars)')
+  Hint: Type head(cars) at the command prompt.
+ 
+- Class: text
+  Output: So the dataset collates the speeds and distances needed to stop for 50 cars. This data was recorded in the 1920's.
+
+- Class: cmd_question
+  Output: We'll use the R command with which takes two arguments. The first  specifies a dataset or environment in which to run the second argument, an R expression. This will save us a bit of typing. Try running the command with now using cars as the first argument and a call to plot as the second. The call to plot will take two arguments, speed and dist. Please specify them in that order.    
+  CorrectAnswer: with(cars, plot(speed, dist))
+  AnswerTests: omnitest(correctExpr='with(cars, plot(speed, dist))')
+  Hint: Type with(cars, plot(speed, dist)) at the command prompt.
+ 
+- Class: text
+  Output: Simple, right? You can see the relationship between the two variables, speed and distance. The first variable is plotted along the x-axis and the second along the y-axis.
+
+- Class: cmd_question
+  Output: Now we'll show you what the function text does. Run the command text with three arguments. The first two, x and y coordinates, specify the placement of the third argument, the text to be added to the plot. Let the first argument be mean(cars$speed), the second max(cars$dist), and the third the string "SWIRL rules!". Try it now.  
+  CorrectAnswer: text(mean(cars$speed),max(cars$dist),"SWIRL rules!")
+  AnswerTests: omnitest(correctExpr='text(mean(cars$speed),max(cars$dist),"SWIRL rules!")')
+  Hint: Type text(mean(cars$speed),max(cars$dist),"SWIRL rules!") at the command prompt.
+ 
+- Class: text
+  Output: Ain't it the truth?
+
+- Class: text
+  Output:  Now we'll move on to the second plotting system, the Lattice System which comes in the package of the same name. Unlike the Base System, lattice plots are created with a single function call such as xyplot or bwplot. Margins and spacing are set automatically because the entire plot is specified at once.  
+
+- Class: text
+  Output:  The lattice system is most useful for conditioning types of plots which display how y changes with x across levels of z. The variable z might be a categorical variable of your data. This system is also good for putting many plots on a screen at once.
+
+- Class: text
+  Output: The lattice system has several disadvantages. First, it is sometimes awkward to specify an entire plot in a single function call. Annotating a plot may not be especially intuitive. Second, using panel functions and subscripts is somewhat difficult  and requires preparation. Finally, you cannot "add" to the plot once it is created as you can with the base system.
+
+- Class: cmd_question
+  Output: As before, we've loaded some data for you in the variable state. This data comes with the lattice package and it concerns various characteristics of the 50 states in the U.S. Use the R command head to see the first few entries of  state now. 
+  CorrectAnswer: head(state)
+  AnswerTests: omnitest(correctExpr='head(state)')
+  Hint: Type head(state) at the command prompt.
+
+- Class: cmd_question
+  Output: As you can see state holds 9 pieces of information for each of the 50 states. The last variable, region, specifies a category for each state. Run the R command table with the argument state$region to see how many categories there are and how many states are in each.
+  CorrectAnswer: table(state$region)
+  AnswerTests: omnitest(correctExpr='table(state$region)')
+  Hint: Type table(state$region) at the command prompt.
+
+- Class: text
+  Output: So there are 4 categories and the 50 states are sorted into them appropriately. Let's use the lattice command xyplot to see how life expectancy varies with income in each of the four regions. 
+
+- Class: cmd_question
+  Output: To do this we'll give xyplot 3 arguments. The first is the most complicated. It is this  R formula,  Life.Exp ~ Income | region, which indicates we're plotting life expectancy as it depends on income for each region. The second argument, data, is set equal to state. This allows us to use "Life.Exp" and "Income" in the formula instead of specifying the dataset state for each term (as in state$Income). The third argument, layout, is set equal to the two-long vector c(4,1). Run xyplot now with these three arguments.
+  CorrectAnswer: xyplot(Life.Exp ~ Income | region, data = state, layout = c(4, 1))
+  AnswerTests: omnitest(correctExpr='xyplot(Life.Exp ~ Income | region, data = state, layout = c(4, 1))')
+  Hint: Type xyplot(Life.Exp ~ Income | region, data = state, layout = c(4, 1)) at the command prompt.
+
+- Class: mult_question
+  Output: We see the data for each of the 4 regions plotted in one row. Based on this plot, which region of the U.S. seems to have the shortest life expectancy?
+  AnswerChoices:  Northeast; South; North Central; West
+  CorrectAnswer: South
+  AnswerTests: omnitest(correctVal='South')
+  Hint: Which region has no dots above 72?
+
+- Class: cmd_question
+  Output: Just for fun rerun the xyplot and this time set layout to the vector c(2,2). To save typing use the up arrow to recover the previous xyplot command.
+  CorrectAnswer: xyplot(Life.Exp ~ Income | region, data = state, layout = c(2,2))
+  AnswerTests: omnitest(correctExpr='xyplot(Life.Exp ~ Income | region, data = state, layout = c(2,2))')
+  Hint: Type xyplot(Life.Exp ~ Income | region, data = state, layout = c(2,2)) at the command prompt.
+
+- Class: text
+  Output: See how the plot changed? No need for you to worry about margins or labels. The package took care of all that for you.
+
+- Class: text
+  Output: Now, for the last plotting system, ggplot2, which is a hybrid of the base and lattice systems. It automatically deals with spacings, text, titles (as Lattice does) but also allows you to annotate by "adding" to a plot (as Base does), so it's the best of both worlds. 
+
+- Class: text
+  Output: Although ggplot2 bears a superficial similarity to lattice, it's generally easier and more intuitive to use. Its default mode makes many choices for you but you can still customize a lot. The package is based on a "grammar of graphics" (hence the gg in the name), so you can control the aesthetics of your plots. For instance, you can plot conditioning graphs and panel plots as we did in the lattice example.
+
+- Class: cmd_question
+  Output: We'll see an example now of ggplot2 with a simple (single) command. As before, we've loaded a dataset for you from the ggplot2 package. This mpg data holds fuel economy data between 1999 and 2008 for 38 different models of cars. Run head with mpg as an argument so you get an idea of what the data looks like.
+  CorrectAnswer: head(mpg)
+  AnswerTests: omnitest(correctExpr='head(mpg)')
+  Hint: Type head(mpg) at the command prompt.
+
+- Class: cmd_question
+  Output: Looks complicated. Run dim with the argument mpg to see how big the dataset is.
+  CorrectAnswer: dim(mpg)
+  AnswerTests: omnitest(correctExpr='dim(mpg)')
+  Hint: Type dim(mpg) at the command prompt.
+
+- Class: cmd_question
+  Output: Holy cow! That's a lot of information for just 38 models of cars. Run the R command table with the argument mpg$model. This will tell us how many models of cars we're dealing with. 
+  CorrectAnswer: table(mpg$model)
+  AnswerTests: omnitest(correctExpr='table(mpg$model)')
+  Hint: Type table(mpg$model) at the command prompt.
+
+- Class: cmd_question
+  Output: Oh, there are 38 models. We're interested in the effect engine displacement (displ) has on highway gas mileage (hwy), so we'll use the ggplot2 command qplot to display this relationship. Run qplot now with three arguments. The first two are the variables displ and hwy we want to plot, and the third is the argument data set equal to mpg. As before, this allows us to avoid using the mpg$variable notation for the first two arguments.
+  CorrectAnswer: qplot(displ, hwy, data = mpg)
+  AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg)')
+  Hint: Type qplot(displ, hwy, data = mpg) at the command prompt.
+
+- Class: text
+  Output: Not surprisingly we see that the bigger the engine displacement the lower the gas mileage.
+
+- Class: text
+  Output: Let's review!
+
+- Class: mult_question
+  Output: Which R plotting system is based on an artist's palette?
+  AnswerChoices:  base; ggplot2; lattice; Winsor&Newton
+  CorrectAnswer: base
+  AnswerTests: omnitest(correctVal='base')
+  Hint: The oldest and simplest system doesn't require loading an extra package.
+
+- Class: mult_question
+  Output: Which R plotting system does NOT allow you to annotate plots with separate calls?
+  AnswerChoices:  base; ggplot2; lattice; Winsor&Newton
+  CorrectAnswer: lattice
+  AnswerTests: omnitest(correctVal='lattice')
+  Hint: Recall that with the lattice system the whole plot has to be drawn with just one call.
+
+- Class: mult_question
+  Output: Which R plotting system combines the best features of the other two?
+  AnswerChoices:  base; ggplot2; lattice; Winsor&Newton
+  CorrectAnswer: ggplot2
+  AnswerTests: omnitest(correctVal='ggplot2')
+  Hint: Recall that ggplots allows you to annotate separately (as base does) and allows you to plot conditioning plots easily (as lattice does).
+
+- Class: mult_question
+  Output: Which R plotting system uses a graphics grammar?
+  AnswerChoices:  base; ggplot2; lattice; Winsor&Newton
+  CorrectAnswer: ggplot2
+  AnswerTests: omnitest(correctVal='ggplot2')
+  Hint: Look carefully at the names!
+
+- Class: mult_question
+  Output: Which R plotting system forces you to make your entire plot with one call?
+  AnswerChoices:  base; ggplot2; lattice; Winsor&Newton
+  CorrectAnswer: lattice
+  AnswerTests: omnitest(correctVal='lattice')
+  Hint: The base and ggplot2 allow you to build up your plots with several calls.
+
+- Class: mult_question
+  Output: Which of the following sells high quality artists' brushes?
+  AnswerChoices:  base; ggplot2; lattice; Winsor&Newton
+  CorrectAnswer: Winsor&Newton
+  AnswerTests: omnitest(correctVal='Winsor&Newton')
+  Hint: Which of the choices has nothing to do with plotting?
+
+- Class: text
+  Output: Congrats! You've concluded this plotting lesson. We hope you didn't find it plodding.
+

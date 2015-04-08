@@ -1,0 +1,47 @@
+library(RColorBrewer)
+library(datasets)
+
+# Put initialization code in this file.
+path_to_course <- file.path(find.package("swirl"),"Courses/Exploratory_Data_Analysis/Working_with_Colors")
+try(dev.off(),silent=TRUE)
+plot.new()
+
+pathtofile <- function(fileName){
+  mypath <- file.path(find.package("swirl"),
+                      "Courses/Exploratory_Data_Analysis/Working_with_Colors/",
+                      fileName)
+}
+fxfer <- function(fileName){
+  mypath <- pathtofile(fileName)
+  file.copy(mypath,fileName)
+}
+
+myImage <- function(iname){
+  par(mfrow=c(1,1))
+  par(mar=c(8,10,8,10))
+  image(t(iname)[,nrow(iname):1])
+}
+myedit <- function(fname){
+   #fxfer(fname)
+   #file.edit(fname)
+   mypath <- pathtofile(fname)
+   file.edit(mypath)
+}
+
+mdist <- function(x,y,cx,cy){
+  distTmp <- matrix(NA,nrow=3,ncol=12)
+  distTmp[1,] <- (x-cx[1])^2 + (y-cy[1])^2
+  distTmp[2,] <- (x-cx[2])^2 + (y-cy[2])^2
+  distTmp[3,] <- (x-cx[3])^2 + (y-cy[3])^2  
+  return(distTmp)
+}
+
+showMe <- function(cv){
+  myarg <- deparse(substitute(cv))
+  z<- outer( 1:20,1:20, "+")
+  obj<- list( x=1:20,y=1:20,z=z )
+  image(obj, col=cv, main=myarg  )
+}
+
+x <- rnorm(1000)
+y <- rnorm(1000)

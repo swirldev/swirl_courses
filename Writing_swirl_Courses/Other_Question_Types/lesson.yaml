@@ -1,0 +1,82 @@
+- Class: meta
+  Course: Writing_swirl_Courses
+  Lesson: Other Question Types
+  Author: swirl coders
+  Type: Standard
+  Organization: swirl coders
+  Version:  2.2.20
+
+- Class: text
+  Output: "Command and Multiple Choice questions have been the most frequently used, but 
+  swirl provides several others. The primary limitation to their use is probably testing. 
+  As an extreme example, swirl provides no built-in test for a range question, a case 
+  which fell through the cracks during swirl's rapid growth. Course authors can write 
+  custom tests, and a range question will be used to introduce them in this lesson. 
+  That authors can write custom tests, but not custom questions, is another consequence 
+  of swirl's rapid growth. An imminent code review is expected to address issues such 
+  as these. As usual, open the copy, lesson.yaml, in subdirectory swirl_temp of your 
+  working directory if it hasn't automatically appeared."
+
+- Class: figure
+  Output: "In previous lessons we've introduced \"questions\" of type text, 
+  multiple choice, command, exact, and figure. We have not used figure to display figures 
+  or images, which was its original purpose, but only to run scripts. Here we use it to
+  run a script, galtonPlot.R, which loads data, creates a figure, and attempts to display
+  the script source file itself. (If it doesn't appear, open it manually.)"
+  Figure: galtonPlot.R
+  FigureType: new
+
+- Class: text
+  Output: "Figures have a vestigial key, FigureType, once again an artifact of rapid 
+  growth. FigureType is no longer used."
+
+# This is the first appearance of a text or fill-in-the-blank question in the course.
+- Class: text_question
+  Output: "A text question must be answered with a string of characters which matches 
+  a regular expression supplied by the course author. The correct answer for this 
+  question is anything which will match the regular expression given as an argument 
+  to val_matches in the AnswerTests. College Students, college students, 'college students', 
+  and various other combinations will work. Misspellings such as collage students (perhaps 
+  meaning students interested in a certain artistic medium) will not. Which group is more 
+  representative of young persons, college students or retired persons?"
+  CorrectAnswer: College Students
+  AnswerTests: val_matches('[\"]*[Cc]ollege[[:blank:]]+[Ss]tudents[\"]*')
+  Hint: Enter College Students, college students, or something roughly equivalent.
+
+# This is the first appearance of a video question in the course.
+- Class: video
+  Output: "In the case of a text or fill-in-the-blanks question, a feature which could 
+  automatically deal with common misspellings and typographical errors would be nice. 
+  R provides some functionality for spell checking, i.e., function aspell() in the standard 
+  utils package. More pertinent to the topic of this lesson is a recent R-Bloggers article 
+  entitled \"Peter Norvig's Spell Checker in Two Lines of Base R\". The reason for its pertinence 
+  here is that the current question is an example of Class video. If you answer Yes, swirl will 
+  attempt to open the relevant page in your browser. Would you like to visit the R-Bloggers
+  article now?"
+  VideoLink: "http://www.r-bloggers.com/peter-norvigs-spell-checker-in-two-lines-of-base-r"
+
+- Class: figure
+  Output: "The 'text many' and 'text order' questions are like text questions, but allow 
+  for several character strings as answers. As with range questions, there is no reasonable 
+  way to check them with built-in tests, hence they would require custom tests. Since they 
+  also involve complications of spelling and typographical errors, we'll introduce custom 
+  tests with a range question instead. It will be based on a Box Plot of the Galton data and 
+  specified in customTests.R. Please open customTests.R now if necessary, and look at 
+  the source code for the range_test function."
+  Figure: showCustom.R
+  FigureType: new
+
+# This is the first question for which a custom test is needed.
+- Class: range_question
+  Output: "The figure shows a Box Plot of the Galton data. The user will be asked to 
+  enter a number, but could actually enter an expression such as (68+69)/2, or even 
+  mean(galton$parent). The range_test function will only check the value calculated. Now for the 
+  question. The median parental height is indicated by the bold horizontal line in the 
+  center of Box Plot labeled 'parent'. What value in inches would you assign to this 
+  median?"
+  CorrectAnswer: 68.5
+  AnswerTests: range_test(68, 69)
+  Hint: Pick a height in inches between the two red, dashed lines.
+  
+- Class: text
+  Output: "This completes a survey of available question types and tests."

@@ -1,0 +1,6 @@
+par(mar=rep(0.1,4))
+plot(x,y,col="blue",pch=19,cex=2,asp=1)
+text(x+0.05,y+0.05,labels=as.character(1:12))
+points(x[8],y[8],col="orange",pch=3,lwd=3,cex=3)
+points(x[4],y[4],col="orange",pch=3,lwd=3,cex=3)
+segments(x[8],y[8],x[4],y[4],lwd=3,col="orange")

@@ -44,8 +44,8 @@
 - Class: text
   Output: 'The concept of power is closely related to that of a type II error. Power
     is the probability of correctly rejecting the null hypothesis when the null hypothesis
-    is false. Since the type II error rate is the probability of INCORRECTLY rejecting
-    the null hypothesis and power is the probability of CORRECTLY rejecting the null
+    is false. Since the type II error rate is the probability of INCORRECTLY failing to
+    reject the null hypothesis and power is the probability of CORRECTLY rejecting the null
     hypothesis, power is therefore equal to one minus the type II error rate (or in
     mathematical terms, power = 1 - beta). '
 

@@ -1,0 +1,58 @@
+- Class: meta
+  Course: ErrFind
+  Lesson: ErrTrack
+  Author: Swirl Coders
+  Type: Coursera
+  Organization: Johns Hopkins Bloomberg School of Public Health
+  Version: 2.2.0
+
+- Class: cmd_question
+  Output: Start by creating the graphical object g by assigning to it a call to ggplot with 2 arguments. The first is the dataset and the second is a call to the function aes. This call will have 3 arguments, x set equal to displ, y set equal to hwy, and color set equal to factor(year). This last will allow us to distinguish between the two manufacturing years (1999 and 2008) in our data.
+  CorrectAnswer: g <- ggplot(mpg,aes(x=displ,y=hwy,color=factor(year)))
+  AnswerTests: expr_creates_var("g"); omnitest(correctExpr='g <- ggplot(mpg,aes(x=displ,y=hwy,color=factor(year)))')
+  Hint: Type g <- ggplot(mpg,aes(x=displ,y=hwy,color=factor(year))) at the command prompt.
+
+- Class: cmd_question
+  Output: Now add to your last command (or retype it if you like to type) a call to geom_smooth with 4 arguments. These are method set to "lm", se set to FALSE, size set to 2, and color set to "black".
+  CorrectAnswer: g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,color="black")
+  AnswerTests:  omnitest(correctExpr='g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,color="black")')
+  Hint: Type g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,color="black") at the command prompt.
+
+- Class: cmd_question
+  Output: Before we leave qplot's scatterplotting ability, call qplot again, this time with 3 arguments. The first is y set equal to hwy, the second is data set equal to mpg, and the third is color set equal to drv. Try this now.
+  CorrectAnswer: qplot(y=hwy, data = mpg, color = drv)
+  AnswerTests: omnitest(correctExpr='qplot(y=hwy, data = mpg, color = drv)')
+  Hint: Type qplot(y=hwy, data = mpg, color = drv) at the command prompt.
+
+- Class: mult_question
+  Output: Which of the following is a basic workhorse function of ggplot2?
+  AnswerChoices:  hist; xyplot; scatterplot; gplot; qplot
+  CorrectAnswer:  qplot
+  AnswerTests: omnitest(correctVal='qplot')
+  Hint: Which function did we invoke the most in this lesson?
+
+- Class: text
+  Output: The LLN forms the basis of frequency style thinking. 
+
+- Class: mult_question
+  Output:  Which types of plot does qplot plot?
+  AnswerChoices:  histograms; scatterplots; box and whisker plots; all of the others
+  CorrectAnswer: all of the others
+  AnswerTests: ANY_of_exprs('histograms','scatterplots','box and whisker plots','all of the others')
+  Hint: That qplot is amazing! It seems to do everything!
+
+- Class: cmd_question
+  Output: To see this in action, we've copied some code from the slides and created the function coinPlot. It takes an integer n which is the number of coin tosses that will be simulated. As coinPlot does these coin flips it computes the cumulative sum (assuming heads are 1 and tails 0), but after each toss it divides the cumulative sum by the number of flips performed so far. It then plots this value for each of the k=1...n tosses. Try it now for n=10. 
+  CorrectAnswer: coinPlot(10)
+  AnswerTests: omnitest(correctExpr='coinPlot(10)')
+  Hint: Type coinPlot(10) at the command prompt.
+
+
+- Class: text
+  Output: The LLN forms the basis of frequency style thinking. 
+
+- Class: cmd_question
+  Output: Now type source("swirl_courses/ErrFind/ErrTrack/plot1.R")
+  CorrectAnswer: source("swirl_courses/ErrFind/ErrTrack/plot1.R")
+  AnswerTests: omnitest(correctExpr='source("swirl_courses/ErrFind/ErrTrack/plot1.R")')
+  Hint: Type source("swirl_courses/ErrFind/ErrTrack/plot1.R") at the command prompt.

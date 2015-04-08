@@ -168,7 +168,7 @@
 
 - Class: text
   Output: Finally, we may be most interested in finding the value that shows up the
-    most in our dataset. In other words, what the most common value in our dataset?
+    most in our dataset. In other words, what is the most common value in our dataset?
     This is called the MODE and it is found by counting the number of times that each
     value appears in the dataset and selecting the most frequent value.
 
