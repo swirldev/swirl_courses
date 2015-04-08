@@ -218,7 +218,7 @@
 - Class: cmd_question
   Output: Create a directory in the current working directory called 
     "testdir2" and a subdirectory for it called "testdir3", all in one command
-    by usung dir.create() and file.path().
+    by using dir.create() and file.path().
   CorrectAnswer: dir.create(file.path("testdir2", "testdir3"), recursive = TRUE)
   AnswerTests: omnitest(correctExpr='dir.create(file.path("testdir2", "testdir3"), recursive = TRUE)')
   Hint: "dir.create(file.path('testdir2', 'testdir3'), recursive = TRUE) will do 
