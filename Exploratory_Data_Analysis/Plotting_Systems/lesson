@@ -13,7 +13,7 @@
   Output:  In this lesson, we'll give you a brief overview of the three plotting systems in R, their differences, strengths, and weaknesses. We'll only cover the basics here to give you a general idea of the systems and in later lessons we'll cover each system in more depth.
 
 - Class: text
-  Output:  The first plotting system is the Base Plotting System which comes with R. It's the oldest system which uses a simple "Artist's palette" model. What this means is that you start with a blank canvas and build your plot up from there, maybe step by step. 
+  Output:  The first plotting system is the Base Plotting System which comes with R. It's the oldest system which uses a simple "Artist's palette" model. What this means is that you start with a blank canvas and build your plot up from there, step by step. 
 
 - Class: text
   Output: Usually you start with a plot function (or something similar), then you use annotation functions to add to or modify your plot. R provides many annotating functions such as text, lines, points, and axis. R provides documentation for each of these. They all add to an already existing plot. 
@@ -26,7 +26,7 @@
   Hint: Which choice  has a negative contraction in it?
 
 - Class: text
-  Output: Yes! The base system is very intuitive and easy to use when you're starting to do exploratory graphing and looking for a research direction. You can't go backwards, though, say, if you need to readjust margins or misspell a caption. A finished plot will be a series of R commands, so it's difficult to translate a finished plot into a different system.
+  Output: Yes! The base system is very intuitive and easy to use when you're starting to do exploratory graphing and looking for a research direction. You can't go backwards, though, say, if you need to readjust margins or fix a misspelled caption. A finished plot will be a series of R commands, so it's difficult to translate a finished plot into a different system.
 
 - Class: cmd_question
   Output: We've loaded the dataset cars for you to demonstrate how easy it is to plot. First, use the R command head with cars as an argument to see what the data looks like.
@@ -56,7 +56,7 @@
   Output: Ain't it the truth?
 
 - Class: text
-  Output:  Now we'll move on to the second plotting system, the Lattice System which comes in the package of the same name. Unlike the Base System, lattice plots are created with a single function call such as xyplot or bwplot. Margins and spacing are set automatically because the entire plot is specified at once.  
+  Output:  Now we'll move on to the second plotting system, the Lattice System, which comes in the package of the same name. Unlike the Base System, lattice plots are created with a single function call such as xyplot or bwplot. Margins and spacing are set automatically because the entire plot is specified at once.  
 
 - Class: text
   Output:  The lattice system is most useful for conditioning types of plots which display how y changes with x across levels of z. The variable z might be a categorical variable of your data. This system is also good for putting many plots on a screen at once.
@@ -102,7 +102,7 @@
   Output: See how the plot changed? No need for you to worry about margins or labels. The package took care of all that for you.
 
 - Class: text
-  Output: Now, for the last plotting system, ggplot2, which is a hybrid of the base and lattice systems. It automatically deals with spacings, text, titles (as Lattice does) but also allows you to annotate by "adding" to a plot (as Base does), so it's the best of both worlds. 
+  Output: Now for the last plotting system, ggplot2, which is a hybrid of the base and lattice systems. It automatically deals with spacing, text, titles (as Lattice does) but also allows you to annotate by "adding" to a plot (as Base does), so it's the best of both worlds. 
 
 - Class: text
   Output: Although ggplot2 bears a superficial similarity to lattice, it's generally easier and more intuitive to use. Its default mode makes many choices for you but you can still customize a lot. The package is based on a "grammar of graphics" (hence the gg in the name), so you can control the aesthetics of your plots. For instance, you can plot conditioning graphs and panel plots as we did in the lattice example.

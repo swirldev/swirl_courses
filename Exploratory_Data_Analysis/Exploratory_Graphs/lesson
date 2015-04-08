@@ -246,7 +246,7 @@
   Output: First we'll show how R, in one line and using base plotting, can display multiple boxplots. We simply specify that we want to see the pollution data as a function of region. We know that our pollution data characterized each of the 576 entries as belonging to one of two regions (east and west).
 
 - Class: cmd_question
-  Output:  We use the R formula construct y ~ x to show that y (in this case pm25) depends on x (region). Since both come from the same data frame (pollution) we can specify a data argument set equal to pollution. By doing this, we don't have to type pollution$pm25 (or ppm) and pollution$region. We can just specify the formula pm25~region. Call boxplot now with this formula as its argument, data equal to pollution, and col equal to "red". 
+  Output:  We use the R formula y ~ x to show that y (in this case pm25) depends on x (region). Since both come from the same data frame (pollution) we can specify a data argument set equal to pollution. By doing this, we don't have to type pollution$pm25 (or ppm) and pollution$region. We can just specify the formula pm25~region. Call boxplot now with this formula as its argument, data equal to pollution, and col equal to "red". 
   CorrectAnswer: boxplot(pm25 ~ region, data = pollution, col = "red")
   AnswerTests: ANY_of_exprs('boxplot(pm25 ~ region, data = pollution, col = "red")','boxplot(ppm ~ region, data = pollution, col = "red")')
   Hint: Type boxplot(pm25 ~ region, data = pollution, col = "red") at the command prompt.
