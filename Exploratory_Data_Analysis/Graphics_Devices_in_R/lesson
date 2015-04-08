@@ -13,7 +13,7 @@
   Output:  As the title suggests, this will be a short lesson introducing you to graphics devices in R. So, what IS a graphics device?
 
 - Class: text
-  Output:  Would you believe that it is  something where you can make a plot appear, either a screen device, such as a window on your computer, OR a file device. 
+  Output:  Would you believe that it is  something where you can make a plot appear, either a screen device, such as a window on your computer, OR a file device?
 
 - Class: text
   Output:   There are several different kinds of file devices with particular characteristics and hence uses. These include PDF, PNG, JPEG, SVG, and TIFF. We'll talk more about these later. 
