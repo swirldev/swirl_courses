@@ -3,12 +3,12 @@
 # way:
 #
 # function_name <- function(arg1, arg2){
-#	# Maipulate arguments in some way
+#	# Manipulate arguments in some way
 #	# Return a value
 # }
 #
 # The "variable name" you assign will become the name of your function. arg1 and
-# arg2 represent the arguments of your function. You can maipulate the arguments
+# arg2 represent the arguments of your function. You can manipulate the arguments
 # you specify within the function. After sourcing the function, you can use the 
 # function by typing:
 # 
