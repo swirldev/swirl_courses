@@ -126,7 +126,7 @@
   Output: The fourth principle of analytic graphing involves integrating evidence. This means not limiting yourself to one form of expression. You can use  words, numbers, images as well as diagrams. Graphics should make use of many modes of data presentation. Remember, "Don't let the tool drive the analysis!"
 
 - Class: figure
-  Output: To show you what we mean, here's an example of a figure taken from a paper published in the Journal of the AMA. It shows the relationship between pollution and hospitalization of people with heart disease. As you can see, it's a lot different from our previous plots. The solid circles in the center portion indicate point estimates of percentage changes in hospitalization rates for different levels of pollution. The lines through the circles indicate confidence intervals associated with these estimates. (You'll learn more about confidence intervals in another great course, this one on statistical inference.) 
+  Output: To show you what we mean, here's an example of a figure taken from a paper published in the Journal of the AMA. It shows the relationship between pollution and hospitalization of people with heart disease. As you can see, it's a lot different from our previous plots. The solid circles in the center portion indicate point estimates of percentage changes in hospitalization rates for different levels of pollution. The lines through the circles indicate confidence intervals associated with these estimates. (You'll learn more about confidence intervals in another great course, the one on statistical inference.) 
   Figure: ITG.R
   FigureType: new
 
@@ -139,7 +139,7 @@
   Output: The fifth principle of graphing involves describing and documenting the evidence with sources and appropriate labels and scales. Credibility is important so the data graphics should tell a complete story. Also, using R, you want to preserve any code you use to generate your data and graphics so that the research can be replicated if necessary. This allows for easy verification or finding bugs in your analysis.
 
 - Class: text
-  Output: The sixth and final principle of analytic graphing is maybe the most important. Content is King! If you don't have something interesting to report, your graphs won't save you. Analytical presentations ultimately stand or fall depending on the quality, relevance, and integrity of their content.
+  Output: The sixth and final principle of analytic graphing is maybe the most important. Content is king! If you don't have something interesting to report, your graphs won't save you. Analytical presentations ultimately stand or fall depending on the quality, relevance, and integrity of their content.
 
 - Class: text
   Output: Review time!!!

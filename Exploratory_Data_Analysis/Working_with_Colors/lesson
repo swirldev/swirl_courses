@@ -174,7 +174,7 @@
 
 
 - Class: cmd_question
-  Output:  We see the interpolated palette here. Low values in the lower right corner are red and as you move to the upper right, the colors move toward blue. Now call showMe with p2(20) as its argument.
+  Output:  We see the interpolated palette here. Low values in the lower left corner are red and as you move to the upper right, the colors move toward blue. Now call showMe with p2(20) as its argument.
   CorrectAnswer: showMe(p2(20))
   AnswerTests: omnitest(correctExpr='showMe(p2(20))')
   Hint: Type showMe(p2(20)) at the command prompt. 
