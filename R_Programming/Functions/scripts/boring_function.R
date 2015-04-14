@@ -1,6 +1,6 @@
-# You're about to write your first function! Just like you would assign a value 
-# to a variable with the assignment operator, you assign functions in the following
-# way:
+# You're about to write your first function! Just like you would assign a value
+# to a variable with the assignment operator, you assign functions in the
+# following way:
 #
 # function_name <- function(arg1, arg2){
 #	# Manipulate arguments in some way
