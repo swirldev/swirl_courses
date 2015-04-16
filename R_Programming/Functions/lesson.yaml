@@ -219,7 +219,7 @@
   Output: "Type the following command and then we'll discuss how it works: 
     evaluate(function(x){x+1}, 6)"
   CorrectAnswer: evaluate(function(x){x+1}, 6)
-  AnswerTests: omnitest(correctExpr='evaluate(function(x){x+1}, 6)')
+  AnswerTests: test_eval1()
   Hint: "Just type the command evaluate(function(x){x+1}, 6)"
 
 - Class: text
@@ -232,7 +232,7 @@
     first element of the vector c(8, 4, 0). Your anonymous function should only
     take one argument which should be a variable `x`."
   CorrectAnswer: evaluate(function(x){x[1]}, c(8, 4, 0))
-  AnswerTests: omnitest(correctExpr='evaluate(function(x){x[1]}, c(8, 4, 0))')
+  AnswerTests: test_eval2()
   Hint: "You may need to recall how to index vector elements. Remember that your
     anonymous function should only have one argument, and that argument should
     be named `x`."
@@ -242,7 +242,7 @@
     last element of the vector c(8, 4, 0). Your anonymous function should only
     take one argument which should be a variable `x`."
   CorrectAnswer: evaluate(function(x){x[length(x)]}, c(8, 4, 0))
-  AnswerTests: omnitest(correctExpr='evaluate(function(x){x[length(x)]}, c(8, 4, 0))')
+  AnswerTests: test_eval3()
   Hint: "You may need to recall how to index vector elements. Remember that your
     anonymous function should only have one argument, and that argument should
     be named `x`. Using the length() function in your anonymous function may 

@@ -72,3 +72,41 @@ test_func7 <- function() {
   }, silent = TRUE)
   exists('ok') && isTRUE(ok)
 }
+
+test_eval1 <- function(){
+  try({
+    e <- get("e", parent.frame())
+    expr <- e$expr
+    t1 <- identical(expr[[3]], 6)
+    expr[[3]] <- 7
+    t2 <- identical(eval(expr), 8)
+    ok <- all(t1, t2)
+  }, silent = TRUE)
+  exists('ok') && isTRUE(ok)
+}
+
+test_eval2 <- function(){
+  try({
+    e <- get("e", parent.frame())
+    expr <- e$expr
+    t1 <- identical(expr[[3]], quote(c(8, 4, 0)))
+    t2 <- identical(expr[[1]], quote(evaluate))
+    expr[[3]] <- c(5, 6)
+    t3 <- identical(eval(expr), 5)
+    ok <- all(t1, t2, t3)
+  }, silent = TRUE)
+  exists('ok') && isTRUE(ok)
+}
+
+test_eval3 <- function(){
+  try({
+    e <- get("e", parent.frame())
+    expr <- e$expr
+    t1 <- identical(expr[[3]], quote(c(8, 4, 0)))
+    t2 <- identical(expr[[1]], quote(evaluate))
+    expr[[3]] <- c(5, 6)
+    t3 <- identical(eval(expr), 6)
+    ok <- all(t1, t2, t3)
+  }, silent = TRUE)
+  exists('ok') && isTRUE(ok)
+}
