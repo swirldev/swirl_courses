@@ -107,7 +107,7 @@
 
 - Class: text
   Output: "Next, let's try writing a function with default arguments. You can set
-    default values for a function's argumets, and this can be useful if you think
+    default values for a function's arguments, and this can be useful if you think
     someone who uses your function will set a certain argument to the same value
     most of the time."
 
