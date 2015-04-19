@@ -247,7 +247,7 @@
   Hint: arrange(cran2, country, desc(r_version), ip_id) will sort the data by country (ascending) first, then by r_version (descending), and finally by ip_id (ascending).
 
 - Class: cmd_question
-  Output: To illustrate the next major function in dplyr, let's take another subset of our original data. Use select() to grab 3 columns -- ip_id, package, and size (in that order) -- and store the result in a new variable called cran3.
+  Output: To illustrate the next major function in dplyr, let's take another subset of our original data. Use select() to grab 3 columns from cran -- ip_id, package, and size (in that order) -- and store the result in a new variable called cran3.
   CorrectAnswer: cran3 <- select(cran, ip_id, package, size)
   AnswerTests: omnitest('cran3 <- select(cran, ip_id, package, size)')
   Hint: cran3 <- select(cran, ip_id, package, size) will store just these three columns in a new variable called cran3.
