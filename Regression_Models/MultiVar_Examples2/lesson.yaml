@@ -142,7 +142,7 @@
   Hint: Type "spray2 <- relevel(InsectSprays$spray,\"C\")" at the R prompt.
 
 - Class: cmd_question
-  Output: Now generate a the new linear model and put the result in the variable fit2.
+  Output: Now generate a new linear model and put the result in the variable fit2.
   CorrectAnswer: fit2 <- lm(count ~ spray2, InsectSprays)
   AnswerTests: creates_lm_model('fit2 <- lm(count ~ spray2, InsectSprays)')
   Hint: Type "fit2 <- lm(count ~ spray2, InsectSprays)" at the R prompt.
