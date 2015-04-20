@@ -137,7 +137,7 @@
   Output: "This should be the only file in this newly created directory. Let's
     check this by listing all the files in the current directory."
   CorrectAnswer: list.files()
-  AnswerTests: any_of_exprs('list.files()', 'list.files')
+  AnswerTests: any_of_exprs('list.files()', 'dir()')
   Hint: list.files() shows that the directory only contains mytest.R.
 
 - Class: cmd_question
