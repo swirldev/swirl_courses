@@ -206,7 +206,7 @@
   Output: Teachers decided to only take into consideration final exam grades in determining whether students passed or failed each class. As you may have inferred from the data, students passed a class if they received a final exam grade of A or B and failed otherwise.
 
 - Class: text
-  Output: The name of each dataset actually represents the value of a new variable that we will call 'status'. Before joining the two tables together, we'll add a new column to each containing this information so that its not lost when we put everything together.
+  Output: The name of each dataset actually represents the value of a new variable that we will call 'status'. Before joining the two tables together, we'll add a new column to each containing this information so that it's not lost when we put everything together.
 
 - Class: cmd_question
   Output: Use dplyr's mutate() to add a new column to the passed table. The column should be called status and the value, "passed" (a character string), should be the same for all students. 'Overwrite' the current version of passed with the new one.
@@ -227,7 +227,7 @@
   Hint: Call bind_rows() with two arguments, passed and failed (in that order), to join the two tables.
 
 - Class: text
-  Output: Of course, we could arrange the rows however we wish at this point, but the important thing is that each row is an observation, each column is a variable, and the table contains a single observational unit. Thus, the data are tidy.
+  Output: Of course, we could arrange the rows as we wish at this point, but the important thing is that each row is an observation, each column is a variable, and the table contains a single observational unit. Thus, the data are tidy.
 
 - Class: text
   Output: We've covered a lot in this lesson. Let's bring everything together and tidy a real dataset.
