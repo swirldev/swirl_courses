@@ -1,4 +1,4 @@
-# Call gather() to gather the columns class1 through
+# Call gather() to gather the columns class1
 # through class5 into a new variable called class.
 # The 'key' should be class, and the 'value'
 # should be grade.
