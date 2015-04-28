@@ -74,7 +74,7 @@
   FigureType: new
 
 - Class: cmd_question
-  Output: "The model is less credible at scores lower than 9. Of course, there is no data in that region; the Ravens scored at least 9 points in every game. The model gives them a 33% chance of winning if they score 9 points, which may be reasonable, but it also gives them a 16% chance of winning even if they score no points! We can use R's predict() function to see the model's estimates for lower scores. The function will take mdl and a data frame of scores as arguments and will return log odds for the give scores. Call predict(mdl, data.frame(ravenScore=c(0, 3, 6)) and store the result in a variable called lodds."
+  Output: "The model is less credible at scores lower than 9. Of course, there is no data in that region; the Ravens scored at least 9 points in every game. The model gives them a 33% chance of winning if they score 9 points, which may be reasonable, but it also gives them a 16% chance of winning even if they score no points! We can use R's predict() function to see the model's estimates for lower scores. The function will take mdl and a data frame of scores as arguments and will return log odds for the give scores. Call predict(mdl, data.frame(ravenScore=c(0, 3, 6))) and store the result in a variable called lodds."
   CorrectAnswer: 'lodds <- predict(mdl, data.frame(ravenScore=c(0, 3, 6)))'
   AnswerTests: expr_creates_var('lodds');omnitest('lodds <- predict(mdl, data.frame(ravenScore=c(0, 3, 6)))')
   Hint: Type lodds <- predict(mdl, data.frame(ravenScore=c(0, 3, 6))) to produce the model's estimated log odds of a win for scores 0, 3, and 6.
