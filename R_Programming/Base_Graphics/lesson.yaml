@@ -166,7 +166,7 @@
   Hint: Type data(mtcars) to load the data.
 
 - Class: text
-  Output: Anytime that you load up a new data frame, you should explore it before using it. In the middle of a swirl lesson, just type play(). This temporarily suspends the lesson (without losing the work you have already done) and allows you to issue commands like dim(mtcares) and head(mtcars). Once you are done examining the data, just type nxt() and the lesson will pick up where it left off.
+  Output: Anytime that you load up a new data frame, you should explore it before using it. In the middle of a swirl lesson, just type play(). This temporarily suspends the lesson (without losing the work you have already done) and allows you to issue commands like dim(mtcars) and head(mtcars). Once you are done examining the data, just type nxt() and the lesson will pick up where it left off.
 
 - Class: cmd_question
   Output: Look up the help page for boxplot(). 
