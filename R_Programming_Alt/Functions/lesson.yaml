@@ -41,7 +41,7 @@
 
 - Class: text
   Output: Functions usually take arguments which are variables that the function operates on. For example,
-    the mean() function takes a vector as as argument, like in the case of mean(c(2,6,8)). The mean()
+    the mean() function takes a vector as an argument, like in the case of mean(c(2,6,8)). The mean()
     function then adds up all of the numbers in the vector and divides that sum by the
     length of the vector.
 
