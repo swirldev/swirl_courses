@@ -31,7 +31,7 @@
   Hint: Type sample(1:6, 4, replace = TRUE) to simulate rolling four six-sided dice again.
 
 - Class: text
-  Output: sample(1:6, 4, replace = TRUE) instructs R to randomly select four numbers between 1 and 6, WITH replacement. Sampling with replacement simply means that each number is "replaced" after it is selected, so that the same number can show up more than once. This is what we want here, since what you roll on one die shouldn't affect what you roll on any of the others.
+  Output: sample(1:6, 4, replace = TRUE) instructs R to randomly select four numbers between 1 and 6, WITH replacement. Sampling with replacement simply means that each number is "replaced" after it is selected, so that the same number can show up more than once. This is what we want here, since what you roll on one dice shouldn't affect what you roll on any of the others.
 
 - Class: cmd_question
   Output: Now sample 10 numbers between 1 and 20, WITHOUT replacement. To sample without replacement, simply leave off the 'replace' argument.
