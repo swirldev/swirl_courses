@@ -4,4 +4,5 @@ library(ggplot2)
 g <- ggplot(dat, 
               aes(x = x, y = y)) + geom_line(size = 1.5)
 g <- g + geom_vline(xintercept = -4 : 4, size = 1)
+try(dev.off(),silent=TRUE)
 print(g)
