@@ -18,7 +18,7 @@ rgp1 <- function(){
   n <- 100
   # number of simulations
   nosim <- 1000
-  # set seed for reproducability
+  # set seed for reproducibility
   set.seed(4321)
   # Point A
   x1 <- rnorm(n)
@@ -36,7 +36,7 @@ rgp2 <- function(){
   n <- 100
   # number of simulations
   nosim <- 1000
-  # set seed for reproducability
+  # set seed for reproducibility
   set.seed(4321)
   # Point C
   x1 <- rnorm(n)
