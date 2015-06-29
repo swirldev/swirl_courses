@@ -66,7 +66,7 @@
 - Class: cmd_question
   Output: That's exactly what you'll get if you use summarize() to apply mean(size) to the grouped data in by_package. Give it a shot.
   CorrectAnswer: summarize(by_package, mean(size))
-  AnswerTests: omnitest('summarize(by_package, mean(size))')
+  AnswerTests: any_of_exprs('summarize(by_package, mean(size))', 'summarise(by_package, mean(size))')
   Hint: 'Call summarize() with two arguments: by_package and mean(size).'
 
 - Class: text
