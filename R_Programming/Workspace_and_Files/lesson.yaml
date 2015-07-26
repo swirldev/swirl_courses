@@ -117,7 +117,7 @@
 - Class: cmd_question
   Output: Set your working directory to "testdir" with the setwd() command.
   CorrectAnswer: setwd("testdir")
-  AnswerTests: any_of_exprs('setwd("testdir")', 'setwd("testdir/")')
+  AnswerTests: any_of_exprs('setwd("testdir")', 'setwd("testdir/")', 'setwd("./testdir")', 'setwd("./testdir/")')
   Hint: Use setwd("testdir") to set your working directory to "testdir".
 
 - Class: text
