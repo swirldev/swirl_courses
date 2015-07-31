@@ -145,7 +145,7 @@
 
 - Class: mult_question
   Output: From the 2 plots, what separation, if any, do you see?
-  AnswerChoices:  passive activities mostly fall below the walking activities; laying generates the most acceleration in the X dimension; passive activities generates the most acceleration; there is no pattern 
+  AnswerChoices:  passive activities mostly fall below the walking activities; laying generates the most acceleration in the X dimension; passive activities generate the most acceleration; there is no pattern 
   CorrectAnswer:  passive activities mostly fall below the walking activities
   AnswerTests: omnitest(correctVal='passive activities mostly fall below the walking activities')
   Hint: There is a pattern. Which choice makes the most obvious sense?
