@@ -253,7 +253,7 @@
   Output: The subsets will filter for 2 characteristics. The first is State.Code equal to 36 (the code for New York), and the second is that the county.site (the component we  added) is in the vector both. 
 
 - Class: cmd_question
-  Output:  Firste create the variable cnt0 by assigning to it the output of the R command subset, called with 2 arguments. The first is pm0, and the second is a boolean with the 2 conditions we just mentioned. Recall that the testing for equality in a boolean requires ==, intersection of 2 boolean conditions is denoted by  & and membership by %in%.
+  Output:  First create the variable cnt0 by assigning to it the output of the R command subset, called with 2 arguments. The first is pm0, and the second is a boolean with the 2 conditions we just mentioned. Recall that the testing for equality in a boolean requires ==, intersection of 2 boolean conditions is denoted by  & and membership by %in%.
   CorrectAnswer: cnt0 <- subset(pm0, State.Code == 36 & county.site %in% both)
   AnswerTests:  expr_creates_var("cnt0"); omnitest(correctExpr='cnt0 <- subset(pm0, State.Code == 36 & county.site %in% both)')
   Hint: Type cnt0 <- subset(pm0, State.Code == 36 & county.site %in% both) at the command prompt.
@@ -303,7 +303,7 @@
   Hint: Recall monitor 63.2008 had 122 measurements in 1999 and 30 in 2012.
 
 - Class: cmd_question
-  Output:  Now we'd like to compare the pm25 measurements of this particular monitor (63.2008) for the 2 years. First, create the vector x0sub by assigning to in the Sample.Value component of pm0sub.
+  Output:  Now we'd like to compare the pm25 measurements of this particular monitor (63.2008) for the 2 years. First, create the vector x0sub by assigning to it the Sample.Value component of pm0sub.
   CorrectAnswer: x0sub <- pm0sub$Sample.Value
   AnswerTests:   expr_creates_var("x0sub"); omnitest(correctExpr='x0sub <- pm0sub$Sample.Value')
   Hint: Type x0sub <- pm0sub$Sample.Value at the command prompt.
