@@ -79,7 +79,7 @@
   Hint: sum(flips) will add up all the 1s and 0s, giving you the total number of 1s in flips.
 
 - Class: cmd_question
-  Output: A coin flip is a binary outcome (0 or 1) and we are performing 100 independent trials (coin flips), so we can use use rbinom() to simulate a binomial random variable. Pull up the documentation for rbinom() using ?rbinom.
+  Output: A coin flip is a binary outcome (0 or 1) and we are performing 100 independent trials (coin flips), so we can use rbinom() to simulate a binomial random variable. Pull up the documentation for rbinom() using ?rbinom.
   CorrectAnswer: ?rbinom
   AnswerTests: omnitest(correctExpr='?rbinom')
   Hint: Type ?rbinom to pull up the help file for rbinom().
