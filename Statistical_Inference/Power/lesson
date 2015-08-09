@@ -52,7 +52,7 @@
   Output: Suppose we're testing a null hypothesis H_0 with an alpha level of .05. Since H_a proposes that mu > 30 (the mean hypothesized by H_0), power is the probability that the true mean mu is greater than the (1-alpha) quantile or qnorm(.95). For  simplicity, assume  we're working with normal distributions of which we know the variances.
 
 - Class: figure 
-  Output: Here's the picture we've used a lot in these lessons. As you know, the shaded portion represents 5% of the area under the curve. If a test statistic fell in this shaded portion we would reject H_0  because the sample mean is too far from the mean (center) of the distribution hypothesized by H_0. Instead we would favor H_a, that  mu > 30. This happens with probabiity .05.
+  Output: Here's the picture we've used a lot in these lessons. As you know, the shaded portion represents 5% of the area under the curve. If a test statistic fell in this shaded portion we would reject H_0  because the sample mean is too far from the mean (center) of the distribution hypothesized by H_0. Instead we would favor H_a, that  mu > 30. This happens with probability .05.
   Figure: conf_5pct.R
   FigureType: new
 
