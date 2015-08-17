@@ -279,10 +279,10 @@
   Figure: goodPlot1.R
 
 - Class: cmd_question
-  Output: Plot airquality$Wind and airquality$Solar.R and use main to specify the title "Ozone and Solar Radiation".
-  CorrectAnswer: plot(airquality$Wind, airquality$Solar.R, main = "Ozone and Solar Radiation")
-  AnswerTests: omnitest(correctExpr='plot(airquality$Wind, airquality$Solar.R, main = "Ozone and Solar Radiation")')
-  Hint: Type plot(airquality$Wind, airquality$Solar.R, main = "Ozone and Solar Radiation").
+  Output: Plot airquality$Ozone and airquality$Solar.R and use main to specify the title "Ozone and Solar Radiation".
+  CorrectAnswer: plot(airquality$Ozone, airquality$Solar.R, main = "Ozone and Solar Radiation")
+  AnswerTests: omnitest(correctExpr='plot(airquality$Ozone, airquality$Solar.R, main = "Ozone and Solar Radiation")')
+  Hint: Type plot(airquality$Ozone, airquality$Solar.R, main = "Ozone and Solar Radiation").
 
 - Class: figure
   Output: Now for something more challenging.
