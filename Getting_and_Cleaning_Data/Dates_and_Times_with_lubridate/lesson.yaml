@@ -247,7 +247,7 @@
   Hint: arrive <- depart + hours(15) + minutes(50) will add 15 hours and 50 minutes to depart and store the result in arrive.
 
 - Class: text
-  Output: The arrive variable contains the time that it will be in New York when you arrive in Hong Kong. What we really want to know is what time is will be in Hong Kong when you arrive, so that your friend knows when to meet you.
+  Output: The arrive variable contains the time that it will be in New York when you arrive in Hong Kong. What we really want to know is what time it will be in Hong Kong when you arrive, so that your friend knows when to meet you.
 
 - Class: cmd_question
   Output: The with_tz() function returns a date-time as it would appear in another time zone. Use ?with_tz to check out the documentation.
