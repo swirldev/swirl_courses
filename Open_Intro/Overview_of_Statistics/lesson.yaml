@@ -549,7 +549,7 @@
 - Class: figure
   Output: 'Here I have created a box plot to represent the price data for each of
     the three car types: large, midsize, and small. You''ll notice that each of the
-    3 figures is composed of a closed 4-sided \box\" with \"whiskers\" on the top
+    3 figures is composed of a closed 4-sided \"box\" with \"whiskers\" on the top
     and bottom'
   Figure: mod1_boxplot.R
   FigureType: new
