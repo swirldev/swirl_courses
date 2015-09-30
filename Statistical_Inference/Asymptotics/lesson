@@ -174,7 +174,7 @@
 - Class: cmd_question
   Output: With the formula  p'+/- qnorm(.975)*sqrt(p'(1-p')/100), use the p' and n values from above and the R construct p'+c(-1,1)... to handle the plus/minus portion of the formula. You should see bounds similar to the ones you just estimated.
   CorrectAnswer: .6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100)
-  AnswerTests: omnitest(correctExpr='.6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100)')
+  AnswerTests: any_of_exprs('.6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100)', '.6 + c(-1,1)*qnorm(.975)*sqrt(.6*(1-0.6)/100)')
   Hint: Type .6 + c(-1,1)*qnorm(.975)*sqrt(.6*.4/100) at the command prompt. 
 
 - Class: cmd_question
