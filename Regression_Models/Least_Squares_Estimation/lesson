@@ -13,7 +13,7 @@
   Output: In this lesson, if you're using RStudio, you'll be able to play with some of the code which appears in the slides. If you're not using RStudio, you can look at the code but you won't be able to experiment with the function "manipulate". We provide the code for you so you can examine it without having to type it all out.  In RStudio, when the edit window displays code, make sure your flashing cursor is back in the console window before you hit "Enter" or any keyboard buttons, otherwise you might accidentally alter the code. If you do alter the file, in RStudio, you can hit Ctrl z in the editor until all the unwanted changes disappear. In other editors, you'll have to use whatever key combination performs "undo" to remove all your unwanted changes.
 
 - Class: figure
-  Output: Here are the Galton data and the regression line seen in the Introduction. The regression line summarizes the relationship between parents' heights (the predictors) and their childrens' (the outcomes). 
+  Output: Here are the Galton data and the regression line seen in the Introduction. The regression line summarizes the relationship between parents' heights (the predictors) and their children's (the outcomes). 
   Figure: plot1.R
   FigureType: new
 
