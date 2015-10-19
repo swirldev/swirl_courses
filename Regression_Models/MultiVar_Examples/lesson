@@ -124,7 +124,7 @@
 
 - Class: mult_question  
   Output:  This tells us that
-  AnswerChoices: Adding ec doesn't change the model; Adding ec zeroes out the coefficients; R is a really cool 
+  AnswerChoices: Adding ec doesn't change the model; Adding ec zeroes out the coefficients; R is really cool 
   CorrectAnswer: Adding ec doesn't change the model
   AnswerTests: omnitest(correctVal='Adding ec doesn\'t change the model')
   Hint: Since ec is a linear combination of two othe variables it doesn't change the model.
