@@ -177,7 +177,7 @@
   Hint: Enter dy <- predict(fitno, out2)-predict(fit, out2) or an equivalent expression at the R prompt.
 
 - Class: cmd_question
-  Output: "Recall the we calculated the sample standard deviation of fit's residual, sigma, earlier. Divide the summed squares of dy by 2*sigma^2 to calculate the outlier's Cook's distance. There is no need to store the result in a variable."
+  Output: "Recall that we calculated the sample standard deviation of fit's residual, sigma, earlier. Divide the summed squares of dy by 2*sigma^2 to calculate the outlier's Cook's distance. There is no need to store the result in a variable."
   CorrectAnswer: sum(dy^2)/(2*sigma^2)
   AnswerTests: calculates_same_value('sum(dy^2)/(2*sigma^2)')
   Hint: Enter sum(dy^2)/(2*sigma^2) or an equivalent expression at the R prompt.
