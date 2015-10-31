@@ -264,7 +264,7 @@
   Hint: "Divide 24 by 500 to get the percentage."
 
 - Class: text
-  Output: "Just as we expected - around 5% or .05*1000."
+  Output: "Just as we expected - around 5% or .05*100."
 
 - Class: cmd_question
   Output: "Now run the same table function, however, this time use the call to p.adjust with the \"bonferroni\" method in the boolean expression. This will control the FWER."
