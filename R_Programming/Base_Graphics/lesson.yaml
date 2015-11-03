@@ -130,7 +130,7 @@
   Output: The plot help page (?plot) only covers a small number of the many arguments that can be passed in to plot() and to other graphical functions. To begin to explore the many other options, look at ?par. Let's look at some of the more commonly used ones. Continue using plot(cars, ...) as the base answer to these questions.
 
 - Class: cmd_question
-  Output: Plot cars with a red color. (Use col = 2 to achieve this effect.)
+  Output: Plot cars so that the plotted points are colored red. (Use col = 2 to achieve this effect.)
   CorrectAnswer: plot(cars, col = 2)
   AnswerTests: omnitest(correctExpr='plot(cars, col = 2)')
   Hint: Type plot(cars, col = 2) to create the plot.
