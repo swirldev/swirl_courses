@@ -5,6 +5,9 @@
   Type: Coursera
   Organization: JHU Biostat
   Version: 2.2.13
+  
+- Class: text
+  Output: "Warning: This lesson makes use of the View() function. View() may not work properly in every programming environment. We highly recommend the use of RStudio for this lesson."
 
 - Class: text
   Output: 'In the last lesson, you learned about the five main data manipulation ''verbs'' in dplyr: select(), filter(), arrange(), mutate(), and summarize(). The last of these, summarize(), is most powerful when applied to grouped data.'
@@ -112,7 +115,7 @@
   Hint: Type top_counts to view its contents.
 
 - Class: text
-  Output: "There are only 61 packages in our top 1%, so we'd like to see all of them. Since dplyr only shows us the first 10 rows, we can use the View() function to see more.\n\nWarning: The View() function may not work properly in every programming environment. We highly recommend the use of RStudio for the remainder of this lesson."
+  Output: "There are only 61 packages in our top 1%, so we'd like to see all of them. Since dplyr only shows us the first 10 rows, we can use the View() function to see more."
 
 - Class: cmd_question
   Output: View all 61 rows with View(top_counts). Note that the 'V' in View() is capitalized.
