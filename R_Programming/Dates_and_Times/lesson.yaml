@@ -2,7 +2,7 @@
   Course: R Programming
   Lesson: Dates and Times
   Author: Nick Carchedi
-  Type: Coursera
+  Type: Standard
   Organization: JHU Biostat
   Version: 2.2.11
 
@@ -191,3 +191,11 @@
 
 - Class: text
   Output: In this lesson, you learned how to work with dates and times in R. While it is important to understand the basics, if you find yourself working with dates and times often, you may want to check out the lubridate package by Hadley Wickham.
+
+- Class: mult_question
+  Output: "Would you like to receive credit for completing this course on
+    Coursera.org?"
+  CorrectAnswer: NULL
+  AnswerChoices: Yes;No
+  AnswerTests: coursera_on_demand()
+  Hint: ""

@@ -2,7 +2,7 @@
   Course: R Programming
   Lesson: Logic
   Author: Sean Kross
-  Type: Coursera
+  Type: Standard
   Organization: swirlstats
   Version: 2.2.15
 
@@ -346,3 +346,12 @@
 - Class : text
   Output: "That's all for this introduction to logic in R. If you really want to see
     what you can do with logic, check out the control flow lesson!"
+
+- Class: mult_question
+  Output: "Would you like to receive credit for completing this course on
+    Coursera.org?"
+  CorrectAnswer: NULL
+  AnswerChoices: Yes;No
+  AnswerTests: coursera_on_demand()
+  Hint: ""
+
