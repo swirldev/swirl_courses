@@ -2,7 +2,7 @@
   Course: Statistical_Inference
   Lesson: Probability1
   Author: Swirl Coders
-  Type: Coursera
+  Type: Standard
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
@@ -157,6 +157,13 @@
   AnswerTests: equiv_val(2/51)
   Hint: There are 2 face cards of the same suit left in the deck.
 
-
 - Class: text
   Output: Congrats! With probability 1, you've aced this first lesson on basic probability. 
+
+- Class: mult_question
+  Output: "Would you like to receive credit for completing this course on
+    Coursera.org?"
+  CorrectAnswer: NULL
+  AnswerChoices: Yes;No
+  AnswerTests: coursera_on_demand()
+  Hint: ""
