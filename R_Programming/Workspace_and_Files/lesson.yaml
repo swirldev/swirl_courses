@@ -2,7 +2,7 @@
   Course: R Programming
   Lesson: Workspace and Files
   Author: David Kane
-  Type: Coursera
+  Type: Standard
   Organization: Williams College
   Version: 0.1.2
 
@@ -275,3 +275,12 @@
 - Class: text
   Output: "In this lesson, you learned how to examine your R workspace and 
   work with the file system of your machine from within R. Thanks for playing!"
+
+- Class: mult_question
+  Output: "Would you like to receive credit for completing this course on
+    Coursera.org?"
+  CorrectAnswer: NULL
+  AnswerChoices: Yes;No
+  AnswerTests: coursera_on_demand()
+  Hint: ""
+

@@ -2,7 +2,7 @@
   Course: Regression_Models
   Lesson: Count_Outcomes
   Author: Swirl Coders
-  Type: Coursera
+  Type: Standard
   Organization: Johns Hopkins Bloomberg School of Public Health
   Version: 2.2.0
 
@@ -167,3 +167,11 @@
 
 - Class: text
   Output: "That completes the Poisson GLM example. Thanks for sticking with it. I hope we've made it count."
+
+- Class: mult_question
+  Output: "Would you like to receive credit for completing this course on
+    Coursera.org?"
+  CorrectAnswer: NULL
+  AnswerChoices: Yes;No
+  AnswerTests: coursera_on_demand()
+  Hint: ""

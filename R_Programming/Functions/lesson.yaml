@@ -2,7 +2,7 @@
   Course: R Programming
   Lesson: Functions
   Author: Sean Kross
-  Type: Coursera
+  Type: Standard
   Organization: swirlstats
   Version: 2.2.14
 
@@ -331,3 +331,11 @@
 - Class: text
   Output: "We've come to the end of our lesson! Go out there and write some
     great functions!"
+
+- Class: mult_question
+  Output: "Would you like to receive credit for completing this course on
+    Coursera.org?"
+  CorrectAnswer: NULL
+  AnswerChoices: Yes;No
+  AnswerTests: coursera_on_demand()
+  Hint: ""
