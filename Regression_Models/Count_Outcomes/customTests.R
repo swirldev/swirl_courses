@@ -62,8 +62,8 @@ coursera_on_demand <- function(){
     
     payload <- sprintf('{  
       "assignmentKey": "B7GXWK8zEeWDwQ7PSvPrHw",
-      "submitterEmail": %s,  
-      "secret": %s,  
+      "submitterEmail": "%s",  
+      "secret": "%s",  
       "parts": {  
         "msvTh": {  
           "output": "correct"  
@@ -72,7 +72,12 @@ coursera_on_demand <- function(){
     }', email, token)
     url <- 'https://www.coursera.org/api/onDemandProgrammingScriptSubmissions.v1'
   
-    httr::POST(url, body = payload)
+    respone <- httr::POST(url, body = payload)
+    if(respone$status_code >= 200 && respone$status_code < 300){
+      message("Grade submission succeeded!")
+    } else {
+      message("Grade submission failed.")
+    }
   }
   TRUE
 }
