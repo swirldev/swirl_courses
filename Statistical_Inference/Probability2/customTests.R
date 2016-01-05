@@ -209,6 +209,9 @@ coursera_on_demand <- function(){
       message("Grade submission succeeded!")
     } else {
       message("Grade submission failed.")
+      message("Press ESC if you want to exit this lesson and you")
+      message("want to try to submit your grade at a later time.")
+      return(FALSE)
     }
   }
   TRUE
