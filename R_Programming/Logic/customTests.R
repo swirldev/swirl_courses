@@ -1,24 +1,3 @@
-# So swirl does not repeat execution of plot commands
-
-# Returns TRUE if e$val is identical to the value that would
-# have been created by the correct expression.
-creates_val_identical_to <- function(correctExpr){
-  e <- get("e", parent.frame())
-  correctVal <- eval(parse(text=correctExpr), cleanEnv(e$snapshot))
-  results <- expectThat(e$val,
-                        is_identical_to(correctVal, label=correctExpr),
-                        label=deparse(e$expr))
-  return(results$passed)
-}
-
-
-# Returns TRUE if e$expr matches any of the expressions given
-# (as characters) in the argument.
-ANY_of_exprs <- function(...){
-  e <- get("e", parent.frame())
-  any(sapply(c(...), function(expr)omnitest(expr)))
-}
-
 # Get the swirl state
 getState <- function(){
   # Whenever swirl is running, its callback is at the top of its call stack.
@@ -44,11 +23,11 @@ coursera_on_demand <- function(){
     token <- readline("What is your assignment token? ")
     
     payload <- sprintf('{  
-      "assignmentKey": "kVYXK68vEeWVdAqQVb1YyQ",
+      "assignmentKey": "ErvVWa8SEeWGUgpgKqm2yQ",
       "submitterEmail": "%s",  
       "secret": "%s",  
       "parts": {  
-        "bg83i": {  
+        "JyIsa": {  
           "output": "correct"  
         }  
       }  

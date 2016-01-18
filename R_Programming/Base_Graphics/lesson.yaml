@@ -2,7 +2,7 @@
   Course: R Programming
   Lesson: Base Graphics
   Author: David Kane
-  Type: Coursera
+  Type: Standard
   Organization: Williams College
   Version: 0.1.1
 
@@ -130,7 +130,7 @@
   Output: The plot help page (?plot) only covers a small number of the many arguments that can be passed in to plot() and to other graphical functions. To begin to explore the many other options, look at ?par. Let's look at some of the more commonly used ones. Continue using plot(cars, ...) as the base answer to these questions.
 
 - Class: cmd_question
-  Output: Plot cars with a red color. (Use col = 2 to achieve this effect.)
+  Output: Plot cars so that the plotted points are colored red. (Use col = 2 to achieve this effect.)
   CorrectAnswer: plot(cars, col = 2)
   AnswerTests: omnitest(correctExpr='plot(cars, col = 2)')
   Hint: Type plot(cars, col = 2) to create the plot.
@@ -204,3 +204,11 @@
 
 - Class: text
   Output: In this lesson, you learned how to work with base graphics in R. The best place to go from here is to study the ggplot2 package. If you want to explore other elements of base graphics, then this web page (http://www.ling.upenn.edu/~joseff/rstudy/week4.html) provides a useful overview.
+
+- Class: mult_question
+  Output: "Would you like to receive credit for completing this course on
+    Coursera.org?"
+  CorrectAnswer: NULL
+  AnswerChoices: Yes;No
+  AnswerTests: coursera_on_demand()
+  Hint: ""
