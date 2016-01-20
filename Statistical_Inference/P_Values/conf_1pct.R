@@ -1,8 +1,8 @@
 x <- seq(-4,4, length = 2000)
 dat <- data.frame(x=x, y=dnorm(x))
 g <- ggplot(dat, aes(x = x, y = y)) + geom_line(size = 1.5)+scale_y_continuous(limits=c(0,max(dat$y)))
-suppressWarnings(g <- g+ layer("area",mapping = aes(x=ifelse(x>qnorm(.99),x,NA)),
-            geom_params=list(fill="red",alpha=.5))) 
-suppressWarnings(g <- g + geom_line(x=2.0,size=1.5,colour="blue"))
-suppressWarnings(print(g))
+g <- g + geom_ribbon(data = subset(dat,x>qnorm(0.99)), aes(x = x, ymin=0, ymax = y), fill="red",alpha=.5)
+g <- g + theme(legend.position="none")
+g <- g + geom_line(x=2.0,size=1.5,colour="blue")
+print(g)
 
