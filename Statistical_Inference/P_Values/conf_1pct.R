@@ -3,6 +3,6 @@ dat <- data.frame(x=x, y=dnorm(x))
 g <- ggplot(dat, aes(x = x, y = y)) + geom_line(size = 1.5)+scale_y_continuous(limits=c(0,max(dat$y)))
 suppressWarnings(g <- g+ layer("area", stat="identity", position="identity", mapping = aes(x=ifelse(x>qnorm(.99),x,NA)),
             params=list(fill="red",alpha=.5, na.rm=TRUE))) 
-suppressWarnings(g <- g + geom_line(aes(x=2.0,size=1.5),colour="blue"))
+suppressWarnings(g <- g + geom_line(aes(x=2.0),size=1.5,colour="blue"))
 suppressWarnings(print(g))
 
