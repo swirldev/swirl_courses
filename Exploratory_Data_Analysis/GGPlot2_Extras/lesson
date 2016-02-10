@@ -129,9 +129,9 @@
 
 - Class: cmd_question
   Output:  We'll rerun the plot you just did (carat,price,data=diamonds and color=cut) but add two more parameters. The first is the argument geom set equal to the concatenation of the 2 strings, "point" and "smooth". The second is the argument method set equal to the string "lm". Try this now.
-  CorrectAnswer: qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm")
-  AnswerTests: omnitest(correctExpr='qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm")')
-  Hint: Type qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm") at the command prompt.
+  CorrectAnswer: qplot(carat,price,data=diamonds, color=cut) + geom_smooth(method="lm")
+  AnswerTests: omnitest(correctExpr='qplot(carat,price,data=diamonds, color=cut) + geom_smooth(method="lm")')
+  Hint: Type qplot(carat,price,data=diamonds, color=cut) + geom_smooth(method="lm") at the command prompt.
 
 
 - Class: text
@@ -139,9 +139,9 @@
 
 - Class: cmd_question
   Output:  Finally, let's rerun that plot you just did (carat,price,data=diamonds, color=cut, geom =c("point","smooth"),method="lm") but add one (just one) more argument. The new argument is facets and it should be set equal to the formula .~cut. Recall that the facets argument indicates we want a multi-panel plot. The symbol to the left of the tilde indicates rows (in this case just one) and the symbol to the right of the tilde indicates columns (in this five, the number of cuts). Try this now.
-  CorrectAnswer: qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm",facets=.~cut)
-  AnswerTests: omnitest(correctExpr='qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm",facets=.~cut)')
-  Hint: Type qplot(carat,price,data=diamonds, color=cut,geom=c("point","smooth"),method="lm",facets=.~cut) at the command prompt.
+  CorrectAnswer: qplot(carat,price,data=diamonds, color=cut, facets=.~cut) + geom_smooth(method="lm")
+  AnswerTests: omnitest(correctExpr='qplot(carat,price,data=diamonds, color=cut, facets=.~cut) + geom_smooth(method="lm")')
+  Hint: Type qplot(carat,price,data=diamonds, color=cut, facets=.~cut) + geom_smooth(method="lm") at the command prompt.
 
 - Class: text
   Output:  Pretty good, right? Not too difficult either. Let's review what we learned!

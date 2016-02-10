@@ -41,9 +41,9 @@
 
 - Class: cmd_question
   Output: We'll keep using the mpg data that comes with the ggplot2 package. Recall the versatility of qplot. Just as a refresher, call qplot now with 6 arguments. The first 3 deal with data - displ, hwy, and data=mpg. The fourth is geom set equal to the concatenation of the two strings, "point" and "smooth". The fifth is facets set equal to the formula .~drv, and the final argument is method set equal to the string "loess". Try this now. 
-  CorrectAnswer: qplot(displ, hwy, data = mpg, geom=c("point", "smooth"),facets=.~drv,method="loess")
-  AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg, geom=c("point", "smooth"),facets=.~drv,method="loess")')
-  Hint: Type qplot(displ, hwy, data = mpg, geom=c("point", "smooth"),facets=.~drv,method="loess") at the command prompt.
+  CorrectAnswer: qplot(displ, hwy, data = mpg, geom=c("point", "smooth"),facets=.~drv)
+  AnswerTests: omnitest(correctExpr='qplot(displ, hwy, data = mpg, geom=c("point", "smooth"),facets=.~drv)')
+  Hint: Type qplot(displ, hwy, data = mpg, geom=c("point", "smooth"),facets=.~drv) at the command prompt.
 
 - Class: text
   Output:  We see a 3 facet plot, one for each drive type (4, f, and r). The method argument specified the smoothing function (loess) we wanted to use to draw trend lines through the data. (We did this to avoid getting a warning message from R.) Now we'll see how ggplot works. We'll build up a similar plot using the basic components of the package. We'll do this in a series of steps. 
