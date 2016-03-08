@@ -84,7 +84,7 @@
   Hint: Type qplot(displ, hwy, data = mpg, color=drv, geom = c("point", "smooth")) at the command prompt.
 
 - Class: text
-  Output: Note the helpful message R returns in red telling you what function (loess) it used to create the trend lines. No need to worry - we'll see another example of method  in another (Extras) lesson. Notice the gray areas surrounding each trend lines. These indicate the 95% confidence intervals for the lines.
+  Output: Notice the gray areas surrounding each trend lines. These indicate the 95% confidence intervals for the lines.
 
 - Class: cmd_question
   Output: Before we leave qplot's scatterplotting ability, call qplot again, this time with 3 arguments. The first is y set equal to hwy, the second is data set equal to mpg, and the third is color set equal to drv. Try this now.
