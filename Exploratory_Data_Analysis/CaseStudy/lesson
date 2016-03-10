@@ -504,7 +504,7 @@
   Hint: Type  mrg[mrg$mean.x < mrg$mean.y,] at the command prompt.
 
 - Class: text
-  Output: Only 4 states had worse pollution averages, and 2 of these had means that were very close. If you want to see which states (15, 31, 35, and 40) these are, you can check out this website https://aqs.epa.gov/aqsweb/codes/data/StateCountyCodes.html to decode the state codes.
+  Output: Only 4 states had worse pollution averages, and 2 of these had means that were very close. If you want to see which states (15, 31, 35, and 40) these are, you can check out this website https://www.epa.gov/enviro/state-fips-code-listing to decode the state codes.
 
 - Class: text
   Output: This concludes the lesson, comparing air pollution data from two years in different ways. First, we looked at measures of the entire set of monitors, then we compared the two measures from a particular monitor, and finally, we looked at the mean measures of the individual states. 
