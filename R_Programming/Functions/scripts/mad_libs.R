@@ -11,7 +11,7 @@
 #
 #   # We're now going to assume that there are two named arguments within args
 #   # with the names `alpha` and `beta.` We can extract named arguments from
-#   # the args list by used the name of the argument and double brackets. The
+#   # the args list by using the name of the argument and double brackets. The
 #   # `args` variable is just a regular list after all!
 #   
 #   alpha <- args[["alpha"]]
