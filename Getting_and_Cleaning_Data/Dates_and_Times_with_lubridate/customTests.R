@@ -88,7 +88,7 @@ stop_timer <- function() {
   if(deparse(e$expr) == "stopwatch()") {
     start_time <- e$`__lesson_start_time`
     stop_time <- now()
-    print(as.period(new_interval(start_time, stop_time)))
+    print(as.period(interval(start_time, stop_time)))
   }
   TRUE
 }

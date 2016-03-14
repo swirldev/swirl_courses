@@ -283,16 +283,16 @@
   Hint: Type last_time to view its contents.
 
 - Class: cmd_question
-  Output: Pull up the documentation for new_interval(), which we'll use to explore how much time has passed between arrive and last_time.
-  CorrectAnswer: ?new_interval
-  AnswerTests: any_of_exprs('?new_interval', 'help(new_interval)')
-  Hint: Type ?new_interval to bring up the help file.
+  Output: Pull up the documentation for interval(), which we'll use to explore how much time has passed between arrive and last_time.
+  CorrectAnswer: ?interval
+  AnswerTests: any_of_exprs('?interval', 'help(interval)')
+  Hint: Type ?interval to bring up the help file.
 
 - Class: cmd_question
-  Output: Create a new_interval() that spans from last_time to arrive. Store it in a new variable called how_long.
-  CorrectAnswer: how_long <- new_interval(last_time, arrive)
-  AnswerTests: match_call('how_long <- new_interval(last_time, arrive)')
-  Hint: Call new_interval with two arguments, last_time and arrive, and store the result in how_long.
+  Output: Create an interval() that spans from last_time to arrive. Store it in a new variable called how_long.
+  CorrectAnswer: how_long <- interval(last_time, arrive)
+  AnswerTests: match_call('how_long <- interval(last_time, arrive)')
+  Hint: Call interval with two arguments, last_time and arrive, and store the result in how_long.
 
 - Class: cmd_question
   Output: Now use as.period(how_long) to see how long it's been.
