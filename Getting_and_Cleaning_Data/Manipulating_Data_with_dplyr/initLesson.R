@@ -7,7 +7,7 @@
 # unlink(filepath)
 
 # Make path to csv available to user
-path2csv <- file.path(path.package('swirl'), 'Courses',
+path2csv <- file.path(swirl:::swirl_courses_dir(),
                       'Getting_and_Cleaning_Data',
                       'Manipulating_Data_with_dplyr',
                       '2014-07-08.csv')

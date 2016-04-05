@@ -6,9 +6,8 @@ data(swiss);
 pairs(swiss, panel = panel.smooth, main = "Swiss data", col = 3 + (swiss$Catholic > 50))
 
 # Put initialization code in this file.
-file.copy(from=file.path(find.package("swirl"),
-                         "Courses/Regression_Models",
-                         "MultiVar_Examples/swissLMs.R"), 
+file.copy(from=file.path(file.path(swirl:::swirl_courses_dir(),
+	"Regression_Models", "MultiVar_Examples", "swissLMs.R"), 
           to="swissLMs.R")
 file.edit("swissLMs.R")
 source("swissLMs.R", local=TRUE)

@@ -1,13 +1,14 @@
 library(fields)
 
 # Put initialization code in this file.
-path_to_course <- file.path(find.package("swirl"),"Courses/Exploratory_Data_Analysis/Hierarchical_Clustering")
+path_to_course <- file.path(swirl:::swirl_courses_dir(),
+  "Exploratory_Data_Analysis","Hierarchical_Clustering")
 try(dev.off(),silent=TRUE)
 plot.new()
 
 pathtofile <- function(fileName){
-  mypath <- file.path(find.package("swirl"),
-                      "Courses/Exploratory_Data_Analysis/Hierarchical_Clustering/",
+  mypath <- file.path(swirl:::swirl_courses_dir(),
+    "Exploratory_Data_Analysis","Hierarchical_Clustering",
                       fileName)
 }
 fxfer <- function(fileName){

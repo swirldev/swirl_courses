@@ -1,13 +1,14 @@
 library(fields)
 
 # Put initialization code in this file.
-path_to_course <- file.path(find.package("swirl"),"Courses/Exploratory_Data_Analysis/CaseStudy")
+path_to_course <- file.path(swirl:::swirl_courses_dir(),
+  "Exploratory_Data_Analysis","CaseStudy")
 try(dev.off(),silent=TRUE)
 plot.new()
 
 pathtofile <- function(fileName){
-  mypath <- file.path(find.package("swirl"),
-                      "Courses/Exploratory_Data_Analysis/CaseStudy/",
+  mypath <- file.path(swirl:::swirl_courses_dir(),
+    "Exploratory_Data_Analysis","CaseStudy",
                       fileName)
 }
 fxfer <- function(fileName){

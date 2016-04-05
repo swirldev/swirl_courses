@@ -2,13 +2,14 @@ library(ggplot2)
 library(datasets)
 
 # Put initialization code in this file.
-path_to_course <- file.path(find.package("swirl"),"Courses/Exploratory_Data_Analysis/GGPlot2_Part1")
+path_to_course <- file.path(swirl:::swirl_courses_dir(),
+	"Exploratory_Data_Analysis","GGPlot2_Part1")
 try(dev.off(),silent=TRUE)
 plot.new()
 
 pathtofile <- function(fileName){
-  mypath <- file.path(find.package("swirl"),
-                      "Courses/Exploratory_Data_Analysis/GGPlot2_Extras/",
+  mypath <- file.path(swirl:::swirl_courses_dir(),
+  	"Exploratory_Data_Analysis","GGPlot2_Extras/",
                       fileName)
 }
 fxfer <- function(fileName){

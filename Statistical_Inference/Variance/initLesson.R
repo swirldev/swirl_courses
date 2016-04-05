@@ -10,8 +10,8 @@ nsim <- 1000
 samsz <- 10
 #get correct paths for plotting
 pathtofile <- function(fileName){
-  mypath <- file.path(find.package("swirl"),
-                      "Courses/Statistical_Inference/Variance",
+  mypath <- file.path(swirl:::swirl_courses_dir(),
+  	"Statistical_Inference","Variance",
                       fileName)
 }
 fxfer <- function(fileName){

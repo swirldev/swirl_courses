@@ -1,7 +1,7 @@
 # Put initialization code in this file.
 pathtofile <- function(fileName){
-  mypath <- file.path(find.package("swirl"),
-                    "Courses/Statistical_Inference/Multiple_Testing",
+  mypath <- file.path(swirl:::swirl_courses_dir(),
+  	"Statistical_Inference","Multiple_Testing",
                     fileName)
 }
 fxfer <- function(fileName){

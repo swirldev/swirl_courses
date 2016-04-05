@@ -4,8 +4,8 @@ quants <- c(-1:7)
 mybin <- pbinom(quants,size=8,p=.5,lower.tail=FALSE)
 #get correct paths for plotting
 pathtofile <- function(fileName){
-  mypath <- file.path(find.package("swirl"),
-                      "Courses/Statistical_Inference/Hypothesis_Testing",
+  mypath <- file.path(swirl:::swirl_courses_dir(),
+  	"Statistical_Inference","Hypothesis_Testing",
                       fileName)
 }
 fxfer <- function(fileName){

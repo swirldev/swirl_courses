@@ -1,7 +1,6 @@
 swiss <- datasets::swiss
-file.copy(from=file.path(find.package("swirl"),
-                         "Courses/Regression_Models",
-                         "Overfitting_and_Underfitting/fitting.R"), 
+file.copy(from=file.path(swirl:::swirl_courses_dir(),
+	"Regression_Models", "Overfitting_and_Underfitting","fitting.R"), 
           to="fitting.R")
 file.edit("fitting.R")
 source("fitting.R", local=TRUE)

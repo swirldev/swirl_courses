@@ -3,8 +3,8 @@ library(ggplot2)
 data(InsectSprays)
 #get correct paths for plotting
 pathtofile <- function(fileName){
-  mypath <- file.path(find.package("swirl"),
-                      "Courses/Statistical_Inference/Resampling",
+  mypath <- file.path(swirl:::swirl_courses_dir(),
+  	"Statistical_Inference","Resampling",
                       fileName)
 }
 fxfer <- function(fileName){

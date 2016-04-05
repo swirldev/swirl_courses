@@ -51,8 +51,7 @@ students2 <- data.frame(
 #   assist = sample(LETTERS[1:.ng], 10, replace = TRUE)
 # )
 
-.lesson_path <- file.path(path.package('swirl'),
-                          'Courses',
+.lesson_path <- file.path(swirl:::swirl_courses_dir(),
                           'Getting_and_Cleaning_Data',
                           'Tidying_Data_with_tidyr')
 

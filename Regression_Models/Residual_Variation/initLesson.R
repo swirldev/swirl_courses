@@ -1,2 +1,3 @@
-galton <- read.csv(file.path(find.package("swirl"), "Courses/Regression_Models/Introduction", "galton.csv"))
+galton <- read.csv(file.path(swirl:::swirl_courses_dir(),
+	"Regression_Models","Introduction", "galton.csv"))
 n <- 928

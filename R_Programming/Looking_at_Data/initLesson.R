@@ -1,5 +1,5 @@
 # Path to data
-.datapath <- file.path(path.package('swirl'), 'Courses',
+.datapath <- file.path(swirl:::swirl_courses_dir(),
                       'R_Programming', 'Looking_at_Data',
                       'plant-data.txt')
 # Read in data

@@ -2,14 +2,15 @@ library(lattice)
 library(datasets)
 
 # Put initialization code in this file.
-path_to_course <- file.path(find.package("swirl"),"Courses/Exploratory_Data_Analysis/Lattice_Plotting_System")
+path_to_course <- file.path(swirl:::swirl_courses_dir(),
+	"Exploratory_Data_Analysis","Lattice_Plotting_System")
 try(dev.off(),silent=TRUE)
 dev.set(2)
 plot.new()
 
 pathtofile <- function(fileName){
-  mypath <- file.path(find.package("swirl"),
-                      "Courses/Exploratory_Data_Analysis/Lattice_Plotting_System/",
+  mypath <- file.path(swirl:::swirl_courses_dir(),
+  	"Exploratory_Data_Analysis","Lattice_Plotting_System",
                       fileName)
 }
 fxfer <- function(fileName){

@@ -1,5 +1,5 @@
 # Make data available to user in a data frame
-.path2csv <- file.path(path.package('swirl'), 'Courses',
+.path2csv <- file.path(swirl:::swirl_courses_dir(),
                       'Getting_and_Cleaning_Data',
                       'Grouping_and_Chaining_with_dplyr',
                       '2014-07-08.csv')
