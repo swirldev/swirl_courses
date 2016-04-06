@@ -51,7 +51,14 @@ students2 <- data.frame(
 #   assist = sample(LETTERS[1:.ng], 10, replace = TRUE)
 # )
 
-.lesson_path <- file.path(swirl:::swirl_courses_dir(),
+# For compatibility with 2.2.21
+.get_course_path <- function(){
+  tryCatch(swirl:::swirl_courses_dir(),
+           error = function(c) {file.path(find.package("swirl"),"Courses")}
+  )
+}
+
+.lesson_path <- file.path(.get_course_path(),
                           'Getting_and_Cleaning_Data',
                           'Tidying_Data_with_tidyr')
 

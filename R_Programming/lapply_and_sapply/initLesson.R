@@ -1,5 +1,12 @@
+# For compatibility with 2.2.21
+.get_course_path <- function(){
+  tryCatch(swirl:::swirl_courses_dir(),
+           error = function(c) {file.path(find.package("swirl"),"Courses")}
+  )
+}
+
 # Path to installed lesson
-.lessonpath <- file.path(swirl:::swirl_courses_dir(), "R_Programming",
+.lessonpath <- file.path(.get_course_path(), "R_Programming",
                         "lapply_and_sapply")
 # Path to dataset
 .datapath <- file.path(.lessonpath, "flag.data.txt")

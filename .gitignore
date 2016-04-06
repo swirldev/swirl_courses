@@ -4,3 +4,4 @@
 swirl_courses.Rproj
 .RData
 *.html
+.Rapp.history

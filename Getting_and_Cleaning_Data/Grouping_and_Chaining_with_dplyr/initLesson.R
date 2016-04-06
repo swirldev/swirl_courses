@@ -1,5 +1,12 @@
+# For compatibility with 2.2.21
+.get_course_path <- function(){
+  tryCatch(swirl:::swirl_courses_dir(),
+           error = function(c) {file.path(find.package("swirl"),"Courses")}
+  )
+}
+
 # Make data available to user in a data frame
-.path2csv <- file.path(swirl:::swirl_courses_dir(),
+.path2csv <- file.path(.get_course_path(),
                       'Getting_and_Cleaning_Data',
                       'Grouping_and_Chaining_with_dplyr',
                       '2014-07-08.csv')

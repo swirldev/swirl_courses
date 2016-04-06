@@ -1,5 +1,12 @@
+# For compatibility with 2.2.21
+.get_course_path <- function(){
+  tryCatch(swirl:::swirl_courses_dir(),
+           error = function(c) {file.path(find.package("swirl"),"Courses")}
+  )
+}
+
 # Path to data
-.datapath <- file.path(swirl:::swirl_courses_dir(),
+.datapath <- file.path(.get_course_path(),
                       'R_Programming', 'Looking_at_Data',
                       'plant-data.txt')
 # Read in data
