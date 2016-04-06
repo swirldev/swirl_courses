@@ -128,7 +128,7 @@
   Output: That's easier to see! Now we'll close with two, more complicated scatterplot examples.
 
 - Class: cmd_question
-  Output:  We'll rerun the plot you just did (carat,price,data=diamonds and color=cut) but add two more parameters. The first is the argument geom set equal to the concatenation of the 2 strings, "point" and "smooth". The second is the argument method set equal to the string "lm". Try this now.
+  Output:  We'll rerun the plot you just did (carat,price,data=diamonds and color=cut) but add an additional parameter. Use geom_smooth with the method set equal to the string "lm".
   CorrectAnswer: qplot(carat,price,data=diamonds, color=cut) + geom_smooth(method="lm")
   AnswerTests: omnitest(correctExpr='qplot(carat,price,data=diamonds, color=cut) + geom_smooth(method="lm")')
   Hint: Type qplot(carat,price,data=diamonds, color=cut) + geom_smooth(method="lm") at the command prompt.
@@ -138,7 +138,7 @@
   Output: Again, we see the same scatterplot, but slightly more compressed and showing 5 regression lines, one for each cut of diamonds. It might be hard to see, but around each line is a shadow showing the 95% confidence interval. We see, unsurprisingly, that the better the cut, the steeper (more positive) the slope of the lines.
 
 - Class: cmd_question
-  Output:  Finally, let's rerun that plot you just did (carat,price,data=diamonds, color=cut, geom =c("point","smooth"),method="lm") but add one (just one) more argument. The new argument is facets and it should be set equal to the formula .~cut. Recall that the facets argument indicates we want a multi-panel plot. The symbol to the left of the tilde indicates rows (in this case just one) and the symbol to the right of the tilde indicates columns (in this five, the number of cuts). Try this now.
+  Output:  Finally, let's rerun that plot you just did qplot(carat,price,data=diamonds, color=cut) + geom_smooth(method="lm") but add one (just one) more argument to qplot. The new argument is facets and it should be set equal to the formula .~cut. Recall that the facets argument indicates we want a multi-panel plot. The symbol to the left of the tilde indicates rows (in this case just one) and the symbol to the right of the tilde indicates columns (in this five, the number of cuts). Try this now.
   CorrectAnswer: qplot(carat,price,data=diamonds, color=cut, facets=.~cut) + geom_smooth(method="lm")
   AnswerTests: omnitest(correctExpr='qplot(carat,price,data=diamonds, color=cut, facets=.~cut) + geom_smooth(method="lm")')
   Hint: Type qplot(carat,price,data=diamonds, color=cut, facets=.~cut) + geom_smooth(method="lm") at the command prompt.
