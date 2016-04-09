@@ -18,12 +18,12 @@ gch_nor <- (gch - mean(gch))/sd(gch)
 maniflg <- find.package("manipulate",quiet=TRUE)
 if  (isTRUE((Sys.getenv("RSTUDIO") == "1")&&(nchar(maniflg)>0 ))) {
   library(manipulate)
-  fname <- paste(file.path(.get_course_path(),
+  fname <- paste(file.path(.get_course_path()),
   	"Regression_Models","Least_Squares_Estimation","slopedemo.R",sep="/")
 } else {
-  fname <- paste(file.path(.get_course_path(), 
+  fname <- paste(file.path(.get_course_path()), 
   	"Regression_Models","Least_Squares_Estimation","slopedemo_no_mani.R",sep="/")  
 }
 file.edit(fname)
-fname2 <- paste(file.path(.get_course_path(),
+fname2 <- paste(file.path(.get_course_path()),
 	"Regression_Models","Least_Squares_Estimation","finalplot.R",sep="/")
