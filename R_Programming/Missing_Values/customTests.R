@@ -1,10 +1,3 @@
-# Returns TRUE if e$expr matches any of the expressions given
-# (as characters) in the argument.
-ANY_of_exprs <- function(...){
-  e <- get("e", parent.frame())
-  any(sapply(c(...), function(expr)omnitest(expr)))
-}
-
 # Get the swirl state
 getState <- function(){
   # Whenever swirl is running, its callback is at the top of its call stack.

@@ -50,7 +50,7 @@
 - Class: cmd_question
   Output: Pull up the documentation for `:` now.
   CorrectAnswer: ?`:`
-  AnswerTests: ANY_of_exprs('?`:`', "?':'", '?":"')
+  AnswerTests: any_of_exprs('?`:`', "?':'", '?":"')
   Hint: "In order to view the documentation for a symbol like the colon operator,
     you have to use backticks (or quotes). This is so R knows you are not attempting to use the
     symbol in the command. Here's what it looks like: ?`:`. Don't forget the question

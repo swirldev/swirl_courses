@@ -21,7 +21,7 @@
 - Class: cmd_question
   Output: Now, let's multiply x by 3.
   CorrectAnswer: x * 3
-  AnswerTests: ANY_of_exprs('x * 3', '3 * x')
+  AnswerTests: any_of_exprs('x * 3', '3 * x')
   Hint: Try x * 3.
 
 - Class: text
