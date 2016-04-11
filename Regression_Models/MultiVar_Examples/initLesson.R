@@ -13,7 +13,7 @@ data(swiss);
 pairs(swiss, panel = panel.smooth, main = "Swiss data", col = 3 + (swiss$Catholic > 50))
 
 # Put initialization code in this file.
-file.copy(from=file.path(file.path(.get_course_path(),
+file.copy(from=file.path(.get_course_path(),
 	"Regression_Models", "MultiVar_Examples", "swissLMs.R"), 
           to="swissLMs.R")
 file.edit("swissLMs.R")
