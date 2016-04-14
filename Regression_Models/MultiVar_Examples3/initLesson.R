@@ -10,7 +10,7 @@
 # the lesson.
 
 file.copy(from=file.path(file.path(.get_course_path(),
-	"Regression_Models","MultiVar_Examples3","hunger.csv"),
+	"Regression_Models","MultiVar_Examples3","hunger.csv")),
           to="hunger.csv")
                          
 hunger <-read.csv(file.path(.get_course_path(),
