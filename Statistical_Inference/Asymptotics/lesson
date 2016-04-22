@@ -125,9 +125,9 @@
 
 - Class: mult_question
   Output: As we've seen before, in a binomial distribution in which p represents the probability or proportion of success, the variance sigma^2 is p(1-p), so the standard error of the sample mean p' is sqrt(p(1-p)/n) where n is the sample size. The 95% confidence interval of p is then p' +/- 2*sqrt(p(1-p)/n). The 2 in this formula represents what?
-  AnswerChoices: the mean of p'; the variance of p'; the standard error of p'; the approximate 975% normal quantile
-  CorrectAnswer: the approximate 975% normal quantile
-  AnswerTests: omnitest(correctVal='the approximate 975% normal quantile')
+  AnswerChoices: the mean of p'; the variance of p'; the standard error of p'; the approximate 97.5% normal quantile
+  CorrectAnswer: the approximate 97.5% normal quantile
+  AnswerTests: omnitest(correctVal='the approximate 97.5% normal quantile')
   Hint: Recall the formula for the interval p' +/- qnorm*sigma/sqrt(n)
 
 - Class: text
