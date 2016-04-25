@@ -39,7 +39,7 @@
 - Class: cmd_question
   Output:  We see that the 28 column names look all jumbled together even though they're separated by "|" characters, so let's fix this. Reassign to cnames the output of a call to strsplit (string split) with 3 arguments. The first is cnames, the pipe symbol '|' is the second (use the quotation marks), and the third is the argument fixed set to TRUE. Try this now. 
   CorrectAnswer:  cnames <- strsplit(cnames, "|", fixed = TRUE)
-  AnswerTests:  omnitest(correctExpr='cnames <- strsplit(cnames, "|", fixed = TRUE)')
+  AnswerTests:  any_of_exprs('cnames <- strsplit(cnames, "|", fixed = T)', 'cnames <- strsplit(cnames, "|", fixed = TRUE)')
   Hint: Type cnames <- strsplit(cnames, "|", fixed = TRUE) at the command prompt.
 
 - Class: cmd_question
