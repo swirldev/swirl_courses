@@ -253,7 +253,7 @@
     vector by the paste() function.
 
 - Class: text
-  Output: We'll discuss coercion in another lesson, but all it really means that the
+  Output: We'll discuss coercion in another lesson, but all it really means is that the
     numbers 1, 2, 3, and 4 in the output above are no longer numbers to R, but rather
     characters "1", "2", "3", and "4".
 
