@@ -47,7 +47,7 @@
   Output: We'll verify these claims now. We've defined for you two R functions, est and sqe. Both take two inputs, a slope and an intercept. The function est calculates a child's height (y-coordinate) using the line defined by the two parameters, (slope and intercept), and the parents' heights in the Galton data as x-coordinates.  
 
 - Class: mult_question
-  Output: Let "mch"" represent the mean of the galton childrens' heights and "mph"" the mean of the galton parents' heights. Let "ic" and "slope" represent the intercept and slope of the regression line respectively. As shown in the slides and past lessons, the point (mph,mch) lies on the regression line. This means
+  Output: Let "mch" represent the mean of the galton childrens' heights and "mph" the mean of the galton parents' heights. Let "ic" and "slope" represent the intercept and slope of the regression line respectively. As shown in the slides and past lessons, the point (mph,mch) lies on the regression line. This means
   AnswerChoices: mch = ic + slope*mph; mph = ic + slope*mch; I haven't the slightest idea.
   CorrectAnswer: mch = ic + slope*mph
   AnswerTests: omnitest(correctVal='mch = ic + slope*mph')
