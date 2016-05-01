@@ -183,3 +183,14 @@
   AnswerChoices: Yes;No
   AnswerTests: coursera_on_demand()
   Hint: ""
+
+- I'm sorry if problem report wrote not in the right place. The Swirl gives an error when replying:
+  Question:
+  What does this graph NOT show you?
+  1: Using the air cleaner makes asthmatic children sicker
+  2: Half the chidren in the control group had no improvement
+  3: Children in the control group had at most 3 symptom-free days
+  4: 75% of the children using the air cleaner had at most 3 symptom-free days
+  Selection: 4
+  Error in sprintf(...) : too few arguments
+  Leaving swirl now. Type swirl() to resume.
