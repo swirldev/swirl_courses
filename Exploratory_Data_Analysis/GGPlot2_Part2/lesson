@@ -160,7 +160,7 @@
   Output: Notice how plot plotted the points in the (-3,3) range for y-values. The outlier at (50,100) is NOT shown on the line plot. Now we'll plot the same data with ggplot. Recall that the name of the dataframe is testdat. Create the graphical object g with a call to ggplot with 2 arguments, testdat (the data) and a call to aes with 2 arguments, x set equal to myx, and y set equal to myy.
   CorrectAnswer: g <- ggplot(testdat, aes(x = myx, y = myy)) 
   AnswerTests: expr_creates_var("g"); omnitest(correctExpr='g <- ggplot(testdat, aes(x = myx, y = myy))')
-  Hint: Type g <- ggplot(testdat, aes(x = myx, y = myy)) + geom_line() at the command prompt.
+  Hint: Type g <- ggplot(testdat, aes(x = myx, y = myy)) at the command prompt.
 
 - Class: cmd_question
   Output: Now add a call to geom_line with 0 arguments to g.
