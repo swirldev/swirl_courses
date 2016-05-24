@@ -157,7 +157,7 @@
   Hint: Type  points(x,y,pch=19,cex=2,col=cols1[newClust2]) at the command prompt.
 
 - Class: text
-  Output: Notice that points 4 and 7 both changed clusters, 4 moved from 1 to 2 (red to orange), and point 7 switched from 3 to 2 (purple to red).
+  Output: Notice that points 4 and 7 both changed clusters, 4 moved from 1 to 2 (red to orange), and point 7 switched from 3 to 1 (purple to red).
 
 - Class: cmd_question
   Output: Now use tapply to find the x coordinate of the new centroid. Recall there are 3 arguments, x, newClust2, and mean.
