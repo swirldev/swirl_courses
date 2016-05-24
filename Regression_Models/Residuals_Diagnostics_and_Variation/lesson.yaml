@@ -29,7 +29,7 @@
   Hint: "Enter fit <- lm(y ~ x, out2) or something equivalent at the R prompt."
 
 - Class: cmd_question
-  Output: "The simplest diagnostic plot displays residuals versus fitted values. Residuals should be uncorrelated with the fit, and should be independent and (almost) identically disributed with mean zero. Enter plot(fit, which=1) at the R prompt to see if this is the case."
+  Output: "The simplest diagnostic plot displays residuals versus fitted values. Residuals should be uncorrelated with the fit, independent and (almost) identically distributed with mean zero. Enter plot(fit, which=1) at the R prompt to see if this is the case."
   CorrectAnswer: plot(fit, which=1)
   AnswerTests: omnitest(correctExpr='plot(fit, which=1)')
   Hint: Enter plot(fit, which=1) at the R prompt
