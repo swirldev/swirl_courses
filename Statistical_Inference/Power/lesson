@@ -413,8 +413,8 @@
 - Class: mult_question
   Output: 2. What is a Type II error?
   AnswerChoices:   rejecting a true hypothesis;  rejecting a false hypothesis;  accepting a true hypothesis; accepting a false hypothesis
-  CorrectAnswer: accepting a false hypothesis
-  AnswerTests: omnitest(correctVal='accepting a false hypothesis')
+  CorrectAnswer: rejecting a true hypothesis
+  AnswerTests: omnitest(correctVal='rejecting a true hypothesis')
   Hint: Only two of the choices are errors. Eliminate those and then eliminate the Type I error.
 
 - Class: mult_question
