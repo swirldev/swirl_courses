@@ -28,9 +28,9 @@
 - Class: mult_question
   Output: Since multiple testing addresses compensating for errors let's review what we know about them. A Type I error is  
   AnswerChoices: rejecting a false hypothesis; failing to reject a false hypothesis; rejecting a true hypothesis; failing to reject a true hypothesis
-  CorrectAnswer: rejecting a true hypothesis
-  AnswerTests: omnitest(correctVal='rejecting a true hypothesis')
-  Hint: Eliminate the two choices that are not errors. A Type I error involves rejection.
+  CorrectAnswer: failing to reject a false hypothesis
+  AnswerTests: omnitest(correctVal='failing to reject a false hypothesis')
+  Hint: Eliminate the two choices that are not errors. A Type I error involves failing to reject.
 
 - Class: mult_question
   Output: In an American court, an example of a Type I error is 
