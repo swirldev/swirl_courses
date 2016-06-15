@@ -227,7 +227,7 @@
   Output: The only term remaining is the standard error which for the single group is s/sqrt(n). Let's deal with the numerator first. Our interval will assume (for now) a common variance s^2 across the two groups. We'll actually pool variance information from the two groups using a weighted sum. (We'll deal with the more complicated situation later.) 
 
 - Class: text
-  Output: We call the variance estimator we use the pooled variance. The formula for it requires two variance estimators, S_x and S_y, one for each group. We multiply each by its respective degrees of freedom and divide the sum by the total number of degrees of freedom. This  weights the respective variances; those coming from bigger samples get more weight.
+  Output: We call the variance estimator we use the pooled variance. The formula for it requires two variance estimators (in the form of the standard deviation), S_x and S_y, one for each group. We multiply each by its respective degrees of freedom and divide the sum by the total number of degrees of freedom. This  weights the respective variances; those coming from bigger samples get more weight.
 
 - Class: mult_question
   Output: Which of the following represents the numerator of this expression?
