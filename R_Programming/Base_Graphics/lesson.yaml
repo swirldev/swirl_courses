@@ -22,7 +22,7 @@
   Hint: Type data(cars) to load the data.
 
 - Class: text
-  Output: To fix ideas, we will work with simple data frames. Our main goal is to introduce various plotting functions and their arguments. All the output would look more interesting with larger, more complex data sets.
+  Output: To fix ideas, we will work with simple data frames. Our main goal is to introduce various plotting functions and their arguments. Although, the output would look more interesting with larger, more complex data sets.
 
 - Class: cmd_question
   Output: Pull up the help page for cars.
