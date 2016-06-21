@@ -140,7 +140,7 @@
   Output:  The general rule for rejection is if sqrt(n) * ( X' - mu) / s > Z_{1-alpha}.
 
 - Class: text
-  Output: Our test statistic is (X'-mu) / s/sqrt(n) which is standard normal.
+  Output: Our test statistic is (X'-mu) / (s/sqrt(n)) which is standard normal.
 
 - Class: mult_question
   Output: This means that our test statistic has what mean and standard deviation?
