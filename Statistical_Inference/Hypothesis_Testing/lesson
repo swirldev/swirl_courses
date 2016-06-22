@@ -95,7 +95,7 @@
   FigureType: new
 
 - Class: mult_question
-  Output: The shaded portion represents 5% of the area under this normal density curve. Which expression represents the smallest value X for which the area is shaded, assuming this is standard normal (which it really isn't)?
+  Output: The shaded portion represents 5% of the area under this normal density curve. Which expression represents the smallest value X for which the area is shaded, assuming this is standard normal?
   AnswerChoices: qnorm(.95); rnorm(.95); dnorm(.95); qt(.95,99)
   CorrectAnswer: qnorm(.95)
   AnswerTests: omnitest(correctVal='qnorm(.95)')
