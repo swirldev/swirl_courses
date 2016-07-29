@@ -1,0 +1,33 @@
+- Class: meta
+  Course: R Programming
+  Lesson: Workspace and Files
+  Author: David Kane & Sean Kross
+  Type: Standard
+  Organization: Williams College
+  Version: 0.1.2
+  
+- Class: text
+  Output: R can interact with files and folders on your 
+    computer. R constantly keeps track of a working 
+    directory which is a folder in which many R functions 
+    automatically read and write files. Folders and 
+    directories are synonymous terms.
+    
+- Class: text
+  Output: You may have never thought about this before, but 
+    files and folders on your computer are structured like 
+    a tree. The root of the tree is your hard drive. All 
+    files and folders are contained within your hard drive,
+    and the series of folders you might have to navigate to
+    get to a particular file are like the branches of a 
+    tree. This is sequence of directories is often called a
+    path.
+
+- Class: text
+  Output: By default R’s inital working directory is your 
+    home folder. If you have a Mac your home folder will 
+    have the path /Users/[Your Username], while on Windows 
+    your home folder will have the path C:\Users\[Your Username].
+
+- Class: text
+  Output: On Mac
