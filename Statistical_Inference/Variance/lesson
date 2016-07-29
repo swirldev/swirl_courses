@@ -112,7 +112,7 @@
   Hint: Which of the choices has both Var and the definition of mean in it?
 
 - Class: mult_question
-  Output: Which of the following does Var(1/n * Sum(X_i)') equal?
+  Output: Which of the following does Var(1/n * Sum(X_i)) equal?
   AnswerChoices: 1/n^2*Var(Sum(X_i)); 1/n^2*E(Sum(X_i)); mu/n^2; sigma/n
   CorrectAnswer: 1/n^2*Var(Sum(X_i))
   AnswerTests: omnitest(correctVal='1/n^2*Var(Sum(X_i))')

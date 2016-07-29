@@ -16,7 +16,7 @@
   Output: An important concept in hypothesis testing is the NULL hypothesis, usually denoted as H_0. This is the hypothesis that represents the status_quo and is assumed true. It's a baseline against which you're testing alternative hypotheses, usually denoted by H_a. Statistical evidence is required to reject H_0 in favor of the research or alternative hypothesis. 
 
 - Class: text
-  Output: We'll consider the motivating example from the slides. A respiratory disturbance index (RDI) of more than 30 events / hour is considered evidence of severe sleep disordered breathing (SDB). Suppose that in a sample of 100 overweight subjects with other risk factors for (SDB) at a sleep clinic, the mean RDI (X') was 32 events / hour with a standard deviation (s) of 10 events / hour.
+  Output: We'll consider the motivating example from the slides. A respiratory disturbance index (RDI) of more than 30 events / hour is considered evidence of severe sleep disordered breathing (SDB). Suppose that in a sample of 100 overweight subjects with other risk factors for SDB at a sleep clinic, the mean RDI (X') was 32 events / hour with a standard deviation (s) of 10 events / hour.
 
 - Class: text
   Output: We want to test the null hypothesis H_0 that mu = 30. Our alternative hypothesis H_a is mu>30. Here mu represents the hypothesized population mean RDI.
@@ -95,7 +95,7 @@
   FigureType: new
 
 - Class: mult_question
-  Output: The shaded portion represents 5% of the area under this normal density curve. Which expression represents the smallest value X for which the area is shaded, assuming this is standard normal (which it really isn't)?
+  Output: The shaded portion represents 5% of the area under this normal density curve. Which expression represents the smallest value X for which the area is shaded, assuming this is standard normal?
   AnswerChoices: qnorm(.95); rnorm(.95); dnorm(.95); qt(.95,99)
   CorrectAnswer: qnorm(.95)
   AnswerTests: omnitest(correctVal='qnorm(.95)')
@@ -140,7 +140,7 @@
   Output:  The general rule for rejection is if sqrt(n) * ( X' - mu) / s > Z_{1-alpha}.
 
 - Class: text
-  Output: Our test statistic is (X'-mu) / s/sqrt(n) which is standard normal.
+  Output: Our test statistic is (X'-mu) / (s/sqrt(n)) which is standard normal.
 
 - Class: mult_question
   Output: This means that our test statistic has what mean and standard deviation?
@@ -153,7 +153,7 @@
   Output: Let's review and expand. Our null hypothesis is that the population mean mu equals the value mu_0 and alpha=.05. (This is the probability that we reject H_0 if it's true.) We can have several different alternative hypotheses.
 
 - Class: text
-  Output: Suppose our first alternative, H_a, is that mu < mu_0. We would reject H_0 (and accept H_a) when our observed sample mean is significantly less than mu_0. That is, our test statistic  (X'-mu) / s/sqrt(n) is  less than Z_alpha. Specifically, it is more than 1.64 standard deviations to the left of the mean mu_0.
+  Output: Suppose our first alternative, H_a, is that mu < mu_0. We would reject H_0 (and accept H_a) when our observed sample mean is significantly less than mu_0. That is, our test statistic  (X'-mu) / (s/sqrt(n)) is  less than Z_alpha. Specifically, it is more than 1.64 standard deviations to the left of the mean mu_0.
 
 - Class: figure
   Output: Here's a plot to show what we mean. The shaded portion represents 5% of the area under the curve and those X values in it are those which are at least 1.64 standard deviations less than  the mean. The probability of this is 5%. This means that if our sample mean fell in this area, we would reject a true null hypothesis,  mu=mu_0, with probability 5%.
@@ -168,7 +168,7 @@
   Hint: If we accept H_a, that the true mu is greater than the H_0 value mu_0 we would want our sample mean to be greater the mu_0.
 
 - Class: mult_question
-  Output: This means that our test statistic (X'-mu) / s/sqrt(n) is what?
+  Output: This means that our test statistic (X'-mu) / (s/sqrt(n)) is what?
   AnswerChoices: at least 1.64 std dev greater than mu_0; at least 1.64 std dev less than mu_0; equal to mu_0; huh?
   CorrectAnswer: at least 1.64 std dev greater than mu_0
   AnswerTests: omnitest(correctVal='at least 1.64 std dev greater than mu_0')
@@ -183,7 +183,7 @@
   Output: Finally, let's consider the alternative hypothesis H_a that mu is simply not equal to mu_0, the mean hypothesized by the null hypothesis H_0.  We would reject H_0 (and accept H_a) when our sample mean is significantly different than mu_0, that is, either less than OR greater than mu_0. 
 
 - Class: text
-  Output: Since we want to stick with a 5% rejection rate, we divide it in half and consider values at both tails, at the .025 and the .975 percentiles.  This means that our test statistic  (X'-mu) / s/sqrt(n) is  less than .025, Z_(alpha/2), or greater than .975, Z_(1-alpha/2).
+  Output: Since we want to stick with a 5% rejection rate, we divide it in half and consider values at both tails, at the .025 and the .975 percentiles.  This means that our test statistic  (X'-mu) / (s/sqrt(n)) is  less than .025, Z_(alpha/2), or greater than .975, Z_(1-alpha/2).
 
 - Class: figure
   Output: Here's the plot. As before, the shaded portion represents the 5% of the area composing the region of rejection. This time, though, it's composed of two equal pieces, each containing 2.5% of the area under the curve. The X values in the shaded portions are values which are at least 1.96 standard deviations away from the hypothesized mean. 
@@ -217,7 +217,7 @@
   Hint: As the sample size gets bigger the distribution looks normal.
 
 - Class: text
-  Output: No need to worry. If we don't have a large sample size, we can use the t distribution which conveniently uses the same test statistic (X'-mu) / s/sqrt(n) we used above.  That means that all the examples we just went through would work exactly the same EXCEPT instead of using NORMAL quantiles, we would use t quantiles and n-1 degrees of freedom. 
+  Output: No need to worry. If we don't have a large sample size, we can use the t distribution which conveniently uses the same test statistic (X'-mu) / (s/sqrt(n)) we used above.  That means that all the examples we just went through would work exactly the same EXCEPT instead of using NORMAL quantiles, we would use t quantiles and n-1 degrees of freedom. 
 
 - Class: text
   Output: We said t distributions were very handy, didn't we?  
@@ -320,7 +320,7 @@
   AnswerChoices: the number of estimated std errors between the sample and hypothesized means; the sample mean; the true mean; the true variance 
   CorrectAnswer: the number of estimated std errors between the sample and hypothesized means
   AnswerTests: omnitest(correctVal='the number of estimated std errors between the sample and hypothesized means')
-  Hint: The test statistic tells us how many standard deviations the sample mean is from the hypothesized one. Remember t=(X'-mu)/s/sqrt(n)
+  Hint: The test statistic tells us how many standard deviations the sample mean is from the hypothesized one. Remember t=(X'-mu)/(s/sqrt(n))
 
 - Class: cmd_question
   Output: We can test this by multiplying the t statistic (11.7885) by the standard deviation of the data divided by the square root of the sample size. Specifically run 11.7885 * sd(fs$sheight-fs$fheight)/sqrt(1078).
