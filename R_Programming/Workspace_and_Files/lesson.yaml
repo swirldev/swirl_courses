@@ -233,11 +233,12 @@
     equals TRUE, you don't know that something is in the directory you're trying
     to delete. R tries to prevent you from making a mistake."
 
-- Class: cmd_question
-  Output: Delete the "testdir2" directory that you created by using unlink().
-  CorrectAnswer: unlink("testdir2", recursive = TRUE)
-  AnswerTests: omnitest(correctExpr='unlink("testdir2", recursive = TRUE)')
-  Hint: unlink("testdir2", recursive = TRUE) works. 
+- Class: text
+  Output: "We would like to ask you to use unlink() to delete some of the files
+    you've created during this lesson, however if you were to unlink() the
+    wrong directory, you could delete some files that are very precious to
+    you. You should delete the files that you created in this lesson on
+    your own."
 
 - Class: text
   Output: Why is this command named "unlink" rather than something more 
