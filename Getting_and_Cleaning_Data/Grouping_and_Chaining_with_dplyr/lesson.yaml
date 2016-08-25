@@ -25,7 +25,7 @@
   Hint: Use library(dplyr) to load the dplyr package.
 
 - Class: cmd_question
-  Output: I've made the dataset available to you in a data frame called mydf. Put it in a 'data frame tbl' using the tbl_df() function and store the result in a variable called cran. If you're not sure what I'm talking about, you should start with the previous lesson. Otherwise, practice makes perfect!
+  Output: I've made the dataset available to you in a data frame called mydf. Put it in a 'data frame tbl' using the tbl_df() function and store the result in a object called cran. If you're not sure what I'm talking about, you should start with the previous lesson. Otherwise, practice makes perfect!
   CorrectAnswer: cran <- tbl_df(mydf)
   AnswerTests: omnitest(correctExpr='cran <- tbl_df(mydf)')
   Hint: Type cran <- tbl_df(mydf) to store the data in a new tbl_df called cran.
@@ -49,10 +49,10 @@
   Hint: Use ?group_by to bring up the documentation.
 
 - Class: cmd_question
-  Output: Group cran by the package variable and store the result in a new variable called by_package.
+  Output: Group cran by the package variable and store the result in a new object called by_package.
   CorrectAnswer: by_package <- group_by(cran, package)
   AnswerTests: omnitest('by_package <- group_by(cran, package)')
-  Hint: Store the result of group_by(cran, package) in a new variable called by_package.
+  Hint: Store the result of group_by(cran, package) in a new object called by_package.
 
 - Class: cmd_question
   Output: Let's take a look at by_package. Print it to the console.
@@ -103,10 +103,10 @@
   Hint: quantile(pack_sum$count, probs = 0.99) will give us the 0.99, or 99%, sample quantile for the 'count' variable.
 
 - Class: cmd_question
-  Output: Now we can isolate only those packages which had more than 679 total downloads. Use filter() to select all rows from pack_sum for which 'count' is strictly greater (>) than 679. Store the result in a new variable called top_counts.
+  Output: Now we can isolate only those packages which had more than 679 total downloads. Use filter() to select all rows from pack_sum for which 'count' is strictly greater (>) than 679. Store the result in a new object called top_counts.
   CorrectAnswer: top_counts <- filter(pack_sum, count > 679)
   AnswerTests: omnitest('top_counts <- filter(pack_sum, count > 679)')
-  Hint: Store the result of filter(pack_sum, count > 679) in a new variable called top_counts.
+  Hint: Store the result of filter(pack_sum, count > 679) in a new object called top_counts.
 
 - Class: cmd_question
   Output: Let's take a look at top_counts. Print it to the console.
@@ -124,7 +124,7 @@
   Hint: Use View(top_counts) to view all 61 rows. This may not work properly in every programming environment. If you are having trouble, we recommend using RStudio.
 
 - Class: cmd_question
-  Output: arrange() the rows of top_counts based on the 'count' column and assign the result to a new variable called top_counts_sorted. We want the packages with the highest number of downloads at the top, which means we want 'count' to be in descending order. If you need help, check out ?arrange and/or ?desc.
+  Output: arrange() the rows of top_counts based on the 'count' column and assign the result to a new object called top_counts_sorted. We want the packages with the highest number of downloads at the top, which means we want 'count' to be in descending order. If you need help, check out ?arrange and/or ?desc.
   CorrectAnswer: top_counts_sorted <- arrange(top_counts, desc(count))
   AnswerTests: omnitest('top_counts_sorted <- arrange(top_counts, desc(count))')
   Hint: arrange(top_counts, desc(count)) will arrange the rows of top_counts based on the values of the 'count' variable, in descending order. Don't forget to assign the result to top_counts_sorted.
@@ -151,7 +151,7 @@
   Hint: Use quantile(pack_sum$unique, probs = 0.99) to get the 0.99, or 99% quantile for 'unique'.
 
 - Class: cmd_question
-  Output: Apply filter() to pack_sum to select all rows corresponding to values of 'unique' that are strictly greater than 465. Assign the result to a variable called top_unique.
+  Output: Apply filter() to pack_sum to select all rows corresponding to values of 'unique' that are strictly greater than 465. Assign the result to a object called top_unique.
   CorrectAnswer: top_unique <- filter(pack_sum, unique > 465)
   AnswerTests: omnitest('top_unique <- filter(pack_sum, unique > 465)')
   Hint: filter(pack_sum, unique > 465) will select all rows corresponding to values of 'unique' that are strictly greater than 465. Assign the result to top_unique.
