@@ -1,11 +1,12 @@
 # extract  Extract one column into multiple columns.
-# extract_numeric	Extract numeric component of variable.
+# parse_numeric	Extract numeric component of variable.
 # gather	Gather columns into key-value pairs.
 # separate	Separate one column into multiple columns.
 # spread	Spread a key-value pair across multiple columns.
 # spread_	Standard-evaluation version of 'spread'.
 # unite	Unite multiple columns into one.
 
+library(readr)
 library(tidyr)
 library(dplyr)
 
@@ -24,7 +25,7 @@ students3 %>%
 
 # res2 <- students3 %>%
 #   gather(class, grade, class1:class5, na.rm = TRUE) %>%
-#   mutate(class = extract_numeric(class)) %>%
+#   mutate(class = parse_numeric(class)) %>%
 #   select(name, class, test, grade) %>%
 #   arrange(name, class)
 
@@ -37,7 +38,7 @@ students3 %>%
 students3 %>%
   gather(class, grade, class1:class5, na.rm = TRUE) %>%
   spread(test, grade) %>%
-  mutate(class = extract_numeric(class))
+  mutate(class = parse_numeric(class))
 
 
 # multiple types of observational units are stored in the same table
