@@ -54,7 +54,7 @@
 - Class: cmd_question
   Output: Recall that the expected value of a fair dice roll is 3.5. Subtract the square of that from ex2_fair to compute the sample variance.
   CorrectAnswer: ex2_fair-3.5^2
-  AnswerTests: ANY_of_exprs('ex2_fair-3.5^2','ex2_fair-3.5*3.5')
+  AnswerTests: ANY_of_exprs('ex2_fair-3.5^2','ex2_fair-3.5*3.5','ex2_fair-(3.5^2)','ex2_fair-(3.5*3.5)')
   Hint: Type 'ex2_fair-3.5^2' at the command prompt.
 
 - Class: cmd_question
