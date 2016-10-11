@@ -12,5 +12,5 @@
 students3 %>%
   gather(class, grade, class1:class5, na.rm = TRUE) %>%
   spread(test, grade) %>%
-  mutate(class = parse_numeric(class)) %>%
+  mutate(class = parse_number(class)) %>%
   print

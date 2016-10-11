@@ -143,16 +143,16 @@
   Script: script3.R
 
 - Class: cmd_question
-  Output: readr is required for certain data manipulations, such as `parse_numeric(), which will be used in the next question.  Let's, (re)load the package with library(readr).
+  Output: readr is required for certain data manipulations, such as `parse_number(), which will be used in the next question.  Let's, (re)load the package with library(readr).
   CorrectAnswer: library(readr)
   AnswerTests: omnitest('library(readr)')
   Hint: Type library(readr) to (re)load the readr package.
 
 - Class: cmd_question
-  Output: Lastly, we want the values in the class column to simply be 1, 2, ..., 5 and not class1, class2, ..., class5. We can use the parse_numeric() function from readr to accomplish this. To see how it works, try parse_numeric("class5").
-  CorrectAnswer: parse_numeric("class5")
-  AnswerTests: omnitest('parse_numeric("class5")')
-  Hint: Type parse_numeric("class5") to see how it works.
+  Output: Lastly, we want the values in the class column to simply be 1, 2, ..., 5 and not class1, class2, ..., class5. We can use the parse_number() function from readr to accomplish this. To see how it works, try parse_number("class5").
+  CorrectAnswer: parse_number("class5")
+  AnswerTests: omnitest('parse_number("class5")')
+  Hint: Type parse_number("class5") to see how it works.
 
 - Class: script
   Output: Now, the final step. Edit the R script, then save it and type submit() when you are ready. Type reset() to reset the script to its original state.
