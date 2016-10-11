@@ -61,7 +61,7 @@
   Hint: Is the line nonnegative? Is the area under the diagonal 1?
 
 - Class: figure
-  Output: Now consider the shaded portion of the triangle — a smaller triangle with a base of length 1.6 and height determined by the diagonal. We'll answer the question, "What proportion of the big triangle is shaded?"
+  Output: Now consider the shaded portion of the triangle - a smaller triangle with a base of length 1.6 and height determined by the diagonal. We'll answer the question, "What proportion of the big triangle is shaded?"
   Figure: figure2.R
   FigureType: new
 
