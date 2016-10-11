@@ -2,11 +2,11 @@
 # 1, 2, ..., 5 and not class1, class2, ..., class5.
 #
 # Use the mutate() function from dplyr along with
-# parse_numeric(). Hint: You can "overwrite" a column
+# parse_number(). Hint: You can "overwrite" a column
 # with mutate() by assigning a new value to the existing
 # column instead of creating a new column.
 #
-# Check out ?mutate and/or ?parse_numeric if you need
+# Check out ?mutate and/or ?parse_number if you need
 # a refresher.
 #
 students3 %>%
