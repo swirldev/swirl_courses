@@ -79,7 +79,7 @@
   Output: What is the area of the blue triangle?
   CorrectAnswer: .64
   AnswerTests: equiv_val(.64)
-  Hint: Multiple the base times the height and divide by 2.
+  Hint: Multiply the base by the height and divide by 2.
 
 - Class: cmd_question
   Output: So, what is the probability that the kibble we throw at the bigger triangle will hit the blue portion? 
@@ -88,7 +88,7 @@
   Hint: The area of the blue triangle divided by the area of the big triangle gives you the probability.
 
 - Class: text
-  Output: This artificial example was to meant to illustrate a simple probability density function (PDF). Most PDF's have underlying formulae more complicated than lines. We'll see more of these in future lessons.  
+  Output: This artificial example was meant to illustrate a simple probability density function (PDF). Most PDFs have underlying formulae more complicated than lines. We'll see more of these in future lessons.  
 
 - Class: text
   Output: The cumulative distribution function (CDF) of a random variable X, either discrete or continuous, is the function F(x) equal to the probability that X is less than or equal to x. In the example above, the area of the blue triangle represents the probability that the random variable was less than or equal to the value 1.6. 
