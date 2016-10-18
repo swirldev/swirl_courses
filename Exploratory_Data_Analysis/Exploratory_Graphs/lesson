@@ -297,7 +297,7 @@
   FigureType: new
 
 - Class: cmd_question
-  Output: We've seen that we can use a function call as an argument when calling another function. We'll do this again when we call plot with the arguments latitude and pm25 which are both from our data frame pollution. We'll call plot from inside the R command with which evaluates "an R expression in an environment constructed from data". We'll use pollution as the first argument to with and the call to plot as the second. This allows us to avoid typing "pollution$" before the arguents to plot, so it saves us some typing and adds to your base of R knowledge. Try this now.
+  Output: We've seen that we can use a function call as an argument when calling another function. We'll do this again when we call plot with the arguments latitude and pm25 which are both from our data frame pollution. We'll call plot from inside the R command with which evaluates "an R expression in an environment constructed from data". We'll use pollution as the first argument to with and the call to plot as the second. This allows us to avoid typing "pollution$" before the arguments to plot, so it saves us some typing and adds to your base of R knowledge. Try this now.
   CorrectAnswer: with(pollution, plot(latitude, pm25))
   AnswerTests: omnitest(correctExpr='with(pollution, plot(latitude, pm25))')
   Hint: Type with(pollution, plot(latitude, pm25)) at the command prompt.
@@ -316,7 +316,7 @@
   Hint: Type plot(pollution$latitude, ppm, col = pollution$region) at the command prompt.
 
 - Class: mult_question
-  Output: We've got two colors on the map to distiguish between counties in the east and those in the west. Can we figure out which color is east and which west? See that the high (greater than 50) and low (less than 25) latitudes are both red. Latitudes indicate distance from the equator, so which half of the U.S. (east or west) has counties at the extreme north and south?
+  Output: We've got two colors on the map to distinguish between counties in the east and those in the west. Can we figure out which color is east and which west? See that the high (greater than 50) and low (less than 25) latitudes are both red. Latitudes indicate distance from the equator, so which half of the U.S. (east or west) has counties at the extreme north and south?
   AnswerChoices: east; west
   CorrectAnswer: west
   AnswerTests: omnitest(correctVal='west')
