@@ -360,7 +360,7 @@
   Figure: goodPlot3.R
 
 - Class: cmd_question
-  Output:  As before, use the up arrow key and change the 3 "west" strings to "east". 
+  Output:  As before, use the up arrow key and change the 3 "West" strings to "East". 
   CorrectAnswer: plot(east$latitude, east$pm25, main = "East")
   AnswerTests: omnitest(correctExpr='plot(east$latitude, east$pm25, main = "East")')
   Hint: Type  plot(east$latitude, east$pm25, main = "East") at the command prompt.
