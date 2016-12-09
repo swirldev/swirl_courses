@@ -15,6 +15,9 @@
 #
 # You should also take a look at ?n and ?n_distinct, so
 # that you really understand what is going on.
+#
+# before submit, you have to save this file
+
 
 pack_sum <- summarize(by_package,
                       count = ,
