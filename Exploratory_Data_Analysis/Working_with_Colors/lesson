@@ -259,7 +259,7 @@
   Output: These colorBrewer palettes can be used in conjunction with the colorRamp() and colorRampPalette() functions. You would use colors from a colorBrewer palette as your base palette,i.e., as arguments to colorRamp or colorRampPalette  which would interpolate them to create new colors.
 
 - Class: cmd_question
-  Output: As an example of this, create a new object, cols by calling the function brewer.pal with 2 arguments, 3 and "BuGn". This last is the second last palette in the sequential display. The 3 tells the function how many different colors we want.
+  Output: As an example of this, create a new object, cols by calling the function brewer.pal with 2 arguments, 3 and "BuGn". This "BuGn" is the second last palette in the sequential display. The 3 tells the function how many different colors we want.
   CorrectAnswer: cols <- brewer.pal(3, "BuGn")
   AnswerTests:  expr_creates_var("cols"); omnitest(correctExpr='cols <- brewer.pal(3, "BuGn")')
   Hint: Type cols <- brewer.pal(3, "BuGn") at the command prompt.
