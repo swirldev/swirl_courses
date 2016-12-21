@@ -105,10 +105,10 @@
   Output: It follows that 5% of the area under the curve is not shaded. By symmetry of the curve, only 2.5% of the data is greater than the mean + 2 standard deviations (mu+2*sigma/sqrt(n)) and only 2.5% is less than the  mean - 2 standard deviations (mu-2*sigma/sqrt(n)). 
 
 - Class: text
-  Output: So the probability that the sample mean X' is bigger than mu + 2sigma/sqrt(n) OR smaller than mu-2sigma/sqrt(n) is 5%.  Equivalently, the probability of being between these limits is 95%. Of course we could have different sizes of intervals. If we wanted something other than 95, then we would use a quantile other than 2.
+  Output: So the probability that the sample mean X' is bigger than mu + 2*sigma/sqrt(n) OR smaller than mu-2*sigma/sqrt(n) is 5%.  Equivalently, the probability of being between these limits is 95%. Of course we could have different sizes of intervals. If we wanted something other than 95, then we would use a quantile other than 2.
 
 - Class: text
-  Output: The quantity X' plus or minus 2 sigma/sqrt(n) is called a 95% interval for mu. The 95% says that if one were to repeatedly get samples of size n, about 95% of the intervals obtained would contain mu, the quantity we're trying to estimate. 
+  Output: The quantity X' plus or minus 2*sigma/sqrt(n) is called a 95% interval for mu. The 95% says that if one were to repeatedly get samples of size n, about 95% of the intervals obtained would contain mu, the quantity we're trying to estimate. 
 
 - Class: mult_question
   Output: Note that for a 95% confidence interval we divide (100-95) by 2 (since we have both left and right tails) and add the result to 95 to compute the quantile we need. The 97.5 quantile is actually 1.96, but for simplicity it's often just rounded up to 2. If you wanted to find a 90% confidence interval what quantile would you want?
