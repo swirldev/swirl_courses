@@ -288,7 +288,7 @@
   Hint: Look at the picture! 
 
 - Class: text 
-  Output: If H_a proposed that mu != mu_0 we would calculate the one sided power using alpha / 2 in the direction of mu_a (either less than or greater than mu_0). (This is only approximately right, it excludes the probability of getting a large test statistic in the opposite direction of the truth.
+  Output: If H_a proposed that mu != mu_0 we would calculate the one sided power using alpha / 2 in the direction of mu_a (either less than or greater than mu_0). This is only approximately right, it excludes the probability of getting a large test statistic in the opposite direction of the truth.
 
 - Class: mult_question
   Output: Since power goes up as alpha gets larger would the power of a one-sided test be greater or less than the power of the associated two sided test?
@@ -334,7 +334,7 @@
   Output: We'll work through some examples of this now. However, instead of assuming that we're working with  normal distributions let's work with t distributions. Remember, they're pretty close to normal with large enough sample sizes. 
 
 - Class: text
-  Output: Power is still a probability, namely P( (X' - mu_0)/(S /sqrt(n)) > t_(1-alpha, n-1) given H_a that mu > mu_a ). Notice we use the t quantile instead of the z. Also, since the proposed distribution is not centered at mu_0, we have to use the non-central t distribution. 
+  Output: Power is still a probability, namely P( (X' - mu_0)/(s/sqrt(n)) > t_(1-alpha, n-1) given H_a that mu > mu_a ). Notice we use the t quantile instead of the z. Also, since the proposed distribution is not centered at mu_0, we have to use the non-central t distribution. 
  
 - Class: text
   Output: R comes to the rescue again with the function power.t.test. We can omit one of the arguments and the function solves for it. Let's first use it to solve for power.
