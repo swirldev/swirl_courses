@@ -77,7 +77,7 @@
   Hint: This one's easy. Type "summary(regrline)"
 
 - Class: mult_question  
-  Output: The slope of the line is the estimate of the coefficient, or muliplier, of "parent", the independent variable of our data (in this case, the parents' heights). From the output of "summary" what is the slope of the regression line?
+  Output: The slope of the line is the estimate of the coefficient, or multiplier, of "parent", the independent variable of our data (in this case, the parents' heights). From the output of "summary" what is the slope of the regression line?
   AnswerChoices: .64629;.04114;23.94153
   CorrectAnswer: .64629
   AnswerTests: omnitest(correctVal= '.64629')
