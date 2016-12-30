@@ -261,11 +261,9 @@
     original values at the end. This isn't the same as what we have done 
     here, but it seems similar enough to mention."
 
-- Class: cmd_question
-  Output: "Delete the 'testdir' directory that you just left (and everything in it)"
-  CorrectAnswer: unlink("testdir", recursive = TRUE)
-  AnswerTests: omnitest(correctExpr='unlink("testdir", recursive = TRUE)')
-  Hint: Use unlink("testdir", recursive = TRUE).
+- Class: text
+  Output: "After you finish this lesson delete the 'testdir' directory that 
+    you just left (and everything in it)"
 
 - Class: text
   Output: "Take nothing but results. Leave nothing but assumptions. 
