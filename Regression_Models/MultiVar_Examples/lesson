@@ -10,7 +10,7 @@
   Output: "MultiVar_Examples. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to Regression_Models/02_02_multivariateExamples.)"
 
 - Class: text
-  Output: In this lesson, we'll look at some examples of regression models with more than one variable. We'll begin with the Swiss data which we've taken the liberty to load for you. This data is part of R's datasets package. It was gathered in 1888, a time of demographic change in Switzerland, and measured six quantities in 47 French-speaking provinces of Switzerland. We used the code from the slides (the R function pairs) to display here a 6 by 6 array of scatterplots showing pairwise relationships between the variables. All of the variables, except for fertility, are proportions of population. For example, "Examination" shows the percentage of draftees receiving the highest mark on an army exam, and "Education" the percentage of draftees with education beyond primary school.
+  Output: In this lesson, we'll look at some examples of regression models with more than one variable. We'll begin with the Swiss data which we've taken the liberty to load for you. This data is part of R's datasets package. It was gathered in 1888, a time of demographic change in Switzerland, and measured six quantities in 47 French-speaking provinces of Switzerland. We used the code from the slides (the R function pairs) to display here a 6 by 6 array of scatterplots showing pairwise relationships between the variables. All of the variables, except for Fertility, are proportions of population. For example, "Examination" shows the percentage of draftees receiving the highest mark on an army exam, and "Education" the percentage of draftees with education beyond primary school.
 
 - Class: mult_question  
   Output: From the plot, which is NOT one of the factors measured?
@@ -32,7 +32,7 @@
   Hint: Type "summary(all)" at the R prompt.
 
 - Class: text
-  Output: Recall that the Estimate are the coefficients of the independent variables of the linear model (all of which are percentages) and they reflect an estimated change in the dependent variable (fertility) when the corresponding independent variable changes. So, for every 1% increase in percent of males involved in agriculture as an occupation we expect a .17 decrease in fertility, holding all the other variables constant; for every 1% increase in Catholicism, we expect a .10 increase in fertility, holding all other variables constant.  
+  Output: Recall that the Estimate are the coefficients of the independent variables of the linear model (all of which are percentages) and they reflect an estimated change in the dependent variable (Fertility) when the corresponding independent variable changes. So, for every 1% increase in percent of males involved in agriculture as an occupation we expect a .17 decrease in fertility, holding all the other variables constant; for every 1% increase in Catholicism, we expect a .10 increase in fertility, holding all other variables constant.  
 
 - Class: mult_question
   Output: The "*" at the far end of the row indicates that the influence of Agriculture on Fertility is significant. At what alpha level is the t-test of Agriculture significant?
