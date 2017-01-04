@@ -168,7 +168,7 @@
   AnswerChoices: -0.29340; -0.03000; 0.08547; The model doesn't say.
   CorrectAnswer: -0.29340
   AnswerTests: omnitest(correctVal='-0.29340')
-  Hint: The estimaate associated with Year represents the annual change in percent of hungry females.
+  Hint: The estimate associated with Year represents the annual change in percent of hungry females.
 
 - Class: mult_question
   Output: What is the annual change in percentage of hungry males?
