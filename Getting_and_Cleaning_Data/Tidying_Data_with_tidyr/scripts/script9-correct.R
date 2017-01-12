@@ -14,6 +14,6 @@ sat %>%
   gather(part_sex, count, -score_range) %>%
   separate(part_sex, c("part", "sex")) %>%
   group_by(part, sex) %>%
-  mutate(total = sum(count),
-         prop = count / total
+  mutate(total = sum(as.numeric(count)),
+         prop = as.numeric(count) / total
   ) %>% print
