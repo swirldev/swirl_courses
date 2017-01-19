@@ -66,7 +66,7 @@ If that doesn't work for you...
 
 If the automatic course installation method outlined above does not work for you, then there's a simple alternative.
 
-1) Click on the **Download ZIP** button on the righthand side of this page.
+1) Click [**here**](https://github.com/swirldev/swirl_courses/archive/master.zip) to download the file `swirl_courses-master.zip`.
 
 2) Enter the following from the R console, **substituting the correct file path** to your downloaded file and the **name of your desired course**:
 
