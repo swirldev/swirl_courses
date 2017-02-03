@@ -225,26 +225,6 @@
     the trick. If you forgot the recursive argument, the command may have 
     appeared to work, but it didn't create the nested directory."
 
-- Class: text
-  Output:  "To delete a directory you need  to use the recursive = TRUE argument
-    with the function unlink(). If you don't use recursive = TRUE, R is 
-    concerned that you're unaware that you're deleting a directory and all
-    of its contents. R reasons that, if you don't specify that recursive
-    equals TRUE, you don't know that something is in the directory you're trying
-    to delete. R tries to prevent you from making a mistake."
-
-- Class: text
-  Output: "We would like to ask you to use unlink() to delete some of the files
-    you've created during this lesson, however if you were to unlink() the
-    wrong directory, you could delete some files that are very precious to
-    you. You should delete the files that you created in this lesson on
-    your own."
-
-- Class: text
-  Output: Why is this command named "unlink" rather than something more 
-    sensible like "dir.delete" or "dir.remove"? Mainly, history. 
-    unlink is the traditional Unix command for removing directories.
-
 - Class: cmd_question
   Output: Go back to your original working directory using setwd(). (Recall that we 
     created the variable old.dir with the full path for the orginal working 
