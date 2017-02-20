@@ -222,7 +222,7 @@
 - Class: text
   Output: We already know the significance and power levels that we want and we are
     interested in a one-sided test. In this case, our one-sided test applies only
-    to the case when the true speed is GREATER or equal to 10 miles per hour above
+    to the case when the true speed is GREATER or equal to 5 miles per hour above
     the posted speed limit. Therefore, we will specifiy the test type as "greater".
 
 - Class: cmd_question
