@@ -76,7 +76,7 @@
   Output: 'According to the "Introduction to dplyr" vignette written by the package authors, "The dplyr philosophy is to have small functions that each do one thing well." Specifically, dplyr supplies five ''verbs'' that cover most fundamental data manipulation tasks: select(), filter(), arrange(), mutate(), and summarize().'
 
 - Class: cmd_question
-  Output: Use ?select to pull up the documentation for the first these core functions.
+  Output: Use ?select to pull up the documentation for the first of these core functions.
   CorrectAnswer: ?select
   AnswerTests: omnitest(correctExpr='?select')
   Hint: ?select will display the documentation for dplyr's select() function.
