@@ -209,7 +209,6 @@
 - Class: figure
   Output: Now we'll change focus a bit and instead of looking at all the monitors throughout the country and the data they recorded, we'll try to find one monitor that was taking measurements in both 1999 and 2012. This will allow us to control for different geographical and environmental variables that might have affected air quality in different areas. We'll narrow our search and look just at monitors in New York State. 
   Figure: runSites.R
-  FigureType: new
 
 - Class: cmd_question
   Output: We subsetted off the New York State monitor identification data for 1999 and 2012  into 2 vectors, site0 and site1. Look at the structure of site0 now with the R command str.
