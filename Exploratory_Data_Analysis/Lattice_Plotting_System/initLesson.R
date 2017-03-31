@@ -1,5 +1,8 @@
 library(lattice)
 library(datasets)
+library(ggplot2)  ## to load the diamonds dataset needed in 'lesson' from line 240
+                  ## otherwise the user cannot progress beyond the line 242 in 'lesson'
+                  ##    CorrectAnswer: str(diamonds)
 
 # For compatibility with 2.2.21
 .get_course_path <- function(){
