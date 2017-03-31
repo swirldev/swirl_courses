@@ -31,7 +31,7 @@
 
 - Class: mult_question  
   Output: "In vifSims.R, find the functions, rgp1() and rgp2(). Both functions generate 3 regressors, x1, x2, and x3. Compare the lines following the comment Point A in rgp1() with those following Point C in rgp2(). Which of the following statements about x1, x2, and x3 is true?"
-  AnswerChoices: x1, x2, and x3 are uncorrelated in rgp1(), but not in rgp2().;x1, x2, and x3 are correlated in rgp1(), but not in rgp1().;x1, x2, and x3 are uncorrelated in both rgp1() and rgp2().;x1, x2, and x3 are correlated in both rgp1() and rgp2().
+  AnswerChoices: x1, x2, and x3 are uncorrelated in rgp1(), but not in rgp2().;x1, x2, and x3 are correlated in rgp1(), but not in rgp2().;x1, x2, and x3 are uncorrelated in both rgp1() and rgp2().;x1, x2, and x3 are correlated in both rgp1() and rgp2().
   CorrectAnswer: x1, x2, and x3 are uncorrelated in rgp1(), but not in rgp2().
   AnswerTests: omnitest(correctVal= 'x1, x2, and x3 are uncorrelated in rgp1(), but not in rgp2().')
   Hint: "In rgp2(), in the lines following Point C, x1 appears in the expressions which form x2 and x3. In rgp1(), in the lines following Point A, the regressors are formed by independent calls to rnorm(), which simulates independent, identically distributed samples from a normal distribution."
