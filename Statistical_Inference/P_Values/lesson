@@ -58,7 +58,7 @@
   Hint: Type pt(2.5, 15, lower.tail=FALSE) at the command prompt.
 
 - Class: text 
-  Output: This result tells us that, if H_0 were true,  we would see this large a test statistic with probability 1% which is rather a small probability.
+  Output: This result tells us that, if H_0 were true,  we would see this large t-test statistic with probability 1% which is rather a small probability.
 
 - Class: mult_question
   Output: What should we do?
