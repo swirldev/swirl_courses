@@ -227,7 +227,7 @@
   Output: Lot more counties in the east than west. We'll use the R command barplot (another type of one-dimensional summary) to plot this information. Call barplot with reg as its first argument, the argument col equal to "wheat", and the argument main equal to the string "Number of Counties in Each Region".
   CorrectAnswer: barplot(reg, col = "wheat", main = "Number of Counties in Each Region")
   AnswerTests: omnitest(correctExpr='barplot(reg, col = "wheat", main = "Number of Counties in Each Region")')
-  Hint: Type barplot(reg, col = "wheat", main = "Number of Counties in Each Region") at the command prompt.
+  Hint: Type barplot(reg, col = "wheat", main = "Number of Countries in Each Region") at the command prompt.
 
 - Class: mult_question
   Output: What do you think the argument main specifies?
