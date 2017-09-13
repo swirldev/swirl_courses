@@ -277,7 +277,7 @@
   Hint: Type ggplot(diamonds,aes(carat,price))+geom_boxplot()+facet_grid(.~cut) at the command prompt.
 
 - Class: text
-  Output: Yes! A boxplot looking like marshmallows about to be roasted. Well done and  congratulations! You've finished this jewel of a lesson. Hope it payed off!
+  Output: Yes! A boxplot looking like marshmallows about to be roasted. Well done and  congratulations! You've finished this jewel of a lesson. Hope it paid off!
 
 - Class: mult_question
   Output: "Would you like to receive credit for completing this course on
