@@ -34,7 +34,7 @@
   Hint: Use dim(plants) to see the exact dimensions of the plants dataset.
 
 - Class: text
-  Output: The first number you see (5166) is the number of rows (observations) and the second number (10) is the number of columns (variables). 
+  Output: The first number you see (5166) is the number of rows (observations) and the second number (10) is the number of columns (variables).
 
 - Class: cmd_question
   Output: You can also use nrow(plants) to see only the number of rows. Try it out.
@@ -62,7 +62,7 @@
 
 - Class: text
   Output: We've applied fairly descriptive variable names to this dataset, but that won't always be the case. A logical next step is to peek at the actual data. However, our dataset contains over 5000 observations (rows), so it's impractical to view the whole thing all at once.
-  
+
 - Class: cmd_question
   Output: The head() function allows you to preview the top of the dataset. Give it a try with only one argument.
   CorrectAnswer: head(plants)
@@ -73,7 +73,7 @@
   Output: Take a minute to look through and understand the output above. Each row is labeled with the observation number and each column with the variable name. Your screen is probably not wide enough to view all 10 columns side-by-side, in which case R displays as many columns as it can on each line before continuing on the next.
 
 - Class: cmd_question
-  Output: By default, head() shows you the first six rows of the data. You can alter this behavior by passing as a second argument the number of rows you'd like to view. Use head() to preview the first 10 rows of plants.
+  Output: By default, head() shows you the first six rows of the data. You can alter this behavior by passing as a second argument the number of rows you'd like to view. Use head(plants, 10) to preview the first 10 rows of plants.
   CorrectAnswer: head(plants, 10)
   AnswerTests: omnitest(correctExpr='head(plants, 10)')
   Hint: head(plants, 10) will show you the first 10 rows of the dataset.
