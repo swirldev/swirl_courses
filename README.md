@@ -38,7 +38,7 @@ Since our users come from a variety backgrounds, it's very hard to label materia
 - **Writing swirl Courses**: An interactive guides and example 
   for swirl course authors. The first group of lessons cover basics. The rest cover 
   special topics useful primarily as samples--points of departure for one's own material.
-  For more comprehensive documentation about writing your won swirl courses see http://swirlstats.com/swirlify/.
+  For more comprehensive documentation about writing your own swirl courses see http://swirlstats.com/swirlify/.
 
 ## Install and run a course automatically from swirl
 
