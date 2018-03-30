@@ -122,8 +122,8 @@
 
 - Class: cmd_question
   Output: Let's look at how the AND operator works. There are two AND operators in R, `&` and `&&`.
-    Both operators work similarly, if the right and left operands of AND are both TRUE the entire
-    expression is TRUE, otherwise it is FALSE. For example, TRUE & TRUE evaluates to TRUE. Try typing 
+    Both operators work similarly. If the right and left operands of AND are both TRUE, the entire
+    expression is TRUE, and otherwise it is FALSE. For example, TRUE & TRUE evaluates to TRUE. Try typing 
     FALSE & FALSE to how it is evaluated.
   CorrectAnswer: FALSE & FALSE
   AnswerTests: omnitest(correctExpr='FALSE & FALSE')
