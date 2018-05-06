@@ -1,3 +1,5 @@
+library(manipulate)
+
 myPlot <- function(beta){
   y <- galton$child - mean(galton$child)
   x <- galton$parent - mean(galton$parent)
