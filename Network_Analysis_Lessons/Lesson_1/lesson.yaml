@@ -1,0 +1,81 @@
+- Class: District Data Labs
+  Course: Network Analysis and Visualization in R
+  Lesson: Lesson 1
+  Author: Amanda Traud
+  Type: Standard
+  Organization: 
+  Version: 2.2.0
+
+- Class: text
+  Output: In this lesson, we will explore R's network analysis and visualization capabilities.
+
+- Class: text
+  Output: If at any point you'd like more information on a particular topic related
+    to R, you can type help.start() at the prompt, which will open a menu of resources
+    (either within RStudio or your default web browser, depending on your setup).
+    Alternatively, a simple web search often yields the answer you're looking for.
+
+- Class: text
+  Output: There are several libraries for studying networks in R, we are going to learn how to use igraph.
+
+
+- Class: cmd_question
+  Output: Type install.packages('igraph') and press Enter.
+  CorrectAnswer: install.packages('igraph')
+  AnswerTests: omnitest(correctExpr="install.packages('igraph')")
+  Hint: Type install.packages('igraph') and press Enter.
+  
+- Class: cmd_question
+  Output: Now type library(igraph) and press Enter.
+  CorrectAnswer: library(igraph)
+  AnswerTests: omnitest(correctExpr="library(igraph)")
+  Hint: Type library(igraph) and press Enter.
+
+- Class: text
+  Output: R has now loaded the igraph library.  You can now use all the commands built in to this library to create, analyze, and visualize networks.
+
+- Class: cmd_question
+  Output: How might we get a better idea of what is available in the igraph package?
+  CorrectAnswer: ?igraph
+  AnswerTests: omnitest(correctExpr="?igraph")
+  Hint: Type ?igraph and press Enter.
+
+- Class: text
+  Output: First, we will try creating our own networks from some of the built in functions for random network creation, many of which are graph.something commands or something.game commands.
+
+- Class: mult_question
+  Output: Before we can create a network, we need to decide what type of network to make.  Which of these commands might create an Erdos Renyi random network?
+  CorrectAnswer: erdos.renyi.game()
+  AnswerChoices: graph.lattice(); erdos.renyi.game();
+    graph.tree()
+  AnswerTests: omnitest(correctVal='erdos.renyi.game()')
+  Hint: 'All of these commands will create a newtork, but which one will make an Erdos Renyi network?'
+
+
+- Class: cmd_question
+  Output: Lets create an Erdos Renyi random graph now with 20 nodes, with each pair having a .5 probability of being connected. Why dont we call it g?
+  CorrectAnswer: g=erdos.renyi.game(20,p=.5)
+  AnswerTests: omnitest(correctExpr="g=erdos.renyi.game(20,p=.5)")
+  Hint: Type g=erdos.renyi.game(20,p=.5). 
+  
+- Class: cmd_question
+  Output: Now let's explore the graph you created a bit.  How many edges does your graph have?
+  CorrectAnswer: g
+  AnswerTests: omnitest(correctExpr='g')
+  Hint: Type g and press enter. 
+  
+- Class: cmd_question
+  Output: Now we are going to create an interactive plot of this network using tkplot.
+  CorrectAnswer: tkplot(g)
+  AnswerTests: omnitest(correctExpr='tkplot(g)')
+  Hint: Type tkplot(g). 
+
+- Class: text
+  Output: Try moving nodes around, both individually and in groups.  Try changing the layout!
+  
+  
+- Class: text
+  Output: Now it's time for part 2 of the lesson.
+    
+ 
+ 

@@ -1,0 +1,32 @@
+- Class: District Data Labs
+  Course: Network Analysis and Visualization in R
+  Lesson: Lesson 2
+  Author: Amanda Traud
+  Type: Standard
+  Organization: 
+  Version: 2.2.16
+  
+- Class: text
+  Output: In this lesson, we will explore GDELT data with igraph.
+- Class: text
+  Output: If at any point you'd like more information on a particular topic related
+    to R, you can type help.start() at the prompt, which will open a menu of resources
+    (either within RStudio or your default web browser, depending on your setup).
+    Alternatively, a simple web search often yields the answer you're looking for.
+
+- Class: text
+  Output: This lesson is about using all you have learned on real network data.
+
+
+- Class: cmd_question
+  Output: Type play() to use the commands we have learned to explore this data! When you are done you can type nxt() to return to this question, then type skip().
+  CorrectAnswer: play()
+  AnswerTests: omnitest(correctExpr="play()")
+  Hint: Type play() and press Enter.
+  
+
+- Class: text
+  Output: Thank you so much for coming to learn network analysis with me!  Please feel free to ask and email me any questions you may have, either today or later.
+    
+ 
+ 
