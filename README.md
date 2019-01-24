@@ -10,11 +10,12 @@ Here are our current offerings, organized by level of difficulty:
 
 - **R Programming**: The basics of programming in R
 - [**R Programming E**](https://github.com/swirldev/R_Programming_E): Same as the original, but modified slightly for in-class use (see below ***)
-- **Data Analysis**: Basic ideas in statistics and data visualization
-- **Mathematical Biostatistics Boot Camp**: One- and two-sample t-tests, power, and sample size
-- **Open Intro**: A very basic introduction to statistics, data analysis, and data visualization
+- [**The R Programming Environment**](https://swirlstats.com/scn/rpe.html)
+<!-- - **Data Analysis**: Basic ideas in statistics and data visualization -->
+<!-- - **Mathematical Biostatistics Boot Camp**: One- and two-sample t-tests, power, and sample size -->
+<!-- - **Open Intro**: A very basic introduction to statistics, data analysis, and data visualization -->
 
-\*\*\* *R Programming Alt is identical to R Programming, except we've eliminated the prompts for Coursera credentials at the end of each lesson and instead give students the option to send an email to their instructor notifying them of completion. Admittedly, it's sort of a hack until we come up with a more robust solution for in-class use (i.e. an instructor "dashboard").*
+\*\*\* *R Programming E is identical to R Programming, except we've eliminated the prompts for Coursera credentials at the end of each lesson and instead give students the option to send an email to their instructor notifying them of completion. Admittedly, it's sort of a hack until we come up with a more robust solution for in-class use (i.e. an instructor "dashboard").*
 
 #### Intermediate
 
@@ -30,6 +31,7 @@ introduces the student to basic concepts of statistical inference
 including probability, hypothesis testing, confidence intervals and
 p-values. It concludes with an initiation to topics of particular
 relevance to big data, issues of multiple testing and resampling.
+- [**Advanced R Programming**](https://swirlstats.com/scn/arp.html)
 
 Since our users come from a variety backgrounds, it's very hard to label material as **Beginner**, **Intermediate**, or **Advanced**. If you find something that is labelled **Beginner** to be challenging, please don't be discouraged. The first step of learning anything is to acknowledge that you are capable of understanding it. True understanding will come with time and practice.
 
@@ -66,30 +68,11 @@ If that doesn't work for you...
 
 If the automatic course installation method outlined above does not work for you, then there's a simple alternative.
 
-1) Click [**here**](https://github.com/swirldev/swirl_courses/archive/master.zip) to download the file `swirl_courses-master.zip`.
+1. Find the course you want to install on the [Swirl Course network website](https://swirlstats.com/scn/title.html).
+2. Follow the manual installation instructions on the course page.
 
-2) Enter the following from the R console, **substituting the correct file path** to your downloaded file and the **name of your desired course**:
-
-```
-library(swirl)
-install_course_zip("path/to/file/here/swirl_courses-master.zip", multi=TRUE, 
-                   which_course="Course Name Here")
-swirl()
-```
-
-For example, if you download the zip file to `~/Downloads/swirl_courses-master.zip`, then the following command will install the R Programming course.
-
-```
-install_course_zip("~/Downloads/swirl_courses-master.zip", multi=TRUE, which_course="R Programming")
-```
-
-**Please note that course names are case sensitive!**
-
-Although we recommend you install one course at a time, if you omit the `which_course` argument, then all available courses from this repository will be installed:
-
-```
-install_course_zip("~/Downloads/swirl_courses-master.zip", multi=TRUE)
-```
+If that does not work for you, consider taking a look at the 
+[legacy manual install instructions](https://github.com/swirldev/swirl_courses/wiki/Legacy-Manual-Install-Instructions-for-Swirl-Courses).
 
 ## Uninstall a course
 
@@ -99,4 +82,5 @@ If you'd like to remove a course at any time, you can use `uninstall_course("Cou
 
 Instructors around the world are using swirl in their classrooms. We think this is awesome. If you're an instructor, please feel free to do the same -- free of charge. While your students may be paying to take your course or attend your institution, we simply ask that you don't charge people *directly* for the use of our software or instructional content.
 
-If you are not sure about a particular use case, don't hesitate to send us an email at info@swirlstats.com.
+If you are not sure about a particular use case, don't hesitate to post a
+question to our [Google Group](https://groups.google.com/forum/#!forum/swirl-discuss).
