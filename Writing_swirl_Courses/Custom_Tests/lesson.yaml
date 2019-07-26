@@ -1,0 +1,187 @@
+- Class: meta
+  Course: Writing swirl Courses
+  Lesson: Custom Tests
+  Author: swirl coders
+  Type: Standard
+  Organization: swirl coders
+  Version:  2.2.20
+
+- Class: text
+  Output: "Coursera cofounder, Daphne Koller, has said that testing defines the state of 
+  the art in massively online education. Leaning heavily on only one sophisticated test, 
+  omnitest, swirl helped educate around 250,000 persons in its first sixteen 
+  months of existence. Imagine the possibilities of more and better tests."
+
+- Class: text
+  Output: "Innovations in massively online education, including swirl, are thus likely to 
+  come from innovations in testing. Innovations in swirl testing are likely to come from 
+  custom tests written by course authors. That, in fact, has been our experience 
+  to date. Necessity has been the mother of invention."
+
+- Class: mult_question
+  Output: "This lesson is an introduction to custom tests. Instead of following the lesson.yaml 
+  file, we'll follow customTests.R. In this file, the first thing to notice is 
+  line 7. (As usual, if the file hasn't appeared automatically, open it 
+  manually.) In previous lessons this line has been commented out. In this lesson it will 
+  have executed. What might be the effect?"
+  AnswerChoices: Swirl will not automatically detect that a user has created a new variable.;Swirl will not load the cars dataset;Swirl will activate custom tests.
+  CorrectAnswer: Swirl will not automatically detect that a user has created a new variable.
+  AnswerTests: omnitest(correctVal= 'Swirl will not automatically detect that a user has created a new variable.')
+  Hint: AUTO means AUTOMATIC not AUTOMOBILE in this case.
+
+- Class: figure
+  Output: "The second thing to notice in customTest.R is that file testAPI.R is sourced. 
+  This file is essentially an interface to swirl's internal state and is meant to 
+  facilitate writing custom tests. A diagram of swirl's internal state is shown in the 
+  figure. (The test API will be displayed at the end of this lesson.)"
+  Figure: swirlState.R
+  FigureType: new
+
+- Class: text
+  Output: "Swirl's state includes the last expression entered by the user in the R console. 
+  If that expression was entered in response to the current question, the box labeled 
+  \"last value\" refers to the value computed by that expression. If the current question 
+  was a multiple choice question, the value will be the user's choice; if a text question, 
+  the text which the user has typed and so on."
+
+- Class: text
+  Output: "Swirl also keeps a protected list of variables which the user has created in correctly 
+  answered questions. By default, it detects and stages them automatically for inclusion in 
+  this protected list. For generality swirl re-evaluates the expression which creates them 
+  in a clean environment within an enclosing environment containing correct values of all 
+  previously created variables. Newly created variables will appear in the interior of the two 
+  environments where they can be easily detected. This is expensive, however, and causes confusion when, 
+  for instance, the user enters a plot command and two plots appear in succession."
+
+- Class: cmd_question
+  Output: "To demonstrate, look at the first function in customTest.R, display_staged_variables.
+  This function is listed as an AnswerTest for the present question, along with omnitest. 
+  It is not really a test, since it always returns TRUE, hence accepts any answer. It 
+  demonstrates the use of the testAPI function, getStagedVariables(). Enter x <- 10 at 
+  the R prompt:"
+  CorrectAnswer: x <- 10
+  AnswerTests: omnitest(correctExpr='x <- 10', correctVal=10);display_staged_variables()
+  Hint: Enter x <- 10.
+
+- Class: cmd_question
+  Output: "The variable, x, created in the last question, was not staged. The current question is 
+  essentially the same as the last, except that the built-in test, expr_creates_var(\"x\"), 
+  has been added to the specified AnswerTests. The function of this extra test will be to 
+  detect and stage the variable, x, and its value when you enter x <- 10."
+  CorrectAnswer:  x <- 10
+  AnswerTests: omnitest(correctExpr='x <- 10', correctVal=10);expr_creates_var("x");display_staged_variables()
+  Hint: Enter x <- 10.
+
+- Class: cmd_question
+  Output: "Here is a question meant to demonstate the point of having a protected list 
+  of variables. The correct answer to this question is x <- 2*x, but to demonstrate the 
+  point, please enter the wrong answer, x <- 3*x instead. The resulting hint will provide 
+  further infomation. Enter x <- 3*x."
+  CorrectAnswer: x <- 2*x
+  AnswerTests: omnitest(correctExpr='x <- 2*x', correctVal=20);expr_creates_var("x")
+  Hint: "Since you entered x <- 3*x, you might expect x, which originally had the value, 10, 
+  to have the 30 now. Thus, when you enter the correct expression, x <- 2*x, you would expect 
+  x to end up as 60. However, enter x <- 2*x now."
+
+- Class: cmd_question
+  Output: "Check out the value of x by entering x."
+  CorrectAnswer: x
+  AnswerTests: omnitest(correctExpr='x')
+  Hint: Just type x.
+
+- Class: text
+  Output: "x has the value 20, which is the value it would have had if the correct expression, 
+  x <- 2*x, had been entered in the first place. The wrong expression, x <- 3*x, corrupted 
+  the value of x momentarily, but swirl restored its original value of 10 using the information 
+  in its protected list of variables."
+
+- Class: mult_question  
+  Output: "To review, suppose you turn off autodection of new variables by setting 
+  AUTO_DETECT_NEWVAR to FALSE. Then, on questions in which the user is expected to 
+  create variables, what should you do to compensate?"
+  AnswerChoices: Use AnswerTest expr_creates_var.;Nothing since omnitest will compensate;Write a custom test which detects and stores the created variable.
+  CorrectAnswer: Use AnswerTest expr_creates_var.
+  AnswerTests: omnitest(correctVal= 'Use AnswerTest expr_creates_var.')||omnitest(correctVal='Write a custom test which detects and stores the created variable.')
+  Hint: Actually, you should do something.
+
+- Class: mult_question  
+  Output: "If you set AUTO_DETECT_NEWVAR <- FALSE, you should compensate either with the 
+  built-in test, expr_creates_var, or by writing a custom test for the purpose. You should 
+  apply a compensating AnswerTest when a user is expected to do what?"
+  AnswerChoices: Create a variable for later use;Plot something;Answer a multiple choice question
+  CorrectAnswer: Create a variable for later use
+  AnswerTests: omnitest(correctVal= 'Create a variable for later use')
+  Hint: "Using expr_creates_var when the user plots something will cause a second plot to 
+  appear. Answering a multiple choice question would not create a variable."
+
+- Class: cmd_question
+  Output: "If you are testing for simple assignment, expr_creates_var, may be overkill. You 
+  may want to write a slimmer custom test such as test_assignment in the customTests.R file, 
+  which simply checks for use of the assignment operator, and that the variable was given 
+  the correct name and value. If so, it stages the variable and its value for inclusion in 
+  swirl's state. Function test_assignment is used as an AnswerTest to the current question. The 
+  correct answer is y <- 1:10 (or 1:10 -> y), but you may want to respond incorrectly a few times
+  to see how the test performs."
+  CorrectAnswer: y <- 1:10
+  AnswerTests: test_assignment("y", 1:10)
+  Hint: "Enter y <- 1:10 or 1:10 -> y."
+
+- Class: mult_question  
+  Output: "The function, test_assignment, uses three functions from testAPI.R, a script which 
+  we'll display towards the end of this lesson. Which three are they?"
+  AnswerChoices: getExpr, getVal, and stageVariable;getExpr, getVal, and all.equal;stageVariable, is, and all.equal
+  CorrectAnswer: getExpr, getVal, and stageVariable
+  AnswerTests: omnitest(correctVal= 'getExpr, getVal, and stageVariable')
+  Hint: "Read the comments and try again."
+
+- Class: mult_question  
+  Output: "The function, test_assignment, could be modified to allow a user to pick the 
+  variable's name. In other words, any legal name would pass the modified test. To make 
+  such a modification, you could omit one of the clauses which determines pass or fail. 
+  Which one?"
+  AnswerChoices: expr[[2]] == variable_name;is(expr, '<-');isTRUE(all.equal(val, variable_value))
+  CorrectAnswer: expr[[2]] == variable_name
+  AnswerTests: omnitest(correctVal= 'expr[[2]] == variable_name')
+  Hint: It will involve the variable name.
+
+- Class: cmd_question
+  Output: "A test which allows the user to choose the variable's name is shown in 
+  test_assignment_but_not_name. Since tests of subsequent questions may need the 
+  name, this test stores it in a special area of swirl's state which the author 
+  creates specifically for that purpose. This test is applied to the current question. 
+  Store the value 11:20 in a variable whose name is anything you would like."
+  CorrectAnswer: 
+  AnswerTests: test_assignment_but_not_name(11:20)
+  Hint: "Enter any_name <- 11:20, where any_name can be any legal name."
+
+- Class: cmd_question
+  Output: "Suppose, for instance, that the next question requires a user to assign 
+  the variable just created to the square of itself. The test_assignment function would 
+  work if given the name of the variable which the user just created. The name can be retrieved 
+  from storage for that purpose, as the function test_square_of_user_named_variable 
+  demonstrates. Assign the variable just created to the square of itself."
+  CorrectAnswer: any_name <- any_name^2
+  AnswerTests: test_square_of_user_named_variable()
+  Hint: "Enter any_name <- any_name^2 replacing any_name by the name you chose on the 
+  previous question."
+
+- Class: text
+  Output: "These three tests, test_assignment, test_assignment_but_not_name, and 
+  test_square_of_user_named_variable, are pretty specialized. For example, test_assignment 
+  could not handle expressions such as z <- x <- 10 in which two variables are created. 
+  General purpose tests can be challenging to write."
+
+- Class: figure
+  Output: "If testAPI.R did not automatically appear, it can be found in subdirectory swirl_temp of your 
+  working directory. Hopefully, it and this brief introduction will enable you to write 
+  custom tests appropriate for your original course material. It is worth emphasizing that 
+  at the time of this writing, custom tests MUST run in a special subenvironment of the 
+  swirl package. This idiom is not ideal, and will hopefully change. For now, however, 
+  testAPI.R should be sourced with local=TRUE, from customTests.R."
+  Figure: showAPI.R
+  FigureType: new
+
+- Class: text
+  Output: "This completes the introduction to custom tests, and the \"basics\" portion of 
+  the course. Advanced and special topics will be added to the course as time permits. 
+  Best wishes in writing your swirl course, and thanks for your attention."

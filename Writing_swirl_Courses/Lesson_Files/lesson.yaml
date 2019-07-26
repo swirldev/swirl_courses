@@ -1,0 +1,119 @@
+# This file, written in yaml, specifies an unnamed list of named lists.
+# Items of the unnamed list are indicated by dashes followed by spaces (- ).
+# Items of each named list are indicated by key:value pairs. Note that
+# items are very carefully aligned, key:value pairs always starting two spaces
+# from the beginning of a line, for instance. Lines beginning with a hashtag, #,
+# are comments.
+#
+# The first named list is a convenience for swirl's internal use.
+- Class: meta 
+  Course: Writing swirl Courses
+  Lesson: Lesson Files
+  Author: swirl coders
+  Type: Standard
+  Organization: swirl coders
+  Version: 2.2.20
+
+# This is named list of Class text. It is the first thing to appear when
+# swirl runs the lesson. 
+- Class: text
+  Output: "These lessons are meant as interactive guides and examples 
+  for swirl course authors. The lessons are of two types. The first group of lessons, 
+  ending with Custom Tests, cover basics. The rest cover special topics such as plotting, 
+  and are probably most useful as samples--points of departure for one's own material. 
+  The first three lessons are meant as a quick start. Hopefully, they will enable a 
+  prospective course author to write a decent lesson with minimal effort."
+  
+- Class: text 
+  Output: "Since a swirl lesson consists of text files, 
+  it is best while discussing a concept to display the associated file 
+  in parallel. We will attempt to do this automatically, but success 
+  depends on context. If you are running this lesson in an x terminal, 
+  for instance, and your system editor is vi, files will probably appear 
+  in the same terminal and you will have to close the editor before 
+  resuming the lesson. If you hit the enter key now, we will try to display the 
+  file which contains the text you are currently reading."
+
+# An item's Class, which in this case is "figure," tells swirl how to
+# process it. For an item of class figure, swirl will source the file
+# given by the Figure key. In this case, the file to be sourced is
+# displayLessonFile.R. (The path is relative to lesson.yaml.)
+- Class: figure
+  Output: "If the file appeared in a convenient editor, all well and good. Otherwise, 
+  there should be a file named 'lesson.yaml' in subdirectory 'swirl_temp' of your 
+  working directory, which you should open in your favorite file editor. 
+  Sorry for any inconvenience :P."
+  Figure: displayLessonFile.R
+  FigureType: new
+
+- Class: text
+  Output: "The file, lesson.yaml, is written in Yet Another Markup Language (yaml.) 
+  It specifies a list of lists. The outer list, whose items are indicted 
+  by lines which begin with a dash followed by a space (- ), is unnamed. The inner lists
+  are named, and their items are are indicated by name:value pairs which are very carefully 
+  aligned, the name starting on the 3rd space of a line. Yaml uses indentations rather 
+  than parentheses or curly brackets to indicate syntactical divisions, so care must be 
+  taken in this respect. Lines beginning with hashtags (#) are comments."
+
+# A multiple choice question. This question specifies a number of possible choices
+# a correct answer, a test for the user's answer, and a hint in case the user's
+# answer is incorrect.
+- Class: mult_question
+  Output: "An item's Class tells swirl how to process the item. All will have 
+  a Class and an Output. A figure will have Figure and FigureType keys. The Figure
+  key indicates a file to source. Find the first item of type Figure in lesson.yaml. 
+  What is the name of the file swirl sourced when it processed that item?"
+  AnswerChoices: displayLessonFile.R;new;swirl coders
+  CorrectAnswer: displayLessonFile.R
+  AnswerTests: omnitest(correctVal= 'displayLessonFile.R')
+  Hint: "The FileType is new. The lesson was written by swirl coders."  
+
+- Class: text
+  Output: "In a multiple choice question, the choices are given in the AnswerChoices key-value
+  pair. The choices are separated by semicolons. This is a vestige of an earlier format. The
+  semicolon syntax may be replaced by standard yaml syntax in future versions of swirl."
+
+- Class: text
+  Output: "Multiple choice and other questions must specify AnswerTests to assess if
+  a user's response is correct. More than one test may be specified, provided the tests 
+  are separated by semicolons. Again, this semicolon syntax is vestigial and may disappear 
+  in future versions of swirl."
+
+- Class: mult_question
+  Output: "Multiple choice questions, such as this one, are often used for review. 
+  In this course, what should you do if you are asked to look a file which doesn't 
+  automatically appear?"
+  AnswerChoices: "Look for the file in the swirl_temp subdirectory of your working directory.;Send an angry email to the course author.;Post an issue at the course repostitory."
+  CorrectAnswer: Look for the file in the swirl_temp subdirectory of your working directory.
+  AnswerTests: omnitest(correctVal= 'Look for the file in the swirl_temp subdirectory of your working directory.')
+  Hint: "Please don't post an issue or send an angry email. We are all overworked volunteers."  
+
+# A series of command questions
+- Class: cmd_question
+  Output: "Omnitest is the most frequently used of the tests provided by swirl. A lesson 
+  illustrating its use occurs later in this course. It can check a value, as in the multiple 
+  choice questions above, or it can check an expression entered in the R console. This question 
+  illustrates the latter. Our lesson file was copied to your working directory as lesson.yaml. 
+  Load the file into your workspace using lesson <- yaml.load_file('swirl_temp/lesson.yaml')."
+  CorrectAnswer: lesson <- yaml.load_file('swirl_temp/lesson.yaml')
+  AnswerTests: omnitest(correctExpr="lesson <- yaml.load_file('swirl_temp/lesson.yaml')")
+  Hint: "Enter lesson <- yaml.load_file('swirl_temp/lesson.yaml'), or an equivalent expression."
+
+- Class: cmd_question
+  Output: "Show that the variable, lesson, is a list by using class(lesson)."
+  CorrectAnswer: class(lesson)
+  AnswerTests: omnitest(correctExpr='class(lesson)')
+  Hint: "Enter class(lesson)"
+
+- Class: cmd_question
+  Output: "The question you are looking at is the 12th item in lesson. Display it 
+  as a named list by entering lesson[[12]]."
+  CorrectAnswer: lesson[[12]]
+  AnswerTests: omnitest(correctExpr='lesson[[12]]')
+  Hint: "Enter lesson[[12]]."
+
+- Class: text
+  Output: "A basic swirl lesson can be composed using just the four Classes and the tests 
+  illustrated so far. This lesson.yaml file could be copied and modified, for example. 
+  However, lesson files are supported by several other types of files which are the subject 
+  of the following lesson."

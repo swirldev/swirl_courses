@@ -1,0 +1,226 @@
+
+- Class: meta
+  Course: Data Analysis
+  Lesson: Dispersion
+  Author: Nick Carchedi
+  Type: Standard
+  Organization: JHU Biostatistics
+  Version: 1.0.0
+
+- Class: text
+  Output: 'Welcome to Lesson 2! In this lesson, we will learn what DISPERSION is and
+    what statistical values are needed in order to best describe the spread of data.
+    Further, you will learn all about a box-and-whisker plot which is  a plot commonly
+    used by statisticians when determining variability. '
+
+- Class: text
+  Output: 'While measures of central tendency are used to estimate the middle values
+    of a dataset, measures of dispersion are important for describing the spread of
+    the data. '
+
+- Class: text
+  Output: The term dispersion refers to degree to which the data values are scattered
+    around an average value. Dispersion is synonymous with other words such as variability
+    and spread.
+
+- Class: text
+  Output: 'Why is it important to analyze the spread of a particular set of data?
+    Two different samples may have the same mean or median, but different levels of
+    variability or vice versa. '
+
+- Class: mult_question
+  Output: 'Therefore, it is important to describe both the __________ and _________
+    of a data set. '
+  AnswerChoices: median, variability; central tendency, dispersion; middle, mean;
+    spread, variability
+  CorrectAnswer: central tendency, dispersion
+  AnswerTests: word= central tendency, dispersion
+  Hint: The first term refers to the middle of a dataset. The second term refers to
+    the spread of a dataset.
+
+- Class: text
+  Output: 'In this lesson, we will discuss the three statistical values most commonly
+    used to describe the dispersion or variability of a data set. Variability is a
+    fancy term used to classify how variable or spread out the data is. '
+
+- Class: text
+  Output: 'The first descriptive statistic that can describe the variability of a
+    data set is known as the RANGE. The range is the difference between the maximum
+    and minimum values of the data set. '
+
+- Class: text
+  Output: 'To demonstrate how you can use R to determine the range of a data set we
+    will refer back to the cars data set from the previous lesson. '
+
+- Class: cmd_question
+  Output: 'Type in the R-command ''range(cars$price)'' to determine the exact values
+    for the minimum and maximum prices of cars in the data set. '
+  CorrectAnswer: range(cars$price)
+  AnswerTests: swirl1cmd=range(cars$price)
+  Hint: 'Type in ''range(cars$price)'' without quotations and press enter to see the
+    minimum and maximum prices. '
+
+- Class: exact_question
+  Output: 'Now that you have the minimum and maximum ''price'' values, calculate the
+    range of the ''price'' data. '
+  CorrectAnswer: '54.5'
+  AnswerTests: exact=54.5
+  Hint: Subtract the minimum price value from the maximum price value.
+
+- Class: text
+  Output: The second important measure of variability is known as VARIANCE. Mathematically,
+    VARIANCE is the average of the squared differences from the mean. More simply,
+    variance represents the total distance of the data from the mean.
+
+- Class: cmd_question
+  Output: 'In R, you can use the command ''var(data)'' to easily calculate the variance
+    of a particular set of data. Try calculating the variance for the data ''cars$price''. '
+  CorrectAnswer: var(cars$price)
+  AnswerTests: swirl1cmd=var(cars$price)
+  Hint: Type in 'var(cars$price)' without quotations and press enter to see the variance
+    of the prices of cars.
+
+- Class: text
+  Output: 'The values for variance and standard deviation are very closely related.
+    The standard deviation can be calculated by taking the square root of the variance
+    where as the variance can be calculated by squaring the standard deviation. '
+
+- Class: text
+  Output: To statisticians, the standard deviation is a more conventional measure
+    of variability because it is expressed in the same units as the original data
+    values.
+
+- Class: cmd_question
+  Output: Similar to variance, you can use the R-command 'sd(data)' to calculate the
+    standard deviation of a particular set of data. Try calculating the standard deviation
+    for the data 'cars$price'.
+  CorrectAnswer: sd(cars$price)
+  AnswerTests: swirl1cmd=sd(cars$price)
+  Hint: Type in 'sd(cars$price)' without quotations and press enter to see the standard
+    deviation of the prices of cars.
+
+- Class: text
+  Output: The standard deviation is very important when analyzing our data set. A
+    small standard deviation indicates that the data points tend to be located near
+    the mean value, while a large standard deviation indicates that the data points
+    are spread further from the mean.
+
+- Class: video
+  Output: 'Would you like to watch a short video that goes deeper into how variance
+    and standard deviation are calculated? '
+  VideoLink: http://youtu.be/E4HAYd0QnRc
+
+- Class: mult_question
+  Output: 'Three important measures of variability are which of the following: '
+  AnswerChoices: mean, median, range; spread, mean, central tendency; variance, dispersion,
+    spread; range, variance, standard deviation
+  CorrectAnswer: range, variance, standard deviation
+  AnswerTests: word= range, variance, standard deviation
+  Hint: 'Look for the three specific terms that we focused on calculating. '
+
+- Class: text
+  Output: A BOX PLOT, also called a BOX-AND-WHISKER PLOT, is used to summarize the
+    main descriptive statistics of a particular data set and this type of plot helps
+    illustrate the concept of variability. A box plot is used to visually represent
+    the MINIMUM, FIRST QUARTILE (Q1), MEDIAN, THIRD QUARTILE (Q3), and MAXIMUM of
+    a data set.
+
+- Class: video
+  Output: Would you like to watch a brief YouTube video on box-and-whisker plots?
+  VideoLink: http://youtu.be/BXq5TFLvsVw
+
+- Class: figure
+  Output: 'Here I have created a box plot to represent the price data for each of
+    the three car types: large, midsize, and small. You''ll notice that each of the
+    3 figures is composed of a closed 4-sided "box" with "whiskers" on the top and
+    bottom, hence the name box-and-whisker plot.'
+  Figure: mod1_boxplot.R
+  FigureType: new
+
+- Class: text
+  Output: The height of each box is referred to as the INTERQUARTILE RANGE (IQR).
+    The more variability within the data, the larger the IQR. On the other hand, less
+    variability within the data means a smaller IQR. The bottom of the box in the
+    box plot corresponds to the value of the first quartile (Q1), and the top of the
+    box corresponds to the value of the third quartile (Q3). To calculate the value
+    of the IQR, simply subtract the value of Q1 from that of Q3.
+
+- Class: text
+  Output: The whiskers, or lines, that extend above and below each box represent roughly
+    the upper 25% and lower 25% of data points, respectively. The only exception is
+    when there are outliers, which I'll explain shortly.
+
+- Class: range_question
+  Output: Looking at the box plot, what is the approximate interquartile range for
+    the midsize vehicles?
+  CorrectAnswer: 16; 22
+  AnswerTests: range=16-22
+  Hint: Subtract the Q1 value from the Q3 value. The Q1 value is the minimum value
+    contained in the box and the Q3 value is the maximum value contained in the box.
+
+- Class: text
+  Output: Let's take a closer look at how quartiles are calculated. We start by sorting
+    the data from least to greatest, just like when calculating the median. The first
+    quartile (Q1), also known as the 25th PERCENTILE (since 25% of the data points
+    fall at or below this value), is simply the median of the first half of the sorted
+    data. Likewise, the third quartile (Q3), also known as the 75th percentile, is
+    the median of the second half of the sorted data.
+
+- Class: figure
+  Output: As shown in this plot, the blue horizontal line illustrates how to find
+    the value for the first quartile. The green horizontal line illustrates how to
+    find the value for the third quartile. The interquartile range is the range of
+    data values that is contained in between these two lines.
+  Figure: mod1_boxplot_add.R
+  FigureType: addition
+
+- Class: figure
+  Output: 'Look again at our box plot of price vs. car type. You may be thinking to
+    yourself, ''What is that circle above the box plots for the midsize cars, and
+    why is there no circle above the box plot for the large cars?'' Those circles
+    represent OUTLIERS in the data set. '
+  Figure: mod1_boxplot.R
+  FigureType: new
+
+- Class: figure
+  Output: An OUTLIER is an observation that is unusual or extreme relative to the
+    other values in the data set. Outliers are useful in identifying a heavy skew
+    in a distribution, and may signify a data collection or data entry error to a
+    scientist. There are many different conventions for identifying outliers within
+    a data set.
+  Figure: mod1_boxplot.R
+  FigureType: new
+
+- Class: mult_question
+  Output: When looking at the box plot, which car types appear to have outliers?
+  AnswerChoices: small, midsize; midsize, large; small, large; small, midsize, large
+  CorrectAnswer: small, midsize
+  AnswerTests: word=small, midsize
+  Hint: Look for the types of cars that correspond to the box plots with circles above
+    or below them.
+
+- Class: figure
+  Output: As you can see in the box plot, the data for prices of 'midsize' cars vary
+    from around 15 to 62, encompassing a range of approximately 50. This is a great
+    deal larger than the variation for 'small' cars which range from around 5 to 15,
+    encompassing a range of approximately 10. Therefore, since the range is much greater
+    for 'midsize' cars, prices of 'midsize' cars have much higher variability in comparison
+    to the prices of 'small' cars.
+  Figure: mod1_boxplot.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Now it is your turn! Is the variability of prices of cars of type 'large'
+    higher or lower than that of cars of type 'small'?
+  AnswerChoices: higher; lower; the same
+  CorrectAnswer: higher
+  AnswerTests: word=higher
+  Hint: Look to see if the range of cars of type 'large' is greater or less than that
+    of cars of type 'small'.
+
+- Class: text
+  Output: 'You have officially mastered the concept of dispersion and have fully learned
+    how to read and interpret a box-and-whisker plot. These are two very valuable
+    tools used everyday in descriptive statistics. Congratulations! In the next lesson,
+    you will learn about data visualization. '
+

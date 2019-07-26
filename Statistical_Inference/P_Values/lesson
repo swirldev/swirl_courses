@@ -1,0 +1,200 @@
+- Class: meta
+  Course: Statistical_Inference
+  Lesson: P_Values
+  Author: Swirl Coders
+  Type: Coursera
+  Organization: Johns Hopkins Bloomberg School of Public Health
+  Version: 2.2.0
+
+- Class: text
+  Output: "P_Values. (Slides for this and other Data Science courses may be found at github https://github.com/DataScienceSpecialization/courses/. If you care to use them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to 06_Statistical_Inference/10_pValues.)"
+
+- Class: text
+  Output: In this lesson, as the name suggests, we'll discuss p-values which have nothing to do with urological testing. Instead they are the most common measure of statistical significance.
+
+- Class: text
+  Output: However, because they're popular they're used a lot, and often they're misused or misinterpreted. In this lecture we'll focus on how to generate them and interpret them correctly.
+
+- Class: text
+  Output: The question motivating p-values is this. Given that we have some  null hypothesis concerning our data (for example, its mean), how unusual or extreme is  the sample value we get from our data? Is our test statistic consistent with our hypothesis? So there are, implicitly, three steps we have to take to answer these types of questions. 
+
+- Class: mult_question
+  Output: What do you think the first step is?
+  AnswerChoices: Create a null hypothesis; Calculate a test statistic from the data;  Compare the test statistic to a Z or t quantile; Consult your crystal ball
+  CorrectAnswer: Create a null hypothesis
+  AnswerTests: omnitest(correctVal='Create a null hypothesis')
+  Hint: You always have to start with a null hypothesis.
+
+- Class: text
+  Output: So we have to begin with a null hypothesis which is a reasoned guess at some distribution of a data summary (a statistic). Recall from the last lesson that the null hypothesis H_0 is a baseline against which we'll measure an alternative hypothesis using the actual observed data.
+
+- Class: mult_question
+  Output: So you propose a null hypothesis. What's the next step?
+  AnswerChoices:  Calculate a test statistic from the given data;  Compare the test statistic to a Z or t score; Go back to the crystal ball; Reject H_0
+  CorrectAnswer: Calculate a test statistic from the given data
+  AnswerTests: omnitest(correctVal='Calculate a test statistic from the given data')
+  Hint: You need something to compare the value  proposed in H_0 with.
+
+- Class: mult_question
+  Output: Now you have a proposed statistic (from your reasoned hypothesis) and a test statistic computed from your gathered data. What's the final step? 
+  AnswerChoices:  Calculate a test statistic from the given data;  Compare the test statistic to the hypothetical distribution; Go back to the crystal ball; Reject H_0
+  CorrectAnswer: Compare the test statistic to the hypothetical distribution
+  AnswerTests: omnitest(correctVal='Compare the test statistic to the hypothetical distribution')
+  Hint: You have to compare your calculated value to a hypothetical.
+
+- Class: text
+  Output: Your comparison tells you how  "extreme" the test value is toward the alternative hypothesis. The p-value is the probability under the null hypothesis of obtaining evidence as or more extreme than  your test statistic (obtained from your observed data) in the direction of the alternative hypothesis. 
+
+- Class: text 
+  Output: So if the p-value (probability of seeing your test statistic) is small, then one of two things happens. EITHER H_0 is true and you have observed a rare event (in this unusual test statistic) OR H_0 is false. Let's go through an example.
+
+- Class: text 
+  Output: Suppose that you get a t statistic of 2.5 with 15 df testing H_0, (that mu = mu_0) versus an alternative H_a (that mu > mu_0). We want to find the probability of getting a t statistic as large as 2.5.
+
+- Class: cmd_question
+  Output: R can help us! We can use the R function pt, the distribution function of the t distribution. This function returns one of two probabilities, EITHER the probability of X > q (if lower.tail is FALSE) OR  X <= q (if lower.tail is TRUE), where q is a quantile argument. Here we'll set q=2.5, df=15, lower.tail=FALSE since H_a says that mu>mu_0. We have to gauge the extremity in the direction of H_a. Run this now.
+  CorrectAnswer: pt(2.5, 15, lower.tail=FALSE)
+  AnswerTests: omnitest(correctExpr='pt(2.5, 15, lower.tail=FALSE)')
+  Hint: Type pt(2.5, 15, lower.tail=FALSE) at the command prompt.
+
+- Class: text 
+  Output: This result tells us that, if H_0 were true,  we would see this large a test statistic with probability 1% which is rather a small probability.
+
+- Class: mult_question
+  Output: What should we do?
+  AnswerChoices:   Reject H_0; Fail to reject H_0; Consult the crystal ball
+  CorrectAnswer: Reject H_0
+  AnswerTests: omnitest(correctVal='Reject H_0')
+  Hint: 1% is less than the usual benchmark of 5%
+
+- Class: text 
+  Output: Another way to think about a p-value is as an attained significance level. This is a fancy way of saying that the p-value is the smallest value of alpha at which you will reject the null hypothesis.
+
+- Class: text 
+  Output: Recall the example from our last lesson in which we computed a test statistic of 2. Our H_0 said that mu_0 = 30 and the alternative H_a that mu > 30. Assume we used a Z test (normal distribution). We rejected the one sided test when alpha was set to 0.05.
+
+- Class: cmd_question
+  Output: Why did we reject? Find the quantile associated with this test, that's the place to start. Use qnorm at the 95th percentile. 
+  CorrectAnswer: qnorm(.95)
+  AnswerTests: omnitest(correctExpr='qnorm(.95)')
+  Hint: Type qnorm(.95) at the command prompt.
+
+- Class: figure 
+  Output: We rejected H_0 because our data (the test statistic actually) favored H_a. The test statistic 2 (shown by the vertical blue line) falls in the shaded portion of this figure because it exceeds the quantile. As you know, the shaded portion represents 5% of the area under the curve.
+  Figure: conf_5pct.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: Now try the 99th percentile to see if we would still reject H_0. 
+  CorrectAnswer: qnorm(.99)
+  AnswerTests: omnitest(correctExpr='qnorm(.99)')
+  Hint: Type qnorm(.99) at the command prompt.
+
+- Class: mult_question
+  Output: Would we reject H_0 if alpha were .01?
+  AnswerChoices: Yes; No
+  CorrectAnswer: No
+  AnswerTests: omnitest(correctVal='No')
+  Hint: Now the quantile 2.33 exceeds the test statistic 2.
+
+- Class: figure 
+  Output: Again, a picture's worth a thousand words, right? The vertical line at the test statistic 2 is not in the region of rejection.
+  Figure: conf_1pct.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: So our data (the test statistic) tells us what the attained significance level is. We use the R function pnorm to give us this number. With the default values, specifically lower.tail=TRUE, this gives us the probability that a random draw from the distribution is less than or equal to the argument. Try it now with the test statistic value 2. Use the default values for all the other arguments.
+  CorrectAnswer: pnorm(2)
+  AnswerTests: omnitest(correctExpr='pnorm(2)')
+  Hint: Type pnorm(2) at the command prompt.
+
+- Class: text
+  Output: Just as we thought, somewhere between .95 (where we rejected) and .99 (where we failed  to reject). That's reassuring.
+
+- Class: cmd_question
+  Output: Now let's find the p value associated with this example. As before, we'll use  pnorm. But this time we'll set the lower.tail argument to FALSE. This gives us the probability of X exceeding the test statistic, that is, the area under the curve to the right of test statistic. Try it now with the test statistic value 2. 
+  CorrectAnswer: pnorm(2,lower.tail=FALSE)
+  AnswerTests: omnitest(correctExpr='pnorm(2,lower.tail=FALSE)')
+  Hint: Type pnorm(2,lower.tail=FALSE) at the command prompt.
+
+- Class: text
+  Output: This tells us that the attained level of significance is about 2%.
+
+- Class: text
+  Output: By reporting a p-value, instead of an alpha level and whether or not you reject H_0, reviewers of your work can  hypothesis test at any alpha level they choose. The general rule is that if the p-value is less than the specified alpha you reject the null hypothesis and if it's greater you fail to reject.
+ 
+- Class: text
+  Output: For a two sided hypothesis test, you have to double the smaller of the two one-sided  p values. We'll see an example of this shortly. Most software assumes a two-sided test and automatically doubles the p value.
+ 
+- Class: text
+  Output: Now for the two-sided test. Recall the binomial example from the last lesson - the family with 8 children, 7 of whom are girls. You want to test H_0, that p=.5, where p is the probability of a girl (like a fair coin flip). H_a is that p is not equal to .5. It's either greater or less than .5. 
+
+- Class: cmd_question
+  Output: This is a two-sided test. First we find the probability of having at least i girls, for i running from 0 to 8. We have a vector of these probabilities, mybin. Look at it now.
+  CorrectAnswer: mybin
+  AnswerTests: omnitest(correctExpr='mybin')
+  Hint: Type mybin at the command prompt.
+
+- Class: cmd_question
+  Output: The second last value shows us that the probability of having at least 7 girls (out of 8 children) is .035, assuming that genders are equally likely (p=.5).  You can verify this with the R function pbinom, with the arguments 6, size=8, prob=.5, and lower.tail=FALSE. (This last yields the probability that X>6.) Try this now.
+  CorrectAnswer: pbinom(6,size=8,prob=.5,lower.tail=FALSE)
+  AnswerTests: omnitest(correctExpr='pbinom(6,size=8,prob=.5,lower.tail=FALSE)')
+  Hint: Type pbinom(6,size=8,prob=.5,lower.tail=FALSE) at the command prompt.
+
+- Class: mult_question
+  Output: We see a probability of about .03. Should we reject or fail to reject H_0 if alpha = .05?
+  AnswerChoices: Reject; Fail to reject
+  CorrectAnswer: Reject
+  AnswerTests: omnitest(correctVal='Reject')
+  Hint: Remember the picture of areas. The probability .03 is less than the benchmark of .05. 
+
+- Class: mult_question
+  Output: We see a probability of about .03. Should we reject or fail to reject H_0 if alpha = .04?
+  AnswerChoices: Reject; Fail to reject
+  CorrectAnswer: Reject
+  AnswerTests: omnitest(correctVal='Reject')
+  Hint: Remember the picture of areas. The probability .03 is less than .04.
+
+- Class: mult_question
+  Output: We see a probability of about .03. Should we reject or fail to reject H_0 if alpha = .03?
+  AnswerChoices: Reject; Fail to reject
+  CorrectAnswer: Fail to reject
+  AnswerTests: omnitest(correctVal='Fail to reject')
+  Hint: The p-value is about .035 which is greater than alpha=.03.
+
+- Class: cmd_question
+  Output: For the other side of the test we want the probability that X<=7, again out of a sample of size 8 with probability .5. Again, we use pbinom, this time with an argument of 7 and lower.tail=TRUE. Try this now.
+  CorrectAnswer: pbinom(7,size=8,prob=.5,lower.tail=TRUE)
+  AnswerTests: omnitest(correctExpr='pbinom(7,size=8,prob=.5,lower.tail=TRUE)')
+  Hint: Type pbinom(7,size=8,prob=.5,lower.tail=TRUE) at the command prompt.
+
+- Class: text
+  Output: So it's pretty likely (probability .996) that out of 8 children you'll have at most 7 girls. The p value of this two sided test is 2*the smaller of the two one-sided values. In this case the lower value is .035, so 2*.035 is the p-value for this two-sided test. 
+
+- Class: text
+  Output: Now a final example using a Poisson distribution. Remember that this is discrete and it involves counts or rates of counts. The example from the slides involves rates of infections in a hospital.
+
+- Class: text
+  Output: Suppose that the hospital has an infection rate of 10 infections per 100 person/days at risk. This is a rate of 0.1.  Assume that an infection rate of 0.05 is the benchmark. This is our alpha level, recognize it? With this model, could the observed rate (.1) be larger than the benchmark 0.05 by chance or does it indicate a problem? 
+
+- Class: text
+  Output: In other words,  H_0 says that lambda = 0.05 so lambda_0 * 100 = 5, and H_a says that lambda > 0.05. Is H_0 true and our observed rate (.1) is just a fluke OR should we reject H_0 ?
+
+- Class: cmd_question
+  Output: As before, R has the handy function ppois, which returns probabilities for Poisson distributions. We want the probability of seeing at least 9 infections using a lambda value of 5 and lower.tail=FALSE. As when we used pbinom we have to use 9 as the argument since we're looking for a probability of a value greater than the argument. Try this now.
+  CorrectAnswer: ppois(9,5,lower.tail=FALSE)
+  AnswerTests: omnitest(correctExpr='ppois(9,5,lower.tail=FALSE)')
+  Hint: Type ppois(9,5,lower.tail=FALSE) at the command prompt.
+
+- Class: mult_question
+  Output: We see a probability of about .03. Should we reject or fail to reject H_0? (Remember those helpful pictures with shaded areas. Smaller areas mean smaller probabilities and vice versa.)
+  AnswerChoices: Reject; Fail to reject
+  CorrectAnswer: Reject
+  AnswerTests: omnitest(correctVal='Reject')
+  Hint: Remember the picture of areas. The probability .03 is less than the benchmark of .05. 
+
+- Class: text
+  Output: So we reject the infection rate hypothesized by H_0 since the data favors H_a, indicating that the rate is much higher. 
+
+- Class: text
+  Output: Congrats! You finished this lesson. We hope you p-valued it.

@@ -1,0 +1,170 @@
+- Class: meta
+  Course: R Programming
+  Lesson: Sequences of Numbers
+  Author: Nick Carchedi
+  Type: Coursera
+  Organization: JHU Biostat
+  Version: 2.2.0
+
+- Class: text
+  Output: In this lesson, you'll learn how to create sequences of numbers in R.
+
+- Class: cmd_question
+  Output: The simplest way to create a sequence of numbers in R is by using the `:`
+    operator. Type 1:20 to see how it works.
+  CorrectAnswer: '1:20'
+  AnswerTests: omnitest(correctExpr='1:20')
+  Hint: Type 1:20 with no spaces. Make sure to use a regular colon and NOT a semi-colon.
+
+- Class: cmd_question
+  Output: That gave us every integer between (and including) 1 and 20. We could also
+    use it to create a sequence of real numbers. For example, try pi:10.
+  CorrectAnswer: pi:10
+  AnswerTests: omnitest(correctExpr='pi:10')
+  Hint: Enter pi:10 and see what happens. pi is a predefined constant in R that takes
+    on the value 3.1415....
+
+- Class: text
+  Output: The result is a vector of real numbers starting with pi (3.142...) and increasing
+    in increments of 1. The upper limit of 10 is never reached, since the next number
+    in our sequence would be greater than 10.
+
+- Class: cmd_question
+  Output: 'What happens if we do 15:1? Give it a try to find out.'
+  CorrectAnswer: '15:1'
+  AnswerTests: omnitest(correctExpr='15:1')
+  Hint: Type 15:1 and press Enter.
+
+- Class: text
+  Output: It counted backwards in increments of 1! It's unlikely we'd want this behavior,
+    but nonetheless it's good to know how it could happen.
+
+- Class: text
+  Output: "Remember that if you have questions about a particular R function, you
+    can access its documentation with a question mark followed by the function name:
+    ?function_name_here. However, in the case of an operator like the colon used above,
+    you must enclose the symbol in backticks like this: ?`:`. (NOTE: The backtick
+    (`) key is generally located in the top left corner of a keyboard, above the Tab
+    key. If you don't have a backtick key, you can use regular quotes.)"
+
+- Class: cmd_question
+  Output: Pull up the documentation for `:` now.
+  CorrectAnswer: ?`:`
+  AnswerTests: ANY_of_exprs('?`:`', "?':'", '?":"')
+  Hint: "In order to view the documentation for a symbol like the colon operator,
+    you have to use backticks (or quotes). This is so R knows you are not attempting to use the
+    symbol in the command. Here's what it looks like: ?`:`. Don't forget the question
+    mark out front."
+
+- Class: text
+  Output: Often, we'll desire more control over a sequence we're creating than what
+    the `:` operator gives us. The seq() function serves this purpose.
+
+- Class: cmd_question
+  Output: The most basic use of seq() does exactly the same thing as the `:` operator.
+    Try seq(1, 20) to see this.
+  CorrectAnswer: seq(1, 20)
+  AnswerTests: omnitest(correctExpr='seq(1, 20)')
+  Hint: Type seq(1, 20) and press Enter. The space after the comma is not required,
+    but is recommended as it tends to make your code appear less cluttered.
+
+- Class: cmd_question
+  Output: This gives us the same output as 1:20. However, let's say that instead we
+    want a vector of numbers ranging from 0 to 10, incremented by 0.5. seq(0, 10,
+    by=0.5) does just that. Try it out.
+  CorrectAnswer: seq(0, 10, by=0.5)
+  AnswerTests: omnitest(correctExpr='seq(0, 10, by=0.5)')
+  Hint: You are still using the seq() function here, but this time with an extra argument
+    that tells R you want to increment your sequence by 0.5. Try seq(0, 10, by=0.5).
+
+- Class: cmd_question
+  Output: Or maybe we don't care what the increment is and we just want a sequence
+    of 30 numbers between 5 and 10. seq(5, 10, length=30) does the trick. Give it
+    a shot now and store the result in a new variable called my_seq.
+  CorrectAnswer: my_seq <- seq(5, 10, length=30)
+  AnswerTests: omnitest(correctExpr='my_seq <- seq(5, 10, length=30)')
+  Hint: 'You''re using the same function here, but changing its arguments for different
+    results. Be sure to store the result in a new variable called my_seq, like this:
+    my_seq <- seq(5, 10, length=30).'
+
+- Class: cmd_question
+  Output: To confirm that my_seq has length 30, we can use the length() function.
+    Try it now.
+  CorrectAnswer: length(my_seq)
+  AnswerTests: omnitest(correctExpr='length(my_seq)')
+  Hint: Use length(my_seq) to view the length of the my_seq variable.
+
+- Class: text
+  Output: Let's pretend we don't know the length of my_seq, but we want to generate
+    a sequence of integers from 1 to N, where N represents the length of the my_seq
+    vector. In other words, we want a new vector (1, 2, 3, ...) that is the same length
+    as my_seq.
+
+- Class: cmd_question
+  Output: 'There are several ways we could do this. One possibility is to combine
+    the `:` operator and the length() function like this: 1:length(my_seq). Give that
+    a try.'
+  CorrectAnswer: 1:length(my_seq)
+  AnswerTests: omnitest(correctExpr='1:length(my_seq)')
+  Hint: Try 1:length(my_seq), without assigning the result to a new variable.
+
+- Class: cmd_question
+  Output: Another option is to use seq(along.with = my_seq). Give that a try.
+  CorrectAnswer: seq(along.with = my_seq)
+  AnswerTests: omnitest(correctExpr='seq(along.with = my_seq)')
+  Hint: Type seq(along.with = my_seq). Notice we're using the same seq() function, but
+    with a different argument called `along.with`. This tells R that you want a sequence
+    'along with' the sequence my_seq. Remember you can type ?seq if you have questions
+    about the seq() function.
+
+- Class: cmd_question
+  Output: However, as is the case with many common tasks, R has a separate built-in
+    function for this purpose called seq_along(). Type seq_along(my_seq) to see it
+    in action.
+  CorrectAnswer: seq_along(my_seq)
+  AnswerTests: omnitest(correctExpr='seq_along(my_seq)')
+  Hint: The seq_along() function is a variation of the seq() function. Try seq_along(my_seq)
+    to get the same result yet another way.
+
+- Class: text
+  Output: There are often several approaches to solving the same problem, particularly
+    in R. Simple approaches that involve less typing are generally best. It's also
+    important for your code to be readable, so that you and others can figure out
+    what's going on without too much hassle.
+
+- Class: text
+  Output: If R has a built-in function for a particular task, it's likely that function
+    is highly optimized for that purpose and is your best option. As you become a
+    more advanced R programmer, you'll design your own functions to perform tasks
+    when there are no better options. We'll explore writing your own functions in
+    future lessons.
+
+- Class: text
+  Output: One more function related to creating sequences of numbers is rep(), which
+    stands for 'replicate'. Let's look at a few uses.
+
+- Class: cmd_question
+  Output: If we're interested in creating a vector that contains 40 zeros, we can
+    use rep(0, times = 40). Try it out.
+  CorrectAnswer: rep(0, times = 40)
+  AnswerTests: omnitest(correctExpr='rep(0, times = 40)')
+  Hint: Type rep(0, times = 40) to make a vector containing 40 zeros.
+
+- Class: cmd_question
+  Output: If instead we want our vector to contain 10 repetitions of the vector (0,
+    1, 2), we can do rep(c(0, 1, 2), times = 10). Go ahead.
+  CorrectAnswer: rep(c(0, 1, 2), times = 10)
+  AnswerTests: omnitest(correctExpr='rep(c(0, 1, 2), times = 10)')
+  Hint: Try rep(c(0, 1, 2), times = 10) for a different variation on the same theme.
+    Be sure to use the c() function to tell R that the numbers 0, 1, and 2 make up
+    a vector.
+
+- Class: cmd_question
+  Output: Finally, let's say that rather than repeating the vector (0, 1, 2) over
+    and over again, we want our vector to contain 10 zeros, then 10 ones, then 10
+    twos. We can do this with the `each` argument. Try rep(c(0, 1, 2), each = 10).
+  CorrectAnswer: rep(c(0, 1, 2), each = 10)
+  AnswerTests: omnitest(correctExpr='rep(c(0, 1, 2), each = 10)')
+  Hint: Type rep(c(0, 1, 2), each = 10) to see how the `each` argument to the rep()
+    function alters its behavior slightly.
+

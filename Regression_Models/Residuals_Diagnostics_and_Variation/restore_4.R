@@ -1,0 +1,1 @@
+plot(fit, which=2)

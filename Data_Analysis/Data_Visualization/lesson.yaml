@@ -1,0 +1,213 @@
+
+- Class: meta
+  Course: Data Analysis
+  Lesson: Data Visualization
+  Author: Nick Carchedi
+  Type: Standard
+  Organization: JHU Biostatistics
+  Version: 1.0.0
+
+- Class: text
+  Output: Now that you have learned the basics techniques and statistical calculations
+    used to describe a data set, the next step is figuring out how to effectively
+    illustrate and visualize your data.
+
+- Class: text
+  Output: It is useful to first visualize the data before a statistician engages in
+    a thorough analysis of the data set. In this lesson, we are going to learn useful
+    techniques for visualizing numerical variables.
+
+- Class: text
+  Output: 'By organizing the data into a PLOT or GRAPH, a statistician is able to
+    explore and summarize some basic properties of the data set. The discipline of
+    quantitatively describing the main properties of a data set is known as DESCRIPTIVE
+    STATISTICS. '
+
+- Class: text
+  Output: The simplest type of plot is the DOT PLOT, which is used to visually convey
+    the values of one variable. In a dot plot, there is only a horizontal x-axis,
+    and the data points are represented as dots above this axis.
+
+- Class: figure
+  Output: Here is a dot plot created using the variable 'price' from our 'cars' data set. As you may notice, the price is reported along the x-axis in $1000s, and each point above the axis represents the price of one of the
+    54 cars in our data set.
+  Figure: mod1_dotplot.R
+  FigureType: new
+
+- Class: range_question
+  Output: When looking at this dot plot, around what price (in $1000s) does there
+    appear to be the highest density of data points?
+  CorrectAnswer: 7; 13
+  AnswerTests: range=7-13
+  Hint: Look at the part of the graph where the dots are the darkest and closest together.
+
+- Class: text
+  Output: Since dot plots effectively display the specific numerical value of one
+    variable for each individual in the data set, they are particularly useful when
+    analyzing smaller data sets.
+
+- Class: text
+  Output: A HISTOGRAM is similar to a dot plot, but instead of showing every specific
+    value, it partitions the values of your data into several bins, providing a more
+    condensed representation of the data.
+
+- Class: figure
+  Output: Here I have created a histogram using the miles per gallon data for all
+    of our cars. As you may notice, the values of the MPG along the x-axis are partitioned
+    into bins with a range of 5. The second bin, for example, groups together all
+    of the cars that get 21-25 MPG in the city, and so forth. Note that the bin to
+    the left of this contains those cars with 20 MPG since this value cannot be counted
+    in both bins. The frequency of values in each bin, or the number of cars in each
+    of the intervals, is reported along the y-axis.
+  Figure: mod1_histogram.R
+  FigureType: new
+
+- Class: text
+  Output: Taller bars signify the range of values in which the majority of the data
+    is located, whereas shorter bars represent a range of values in which only a little
+    bit of the data is located. In other words, histograms provide a view of the DATA
+    DENSITY.
+
+- Class: mult_question
+  Output: By simply looking at this histogram, can you tell me which MPG interval
+    has the highest frequency of values? For example, the lowest frequencies of values
+    occur in the intervals 36-40, 41-45, and 46-50.
+  AnswerChoices: 16-20; 21-25; 26-30; 31-35; 36-40; 41-45; 46-50
+  CorrectAnswer: 16-20
+  AnswerTests: word= 16-20
+  Hint: 'Look for the bin values corresponding to the tallest bar in the histogram. '
+
+- Class: exact_question
+  Output: How many cars get 16-20 MPG in the city?
+  CorrectAnswer: '25'
+  AnswerTests: exact=25
+  Hint: Look at the highest value on the y-axis that the '16-20' bar reaches.
+
+- Class: figure
+  Output: A red line has been drawn on our histogram illustrating the previous answer.
+  Figure: mod1_histogram_add.R
+  FigureType: addition
+
+- Class: text
+  Output: 'Histograms are particularly useful in viewing and describing the shape
+    of the distribution of the data. A distribution of data may have a left skew,
+    a right skew, or no skew at all. SKEWNESS is a measure of the extent to which
+    the distribution of the data ''leans'' to one side or the other. '
+
+- Class: figure
+  Output: 'A distribution that has a left skew is one in which the left TAIL of the
+    plot is longer. In other words, on a histogram the majority of the distribution
+    is located to the right of the mean. '
+  Figure: mod1_leftskew.R
+  FigureType: new
+
+- Class: text
+  Output: When a distribution is left-skewed, the value of the MEAN is less than that
+    of the MEDIAN, and thus the MEAN is located further to the left of the distribution.
+    In this plot, the green line represents the median and the blue line represents
+    the mean.
+
+- Class: figure
+  Output: On the other hand, a distribution that has a right skew is one in which
+    the right tail is longer, such that the majority of the data falls to the left
+    of the mean, when viewed on the histogram.
+  Figure: mod1_rightskew.R
+  FigureType: new
+
+- Class: text
+  Output: When a distribution is right-skewed, the value of the MEAN is greater than
+    that of the MEDIAN, and thus the MEAN is located further to the right of the distribution.
+    In this plot, the green line represents the median and the blue line represents
+    the mean.
+
+- Class: figure
+  Output: 'A plot that has no skew is one in which the tails on both sides of the
+    mean balance out, and is referred to as symmetric. When a distribution is symmetric,
+    the MEAN and MEDIAN are approximately equal in value. '
+  Figure: mod1_symmetric.R
+  FigureType: new
+
+- Class: text
+  Output: In this plot, the green line represents the median and the blue line represents
+    the mean. The green line is the only one visible since the mean and median are
+    close to the same value.
+
+- Class: figure
+  Output: 'Now, let''s take a look back at the histogram we made earlier, which represents
+    the distribution of the values for city MPG for each of the 54 cars from our ''cars''
+    data set. '
+  Figure: mod1_histogram.R
+  FigureType: new
+
+- Class: mult_question
+  Output: How would you classify the shape of the distribution represented by this
+    histogram?
+  AnswerChoices: Symmetric; Right-skewed; Left-skewed
+  CorrectAnswer: Right-skewed
+  AnswerTests: word= Right-skewed
+  Hint: Look to see which end of the tail extends longer. The data will be skewed
+    in that direction. Or, look to see whether the tails extend to relatively the
+    same length on each side.
+
+- Class: mult_question
+  Output: Referring to the histogram above, and keeping in mind the real shape of
+    the distribution, would you expect the MEDIAN to be greater than, less than, or
+    equal to the MEAN?
+  AnswerChoices: Greater than; Less than; Equal to
+  CorrectAnswer: Less than
+  AnswerTests: word= Less than
+  Hint: Reread above to figure out what the value of the median is in comparison to
+    the mean when a distribution is right-skewed.
+
+- Class: text
+  Output: 'A special type of histogram is known as a STEM-AND-LEAF PLOT. This plot
+    organizes numerical data in order of decimal place value. The left-hand column
+    of the plot contains the STEMS, or the numerical values of the tens digit for
+    each of the data points, organized vertically in increasing order. The LEAVES
+    are located in the right-hand column of the plot and are the values of the ones
+    digit for each data point of the corresponding stem, organized horizontally in
+    increasing order. '
+
+- Class: text
+  Output: In a stem-and-leaf plot, the number of leaves is equal to the number of
+    items in the data set. The easiest way to understand a stem-and-leaf plot is to
+    see one!
+
+- Class: video
+  Output: Would you like to watch a brief YouTube video on stem-and-leaf plots?
+  VideoLink: http://youtu.be/OaJXJduRiIE
+
+- Class: figure
+  Output: I have created a stem-and-leaf plot above using the same values for the
+    'mpgCity' variable as we just used for our histogram. As you can see, a stem-and-leaf
+    plot is a useful type of histogram if you want to see the frequencies of specific
+    values of the data. Often, there will only be one bin per tens digit, but in this
+    case, R gives us the same bins as we saw in our histogram.
+  Figure: mod1_stem.R
+  FigureType: new
+
+- Class: exact_question
+  Output: Demonstrated on this stem-and-leaf plot, how many occurences of the value
+    '22' are there in this particular data set?
+  CorrectAnswer: '4'
+  AnswerTests: exact=4
+
+- Class: figure
+  Output: The final plot that can be used for discrete or continuous variables is
+    known as the BOX PLOT, also called a BOX-AND-WHISKER PLOT. As you previously learned,
+    this plot is used to summarize the main descriptive statistics of a particular
+    data set and help illustrates the concept of variability. I have created a box-and-whisker
+    plot so that you can be reminded of what it looks like.
+  Figure: mod1_boxplot.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: A box plot is used to visually represent the MINIMUM, FIRST QUARTILE (Q1),
+    MEDIAN, THIRD QUARTILE (Q3), and MAXIMUM of a data set. The R-command 'summary(cars$price)'
+    returns values for these main descriptive statistics. Try this now.
+  CorrectAnswer: summary(cars$price)
+  AnswerTests: swirl1cmd=summary(cars$price)
+
+- Class: text
+  Output: 'Up until now, every plot I have introduced has involved only one continous or discrete variable. In a future lesson, we will learn about the plots that are used for categorical variables and multiple variables.'
+

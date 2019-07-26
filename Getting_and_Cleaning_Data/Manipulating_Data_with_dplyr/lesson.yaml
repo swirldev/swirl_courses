@@ -1,0 +1,305 @@
+- Class: meta
+  Course: Getting and Cleaning Data
+  Lesson: Manipulating Data with dplyr
+  Author: Nick Carchedi
+  Type: Coursera
+  Organization: JHU Biostat
+  Version: 2.2.12
+
+- Class: text
+  Output: In this lesson, you'll learn how to manipulate data using dplyr. dplyr is a fast and powerful R package written by Hadley Wickham and Romain Francois that provides a consistent and concise grammar for manipulating tabular data.
+
+- Class: text
+  Output: One unique aspect of dplyr is that the same set of tools allow you to work with tabular data from a variety of sources, including data frames, data tables, databases and multidimensional arrays. In this lesson, we'll focus on data frames, but everything you learn will apply equally to other formats.
+
+- Class: text
+  Output: 'As you may know, "CRAN is a network of ftp and web servers around the world that store identical, up-to-date, versions of code and documentation for R" (http://cran.rstudio.com/). RStudio maintains one of these so-called ''CRAN mirrors'' and they generously make their download logs publicly available (http://cran-logs.rstudio.com/). We''ll be working with the log from July 8, 2014, which contains information on roughly 225,000 package downloads.'
+
+- Class: cmd_question
+  Output: "I've created a variable called path2csv, which contains the full file path to the dataset. Call read.csv() with two arguments, path2csv and stringsAsFactors = FALSE, and save the result in a new variable called mydf. Check ?read.csv if you need help."
+  CorrectAnswer: mydf <- read.csv(path2csv, stringsAsFactors = FALSE)
+  AnswerTests: omnitest(correctExpr='mydf <- read.csv(path2csv, stringsAsFactors = FALSE)')
+  Hint: Store the result of read.csv(path2csv, stringsAsFactors = FALSE) in a new variable called mydf.
+
+- Class: cmd_question
+  Output: Use dim() to look at the dimensions of mydf.
+  CorrectAnswer: dim(mydf)
+  AnswerTests: omnitest(correctExpr='dim(mydf)')
+  Hint: dim(mydf) will give you the dimensions of the dataset.
+
+- Class: cmd_question
+  Output: Now use head() to preview the data.
+  CorrectAnswer: head(mydf)
+  AnswerTests: omnitest(correctExpr='head(mydf)')
+  Hint: head(mydf) will show you the first six rows of mydf.
+
+- Class: cmd_question
+  Output: The dplyr package was automatically installed (if necessary) and loaded at the beginning of this lesson. Normally, this is something you would have to do on your own. Just to build the habit, type library(dplyr) now to load the package again.
+  CorrectAnswer: library(dplyr)
+  AnswerTests: omnitest(correctExpr='library(dplyr)')
+  Hint: Use library(dplyr) to load the dplyr package.
+
+- Class: cmd_question
+  Output: It's important that you have dplyr version 0.4.0 or later. To confirm this, type packageVersion("dplyr").
+  CorrectAnswer: packageVersion("dplyr")
+  AnswerTests: omnitest(correctExpr='packageVersion("dplyr")')
+  Hint: Check what version of dplyr you have with packageVersion("dplyr").
+
+- Class: text
+  Output: If your dplyr version is not at least 0.4.0, then you should hit the Esc key now, reinstall dplyr, then resume this lesson where you left off.
+
+- Class: cmd_question
+  Output: "The first step of working with data in dplyr is to load the data into what the package authors call a 'data frame tbl' or 'tbl_df'. Use the following code to create a new tbl_df called cran: \n\ncran <- tbl_df(mydf)."
+  CorrectAnswer: cran <- tbl_df(mydf)
+  AnswerTests: omnitest(correctExpr='cran <- tbl_df(mydf)')
+  Hint: Type cran <- tbl_df(mydf) to create a new tbl_df called cran.
+
+- Class: cmd_question
+  Output: To avoid confusion and keep things running smoothly, let's remove the original data frame from your workspace with rm("mydf").
+  CorrectAnswer: rm("mydf")
+  AnswerTests: omnitest(correctExpr='rm("mydf")')
+  Hint: Use rm("mydf") to remove the original data frame from your workspace.
+
+- Class: cmd_question
+  Output: From ?tbl_df, "The main advantage to using a tbl_df over a regular data frame is the printing." Let's see what is meant by this. Type cran to print our tbl_df to the console.
+  CorrectAnswer: cran
+  AnswerTests: omnitest(correctExpr='cran')
+  Hint: Type cran to print our tbl_df to the console.
+
+- Class: text
+  Output: This output is much more informative and compact than what we would get if we printed the original data frame (mydf) to the console.
+
+- Class: text
+  Output: First, we are shown the class and dimensions of the dataset. Just below that, we get a preview of the data. Instead of attempting to print the entire dataset, dplyr just shows us the first 10 rows of data and only as many columns as fit neatly in our console. At the bottom, we see the names and classes for any variables that didn't fit on our screen.
+
+- Class: text
+  Output: 'According to the "Introduction to dplyr" vignette written by the package authors, "The dplyr philosophy is to have small functions that each do one thing well." Specifically, dplyr supplies five ''verbs'' that cover most fundamental data manipulation tasks: select(), filter(), arrange(), mutate(), and summarize().'
+
+- Class: cmd_question
+  Output: Use ?select to pull up the documentation for the first these core functions.
+  CorrectAnswer: ?select
+  AnswerTests: omnitest(correctExpr='?select')
+  Hint: ?select will display the documentation for dplyr's select() function.
+  
+- Class: text
+  Output: Help files for the other functions are accessible in the same way.
+
+- Class: cmd_question
+  Output: As may often be the case, particularly with larger datasets, we are only interested in some of the variables. Use select(cran, ip_id, package, country) to select only the ip_id, package, and country variables from the cran dataset.
+  CorrectAnswer: select(cran, ip_id, package, country)
+  AnswerTests: omnitest(correctExpr='select(cran, ip_id, package, country)')
+  Hint: Type select(cran, ip_id, package, country) to select only the ip_id, package, and country variables from the cran dataset.
+
+- Class: text
+  Output: The first thing to notice is that we don't have to type cran$ip_id, cran$package, and cran$country, as we normally would when referring to columns of a data frame. The select() function knows we are referring to columns of the cran dataset.
+
+- Class: text
+  Output: Also, note that the columns are returned to us in the order we specified, even though ip_id is the rightmost column in the original dataset.
+
+- Class: cmd_question
+  Output: Recall that in R, the `:` operator provides a compact notation for creating a sequence of numbers. For example, try 5:20.
+  CorrectAnswer: 5:20
+  AnswerTests: omnitest(correctExpr='5:20')
+  Hint: Type 5:20 to see how `:` can be used to create a sequence of numbers.
+
+- Class: cmd_question
+  Output: Normally, this notation is reserved for numbers, but select() allows you to specify a sequence of columns this way, which can save a bunch of typing. Use select(cran, r_arch:country) to select all columns starting from r_arch and ending with country.
+  CorrectAnswer: select(cran, r_arch:country)
+  AnswerTests: omnitest(correctExpr='select(cran, r_arch:country)')
+  Hint: select(cran, r_arch:country) will select all columns from r_arch through country (left to right).
+
+- Class: cmd_question
+  Output: We can also select the same columns in reverse order. Give it a try.
+  CorrectAnswer: select(cran, country:r_arch)
+  AnswerTests: omnitest(correctExpr='select(cran, country:r_arch)')
+  Hint: select(cran, country:r_arch) will select all columns starting from country and ending with r_arch (right to left).
+
+- Class: cmd_question
+  Output: Print the entire dataset again, just to remind yourself of what it looks like. You can do this at anytime during the lesson.
+  CorrectAnswer: cran
+  AnswerTests: omnitest(correctExpr='cran')
+  Hint: Print cran to the console to remind yourself what it looks like.
+
+- Class: cmd_question
+  Output: Instead of specifying the columns we want to keep, we can also specify the columns we want to throw away. To see how this works, do select(cran, -time) to omit the time column.
+  CorrectAnswer: select(cran, -time)
+  AnswerTests: omnitest(correctExpr='select(cran, -time)')
+  Hint: Use select(cran, -time) to get rid of the time column.
+
+- Class: cmd_question
+  Output: The negative sign in front of time tells select() that we DON'T want the time column. Now, let's combine strategies to omit all columns from X through size (X:size). To see how this might work, let's look at a numerical example with -5:20.
+  CorrectAnswer: -5:20
+  AnswerTests: omnitest(correctExpr='-5:20')
+  Hint: See what -5:20 gives us.
+
+- Class: cmd_question
+  Output: Oops! That gaves us a vector of numbers from -5 through 20, which is not what we want. Instead, we want to negate the entire sequence of numbers from 5 through 20, so that we get -5, -6, -7, ... , -18, -19, -20. Try the same thing, except surround 5:20 with parentheses so that R knows we want it to first come up with the sequence of numbers, then apply the negative sign to the whole thing.
+  CorrectAnswer: -(5:20)
+  AnswerTests: omnitest(correctExpr='-(5:20)')
+  Hint: -(5:20) will do the job.
+
+- Class: cmd_question
+  Output: Use this knowledge to omit all columns X:size using select().
+  CorrectAnswer: select(cran, -(X:size))
+  AnswerTests: omnitest(correctExpr='select(cran, -(X:size))')
+  Hint: Use select(cran, -(X:size)) to omit all columns from X through size.
+
+- Class: text
+  Output: Now that you know how to select a subset of columns using select(), a natural next question is "How do I select a subset of rows?" That's where the filter() function comes in.
+
+- Class: cmd_question
+  Output: Use filter(cran, package == "swirl") to select all rows for which the package variable is equal to "swirl". Be sure to use two equals signs side-by-side!
+  CorrectAnswer: filter(cran, package == "swirl")
+  AnswerTests: omnitest(correctExpr='filter(cran, package == "swirl")')
+  Hint: filter(cran, package == "swirl") will give you only those rows for which the package variable is equal to "swirl".
+
+- Class: text
+  Output: Again, note that filter() recognizes 'package' as a column of cran, without you having to explicitly specify cran$package.
+
+- Class: text
+  Output: The == operator asks whether the thing on the left is equal to the thing on the right. If yes, then it returns TRUE. If no, then FALSE. In this case, package is an entire vector (column) of values, so package == "swirl" returns a vector of TRUEs and FALSEs. filter() then returns only the rows of cran corresponding to the TRUEs.
+
+- Class: cmd_question
+  Output: You can specify as many conditions as you want, separated by commas. For example filter(cran, r_version == "3.1.1", country == "US") will return all rows of cran corresponding to downloads from users in the US running R version 3.1.1. Try it out.
+  CorrectAnswer: filter(cran, r_version == "3.1.1", country == "US")
+  AnswerTests: any_of_exprs('filter(cran, r_version == "3.1.1", country == "US")', 'filter(cran, country == "US", r_version == "3.1.1")')
+  Hint: filter(cran, r_version == "3.1.1", country == "US") will return all rows of cran corresponding to downloads from users in the US running R version 3.1.1. Don't forget the quotes around 3.1.1 and US!
+
+- Class: cmd_question
+  Output: The conditions passed to filter() can make use of any of the standard comparison operators. Pull up the relevant documentation with ?Comparison (that's an uppercase C).
+  CorrectAnswer: ?Comparison
+  AnswerTests: omnitest(correctExpr='?Comparison')
+  Hint: ?Comparison will pull up the relevant help file.
+
+- Class: cmd_question
+  Output: Edit your previous call to filter() to instead return rows corresponding to users in "IN" (India) running an R version that is less than or equal to "3.0.2". The up arrow on your keyboard may come in handy here. Don't forget your double quotes!
+  CorrectAnswer: filter(cran, r_version <= "3.0.2", country == "IN")
+  AnswerTests: any_of_exprs('filter(cran, r_version <= "3.0.2", country == "IN")', 'filter(cran, country == "IN", r_version <= "3.0.2")')
+  Hint: filter(cran, r_version <= "3.0.2", country == "IN") will return all rows for which r_version is less than or equal to "3.0.2" and country is equal to "IN".
+
+- Class: cmd_question
+  Output: Our last two calls to filter() requested all rows for which some condition AND another condition were TRUE. We can also request rows for which EITHER one condition OR another condition are TRUE. For example, filter(cran, country == "US" | country == "IN") will gives us all rows for which the country variable equals either "US" or "IN". Give it a go.
+  CorrectAnswer: filter(cran, country == "US" | country == "IN")
+  AnswerTests: any_of_exprs('filter(cran, country == "US" | country == "IN")', 'filter(cran, country == "IN" | country == "US")')
+  Hint: filter(cran, country == "US" | country == "IN") will return all rows for which country equals "US" or "IN". The `|` symbol (called a pipe operator) probably shares a key with the backslash on your keyboard.
+
+- Class: cmd_question
+  Output: 'Now, use filter() to fetch all rows for which size is strictly greater than (>) 100500 (no quotes, since size is numeric) AND r_os equals "linux-gnu". Hint: You are passing three arguments to filter(): the name of the dataset, the first condition, and the second condition.'
+  CorrectAnswer: filter(cran, size > 100500, r_os == "linux-gnu")
+  AnswerTests: any_of_exprs('filter(cran, size > 100500, r_os == "linux-gnu")', 'filter(cran, r_os == "linux-gnu", size > 100500)')
+  Hint: This is a tricky one. filter(cran, size > 100500, r_os == "linux-gnu") will give us all rows for which size is strictly greater than 100500 and r_os is "linux-gnu".
+
+- Class: text
+  Output: Finally, we want to get only the rows for which the r_version is not missing. R represents missing values with NA and these missing values can be detected using the is.na() function.
+
+- Class: cmd_question
+  Output: To see how this works, try is.na(c(3, 5, NA, 10)).
+  CorrectAnswer: is.na(c(3, 5, NA, 10))
+  AnswerTests: omnitest('is.na(c(3, 5, NA, 10))')
+  Hint: Try is.na(c(3, 5, NA, 10)) to see how is.na() works.
+
+- Class: cmd_question
+  Output: 'Now, put an exclamation point (!) before is.na() to change all of the TRUEs to FALSEs and all of the FALSEs to TRUEs, thus telling us what is NOT NA: !is.na(c(3, 5, NA, 10)).'
+  CorrectAnswer: "!is.na(c(3, 5, NA, 10))"
+  AnswerTests: omnitest('!is.na(c(3, 5, NA, 10))')
+  Hint: !is.na(c(3, 5, NA, 10)) will negate the previous command, thus telling us what is NOT NA.
+
+- Class: cmd_question
+  Output: 'Okay, ready to put all of this together? Use filter() to return all rows of cran for which r_version is NOT NA. Hint: You will need to use !is.na() as part of your second argument to filter().'
+  CorrectAnswer: filter(cran, !is.na(r_version))
+  AnswerTests: omnitest('filter(cran, !is.na(r_version))')
+  Hint: This is another tricky one. filter(cran, !is.na(r_version)) will return all rows of cran for which r_version is NOT NA.
+
+- Class: text
+  Output: We've seen how to select a subset of columns and rows from our dataset using select() and filter(), respectively. Inherent in select() was also the ability to arrange our selected columns in any order we please.
+
+- Class: text
+  Output: Sometimes we want to order the rows of a dataset according to the values of a particular variable. This is the job of arrange().
+
+- Class: cmd_question
+  Output: To see how arrange() works, let's first take a subset of cran. select() all columns from size through ip_id and store the result in cran2.
+  CorrectAnswer: cran2 <- select(cran, size:ip_id)
+  AnswerTests: omnitest('cran2 <- select(cran, size:ip_id)')
+  Hint: Use select(cran, size:ip_id) to select all columns from size through ip_id. Store the result in cran2.
+
+- Class: cmd_question
+  Output: Now, to order the ROWS of cran2 so that ip_id is in ascending order (from small to large), type arrange(cran2, ip_id). You may want to make your console wide enough so that you can see ip_id, which is the last column.
+  CorrectAnswer: arrange(cran2, ip_id)
+  AnswerTests: omnitest('arrange(cran2, ip_id)')
+  Hint: arrange(cran2, ip_id) will order the rows of cran2 from smallest ip_id to largest ip_id.
+
+- Class: cmd_question
+  Output: To do the same, but in descending order, change the second argument to desc(ip_id), where desc() stands for 'descending'. Go ahead.
+  CorrectAnswer: arrange(cran2, desc(ip_id))
+  AnswerTests: omnitest('arrange(cran2, desc(ip_id))')
+  Hint: arrange(cran2, desc(ip_id)) will order the rows of our dataset from largest ip_id to smallest ip_id.
+
+- Class: cmd_question
+  Output: We can also arrange the data according to the values of multiple variables. For example, arrange(cran2, package, ip_id) will first arrange by package names (ascending alphabetically), then by ip_id. This means that if there are multiple rows with the same value for package, they will be sorted by ip_id (ascending numerically). Try arrange(cran2, package, ip_id) now.
+  CorrectAnswer: arrange(cran2, package, ip_id)
+  AnswerTests: omnitest('arrange(cran2, package, ip_id)')
+  Hint: Use arrange(cran2, package, ip_id) to sort the data primarily by package name and secondarily by ip_id.
+
+- Class: cmd_question
+  Output: 'Arrange cran2 by the following three variables, in this order: country (ascending), r_version (descending), and ip_id (ascending).'
+  CorrectAnswer: arrange(cran2, country, desc(r_version), ip_id)
+  AnswerTests: omnitest('arrange(cran2, country, desc(r_version), ip_id)')
+  Hint: arrange(cran2, country, desc(r_version), ip_id) will sort the data by country (ascending) first, then by r_version (descending), and finally by ip_id (ascending).
+
+- Class: cmd_question
+  Output: To illustrate the next major function in dplyr, let's take another subset of our original data. Use select() to grab 3 columns -- ip_id, package, and size (in that order) -- and store the result in a new variable called cran3.
+  CorrectAnswer: cran3 <- select(cran, ip_id, package, size)
+  AnswerTests: omnitest('cran3 <- select(cran, ip_id, package, size)')
+  Hint: cran3 <- select(cran, ip_id, package, size) will store just these three columns in a new variable called cran3.
+
+- Class: cmd_question
+  Output: Take a look at cran3 now.
+  CorrectAnswer: cran3
+  AnswerTests: any_of_exprs('cran3', 'print(cran3)')
+  Hint: Type cran3 to view its contents.
+
+- Class: text
+  Output: It's common to create a new variable based on the value of one or more variables already in a dataset. The mutate() function does exactly this.
+
+- Class: text
+  Output: The size variable represents the download size in bytes, which are units of computer memory. These days, megabytes (MB) are a more common unit of measurement. One megabyte is equal to 2^20 bytes. That's 2 to the power of 20, which is approximately one million bytes!
+
+- Class: cmd_question
+  Output: "We want to add a column called size_mb that contains the download size in megabytes. Here's the code to do it:\n\nmutate(cran3, size_mb = size / 2^20)"
+  CorrectAnswer: mutate(cran3, size_mb = size / 2^20)
+  AnswerTests: omnitest('mutate(cran3, size_mb = size / 2^20)')
+  Hint: mutate(cran3, size_mb = size / 2^20) will add a new column called size_mb that contains the download size in megabytes.
+
+- Class: text
+  Output: An even larger unit of memory is a gigabyte (GB), which equals 2^10 megabytes. We might as well add another column for download size in gigabytes!
+
+- Class: cmd_question
+  Output: One very nice feature of mutate() is that you can use the value computed for your second column (size_mb) to create a third column, all in the same line of code. To see this in action, repeat the exact same command as above, except add a third argument creating a column that is named size_gb and equal to size_mb / 2^10.
+  CorrectAnswer: mutate(cran3, size_mb = size / 2^20, size_gb = size_mb / 2^10)
+  AnswerTests: omnitest('mutate(cran3, size_mb = size / 2^20, size_gb = size_mb / 2^10)')
+  Hint: Use mutate(cran3, size_mb = size / 2^20, size_gb = size_mb / 2^10) to create two new columns called size_mb and size_gb, respectively.
+
+- Class: cmd_question
+  Output: Let's try one more for practice. Pretend we discovered a glitch in the system that provided the original values for the size variable. All of the values in cran3 are 1000 bytes less than they should be. Using cran3, create just one new column called correct_size that contains the correct size.
+  CorrectAnswer: mutate(cran3, correct_size = size + 1000)
+  AnswerTests: omnitest('mutate(cran3, correct_size = size + 1000)')
+  Hint: mutate(cran3, correct_size = size + 1000) will create one new column that is equal to the original sizes plus 1000.
+
+- Class: cmd_question
+  Output: The last of the five core dplyr verbs, summarize(), collapses the dataset to a single row. Let's say we're interested in knowing the average download size. summarize(cran, avg_bytes = mean(size)) will yield the mean value of the size variable. Here we've chosen to label the result 'avg_bytes', but we could have named it anything. Give it a try.
+  CorrectAnswer: summarize(cran, avg_bytes = mean(size))
+  AnswerTests: omnitest('summarize(cran, avg_bytes = mean(size))')
+  Hint: summarize(cran, avg_bytes = mean(size)) will give us the mean size and label the result 'avg_bytes'.
+
+- Class: text
+  Output: That's not particularly interesting. summarize() is most useful when working with data that has been grouped by the values of a particular variable.
+
+- Class: text
+  Output: We'll look at grouped data in the next lesson, but the idea is that summarize() can give you the requested value FOR EACH group in your dataset.
+
+- Class: text
+  Output: In this lesson, you learned how to manipulate data using dplyr's five main functions. In the next lesson, we'll look at how to take advantage of some other useful features of dplyr to make your life as a data analyst much easier.
+
+
+
+

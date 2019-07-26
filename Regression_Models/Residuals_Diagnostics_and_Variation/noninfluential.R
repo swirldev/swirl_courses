@@ -1,0 +1,11 @@
+local({
+  fit.1 <- lm(y ~ x, out1[-1,])
+  fit <- lm(y ~ x, out1)
+  plot(c(-3, 6), c(-3, 6), type='n', xlab="x", ylab="y", main="Outlier with minor influence")
+  points(y ~ x, out1, pch=21, bg="lightblue")
+  points(out1[1,2], out1[1,1], cex = 2, bg = "darkorange", col = "black", pch = 21)
+  text(out1[1,2], out1[1,1]+.25, "Outlier", pos=3)
+  abline(fit.1, lwd=2)
+  abline(fit, col='darkorange', lwd=4, lty=2)
+  legend('bottomright', c("Fit with outlier omitted", "Fit with outlier included"), lty=1:2, col=c("black", "darkorange"), lwd=c(2,4))
+})

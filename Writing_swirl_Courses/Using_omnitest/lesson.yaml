@@ -1,0 +1,140 @@
+- Class: meta
+  Course: Writing swirl Courses
+  Lesson: Using omnitest
+  Author: swirl coders
+  Type: Standard
+  Organization: swirl-coders
+  Version: 2.2.20
+
+- Class: text
+  Output: "Please open swirl_temp/lesson.yaml file in your working directory if necessary. 
+  This lesson is a brief demonstration of omnitest and related functionality. It 
+  will also introduce some question classes not covered in previous lessons."
+
+- Class: text
+  Output: "Omnitest can grade student answers for a correct expression, a correct value, 
+  or both. In the case of values it is limited to testing for character or numerical 
+  vectors of length 1. This limitation should be loosened in future versions. 
+  Omnitest's general signature is: omnitest(correctExpr=NULL, correctVal=NULL,
+  strict=FALSE)."
+
+- Class: mult_question
+  Output: "First, we'll use omnitest(correctVal='Mamma Mia!') to grade the answer to
+  a multiple choice question. Please view this question in the lesson.yaml file to
+  best understand how it works. The question is this: Which movie involves Pierce 
+  Brosnan in a singing role?"
+  CorrectAnswer: Mamma Mia!
+  AnswerChoices: Mamma Mia!;Guys and Dolls;Once is Not Enough
+  AnswerTests: omnitest(correctVal='Mamma Mia!')
+  Hint: "In Guys and Dolls, Marlon Brando sings (not that well.) In Once is Not Enough, 
+  007 doesn't (thankfully, if you've heard him in Mama Mia!)"
+
+# This is the first appearance of an exact question in the course.
+- Class: exact_question
+  Output: "Next, we'll use omnitest(correctVal=3) to grade an exact numerical answer entered
+  at the command line. Class exact_question has not been used as often as it might be. 
+  It should not tend to cause problems, since answering is just a matter of typing an 
+  integer. How many Stooges are there?"
+  CorrectAnswer: 3
+  AnswerTests: omnitest(correctVal=3)
+  Hint: "This one should be obvious! Nyuk, Nyuk, Nyuk!"
+
+- Class: cmd_question
+  Output: "Now we'll use omnitest(correctExpr='scooby <- c(1969, 2014)') to test
+  that a user has entered a particular command: Please enter scooby <- c(1969, 2014)"
+  CorrectAnswer: scooby <- c(1969, 2014)
+  AnswerTests: omnitest(correctExpr='scooby <- c(1969, 2014)')
+  Hint: "So far, Scooby has been on the air or in theaters from 1969 to 2014. Enter
+  scooby <- c(1969, 2014)"
+
+- Class: cmd_question
+  Output: "Omnitest has strict and casual modes. We'll demonstrate casual, the default,
+    by using omnitest(correctExpr='3^2', correctVal=9) to test that a user has entered
+    a command which computes a specific value but perhaps in a different manner than
+    anticipated. The correct expression is 3^2, but enter 3*3."
+  CorrectAnswer: 3^2
+  AnswerTests: omnitest(correctExpr='3^2', correctVal=9)
+  Hint: Enter 3^2.
+
+- Class: cmd_question
+  Output: "Next, we'll demonstrate strict mode for same question, 
+  using omnitest(correctExpr='3^2', correctVal=9, strict=TRUE) to test that a user 
+  has entered a command which computes a specific value in a particular way. The correct 
+  expression is 3^2. Entering 3*3 will fail."
+  CorrectAnswer: 3^2
+  AnswerTests: omnitest(correctExpr='3^2', correctVal=9, strict=TRUE)
+  Hint: Enter 3^2
+
+- Class: text
+  Output: "Of all swirl's built-in tests, omnitest is the most frequently used for testing 
+  expressions or commands, and in that respect the most sophisticated. As noted 
+  earlier it is not very capable when it comes to testing values. Users very frequently 
+  complain because swirl does not allow certain answers even though they are correct. For 
+  instance, if a user is asked to bring up the help page for function par, and the course 
+  author uses omnitest(correctExpr='?par') as the AnswerTest, an answer of help(par) 
+  will not pass even though it is correct."
+
+# Note that, in the Hint for this question, escape sequences, \", are used for double
+# quotes within double quotes.
+- Class: cmd_question
+  Output: "So, we have tried to make omnitest better. In fact, additional improvements are 
+  in beta at the time of this writing. The current version of omnitest depends on function 
+  rmatch_calls. Bring up the help page for rmatch_calls now."
+  CorrectAnswer: ?rmatch_calls
+  AnswerTests: any_of_exprs('?rmatch_calls', '?"rmatch_calls"', 'help(rmatch_calls)', 'help("rmatch_calls")')
+  Hint: "Because omnitest is somewhat clever, a number of expressions would work. For instance, 
+  omnitest will treat ?\"rmatch_calls\" and ?'rmatch_calls' as equivalent. However, neither of 
+  those expressions is the same as ?rmatch_calls because 'rmatch_calls' with quotes is a 
+  character vector and rmatch_calls without quotes is a function. Moreover, ? and help, are 
+  not identical as functions, as we'll demonstrate shortly."
+
+- Class: mult_question  
+  Output: "Please read the help page for rmatch_calls, and the Hint for the previous question.
+  (The Hint will be found in the lesson.yaml file, of course.)
+  Afterwards, answer the following. What does rmatch_calls do?"
+  AnswerChoices: "Expands a function call to include default values of named formals;
+  Traverses a syntax tree from bottom up;Fails on S4 and reference class methods."
+  CorrectAnswer: "Expands a function call to include default values of named formals"
+  AnswerTests: omnitest()
+  Hint: "Yep. All are correct. If omnitest is given no arguments it treats any answer as right."
+
+- Class: cmd_question
+  Output: "If you have read the Hints for the previous two questions, you know at least two 
+  things: 1) that omnitest() without arguments allows any answer and 2) that ? and help are not the same 
+  function. We'll demonstrate point 2 by using rmatch_calls itself. Since rmatch_calls requires 
+  expressions as arguments, we'll use R's quote() function to form them. Expressions are 
+  formal objects which result when a command is parsed by the R interpreter. Expressions are 
+  also called abstract syntax trees. We would like to compare the parsed versions of ?par 
+  and help(par), which both bring up the help page for par(). We form the parsed versions 
+  using quote(?par) and quote(help(par)) repspectively. Enter rmatch_calls(quote(?par)) 
+  first."
+  CorrectAnswer: rmatch_calls(quote(?par))
+  AnswerTests: omnitest(correctExpr='rmatch_calls(quote(?par))')
+  Hint: Just enter rmatch_calls(quote(?par)).
+
+- Class: cmd_question
+  Output: "You can see that ? is a function with one named argument, e1, which in this case 
+  has value par. Now enter rmatch_calls(quote(help(par)))."
+  CorrectAnswer: rmatch_calls(quote(help(par)))
+  AnswerTests: omnitest(correctExpr='rmatch_calls(quote(help(par)))')
+  Hint: Just enter rmatch_calls(quote(help(par))).
+
+- Class: cmd_question
+  Output: "Function help() has six named arguments, which in this case have default values 
+  except for topic. Named arguments can be given in any order, and this used to present 
+  headaches for course authors. The current version of omnitest handles this problem by 
+  relying on rmatch_calls to put arguments in canonical order. To demonstrate use
+  rmatch_calls on the expression, quote(help(package=swirl, topic=omnitest)), in which 
+  the topic and package arguments are in order opposite to canonical."
+  CorrectAnswer: rmatch_calls(quote(help(package=swirl, topic=omnitest)))
+  AnswerTests: "any_of_exprs('rmatch_calls(quote(help(package=swirl, topic=omnitest)))', 
+  'rmatch_calls(quote(help(package=\"swirl\", topic=omnitest)))',
+  'rmatch_calls(quote(help(package=swirl, topic=\"omnitest\")))',
+  'rmatch_calls(quote(help(package=\"swirl\", topic=\"omnitest\")))')"
+  Hint: Just enter rmatch_calls(quote(help(package=swirl, topic=omnitest))).
+
+- Class: text
+  Output: "This completes the lesson on using omnitest. It is quite possible to write  
+  decent swirl lessons using just the material from this and the previous two lessons. 
+  The subsequent two lessons which cover other question types and introduce custom tests 
+  round out the basics of writing swirl courses."

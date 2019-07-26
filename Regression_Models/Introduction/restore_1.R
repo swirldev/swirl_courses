@@ -1,0 +1,1 @@
+plot(child ~ parent, galton)
