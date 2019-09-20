@@ -128,7 +128,7 @@
   Output: That's easier to see! Now we'll close with two, more complicated scatterplot examples.
 
 - Class: cmd_question
-  Output:  We'll rerun the plot you just did (carat,price,data=diamonds and color=cut) but add an additional parameter. Use geom_smooth with the method set equal to the string "lm".
+  Output:  We'll rerun the plot you just did (carat,price,data=diamonds and color=cut) but add an additional function. Use geom_smooth with the method set equal to the string "lm".
   CorrectAnswer: qplot(carat,price,data=diamonds, color=cut) + geom_smooth(method="lm")
   AnswerTests: omnitest(correctExpr='qplot(carat,price,data=diamonds, color=cut) + geom_smooth(method="lm")')
   Hint: Type qplot(carat,price,data=diamonds, color=cut) + geom_smooth(method="lm") at the command prompt.
