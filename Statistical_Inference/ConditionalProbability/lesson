@@ -59,6 +59,12 @@
   Output: Suppose we don't know P(A) itself, but only know its conditional probabilities, that is, the probability that it occurs if B occurs and the probability that it occurs if B doesn't occur. These are  P(A|B) and P(A|~B), respectively. We use ~B to represent 'not B' or 'B complement'. 
 
 - Class: text
+  Output: Since B and ~B are by definition disjoint sets, we can add the probabilities of the two subsets, P(A|B) and P(A|~B), to give the probability of A. 
+
+- Class: text
+  Output: Then we can rewrite P(A) = P(A|B) + P(A|~B) using our initial conditional probability statement, P(A|B) = P(A&B) / P(B), as well as the same for P(A|~B). 
+
+- Class: text
   Output: We can then express P(A) = P(A|B) * P(B) + P(A|~B) * P(~B) and substitute this is into the denominator of Bayes' Formula. 
 
 - Class: text
