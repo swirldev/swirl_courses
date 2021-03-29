@@ -133,7 +133,7 @@
   Hint: Var(X_i) is the constant value sigma^2 and we're summing over n of them.
 
 - Class: text
-  Output: So we've shown that Var(X')=Var(1/n*Sum(X_i))=(1/n^2)*Var(Sum(X_i))=(1/n^2)*Sum(sigma^2)=sigma^2/n for infinite populations when our samples are independent. 
+  Output: So we've shown that Var(X')=Var(1/n*Sum(X_i))=(1/n^2)*Var(Sum(X_i))=(1/n^2)*n*(sigma)^2=sigma^2/n for infinite populations when our samples are independent. 
 
 - Class: text
   Output: The standard deviation of a statistic is called its standard error, so the standard error of the sample mean is the square root of its variance.
