@@ -16,7 +16,7 @@
   Hint: Type Sys.getlocale("LC_TIME") to view your time locale.
 
 - Class: text
-  Output: If the output above is not "en_US.UTF-8", this lesson is not guaranteed to work correctly. Of course, you are welcome to try it anyway. We apologize for this inconvenience.
+  Output: If the output above is not "en_US.UTF-8", you can change the locale used by R for the duration of this session by typing Sys.setlocale("LC_TIME", "en_US.UTF-8"). Otherwise, this lesson is not guaranteed to work correctly. We apologize for this inconvenience.
 
 - Class: cmd_question
   Output: lubridate was automatically installed (if necessary) and loaded upon starting this lesson. To build the habit, we'll go ahead and (re)load the package now. Type library(lubridate) to do so.
@@ -100,13 +100,13 @@
   Hint: Type my_date to view its contents.
 
 - Class: cmd_question
-  Output: It looks almost the same, except for the addition of a time zone, which we'll discuss later in the lesson. Below the surface, there's another important change that takes place when lubridate parses a date. Type class(my_date) to see what that is.
+  Output: It might look the same, but below the surface, there's another important change that takes place when lubridate parses a date. Type class(my_date) to see what that is.
   CorrectAnswer: class(my_date)
   AnswerTests: omnitest('class(my_date)')
   Hint: Type class(my_date) to see what important change takes place when lubridate parses a date.
 
 - Class: text
-  Output: So ymd() took a character string as input and returned an object of class POSIXct. It's not necessary that you understand what POSIXct is, but just know that it is one way that R stores date-time information internally.
+  Output: So ymd() took a character string as input and returned an object of class Date, which is how R stores date information internally.
 
 - Class: cmd_question
   Output: '"1989-05-17" is a fairly standard format, but lubridate is ''smart'' enough to figure out many different date-time formats. Use ymd() to parse "1989 May 17". Don''t forget to put quotes around the date!'
@@ -145,10 +145,25 @@
   Hint: Type dt1 to view its contents.
 
 - Class: cmd_question
-  Output: Now parse dt1 with ymd_hms().
-  CorrectAnswer: ymd_hms(dt1)
-  AnswerTests: omnitest('ymd_hms(dt1)')
-  Hint: ymd_hms(dt1) will parse dt1.
+  Output: Now parse dt1 with ymd_hms(), and store the result in dt1_parsed.
+  CorrectAnswer: dt1_parsed <- ymd_hms(dt1)
+  AnswerTests: omnitest('dt1_parsed <- ymd_hms(dt1)')
+  Hint: dt1_parsed <- ymd_hms(dt1) will parse dt1 and store the result.
+
+- Class: cmd_question
+  Output: Now take a look at dt1_parsed.
+  CorrectAnswer: dt1_parsed
+  AnswerTests: omnitest('dt1_parsed')
+  Hint: Type dt1_parsed to view its contents.
+
+- Class: cmd_question
+  Output: It looks almost the same, except for the addition of a time zone, which we'll discuss later in the lesson. Let's use class(dt1_parsed) to see what the class is.
+  CorrectAnswer: class(dt1_parsed)
+  AnswerTests: omnitest('class(dt1_parsed)')
+  Hint: Type class(dt1_parsed) to see what class is used to represent date-times.
+
+- Class: text
+  Output: This time, instead of Date, the object returned by ymd_hms() is of class POSIXct. It's not necessary that you understand what POSIXct is, but just know that it stores date-time information.
 
 - Class: cmd_question
   Output: What if we have a time, but no date? Use the appropriate lubridate function to parse "03:22:14" (hh:mm:ss).
