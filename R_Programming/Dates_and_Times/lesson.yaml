@@ -5,6 +5,7 @@
   Type: Standard
   Organization: JHU Biostat
   Version: 2.2.11
+  Parse: -_-
 
 - Class: text
   Output: R has a special way of representing dates and times, which can be helpful if you're working with data that show how something changes over time (i.e. time-series data) or if your data contain some other temporal information, like dates of birth.
@@ -142,10 +143,11 @@
   Output: strptime() converts character vectors to POSIXlt. In that sense, it is similar to as.POSIXlt(), except that the input doesn't have to be in a particular format (YYYY-MM-DD).
 
 - Class: cmd_question
-  Output: 'To see how it works, store the following character string in a variable called t3: "October 17, 1986 08:24" (with the quotes).'
-  CorrectAnswer: t3 <- "October 17, 1986 08:24"
-  AnswerTests: omnitest(correctExpr='t3 <- "October 17, 1986 08:24"')
-  Hint: Store "October 17, 1986 08:24" (including the quotes) in a new variable called t3.
+  Output: 'To see how it works, store the following character string in a variable called t3: "-_-" (with the quotes).'
+  CorrectAnswer: t3 <- "-_-"
+  AnswerTests: omnitest(correctExpr='t3 <- "-_-"')
+  Hint: Store "-_-" (including the quotes) in a new variable called t3.
+  Parse: format(x = as.POSIXlt("1986-10-17 08:24"), format = "%B %d, %Y %H:%M")
 
 - Class: cmd_question
   Output: 'Now, use strptime(t3, "%B %d, %Y %H:%M") to help R convert our date/time object to a format that it understands. Assign the result to a new variable called t4. (You should pull up the documentation for strptime() if you''d like to know more about how it works.)'
