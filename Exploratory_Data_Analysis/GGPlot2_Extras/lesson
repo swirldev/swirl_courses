@@ -98,7 +98,7 @@
   Hint: Type qplot(price,data=diamonds,geom="density",color=cut) at the command prompt.
 
 - Class: text
-  Output: See how easily qplot did this? Four of the five cuts have 2 peaks, one at price $1000 and the other between $4000 and $5000. The exception is the Fair cut which has a single peak at $2500. This gives us a little more understanding of the histogram we saw before.
+  Output: See how easily qplot did this? Four of the five cuts have 2 peaks, one at price $1000 and the other between $4000 and $5000. The exception is the Ideal cut which has a single peak at $2500. This gives us a little more understanding of the histogram we saw before.
 
 - Class: text
   Output: Let's move on to scatterplots. For these we'll need to specify two variables from the diamond dataset.
