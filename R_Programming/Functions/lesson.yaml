@@ -132,10 +132,10 @@
 
 - Class: cmd_question
   Output: "Now let's test the remainder function by providing two arguments.
-    Type: remainder(11, 5) and let's see what happens."
-  CorrectAnswer: remainder(11, 5)
-  AnswerTests: omnitest(correctExpr='remainder(11, 5)')
-  Hint: "Let's test your remainder function by running: remainder(11, 5)"
+    Type: remainder(5, 3) and let's see what happens."
+  CorrectAnswer: remainder(5, 3)
+  AnswerTests: omnitest(correctExpr='remainder(5, 3)')
+  Hint: "Let's test your remainder function by running: remainder(5, 3)"
 
 - Class: text
   Output: "Once again, the arguments have been matched appropriately."
