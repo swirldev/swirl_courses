@@ -1,3 +1,6 @@
+# issue #93
+Sys.setlocale("LC_TIME", "English")
+
 # Handles time info with ymd_hms()
 dt1 <- '2014-08-23 17:23:02'
 
