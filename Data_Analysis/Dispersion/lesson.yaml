@@ -215,8 +215,8 @@
   AnswerChoices: higher; lower; the same
   CorrectAnswer: higher
   AnswerTests: word=higher
-  Hint: Look to see if the range of cars of type 'large' is greater or less than that
-    of cars of type 'small'.
+  Hint: Look to see if the variability of prices of cars of type 'large'
+    is higher or lower than that of cars of type 'small'.
 
 - Class: text
   Output: 'You have officially mastered the concept of dispersion and have fully learned
