@@ -49,10 +49,10 @@
   Output: If your dplyr version is not at least 0.4.0, then you should hit the Esc key now, reinstall dplyr, then resume this lesson where you left off.
 
 - Class: cmd_question
-  Output: "The first step of working with data in dplyr is to load the data into what the package authors call a 'data frame tbl' or 'tbl_df'. Use the following code to create a new tbl_df called cran: \n\ncran <- tbl_df(mydf)."
-  CorrectAnswer: cran <- tbl_df(mydf)
-  AnswerTests: omnitest(correctExpr='cran <- tbl_df(mydf)')
-  Hint: Type cran <- tbl_df(mydf) to create a new tbl_df called cran.
+  Output: "The first step of working with data in dplyr is to load the data into what the package authors call a 'data frame tbl' or 'as_tibble'. Use the following code to create a new as_tibble called cran: \n\ncran <- as_tibble(mydf)."
+  CorrectAnswer: cran <- as_tibble(mydf)
+  AnswerTests: omnitest(correctExpr='cran <- as_tibble(mydf)')
+  Hint: Type cran <- as_tibble(mydf) to create a new as_tibble called cran.
 
 - Class: cmd_question
   Output: To avoid confusion and keep things running smoothly, let's remove the original data frame from your workspace with rm("mydf").
@@ -61,10 +61,10 @@
   Hint: Use rm("mydf") to remove the original data frame from your workspace.
 
 - Class: cmd_question
-  Output: From ?tbl_df, "The main advantage to using a tbl_df over a regular data frame is the printing." Let's see what is meant by this. Type cran to print our tbl_df to the console.
+  Output: From ?as_tibble, "The main advantage to using a as_tibble over a regular data frame is the printing." Let's see what is meant by this. Type cran to print our as_tibble to the console.
   CorrectAnswer: cran
   AnswerTests: omnitest(correctExpr='cran')
-  Hint: Type cran to print our tbl_df to the console.
+  Hint: Type cran to print our as_tibble to the console.
 
 - Class: text
   Output: This output is much more informative and compact than what we would get if we printed the original data frame (mydf) to the console.
@@ -202,7 +202,7 @@
   Output: 'Now, put an exclamation point (!) before is.na() to change all of the TRUEs to FALSEs and all of the FALSEs to TRUEs, thus telling us what is NOT NA: !is.na(c(3, 5, NA, 10)).'
   CorrectAnswer: "!is.na(c(3, 5, NA, 10))"
   AnswerTests: omnitest('!is.na(c(3, 5, NA, 10))')
-  Hint: !is.na(c(3, 5, NA, 10)) will negate the previous command, thus telling us what is NOT NA.
+  Hint: Use !is.na(c(3, 5, NA, 10)) will negate the previous command, thus telling us what is NOT NA.
 
 - Class: cmd_question
   Output: 'Okay, ready to put all of this together? Use filter() to return all rows of cran for which r_version is NOT NA. Hint: You will need to use !is.na() as part of your second argument to filter().'
