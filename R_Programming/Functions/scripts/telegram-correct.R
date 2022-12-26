@@ -22,7 +22,7 @@
 # }
 #
 # The simon_says function works just like the paste function, except the
-# begining of every string is prepended by the string "Simon says:"
+# beginning of every string is prepended by the string "Simon says:"
 #
 # Telegrams used to be peppered with the words START and STOP in order to
 # demarcate the beginning and end of sentences. Write a function below called 
