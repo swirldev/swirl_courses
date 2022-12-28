@@ -99,7 +99,7 @@
   Hint: Type myhigh at the command prompt.
 
 - Class: text
-  Output: Comparing the values of myhigh with the plot, we see the first entries in the vector (29, 29, 31, 30,...) correspond to the leftmost points in the the plot (in order), and the last entries in myhigh (28, 29, 26, 26, 26) correspond to the rightmost plotted points. So, specifying the y parameter only, without an x argument, plots the values of the y argument in the order in which they occur in the data.
+  Output: Comparing the values of myhigh with the plot, we see the first entries in the vector (29, 29, 31, 30,...) correspond to the leftmost points in the plot (in order), and the last entries in myhigh (28, 29, 26, 26, 26) correspond to the rightmost plotted points. So, specifying the y parameter only, without an x argument, plots the values of the y argument in the order in which they occur in the data.
 
 - Class: cmd_question
   Output: The all-purpose qplot can also create box and whisker plots.  Call qplot now with 4 arguments. First specify the variable by which you'll split the data, in this case drv, then specify the variable which you want to examine, in this case hwy. The third argument is data (set equal to mpg), and the fourth, the geom, set equal to the string "boxplot"
