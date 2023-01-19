@@ -130,7 +130,7 @@
   Hint: Type g + geom_point(aes(color = drv)) + labs(title="Swirl Rules!") + labs(x="Displacement", y="Hwy Mileage") at the command prompt.
 
 - Class: cmd_question
-  Output: Note that you could have combined the two calls to the function labs in the previous example. Now we'll practice customizing the geom_smooth calls. Use g and add to it a call to geom_point setting the color to drv type (remember to use the call to the aes function), size set to 2 and alpha to 1/2. Then add a call to geom_smooth with 4 arguments. Set size equal to 4, linetype to 3, method to "lm", and se to FALSE.
+  Output: Note that you could have combined the two calls to the function labs in the previous example. Now we'll practice customizing the geom_smooth calls. Use g and add to it a call to geom_point setting the color to drv type (remember to use the call to the aes function), size set to 2 and alpha to 1/2. Then add a call to geom_smooth with 4 arguments. Set size equal to 4, linetype to 3, method to "lm", and set to FALSE.
   CorrectAnswer: g + geom_point(aes(color = drv),size=2,alpha=1/2) + geom_smooth(size=4,linetype=3,method="lm",se=FALSE)
   AnswerTests: ANY_of_exprs('g + geom_point(aes(color = drv),size=2,alpha=1/2) + geom_smooth(size=4,linetype=3,method="lm",se=FALSE)','g + geom_point(aes(color = drv),size=2,alpha=.5) + geom_smooth(size=4,linetype=3,method="lm",se=FALSE)')
   Hint: Type g + geom_point(aes(color = drv),size=2,alpha=1/2) + geom_smooth(size=4,linetype=3,method="lm",se=FALSE) at the command prompt.
