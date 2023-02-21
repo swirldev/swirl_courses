@@ -202,7 +202,7 @@
   Output: 'Now, put an exclamation point (!) before is.na() to change all of the TRUEs to FALSEs and all of the FALSEs to TRUEs, thus telling us what is NOT NA: !is.na(c(3, 5, NA, 10)).'
   CorrectAnswer: "!is.na(c(3, 5, NA, 10))"
   AnswerTests: omnitest('!is.na(c(3, 5, NA, 10))')
-  Hint: !is.na(c(3, 5, NA, 10)) will negate the previous command, thus telling us what is NOT NA.
+  Hint: Try !is.na(c(3, 5, NA, 10)) will negate the previous command, thus telling us what is NOT NA.
 
 - Class: cmd_question
   Output: 'Okay, ready to put all of this together? Use filter() to return all rows of cran for which r_version is NOT NA. Hint: You will need to use !is.na() as part of your second argument to filter().'
