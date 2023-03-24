@@ -23,6 +23,6 @@ path2csv <- file.path(.get_course_path(),
 # doing this, but it will be necessary for students who
 # quit and later resume. We are not saving the variable
 # to the progress file to save on performance.
-cran <- tbl_df(read.csv(path2csv, stringsAsFactors = FALSE))
+cran <- as_tibble(read.csv(path2csv, stringsAsFactors = FALSE))
 cran2 <- select(cran, size:ip_id)
 cran3 <- select(cran, ip_id, package, size)
