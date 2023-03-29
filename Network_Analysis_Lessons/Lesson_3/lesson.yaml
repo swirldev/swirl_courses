@@ -1,0 +1,163 @@
+- Class: District Data Labs
+  Course: Network Analysis and Visualization in R
+  Lesson: Lesson 3
+  Author: Amanda Traud
+  Type: Standard
+  Version: 2.2.16
+  
+- Class: text
+  Output: In this lesson, we will explore R's network partitioning capabilities.
+  
+- Class: text
+  Output: If at any point you'd like more information on a particular topic related
+    to R, you can type help.start() at the prompt, which will open a menu of resources
+    (either within RStudio or your default web browser, depending on your setup).
+    Alternatively, a simple web search often yields the answer you're looking for.
+
+- Class: text
+  Output: There are several commands for partitioning networks in igraph, we are going to look at a few and their results on a few different networks. The three networks available are called caveman networks, each have 100 nodes.  The first has 5 caves, the second has 10 caves, and the third has 20 caves.
+
+
+- Class: cmd_question
+  Output: We are going to start by plotting each of the caveman networks in your workspace. Plot gcave1.
+  CorrectAnswer: plot(gcave1)
+  AnswerTests: omnitest(correctExpr="plot(gcave1)")
+  Hint: Type plot(gcave1) and press Enter.
+  
+- Class: cmd_question
+  Output: Now plot gcave2.
+  CorrectAnswer: plot(gcave2) 
+  AnswerTests: omnitest(correctExpr="plot(gcave2)")
+  Hint: Type plot(gcave2) and press Enter.
+  
+- Class: cmd_question
+  Output: And finally, plot gcave3.
+  CorrectAnswer: plot(gcave3)
+  AnswerTests: omnitest(correctExpr="plot(gcave3)")
+  Hint: Type plot(gcave3) and press Enter.
+  
+- Class: text
+  Output: The structure of each of these networks shows distinct groups of nodes that more connected to each other than to the rest of the network.  Today we are going to use leading eigenvector community detection, edge betweenness community detection, fast and greedy community detection, multilevel community detection, and walk trap community detection.
+  
+  
+- Class: cmd_question
+  Output: We are first going to use the leading.eigenvector.community() command to detect communities in gcave1.  Type lecomms1=leading.eigenvector.community(gcave1) and press enter.
+  CorrectAnswer: lecomms1=leading.eigenvector.community(gcave1)
+  AnswerTests: omnitest(correctExpr="lecomms1=leading.eigenvector.community(gcave1)")
+  Hint: Type lecomms1=leading.eigenvector.community(gcave1) and press Enter.
+
+- Class: cmd_question
+  Output: Now plot the output.  Type plot(lecomms1, gcave1) and press enter.
+  CorrectAnswer: plot(lecomms1, gcave1)
+  AnswerTests: omnitest(correctExpr="plot(lecomms1, gcave1)")
+  Hint: Type plot(lecomms1, gcave1) and press Enter.
+
+- Class: text
+  Output: Community detection commands in igraph produce a very special communities object which carries with it the information for highlighting communities in networks as well as many other things.
+  
+  
+- Class: cmd_question
+  Output: Check out what the communities object you just created holds.
+  CorrectAnswer: lecomms1
+  AnswerTests: omnitest(correctVal="lecomms1")
+  Hint: Type lecomms1 and press Enter.
+
+- Class: text
+  Output: There are 5 caves in this network.  How many communities did this algorithm find?  Let's use another of the community detection algorithms on gcave2.
+  
+- Class: cmd_question
+  Output: Use the edge.betweenness.community() command to find the communities in gcave2 by typing ebcomms2=edge.betweenness.community(gcave2).
+  CorrectAnswer: ebcomms2=edge.betweenness.community(gcave2)
+  AnswerTests: omnitest(correctExpr="ebcomms2=edge.betweenness.community(gcave2)")
+  Hint: Type ebcomms2=edge.betweenness.community(gcave2) and press Enter.
+
+- Class: cmd_question
+  Output: Now plot them by typing plot(ebcomms2, gcave2).
+  CorrectAnswer: plot(ebcomms2, gcave2)
+  AnswerTests: omnitest(correctExpr="plot(ebcomms2, gcave2)")
+  Hint: Type plot(ebcomms2, gcave2) and press Enter.
+
+
+- Class: text
+  Output: Edge Betweenness community detection found 10 communities in the network and these communities exactly correspond with the caves.  Now let's try fast and greedy community detection on gcave3.
+  
+  
+- Class: cmd_question
+  Output: Type fgcomms3=fastgreedy.community(gcave3) and press enter.
+  CorrectAnswer: fgcomms3=fastgreedy.community(gcave3)
+  AnswerTests: omnitest(correctExpr="fgcomms3=fastgreedy.community(gcave3)")
+  Hint: Type fgcomms3=fastgreedy.community(gcave3) and press Enter.
+
+- Class: cmd_question
+  Output: Now plot the output.
+  CorrectAnswer: plot(fgcomms3, gcave3)
+  AnswerTests: omnitest(correctExpr="plot(fgcomms3, gcave3)")
+  Hint: Type plot(fgcomms3, gcave3) and press Enter.
+
+- Class: text
+  Output: Fast and greedy community detection found 20 communities in the gcave3 network, again corresponding exactly with the cave assignment.  Now let's try multilevel community detection on gcave1.
+
+- Class: cmd_question
+  Output: Type mlcomms1=multilevel.community(gcave1) and press enter.
+  CorrectAnswer: mlcomms1=multilevel.community(gcave1)
+  AnswerTests: omnitest(correctExpr="mlcomms1=multilevel.community(gcave1)")
+  Hint: Type mlcomms1=multilevel.community(gcave1) and press Enter.
+
+- Class: cmd_question
+  Output: Now plot them.
+  CorrectAnswer: plot(mlcomms1, gcave1)
+  AnswerTests: omnitest(correctExpr="plot(mlcomms1, gcave1)")
+  Hint: Type plot(mlcomms1, gcave1) and press Enter.
+
+
+- Class: text
+  Output: Multilevel community detection found 5.  These communities again perfectly correspond to the caves.  Let's try out one last community detection algorithm, walk trap, on gcave2.
+
+
+- Class: cmd_question
+  Output: Type wtcomms2=walktrap.community(gcave2) and press enter.
+  CorrectAnswer: wtcomms2=walktrap.community(gcave2)
+  AnswerTests: omnitest(correctExpr="wtcomms2=walktrap.community(gcave2)")
+  Hint: Type wtcomms2=walktrap.community(gcave2) and press Enter.
+
+- Class: cmd_question
+  Output: Type plot(wtcomms2, gcave2) and press enter.
+  CorrectAnswer: plot(wtcomms2, gcave2)
+  AnswerTests: omnitest(correctExpr="plot(wtcomms2, gcave2)")
+  Hint: Type plot(wtcomms2, gcave2) and press Enter.
+
+
+- Class: text
+  Output: Again, as expected, walk trap community detection produces communities that exactly correspond to caves.  Let's check out the help page for walk trap to find out how it works.
+
+- Class: cmd_question
+  Output: Type ?walktrap.community() and press enter.
+  CorrectAnswer: ?walktrap.community() 
+  AnswerTests: omnitest(correctExpr="?walktrap.community()")
+  Hint: Type ?walktrap.community() and press Enter.
+
+- Class: text
+  Output: There are inputs other than the network that you can put in to change the output.  You can also scroll to the bottom of the help page to find the reference for this community detection algorithm.
+
+
+- Class: text
+  Output: Now let's take a look at the real network in your workspace, karate.  This network is the famous Zachary Karate club network.  Originally there was one Karate club, but due to a big fight, the club split.  By mapping the friendships in the club prior to the split and using community detection, we can predict how the network might split.
+  
+
+- Class: cmd_question
+  Output: The correct split can be visualized using the communities object realsplitk in your workspace. Plot the karate club with its real split
+  CorrectAnswer: plot(realsplitk, karate)
+  AnswerTests: omnitest(correctExpr="plot(realsplitk, karate)")
+  Hint: Type plot(realsplitk, karate) and press Enter.
+
+- Class: cmd_question
+  Output: Now take a few minutes to use the community detection algorithms we just learned on karate by typing in play() and pressing enter.  Do any produce the same split? When you are done, type nxt() to return to this question.  Then type skip() and press enter.
+  CorrectAnswer: play()
+  AnswerTests: omnitest(correctExpr="play()")
+  Hint: Type skip() and press enter.
+
+- Class: text
+  Output: Now it's time for part 4 of the lesson.
+    
+ 
+ 

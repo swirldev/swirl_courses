@@ -1,0 +1,194 @@
+- Class: District Data Labs
+  Course: Network Analysis and Visualization in R
+  Lesson: Lesson 2
+  Author: Amanda Traud
+  Type: Standard
+  Organization: 
+  Version: 2.2.16
+  
+- Class: text
+  Output: In this lesson, we will explore R's network statistics capabilities.
+- Class: text
+  Output: If at any point you'd like more information on a particular topic related
+    to R, you can type help.start() at the prompt, which will open a menu of resources
+    (either within RStudio or your default web browser, depending on your setup).
+    Alternatively, a simple web search often yields the answer you're looking for.
+
+- Class: text
+  Output: There are several commands for calculating network statistics in igraph, we are going to look at both node measures, and network measures. 
+
+
+- Class: cmd_question
+  Output: We are going to start by plotting each of the networks in your workspace.  Type plot(gE) and press enter.
+  CorrectAnswer: plot(gE)
+  AnswerTests: omnitest(correctExpr="plot(gE)")
+  Hint: Type plot(gE) and press Enter.
+  
+- Class: text
+  Output: Network gE is an Erdos Renyi random graph with 50 nodes and a probability of .05. 
+  
+  
+- Class: cmd_question
+  Output: Type plot(gB1) and press enter.
+  CorrectAnswer: plot(gB1)
+  AnswerTests: omnitest(correctExpr="plot(gB1)")
+  Hint: Type plot(gB1) and press Enter.
+  
+- Class: text
+  Output: Network gB1 is a preferential attachment random graph with 50 nodes and a power of 1.   
+  
+  
+- Class: cmd_question
+  Output: Type plot(gB2) and press enter.
+  CorrectAnswer: plot(gB2)
+  AnswerTests: omnitest(correctExpr="plot(gB2)")
+  Hint: Type plot(gB2) and press Enter.
+
+- Class: text
+  Output: Network gB2 is a preferential attachment random graph with 50 nodes and a power of 2. Each of these three networks were created using the built-in random graph functions erdos.renyi.game() and barabasi.game().
+  
+- Class: text
+  Output: These networks have very different topologies as you can see in the plots.  Now we are going to quantify the topology of each node.   
+
+- Class: cmd_question
+  Output: We will start by calculating the degree of node 50 in each network and comparing them.  Type c(degree(gE,50), degree(gB1,50), degree(gB2,50)) and press enter.
+  CorrectAnswer: c(degree(gE,50), degree(gB1,50), degree(gB2,50))
+  AnswerTests: omnitest(correctExpr="c(degree(gE,50), degree(gB1,50), degree(gB2,50))")
+  Hint: Type c(degree(gE,50), degree(gB1,50), degree(gB2,50)) and press Enter.
+
+- Class: text
+  Output: The degree of node 50 in each of these networks may or may not be different from the others.  Now let's look at the degree distribution.
+  
+  
+- Class: cmd_question
+  Output: Type degE=degree(gE) and press enter.
+  CorrectAnswer: degE=degree(gE)
+  AnswerTests: omnitest(correctExpr="degE=degree(gE)")
+  Hint: Type degE=degree(gE) and press Enter.
+  
+- Class: cmd_question
+  Output: Now look at a histogram of the degrees for graph gE with breaks=20.
+  CorrectAnswer: hist(degE, breaks=20)
+  AnswerTests: omnitest(correctExpr="hist(degE, breaks=20)")
+  Hint: Type hist(degE, breaks=20) and press Enter.
+  
+- Class: cmd_question
+  Output: Now find the degree distribution for gB1 and call it degB1.
+  CorrectAnswer: degB1=degree(gB1)
+  AnswerTests: omnitest(correctExpr="degB1=degree(gB1)")
+  Hint: Type degB1=degree(gB1); degB2=degree(gB2); and press Enter.
+
+- Class: cmd_question
+  Output: Now find the degree distribution for gB2 and call it degB2.
+  CorrectAnswer: degB2=degree(gB2)
+  AnswerTests: omnitest(correctExpr="degB2=degree(gB2)")
+  Hint: Type degB2=degree(gB2) and press Enter.
+
+
+- Class: cmd_question
+  Output: Now look at the degB1 histogram with breaks=20.
+  CorrectAnswer: hist(degB1, breaks=20)
+  AnswerTests: omnitest(correctExpr="hist(degB1, breaks=20)")
+  Hint: Type hist(degB1, breaks=20) and press Enter.
+- Class: cmd_question
+  Output: Now look at the degB2 histogram with breaks=20.
+  CorrectAnswer: hist(degB2, breaks=20)
+  AnswerTests: omnitest(correctExpr="hist(degB2, breaks=20)")
+  Hint: Type hist(degB2, breaks=20) and press Enter.
+
+
+
+- Class: text
+  Output: You can use the arrows just above the graph to scroll back and forth through the plots you made.  Notice the differences?
+
+
+- Class: text
+  Output: Now let's take a look at the betweeness distributions for each network.
+
+
+- Class: cmd_question
+  Output: Use the betweenness() command and calculate the betweenness distribution for gE calling it betE.
+  CorrectAnswer: betE=betweenness(gE)
+  AnswerTests: omnitest(correctExpr="betE=betweenness(gE)")
+  Hint: Type betE=betweenness(gE) and press enter. 
+
+- Class: cmd_question
+  Output: Use the betweenness() command and calculate the betweenness distribution for gB1 calling it betB1.
+  CorrectAnswer: betB1=betweenness(gB1)
+  AnswerTests: omnitest(correctExpr="betB1=betweenness(gB1)")
+  Hint: Type betB1=betweenness(gB1) and press enter. 
+
+- Class: cmd_question
+  Output: Use the betweenness() command and calculate the betweenness distribution for gB2 calling it betB2.
+  CorrectAnswer: betB2=betweenness(gB2)
+  AnswerTests: omnitest(correctExpr="betB2=betweenness(gB2)")
+  Hint: Type betB2=betweenness(gB2) and press enter. 
+
+
+
+- Class: cmd_question
+  Output: Now look at the betE histogram with breaks=20.
+  CorrectAnswer: hist(betE, breaks=20)
+  AnswerTests: omnitest(correctExpr='hist(betE, breaks=20)')
+  Hint: Type hist(betE, breaks=20) and press enter. 
+ 
+- Class: cmd_question
+  Output: Now look at the betB1 histogram with breaks=20.
+  CorrectAnswer: hist(betB1, breaks=20)
+  AnswerTests: omnitest(correctExpr='hist(betB1, breaks=20)')
+  Hint: Type hist(betB1, breaks=20) and press enter. 
+ 
+- Class: cmd_question
+  Output: Now look at the betB2 histogram with breaks=20.
+  CorrectAnswer: hist(betB2, breaks=20)
+  AnswerTests: omnitest(correctExpr='hist(betB2, breaks=20)')
+  Hint: Type hist(betB2, breaks=20) and press enter. 
+ 
+ 
+ 
+- Class: text
+  Output: Now let's look at some of the network measures for these graphs.  We are going to look at average degree, diameter, clustering coefficient, and density.
+
+ 
+- Class: cmd_question
+  Output: To calculate the average degree of each graph, simply take the mean of the degree distribution by using the mean() command. Compare the average degrees now by typing c(mean(degE), mean(degB1), mean(degB2)).
+  CorrectAnswer: c(mean(degE), mean(degB1), mean(degB2))
+  AnswerTests: omnitest(correctExpr='c(mean(degE), mean(degB1), mean(degB2))')
+  Hint: Type c(mean(degE), mean(degB1), mean(degB2)). 
+
+- Class: text
+  Output: The average degrees are very similar, but the shapes of the histograms were very different.
+
+- Class: cmd_question
+  Output: To calculate the diameter of each graph, use the diameter() command and compare the three networks by typing c(diameter(gE), diameter(gB1), diameter(gB2)).
+  CorrectAnswer: c(diameter(gE), diameter(gB1), diameter(gB2))
+  AnswerTests: omnitest(correctExpr='c(diameter(gE), diameter(gB1), diameter(gB2))')
+  Hint: Type c(diameter(gE), diameter(gB1), diameter(gB2)).  
+
+- Class: text
+  Output: The diameters of the graphs are very different.
+
+- Class: cmd_question
+  Output: To calculate the clustering coefficient of each graph, use the transitivity command and compare the three networks by typing c(transitivity(gE, type="global"), transitivity(gB1, type="global"), transitivity(gB2, type="global")).
+  CorrectAnswer: c(transitivity(gE, type="global"), transitivity(gB1, type="global"), transitivity(gB2, type="global"))
+  AnswerTests: omnitest(correctExpr='c(transitivity(gE, type="global"), transitivity(gB1, type="global"), transitivity(gB2, type="global"))')
+  Hint: Type c(transitivity(gE, type="global"), transitivity(gB1, type="global"), transitivity(gB2, type="global")).  
+  
+- Class: text
+  Output: The clustering coefficients are very small.  Do you notice anything special?
+
+- Class: cmd_question
+  Output: To calculate the density of each graph, use the graph.density() command and compare the three networks by typing c(graph.density(gE), graph.density(gB1), graph.density(gB2)).
+  CorrectAnswer: c(graph.density(gE), graph.density(gB1), graph.density(gB2))
+  AnswerTests: omnitest(correctExpr='c(graph.density(gE), graph.density(gB1), graph.density(gB2))')
+  Hint: Type c(graph.density(gE), graph.density(gB1), graph.density(gB2)).  
+ 
+- Class: text
+  Output: The desities are also very small.  Does something stand out?
+ 
+- Class: text
+  Output: Now it's time for part 3 of the lesson.
+    
+ 
+ 
+
