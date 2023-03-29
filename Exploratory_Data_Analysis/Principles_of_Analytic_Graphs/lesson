@@ -53,7 +53,7 @@
 
 - Class: mult_question
   Output: What does this graph NOT show you?
-  AnswerChoices:  Children in the control group had at most 3 symptom-free days; 75% of the children using the air cleaner had at most 3 symptom-free days; Half the chidren in the control group had no improvement; Using the air cleaner makes asthmatic children sicker
+  AnswerChoices:  Children in the control group had at most an increase of 3 symptom-free days; 75% of the children using the air cleaner had at most an increase of 3 symptom-free days; Half the chidren in the control group had no improvement; Using the air cleaner makes asthmatic children sicker
   CorrectAnswer: Using the air cleaner makes asthmatic children sicker
   AnswerTests: omnitest(correctVal='Using the air cleaner makes asthmatic children sicker')
   Hint: Since the boxplot on the right shows that the number of symptom-free days increases with air cleaner use, the graph does NOT show that use makes the children sicker.
