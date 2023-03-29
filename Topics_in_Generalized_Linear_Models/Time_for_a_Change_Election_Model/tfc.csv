@@ -1,0 +1,28 @@
+# SOURCE: Drew Linzer  Votamatic How it works,,,,,,
+# http://votamatic.org/how-it-works/,,,,,,
+# This is the data on which Linzer's "Time for Change" coefficients were based.,,,,,,
+# The model is explained at the above link and original reference given.,,,,,,
+# The "tfc" dummy is +1 if the incumbent party has held the presdency for 2,,,,,,
+# or more terms. "approval" is the incumbent president's net approval rating (approval,,,,,,
+# minus disapproval) in June of the election year. "q2" is annualized,,,,,,
+# percent GDP growth in the second quarter. "pv" is the incumbent,,,,,,
+# party's share of the presidential vote. "incumbent.win" is +1 if the incumbent,,,,,,
+# won the presidency, and 0 otherwise.,,,,,,
+year,q2,approval,tfc,pv,win, winning.candidate
+2012,1.3,-0.8,0,51.1,1,Obama
+2008,1.3,-37,1,46.3,0,Obama
+2004,2.6,-0.5,0,51.2,1,G. W. Bush
+2000,8,19.5,1,50.3,0,G. W. Bush
+1996,7.1,15.5,0,54.7,1,W. Clinton
+1992,4.3,-18,1,46.5,0,W. Clinton
+1988,5.2,10,1,53.9,1,G. H. W. Bush
+1984,7.1,20,0,59.2,1,Reagan
+1980,-7.9,-21.7,0,44.7,0,Reagan
+1976,3,5,1,48.9,0,Carter
+1972,9.8,26,0,61.8,1,Nixon
+1968,7,-5,1,49.6,0,Nixon
+1964,4.7,60.3,0,61.3,1,Johnson
+1960,-1.9,37,1,49.9,0,Kennedy
+1956,3.2,53.5,0,57.8,1,Eisenhower
+1952,0.4,-27,1,44.5,0,Eisenhower
+1948,7.5,-6,1,52.4,1,Truman
