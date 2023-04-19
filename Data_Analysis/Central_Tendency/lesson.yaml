@@ -22,6 +22,7 @@
 
 - Class: figure
   Output: Here is a diagram showing the relationship between a population and a sample.
+    If you get an error, try increasing the size of yoru "Plots" window.
   Figure: mod1_pop_vs_samp.R
   FigureType: new
 
