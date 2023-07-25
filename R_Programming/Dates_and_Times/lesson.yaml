@@ -142,7 +142,7 @@
   Output: strptime() converts character vectors to POSIXlt. In that sense, it is similar to as.POSIXlt(), except that the input doesn't have to be in a particular format (YYYY-MM-DD).
 
 - Class: cmd_question
-  Output: 'To see how it works, store the following character string in a variable called t3: "October 17, 1986 08:24" (with the quotes).'
+  Output: 'To see how it works, store the following character string in a variable called t3: "October 17, 1986 08:24" (with the quotes). If you are using another locale than English, please give the month in your locale(language).'
   CorrectAnswer: t3 <- "October 17, 1986 08:24"
   AnswerTests: omnitest(correctExpr='t3 <- "October 17, 1986 08:24"')
   Hint: Store "October 17, 1986 08:24" (including the quotes) in a new variable called t3.
