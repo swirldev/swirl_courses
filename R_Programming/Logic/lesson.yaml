@@ -143,21 +143,21 @@
     statement as c(TRUE, TRUE, TRUE) & c(TRUE, FALSE, FALSE). 
 
 - Class: cmd_question
-  Output: "Now we'll type the same expression except we'll use the `&&` operator. Type the expression TRUE && c(TRUE, FALSE, FALSE)."
-  CorrectAnswer: "TRUE && c(TRUE, FALSE, FALSE)"
-  AnswerTests: omnitest(correctExpr='TRUE && c(TRUE, FALSE, FALSE)')
+  Output: "Now we'll type the same expression except we'll use the `&&` operator. Type the expression TRUE && TRUE."
+  CorrectAnswer: "TRUE && TRUE"
+  AnswerTests: omnitest(correctExpr='TRUE && TRUE')
   Hint: "As you'll see, the && version of AND works differently. Type: 
-    TRUE && c(TRUE, FALSE, FALSE)"
+    TRUE && TRUE"
 
 - Class: text
-  Output: "In this case, the left operand is only evaluated with the first member
-    of the right operand (the vector). The rest of the elements in the vector
-    aren't evaluated at all in this expression."
+  Output: "In this case, the left operand is only evaluated against a length-one logical vector
+  on the right. Since R 4.3.0, if provided vectors of length greater than one, this is always an error. In earlier
+  R versions the first elements of the LHS and RHS would be evaluated against each other"
     
 - Class : text
   Output: The OR operator follows a similar set of rules. The `|` version of OR
-    evaluates OR across an entire vector, while the `||` version of OR only evaluates
-    the first member of a vector.
+    evaluates OR across an entire vector, while the `||` version of OR only accepts
+    length-one logical vectors.
     
 - Class : text
   Output: An expression using the OR operator will evaluate to TRUE if the left 
@@ -174,11 +174,11 @@
   
 - Class: cmd_question
   Output: "Now let's try out the non-vectorized version of the OR operator. Type the 
-    expression TRUE || c(TRUE, FALSE, FALSE)."
-  CorrectAnswer: "TRUE || c(TRUE, FALSE, FALSE)"
-  AnswerTests: omnitest(correctExpr='TRUE || c(TRUE, FALSE, FALSE)')
+    expression TRUE || TRUE"
+  CorrectAnswer: "TRUE || TRUE"
+  AnswerTests: omnitest(correctExpr='TRUE || TRUE')
   Hint: "As you'll see the || version of OR is not vectorized. Type: 
-    TRUE || c(TRUE, FALSE, FALSE)"
+    TRUE || TRUE"
   
 - Class : text
   Output: "Logical operators can be chained together just like arithmetic operators.
