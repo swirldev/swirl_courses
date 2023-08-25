@@ -131,7 +131,7 @@
 
 - Class: cmd_question
   Output: "You can use the `&` operator to evaluate AND across a vector. The `&&` version of AND only evaluates 
-    the first member of a vector. Let's test both for practice. Type the expression TRUE & c(TRUE, FALSE, FALSE)."
+    logical vectors of length-one. Let's test both for practice. Type the expression TRUE & c(TRUE, FALSE, FALSE)."
   CorrectAnswer: "TRUE & c(TRUE, FALSE, FALSE)"
   AnswerTests: omnitest(correctExpr='TRUE & c(TRUE, FALSE, FALSE)')
   Hint: "Now to see how the AND operator works with a vector, type: 
@@ -143,16 +143,16 @@
     statement as c(TRUE, TRUE, TRUE) & c(TRUE, FALSE, FALSE). 
 
 - Class: cmd_question
-  Output: "Now we'll type the same expression except we'll use the `&&` operator. Type the expression TRUE && TRUE."
+  Output: "Now we'll try the `&&` operator. Type the expression TRUE && TRUE."
   CorrectAnswer: "TRUE && TRUE"
   AnswerTests: omnitest(correctExpr='TRUE && TRUE')
   Hint: "As you'll see, the && version of AND works differently. Type: 
     TRUE && TRUE"
 
 - Class: text
-  Output: "In this case, the left operand is only evaluated against a length-one logical vector
-  on the right. Since R 4.3.0, if provided vectors of length greater than one, this is always an error. In earlier
-  R versions the first elements of the LHS and RHS would be evaluated against each other"
+  Output: "In this case, the left and right operands are length-one logical vectors.
+  Since R 4.3.0, if provided vectors of length greater than one, `&&` produces an error. In earlier
+  R versions the first elements of the LHS and RHS would be evaluated against each other."
     
 - Class : text
   Output: The OR operator follows a similar set of rules. The `|` version of OR
