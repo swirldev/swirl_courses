@@ -137,22 +137,22 @@
   Hint: "Now to see how the AND operator works with a vector, type: 
     TRUE & c(TRUE, FALSE, FALSE)"
 
-- Class: text
-  Output: What happens in this case is that the left operand `TRUE` is recycled
-    across every element in the vector of the right operand. This is the equivalent
-    statement as c(TRUE, TRUE, TRUE) & c(TRUE, FALSE, FALSE). 
+# - Class: text
+#   Output: What happens in this case is that the left operand `TRUE` is recycled
+#     across every element in the vector of the right operand. This is the equivalent
+#     statement as c(TRUE, TRUE, TRUE) & c(TRUE, FALSE, FALSE). 
 
-- Class: cmd_question
-  Output: "Now we'll type the same expression except we'll use the `&&` operator. Type the expression TRUE && c(TRUE, FALSE, FALSE)."
-  CorrectAnswer: "TRUE && c(TRUE, FALSE, FALSE)"
-  AnswerTests: omnitest(correctExpr='TRUE && c(TRUE, FALSE, FALSE)')
-  Hint: "As you'll see, the && version of AND works differently. Type: 
-    TRUE && c(TRUE, FALSE, FALSE)"
+# - Class: cmd_question
+#   Output: "Now we'll type the same expression except we'll use the `&&` operator. Type the expression TRUE && c(TRUE, FALSE, FALSE)."
+#   CorrectAnswer: "TRUE && c(TRUE, FALSE, FALSE)"
+#   AnswerTests: omnitest(correctExpr='TRUE && c(TRUE, FALSE, FALSE)')
+#   Hint: "As you'll see, the && version of AND works differently. Type: 
+#     TRUE && c(TRUE, FALSE, FALSE)"
 
-- Class: text
-  Output: "In this case, the left operand is only evaluated with the first member
-    of the right operand (the vector). The rest of the elements in the vector
-    aren't evaluated at all in this expression."
+# - Class: text
+#   Output: "In this case, the left operand is only evaluated with the first member
+#     of the right operand (the vector). The rest of the elements in the vector
+#     aren't evaluated at all in this expression."
     
 - Class : text
   Output: The OR operator follows a similar set of rules. The `|` version of OR
