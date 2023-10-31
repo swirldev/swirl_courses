@@ -47,7 +47,7 @@
   AnswerChoices: (1/6)/(1/2); (1/2)/(1/6); (1/3)/(1/2); 1/6 
   CorrectAnswer: (1/6)/(1/2)
   AnswerTests: omnitest(correctVal='(1/6)/(1/2)')
-  Hint: Here A is a subset of B so the probability of both A AND B happening is the probability of A happening. The probability of B is the reciprocal of the number of odd numbers between 1 and 6 (inclusive).
+  Hint: Here A is a subset of B so the probability of both A AND B happening is the probability of A happening. The probability of B is the probability of an odd number occurring.
 
 - Class: text
   Output: From the definition of P(A|B), we can write P(A&B) = P(A|B) * P(B), right?  Let's use this to express P(B|A).
