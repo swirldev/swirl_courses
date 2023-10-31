@@ -49,10 +49,10 @@
   Output: If your dplyr version is not at least 0.4.0, then you should hit the Esc key now, reinstall dplyr, then resume this lesson where you left off.
 
 - Class: cmd_question
-  Output: "The first step of working with data in dplyr is to load the data into what the package authors call a 'data frame tbl' or 'tbl_df'. Use the following code to create a new tbl_df called cran: \n\ncran <- tbl_df(mydf)."
-  CorrectAnswer: cran <- tbl_df(mydf)
-  AnswerTests: omnitest(correctExpr='cran <- tbl_df(mydf)')
-  Hint: Type cran <- tbl_df(mydf) to create a new tbl_df called cran.
+  Output: "The first step of working with data in dplyr is to load the data into a so-called tibble, a data frame with class tbl_df. Use the following code to create a new tibble called cran: \n\ncran <- as_tibble(mydf)."
+  CorrectAnswer: cran <- as_tibble(mydf)
+  AnswerTests: omnitest(correctExpr='cran <- as_tibble(mydf)')
+  Hint: Type cran <- as_tibble(mydf) to create a new tibble called cran.
 
 - Class: cmd_question
   Output: To avoid confusion and keep things running smoothly, let's remove the original data frame from your workspace with rm("mydf").
@@ -61,10 +61,10 @@
   Hint: Use rm("mydf") to remove the original data frame from your workspace.
 
 - Class: cmd_question
-  Output: From ?tbl_df, "The main advantage to using a tbl_df over a regular data frame is the printing." Let's see what is meant by this. Type cran to print our tbl_df to the console.
+  Output: From ?tibble::tbl_df, "Printing and inspection are a very high priority. The goal is to convey as much information as possible, in a concise way, even for large and complex tibbles. " Let's see what is meant by this. Type cran to print our tibble to the console.
   CorrectAnswer: cran
   AnswerTests: omnitest(correctExpr='cran')
-  Hint: Type cran to print our tbl_df to the console.
+  Hint: Type cran to print our tibble to the console.
 
 - Class: text
   Output: This output is much more informative and compact than what we would get if we printed the original data frame (mydf) to the console.
