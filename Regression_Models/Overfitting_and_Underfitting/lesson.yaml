@@ -93,7 +93,7 @@
   Hint: "Enter deviance(fit3) at the R prompt."
 
 - Class: cmd_question
-  Output: "In the next several steps, we will show how to calculate the F value, 20.968, which appears in the table printed by anova(). We'll begin with the denominator, which is fit3's residual sum of squares divided by its degrees of freedom. Fit3 has 43 residual degrees of freedom. This figure is obtained by subtracting 4, the the number of fit3's predictors (the 3 named and the intercept,) from 47, the number of samples in swiss. Store the value of deviance(fit3)/43 in a variable named d."
+  Output: "In the next several steps, we will show how to calculate the F value, 20.968, which appears in the table printed by anova(). We'll begin with the denominator, which is fit3's residual sum of squares divided by its degrees of freedom. Fit3 has 43 residual degrees of freedom. This figure is obtained by subtracting 4, the number of fit3's predictors (the 3 named and the intercept,) from 47, the number of samples in swiss. Store the value of deviance(fit3)/43 in a variable named d."
   CorrectAnswer: d <- deviance(fit3)/43
   AnswerTests: "ANY_of_exprs('d <- deviance(fit3)/43', 'd <- deviance(fit3)/df.residual(fit3)', 'd <- deviance(fit3)/fit3$df.residual')"
   Hint: "Enter d <- deviance(fit3)/43 at the R prompt."

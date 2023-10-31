@@ -16,7 +16,7 @@
   Output: "Visits to a web site tend to occur independently, one at a time, at a certain average rate. The Poisson distribution describes random processes of this type. A Poisson process is characterized by a single parameter, the expected rate of occurrence, which is usually called lambda. In our case, lambda will be expected visits per day. Of course, as the web site becomes more popular, lambda will grow. In other words, our lambda will depend on time. We will use Poisson regression to model this dependence."
 
 - Class: cmd_question
-  Output: "Somwhat remarkably, the variance of a Poisson process has the same value as its mean, lambda. You can quickly illustrate this by generating, say, n=1000 samples from a Poisson process using R's rpois(n, lambda) and calculating the sample variance. For example, type var(rpois(1000, 50)). The sample variance won't be exactly equal to the theoretical value, of course, but it will be fairly close."  
+  Output: "Somewhat remarkably, the variance of a Poisson process has the same value as its mean, lambda. You can quickly illustrate this by generating, say, n=1000 samples from a Poisson process using R's rpois(n, lambda) and calculating the sample variance. For example, type var(rpois(1000, 50)). The sample variance won't be exactly equal to the theoretical value, of course, but it will be fairly close."  
   CorrectAnswer: 'var(rpois(1000, 50))'
   AnswerTests: expr_uses_func('var');expr_uses_func('rpois')
   Hint: Try typing var(rpois(1000, 50)).
