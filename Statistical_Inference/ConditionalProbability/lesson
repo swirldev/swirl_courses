@@ -59,7 +59,7 @@
   Output: Suppose we don't know P(A) itself, but only know its conditional probabilities, that is, the probability that it occurs if B occurs and the probability that it occurs if B doesn't occur. These are  P(A|B) and P(A|~B), respectively. We use ~B to represent 'not B' or 'B complement'. 
 
 - Class: text
-  Output: We can then express P(A) = P(A|B) * P(B) + P(A|~B) * P(~B) and substitute this is into the denominator of Bayes' Formula. 
+  Output: We can then express P(A) = P(A|B) * P(B) + P(A|~B) * P(~B) and substitute this into the denominator of Bayes' Formula. 
 
 - Class: text
   Output: P(B|A) = P(A|B) * P(B) / ( P(A|B) * P(B) + P(A|~B) * P(~B) ) 
