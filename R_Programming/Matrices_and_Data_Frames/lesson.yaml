@@ -89,8 +89,8 @@
 
 - Class: cmd_question
   Output: Now, look at the documentation for the matrix function and see if you can figure out how to create a matrix containing the same numbers (1-20) and dimensions (4 rows, 5 columns) by calling the matrix() function. Store the result in a variable called my_matrix2.
-  CorrectAnswer: my_matrix2 <- matrix(1:20, nrow=4, ncol=5)
-  AnswerTests: calculates_same_value('matrix(1:20, nrow=4, ncol=5)'); expr_creates_var('my_matrix2')
+  CorrectAnswer: my_matrix2 <- matrix(data=1:20, nrow=4, ncol=5)
+  AnswerTests: calculates_same_value('matrix(data=1:20, nrow=4, ncol=5)'); expr_creates_var('my_matrix2')
   Hint: Call the matrix() function with three arguments -- 1:20, the number of rows, and the number of columns. Be sure to specify arguments by their proper names and store the result in my_matrix2 (not in my_matrix).
 
 - Class: cmd_question
