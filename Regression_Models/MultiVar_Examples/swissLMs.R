@@ -5,6 +5,7 @@ makelms <- function(){
           coef(lm(Fertility ~ Agriculture + Catholic + Education,swiss))[2],
           coef(lm(Fertility ~ Agriculture + Catholic + Education + Examination,swiss))[2],
           coef(lm(Fertility ~ Agriculture + Catholic + Education + Examination +Infant.Mortality, swiss))[2])
+	  names(cf) <- c("Agriculture", "Added 'Catholic'", "Added 'Education'", "Added 'Examination'", "Added 'Infant.Mortality'")
   print(cf)
 }
 
