@@ -222,7 +222,7 @@
 - Class: text
   Output: We already know the significance and power levels that we want and we are
     interested in a one-sided test. In this case, our one-sided test applies only
-    to the case when the true speed is GREATER or equal to 10 miles per hour above
+    to the case when the true speed is GREATER or equal to 5 miles per hour above
     the posted speed limit. Therefore, we will specifiy the test type as "greater".
 
 - Class: cmd_question
@@ -247,8 +247,8 @@
 
 - Class: text
   Output: Up until this point, we've assumed a known population standard deviation
-    (sigma). Sometimes this is available if a subject has be studied extensively,
-    but this may often not be the case. If you are required to compute sigma from
+    (sigma). Sometimes this is available if a subject has been studied extensively,
+    but this may often not be the case. If you are required to estimate sigma from
     the data, then using a t-test is more appropriate.
 
 - Class: text

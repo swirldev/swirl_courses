@@ -100,7 +100,7 @@
 
 - Class: text
   Output: The next value that we need for our t-statistic is the assumed population
-    mean, which is in this case is given to be 12.0 miles per gallon by the report
+    mean, which in this case is given to be 12.0 miles per gallon by the report
     referenced earlier.
 
 - Class: cmd_question
