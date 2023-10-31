@@ -128,7 +128,7 @@
   Hint: Type par()$pin at the command prompt.
  
 - Class: mult_question
-  Output: Alternatively, you could have gotten the same result by running par("pin") or par('pin')).  What do you think these two numbers represent?
+  Output: Alternatively, you could have gotten the same result by running par("pin") or par('pin').  What do you think these two numbers represent?
   AnswerChoices: Plot dimensions in inches; A confidence interval; Random numbers; Coordinates of the center of the plot window
   CorrectAnswer: Plot dimensions in inches
   AnswerTests: omnitest(correctVal='Plot dimensions in inches')
