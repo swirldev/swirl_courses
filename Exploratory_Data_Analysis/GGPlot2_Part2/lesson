@@ -230,7 +230,7 @@
   Output: Angry Birds? Finally, add to your last command (or retype it if you like to type) a call to the function labs with 3 arguments. These are x set to "Displacement", y set to "Highway Mileage", and title set to "Swirl Rules!".
   CorrectAnswer: g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,color="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!")
   AnswerTests:  omnitest(correctExpr='g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,color="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!")')
-  Hint: Typeg + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,color="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!") at the command prompt.
+  Hint: Type g + geom_point() + facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",size=2,se=FALSE,color="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!") at the command prompt.
 
 - Class: text
   Output: You could have done these labels with separate calls to labs but we thought you'd be sick of this by now. Anyway, congrats! You've concluded part 2 of ggplot2. We hope you got enough mileage out of the lesson. If you like ggplot2 you can do some extras with the extra lesson.
