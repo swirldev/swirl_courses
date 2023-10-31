@@ -201,7 +201,7 @@
   Output: We see that p1 is a short function with one argument, n. The argument n is used as the length in a call to the function seq.int, itself  an argument to the function ramp. We can infer that ramp is just going to divide the interval from 0 to 1 into n pieces.  
 
 - Class: cmd_question
-  Output: The heart of p1 is really the call to the function rgb with either 4 or 5 arguments. Use the ?fun construct to look at the R documentation for rgb now.
+  Output: The heart of p1 is really the call to the function rgb with either 4 or 5 arguments. Use the ??fun construct to look at the R documentation for rgb now.
   CorrectAnswer: ?rgb
   AnswerTests: omnitest(correctExpr='?rgb')
   Hint: Type ?rgb at the command prompt.
